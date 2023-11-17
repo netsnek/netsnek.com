@@ -13,8 +13,12 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-jaen`,
       options: {
-        snekResourceId: `0ee5d9f5-7580-4787-855f-4fc8bd89d3bf`
+        snekResourceId: `2c1408ca-84bb-4981-af1f-7d63b2b6f34d`
       }
+    },
+    {
+      resolve: `gatsby-jaen-mailpress`,
+      options: {}
     }
   ]
 }

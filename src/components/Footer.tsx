@@ -36,19 +36,15 @@ const Footer: FC = () => {
       },
       {
         label: 'GitHub',
-        href: 'https://github.com/in/kleberbaum/'
-      },
-      {
-        label: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/kleberbaum/'
+        href: 'https://github.com/in/schettn/'
       },
       {
         label: 'Telegram',
-        href: 'https://t.me/kleberbaum'
+        href: 'https://t.me/schettn'
       },
       {
         label: 'Instagram',
-        href: 'https://www.instagram.com/kleberbaum/'
+        href: 'https://www.instagram.com/schettn/'
       },
       {
         label: 'Impressum',
@@ -61,12 +57,16 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'Nico Schett',
-        href: 'https://schett.net'
+        label: 'Florian Kleber',
+        href: 'https://fhkit.at'
       },
       {
         label: 'Christoph Clementschitsch',
         href: 'https://neurons.at'
+      },
+      {
+        label: 'Kanbon',
+        href: 'https://kanbon.at'
       }
     ],
     [
@@ -76,7 +76,7 @@ const Footer: FC = () => {
       },
       {
         label: 'Florian H. Kleber',
-        href: 'https://github.com/in/kleberbaum/'
+        href: 'https://github.com/kleberbaum/'
       }
     ]
   ]
@@ -112,6 +112,8 @@ const Footer: FC = () => {
 
   return (
     <Box
+      borderTop="4px solid"
+      borderColor="brand.500"
       pb={20}
       position="relative"
       mt="-25px"
@@ -168,12 +170,11 @@ const Footer: FC = () => {
           </Flex>
           <Field.Text
             name="FooterTextNew"
-            defaultValue="Dreilach 16 <br>
-              9184, St. Jakob i.R. <br>
+            defaultValue="Klausen 10 <br>
+              9911 Assling <br>
               Austria <br>
               <br>
-              Email: office@fhkit.at<br>
-              Tel: +43 650 824 88 11"
+              Email: office@schett.net"
             mt={10}
             maxW={{base: 'full', lg: '50%'}}
             fontSize="1.1rem"
@@ -181,19 +182,32 @@ const Footer: FC = () => {
           />
         </Box>
         <Flex mt={20} color="white" wrap={{base: 'wrap', sm: 'nowrap'}}>
-          <Flex alignItems={'center'}>
-            <Logo w="100px" h="200px" mr={-4} />
+          <Box>
+            <Flex alignItems={'center'}>
+              <Logo w="100px" h="100px" mr={-4} />
+              <Field.Text
+                name="FooterLogoText1"
+                defaultValue="arbara"
+                //display={{ base: "none", md: "flex"}}
+                as={Heading}
+                //whiteSpace={'nowrap'}
+                fontSize="5xl"
+                lineHeight={1}
+                fontWeight="bold"
+              />
+            </Flex>
             <Field.Text
-              name="FooterLogoText"
-              defaultValue="leber"
+              name="FooterLogoText2"
+              defaultValue="Mauz"
+              ml="18px"
               //display={{ base: "none", md: "flex"}}
               as={Heading}
-              whiteSpace={'nowrap'}
-              fontSize="5xl"
+              //whiteSpace={'nowrap'}
+              fontSize="4xl"
               lineHeight={1}
-              fontWeight="bold"
+              fontWeight="light"
             />
-          </Flex>
+          </Box>
           <Spacer minW={{base: '5rem', lg: '25%'}} />
           <HStack
             alignItems="start"
@@ -217,7 +231,7 @@ const Footer: FC = () => {
             color="#ffffff"
             icon={<Netsnek w={'25px'} h={'25px'} />}
             aria-label="Netsnek"
-            href="https://netsnek.com/kleberbaum"
+            href="https://netsnek.com/schett"
             isExternal
           />
           <IconButton
@@ -227,17 +241,7 @@ const Footer: FC = () => {
             color="#ffffff"
             icon={<FaGithub />}
             aria-label="Github"
-            href="https://github.com/kleberbaum/"
-            isExternal
-          />
-          <IconButton
-            as={LinkOverlay}
-            size="lg"
-            variant={'ghost'}
-            color="#ffffff"
-            icon={<FaLinkedin />}
-            aria-label="Linkedin"
-            href="https://www.linkedin.com/in/kleberbaum/"
+            href="https://github.com/schettn/"
             isExternal
           />
           <IconButton
@@ -247,7 +251,7 @@ const Footer: FC = () => {
             color="#ffffff"
             icon={<FaInstagram />}
             aria-label="Instagram"
-            href="https://www.instagram.com/kleberbaum/"
+            href="https://www.instagram.com/schettn/"
             isExternal
           />
           <IconButton
@@ -257,19 +261,9 @@ const Footer: FC = () => {
             color="#ffffff"
             icon={<FaTelegram />}
             aria-label="Telegram"
-            href="https://t.me/kleberbaum"
+            href="https://t.me/schettn"
             isExternal
           />
-          {/*<IconButton
-            as={LinkOverlay}
-            size="lg"
-            variant={'ghost'}
-            color="#ffffff"
-            icon={<FaTwitter />}
-            aria-label="Twitter"
-            href="https://twitter.com/kleberbaum"
-            isExternal
-          />*/}
         </Stack>
         <Divider mt={0} opacity={0.1} />
         <Field.Text

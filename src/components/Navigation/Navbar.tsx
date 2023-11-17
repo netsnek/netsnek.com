@@ -1,4 +1,5 @@
 import {
+  Image,
   Text,
   Box,
   Button,
@@ -11,6 +12,8 @@ import {
   HStack,
   LinkBox,
   Heading,
+  ChakraBaseProvider,
+  chakra,
 } from "@chakra-ui/react";
 
 import { FaLongArrowAltLeft } from "@react-icons/all-files/fa/FaLongArrowAltLeft";
@@ -72,9 +75,11 @@ export const Navbar: FC<INavbarProps> = ({
             lineHeight={1}
             fontWeight="bold"
             //textAlign="left"
-            //color="#b57edc"
+            color="#000000"
           >
-            Florian Herbert Kleber IT
+            Barbara
+            {/* <chakra.span color="brand.200">.</chakra.span> */}
+            <chakra.span fontWeight="light">Mauz</chakra.span>
           </Text>
         </HStack>
       </Flex>
