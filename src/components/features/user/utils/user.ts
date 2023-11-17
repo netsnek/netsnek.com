@@ -1,16 +1,14 @@
 import {
   Connection_1_2_3_4_5_6,
-  Edge_1_2_3_4_5_6,
   ObjectAndUser,
   Privacy,
-  Query,
-  User
+  User,
+  User_1
 } from '@snek-functions/origin/dist/schema.generated';
 import { TActivity, TActivityType } from '../activity/types/activity';
 import { t } from 'snek-query';
 import { sq } from '@snek-functions/origin';
 import { TPaginationData } from '../../../shared/types/pagination';
-import { snekResourceId } from '@atsnek/jaen';
 
 /**
  * Returns the display name of a user
@@ -21,7 +19,7 @@ import { snekResourceId } from '@atsnek/jaen';
  * @example getDisplayname({ username: "test", details: { lastName: "User" } }) // "User"
  * @example getDisplayname({ username: "test" }) // "test"
  */
-export const getUserDisplayname = (user: ObjectAndUser) => {
+export const getUserDisplayname = (user: ObjectAndUser | User_1) => {
   let displayName: string | undefined = undefined;
   if (user.details?.firstName) {
     displayName = user.details.firstName;
@@ -32,7 +30,7 @@ export const getUserDisplayname = (user: ObjectAndUser) => {
   }
 
   if (!displayName) {
-    displayName = user.username;
+    displayName = user.username ?? '';
   }
   return displayName;
 };
@@ -82,7 +80,8 @@ export const buildUserActivities = async (
     totalCount: activityConnection.totalCount,
     hasMore: activityConnection.pageInfo.hasNextPage,
     nextCursor: activityConnection.pageInfo.endCursor ?? undefined,
-    prevCursor: activityConnection.pageInfo.startCursor ?? undefined
+    prevCursor: activityConnection.pageInfo.startCursor ?? undefined,
+    state: 'success'
   };
 
   const items = activityConnection.edges
@@ -93,15 +92,14 @@ export const buildUserActivities = async (
         !createdAt ||
         (type.startsWith('star_') &&
           (!post ||
-            (post &&
-              activityRatingPostIds.findIndex(
-                ({ createdAt: existingCreatedAt, id }) =>
-                  id === post.id && existingCreatedAt === createdAt
-              ) === -1)))
+            post &&
+            activityRatingPostIds.findIndex(
+              ({ createdAt: existingCreatedAt, id }) =>
+                id === post.id && existingCreatedAt === createdAt
+            ) === -1))
       )
         return;
 
-      console.log('activity: ', ae.node);
       let title = '';
       let href = '';
       if (type === 'blog_create' && post) {
@@ -112,9 +110,8 @@ export const buildUserActivities = async (
           title = 'Created a private blog post';
           href = '#';
         } else {
-          title = `Created a blog post \"${post.title?.substring(0, 20)}${
-            post.title?.length > 20 ? '...' : ''
-          }\"`;
+          title = `Created a blog post \"${post.title?.substring(0, 20)}${post.title?.length > 20 ? '...' : ''
+            }\"`;
           href = '/post/' + post.slug;
         }
       } else if (type === 'profile_create') {
@@ -123,26 +120,18 @@ export const buildUserActivities = async (
       } else if (type === 'follow_follow') {
         if (!follow || !follow.followed) return;
         const [followedUser, followedUserError] = await sq.query(q => {
-          const user = q.user({
-            id: follow.followed.id,
-            resourceId: snekResourceId
-          });
+          const user = q.user({ resourceId: __SNEK_RESOURCE_ID__, id: follow.followed.id });
           user.username;
           user.details?.firstName;
           user.details?.lastName;
           return user;
         });
-        if (
-          !followedUser ||
-          (followedUserError && followedUserError.length > 0)
-        )
-          return;
+        if (!followedUser || (followedUserError && followedUserError.length > 0)) return;
         title = `Followed ${getUserDisplayname(followedUser)}`;
         href = follow.followed?.id ? '/user/' + followedUser.username : '#';
       } else if (type === 'star_star' && post) {
-        title = `Starred a post \"${post.title?.substring(0, 20)}${
-          post.title?.length > 20 ? '...' : ''
-        }\"`;
+        title = `Starred a post \"${post.title?.substring(0, 20)}${post.title?.length > 20 ? '...' : ''
+          }\"`;
         href = '/post/' + post.slug;
       }
 
@@ -159,9 +148,7 @@ export const buildUserActivities = async (
         }
       };
     });
-  activityList.items = (await Promise.all(items)).filter(
-    Boolean
-  ) as TActivity[];
+  activityList.items = (await Promise.all(items)).filter(Boolean) as TActivity[];
   return activityList;
 };
 
