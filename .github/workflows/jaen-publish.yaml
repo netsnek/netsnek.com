@@ -2,6 +2,12 @@
 
 name: Publish
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+ contents: read
+ pages: write
+ id-token: write
+
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions#on
 on:
   # https://help.github.com/en/articles/workflow-syntax-for-github-actions
