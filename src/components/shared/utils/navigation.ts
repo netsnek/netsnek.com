@@ -148,6 +148,7 @@ export function createBreadCrumbParts(
 
   // Recursively build the breadcrumb parts by traversing the menu data structure
   const buildBreadcrumbPart = (menuItem: NavMenuItem, idx: number): boolean => {
+    console.log(menuItem.children)
     const child = menuItem.children?.[data.activeIdx[idx]];
     if (!child) return false;
     parts.push({

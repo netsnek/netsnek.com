@@ -27,6 +27,7 @@
     "gatsby": "^5.12.0",
     "gatsby-jaen-mailpress": "^0.0.1",
     "gatsby-plugin-jaen": "^1.0.0-rc.61",
+    "hono": "^3.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-simple-code-editor": "^0.13.1",

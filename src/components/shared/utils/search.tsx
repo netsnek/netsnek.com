@@ -196,7 +196,7 @@ export async function getDefaultSearchDocs(
 ): Promise<TSearchResultSection[]> {
   const results: TSearchResultSection[] = [];
   Object.keys(data).forEach(key => {
-    if (!key.startsWith('/docs/') || key === '/docs/') return;
+    if (!key.startsWith('/blog/') || key === '/b/') return;
     const item = data[key];
     const summary = Object.keys(item.data)
       .find(key => key.length > 0 && item.data[key].length > 0)

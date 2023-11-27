@@ -29,7 +29,7 @@ export const DocContent: FC<DocContentProps> = () => {
   const MemoizedToc = memo(TableOfContent, () => false);
 
   return (
-    <Container maxW="6xl">
+    <>
       <Stack spacing={{ base: 0, xl: 12 }} direction="row">
         <Box w="full" overflow="hidden">
           <MdxEditor />
@@ -69,6 +69,6 @@ export const DocContent: FC<DocContentProps> = () => {
           </RightNav>
         </Box>
       </Stack>
-    </Container>
+    </>
   );
 };

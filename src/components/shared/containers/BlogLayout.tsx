@@ -8,23 +8,25 @@ import { useMenuContext } from '../contexts/menu';
 import { MainBreadcrumbPart } from '../types/navigation';
 import { createBreadCrumbParts } from '../utils/navigation';
 
-interface DocsLayoutProps {
+interface BlogLayoutProps {
   children?: React.ReactNode;
   path?: string;
   isCommunity?: boolean;
 }
 
-const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
+const BlogLayout: FC<BlogLayoutProps> = ({ children, path, isCommunity }) => {
   const { menuStructure } = useMenuContext();
+
+  console.log('menuStructure', menuStructure);
 
   const [isExpanded, setIsExpanded] = useState(true);
 
   const breadcrumbParts: MainBreadcrumbPart[] = useMemo(() => {
     return [
       {
-        name: 'Documentation',
-        isDisabled: path === '/docs/',
-        href: '/docs'
+        name: 'Blog',
+        isDisabled: path === '/blog/',
+        href: '/blog'
       },
       ...createBreadCrumbParts(menuStructure)
     ];
@@ -54,4 +56,4 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
   );
 };
 
-export default DocsLayout;
+export default BlogLayout;

@@ -1,15 +1,10 @@
 import React, { FC, ReactNode, useMemo } from 'react';
-import TopNav, {
-  TBrandImage,
-  TMobileMenuButtonProps,
-  TTopNavLinkProps,
-  TTopNavWrapperProps
-} from './navigation/TopNav';
+import Navigation from '../../Navigation/Navigation';
 import { Box, Flex, useDisclosure } from '@chakra-ui/react';
-import Footer from './Footer';
-import DocsLayout from './DocsLayout';
+import Footer from '../../Footer';
+import BlogLayout from './BlogLayout';
 import { useLocation } from '@reach/router';
-import { TSearchMenuStyleProps } from '../../features/search/components/SearchMenu';
+//import { TSearchMenuStyleProps } from '../../features/search/components/SearchMenu';
 import { THamburgerMenuIconStylerProps } from '../components/HamburgerMenuIcon';
 import { MenuContext } from '../contexts/menu';
 import { useAuthenticationContext, useCMSManagementContext } from '@atsnek/jaen';
@@ -18,23 +13,11 @@ import CommunityLayout from './CommunityLayout';
 
 interface AppLayoutProps {
   children?: React.ReactNode;
-  isDocs?: boolean;
+  isBlog?: boolean;
   isCommunity?: boolean;
   path?: string;
   footer?: FC;
   customTopNavDisclosure?: ReturnType<typeof useDisclosure>;
-  topNavProps?: {
-    isVisible?: boolean;
-    wrapper?: TTopNavWrapperProps;
-    link?: TTopNavLinkProps;
-    colorMode?: 'light' | 'dark';
-    hamburger?: THamburgerMenuIconStylerProps;
-    mobileMenuButtonProps?: TMobileMenuButtonProps;
-  };
-  branding?: {
-    image?: TBrandImage;
-    colorMode?: 'light' | 'dark';
-  };
 }
 
 /**
@@ -43,34 +26,34 @@ interface AppLayoutProps {
  */
 const AppLayout: FC<AppLayoutProps> = ({
   children,
-  isDocs,
+  isBlog,
   isCommunity,
   path,
   footer,
   customTopNavDisclosure,
-  topNavProps,
-  branding
 }) => {
   const cmsManager = useCMSManagementContext();
   const location = useLocation();
   const topNavDisclosure = useDisclosure(); // for the top nav mobile drawer
   const { isAuthenticated } = useAuthenticationContext();
 
+  console.log("path", path)
   // This generates the menu structure from the page tree that is used over the whole app by accessing the context.
   const menuStructure = useMemo(
     () => createPageTree(cmsManager, location.pathname),
     [cmsManager, path]
   );
 
+  console.log('menuStructure',  menuStructure)
   const FooterComp = footer ?? Footer;
 
   let childrenElmnt: ReactNode = null;
 
-  if (isDocs) {
+  if (isBlog) {
     childrenElmnt = (
-      <DocsLayout path={path} isCommunity={isCommunity}>
+      <BlogLayout path={path} isCommunity={isCommunity}>
         {children}
-      </DocsLayout>
+      </BlogLayout>
     );
   } else if (isCommunity) {
     childrenElmnt = <CommunityLayout>{children}</CommunityLayout>;
@@ -82,16 +65,8 @@ const AppLayout: FC<AppLayoutProps> = ({
     <>
       <MenuContext.Provider value={{ menuStructure }}>
         <Flex minW="210px" h="max(100%, 100vh)" minH="100vh" direction="column" pb={5}>
-          {!isAuthenticated && topNavProps?.isVisible && (
-            <TopNav
-              drawerDisclosure={customTopNavDisclosure ?? topNavDisclosure}
-              linkProps={topNavProps?.link}
-              wrapperProps={topNavProps?.wrapper}
-              colorMode={topNavProps?.colorMode}
-              hamburgerIconProps={topNavProps?.hamburger}
-              mobileMenuButtonProps={topNavProps?.mobileMenuButtonProps}
-              branding={branding}
-            />
+          {!isAuthenticated && (
+            <Navigation path='/'/>
           )}
           <Box flex="1">{childrenElmnt}</Box>
         </Flex>
