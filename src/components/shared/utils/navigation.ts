@@ -15,7 +15,8 @@ import {TMenuStructure} from '../types/menu'
  */
 export function createPageTree(
   manager: ReturnType<typeof useCMSManagementContext>,
-  currentPath: string
+  currentPath: string,
+  rootPath: string = '/blog'
 ) {
   let expandedItemIdx = 0 // The next index of an possibly expanded item
   const result: TMenuStructure = {
@@ -29,7 +30,7 @@ export function createPageTree(
 
   // Get the page tree of the doc's root
   const docsTree = manager.tree[0].children.find(
-    p => manager.pagePath(p.id) === '/docs'
+    p => manager.pagePath(p.id) === rootPath
   )
   if (!docsTree) return result
 
