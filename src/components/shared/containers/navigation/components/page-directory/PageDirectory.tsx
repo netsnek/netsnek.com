@@ -47,23 +47,23 @@ const PageDirectory: FC<PageDirectoryProps> = ({
   };
 
   const baseMenuItems: NavMenuSection[] = [
+    // {
+    //   name: 'Community',
+    //   icon: <TbUsers />,
+    //   items: [
+    //     {
+    //       name: 'Posts',
+    //       href: '/community',
+    //       isActive: path?.startsWith('/community')
+    //     }
+    //   ]
+    // },
     {
-      name: 'Community',
-      icon: <TbUsers />,
-      items: [
-        {
-          name: 'Posts',
-          href: '/community',
-          isActive: path?.startsWith('/community')
-        }
-      ]
-    },
-    {
-      name: 'More',
+      name: 'Mehr Infos',
       icon: <TbBook />,
       items: [
         {
-          name: 'PhotonQ',
+          name: 'Homepage',
           href: '/'
         }
       ]

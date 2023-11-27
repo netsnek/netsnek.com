@@ -137,7 +137,7 @@ const HeroSection = () => {
                 bg: useColorModeValue('gray.100', 'gray.700')
               }}>
               <Icon as={FaBook} w={4} h={4} mr={2} />
-              <LinkOverlay href="/blog" isExternal>
+              <LinkOverlay href="/blog">
                 Rezepte
               </LinkOverlay>
             </Flex>

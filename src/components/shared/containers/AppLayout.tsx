@@ -37,14 +37,12 @@ const AppLayout: FC<AppLayoutProps> = ({
   const topNavDisclosure = useDisclosure(); // for the top nav mobile drawer
   const { isAuthenticated } = useAuthenticationContext();
 
-  console.log("path", path)
   // This generates the menu structure from the page tree that is used over the whole app by accessing the context.
   const menuStructure = useMemo(
     () => createPageTree(cmsManager, location.pathname),
     [cmsManager, path]
   );
 
-  console.log('menuStructure',  menuStructure)
   const FooterComp = footer ?? Footer;
 
   let childrenElmnt: ReactNode = null;
@@ -71,7 +69,7 @@ const AppLayout: FC<AppLayoutProps> = ({
           <Box flex="1">{childrenElmnt}</Box>
         </Flex>
       </MenuContext.Provider>
-      <FooterComp />
+      <Footer />
     </>
   );
 };

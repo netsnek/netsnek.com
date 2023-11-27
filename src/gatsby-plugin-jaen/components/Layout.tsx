@@ -10,9 +10,9 @@ const Layout: React.FC<LayoutProps> = ({ children, pageProps }) => {
   const docsPaths = ['/blog'];
 
 
-  if (path.startsWith('/admin') || path === '/') {
-    return children;
-  }
+  // if (path.startsWith('/admin') || path === '/') {
+  //   return children;
+  // }
 
   return (
     <CMSManagement>

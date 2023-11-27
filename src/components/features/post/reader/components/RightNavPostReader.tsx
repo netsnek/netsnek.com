@@ -51,7 +51,7 @@ const RightNavPostReader: FC<IRightNavPostReaderProps> = ({
           fontWeight="semibold"
           fontSize="sm"
         >
-          On This Page
+          Auf dieser Seite
         </Text>
         <Flex as="nav" direction="column" mt={5}>
           <MemoizedToc />

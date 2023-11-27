@@ -17,8 +17,6 @@ interface BlogLayoutProps {
 const BlogLayout: FC<BlogLayoutProps> = ({ children, path, isCommunity }) => {
   const { menuStructure } = useMenuContext();
 
-  console.log('menuStructure', menuStructure);
-
   const [isExpanded, setIsExpanded] = useState(true);
 
   const breadcrumbParts: MainBreadcrumbPart[] = useMemo(() => {

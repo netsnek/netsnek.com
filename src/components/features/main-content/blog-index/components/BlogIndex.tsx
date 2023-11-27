@@ -11,7 +11,8 @@ import {
   Thead,
   Tr,
   VStack,
-  Button
+  Button,
+  LinkOverlay
 } from '@chakra-ui/react'
 import ImageCard from '../../image-card/components/ImageCard'
 import React from 'react'
@@ -47,10 +48,11 @@ const BlogIndex: React.FC = () => {
           <Table>
             <Thead>
               <Tr>
-                <Th w={"200px"}>
-                  <MdxHeading variant = 'h3' id={`index-${letter}`}>{letter}</MdxHeading>
+                <Th w={'200px'}>
+                  <MdxHeading variant="h3" id={`index-${letter}`}>
+                    {letter}
+                  </MdxHeading>
                 </Th>
-                
               </Tr>
             </Thead>
             <Tbody>
@@ -58,7 +60,7 @@ const BlogIndex: React.FC = () => {
               <Td colSpan={4}>Loading...</Td>
             </Tr> */}
               {pages.map(page => (
-                <Tr key={page.slug} w={'100%'} borderRadius={"xl"}>
+                <Tr key={page.slug} w={'100%'} borderRadius={'xl'}>
                   <Td>
                     <JaenImage
                       name={page.slug || 'none'}
@@ -68,24 +70,30 @@ const BlogIndex: React.FC = () => {
                         height: '100%',
                         //height: 'var(--chakra-sizes-xs)',
                         objectFit: 'cover',
-                        borderRadius:'var(--chakra-radii-xl)',
+                        borderRadius: 'var(--chakra-radii-xl)',
                         overflow: 'hidden'
                       }}
                     />
                   </Td>
-                  <Td verticalAlign={"text-top"}>
+                  <Td verticalAlign={'text-top'}>
                     <Heading as="h3" size="md">
                       {page.jaenPageMetadata?.title}
                     </Heading>
                     <Text>{page.jaenPageMetadata?.description}</Text>
                   </Td>
-                  <Td textAlign={"end"}>
-                    <Text>{page.jaenPageMetadata?.blogPost?.date ? new Date(page.jaenPageMetadata.blogPost.date).toLocaleDateString("de-de") : null}</Text>
+                  <Td textAlign={'end'}>
+                    <Text>
+                      {page.jaenPageMetadata?.blogPost?.date
+                        ? new Date(
+                            page.jaenPageMetadata.blogPost.date
+                          ).toLocaleDateString('de-de')
+                        : null}
+                    </Text>
                   </Td>
-                  <Td textAlign={"end"} w="30px">
-                    <Button>
-                      Zum Artikel
-                    </Button>
+                  <Td textAlign={'end'} w="30px">
+                    <LinkOverlay href={`/blog/${page.slug || 'none'}`}>
+                      <Button>Zum Artikel</Button>
+                    </LinkOverlay>
                   </Td>
                 </Tr>
               ))}

@@ -11,11 +11,11 @@ import MdxEditor from '../shared/components/mdx-editor/MdxEditor';
 // Example links - these would probably be fetched from a CMS or other data source
 const links = [
   {
-    name: 'Question? Give us feedback',
+    name: 'Frage? Geben Sie uns Feedback',
     href: '/contact'
   },
   {
-    name: 'Edit this page on Jaen',
+    name: 'Diese Seite mit Jaen bearbeiten',
     href: '/cms/pages'
   }
 ];
@@ -43,7 +43,7 @@ export const DocContent: FC<DocContentProps> = () => {
               fontWeight="semibold"
               fontSize="sm"
             >
-              On This Page
+              Auf dieser Seite
             </ChText>
             <Flex as="nav" direction="column" mt={5}>
               <MemoizedToc />
