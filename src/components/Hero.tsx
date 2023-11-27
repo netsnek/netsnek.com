@@ -137,20 +137,25 @@ const HeroSection = () => {
                 bg: useColorModeValue('gray.100', 'gray.700')
               }}>
               <Icon as={FaBook} w={4} h={4} mr={2} />
-              <LinkOverlay href="/blog">
-                Rezepte
-              </LinkOverlay>
+              <LinkOverlay href="/blog">Rezepte</LinkOverlay>
             </Flex>
           </HStack>
         </Stack>
         <Box ml={{base: 0, md: 5}} pos="relative" flex="1">
           <DottedBox />
           <Box overflow={'hidden'} m={'10%'}>
-            <Box borderRadius={"xl"} overflow={"hidden"}>
-              <video autoPlay muted>
+            <Box borderRadius={'xl'} overflow={'hidden'}>
+              {/* <video autoPlay muted>
                 <source src="/N0jxFNt.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
-              </video>
+              </video> */}
+              <Field.Image
+                name="HeroImage"
+                alt="Hero Image"
+                defaultValue="/images/florian_kleber.jpg"
+                h="full"
+                w="full"
+              />
             </Box>
             <Stack
               as={LinkBox}
