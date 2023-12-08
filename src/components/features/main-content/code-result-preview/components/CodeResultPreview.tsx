@@ -6,6 +6,8 @@ interface ICodeResultPreviewProps {
   result?: ReactNode;
   isStandalone?: boolean;
   headerText?: string;
+  headerTextRight?: string;
+
   isExecuting?: boolean;
 }
 
@@ -13,6 +15,7 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
   result,
   isStandalone,
   headerText,
+  headerTextRight,
   isExecuting
 }) => {
   let baseProps = {};
@@ -29,7 +32,9 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
       borderColor="components.codeResultPreview.borderColor"
     >
       {headerText && (
-        <Text
+        <HStack
+          justifyContent="space-between"
+          w="full"
           fontSize="xs"
           my="auto"
           bgColor="components.codeResultPreview.header.bgColor"
@@ -40,8 +45,10 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
           transition="color 0.2s cubic-bezier(0.000, 0.735, 0.580, 1.000)"
           p={3}
         >
-          Code Preview
-        </Text>
+          <Text>{headerText}</Text>
+
+          <Text>{headerTextRight}</Text>
+        </HStack>
       )}
       <Box p={3}>
         {isExecuting ? (
@@ -61,7 +68,7 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
                   fontSize="sm"
                   color="components.codeResultPreview.noResult.text.color"
                 >
-                  No code to preview
+                  Not run yet
                 </Text>
               </Center>
             )}

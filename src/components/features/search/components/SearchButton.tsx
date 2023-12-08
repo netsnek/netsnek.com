@@ -1,6 +1,6 @@
-import { Button, Kbd } from '@chakra-ui/react';
-import { FC, useEffect, useState } from 'react';
-import { getPlatform } from '../../../shared/utils/utils';
+import { SearchIcon } from '@chakra-ui/icons';
+import { Box, Button, IconButton, Kbd, useMediaQuery } from '@chakra-ui/react';
+import { FC } from 'react';
 
 interface ISearchButtonProps {
   openModal: () => void;
@@ -11,11 +11,7 @@ interface ISearchButtonProps {
  * Search button component - shows a button that opens the search menu
  */
 const SearchButton: FC<ISearchButtonProps> = ({ openModal, navigate }) => {
-  const [kbd, setKbd] = useState<string | null>(null);
-
-  useEffect(() => {
-    setKbd(getPlatform() === 'mac' ? '⌘ K' : 'Ctrl+K');
-  }, [kbd]);
+  const [isMobile] = useMediaQuery('(max-width: 768px)'); // Adjust the breakpoint as needed
 
   const onKeyPress = (e: any) => {
     if (e.key === 'Enter') {
@@ -27,10 +23,39 @@ const SearchButton: FC<ISearchButtonProps> = ({ openModal, navigate }) => {
     }
   };
 
+  if (isMobile) {
+    return (
+      <IconButton
+        size="sm"
+        variant="outline"
+        bgColor="blackAlpha.50"
+        color="topNav.input.color"
+        borderColor="topNav.input.borderColor"
+        fontWeight="normal"
+        icon={<SearchIcon />}
+        aria-label="Search"
+        onClick={openModal}
+        onKeyDown={onKeyPress}
+      >
+        <Kbd
+          borderBottomWidth={1}
+          background="transparent"
+          borderRadius={4}
+          py={0.5}
+          ml={3}
+          opacity={0.7}
+        >
+          /
+        </Kbd>
+      </IconButton>
+    );
+  }
+
   return (
     <Button
       display="flex"
       size="sm"
+      minH="9"
       variant="outline"
       bgColor="blackAlpha.50"
       color="topNav.input.color"
@@ -50,17 +75,19 @@ const SearchButton: FC<ISearchButtonProps> = ({ openModal, navigate }) => {
       }}
       onClick={openModal}
     >
-      <span>Search documentation</span>
+      Type{' '}
       <Kbd
         borderBottomWidth={1}
-        background="transparent"
         borderRadius={4}
         py={0.5}
-        ml={3}
-        opacity={0.7}
+        mx={2}
+        bgColor={'transparent'}
+        borderColor={'topNav.input.borderColor'}
+        variant="outline"
       >
-        {kbd}
+        /
       </Kbd>
+      to search
     </Button>
   );
 };

@@ -32,6 +32,8 @@ import { NavAuthButton } from "./NavAuthButton";
 import { FaUser } from "@react-icons/all-files/fa/FaUser";
 import { Field } from "@atsnek/jaen";
 
+import SearchMenu from '../features/search/components/SearchMenu';
+
 interface INavbarProps {
   pathname: string;
   onBasketClick?: () => void;
@@ -62,7 +64,7 @@ export const Navbar: FC<INavbarProps> = ({
       <Flex flex="1" textAlign="center">
         <MobileHambuger pathname={pathname} />
       </Flex>
-
+      <SearchMenu />
       <Flex flex="1" justifyContent="center">
         <HStack as={LinkBox} w="max-content">
           <Logo maxH="50px" maxW="50px" mr="3"/>

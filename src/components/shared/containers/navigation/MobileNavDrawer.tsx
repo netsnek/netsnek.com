@@ -6,6 +6,7 @@ import { Global } from '@emotion/react';
 import SearchMenu from '../../../features/search/components/SearchMenu';
 import { useNavOffset } from '../../hooks/use-nav-offset';
 import { useMenuContext } from '../../contexts/menu';
+import { useLocation } from '@reach/router';
 
 interface MobileNavDrawerProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ interface MobileNavDrawerProps {
 const MobileNavDrawer: FC<MobileNavDrawerProps> = ({ isOpen, onOpen, onClose }) => {
   const { menuStructure } = useMenuContext();
   const navOffset = useNavOffset();
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -30,7 +32,7 @@ const MobileNavDrawer: FC<MobileNavDrawerProps> = ({ isOpen, onOpen, onClose }) 
           }
         }}
       />
-      <Box position="fixed" top={`calc(64px + ${navOffset})`} left={0} zIndex={3}>
+      <Box position="fixed" top={`calc(64px)`} left={0} zIndex={3}>
         <Collapse in={isOpen} animateOpacity>
           <Flex
             direction="column"
@@ -40,16 +42,14 @@ const MobileNavDrawer: FC<MobileNavDrawerProps> = ({ isOpen, onOpen, onClose }) 
             pt={9}
             px={9}
           >
-            <SearchMenu
-              styleProps={{
-                menu: {
-                  matchWidth: true
-                }
-              }}
-              onItemClickCapture={onClose}
-            />
+            <SearchMenu />
             <Box mt={5}>
-              <PageDirectory isMobile closeMobileDrawer={onClose} data={menuStructure} />
+              <PageDirectory
+                isMobile
+                closeMobileDrawer={onClose}
+                data={menuStructure}
+                path={pathname}
+              />
             </Box>
             <Spacer />
             <NavbarControls isMobile />

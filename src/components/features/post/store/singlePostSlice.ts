@@ -15,7 +15,7 @@ import {
   PostDataInputInput,
   PrivacyInputInput
 } from '@snek-functions/origin/dist/schema.generated';
-import { osg } from '@atsnek/jaen';
+import { osg, snekResourceId } from '@atsnek/jaen';
 import { MdastRoot } from '@atsnek/jaen-fields-mdx/dist/MdxField/components/types';
 
 const initState: ISinglePostStateDefinition = {
@@ -51,8 +51,8 @@ export const createSinglePostSlice: TStoreSlice<TSinglePostSlice> = (
         privacy: 'PRIVATE',
         stars: 0,
         hasRated: false,
-        summary: 'A short cool summary',
-        title: 'My new post',
+        summary: '',
+        title: '',
         canManage: true,
         language: EnPostLanguage.EN
       };
@@ -186,7 +186,7 @@ export const createSinglePostSlice: TStoreSlice<TSinglePostSlice> = (
   createNewPost: async file => {
     const post = get().singlePost.post;
 
-    if (!post) return undefined;
+    if (!post || post.title.trim().length === 0) return undefined;
 
     let previewImage: string = '';
     if (file) {

@@ -1,18 +1,35 @@
-import { Center, Divider, ThemeProvider, VStack, useDisclosure, Text } from '@chakra-ui/react';
-import { FC, Fragment, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-
-import { TSearchResultSection, TSearchResults } from '../../../shared/types/search';
 import {
-  getDefaultSearchDocs,
-  getDefaultSearchUsers,
+  Center,
+  Divider,
+  ThemeProvider,
+  VStack,
+  useDisclosure,
+  Text
+} from '@chakra-ui/react';
+import {
+  FC,
+  Fragment,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
+
+import { TSearchResults } from '../../../shared/types/search';
+import {
+  fetchDefaultSearchresult,
   searchDocs,
   searchSocialPosts,
   searchUser
 } from '../../../shared/utils/search';
 import { SearchProvider } from '../../../search/search-provider';
 import { useSearch } from '../../../search/use-search';
-import theme from '../../../styles/theme/theme';
-import { SearchResultSection, SearchResultSectionTitle } from './SearchResultSection';
+import theme from '../../../../theme/theme';
+import {
+  SearchResultSection,
+  SearchResultSectionTitle
+} from './SearchResultSection';
 import TbBook from '../../../shared/components/icons/tabler/TbBook';
 import SearchButton from './SearchButton';
 import SearchModal from './SearchModal';
@@ -20,6 +37,7 @@ import TbBooks from '../../../shared/components/icons/tabler/TbBooks';
 import TbUser from '../../../shared/components/icons/tabler/TbUser';
 import { useAuthenticationContext } from '@atsnek/jaen';
 import { navigate } from 'gatsby';
+import { useSearchContext } from '../../../shared/contexts/search';
 
 interface SearchMenuProps {}
 
@@ -28,10 +46,16 @@ interface SearchMenuProps {}
  */
 const SearchMenu: FC<SearchMenuProps> = ({}) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResultData, setSearchResultData] = useState<TSearchResults>({});
+  const { data: searchData, setSearchData } = useSearchContext();
   const [navigateIdx, setNavigateIdx] = useState<number>(-1);
   const modalDisclosure = useDisclosure();
-  const ref = useRef<{ searchTimout: NodeJS.Timeout | undefined }>({ searchTimout: undefined });
+  const ref = useRef<{
+    searchTimout: NodeJS.Timeout | undefined;
+    changedQuery: boolean;
+  }>({
+    searchTimout: undefined,
+    changedQuery: false // We use this to prevent the menu from fetching the default search results on first render since this is already done in the context provider
+  });
   const currentUserId = useAuthenticationContext().user?.id;
   const search = useSearch();
 
@@ -40,27 +64,44 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
       // Retrieve the search data
       if (ref.current.searchTimout) clearTimeout(ref.current.searchTimout);
       ref.current.searchTimout = setTimeout(fetchSearchResults, 500);
+      ref.current.changedQuery = true;
     } else {
       if (ref.current.searchTimout) clearTimeout(ref.current.searchTimout);
-      fetchDefaultSearchResults();
+      if (ref.current.changedQuery)
+        fetchDefaultSearchresult(currentUserId, search.searchIndex).then(
+          setSearchData
+        );
     }
   }, [searchQuery]);
 
   useEffect(() => {
     if (
       searchQuery.length === 0 &&
-      Object.keys(searchResultData)
-        .map(key => searchResultData[key as keyof TSearchResults].sections.length)
+      Object.keys(searchData)
+        .map(key => searchData[key as keyof TSearchResults].sections.length)
         .reduce((a, b) => a + b, 0) === 0
     ) {
-      fetchDefaultSearchResults();
     }
-  }, [search]);
+  }, []);
 
   useEffect(() => {
     // Focus the input when the user presses the shortcut
     const handleGlobalKeydown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') modalDisclosure.onOpen();
+      if (e.key === '/') {
+        const el = document.activeElement as HTMLElement;
+
+        // Check if the current active element is not contenteditable
+        if (
+          el.isContentEditable ||
+          el.tagName === 'INPUT' ||
+          el.tagName === 'TEXTAREA'
+        )
+          return;
+
+        modalDisclosure.onOpen();
+
+        e.preventDefault();
+      }
     };
     window.addEventListener('keydown', handleGlobalKeydown);
 
@@ -74,30 +115,18 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
     const socialPostResults = await searchSocialPosts(searchQuery);
     const userResult = await searchUser(searchQuery);
 
-    setSearchResultData({
-      docs: { title: 'Documentation', sections: docsResults, icon: <TbBooks /> },
-      community: { title: 'Community Posts', sections: socialPostResults, icon: <TbBook /> },
+    setSearchData({
+      docs: {
+        title: 'Documentation',
+        sections: docsResults,
+        icon: <TbBooks />
+      },
+      community: {
+        title: 'Community Posts',
+        sections: socialPostResults,
+        icon: <TbBook />
+      },
       user: { title: 'Users', sections: userResult, icon: <TbUser /> }
-    });
-    setNavigateIdx(0);
-  };
-
-  const fetchDefaultSearchResults = async () => {
-    const userResults: TSearchResultSection[] = currentUserId
-      ? await getDefaultSearchUsers(currentUserId)
-      : [
-          {
-            title: 'users',
-            results: [{ title: 'Create an account', href: '/signup', description: '' }]
-          }
-        ];
-    const docsResults = await getDefaultSearchDocs(search.searchIndex);
-    const socialPostResults = await searchSocialPosts();
-
-    setSearchResultData({
-      docs: { title: 'Documentation', sections: docsResults, icon: <TbBooks /> },
-      community: { title: 'Community Posts', sections: socialPostResults, icon: <TbBook /> },
-      user: { title: 'Users', sections: userResults, icon: <TbUser /> }
     });
     setNavigateIdx(0);
   };
@@ -110,13 +139,18 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
     let itemIdx = 0;
     let sectionIdx = 0;
 
-    const haveSomeResults = Object.values(searchResultData).some(
+    const haveSomeResults = Object.values(searchData).some(
       section => section.sections.length > 0
     );
 
     if (!haveSomeResults && searchQuery.length > 0) {
       return [
-        <Center w="full" my={3} fontSize="sm" color="features.search.noResults.text.color">
+        <Center
+          w="full"
+          my={3}
+          fontSize="sm"
+          color="features.search.noResults.text.color"
+        >
           No results found for "
           <Text as="span" fontStyle="italic">
             {searchQuery}
@@ -128,7 +162,7 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
 
     // Mark the item as highlighted if its index matches the navigateIdx
     if (navigateIdx >= 0) {
-      Object.values(searchResultData).forEach(section => {
+      Object.values(searchData).forEach(section => {
         section.sections.find(subSection => {
           subSection.results.forEach(item => {
             if (itemIdx++ === navigateIdx) {
@@ -144,9 +178,9 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
     }
     itemIdx = 0; // Reset the item index
 
-    for (const key in searchResultData) {
+    for (const key in searchData) {
       const isDocs = key === 'docs' && searchQuery.length > 0;
-      const section = searchResultData[key as keyof TSearchResults];
+      const section = searchData[key as keyof TSearchResults];
       if (haveSomeResults && section.sections.length === 0) continue;
       output.push(
         <Fragment key={itemIdx}>
@@ -188,7 +222,7 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
       sectionIdx++;
     }
     return output;
-  }, [searchResultData, navigateIdx]);
+  }, [searchData, navigateIdx]);
 
   useEffect(() => {
     if (navigateIdx >= 0) {
@@ -202,7 +236,7 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
    * @param isUp Whether to navigate up or down
    */
   const handleNavigate = (isUp: boolean) => {
-    const itemsCount = Object.values(searchResultData)
+    const itemsCount = Object.values(searchData)
       .map(section => section.sections.map(s => s.results).flat())
       .flat().length;
 
@@ -220,7 +254,7 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
    * Navigate to the active item's href
    */
   const handleOpenActiveItem = () => {
-    const activeItem = Object.values(searchResultData)
+    const activeItem = Object.values(searchData)
       .map(section => section.sections.map(s => s.results).flat())
       .flat()
       .find(item => item.isActive);
@@ -233,7 +267,10 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
   return (
     <ThemeProvider theme={theme}>
       <SearchProvider>
-        <SearchButton openModal={modalDisclosure.onOpen} navigate={handleNavigate} />
+        <SearchButton
+          openModal={modalDisclosure.onOpen}
+          navigate={handleNavigate}
+        />
       </SearchProvider>
       <SearchModal
         defaultQuery={searchQuery}

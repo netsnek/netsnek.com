@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { useLocation } from '@reach/router';
 import { FC, useEffect, useMemo, useState } from 'react';
-import SnekIcon from '../../../assets/icons/brand.svg';
+import SnekIcon from '../../../../../assets/snek-icon.svg';
 import SearchMenu from '../../../features/search/components/SearchMenu';
 import HamburgerMenuIcon, {
   THamburgerMenuIconStylerProps
@@ -29,9 +29,10 @@ import { TTopNavLinkData } from '../../types/navigation';
 import MobileNavDrawer from './MobileNavDrawer';
 import Link from '../../components/Link';
 import { useAuthenticationContext } from '@atsnek/jaen';
-import Logo from '../../../gatsby-plugin-jaen/components/Logo';
+import Logo from '../../../../gatsby-plugin-jaen/components/Logo';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import useMobileDetection from '../../hooks/use-mobile-detection';
+import ThemeChooser from '../../components/theme-chooser/ThemeChooser';
 
 const navLinkProps = {
   display: { base: 'none', md: 'initial' },
@@ -59,6 +60,7 @@ interface ITopNavProps {
   hamburgerIconProps?: THamburgerMenuIconStylerProps;
   drawerDisclosure: ReturnType<typeof useDisclosure>;
   colorMode?: 'light' | 'dark';
+  showThemeToggle?: boolean;
   children?: React.ReactNode;
 }
 
@@ -73,6 +75,7 @@ const TopNav: FC<ITopNavProps> = ({
   hamburgerIconProps,
   drawerDisclosure,
   colorMode,
+  showThemeToggle,
   children
 }) => {
   const [hamburgerClass, setHamburgerClass] = useState('');
@@ -112,9 +115,9 @@ const TopNav: FC<ITopNavProps> = ({
           border: '1px solid',
           borderColor: 'topNav.input.borderColor',
           borderRadius: 'lg',
-          h: 8,
+          h: 9,
           px: 2,
-          lineHeight: 8
+          lineHeight: 9
         }
       }
     ]
@@ -158,7 +161,7 @@ const TopNav: FC<ITopNavProps> = ({
     else openDrawer();
   };
 
-  const search = useMemo(() => {
+  const search = (() => {
     if (!colorMode) return <SearchMenu />;
     if (colorMode === 'dark')
       return (
@@ -172,7 +175,7 @@ const TopNav: FC<ITopNavProps> = ({
           <SearchMenu />
         </LightMode>
       );
-  }, [colorMode]);
+  })();
 
   return (
     <>
@@ -238,7 +241,6 @@ const TopNav: FC<ITopNavProps> = ({
                     iconProps={hamburgerIconProps}
                   />
                 </Button>
-                s
               </HStack>
             </Center>
             <Center>
@@ -252,6 +254,18 @@ const TopNav: FC<ITopNavProps> = ({
                     color: 'topNav.links.active.color'
                   }}
                 />
+                {showThemeToggle && !isAuthenticated && !isMobile && (
+                  <ThemeChooser
+                    buttonProps={{
+                      variant: 'outline',
+                      color: 'inherit',
+                      borderColor: 'topNav.input.borderColor',
+                      opacity: 0.4,
+                      _hover: { opacity: 1 }
+                    }}
+                    forceMenuColorMode={colorMode}
+                  />
+                )}
               </HStack>
             </Center>
           </Flex>

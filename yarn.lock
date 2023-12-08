@@ -75,10 +75,10 @@
     vfile-message "^4.0.2"
     vfile-statistics "^3.0.0"
 
-"@atsnek/jaen@^1.0.0-rc.37":
-  version "1.0.0-rc.37"
-  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.37.tgz#3696fa9171b95ac7fc0662edf57682a855dd3ccf"
-  integrity sha512-aIJEKX3DHp+Xlrkw7pL8fxXNdcJn3G3B4X8sIolO63khnYLQvebONleGHXYq8l59vmAsfKtZwM1RuSQNa3Vb1A==
+"@atsnek/jaen@^1.0.0-rc.38":
+  version "1.0.0-rc.38"
+  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.38.tgz#98b9a6774f6cf031f9a7c33aa5283d581a431126"
+  integrity sha512-25OgUcPWxO+x7WM6zEgo2b86wbKgOM8dJUz6IUwyLBUdQDF9Zherjc5ptQr3MR8ul1JhDabVO4ZTGAA4Qz4J3A==
   dependencies:
     "@chakra-ui/react" "^2.8.0"
     "@react-icons/all-files" "https://github.com/react-icons/react-icons/releases/download/v4.11.0/react-icons-all-files-4.11.0.tgz"
@@ -7460,6 +7460,11 @@ flatted@^3.2.7:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
+flexsearch@^0.7.31:
+  version "0.7.31"
+  resolved "https://registry.yarnpkg.com/flexsearch/-/flexsearch-0.7.31.tgz#065d4110b95083110b9b6c762a71a77cc52e4702"
+  integrity sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==
+
 focus-lock@^0.11.6:
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.11.6.tgz#e8821e21d218f03e100f7dc27b733f9c4f61e683"
@@ -7808,10 +7813,10 @@ gatsby-plugin-image@^3.11.0:
     objectFitPolyfill "^2.3.5"
     prop-types "^15.8.1"
 
-gatsby-plugin-jaen@^1.0.0-rc.61:
-  version "1.0.0-rc.61"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-jaen/-/gatsby-plugin-jaen-1.0.0-rc.61.tgz#49c2c6e0ee3c6732f54fb753b6b8adedd3675d48"
-  integrity sha512-soyhrFjvMacbrAKl098wmuguKmPqXlpMcpauPnpjRAFHSs0SCRCRpkZAWIbYyK7/rGkVq7C/hHvZrwgy97GPig==
+gatsby-plugin-jaen@^1.0.0-rc.64:
+  version "1.0.0-rc.65"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-jaen/-/gatsby-plugin-jaen-1.0.0-rc.65.tgz#ebc4fa72f3c1a33d8dcf1f689ebb1d9d3840e878"
+  integrity sha512-xOw8if1jwleq0H2jpwbm0PpKA/AmxD577OB9eNBp7l/FSFxlkQ/Yl7B9maLDTOpsHOfMqP4G/WA3ax5en9z48A==
   dependencies:
     "@chakra-ui/react" "^2.8.0"
     "@emotion/react" "^11.11.1"
@@ -8782,6 +8787,11 @@ help-me@^4.0.1:
   dependencies:
     glob "^8.0.0"
     readable-stream "^3.6.0"
+
+highlight-words-core@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/highlight-words-core/-/highlight-words-core-1.2.2.tgz#1eff6d7d9f0a22f155042a00791237791b1eeaaa"
+  integrity sha512-BXUKIkUuh6cmmxzi5OIbUJxrG8OAk2MqoL1DtO3Wo9D2faJg2ph5ntyuQeLqaHJmzER6H5tllCDA9ZnNe9BVGg==
 
 highlight.js@^10.4.1, highlight.js@~10.7.0:
   version "10.7.3"
@@ -10533,6 +10543,11 @@ memfs@^3.1.2, memfs@^3.2.2:
   integrity sha512-EGowvkkgbMcIChjMTMkESFDbZeSh8xZ7kNSF0hAiAN4Jh6jgHCRS0Ga/+C8y6Au+oqpezRHCfPsmJ2+DwAgiwQ==
   dependencies:
     fs-monkey "^1.0.4"
+
+memoize-one@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-4.1.0.tgz#a2387c58c03fff27ca390c31b764a79addf3f906"
+  integrity sha512-2GApq0yI/b22J2j9rhbrAlsHb0Qcz+7yWxeLG8h+95sl1XPUgeLimQSOdur4Vw7cUhrBHwaUZxWFZueojqNRzA==
 
 memoizee@^0.4.15:
   version "0.4.15"
@@ -12492,7 +12507,7 @@ prop-types@15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -12769,6 +12784,15 @@ react-focus-lock@^2.4.1, react-focus-lock@^2.9.4:
     react-clientside-effect "^1.2.6"
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
+
+react-highlight-words@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/react-highlight-words/-/react-highlight-words-0.20.0.tgz#c60bfff5d14678c8f0e8fbe4bdcf083e6c70d507"
+  integrity sha512-asCxy+jCehDVhusNmCBoxDf2mm1AJ//D+EzDx1m5K7EqsMBIHdZ5G4LdwbSEXqZq1Ros0G0UySWmAtntSph7XA==
+  dependencies:
+    highlight-words-core "^1.2.0"
+    memoize-one "^4.0.0"
+    prop-types "^15.5.8"
 
 react-hook-form@^7.45.2, react-hook-form@^7.46.1:
   version "7.46.1"

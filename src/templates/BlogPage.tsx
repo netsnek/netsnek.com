@@ -1,10 +1,10 @@
 import { PageConfig } from '@atsnek/jaen';
 import { PageProps, graphql } from 'gatsby';
 import * as React from 'react';
-import { DocContent } from '../components/contents/DocContent';
+import { BlogContent } from '../components/contents/BlogContent';
 
 const BlogPage: React.FC<PageProps> = props => {
-  return <DocContent />;
+  return <BlogContent />;
 };
 
 export default BlogPage;

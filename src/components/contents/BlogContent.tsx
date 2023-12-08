@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { Box, Flex, Stack, VStack, Text as ChText, Container } from '@chakra-ui/react';
+import { Box, Flex, Stack, VStack, Text as ChText } from '@chakra-ui/react';
 import { useNavOffset } from '../shared/hooks/use-nav-offset';
 import MemoizedLinks from '../shared/components/MemoizedLink';
 import TableOfContent from '../shared/containers/navigation/components/TableOfContent';
@@ -11,18 +11,18 @@ import MdxEditor from '../shared/components/mdx-editor/MdxEditor';
 // Example links - these would probably be fetched from a CMS or other data source
 const links = [
   {
-    name: 'Frage? Geben Sie uns Feedback',
+    name: 'Question? Give us feedback',
     href: '/contact'
   },
   {
-    name: 'Diese Seite mit Jaen bearbeiten',
+    name: 'Edit this page on Jaen',
     href: '/cms/pages'
   }
 ];
 
-export interface DocContentProps {}
+export interface BlogContentProps {}
 
-export const DocContent: FC<DocContentProps> = () => {
+export const BlogContent: FC<BlogContentProps> = () => {
   const navTopOffset = useNavOffset();
 
   // This can be memoized since it doesn't change and switching pages re-renders most of the app anyway.
@@ -38,12 +38,8 @@ export const DocContent: FC<DocContentProps> = () => {
 
         <Box position="sticky" top={`calc(0px + ${navTopOffset})`}>
           <RightNav>
-            <ChText
-              color="rightNav.titleTop.color"
-              fontWeight="semibold"
-              fontSize="sm"
-            >
-              Auf dieser Seite
+            <ChText color="rightNav.titleTop.color" fontWeight="semibold" fontSize="sm">
+              On This Page
             </ChText>
             <Flex as="nav" direction="column" mt={5}>
               <MemoizedToc />

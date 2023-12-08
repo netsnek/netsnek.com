@@ -1,10 +1,20 @@
 const FlexSearch = require('flexsearch');
 import { sq } from '@snek-functions/origin';
 import { UseSearchResult, useSearch } from '../../search/use-search';
-import { TSearchMetadata, TSearchResult, TSearchResultSection } from '../types/search';
+import {
+  TSearchMetadata,
+  TSearchResult,
+  TSearchResultSection,
+  TSearchResults
+} from '../types/search';
 import { filterWhitespaceItems } from './utils';
 import { getUserDisplayname } from '../../features/user/utils/user';
 import TbIndentIncrease from '../components/icons/tabler/TbIndentIncrease';
+import { SnekUser } from '@atsnek/jaen';
+import { SearchIndex } from '../../search/types';
+import TbBook from '../components/icons/tabler/TbBook';
+import TbBooks from '../components/icons/tabler/TbBooks';
+import TbUser from '../components/icons/tabler/TbUser';
 
 /**
  * Searches the docs for the given query.
@@ -196,7 +206,7 @@ export async function getDefaultSearchDocs(
 ): Promise<TSearchResultSection[]> {
   const results: TSearchResultSection[] = [];
   Object.keys(data).forEach(key => {
-    if (!key.startsWith('/blog/') || key === '/b/') return;
+    if (!key.startsWith('/docs/') || key === '/docs/') return;
     const item = data[key];
     const summary = Object.keys(item.data)
       .find(key => key.length > 0 && item.data[key].length > 0)
@@ -222,29 +232,15 @@ export async function getDefaultSearchDocs(
  * @returns  The search results
  */
 export async function searchSocialPosts(query?: string): Promise<TSearchResultSection[]> {
-  const [postConn, postConnError] = await sq.query(q => {
+  const [posts, postsError] = await sq.query(q => {
     const posts =
       query && query.length > 0
         ? q.allSocialPost({ resourceId: __SNEK_RESOURCE_ID__, filters: { query }, first: 10 })
         : q.allSocialPostTrending({ resourceId: __SNEK_RESOURCE_ID__, first: 10 });
 
-    posts.nodes.map(post => {
-      post.title;
-      post.matchingQuery;
-      post.summary;
-      post.slug;
-      post.profileId;
-    });
-
-    return posts;
-  });
-
-  const sections: TSearchResultSection[] = [];
-  await Promise.all(
-    postConn.nodes.map(async pn => {
-      const [username] = await sq.query(
-        q => q.user({ resourceId: __SNEK_RESOURCE_ID__, id: pn.profileId }).username
-      );
+    const sections: TSearchResultSection[] = [];
+    posts.nodes.map(pn => {
+      const username = pn.profile?.user?.username ?? '';
       sections.push({
         title: pn.title,
         results: [
@@ -255,10 +251,12 @@ export async function searchSocialPosts(query?: string): Promise<TSearchResultSe
           }
         ]
       });
-    })
-  );
+    });
 
-  return !postConnError || postConnError?.length === 0 ? sections : [];
+    return sections;
+  });
+
+  return !postsError || postsError?.length === 0 ? posts : [];
 }
 
 /**
@@ -331,4 +329,32 @@ export async function getDefaultSearchUsers(
       results
     }
   ];
+}
+
+/**
+ * Get the default search results for the given user.
+ * @param currentUserId  The id of the current user
+ * @param searchIndex  The search index to use
+ * @returns  The default search results
+ */
+export async function fetchDefaultSearchresult(
+  userId: SnekUser['id'] | undefined,
+  searchIndex: SearchIndex
+): Promise<TSearchResults> {
+  const userResults: TSearchResultSection[] = userId
+    ? await getDefaultSearchUsers(userId)
+    : [
+        {
+          title: 'users',
+          results: [{ title: 'Create an account', href: '/signup', description: '' }]
+        }
+      ];
+  const docsResults = await getDefaultSearchDocs(searchIndex);
+  const socialPostResults = await searchSocialPosts();
+
+  return {
+    docs: { title: 'Documentation', sections: docsResults, icon: <TbBooks /> },
+    community: { title: 'Community Posts', sections: socialPostResults, icon: <TbBook /> },
+    user: { title: 'Users', sections: userResults, icon: <TbUser /> }
+  };
 }

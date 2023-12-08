@@ -116,7 +116,7 @@ const Footer: FC = () => {
       borderColor="brand.500"
       pb={20}
       position="relative"
-      mt="-25px"
+      //mt="-25px"
       px={{base: 5, lg: 0}}
       overflowX="hidden"
       bgColor="black"
