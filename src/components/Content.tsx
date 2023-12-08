@@ -118,7 +118,11 @@ const ContentSection = () => {
 
   return (
     <Box>
-      <Container maxW="6xl" borderLeft="4px solid" borderColor="brand.500" pb={24}>
+      <Container
+        maxW="6xl"
+        borderLeft="4px solid"
+        borderColor="brand.500"
+        pb={24}>
         <Container
           //minH={"calc(100vh - 60px)"}
           maxW="4xl"
@@ -138,16 +142,16 @@ const ContentSection = () => {
 
           {/* <FeaturedProducts anchor='test' featuredProducts={[{image: "https://osg.snek.at/storage/BQACAgQAAxkDAAIsW2VFGtrO0UmpkYZV0BgslLcByh8qAAJRDwACCtMwUiMJbD4kmhDjLwQ", handle: "", product: ""},]} productsPagePath=''/> */}
           <Field.Text
-              mt={{base: '20 !important', md: '0'}}
-              mb="8"
-              as={Heading}
-              fontSize={{base: '4xl', lg: '5xl'}}
-              lineHeight={1}
-              fontWeight="bold"
-              textAlign="left"
-              name="ContentSectionHeadingTeam"
-              defaultValue="Rezepte zum Anhören"
-            />
+            mt={{base: '20 !important', md: '0'}}
+            mb="8"
+            as={Heading}
+            fontSize={{base: '4xl', lg: '5xl'}}
+            lineHeight={1}
+            fontWeight="bold"
+            textAlign="left"
+            name="ContentSectionHeadingTeam"
+            defaultValue="Rezepte zum Anhören"
+          />
           <WebampPlayer />
         </Container>
         <Container maxW={'4xl'} pt={16} as={Stack} spacing={12}>
@@ -228,18 +232,25 @@ const ContentSection = () => {
               />
             </Testimonial>
           </Stack>
-          <Field.Text
-            mt={{base: '20 !important', md: '0'}}
-            mb="8"
-            as={Heading}
-            fontSize={{base: '4xl', lg: '5xl'}}
-            lineHeight={1}
-            fontWeight="bold"
-            textAlign="left"
-            //color="#b57edc"
-            name="MapSectionHeading"
-            defaultValue="Trau dich komm zu mir"
-          />
+          <Stack spacing={0}>
+            <Field.Text
+              mt={{base: '20 !important', md: '0'}}
+              mb="8"
+              as={Heading}
+              fontSize={{base: '4xl', lg: '5xl'}}
+              lineHeight={1}
+              fontWeight="bold"
+              textAlign="left"
+              name="ContentSectionHeadingMap"
+              defaultValue="Beratung vor Ort"
+            />
+            <Field.Text
+              fontSize="1.2rem"
+              color="gray.500"
+              name="ContentSectionTextMap"
+              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
+            />
+          </Stack>
           <Box
             mb="8"
             h="xl"
@@ -255,7 +266,6 @@ const ContentSection = () => {
             />
           </Box>
         </Container>
-  
       </Container>
       {/* <Flex flex={1} width={'100%'} overflow={'hidden'}>
           <Neurons display={{base: 'none', sm: 'flex'}} />

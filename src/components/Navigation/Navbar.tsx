@@ -87,8 +87,8 @@ export const Navbar: FC<INavbarProps> = ({
             filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
             position={{base: 'static', md: 'absolute'}}
             top="0"
-            h={{base: '2.5rem', md: '80px'}}
-            w={{base: '2.5rem', md: '80px'}}
+            h={{base: '2.5rem', md: '70px'}}
+            w={{base: '2.5rem', md: '70px'}}
             bg="black"
             size="md"
             aria-label="Logo"
@@ -106,7 +106,7 @@ export const Navbar: FC<INavbarProps> = ({
           />
 
           <Text
-            ml={{base: 'none', md: '100px'}}
+            ml={{base: 'none', md: '90px'}}
             //display={{base: 'none', md: 'flex'}}
             as={Heading}
             whiteSpace={'nowrap'}
