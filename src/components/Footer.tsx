@@ -35,11 +35,7 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'GitHub',
-        href: 'https://github.com/in/schettn/'
-      },
-      {
-        label: 'Telegram',
+        label: 'Facebook',
         href: 'https://t.me/schettn'
       },
       {
@@ -57,16 +53,8 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'Florian Kleber',
-        href: 'https://fhkit.at'
-      },
-      {
-        label: 'Christoph Clementschitsch',
-        href: 'https://neurons.at'
-      },
-      {
-        label: 'Kanbon',
-        href: 'https://kanbon.at'
+        label: 'Lilli Mauz',
+        href: '#'
       }
     ],
     [
@@ -75,8 +63,12 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'Florian H. Kleber',
-        href: 'https://github.com/kleberbaum/'
+        label: 'Florian Kleber',
+        href: '#'
+      },
+      {
+        label: 'Alexander Kleber',
+        href: '#'
       }
     ]
   ]
@@ -170,11 +162,11 @@ const Footer: FC = () => {
           </Flex>
           <Field.Text
             name="FooterTextNew"
-            defaultValue="Klausen 10 <br>
-              9911 Assling <br>
-              Austria <br>
-              <br>
-              Email: office@schett.net"
+            defaultValue="St. Johanner Straße 10<br>
+            9371, Brückl<br>
+            Austria<br>
+            <br>
+            Tel: +43 676 4002330"
             mt={10}
             maxW={{base: 'full', lg: '50%'}}
             fontSize="1.1rem"

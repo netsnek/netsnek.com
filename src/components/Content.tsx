@@ -251,7 +251,7 @@ const ContentSection = () => {
               objectFit="cover"
               h="full"
               w="100%"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2658.9368830188732!2d16.390513676126197!3d48.207831646267955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d0712a8ac8f77%3A0x79ca06186618927c!2sL%C3%B6wengasse%2028%2C%201030%20Wien!5e0!3m2!1sen!2sat!4v1699083025628!5m2!1sen!2sat"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2733.773688803737!2d14.533973499999995!3d46.74964430000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4770114ec881291b%3A0xc1c76f5632cd333e!2sSt.%20Johanner%20Str.%2010%2C%209371%20Br%C3%BCckl!5e0!3m2!1sen!2sat!4v1702039895770!5m2!1sen!2sat"
             />
           </Box>
         </Container>
