@@ -90,12 +90,12 @@ const AppLayout: FC<AppLayoutProps> = ({
     const userResults: TSearchResultSection[] = currentUserId
       ? await getDefaultSearchUsers(currentUserId)
       : [
-          {
-            title: 'users',
-            results: [
-              {title: 'Create an account', href: '/signup', description: ''}
-            ]
-          }
+          // {
+          //   title: 'users',
+          //   results: [
+          //     {title: 'Create an account', href: '/signup', description: ''}
+          //   ]
+          // }
         ]
     const docsResults = await getDefaultSearchDocs(search.searchIndex, '/blog/')
     const socialPostResults = await searchSocialPosts()

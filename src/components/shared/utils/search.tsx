@@ -345,10 +345,10 @@ export async function fetchDefaultSearchresult(
   const userResults: TSearchResultSection[] = userId
     ? await getDefaultSearchUsers(userId)
     : [
-        {
-          title: 'users',
-          results: [{ title: 'Create an account', href: '/signup', description: '' }]
-        }
+        // {
+        //   title: 'users',
+        //   results: [{ title: 'Create an account', href: '/signup', description: '' }]
+        // }
       ];
   const docsResults = await getDefaultSearchDocs(searchIndex);
   const socialPostResults = await searchSocialPosts();
