@@ -19,6 +19,7 @@ import Neurons from './Neurons'
 import {FeaturedProducts} from './organisms/FeaturedProductsSection/FeaturedProductsSection'
 import {GoogleMaps} from './GoogleMaps'
 import WebampPlayer from './Webamp/WebampPlayer'
+import Gallery from './ Gallery'
 
 interface Props {
   children: React.ReactNode
@@ -232,6 +233,26 @@ const ContentSection = () => {
               />
             </Testimonial>
           </Stack>
+          <Stack spacing={0}>
+            <Field.Text
+              mt={{base: '20 !important', md: '0'}}
+              mb="8"
+              as={Heading}
+              fontSize={{base: '4xl', lg: '5xl'}}
+              lineHeight={1}
+              fontWeight="bold"
+              textAlign="left"
+              name="ContentSectionHeadingGallery"
+              defaultValue="Beratung vor Ort"
+            />
+            <Field.Text
+              fontSize="1.2rem"
+              color="gray.500"
+              name="ContentSectionTextGallery"
+              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
+            />
+          </Stack>
+          <Gallery />
           <Stack spacing={0}>
             <Field.Text
               mt={{base: '20 !important', md: '0'}}
