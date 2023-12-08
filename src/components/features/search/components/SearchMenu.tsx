@@ -117,16 +117,16 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
 
     setSearchData({
       docs: {
-        title: 'Documentation',
+        title: 'Blog',
         sections: docsResults,
         icon: <TbBooks />
       },
-      community: {
-        title: 'Community Posts',
-        sections: socialPostResults,
-        icon: <TbBook />
-      },
-      user: { title: 'Users', sections: userResult, icon: <TbUser /> }
+      // community: {
+      //   title: 'Community Posts',
+      //   sections: socialPostResults,
+      //   icon: <TbBook />
+      // },
+      //user: { title: 'Users', sections: userResult, icon: <TbUser /> }
     });
     setNavigateIdx(0);
   };
