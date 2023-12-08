@@ -202,11 +202,12 @@ export async function searchDocs(
 }
 
 export async function getDefaultSearchDocs(
-  data: UseSearchResult['searchIndex']
+  data: UseSearchResult['searchIndex'],
+  rootPath: string = '/blog/'
 ): Promise<TSearchResultSection[]> {
   const results: TSearchResultSection[] = [];
   Object.keys(data).forEach(key => {
-    if (!key.startsWith('/docs/') || key === '/docs/') return;
+    if (!key.startsWith(rootPath) || key === rootPath) return;
     const item = data[key];
     const summary = Object.keys(item.data)
       .find(key => key.length > 0 && item.data[key].length > 0)

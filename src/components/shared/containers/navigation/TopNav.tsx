@@ -96,8 +96,8 @@ const TopNav: FC<ITopNavProps> = ({
         matchMethod: 'exact'
       },
       {
-        name: 'Documentation',
-        href: '/docs/',
+        name: 'Blog',
+        href: '/blog/',
         matchMethod: 'includes'
       }
     ],
