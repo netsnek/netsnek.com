@@ -26,7 +26,7 @@ export const query = graphql`
     jaenPage(id: { eq: $jaenPageId }) {
       ...JaenPageData
     }
-    allJaenPage(filter: { id: { eq: "JaenPage /docs/" } }) {
+    allJaenPage(filter: { id: { eq: "JaenPage /blog/" } }) {
       nodes {
         id
         childPages {
