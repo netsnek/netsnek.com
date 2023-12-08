@@ -1,27 +1,36 @@
-import { SearchIcon } from '@chakra-ui/icons';
-import { Box, Button, IconButton, Kbd, useMediaQuery } from '@chakra-ui/react';
-import { FC } from 'react';
+import {SearchIcon} from '@chakra-ui/icons'
+import {
+  Text,
+  HStack,
+  VisuallyHidden,
+  Box,
+  Button,
+  IconButton,
+  Kbd,
+  useMediaQuery
+} from '@chakra-ui/react'
+import {FC} from 'react'
 
 interface ISearchButtonProps {
-  openModal: () => void;
-  navigate: (isUp: boolean) => void;
+  openModal: () => void
+  navigate: (isUp: boolean) => void
 }
 
 /**
  * Search button component - shows a button that opens the search menu
  */
-const SearchButton: FC<ISearchButtonProps> = ({ openModal, navigate }) => {
-  const [isMobile] = useMediaQuery('(max-width: 768px)'); // Adjust the breakpoint as needed
+const SearchButton: FC<ISearchButtonProps> = ({openModal, navigate}) => {
+  const [isMobile] = useMediaQuery('(max-width: 768px)') // Adjust the breakpoint as needed
 
   const onKeyPress = (e: any) => {
     if (e.key === 'Enter') {
-      openModal;
+      openModal
     } else if (e.key === 'ArrowDown') {
-      navigate(false);
+      navigate(false)
     } else if (e.key === 'ArrowUp') {
-      navigate(true);
+      navigate(true)
     }
-  };
+  }
 
   if (isMobile) {
     return (
@@ -35,31 +44,39 @@ const SearchButton: FC<ISearchButtonProps> = ({ openModal, navigate }) => {
         icon={<SearchIcon />}
         aria-label="Search"
         onClick={openModal}
-        onKeyDown={onKeyPress}
-      >
+        onKeyDown={onKeyPress}>
         <Kbd
           borderBottomWidth={1}
           background="transparent"
           borderRadius={4}
           py={0.5}
           ml={3}
-          opacity={0.7}
-        >
+          opacity={0.7}>
           /
         </Kbd>
       </IconButton>
-    );
+    )
   }
 
   return (
     <Button
       display="flex"
-      size="sm"
+      //size="sm"
+      w="full"
+      flex="1"
+      type="button"
+      lineHeight="1.2"
+      whiteSpace="nowrap"
+      alignItems="center"
+      color="gray.400"
+      py="3"
+      px="4"
       minH="9"
       variant="outline"
       bgColor="blackAlpha.50"
-      color="topNav.input.color"
-      borderColor="topNav.input.borderColor"
+      // color="topNav.input.color"
+      borderColor="brand.500"
+      borderRadius={'2xl'}
       fontWeight="normal"
       _hover={{
         borderColor: 'topNav.input.hover.borderColor'
@@ -68,28 +85,33 @@ const SearchButton: FC<ISearchButtonProps> = ({ openModal, navigate }) => {
         bgColor: 'topNav.input.active.bgColor'
       }}
       onFocus={e => {
-        e.currentTarget.addEventListener('keypress', onKeyPress);
+        e.currentTarget.addEventListener('keypress', onKeyPress)
       }}
       onBlur={e => {
-        e.currentTarget.removeEventListener('keypress', onKeyPress);
+        e.currentTarget.removeEventListener('keypress', onKeyPress)
       }}
-      onClick={openModal}
-    >
-      Type{' '}
-      <Kbd
-        borderBottomWidth={1}
-        borderRadius={4}
-        py={0.5}
-        mx={2}
-        bgColor={'transparent'}
-        borderColor={'topNav.input.borderColor'}
-        variant="outline"
-      >
-        /
-      </Kbd>
-      to search
+      onClick={openModal}>
+      <SearchIcon />
+      <HStack w="full" mx="3" spacing="4px">
+        <Text textAlign="left" flex="1">
+          Finde Rezepte
+        </Text>
+        <HStack spacing="4px">
+          <VisuallyHidden>Drücke</VisuallyHidden>
+          <Kbd color="gray.500" rounded="2px">
+            <Box as="abbr" title={'Strg'} textDecoration="none !important">
+              {'Strg'}
+            </Box>
+          </Kbd>
+          <VisuallyHidden>und</VisuallyHidden>
+          <Kbd color="gray.500" rounded="2px">
+            /
+          </Kbd>
+          <VisuallyHidden> zum suchen</VisuallyHidden>
+        </HStack>
+      </HStack>
     </Button>
-  );
-};
+  )
+}
 
-export default SearchButton;
+export default SearchButton
