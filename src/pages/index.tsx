@@ -3,7 +3,6 @@ import {Field, PageConfig, PageProps, snekResourceId} from '@atsnek/jaen'
 import {Box, Button} from '@chakra-ui/react'
 import {graphql} from 'gatsby'
 import * as React from 'react'
-import {sq} from '../client/src'
 import HeroSection from '../components/Hero'
 import ContentSection from '../components/Content'
 
@@ -12,16 +11,6 @@ const IndexPage: React.FC<PageProps> = () => {
     <Box as="main">
       <HeroSection />
       <ContentSection/>
-      {/* <Button
-        onClick={() => {
-          sq.query(q => q.resource({id: snekResourceId}).name).then(
-            ([resource, errors]) => {
-              console.log(resource, errors)
-            }
-          )
-        }}>
-        Resource
-      </Button> */}
     </Box>
   )
 }
