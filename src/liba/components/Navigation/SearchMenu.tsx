@@ -181,7 +181,7 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
     itemIdx = 0; // Reset the item index
 
     for (const key in searchData) {
-      const isDocs = key === 'docs' && searchQuery.length > 0;
+      const isDocs = key === 'blog' && searchQuery.length > 0;
       const section = searchData[key as keyof TSearchResults];
       if (haveSomeResults && section.sections.length === 0) continue;
       output.push(
