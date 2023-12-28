@@ -56,23 +56,23 @@ const PageDirectory: FC<PageDirectoryProps> = ({
   };
 
   const baseMenuItems: NavMenuSection[] = [
+    // {
+    //   name: 'Research',
+    //   icon: <TbUsers />,
+    //   items: [
+    //     {
+    //       name: 'Experiments',
+    //       href: '/experiments',
+    //       isActive: path?.startsWith('/experiments')
+    //     }
+    //   ]
+    // },
     {
-      name: 'Research',
-      icon: <TbUsers />,
-      items: [
-        {
-          name: 'Experiments',
-          href: '/experiments',
-          isActive: path?.startsWith('/experiments')
-        }
-      ]
-    },
-    {
-      name: 'More',
+      name: 'Mehr Infos',
       icon: <FaLink />,
       items: [
         {
-          name: 'PhotonQ',
+          name: 'Homepage',
           href: '/'
         }
       ]
@@ -84,8 +84,8 @@ const PageDirectory: FC<PageDirectoryProps> = ({
       name: 'Navigation',
       items: [
         {
-          name: 'Documentation',
-          href: '/docs'
+          name: 'Blog',
+          href: '/blog'
         }
       ]
     });

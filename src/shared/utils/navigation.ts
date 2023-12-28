@@ -29,7 +29,7 @@ export function createPageTree(
 
   // Get the page tree of the doc's root
   const docsTree = manager.tree[0].children.find(
-    p => manager.pagePath(p.id) === '/docs'
+    p => manager.pagePath(p.id) === '/blog'
   );
   if (!docsTree) return result;
 
@@ -56,7 +56,7 @@ export function createPageTree(
     const href = manager.pagePath(page.id);
     const children: NavMenuItem[] = page.children
       .map(({ id }) => {
-        const item = buildMenuItem(id);
+        const item = buildMenuItem(id)
         return item;
       })
       .filter((item): item is NavMenuItem => !!item);
