@@ -1,7 +1,7 @@
 import { PageConfig } from '@atsnek/jaen';
 import { PageProps, graphql } from 'gatsby';
 import * as React from 'react';
-import { BlogContent } from '../components/contents/BlogContent';
+import { BlogContent } from '../liba/contents/BlogContent';
 
 const BlogPage: React.FC<PageProps> = props => {
   return <BlogContent />;

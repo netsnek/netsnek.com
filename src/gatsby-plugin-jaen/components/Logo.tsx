@@ -13,10 +13,12 @@ export const Logo = (props: any) => {
         '.squarel': {
           fillRule: 'evenodd',
           clipRule: 'evenodd',
-          fill: '#000000'
+          fill: 'none'
         },
         '.k': {
-          fill: '#bae0e2'
+          stroke: '#bae0e2',
+          strokeWidth: "15px",
+          //strokeDasharray: "5"
         }
       }}
       {...props}>

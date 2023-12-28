@@ -2,7 +2,7 @@ import { PageConfig } from '@atsnek/jaen';
 import { GatsbyNode } from 'gatsby';
 import path from 'path';
 import fs from 'fs';
-import { buildSearchIndex } from './src/components/search/build-search-index';
+import { buildSearchIndex } from './src/search/build-search-index';
 
 export const onPostBuild: GatsbyNode['onPostBuild'] = async ({
   graphql,
