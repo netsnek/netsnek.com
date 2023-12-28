@@ -258,7 +258,7 @@ const Footer: FC = () => {
             isExternal
           />
         </Stack>
-        <Divider mt={0} opacity={0.1} />
+        <Divider mt={0} opacity={0.1} border='1px dashed white'/>
         <Field.Text
           name="FooterBottomText"
           defaultValue="Copyright © 2023 Florian H. Kleber, Florian Herbert Kleber IT. All rights reserved."

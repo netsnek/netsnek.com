@@ -37,7 +37,7 @@ const TestimonialContent = (props: Props) => {
       bg={useColorModeValue('white', 'gray.800')}
       //boxShadow={'lg'}
       mt="5"
-      p={0.5}
+      //p={0.5}
       rounded={'xl'}
       //align={'center'}
       pos={'relative'}
@@ -133,8 +133,8 @@ const ContentSection = () => {
         background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
         //backgroundColor={"alphaWhite.900"}
         //backgroundBlendMode="screen"
-        py="0.5"
-        px="0.5"
+        py="0"
+        px="0"
         mb="128"
       >
         <Box

@@ -13,7 +13,8 @@ import {
   LinkBox,
   Heading,
   ChakraBaseProvider,
-  chakra
+  chakra,
+  LinkOverlay
 } from '@chakra-ui/react'
 
 import {FaLongArrowAltLeft} from '@react-icons/all-files/fa/FaLongArrowAltLeft'
@@ -83,60 +84,63 @@ export const Navbar: FC<INavbarProps> = ({
               borderRadius="lg"
             />
           </Box> */}
-          <IconButton
-            filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-            position={{base: 'static', md: 'absolute'}}
-            top="0"
-            h={{base: '2.5rem', md: '70px'}}
-            w={{base: '2.5rem', md: '70px'}}
-            bg="black"
-            _hover={{
-              bg: 'brand.600',
-              background: 'linear-gradient(rgba(55,131,146,.85), rgba(55,131,146,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
-            }}
-            //backgroundImage='url("https://www.transparenttextures.com/patterns/dark-denim.png")'
-            background='linear-gradient(rgba(0,0,0,.85), rgba(0,0,0,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
-            size="md"
-            aria-label="Logo"
-            p="0.5"
-            icon={
-              <Logo
-                bg="transperent"
-                border={{base: 'none', md: '1px dashed white'}}
-                // h={{ base: "50px", md: "80px" }}
-                // w={{ base: "50px", md: "80px" }}
-                borderRadius="lg"
-              />
-            }
-            onClick={onContactClick}
-          />
+          <LinkOverlay href="/">
+            <IconButton
+              filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+              position={{base: 'static', md: 'absolute'}}
+              top="0"
+              h={{base: '2.5rem', md: '70px'}}
+              w={{base: '2.5rem', md: '70px'}}
+              bg="black"
+              _hover={{
+                bg: 'brand.600',
+                background:
+                  'linear-gradient(rgba(55,131,146,.85), rgba(55,131,146,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
+              }}
+              //backgroundImage='url("https://www.transparenttextures.com/patterns/dark-denim.png")'
+              background='linear-gradient(rgba(0,0,0,.85), rgba(0,0,0,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
+              size="md"
+              aria-label="Logo"
+              p="0.5"
+              icon={
+                <Logo
+                  bg="transperent"
+                  //border={{base: 'none', md: '1px dashed white'}}
+                  border="1px dashed #bae0e2"
+                  // h={{ base: "50px", md: "80px" }}
+                  // w={{ base: "50px", md: "80px" }}
+                  borderRadius="lg"
+                />
+              }
+              onClick={undefined}
+            />
 
-          <Text
-            ml={{base: 'none', md: '90px'}}
-            //display={{base: 'none', md: 'flex'}}
-            as={Heading}
-            whiteSpace={'nowrap'}
-            size="h5030"
-            fontSize={{base: '3xl', md: '5xl'}}
-            lineHeight={1}
-            fontWeight="bold"
-            //textAlign="left"
-            color="#000000">
-            Barbara
-            {/* <chakra.span color="brand.200">.</chakra.span> */}
-            <chakra.span fontWeight="light">Mauz</chakra.span>
-          </Text>
+            <Text
+              ml={{base: 'none', md: '90px'}}
+              //display={{base: 'none', md: 'flex'}}
+              as={Heading}
+              whiteSpace={'nowrap'}
+              size="h5030"
+              fontSize={{base: '3xl', md: '5xl'}}
+              lineHeight={1}
+              fontWeight="bold"
+              //textAlign="left"
+              color="#000000">
+              Barbara
+              {/* <chakra.span color="brand.200">.</chakra.span> */}
+              <chakra.span fontWeight="light">Mauz</chakra.span>
+            </Text>
+          </LinkOverlay>
         </HStack>
       </Flex>
       <Flex
-        justifyContent={"center"}
+        justifyContent={'center'}
         w="30%"
         display={{
           base: 'none',
           lg: 'flex'
-        }}
-      >
-      <SearchMenu/>
+        }}>
+        <SearchMenu />
       </Flex>
       <Flex flex="1" justifyContent="end">
         <ButtonGroup

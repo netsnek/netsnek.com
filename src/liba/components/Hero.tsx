@@ -128,7 +128,7 @@ const HeroSection = () => {
               //background='linear-gradient(rgba(244,249,251,.85), rgba(244,249,251,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
               background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
               //borderColor="gray.300"
-              p={0.5}
+              //p={0.5}
               lineHeight={1.18}
               rounded="md"
               //boxShadow="md"
@@ -141,7 +141,7 @@ const HeroSection = () => {
               <Box
                 border='1px dashed #499fae'
                 rounded="md"
-                p={2.5}
+                p={3}
                 w={"full"}
                 h={"full"}
               >
