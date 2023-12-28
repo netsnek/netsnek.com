@@ -39,7 +39,7 @@ export const BlogContent: FC<BlogContentProps> = () => {
         <Box position="sticky" top={`calc(0px + ${navTopOffset})`}>
           <RightNav>
             <ChText color="rightNav.titleTop.color" fontWeight="semibold" fontSize="sm">
-              On This Page
+              Inhaltsverzeichnis
             </ChText>
             <Flex as="nav" direction="column" mt={5}>
               <MemoizedToc />
