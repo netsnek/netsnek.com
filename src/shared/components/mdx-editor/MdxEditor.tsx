@@ -27,7 +27,8 @@ import IconCard from '../../../features/main-content/icon-card/components/IconCa
 import ImageCard from '../../../features/main-content/image-card/components/ImageCard';
 import DocsIndex from '../../../features/main-content/docs-index/components/DocsIndex';
 import BlogIndex from '../../../features/main-content/blog-index/components/BlogIndex';
-
+import ArtikelIndex from '../../../features/main-content/artikel-index/components/ArtikelIndex';
+import RezepteIndex from '../../../features/main-content/rezepte-index/components/RezepteIndex';
 
 import { MdxField, MdxFieldProps } from '@atsnek/jaen-fields-mdx';
 import {
@@ -81,7 +82,9 @@ export const mdxEditorComponents: MdxFieldProps['components'] = {
   Callout,
   IconCard,
   //DocsIndex,
-  BlogIndex
+  BlogIndex,
+  ArtikelIndex,
+  RezepteIndex
 };
 
 const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash }) => {
