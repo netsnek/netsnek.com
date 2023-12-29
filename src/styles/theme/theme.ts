@@ -8,6 +8,10 @@ import themeColors from './colors';
 import themeSemanticTokens from './semanticTokens/semanticTokens';
 import themeFonts from './fonts';
 
+import '../../styles/global.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 const theme: ThemeConfig = extendTheme(
   {
     initialColorMode: 'system',

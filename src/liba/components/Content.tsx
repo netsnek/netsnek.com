@@ -18,6 +18,7 @@ import {Field} from '@atsnek/jaen'
 import {GoogleMaps} from './GoogleMaps'
 import WebampPlayer from './Webamp/WebampPlayer'
 import Gallery from './ Gallery'
+import NewsSlider from './NewsSlider/NewsSlider'
 
 interface Props {
   children: React.ReactNode
@@ -133,15 +134,10 @@ const ContentSection = () => {
         background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
         //backgroundColor={"alphaWhite.900"}
         //backgroundBlendMode="screen"
-        py="0"
-        px="0"
+        pb={24}
         mb="128"
+        border={{base: 'none', md: '1px dashed #499fae'}}
       >
-        <Box
-            border={{base: 'none', md: '1px dashed #499fae'}}
-            borderRadius="2xl"
-            pb={24}
-          >
         {/* <Container
           //minH={"calc(100vh - 60px)"}
           maxW="4xl"
@@ -291,7 +287,28 @@ const ContentSection = () => {
             </Testimonial>
           </Stack>
         </Container>
-        </Box>
+        <Container maxW={'4xl'} pb={16} as={Stack} spacing={12}>
+          <Stack spacing={0}>
+            <Field.Text
+              mt={{base: '20 !important', md: '0'}}
+              mb="8"
+              as={Heading}
+              fontSize={{base: '4xl', lg: '5xl'}}
+              lineHeight={1}
+              fontWeight="bold"
+              textAlign="left"
+              name="ContentSectionHeadingNews"
+              defaultValue="Mein Blog"
+            />
+            <Field.Text
+              fontSize="1.2rem"
+              color="gray.500"
+              name="ContentSectionTextNews"
+              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
+            />
+          </Stack>
+        </Container>
+        <NewsSlider showNewsTitle={true} />
       </Container>
     </Box>
   )
