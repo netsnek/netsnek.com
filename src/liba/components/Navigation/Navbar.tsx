@@ -86,6 +86,7 @@ export const Navbar: FC<INavbarProps> = ({
           </Box> */}
           <LinkOverlay href="/">
             <IconButton
+              display={{'base': 'none', 'sm': 'block'}}
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
               position={{base: 'static', md: 'absolute'}}
               top="0"
