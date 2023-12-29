@@ -9,6 +9,7 @@ import {
   LinkOverlay,
   LinkBox,
   useBreakpointValue,
+  AspectRatio,
 } from '@chakra-ui/react'
 import React from 'react'
 import JaenImage from '../../../../shared/components/JaenImage'
@@ -19,59 +20,58 @@ const ArtikelIndex: React.FC = () => {
     jaenPageId: 'JaenPage /blog/artikel/'
   })
 
-  const indexArray = React.useMemo(() => {
+  const indexByYear = React.useMemo(() => {
     return index.childPages.reduce<{ [key: string]: Partial<JaenPage>[] }>((acc, child) => {
-      const title = child.jaenPageMetadata?.title || 'Untitled'
-      const firstLetter = title[0].toLowerCase()
+      const postDate = child.jaenPageMetadata?.blogPost?.date
+      const year = postDate ? new Date(postDate).getFullYear().toString() : 'Unknown'
 
-      if (!acc[firstLetter]) {
-        acc[firstLetter] = []
+      if (!acc[year]) {
+        acc[year] = []
       }
 
-      acc[firstLetter].push({
+      acc[year].push({
         ...child
       })
 
-      // Sorting for stable ordering
-      acc[firstLetter].sort((a, b) => (a.slug || '').localeCompare(b.slug || ''))
+      acc[year].sort((a, b) => {
+        const dateA = a.jaenPageMetadata?.blogPost?.date ? new Date(a.jaenPageMetadata.blogPost.date).getTime() : 0
+        const dateB = b.jaenPageMetadata?.blogPost?.date ? new Date(b.jaenPageMetadata.blogPost.date).getTime() : 0
+        return dateB - dateA // Sort by timestamp descending
+      })
 
       return acc
     }, {})
-  }, [index.childPages]);
+  }, [index.childPages])
 
-  // Determines the number of columns based on the breakpoint
+  const sortedYears = Object.keys(indexByYear).sort((a, b) => parseInt(b) - parseInt(a))
+
   const columns = useBreakpointValue({ base: 1, sm: 2, lg: 3 })
 
   return (
     <VStack spacing="4" align="stretch">
-      {Object.entries(indexArray).map(([letter, pages]) => (
-        <Box key={letter} width="100%">
-          <MdxHeading variant="h3" id={`index-${letter}`}>
-            {letter.toUpperCase()}
+      {sortedYears.map(year => (
+        <Box key={year} width="100%">
+          <MdxHeading variant="h3" id={`index-${year}`} pb="3">
+            {year}
           </MdxHeading>
           <SimpleGrid columns={columns} spacing="4">
-            {pages.map(page => (
+            {indexByYear[year].map(page => (
               <LinkBox key={page.slug || 'missing-key'} borderWidth="1px" borderRadius="lg" overflow="hidden">
-                <Box position="relative" height="0" paddingBottom="56.25%"> {/* Aspect ratio box */}
+                <AspectRatio ratio={4 / 3}>
                   <JaenImage
                     name={page.slug ? page.slug : 'missing-slug'}
                     defaultValue={page.jaenPageMetadata?.image || 'default-image-url'}
                     alt={page.jaenPageMetadata?.description || 'Image'}
                     style={{
-                      position: 'absolute',
-                      width: '100%',
-                      height: '100%',
-                      top: '0',
-                      left: '0',
-                      objectFit: 'cover'
+                      objectFit: 'cover',
                     }}
                   />
-                </Box>
+                </AspectRatio>
                 <Box p={5}>
-                  <Heading as="h3" size="md" noOfLines={1}>
+                  <Heading as="h3" size="md" noOfLines={2}>
                     {page.jaenPageMetadata?.title || 'Untitled'}
                   </Heading>
-                  <Text fontSize="sm" mt={1} noOfLines={2}>
+                  <Text fontSize="sm" mt={1} noOfLines={3}>
                     {page.jaenPageMetadata?.description || 'No description'}
                   </Text>
                   <Text fontSize="xs" color="gray.500" mt={1}>
@@ -80,7 +80,7 @@ const ArtikelIndex: React.FC = () => {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric',
-                          timeZone: 'UTC'
+                          timeZone: 'UTC',
                         })
                       : null}
                   </Text>

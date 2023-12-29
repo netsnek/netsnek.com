@@ -9,6 +9,7 @@ import {
   LinkOverlay,
   LinkBox,
   useBreakpointValue,
+  AspectRatio,
 } from '@chakra-ui/react'
 import React from 'react'
 import JaenImage from '../../../../shared/components/JaenImage'
@@ -46,32 +47,29 @@ const RezepteIndex: React.FC = () => {
     <VStack spacing="4" align="stretch">
       {Object.entries(indexArray).map(([letter, pages]) => (
         <Box key={letter} width="100%">
-          <MdxHeading variant="h3" id={`index-${letter}`}>
+          <MdxHeading variant="h3" id={`index-${letter}`} pb="3">
             {letter.toUpperCase()}
           </MdxHeading>
           <SimpleGrid columns={columns} spacing="4">
             {pages.map(page => (
               <LinkBox key={page.slug || 'missing-key'} borderWidth="1px" borderRadius="lg" overflow="hidden">
-                <Box position="relative" height="0" paddingBottom="56.25%"> {/* Aspect ratio box */}
+                <AspectRatio ratio={4 / 3}>
                   <JaenImage
                     name={page.slug ? page.slug : 'missing-slug'}
                     defaultValue={page.jaenPageMetadata?.image || 'default-image-url'}
                     alt={page.jaenPageMetadata?.description || 'Image'}
                     style={{
-                      position: 'absolute',
+                      objectFit: 'cover',
                       width: '100%',
                       height: '100%',
-                      top: '0',
-                      left: '0',
-                      objectFit: 'cover'
                     }}
                   />
-                </Box>
+                </AspectRatio>
                 <Box p={5}>
-                  <Heading as="h3" size="md" noOfLines={1}>
+                  <Heading as="h3" size="md" noOfLines={2}>
                     {page.jaenPageMetadata?.title || 'Untitled'}
                   </Heading>
-                  <Text fontSize="sm" mt={1} noOfLines={2}>
+                  <Text fontSize="sm" mt={1} noOfLines={3}>
                     {page.jaenPageMetadata?.description || 'No description'}
                   </Text>
                   <Text fontSize="xs" color="gray.500" mt={1}>
