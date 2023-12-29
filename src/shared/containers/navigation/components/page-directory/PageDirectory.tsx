@@ -68,9 +68,13 @@ const PageDirectory: FC<PageDirectoryProps> = ({
     //   ]
     // },
     {
-      name: 'Mehr Infos',
+      name: 'Hauptseiten',
       icon: <FaLink />,
       items: [
+        {
+          name: 'Blog',
+          href: '/blog/'
+        },
         {
           name: 'Homepage',
           href: '/'
