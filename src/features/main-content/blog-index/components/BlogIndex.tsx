@@ -40,7 +40,7 @@ const BlogIndex: React.FC = () => {
   }, [index.childPages]);
 
   // Determines the number of columns based on the breakpoint
-  const columns = useBreakpointValue({ base: 1, md: 2, lg: 3 })
+  const columns = useBreakpointValue({ base: 1, sm: 2, lg: 3 })
 
   return (
     <VStack spacing="4" align="stretch">
