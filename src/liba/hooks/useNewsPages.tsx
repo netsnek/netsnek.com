@@ -3,7 +3,7 @@ import {useMemo} from 'react'
 
 export const useNewsPages = (options?: {unlimited?: boolean}) => {
   const index = useJaenPageIndex({
-    jaenPageId: 'JaenPage /blog/'
+    jaenPageId: 'JaenPage /blog/artikel/'
   })
 
   // override index children to exclude a blog page if it is the current page

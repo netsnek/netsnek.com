@@ -119,7 +119,7 @@ const WhiteDesktopSlider: FC<IWhiteDesktopSliderProps> = ({
                 </Text>
                 <Button
                   as={Link}
-                  to={`/wissen/${page.slug}`}
+                  to={`/blog/artikel/${page.slug}`}
                   size={{base: 'sm', md: 'md'}}
                   variant="outline">
                   Mehr anzeigen
