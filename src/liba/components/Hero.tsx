@@ -51,7 +51,7 @@ const HeroSection = () => {
             fontSize="sm"
             w="max-content"
             //bg={useColorModeValue('gray.300', 'gray.700')}
-            border='1px dashed #499fae'
+            border="1px dashed #499fae"
             onClick={onContactClick}
             _hover={{
               textDecoration: 'underline',
@@ -122,13 +122,13 @@ const HeroSection = () => {
               justifyContent="center"
               alignItems={'center'}
               w={{base: '100%', sm: 'auto'}}
-              
               bg={useColorModeValue('white', 'gray.800')}
               //backgroundImage='url("https://www.transparenttextures.com/patterns/translucent-fibres.png")'
               //background='linear-gradient(rgba(244,249,251,.85), rgba(244,249,251,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
               background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
               //borderColor="gray.300"
-              //p={0.5}
+              p={3}
+              border="1px dashed #499fae"
               lineHeight={1.18}
               rounded="md"
               //boxShadow="md"
@@ -138,16 +138,8 @@ const HeroSection = () => {
                 textDecoration: 'underline',
                 bg: useColorModeValue('gray.100', 'gray.700')
               }}>
-              <Box
-                border='1px dashed #499fae'
-                rounded="md"
-                p={3}
-                w={"full"}
-                h={"full"}
-              >
-                <Icon as={FaBook} w={4} h={4} mr={2} />
-                <LinkOverlay href="/blog">Rezepte</LinkOverlay>
-              </Box>
+              <Icon as={FaBook} w={4} h={4} mr={2} />
+              <LinkOverlay href="/blog/rezepte">Rezepte</LinkOverlay>
             </Flex>
           </HStack>
         </Stack>
