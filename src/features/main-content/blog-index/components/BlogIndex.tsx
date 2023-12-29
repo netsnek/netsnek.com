@@ -1,21 +1,15 @@
-import {JaenPage, useJaenPageIndex} from '@atsnek/jaen'
+import { JaenPage, useJaenPageIndex } from '@atsnek/jaen'
 import {
-  HStack,
+  VStack,
+  SimpleGrid,
+  Box,
   Heading,
   Text,
-  SimpleGrid,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-  VStack,
   Button,
   LinkOverlay,
-  LinkBox
+  LinkBox,
+  useBreakpointValue,
 } from '@chakra-ui/react'
-import ImageCard from '../../image-card/components/ImageCard'
 import React from 'react'
 import JaenImage from '../../../../shared/components/JaenImage'
 import MdxHeading from '../../heading/components/Heading'
@@ -25,86 +19,81 @@ const BlogIndex: React.FC = () => {
     jaenPageId: 'JaenPage /blog/'
   })
 
-  // transform index.childPages into a multidimensional array with child.jaenPageMetadata?.title[0] as the key
-  // the child.jaenPageMetadata?.title should be in an array that starts with the first letter of the title
-  const indexArray: {[key: string]: Partial<JaenPage>[]} =
-    index.childPages.reduce((acc, child) => {
-      const firstLetter = (
-        child.jaenPageMetadata?.title?.[0] || '0'
-      ).toLowerCase()
+  const indexArray = React.useMemo(() => {
+    return index.childPages.reduce<{ [key: string]: Partial<JaenPage>[] }>((acc, child) => {
+      const title = child.jaenPageMetadata?.title || 'Untitled'
+      const firstLetter = title[0].toLowerCase()
 
-      if (!acc.hasOwnProperty(firstLetter)) {
+      if (!acc[firstLetter]) {
         acc[firstLetter] = []
       }
+
       acc[firstLetter].push({
         ...child
       })
+
+      // Sorting for stable ordering
+      acc[firstLetter].sort((a, b) => (a.slug || '').localeCompare(b.slug || ''))
+
       return acc
-    }, {} as {[key: string]: Partial<JaenPage>[]})
+    }, {})
+  }, [index.childPages]);
+
+  // Determines the number of columns based on the breakpoint
+  const columns = useBreakpointValue({ base: 1, md: 2, lg: 3 })
 
   return (
-    <VStack spacing="4">
+    <VStack spacing="4" align="stretch">
       {Object.entries(indexArray).map(([letter, pages]) => (
-        <LinkBox key={letter}>
-          <Table>
-            <Thead>
-              <Tr>
-                <Th w={'200px'}>
-                  <MdxHeading variant="h3" id={`index-${letter}`}>
-                    {letter}
-                  </MdxHeading>
-                </Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {/* <Tr>
-              <Td colSpan={4}>Loading...</Td>
-            </Tr> */}
-              {pages.map(page => (
-                <Tr key={page.slug} w={'100%'} borderRadius={'xl'}>
-                  <Td>
-                    <JaenImage
-                      name={page.slug || 'none'}
-                      defaultValue={page.jaenPageMetadata?.image || ''}
-                      alt={page.jaenPageMetadata?.description || ''}
-                      style={{
-                        height: '100%',
-                        //height: 'var(--chakra-sizes-xs)',
-                        objectFit: 'cover',
-                        borderRadius: 'var(--chakra-radii-xl)',
-                        overflow: 'hidden'
-                      }}
-                    />
-                  </Td>
-                  <Td verticalAlign={'text-top'}>
-                    <Heading as="h3" size="md">
-                      {page.jaenPageMetadata?.title}
-                    </Heading>
-                    <Text>{page.jaenPageMetadata?.description}</Text>
-                  </Td>
-                  <Td textAlign={'end'}>
-                    <Text>
-                      {page.jaenPageMetadata?.blogPost?.date
-                        ? new Date(
-                            page.jaenPageMetadata.blogPost.date
-                          ).toLocaleDateString('de-DE', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                          })
-                        : null}
-                    </Text>
-                  </Td>
-                  <Td textAlign={'end'} w="30px">
-                    <LinkOverlay href={`/blog/${page.slug || 'none'}`}>
-                      <Button>Zum Artikel</Button>
-                    </LinkOverlay>
-                  </Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-        </LinkBox>
+        <Box key={letter} width="100%">
+          <MdxHeading variant="h3" id={`index-${letter}`}>
+            {letter.toUpperCase()}
+          </MdxHeading>
+          <SimpleGrid columns={columns} spacing="4">
+            {pages.map(page => (
+              <LinkBox key={page.slug || 'missing-key'} borderWidth="1px" borderRadius="lg" overflow="hidden">
+                <Box position="relative" height="0" paddingBottom="56.25%"> {/* Aspect ratio box */}
+                  <JaenImage
+                    name={page.slug ? page.slug : 'missing-slug'}
+                    defaultValue={page.jaenPageMetadata?.image || 'default-image-url'}
+                    alt={page.jaenPageMetadata?.description || 'Image'}
+                    style={{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      top: '0',
+                      left: '0',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </Box>
+                <Box p={5}>
+                  <Heading as="h3" size="md" noOfLines={1}>
+                    {page.jaenPageMetadata?.title || 'Untitled'}
+                  </Heading>
+                  <Text fontSize="sm" mt={1} noOfLines={2}>
+                    {page.jaenPageMetadata?.description || 'No description'}
+                  </Text>
+                  <Text fontSize="xs" color="gray.500" mt={1}>
+                    {page.jaenPageMetadata?.blogPost?.date
+                      ? new Date(page.jaenPageMetadata.blogPost.date).toLocaleDateString('de-DE', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                          timeZone: 'UTC'
+                        })
+                      : null}
+                  </Text>
+                  <LinkOverlay href={`/blog/${page.slug || 'none'}`} isExternal={false}>
+                    <Button size="sm" mt={2}>
+                      Zum Artikel
+                    </Button>
+                  </LinkOverlay>
+                </Box>
+              </LinkBox>
+            ))}
+          </SimpleGrid>
+        </Box>
       ))}
     </VStack>
   )
