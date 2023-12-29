@@ -27,7 +27,8 @@ const WhiteMobileSlider: FC<IWhiteMobileSliderProps> = ({index}) => {
     infinite: index.childPages.length > slidesToShow,
     speed: 500,
     slidesToShow,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    arrows: false
   }
 
   const {isEditing} = useContentManagement()
