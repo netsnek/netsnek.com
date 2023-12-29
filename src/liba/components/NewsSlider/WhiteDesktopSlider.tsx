@@ -95,7 +95,12 @@ const WhiteDesktopSlider: FC<IWhiteDesktopSliderProps> = ({
                   {page.jaenPageMetadata?.blogPost?.date
                     ? new Date(
                         page.jaenPageMetadata.blogPost.date
-                      ).toLocaleDateString('de-de')
+                      ).toLocaleDateString('de-DE', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        timeZone: 'UTC'
+                      })
                     : null}
                 </Text>
                 <Heading

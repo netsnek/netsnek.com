@@ -96,7 +96,8 @@ const WhiteMobileSlider: FC<IWhiteMobileSliderProps> = ({index}) => {
                         ).toLocaleDateString('de-DE', {
                           year: 'numeric',
                           month: 'long',
-                          day: 'numeric'
+                          day: 'numeric',
+                          timeZone: 'UTC'
                         })
                       : null}
                   </Text>
