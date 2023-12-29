@@ -12,7 +12,8 @@ import {
   Tr,
   VStack,
   Button,
-  LinkOverlay
+  LinkOverlay,
+  LinkBox
 } from '@chakra-ui/react'
 import ImageCard from '../../image-card/components/ImageCard'
 import React from 'react'
@@ -44,7 +45,7 @@ const BlogIndex: React.FC = () => {
   return (
     <VStack spacing="4">
       {Object.entries(indexArray).map(([letter, pages]) => (
-        <React.Fragment key={letter}>
+        <LinkBox key={letter}>
           <Table>
             <Thead>
               <Tr>
@@ -103,7 +104,7 @@ const BlogIndex: React.FC = () => {
               ))}
             </Tbody>
           </Table>
-        </React.Fragment>
+        </LinkBox>
       ))}
     </VStack>
   )
