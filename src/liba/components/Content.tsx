@@ -42,7 +42,7 @@ const TestimonialContent = (props: Props) => {
       rounded={'xl'}
       //align={'center'}
       pos={'relative'}
-      
+
       // _after={{
       //   content: `""`,
       //   w: 0,
@@ -59,12 +59,8 @@ const TestimonialContent = (props: Props) => {
       //   left: '50%',
       //   transform: 'translateX(-50%)'
       // }}
-      >
-      <Box
-        p={"8"}
-        border='1px dashed #499fae'
-        rounded={'xl'}
-      >
+    >
+      <Box p={'8'} border="1px dashed #499fae" rounded={'xl'}>
         {children}
       </Box>
     </Stack>
@@ -136,8 +132,7 @@ const ContentSection = () => {
         //backgroundBlendMode="screen"
         pb={24}
         mb="128"
-        border={{base: 'none', md: '1px dashed #499fae'}}
-      >
+        border={{base: 'none', md: '1px dashed #499fae'}}>
         {/* <Container
           //minH={"calc(100vh - 60px)"}
           maxW="4xl"
@@ -176,6 +171,28 @@ const ContentSection = () => {
             />
           </Stack>
           <Gallery />
+          <Container maxW={'4xl'} pb={16} as={Stack} spacing={12}>
+            <Stack spacing={0}>
+              <Field.Text
+                mt={{base: '20 !important', md: '0'}}
+                mb="8"
+                as={Heading}
+                fontSize={{base: '4xl', lg: '5xl'}}
+                lineHeight={1}
+                fontWeight="bold"
+                textAlign="left"
+                name="ContentSectionHeadingNews"
+                defaultValue="Mein Blog"
+              />
+              <Field.Text
+                fontSize="1.2rem"
+                color="gray.500"
+                name="ContentSectionTextNews"
+                defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
+              />
+            </Stack>
+          </Container>
+          <NewsSlider showNewsTitle={true} />
           <Stack spacing={0}>
             <Field.Text
               mt={{base: '20 !important', md: '0'}}
@@ -287,28 +304,6 @@ const ContentSection = () => {
             </Testimonial>
           </Stack>
         </Container>
-        <Container maxW={'4xl'} pb={16} as={Stack} spacing={12}>
-          <Stack spacing={0}>
-            <Field.Text
-              mt={{base: '20 !important', md: '0'}}
-              mb="8"
-              as={Heading}
-              fontSize={{base: '4xl', lg: '5xl'}}
-              lineHeight={1}
-              fontWeight="bold"
-              textAlign="left"
-              name="ContentSectionHeadingNews"
-              defaultValue="Mein Blog"
-            />
-            <Field.Text
-              fontSize="1.2rem"
-              color="gray.500"
-              name="ContentSectionTextNews"
-              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
-            />
-          </Stack>
-        </Container>
-        <NewsSlider showNewsTitle={true} />
       </Container>
     </Box>
   )
