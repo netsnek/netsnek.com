@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Box,
   Flex,
@@ -30,8 +28,7 @@ export const TestimonialContent = (props: Props) => {
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
-      boxShadow="4px 2px 16px -12px rgba(0,0,0,0.25)"
-      //boxShadow={'lg'}
+      //boxShadow="lg"
       mt="5"
       p={8}
       rounded={'xl'}
@@ -74,7 +71,7 @@ export const TestimonialText = (props: Props) => {
   const { children } = props;
 
   return (
-    <Text fontSize={'sm'}>
+    <Text as="div" fontSize={'sm'}> {/* Use as="div" to address <p> within <p> nesting issue */}
       {children}
     </Text>
   );

@@ -20,7 +20,13 @@ import {GoogleMaps} from './GoogleMaps'
 import WebampPlayer from './Webamp/WebampPlayer'
 import Gallery from './Gallery'
 import NewsSlider from './NewsSlider/NewsSlider'
-import { Testimonial, TestimonialAvatar, TestimonialContent, TestimonialHeading, TestimonialText } from './Testimonials'
+import {
+  Testimonial,
+  TestimonialAvatar,
+  TestimonialContent,
+  TestimonialHeading,
+  TestimonialText
+} from './Testimonials'
 
 interface Props {
   children: React.ReactNode
@@ -67,7 +73,7 @@ const testamonialsDefaults = [
       to: 'https://fhkit.at/'
     }
   }
-];
+]
 
 const ContentSection = () => {
   const contactModal = useContactModal()
@@ -203,33 +209,32 @@ const ContentSection = () => {
             />
           </Stack>
           <Wrap justify="center" mt={10} spacing={10} shouldWrapChildren>
-          {testamonialsDefaults.map((testimonial, index) => (
-            <Testimonial>
-              <TestimonialContent>
-                <TestimonialHeading>
-                  <Field.Text
-                    name={`TestimonialHeading${index}`}
-                    defaultValue={testimonial.heading}
-                    color="pq.sections.aboutUs.testimonial.heading.color"
-                  />
-                </TestimonialHeading>
-                <TestimonialText>
-                  <Field.Text
-                    name={`TestimonialText${index}`}
-                    defaultValue={testimonial.text}
-                  />
-                </TestimonialText>
-              </TestimonialContent>
-              <TestimonialAvatar
-                src={testimonial.avatar.src}
-                name={testimonial.avatar.name}
-                title={testimonial.avatar.title}
-                to={testimonial.avatar.to}
-              />
-            </Testimonial>
-          ))}
-        </Wrap>
-
+            {testamonialsDefaults.map((testimonial, index) => (
+              <Testimonial>
+                <TestimonialContent>
+                  <TestimonialHeading>
+                    <Field.Text
+                      name={`TestimonialHeading${index}`}
+                      defaultValue={testimonial.heading}
+                      color="pq.sections.aboutUs.testimonial.heading.color"
+                    />
+                  </TestimonialHeading>
+                  <TestimonialText>
+                    <Field.Text
+                      name={`TestimonialText${index}`}
+                      defaultValue={testimonial.text}
+                    />
+                  </TestimonialText>
+                </TestimonialContent>
+                <TestimonialAvatar
+                  src={testimonial.avatar.src}
+                  name={testimonial.avatar.name}
+                  title={testimonial.avatar.title}
+                  to={testimonial.avatar.to}
+                />
+              </Testimonial>
+            ))}
+          </Wrap>
         </Container>
       </Container>
     </Box>
