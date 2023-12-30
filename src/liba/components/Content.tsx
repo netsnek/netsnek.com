@@ -17,7 +17,7 @@ import {useContactModal} from '../services/contact'
 import {Field} from '@atsnek/jaen'
 import {GoogleMaps} from './GoogleMaps'
 import WebampPlayer from './Webamp/WebampPlayer'
-import Gallery from './ Gallery'
+import Gallery from './Gallery'
 import NewsSlider from './NewsSlider/NewsSlider'
 
 interface Props {
@@ -245,7 +245,7 @@ const ContentSection = () => {
               defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
             />
           </Stack>
-          <Stack
+          {/* <Stack
             direction={{base: 'column', md: 'row'}}
             spacing={{base: 10, md: 4, lg: 10}}>
             <Testimonial>
@@ -302,7 +302,7 @@ const ContentSection = () => {
                 title={'kanbon.at'}
               />
             </Testimonial>
-          </Stack>
+          </Stack> */}
         </Container>
       </Container>
     </Box>
