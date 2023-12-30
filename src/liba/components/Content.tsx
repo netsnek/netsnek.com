@@ -11,6 +11,7 @@ import {
   LinkOverlay,
   Stack,
   Text,
+  Wrap,
   useColorModeValue
 } from '@chakra-ui/react'
 import {useContactModal} from '../services/contact'
@@ -19,98 +20,54 @@ import {GoogleMaps} from './GoogleMaps'
 import WebampPlayer from './Webamp/WebampPlayer'
 import Gallery from './Gallery'
 import NewsSlider from './NewsSlider/NewsSlider'
+import { Testimonial, TestimonialAvatar, TestimonialContent, TestimonialHeading, TestimonialText } from './Testimonials'
 
 interface Props {
   children: React.ReactNode
 }
 
-const Testimonial = (props: Props) => {
-  const {children} = props
-
-  return <Box>{children}</Box>
-}
-
-const TestimonialContent = (props: Props) => {
-  const {children} = props
-
-  return (
-    <Stack
-      bg={useColorModeValue('white', 'gray.800')}
-      //boxShadow={'lg'}
-      mt="5"
-      //p={0.5}
-      rounded={'xl'}
-      //align={'center'}
-      pos={'relative'}
-
-      // _after={{
-      //   content: `""`,
-      //   w: 0,
-      //   h: 0,
-      //   borderLeft: 'solid transparent',
-      //   borderLeftWidth: 16,
-      //   borderRight: 'solid transparent',
-      //   borderRightWidth: 16,
-      //   borderTop: 'solid',
-      //   borderTopWidth: 16,
-      //   borderTopColor: useColorModeValue('white', 'gray.800'),
-      //   pos: 'absolute',
-      //   bottom: '-16px',
-      //   left: '50%',
-      //   transform: 'translateX(-50%)'
-      // }}
-    >
-      <Box p={'8'} border="1px dashed #499fae" rounded={'xl'}>
-        {children}
-      </Box>
-    </Stack>
-  )
-}
-
-const TestimonialHeading = (props: Props) => {
-  const {children} = props
-
-  return (
-    <Heading as={'h3'} fontSize={'xl'}>
-      {children}
-    </Heading>
-  )
-}
-
-const TestimonialText = (props: Props) => {
-  const {children} = props
-
-  return (
-    <Text
-      //textAlign={'center'}
-      color={useColorModeValue('gray.600', 'gray.400')}
-      fontSize={'sm'}>
-      {children}
-    </Text>
-  )
-}
-
-const TestimonialAvatar = ({
-  src,
-  name,
-  title
-}: {
-  src: string
-  name: string
-  title: string
-}) => {
-  return (
-    <Flex align={'center'} mt={8} direction={'column'}>
-      <Avatar src={src} mb={2} objectFit={'contain'} />
-      <Stack spacing={-1} align={'center'}>
-        <Text fontWeight={600}>{name}</Text>
-        <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
-          {title}
-        </Text>
-      </Stack>
-    </Flex>
-  )
-}
+const testamonialsDefaults = [
+  // {
+  //   heading: 'Lorem ipsum dolor sit amet',
+  //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.',
+  //   avatar: {
+  //     src: 'https://osg.snek.at/storage/BQACAgQAAxkDAAIsW2VFGtrO0UmpkYZV0BgslLcByh8qAAJRDwACCtMwUiMJbD4kmhDjLwQ',
+  //     name: 'Christoph Clementschitsch',
+  //     title: 'Christoph Clementschitsch IT',
+  //     to: 'https://www.neurons.at/'
+  //   }
+  // },
+  // {
+  //   heading: 'Lorem ipsum dolor sit amet',
+  //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.',
+  //   avatar: {
+  //     src: 'https://i1.rgstatic.net/ii/profile.image/11431281181196403-1691945466424_Q128/Felix-Zilk.jpg',
+  //     name: 'Felix Zilk',
+  //     title: '',
+  //     to: 'https://www.researchgate.net/profile/Felix-Zilk'
+  //   }
+  // },
+  {
+    heading: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.',
+    avatar: {
+      src: 'https://osg.snek.at/storage/BQACAgQAAxkDAAIs9GWQkatLRzGIxNON1c3Cw3opvLR9AALsGAACpzGAUCTJZjhqLIryLwQ',
+      name: 'Simon Prast',
+      title: 'Kanbon',
+      to: 'https://kanbon.at/'
+    }
+  },
+  {
+    heading: 'Lorem ipsum dolor sit amet',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor neque sed imperdiet nibh lectus feugiat nunc sem.',
+    avatar: {
+      src: 'https://osg.snek.at/storage/BQACAgQAAxkDAAIsX2VG2JlO_XvDt3JcexGfxSLesn_oAAJZEAACLqAxUnY2C2EatToLLwQ',
+      name: 'Florian Kleber',
+      title: 'Florian Herbert Kleber IT',
+      to: 'https://fhkit.at/'
+    }
+  }
+];
 
 const ContentSection = () => {
   const contactModal = useContactModal()
@@ -245,64 +202,34 @@ const ContentSection = () => {
               defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
             />
           </Stack>
-          {/* <Stack
-            direction={{base: 'column', md: 'row'}}
-            spacing={{base: 10, md: 4, lg: 10}}>
+          <Wrap justify="center" mt={10} spacing={10} shouldWrapChildren>
+          {testamonialsDefaults.map((testimonial, index) => (
             <Testimonial>
               <TestimonialContent>
-                <TestimonialHeading>IT & Cloud</TestimonialHeading>
+                <TestimonialHeading>
+                  <Field.Text
+                    name={`TestimonialHeading${index}`}
+                    defaultValue={testimonial.heading}
+                    color="pq.sections.aboutUs.testimonial.heading.color"
+                  />
+                </TestimonialHeading>
                 <TestimonialText>
                   <Field.Text
-                    name="ContentSectionTextTeam1"
-                    defaultValue='Als Experte für IT-Services und ein Meister der Cloud-Technologie🚀, mit starker Basis in der Cyber-Security🔒, liegt meine Expertise in der Betreuung von IT-Systemen und in der Optimierung von Geschäftsprozessen. Die erfolgreiche Entwicklung eines gemeinsamen ERP-Systems namens "Jaen"✨, zusammen mit Agentur Nico Schett, unterstreicht meine Fähigkeit, proaktiv und lösungsorientiert zu handeln. Ich stehe stets bereit, Herausforderungen zu meistern, bevor sie entstehen, und sorge somit für ein reibungsloses technologisches Erlebnis. 💻🔧 '
+                    name={`TestimonialText${index}`}
+                    defaultValue={testimonial.text}
                   />
                 </TestimonialText>
               </TestimonialContent>
               <TestimonialAvatar
-                src={
-                  'https://osg.snek.at/storage/BQACAgQAAxkDAAIsX2VG2JlO_XvDt3JcexGfxSLesn_oAAJZEAACLqAxUnY2C2EatToLLwQ'
-                }
-                name={'Florian Kleber'}
-                title={'fhkit.at'}
+                src={testimonial.avatar.src}
+                name={testimonial.avatar.name}
+                title={testimonial.avatar.title}
+                to={testimonial.avatar.to}
               />
             </Testimonial>
-            <Testimonial>
-              <TestimonialContent>
-                <TestimonialHeading>Elektrotechnik</TestimonialHeading>
-                <TestimonialText>
-                  <Field.Text
-                    name="ContentSectionTextTeam2"
-                    defaultValue="Ich kombiniere mein Masterstudium in Elektrotechnik⚡️ und Informationstechnik📡 mit hingebungsvoller Arbeit an Technik jeder Art. Besondere Leidenschaft habe ich für das Programmieren von Cloudsystemen, Websites und der Instandhaltung von Computern. Mit ständiger Faszination betreibe ich Server und Netzwerke. Vereinfachen und effizient machen - das ist mein Credo!💪🚀"
-                  />
-                </TestimonialText>
-              </TestimonialContent>
-              <TestimonialAvatar
-                src={
-                  'https://osg.snek.at/storage/BQACAgQAAxkDAAIsW2VFGtrO0UmpkYZV0BgslLcByh8qAAJRDwACCtMwUiMJbD4kmhDjLwQ'
-                }
-                name={'Christoph Clementschitsch'}
-                title={'neurons.at'}
-              />
-            </Testimonial>
-            <Testimonial>
-              <TestimonialContent>
-                <TestimonialHeading>Design & Marketing</TestimonialHeading>
-                <TestimonialText>
-                  <Field.Text
-                    name="ContentSectionTextTeam3"
-                    defaultValue="Wir sind eine kreative 🎨 Werbeagentur in der charmanten Stadt Villach. Zusammen mit Florian Herbert Kleber IT arbeiten wir daran, moderne, stilvolle und wirkungsvolle Online-Auftritte zu gestalten."
-                  />
-                </TestimonialText>
-              </TestimonialContent>
-              <TestimonialAvatar
-                src={
-                  'https://osg.snek.at/storage/BQACAgQAAxkDAAIsXWVGJpY-_RcMtfNgb1pEQHkhgpzcAAIdEQACCtM4Undi6U7j1-BRLwQ'
-                }
-                name={'Kanbon'}
-                title={'kanbon.at'}
-              />
-            </Testimonial>
-          </Stack> */}
+          ))}
+        </Wrap>
+
         </Container>
       </Container>
     </Box>
