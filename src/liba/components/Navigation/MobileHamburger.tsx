@@ -115,7 +115,9 @@ export const MobileHambuger: React.FC<{
                   background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
                   //borderColor="gray.300"
                   p={2}
-                  border="1px dashed #499fae"
+                  borderWidth="1px"
+                  borderStyle="dashed"
+                  borderColor={useColorModeValue('brand.500', 'brand.200')}
                   lineHeight={1.18}
                   rounded="md"
                   //boxShadow="md"
@@ -138,7 +140,9 @@ export const MobileHambuger: React.FC<{
                   background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
                   //borderColor="gray.300"
                   p={2}
-                  border="1px dashed #499fae"
+                  borderWidth="1px"
+                  borderStyle="dashed"
+                  borderColor={useColorModeValue('brand.500', 'brand.200')}
                   lineHeight={1.18}
                   rounded="md"
                   //boxShadow="md"
@@ -161,7 +165,9 @@ export const MobileHambuger: React.FC<{
                   background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
                   //borderColor="gray.300"
                   p={2}
-                  border="1px dashed #499fae"
+                  borderWidth="1px"
+                  borderStyle="dashed"
+                  borderColor={useColorModeValue('brand.500', 'brand.200')}
                   lineHeight={1.18}
                   rounded="md"
                   //boxShadow="md"

@@ -90,12 +90,15 @@ const ContentSection = () => {
         borderRadius="2xl"
         //borderLeft="1px solid"
         //borderRight="1px solid"
-        background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
+        //background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
         //backgroundColor={"alphaWhite.900"}
         //backgroundBlendMode="screen"
         pb={24}
         mb="128"
-        border={{base: 'none', md: '1px dashed #499fae'}}>
+        borderWidth="1px"
+        borderStyle="dashed"
+        borderColor={useColorModeValue('brand.500', 'brand.200')}
+        >
         {/* <Container
           //minH={"calc(100vh - 60px)"}
           maxW="4xl"

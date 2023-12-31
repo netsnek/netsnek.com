@@ -6,7 +6,8 @@ import {
   Heading,
   Stack,
   Text,
-  VStack
+  VStack,
+  useColorModeValue
 } from '@chakra-ui/react'
 import {Field, useContentManagement} from '@atsnek/jaen'
 import {Link} from 'gatsby'
@@ -55,7 +56,9 @@ const WhiteMobileSlider: FC<IWhiteMobileSliderProps> = ({index}) => {
                 py="8"
                 pb="16"
                 px="8"
-                border="1px dashed #499fae"
+                borderWidth="1px"
+                borderStyle="dashed"
+                borderColor={useColorModeValue('brand.500', 'brand.200')}
                 bg="white"
                 flex="1"
                 pt="20"

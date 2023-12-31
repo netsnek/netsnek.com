@@ -34,7 +34,9 @@ export const TestimonialContent = (props: Props) => {
       rounded={'xl'}
       align={'center'}
       pos={'relative'}
-      border="1px dashed #499fae"
+      borderWidth="1px"
+      borderStyle="dashed"
+      borderColor={useColorModeValue('brand.500', 'brand.200')}
       // _after={{
       //   content: `""`,
       //   w: 0,

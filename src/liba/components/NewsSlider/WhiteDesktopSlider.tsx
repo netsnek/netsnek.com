@@ -7,7 +7,8 @@ import {
   Heading,
   Stack,
   Text,
-  VStack
+  VStack,
+  useColorModeValue
 } from '@chakra-ui/react'
 import {Field} from '@atsnek/jaen'
 import {Link} from 'gatsby'
@@ -57,7 +58,9 @@ const WhiteDesktopSlider: FC<IWhiteDesktopSliderProps> = ({
               py="8"
               pb="16"
               px="8"
-              border="1px dashed #499fae"
+              borderWidth="1px"
+              borderStyle="dashed"
+              borderColor={useColorModeValue('brand.500', 'brand.200')}
               bg="white"
               flex="1"
               pt="20"
