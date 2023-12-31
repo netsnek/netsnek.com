@@ -193,7 +193,7 @@ const HeroSection = () => {
                 color="brand.500"
                 icon={<FaInstagram />}
                 aria-label="Instagram"
-                href="https://www.instagram.com/schettn/"
+                href="https://www.instagram.com/barbara.mauz/"
                 isExternal
               />
               <IconButton
