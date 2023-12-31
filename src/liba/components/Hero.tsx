@@ -65,8 +65,8 @@ const HeroSection = () => {
               px={2}
               lineHeight={1}
               rounded="full"
-              color="white"
-              bgColor="brand.500">
+              color={useColorModeValue('white', 'gray.800')}
+              bg={useColorModeValue('brand.500', 'brand.200')}>
               Für dich
             </Box>
             <HStack spacing={1} alignItems="center" justifyContent="center">
@@ -82,7 +82,6 @@ const HeroSection = () => {
             lineHeight={1}
             fontWeight="bold"
             textAlign="left"
-            color="#000000"
             name="HeroSectionHeading"
             defaultValue="Lass dich von <br />
             mir beraten"
@@ -111,7 +110,6 @@ const HeroSection = () => {
               w={{base: '100%', sm: 'auto'}}
               h={12}
               px={6}
-              color="white"
               size="lg"
               rounded="md"
               mb={{base: 2, sm: 0}}
@@ -128,7 +126,7 @@ const HeroSection = () => {
               bg={useColorModeValue('white', 'gray.800')}
               //backgroundImage='url("https://www.transparenttextures.com/patterns/translucent-fibres.png")'
               //background='linear-gradient(rgba(244,249,251,.85), rgba(244,249,251,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
-              background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
+              //background='linear-gradient(rgba(248,253,255,.85), rgba(248,253,255,.85)), url("https://www.transparenttextures.com/patterns/dark-denim.png")'
               //borderColor="gray.300"
               p={3}
               borderWidth="1px"
@@ -174,7 +172,6 @@ const HeroSection = () => {
                 as={LinkOverlay}
                 size="lg"
                 variant={'ghost'}
-                color="brand.500"
                 icon={<Netsnek w={'25px'} h={'25px'} />}
                 aria-label="Netsnek"
                 href="https://netsnek.com/schett"
@@ -184,7 +181,6 @@ const HeroSection = () => {
                 as={LinkOverlay}
                 size="lg"
                 variant={'ghost'}
-                color="brand.500"
                 icon={<FaFacebook />}
                 aria-label="Github"
                 href="https://www.facebook.com/profile.php?id=61552973278627"
@@ -194,7 +190,6 @@ const HeroSection = () => {
                 as={LinkOverlay}
                 size="lg"
                 variant={'ghost'}
-                color="brand.500"
                 icon={<FaInstagram />}
                 aria-label="Instagram"
                 href="https://www.instagram.com/barbara.mauz/"
@@ -204,7 +199,6 @@ const HeroSection = () => {
                 as={LinkOverlay}
                 size="lg"
                 variant={'ghost'}
-                color="brand.500"
                 icon={<FaTelegram />}
                 aria-label="Telegram"
                 href="https://t.me/schettn"
