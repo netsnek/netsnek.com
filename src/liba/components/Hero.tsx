@@ -183,7 +183,7 @@ const HeroSection = () => {
                 color="brand.500"
                 icon={<FaFacebook />}
                 aria-label="Github"
-                href="https://github.com/schettn/"
+                href="https://www.facebook.com/profile.php?id=61552973278627"
                 isExternal
               />
               <IconButton
