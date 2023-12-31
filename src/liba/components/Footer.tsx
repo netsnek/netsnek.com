@@ -36,7 +36,7 @@ const Footer: FC = () => {
       },
       {
         label: 'Facebook',
-        href: 'https://t.me/schettn'
+        href: 'https://www.facebook.com/profile.php?id=61552973278627'
       },
       {
         label: 'Instagram',
