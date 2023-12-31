@@ -44,7 +44,7 @@ const WhiteDesktopSlider: FC<IWhiteDesktopSliderProps> = ({
     zIndex="1"
     display={{base: 'none', md: 'block'}}
   >
-    <Slider {...settings} className="white_slider">
+    <Slider {...settings} className="news_slider">
       {index.childPages.map((page, i) => {
         return index.withJaenPage(
           page.id,
@@ -61,7 +61,7 @@ const WhiteDesktopSlider: FC<IWhiteDesktopSliderProps> = ({
               borderWidth="1px"
               borderStyle="dashed"
               borderColor={useColorModeValue('brand.500', 'brand.200')}
-              bg="white"
+              //bg="white"
               flex="1"
               pt="20"
               //align="center"

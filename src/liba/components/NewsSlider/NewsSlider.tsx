@@ -1,8 +1,8 @@
 import {Box, Text, Image, chakra} from '@chakra-ui/react'
 import {FC} from 'react'
 import {useNewsPages} from '../../hooks/useNewsPages'
-import WhiteDesktopSlider from './WhiteDesktopSlider'
-import WhiteMobileSlider from './WhiteMobileSlider'
+import WhiteDesktopSlider from './DesktopSlider'
+import WhiteMobileSlider from './MobileSlider'
 
 interface INewsSlidesProps {
   showNewsTitle?: boolean

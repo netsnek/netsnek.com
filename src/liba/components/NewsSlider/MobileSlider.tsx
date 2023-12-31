@@ -42,7 +42,7 @@ const WhiteMobileSlider: FC<IWhiteMobileSliderProps> = ({index}) => {
       zIndex="1"
       display={{base: 'block', md: 'none'}}
     >
-      <Slider {...settings} className="white_slider">
+      <Slider {...settings} className="news_slider">
         {index.childPages.map((page, i) => {
           return index.withJaenPage(
             page.id,
@@ -59,7 +59,7 @@ const WhiteMobileSlider: FC<IWhiteMobileSliderProps> = ({index}) => {
                 borderWidth="1px"
                 borderStyle="dashed"
                 borderColor={useColorModeValue('brand.500', 'brand.200')}
-                bg="white"
+                //bg="white"
                 flex="1"
                 pt="20"
                 //align="center"
