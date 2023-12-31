@@ -84,7 +84,7 @@ const ArtikelIndex: React.FC = () => {
                         })
                       : null}
                   </Text>
-                  <LinkOverlay href={`/blog/${page.slug || 'none'}`} isExternal={false}>
+                  <LinkOverlay href={`/blog/artikel/${page.slug || 'none'}`} isExternal={false}>
                     <Button size="sm" mt={2}>
                       Zum Artikel
                     </Button>
