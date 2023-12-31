@@ -61,7 +61,7 @@ export const TestimonialHeading = (props: Props) => {
   const { children } = props;
 
   return (
-    <Heading as={'h3'} fontSize={'xl'}>
+    <Heading as={'h3'} fontSize={'xl'} w={'full'}>
       {children}
     </Heading>
   );
@@ -71,7 +71,7 @@ export const TestimonialText = (props: Props) => {
   const { children } = props;
 
   return (
-    <Text as="div" fontSize={'sm'}> {/* Use as="div" to address <p> within <p> nesting issue */}
+    <Text as="div" fontSize={'sm'} w={'full'}> {/* Use as="div" to address <p> within <p> nesting issue */}
       {children}
     </Text>
   );
