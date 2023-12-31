@@ -82,7 +82,7 @@ const RezepteIndex: React.FC = () => {
                         })
                       : null}
                   </Text>
-                  <LinkOverlay href={`/blog/rezepte/${page.slug || 'none'}`} isExternal={false}>
+                  <LinkOverlay href={`/blog/rezepte/${page.slug || 'none'}/`} isExternal={false}>
                     <Button size="sm" mt={2}>
                       Zum Artikel
                     </Button>
