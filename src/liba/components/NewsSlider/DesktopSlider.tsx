@@ -6,12 +6,12 @@ import Slider from 'react-slick'
 import { JaenPageIndexType } from '../../../shared/types/news'
 import JaenImage from '../../../shared/components/JaenImage'
 
-interface IWhiteDesktopSliderProps {
+interface IDesktopSliderProps {
   showTitle?: boolean
   index: JaenPageIndexType
 }
 
-const WhiteDesktopSlider: FC<IWhiteDesktopSliderProps> = ({
+const DesktopSlider: FC<IDesktopSliderProps> = ({
   showTitle = false,
   index,
 }) => {
@@ -145,4 +145,4 @@ const WhiteDesktopSlider: FC<IWhiteDesktopSliderProps> = ({
     </Container>
   )
 }
-export default WhiteDesktopSlider
+export default DesktopSlider

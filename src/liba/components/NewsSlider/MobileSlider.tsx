@@ -16,11 +16,11 @@ import Slider from 'react-slick'
 import {JaenPageIndexType} from '../../../shared/types/news'
 import JaenImage from '../../../shared/components/JaenImage'
 
-interface IWhiteMobileSliderProps {
+interface IMobileSliderProps {
   index: JaenPageIndexType
 }
 
-const WhiteMobileSlider: FC<IWhiteMobileSliderProps> = ({index}) => {
+const MobileSlider: FC<IMobileSliderProps> = ({index}) => {
   const slidesToShow = 1
 
   var settings = {
@@ -134,4 +134,4 @@ const WhiteMobileSlider: FC<IWhiteMobileSliderProps> = ({index}) => {
     </Container>
   )
 }
-export default WhiteMobileSlider
+export default MobileSlider

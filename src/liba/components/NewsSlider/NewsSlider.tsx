@@ -1,8 +1,8 @@
 import {Box, Text, Image, chakra} from '@chakra-ui/react'
 import {FC} from 'react'
 import {useNewsPages} from '../../hooks/useNewsPages'
-import WhiteDesktopSlider from './DesktopSlider'
-import WhiteMobileSlider from './MobileSlider'
+import DesktopSlider from './DesktopSlider'
+import MobileSlider from './MobileSlider'
 
 interface INewsSlidesProps {
   showNewsTitle?: boolean
@@ -13,10 +13,10 @@ const NewsSlider: FC<INewsSlidesProps> = ({showNewsTitle}) => {
 
   return (
     <>
-      <WhiteDesktopSlider showTitle={showNewsTitle} index={index} />
+      <DesktopSlider showTitle={showNewsTitle} index={index} />
 
       {/* Form mobile */}
-      <WhiteMobileSlider index={index} />
+      <MobileSlider index={index} />
     </>
   )
 }
