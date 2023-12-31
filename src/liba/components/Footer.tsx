@@ -54,7 +54,7 @@ const Footer: FC = () => {
       },
       {
         label: 'Lilli Mauz',
-        href: '#'
+        href: 'https://www.instagram.com/mauz.lilli/'
       }
     ],
     [
@@ -64,11 +64,11 @@ const Footer: FC = () => {
       },
       {
         label: 'Florian Kleber',
-        href: '#'
+        href: 'https://fhkit.at/'
       },
       {
         label: 'Alexander Kleber',
-        href: '#'
+        href: 'https://www.instagram.com/alexkleber_/'
       }
     ]
   ]
