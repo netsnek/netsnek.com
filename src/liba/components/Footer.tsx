@@ -13,7 +13,8 @@ import {
   LinkOverlay,
   Spacer,
   Stack,
-  VStack
+  VStack,
+  useColorModeValue
 } from '@chakra-ui/react'
 import {FC, ReactNode} from 'react'
 import {Field, useAuthenticationContext} from '@atsnek/jaen'
@@ -106,7 +107,7 @@ const Footer: FC = () => {
     <Box
       borderTopRadius="2xl"
       borderTop="1px solid"
-      borderColor="brand.500"
+      borderColor={useColorModeValue('brand.500', 'brand.200')}
       pb={20}
       position="relative"
       //mt="-25px"
