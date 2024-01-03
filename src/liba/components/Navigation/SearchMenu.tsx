@@ -4,7 +4,8 @@ import {
   ThemeProvider,
   VStack,
   useDisclosure,
-  Text
+  Text,
+  ButtonProps
 } from '@chakra-ui/react';
 import {
   FC,
@@ -39,12 +40,12 @@ import { useAuthenticationContext } from '@atsnek/jaen';
 import { navigate } from 'gatsby';
 import { useSearchContext } from '../../../shared/contexts/search';
 
-interface SearchMenuProps {}
+interface SearchMenuProps extends ButtonProps {}
 
 /**
  * Search menu component - shows a navigatable list of search results
  */
-const SearchMenu: FC<SearchMenuProps> = ({}) => {
+const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const { data: searchData, setSearchData } = useSearchContext();
   const [navigateIdx, setNavigateIdx] = useState<number>(-1);
@@ -272,6 +273,7 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
         <SearchButton
           openModal={modalDisclosure.onOpen}
           navigate={handleNavigate}
+          {...props}
         />
       </SearchProvider>
       <SearchModal

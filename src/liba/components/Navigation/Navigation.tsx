@@ -39,6 +39,7 @@ import Logo from '../../../gatsby-plugin-jaen/components/Logo'
 import HamburgerMenuIcon, {
   THamburgerMenuIconStylerProps
 } from '../../../shared/components/HamburgerMenuIcon'
+import SearchMenu from './SearchMenu'
 
 interface IHeaderProps {
   path: string
@@ -203,12 +204,21 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             py={{base: '2', md: '4'}}
             justifyContent="space-between"
             alignItems="center">
-            <Link href="/" aria-label="Home">
-              <Logo height="75px" color="black" />
-            </Link>
+            <LinkBox flex="1" display="flex" alignItems="center">
+              <LinkOverlay href="/" color="white" mr="4">
+                <Logo height="100%" color="black" />
+              </LinkOverlay>
+            </LinkBox>
             <Flex alignItems="center">
+              <SearchMenu
+                boxSizing={"border-box"}
+                borderWidth={2}
+                _hover={{
+                  borderColor: 'brand.600'
+                }}
+              />
               <Button
-                mr={4}
+                ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 borderRadius={'full'}
                 onClick={handleOnContactClick}
@@ -219,19 +229,8 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
               >
                 Contact us
               </Button>
-              <Tooltip label="Artikel-Suche">
-                <IconButton
-                  mr={4}
-                  borderRadius={'full'}
-                  filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                  w={{base: '100%', md: 'unset'}}
-                  aria-label="Search"
-                  fontWeight={'bold'}
-                  icon={<FiSearch />}
-                  onClick={toggleMobileMenu}
-                />
-              </Tooltip>
               <IconButton
+                ml={4}
                 icon={
                   <HamburgerMenuIcon
                     handleClick={toggleMobileMenu}
@@ -265,18 +264,31 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
         w="100%"
         overflow="hidden"
         style={{clip: 'rect(0, auto, auto, 0)'}}>
-        <Container maxW="8xl">
+        <Container maxW="8xl" pointerEvents="auto">
           <HStack
             px={{base: '4', md: '8'}}
             py={{base: '2', md: '4'}}
             justifyContent="space-between"
             alignItems="center">
-            <Link href="/" aria-label="Home">
-              <Logo height="75px" color="white" />
-            </Link>
+            <LinkBox flex="1" mr="4" display="flex" alignItems="center">
+              <LinkOverlay href="/" color="white">
+                <Logo height="100%" color="white" />
+              </LinkOverlay>
+            </LinkBox>
             <Flex alignItems="center">
+              <SearchMenu
+                borderColor={"white"}
+                boxSizing={"border-box"}
+                borderWidth={2}
+                _hover={{
+                  borderColor: 'brand.500'
+                }}
+              />
               <Button
-                mr={4}
+                ml={4}
+                _hover={{
+                  bg: 'brand.500'
+                }}
                 borderRadius={'full'}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 //variant="ghost"
@@ -285,26 +297,14 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 fontWeight="semibold"
                 bg="white"
                 color="black"
-                display={{base: 'none', md: 'block'}}
-                _hover={{bg: 'gray.200'}}
-                >
+                display={{base: 'none', md: 'block'}}>
                 Contact us
               </Button>
-              <Tooltip label="Artikel-Suche">
-                <IconButton
-                  mr={4}
-                  borderRadius={'full'}
-                  filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                  w={{base: '100%', md: 'unset'}}
-                  aria-label="Search"
-                  fontWeight={'bold'}
-                  bg="white"
-                  color="black"
-                  icon={<FiSearch />}
-                  onClick={toggleMobileMenu}
-                />
-              </Tooltip>
               <IconButton
+                ml={4}
+                _hover={{
+                  bg: 'brand.500'
+                }}
                 icon={
                   <HamburgerMenuIcon
                     // handleClick={toggleMobileMenu}
@@ -325,7 +325,6 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 onClick={toggleMobileMenu}
                 bg={'white'}
                 color={'black'}
-                _hover={{bg: 'gray.800'}}
               />
             </Flex>
           </HStack>
