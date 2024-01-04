@@ -43,7 +43,6 @@ const SearchButton: FC<ISearchButtonProps> = ({openModal, navigate, ...props}) =
       <IconButton
         borderRadius={'full'}
         filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-        w={{base: '100%', md: 'unset'}}
         aria-label="Search"
         fontWeight={'bold'}
         icon={<SearchIcon />}
@@ -70,7 +69,7 @@ const SearchButton: FC<ISearchButtonProps> = ({openModal, navigate, ...props}) =
         minH="9"
         variant="outline"
         //bgColor="blackAlpha.50"
-        // color="topNav.input.color"
+        //color="topNav.input.color"
         borderWidth="1px"
         borderStyle="solid"
         borderColor={'brand.500'}
