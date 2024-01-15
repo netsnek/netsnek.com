@@ -114,7 +114,7 @@ const AppLayout: FC<AppLayoutProps> = ({
           direction="column"
           pb={5}>
           {!isAuthenticated && <Navigation path="/" />}
-          <Box flex="1">{childrenElmnt}</Box>
+          {childrenElmnt}
         </Flex>
       </MenuContext.Provider>
       <FooterComp />

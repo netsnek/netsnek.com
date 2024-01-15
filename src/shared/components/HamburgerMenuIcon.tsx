@@ -34,7 +34,7 @@ const HamburgerMenuIcon: FC<IHamburgerMenuIconProps> = ({
       },
       '& > div': {
         transition:
-          'transform 0.2s ease-in-out, opacity 0.2s ease-in-out, top 0.2s ease-in-out, background-color 0.2s ease-in-out'
+          'transform 0.2s cubic-bezier(0.68, 0, 0.27, 1), opacity 0.2s cubic-bezier(0.68, 0, 0.27, 1), top 0.2s cubic-bezier(0.68, 0, 0.27, 1), background-color 0.2s cubic-bezier(0.68, 0, 0.27, 1)'
       },
       ...wrapperProps?.__css
     },

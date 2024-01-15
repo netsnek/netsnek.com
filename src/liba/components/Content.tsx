@@ -27,6 +27,9 @@ import {
   TestimonialHeading,
   TestimonialText
 } from './Testimonials'
+import University_Vienna from '../../gatsby-plugin-jaen/components/University_Vienna'
+import Ballons_Ballons from '../../gatsby-plugin-jaen/components/Ballons_Ballons'
+import Kanbon from '../../gatsby-plugin-jaen/components/Kanbon'
 
 interface Props {
   children: React.ReactNode
@@ -95,10 +98,10 @@ const ContentSection = () => {
         //backgroundBlendMode="screen"
         pb={24}
         mb="128"
-        borderWidth="1px"
-        borderStyle="dashed"
-        borderColor={useColorModeValue('brand.500', 'brand.200')}
-        >
+        // borderWidth="1px"
+        // borderStyle="dashed"
+        // borderColor={useColorModeValue('brand.500', 'brand.200')}
+      >
         {/* <Container
           //minH={"calc(100vh - 60px)"}
           maxW="4xl"
@@ -116,8 +119,33 @@ const ContentSection = () => {
           />
           <WebampPlayer />
         </Container> */}
+        {/* <HStack h="100px" w="100%" spacing={12}>
+          <University_Vienna />
+          <Ballons_Ballons />
+          <Kanbon />
+        </HStack> */}
         <Container maxW={'4xl'} pt={0} as={Stack} spacing={12}>
           <Stack spacing={0}>
+            <Field.Text
+              mt={{base: '20 !important', md: '0'}}
+              mb="8"
+              as={Heading}
+              fontSize={{base: '4xl', lg: '5xl'}}
+              lineHeight={1}
+              fontWeight="bold"
+              textAlign="left"
+              name="ContentSectionHeadingServices"
+              defaultValue="Services"
+            />
+            <Field.Text
+              fontSize="1.2rem"
+              color="gray.500"
+              name="ContentSectionTextServices"
+              defaultValue="Mit diesen Services unterstützen wir dein Unternehmen im digitalen Zeitalter."
+            />
+            
+          </Stack>
+          {/* <Stack spacing={0}>
             <Field.Text
               mt={{base: '20 !important', md: '0'}}
               mb="8"
@@ -136,7 +164,7 @@ const ContentSection = () => {
               defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
             />
           </Stack>
-          <Gallery />
+          <Gallery /> */}
           <Container maxW={'4xl'} pb={16} as={Stack} spacing={12}>
             <Stack spacing={0}>
               <Field.Text
@@ -211,7 +239,7 @@ const ContentSection = () => {
               defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
             />
           </Stack>
-          <Wrap justify="center" mt={10} spacing={10} shouldWrapChildren>
+          {/* <Wrap justify="center" mt={10} spacing={10} shouldWrapChildren>
             {testamonialsDefaults.map((testimonial, index) => (
               <Testimonial>
                 <TestimonialContent>
@@ -237,7 +265,7 @@ const ContentSection = () => {
                 />
               </Testimonial>
             ))}
-          </Wrap>
+          </Wrap> */}
         </Container>
       </Container>
     </Box>

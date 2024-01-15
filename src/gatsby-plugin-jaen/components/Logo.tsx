@@ -27,7 +27,7 @@ export const Logo = (props: any) => {
           id="Selection"
           fill="currentColor"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           d="M 2107.00,91.00
            C 2107.00,91.00 2182.00,91.00 2182.00,91.00
              2182.00,91.00 2182.00,301.00 2182.00,301.00
@@ -241,7 +241,7 @@ export const Logo = (props: any) => {
           id="Path #4"
           fill="currentColor"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           d="M 691.00,531.85
            C 690.19,531.85 689.49,531.57 688.93,531.00
              688.36,530.43 688.08,529.74 688.08,528.91
@@ -888,7 +888,7 @@ export const Logo = (props: any) => {
           id="Path #3"
           fill="#f77f00"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           d="M 1873.85,531.85
            C 1873.02,531.85 1872.32,531.57 1871.75,531.00
              1871.19,530.43 1870.91,529.74 1870.91,528.91
@@ -907,7 +907,7 @@ export const Logo = (props: any) => {
           id="Imported Path #8"
           fill="currentColor"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           d="M 116.12,441.41
            C 124.02,444.27 128.31,448.81 132.85,452.70
              171.23,484.37 215.05,503.20 264.98,504.24
@@ -931,7 +931,7 @@ export const Logo = (props: any) => {
           id="Imported Path #5"
           fill="#f77f00"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           d="M 420.26,360.28
            C 420.26,360.28 255.77,360.79 255.77,360.79
              255.77,360.79 277.70,418.18 277.70,418.18
@@ -944,7 +944,7 @@ export const Logo = (props: any) => {
           id="Imported Path #6"
           fill="#f77f00"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           d="M 139.12,266.90
            C 139.12,266.90 303.76,266.38 303.76,266.38
              303.76,266.38 281.70,208.98 281.70,208.98
