@@ -1,6 +1,5 @@
-import React from 'react'
-
-import {Box, chakra} from '@chakra-ui/react'
+import React from 'react';
+import { Box, chakra } from '@chakra-ui/react';
 
 export const Logo = (props: any) => {
   return (
@@ -13,16 +12,17 @@ export const Logo = (props: any) => {
         '.squarel': {
           fillRule: 'evenodd',
           clipRule: 'evenodd',
-          fill: 'transparent'
+          fill: 'transparent',
         },
         '.snek': {
-          fill: 'currentColor'
+          fill: 'currentColor',
         },
         '.arrows': {
-          fill: 'currentColor'
-        }
+          fill: 'currentColor',
+        },
       }}
-      {...props}>
+      {...props}
+    >
       <style>{`
       @keyframes draw {
         100% {
@@ -32,7 +32,7 @@ export const Logo = (props: any) => {
 
       @keyframes erase {
         100% {
-          display: none;
+          stroke: none;
         }
       }
 
@@ -84,6 +84,12 @@ export const Logo = (props: any) => {
         }
       }
 
+      @keyframes fill-snek {
+        to {
+          fill: #fff;
+        }
+      }
+
       .rect, .circles, .heart {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
@@ -117,16 +123,17 @@ export const Logo = (props: any) => {
 
       #heart {
         animation: draw 2s ease 5s forwards, /* Drawing animation with delay */
-		               fill-heart 1s ease 6s forwards, /* Fill animation */
+		               fill-heart 0s ease 6s forwards, /* Fill animation */
                    heartbeat 1s infinite 9s; /* Heartbeat animation */
         strokeWidth: 2;
         fill: none; /* No fill initially */
         transform-origin: center; /* Ensure heartbeat is around the center */
       }
 
-      #snek-clippath {
+      #snek-mask path {
         transform-origin: center;
         transform: rotate(-148deg);
+        animation: fill-snek 0s ease 7s forwards; /* Fill animation */
       }
 
       #heading1 {
@@ -180,12 +187,13 @@ export const Logo = (props: any) => {
       }
     `}</style>
       <defs>
-        <clipPath id="snek-clippath">
+        <mask id="snek-mask">
+          <rect width="100%" height="100%" fill="black" />
           <path
             d="M115.86,344.56c6.1,2.2,9.35,5.73,12.93,8.68,29.63,24.4,63.36,38.86,101.89,39.72,72.77,1.62,136.15-46.28,149.93-117.76,11.6-60.18-8.13-110.08-58.01-145.77-60.09-43-143.55-29.92-188.04,28.61-29.27,38.49-35.75,81.5-20.35,127.42,3.64,10.86,3.8,20.71-3.64,29.86-6.32,7.78-14.72,10.83-24.49,9.49-11.02-1.51-18.46-7.87-22.08-18.33-5.33-15.38-8.86-31.26-9.76-47.48-3.3-59.34,15.71-110.45,59.67-150.7,39.74-36.38,87.24-52.94,141.3-47.5,80.46,8.11,144.15,64.58,159.81,142.92,19.36,96.85-40.61,189.02-136.89,206.98-60.2,11.24-113.35-5.11-154.42-53.03-2.13-2.49-3.83-5.35-5.62-8.12-.72-1.11-1.11-2.43-2.25-5.01h0Z"
-            fill="none"
+            fill="none" // Make the snake shape opaque in the mask
           />
-        </clipPath>
+        </mask>
         <clipPath className="heading-clippath" id="heading1-clippath">
           <text x="0" y="160px" fontSize="32px" fontWeight="bold">
             Ihre Idee
@@ -232,7 +240,7 @@ export const Logo = (props: any) => {
           />
         </clipPath>
         <mask id="hole">
-          <rect width="100%" height="100%" fill="white"/>
+          <rect width="100%" height="100%" fill="white" />
           <rect
             x="2px"
             y="250px"
@@ -268,16 +276,16 @@ export const Logo = (props: any) => {
             cy="238"
             r="160"
             fill="none"
-            stroke="black"
+            stroke="#1A202C"
             strokeWidth="54"
             strokeLinecap="round"
-            clipPath="url(#snek-clippath)"
+            mask="url(#snek-mask)"
           />
           <g className="heart-wrap">
             <rect
               id="rect"
               className="rect"
-              stroke="#111"
+              stroke="#1A202C"
               strokeWidth="1"
               fill="none"
               x="164"
@@ -288,7 +296,7 @@ export const Logo = (props: any) => {
             <circle
               id="circle1"
               className="circles"
-              stroke="#333"
+              stroke="#1A202C"
               strokeWidth="1"
               fill="none"
               cx="214"
@@ -298,7 +306,7 @@ export const Logo = (props: any) => {
             <circle
               id="circle2"
               className="circles"
-              stroke="#333"
+              stroke="#1A202C"
               strokeWidth="1"
               fill="none"
               cx="214"
@@ -334,7 +342,7 @@ export const Logo = (props: any) => {
           y1="0"
           x2="100%"
           y2="0"
-          stroke="black"
+          stroke="#1A202C"
           strokeWidth="100%"
           clipPath="url(#heading1-clippath)"
         />
@@ -344,7 +352,7 @@ export const Logo = (props: any) => {
           y1="0"
           x2="100%"
           y2="0"
-          stroke="black"
+          stroke="#1A202C"
           strokeWidth="100%"
           clipPath="url(#heading2-clippath)"
         />
@@ -403,7 +411,7 @@ export const Logo = (props: any) => {
         />
       </g>
     </chakra.svg>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;
