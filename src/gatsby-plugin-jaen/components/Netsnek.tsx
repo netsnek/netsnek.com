@@ -32,7 +32,7 @@ export const Logo = (props: any) => {
 
       @keyframes erase {
         100% {
-          stroke: none;
+          stroke: transparent;
         }
       }
 
@@ -126,7 +126,7 @@ export const Logo = (props: any) => {
 		               fill-heart 0s ease 6s forwards, /* Fill animation */
                    heartbeat 1s infinite 9s; /* Heartbeat animation */
         strokeWidth: 2;
-        fill: none; /* No fill initially */
+        fill: transparent; /* No fill initially */
         transform-origin: center; /* Ensure heartbeat is around the center */
       }
 
@@ -188,77 +188,30 @@ export const Logo = (props: any) => {
     `}</style>
       <defs>
         <mask id="snek-mask">
-          <rect width="100%" height="100%" fill="black" />
           <path
             d="M115.86,344.56c6.1,2.2,9.35,5.73,12.93,8.68,29.63,24.4,63.36,38.86,101.89,39.72,72.77,1.62,136.15-46.28,149.93-117.76,11.6-60.18-8.13-110.08-58.01-145.77-60.09-43-143.55-29.92-188.04,28.61-29.27,38.49-35.75,81.5-20.35,127.42,3.64,10.86,3.8,20.71-3.64,29.86-6.32,7.78-14.72,10.83-24.49,9.49-11.02-1.51-18.46-7.87-22.08-18.33-5.33-15.38-8.86-31.26-9.76-47.48-3.3-59.34,15.71-110.45,59.67-150.7,39.74-36.38,87.24-52.94,141.3-47.5,80.46,8.11,144.15,64.58,159.81,142.92,19.36,96.85-40.61,189.02-136.89,206.98-60.2,11.24-113.35-5.11-154.42-53.03-2.13-2.49-3.83-5.35-5.62-8.12-.72-1.11-1.11-2.43-2.25-5.01h0Z"
-            fill="none" // Make the snake shape opaque in the mask
+            fill="transparent" // Make the snake shape opaque in the mask
           />
         </mask>
-        <clipPath className="heading-clippath" id="heading1-clippath">
-          <text x="0" y="160px" fontSize="32px" fontWeight="bold">
-            Ihre Idee
-          </text>
-        </clipPath>
-        <clipPath className="heading-clippath" id="heading2-clippath">
-          <text x="0" y="190px" fontSize="24px" fontWeight="bold">
-            Unser Know-How
-          </text>
-        </clipPath>
-        <clipPath className="dots-clippath" id="dot1-clippath">
-          <text x="133px" y="160px" fontSize="32px" fontWeight="bold">
+        <mask id="heading1-mask">
+          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="white">Ihre Idee</text>
+        </mask>
+        <mask id="heading2-mask">
+          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="white">Unser Know-How</text>
+        </mask>
+        <mask className="dots-mask" id="dot1-mask">
+          <text x="133px" y="160px" fontSize="32px" fontWeight="bold" fill="white">
             .
           </text>
-        </clipPath>
-        <clipPath className="dots-clippath" id="dot2-clippath">
-          <text x="197px" y="190px" fontSize="24px" fontWeight="bold">
+        </mask>
+        <mask className="dots-mask" id="dot2-mask">
+          <text x="197px" y="190px" fontSize="24px" fontWeight="bold" fill="white">
             .
           </text>
-        </clipPath>
-        <clipPath className="dots-clippath" id="dot2-clippath">
-          <text x="197px" y="190px" fontSize="24px" fontWeight="bold">
-            .
-          </text>
-        </clipPath>
-        <clipPath className="button-clippath" id="button-clippath">
-          <rect
-            x="2px"
-            y="250px"
-            rx="10"
-            ry="10"
-            width="50"
-            height="20"
-            stroke="black"
-          />
-          <rect
-            x="60px"
-            y="250px"
-            rx="10"
-            ry="10"
-            width="50"
-            height="20"
-            stroke="black"
-          />
-        </clipPath>
-        <mask id="hole">
-          <rect width="100%" height="100%" fill="white" />
-          <rect
-            x="2px"
-            y="250px"
-            rx="10"
-            ry="10"
-            width="50"
-            height="20"
-            stroke="black"
-          />
-          <rect
-            x="50px"
-            y="250px"
-            rx="10"
-            ry="10"
-            width="48"
-            height="18"
-            fill="black"
-          />
+        </mask>
+        <mask id="button-mask">
+          <rect x="2" y="250" rx="10" ry="10" width="50" height="20" fill="white" />
+          <rect x="60" y="250" rx="10" ry="10" width="50" height="20" fill="white" />
         </mask>
       </defs>
       <g id="Ebene_1-2">
@@ -275,7 +228,7 @@ export const Logo = (props: any) => {
             cx="238"
             cy="238"
             r="160"
-            fill="none"
+            fill="transparent"
             stroke="#1A202C"
             strokeWidth="54"
             strokeLinecap="round"
@@ -287,7 +240,7 @@ export const Logo = (props: any) => {
               className="rect"
               stroke="#1A202C"
               strokeWidth="1"
-              fill="none"
+              fill="transparent"
               x="164"
               y="214"
               width="100"
@@ -298,7 +251,7 @@ export const Logo = (props: any) => {
               className="circles"
               stroke="#1A202C"
               strokeWidth="1"
-              fill="none"
+              fill="transparent"
               cx="214"
               cy="264"
               r="50"
@@ -308,7 +261,7 @@ export const Logo = (props: any) => {
               className="circles"
               stroke="#1A202C"
               strokeWidth="1"
-              fill="none"
+              fill="transparent"
               cx="214"
               cy="264"
               r="50"
@@ -317,7 +270,7 @@ export const Logo = (props: any) => {
               id="heart"
               className="heart"
               stroke="#f77f00"
-              fill="none"
+              fill="transparent"
               d="M 264.00,214.00
                C 291.61,214.00 314.00,236.39 314.00,264.00
                  314.00,291.61 291.61,314.00 264.00,314.00
@@ -336,46 +289,58 @@ export const Logo = (props: any) => {
             points="350.66 281.29 223.83 281.7 240.77 325.91 223 325.91 151.94 248.24 335.38 248.24 350.66 281.29"
           />
         </g>
-        <line
-          id="heading1"
-          x1="0"
-          y1="0"
-          x2="100%"
-          y2="0"
-          stroke="#1A202C"
-          strokeWidth="100%"
-          clipPath="url(#heading1-clippath)"
-        />
-        <line
-          id="heading2"
-          x1="0"
-          y1="0"
-          x2="100%"
-          y2="0"
-          stroke="#1A202C"
-          strokeWidth="100%"
-          clipPath="url(#heading2-clippath)"
-        />
-        <line
-          id="dot1"
-          x1="0"
-          y1="0"
-          x2="100%"
-          y2="0"
-          stroke="#f77f00"
-          strokeWidth="100%"
-          clipPath="url(#dot1-clippath)"
-        />
-        <line
-          id="dot2"
-          x1="0"
-          y1="0"
-          x2="100%"
-          y2="0"
-          stroke="#f77f00"
-          strokeWidth="100%"
-          clipPath="url(#dot2-clippath)"
-        />
+        <g mask="url(#heading1-mask)">
+          <rect
+            id="heading1"
+            x="-10%"
+            y="34%"
+            width="100%"
+            height="50%"
+            fill="none"
+            stroke="#1A202C"
+            strokeLinecap="round"
+            strokeWidth="10%"
+          />
+        </g>
+        <g mask="url(#heading2-mask)">
+        <rect
+            id="heading2"
+            x="-10%"
+            y="41%"
+            width="100%"
+            height="50%"
+            fill="none"
+            stroke="#1A202C"
+            strokeLinecap="round"
+            strokeWidth="10%"
+          />
+        </g>
+        <g mask="url(#dot1-mask)">
+          <rect
+            id="dot1"
+            x="-10%"
+            y="34%"
+            width="100%"
+            height="50%"
+            fill="none"
+            stroke="#f77f00"
+            strokeLinecap="round"
+            strokeWidth="10%"
+          />
+        </g>
+        <g mask="url(#dot2-mask)">
+          <rect
+            id="dot2"
+            x="-10%"
+            y="41%"
+            width="100%"
+            height="50%"
+            fill="none"
+            stroke="#f77f00"
+            strokeLinecap="round"
+            strokeWidth="10%"
+          />
+        </g>
         <line
           id="skeleton1"
           x1="4px"
@@ -398,17 +363,19 @@ export const Logo = (props: any) => {
           strokeLinecap="round"
           strokeWidth="8px"
         />
-        <line
-          id="button"
-          x1="0"
-          y1="100px"
-          x2="100%"
-          y2="100px"
-          stroke="#f77f00"
-          strokeWidth="100%"
-          clipPath="url(#button-clippath)"
-          //mask="url(#hole)"
-        />
+        <g mask="url(#button-mask)">
+          <rect
+            id="button"
+            x="-10%"
+            y="57%"
+            width="100%"
+            height="50%"
+            fill="none"
+            stroke="#f77f00"
+            strokeLinecap="round"
+            strokeWidth="10%"
+          />
+        </g>
       </g>
     </chakra.svg>
   );
