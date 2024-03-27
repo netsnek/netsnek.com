@@ -200,14 +200,10 @@ export const Logo = (props: any) => {
           <text x="0" y="190" fontSize="24" fontWeight="bold" fill="white">Unser Know-How</text>
         </mask>
         <mask className="dots-mask" id="dot1-mask">
-          <text x="133px" y="160px" fontSize="32px" fontWeight="bold" fill="white">
-            .
-          </text>
+          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="black">Ihre Idee<tspan fill="white">.</tspan></text>
         </mask>
         <mask className="dots-mask" id="dot2-mask">
-          <text x="197px" y="190px" fontSize="24px" fontWeight="bold" fill="white">
-            .
-          </text>
+          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="black">Unser Know-How<tspan fill="white">.</tspan></text>
         </mask>
         <mask id="button-mask">
           <rect x="2" y="250" rx="10" ry="10" width="50" height="20" fill="white" />
