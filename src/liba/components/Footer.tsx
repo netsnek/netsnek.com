@@ -90,12 +90,20 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'Facebook',
-        href: 'https://www.facebook.com/profile.php?id=61552973278627'
+        label: 'GitHub',
+        href: 'https://github.com/in/kleberbaum/'
+      },
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/kleberbaum/'
+      },
+      {
+        label: 'Telegram',
+        href: 'https://t.me/kleberbaum'
       },
       {
         label: 'Instagram',
-        href: 'https://www.instagram.com/barbara.mauz/'
+        href: 'https://www.instagram.com/kleberbaum/'
       },
       {
         label: 'Impressum',
@@ -108,8 +116,12 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'Lilli Mauz',
-        href: 'https://www.instagram.com/mauz.lilli/'
+        label: 'Kanbon',
+        href: 'https://kanbon.at'
+      },
+      {
+        label: 'Neurons',
+        href: 'https://neurons.at'
       }
     ],
     [
@@ -118,12 +130,12 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'Florian Kleber',
-        href: 'https://fhkit.at/'
+        label: 'Florian H. Kleber',
+        href: 'https://github.com/in/kleberbaum/'
       },
       {
-        label: 'Alexander Kleber',
-        href: 'https://www.instagram.com/alexkleber_/'
+        label: 'Nico Schett',
+        href: 'https://schett.net'
       }
     ]
   ]
