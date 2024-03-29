@@ -6,6 +6,7 @@ import {
   Divider,
   Flex,
   Grid,
+  GridItem,
   HStack,
   Heading,
   Icon,
@@ -40,45 +41,9 @@ import {FHKITIcon} from '../../gatsby-plugin-jaen/components/fhkit'
 import {LibaIcon} from '../../gatsby-plugin-jaen/components/liba'
 import {MyP5Icon} from '../../gatsby-plugin-jaen/components/p5'
 import {FaFacebook} from '@react-icons/all-files/fa/FaFacebook'
+import {ImportantArrow} from '../../gatsby-plugin-jaen/components/ImportantArrow'
 
-function ProjectsLinkGrid() {
-  // Sample list of your links and icons, assuming you will replace these with your actual data
-  const links = [
-    {href: 'https://facebook.com', icon: HBalloon},
-    {href: 'https://facebook.com', icon: AGTIcon},
-    {href: 'https://facebook.com', icon: LibaIcon},
-    {href: 'https://facebook.com', icon: FHKITIcon},
-    {href: 'https://facebook.com', icon: MyP5Icon},
-    {href: 'https://facebook.com', icon: WGIcon}
-  ]
 
-  return (
-    <Grid
-      templateColumns="repeat(3, 1fr)"
-      gap={10}
-      pb={{base: '16', lg: '0'}}
-      w={{base: 'full', lg: '50%'}}
-      maxW={{base: '500px', lg: 'full'}}
-      alignItems={'center'}>
-      {links.map((link, index) => (
-        <LinkBox
-          key={index}
-          w="auto"
-          h="auto"
-          color="white"
-          transition="color 0.2s"
-          _hover={{color: 'brand.500'}}>
-          <LinkOverlay href={link.href} isExternal>
-            <AspectRatio ratio={4 / 3}>
-              {/* Assuming you have a way to dynamically select your icon component */}
-              <link.icon w="full" h="full" />
-            </AspectRatio>
-          </LinkOverlay>
-        </LinkBox>
-      ))}
-    </Grid>
-  )
-}
 
 const Footer: FC = () => {
   const isAuthenticated = useAuthenticationContext().user !== null
@@ -171,100 +136,6 @@ const Footer: FC = () => {
 
   return (
     <>
-      <Container
-        maxW="5xl"
-        borderRadius="2xl"
-        borderTop="1px solid"
-        borderColor={useColorModeValue('brand.500', 'brand.200')}
-        mb={20}
-        position="relative"
-        //mt="-25px"
-        px={{base: 5, lg: 0}}
-        overflowX="hidden"
-        bgColor="black"
-        zIndex={0}>
-        {/* <Box
-          position="absolute"
-          top="-122px"
-          left="10%"
-          zIndex={0}
-          bgColor="pq.500"
-          boxSize="290px"
-          filter="blur(140px)"
-        />
-        <Box
-          position="absolute"
-          top="-122px"
-          right="10%"
-          zIndex={0}
-          bgColor="#b57edc"
-          boxSize="290px"
-          filter="blur(140px)"
-        /> */}
-        {/* <Box
-          position="relative"
-          // top={{ base: '-1.5rem', lg: 0 }}
-          left={{ base: '-1.6rem', lg: 0 }}
-          w={{ base: 'calc(100% + 3.2rem)', lg: 'full' }}
-          h="50px"
-          bgColor="pq.shared.section.bgColor"
-          borderBottomRadius="3xl"
-          // zIndex={1}
-        /> */}
-        <Flex
-          px={16}
-          color={'white'}
-          wrap={{base: 'wrap', lg: 'nowrap'}}
-          alignItems={'center'}
-          justifyContent={{base: 'center', lg: 'space-between'}}>
-          <VStack
-            alignItems={{base: 'center', lg: 'start'}}
-            py={16}
-            w={{base: 'full', lg: '50%'}}
-            textAlign={{base: 'center', lg: 'initial'}}>
-            <Field.Text
-              name="FooterTitleLine1"
-              defaultValue="Erzählen Sie uns<br>
-                von Ihrem Projekt<span style='color:var(--chakra-colors-brand-500)'>.</span>"
-              fontSize="4xl"
-              fontWeight="500"
-              w={{base: 'full', lg: 'fit-content'}}
-              display={{base: 'block', lg: 'initial'}}
-              mr={{base: 0, md: 3}}
-            />
-            <Field.Text
-              name="FooterTextNew"
-              defaultValue="Löwengasse 28 / Lokal 2A<br>
-                1030, Wien<br>
-                Österreich<br>
-                <br>
-                Tel: +43 676 4002330"
-              mt={10}
-              maxW={{base: 'full', lg: '50%'}}
-              fontSize="1.1rem"
-              textAlign={{base: 'center', lg: 'initial'}}
-            />
-            <ContactButton mt={10} inverted />
-          </VStack>
-          <ProjectsLinkGrid />
-          {/* <Box
-              w={{base: 'full', lg: 'fit-content'}}
-              textAlign={{base: 'center', lg: 'initial'}}
-              pl={"16"}
-              >
-              <Field.Text
-                name="FooterTitleLine2"
-                defaultValue="Oder lassen Sie sich vun unseren Kunden inspirieren<span style='color:var(--chakra-colors-brand-500)'>.</span>"
-                fontSize="2xl"
-                fontWeight="500"
-                w={{base: 'full', lg: 'fit-content'}}
-                display={{base: 'block', lg: 'initial'}}
-                
-                mr={{base: 0, md: 3}}
-              />
-            </Box> */}
-        </Flex>
-      </Container>
       <Box
         borderTopRadius="2xl"
         borderTop="1px solid"

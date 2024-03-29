@@ -44,7 +44,6 @@ export const ContactButton: React.ForwardRefRenderFunction<HTMLButtonElement, Co
       onClick={handleOnContactClick}
       fontSize="sm"
       fontWeight="semibold"
-      display={{ base: 'none', md: 'block' }}
       bg={!inverted ? "brand.500" : "white"} // Conditionally setting the background color
       color={!inverted ? "white" : "black"} // Conditionally setting the text color
       _hover={{
