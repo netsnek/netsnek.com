@@ -72,9 +72,11 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
       as={FadeIn}
       pos="relative"
       overflow="hidden"
-      height={isOpen ? '100vh' : {base: '12vh', md: '15vh'}}
+      height={isOpen ? 'calc(100vh - 10px)' : {base: '12vh', md: '15vh'}}
       minH={isOpen ? '600px' : '100px'}
-      transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)">
+      transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
+      borderBottomRadius={"2xl"}
+      >
       <Box
         pos="relative"
         bg="#0A0A0A"

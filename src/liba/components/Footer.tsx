@@ -1,9 +1,11 @@
 import {
+  AspectRatio,
   Box,
   Button,
   Container,
   Divider,
   Flex,
+  Grid,
   HStack,
   Heading,
   Icon,
@@ -12,6 +14,7 @@ import {
   Link,
   LinkBox,
   LinkOverlay,
+  SimpleGrid,
   Spacer,
   Stack,
   VStack,
@@ -30,14 +33,52 @@ import {
   Balloon,
   HBalloon
 } from '../../gatsby-plugin-jaen/components/Ballons_Ballons'
-import BallonSvg from './BallonSvg'
 import ContactButton from './ContactButton'
 import {AGTIcon} from '../../gatsby-plugin-jaen/components/agtguntrade'
 import {WGIcon} from '../../gatsby-plugin-jaen/components/wgstros'
 import {FHKITIcon} from '../../gatsby-plugin-jaen/components/fhkit'
 import {LibaIcon} from '../../gatsby-plugin-jaen/components/liba'
 import {MyP5Icon} from '../../gatsby-plugin-jaen/components/p5'
-import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook'
+import {FaFacebook} from '@react-icons/all-files/fa/FaFacebook'
+
+function ProjectsLinkGrid() {
+  // Sample list of your links and icons, assuming you will replace these with your actual data
+  const links = [
+    {href: 'https://facebook.com', icon: HBalloon},
+    {href: 'https://facebook.com', icon: AGTIcon},
+    {href: 'https://facebook.com', icon: LibaIcon},
+    {href: 'https://facebook.com', icon: FHKITIcon},
+    {href: 'https://facebook.com', icon: MyP5Icon},
+    {href: 'https://facebook.com', icon: WGIcon}
+  ]
+
+  return (
+    <Grid
+      templateColumns="repeat(3, 1fr)"
+      gap={10}
+      pb={{base: '16', lg: '0'}}
+      w={{base: 'full', lg: '50%'}}
+      maxW={{base: '500px', lg: 'full'}}
+      alignItems={'center'}>
+      {links.map((link, index) => (
+        <LinkBox
+          key={index}
+          w="auto"
+          h="auto"
+          color="white"
+          transition="color 0.2s"
+          _hover={{color: 'brand.500'}}>
+          <LinkOverlay href={link.href} isExternal>
+            <AspectRatio ratio={4 / 3}>
+              {/* Assuming you have a way to dynamically select your icon component */}
+              <link.icon w="full" h="full" />
+            </AspectRatio>
+          </LinkOverlay>
+        </LinkBox>
+      ))}
+    </Grid>
+  )
+}
 
 const Footer: FC = () => {
   const isAuthenticated = useAuthenticationContext().user !== null
@@ -119,7 +160,7 @@ const Footer: FC = () => {
   return (
     <>
       <Container
-        maxW="6xl"
+        maxW="5xl"
         borderRadius="2xl"
         borderTop="1px solid"
         borderColor={useColorModeValue('brand.500', 'brand.200')}
@@ -130,96 +171,6 @@ const Footer: FC = () => {
         overflowX="hidden"
         bgColor="black"
         zIndex={0}>
-        <LinkBox
-          pos="absolute"
-          top="10%"
-          right="10%"
-          w="auto"
-          h="20%"
-          color="white"
-          transition="color 0.2s"
-          _hover={{
-            color: 'brand.500'
-          }}>
-          <LinkOverlay href="https://facebook.com" isExternal>
-            <HBalloon w="full" h="full" />
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox
-          pos="absolute"
-          top="10%"
-          right="25%"
-          w="auto"
-          h="20%"
-          color="white"
-          transition="color 0.2s"
-          _hover={{
-            color: 'brand.500'
-          }}>
-          <LinkOverlay href="https://facebook.com" isExternal>
-            <AGTIcon w="full" h="full" />
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox
-          pos="absolute"
-          top="36%"
-          right="10%"
-          w="auto"
-          h="20%"
-          color="white"
-          transition="color 0.2s"
-          _hover={{
-            color: 'brand.500'
-          }}>
-          <LinkOverlay href="https://facebook.com" isExternal>
-            <LibaIcon w="full" h="full" />
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox
-          pos="absolute"
-          top="44%"
-          right="25%"
-          w="auto"
-          h="20%"
-          color="white"
-          transition="color 0.2s"
-          _hover={{
-            color: 'brand.500'
-          }}>
-          <LinkOverlay href="https://facebook.com" isExternal>
-            <FHKITIcon w="full" h="full" />
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox
-          pos="absolute"
-          top="35%"
-          right="40%"
-          w="auto"
-          h="20%"
-          color="white"
-          transition="color 0.2s"
-          _hover={{
-            color: 'brand.500'
-          }}>
-          <LinkOverlay href="https://facebook.com" isExternal>
-            <MyP5Icon w="full" h="full" />
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox
-          pos="absolute"
-          top="10%"
-          right="40%"
-          w="auto"
-          h="20%"
-          color="white"
-          transition="color 0.2s"
-          _hover={{
-            color: 'brand.500'
-          }}>
-          <LinkOverlay href="https://facebook.com" isExternal>
-            <WGIcon w="full" h="full" />
-          </LinkOverlay>
-        </LinkBox>
         {/* <Box
           position="absolute"
           top="-122px"
@@ -248,25 +199,43 @@ const Footer: FC = () => {
           borderBottomRadius="3xl"
           // zIndex={1}
         /> */}
-        <Box p={16} color="white">
-          <Flex
-            alignItems="flex-end"
-            wrap={{base: 'wrap', lg: 'nowrap'}}>
-            <Box
-              w={{base: 'full', lg: 'fit-content'}}
-              textAlign={{base: 'center', lg: 'initial'}}>
-              <Field.Text
-                name="FooterTitleLine1"
-                defaultValue="Erzählen Sie uns<br>
+        <Flex
+          px={16}
+          color={'white'}
+          wrap={{base: 'wrap', lg: 'nowrap'}}
+          alignItems={'center'}
+          justifyContent={{base: 'center', lg: 'space-between'}}>
+          <VStack
+            alignItems={{base: 'center', lg: 'start'}}
+            py={16}
+            w={{base: 'full', lg: '50%'}}
+            textAlign={{base: 'center', lg: 'initial'}}>
+            <Field.Text
+              name="FooterTitleLine1"
+              defaultValue="Erzählen Sie uns<br>
                 von Ihrem Projekt<span style='color:var(--chakra-colors-brand-500)'>.</span>"
-                fontSize="4xl"
-                fontWeight="500"
-                w={{base: 'full', lg: 'fit-content'}}
-                display={{base: 'block', lg: 'initial'}}
-                mr={{base: 0, md: 3}}
-              />
-            </Box>
-            {/* <Box
+              fontSize="4xl"
+              fontWeight="500"
+              w={{base: 'full', lg: 'fit-content'}}
+              display={{base: 'block', lg: 'initial'}}
+              mr={{base: 0, md: 3}}
+            />
+            <Field.Text
+              name="FooterTextNew"
+              defaultValue="Löwengasse 28 / Lokal 2A<br>
+                1030, Wien<br>
+                Österreich<br>
+                <br>
+                Tel: +43 676 4002330"
+              mt={10}
+              maxW={{base: 'full', lg: '50%'}}
+              fontSize="1.1rem"
+              textAlign={{base: 'center', lg: 'initial'}}
+            />
+            <ContactButton mt={10} inverted />
+          </VStack>
+          <ProjectsLinkGrid />
+          {/* <Box
               w={{base: 'full', lg: 'fit-content'}}
               textAlign={{base: 'center', lg: 'initial'}}
               pl={"16"}
@@ -282,21 +251,7 @@ const Footer: FC = () => {
                 mr={{base: 0, md: 3}}
               />
             </Box> */}
-          </Flex>
-          <Field.Text
-            name="FooterTextNew"
-            defaultValue="Löwengasse 28 / Lokal 2A<br>
-            1030, Wien<br>
-            Österreich<br>
-            <br>
-            Tel: +43 676 4002330"
-            mt={10}
-            maxW={{base: 'full', lg: '50%'}}
-            fontSize="1.1rem"
-            textAlign={{base: 'center', lg: 'initial'}}
-          />
-          <ContactButton mt={10} inverted />
-        </Box>
+        </Flex>
       </Container>
       <Box
         borderTopRadius="2xl"
@@ -381,51 +336,51 @@ const Footer: FC = () => {
             as={LinkBox}
             spacing="4"
             flexWrap={'wrap'}>
-              <LinkBox
-                mr="4"
-                display="flex"
-                transition="color 0.2s"
-                _hover={{
-                  color: 'brand.500'
-                }}>
-                <LinkOverlay href="https://facebook.com" isExternal>
-                  <Icon as={FaFacebook} boxSize="5" />
-                </LinkOverlay>
-              </LinkBox>
-              <LinkBox
-                mr="4"
-                display="flex"
-                transition="color 0.2s"
-                _hover={{
-                  color: 'brand.500'
-                }}>
-                <LinkOverlay href="https://instagram.com" isExternal>
-                  <Icon as={FaInstagram} boxSize="5" />
-                </LinkOverlay>
-              </LinkBox>
-              <LinkBox
-                mr="4"
-                display="flex"
-                transition="color 0.2s"
-                _hover={{
-                  color: 'brand.500'
-                }}>
-                <LinkOverlay href="https://twitter.com" isExternal>
-                  <Icon as={FaTwitter} boxSize="5" />
-                </LinkOverlay>
-              </LinkBox>
-              <LinkBox
-                mr="4"
-                display="flex"
-                transition="color 0.2s"
-                _hover={{
-                  color: 'brand.500'
-                }}>
-                <LinkOverlay href="https://github.com" isExternal>
-                  <Icon as={FaGithub} boxSize="5" />
-                </LinkOverlay>
-              </LinkBox>
-            </HStack>
+            <LinkBox
+              mr="4"
+              display="flex"
+              transition="color 0.2s"
+              _hover={{
+                color: 'brand.500'
+              }}>
+              <LinkOverlay href="https://facebook.com" isExternal>
+                <Icon as={FaFacebook} boxSize="5" />
+              </LinkOverlay>
+            </LinkBox>
+            <LinkBox
+              mr="4"
+              display="flex"
+              transition="color 0.2s"
+              _hover={{
+                color: 'brand.500'
+              }}>
+              <LinkOverlay href="https://instagram.com" isExternal>
+                <Icon as={FaInstagram} boxSize="5" />
+              </LinkOverlay>
+            </LinkBox>
+            <LinkBox
+              mr="4"
+              display="flex"
+              transition="color 0.2s"
+              _hover={{
+                color: 'brand.500'
+              }}>
+              <LinkOverlay href="https://twitter.com" isExternal>
+                <Icon as={FaTwitter} boxSize="5" />
+              </LinkOverlay>
+            </LinkBox>
+            <LinkBox
+              mr="4"
+              display="flex"
+              transition="color 0.2s"
+              _hover={{
+                color: 'brand.500'
+              }}>
+              <LinkOverlay href="https://github.com" isExternal>
+                <Icon as={FaGithub} boxSize="5" />
+              </LinkOverlay>
+            </LinkBox>
+          </HStack>
           <Divider mt={0} opacity={0.2} border="1px" />
           <Field.Text
             name="FooterBottomText"
