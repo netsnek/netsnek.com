@@ -1,4 +1,5 @@
 import {
+  Image,
   Avatar,
   Box,
   Button,
@@ -30,6 +31,8 @@ import {
 import University_Vienna from '../../gatsby-plugin-jaen/components/University_Vienna'
 import Ballons_Ballons from '../../gatsby-plugin-jaen/components/Ballons_Ballons'
 import Kanbon from '../../gatsby-plugin-jaen/components/Kanbon'
+import {StylizedImage} from './StylizedImage'
+import servicesSvg from '../../common/assets/services.svg'
 
 interface Props {
   children: React.ReactNode
@@ -78,6 +81,96 @@ const testamonialsDefaults = [
   }
 ]
 
+function Services() {
+  return (
+    <Box mt={{base: '24', sm: '32', lg: '40'}}>
+      <Box>
+        <Text fontSize="sm" fontWeight="medium">
+          Services
+        </Text>
+        <Heading as="h2" size="xl" mt="4">
+          Tailored solutions for your business needs
+        </Heading>
+        <Text mt="4">
+          Bei Netsnek bieten wir eine breite Palette von Dienstleistungen an,
+          die auf die individuellen Bedürfnisse unserer Kunden zugeschnitten
+          sind.
+        </Text>
+      </Box>
+      <Container maxW="container.xl" mt="16">
+        <Flex
+          direction={{base: 'column', lg: 'row'}}
+          align="center"
+          justify="end">
+          <Box flex="1" textAlign="center" pr={{lg: '12'}}>
+            {/* Please replace `servicesSvg` with the source of your image or adjust as needed */}
+            <StylizedImage
+              sx={{
+                filter:
+                  'hue-rotate(180deg) saturate(1.3) brightness(1.1) contrast(0.9)'
+              }}
+              src={servicesSvg}
+              boxSize={{base: '31rem', lg: '41rem'}}
+              m="auto"
+            />
+          </Box>
+          <Box
+            mt={{base: '16', lg: '0'}}
+            flex="1"
+            minW={{lg: '33rem'}}
+            pl={{lg: '4'}}>
+            {/* For each ListItem you can create a custom component or structure here */}
+            <Box mb="6">
+              <Heading as="h4" size="md">
+                UX-Konzeption
+              </Heading>
+              <Text mt="2">
+                Durch den Einsatz moderner UX-Methoden gestalten wir
+                benutzerfreundliche und intuitive Oberflächen.
+              </Text>
+            </Box>
+            <Box mb="6">
+              <Heading as="h4" size="md">
+                Web development
+              </Heading>
+              <Text mt="2">
+                Wir kreieren moderne Websites und Webanwendungen, die exakt auf
+                Ihre individuellen Bedürfnisse zugeschnitten sind.
+              </Text>
+            </Box>
+            <Box mb="6">
+              <Heading as="h4" size="md">
+                Backend development
+              </Heading>
+              <Text mt="2">
+                Unsere maßgeschneiderten Backend-Lösungen werden speziell auf
+                Ihre Anforderungen abgestimmt und basieren auf dem Framework{' '}
+                <Link href="/jaen" textDecoration="underline">
+                  Pylon
+                </Link>
+                .
+              </Text>
+            </Box>
+            <Box mb="6">
+              <Heading as="h4" size="md">
+                Content management
+              </Heading>
+              <Text mt="2">
+                Mit{' '}
+                <Link href="/jaen" textDecoration="underline">
+                  Jaen
+                </Link>{' '}
+                als Content-Management-System ermöglichen wir es Ihnen, Ihre
+                Website eigenständig zu verwalten.
+              </Text>
+            </Box>
+          </Box>
+        </Flex>
+      </Container>
+    </Box>
+  )
+}
+
 const ContentSection = () => {
   const contactModal = useContactModal()
   const onContactClick = () => {
@@ -124,149 +217,7 @@ const ContentSection = () => {
           <Ballons_Ballons />
           <Kanbon />
         </HStack> */}
-        <Container maxW={'4xl'} pt={0} as={Stack} spacing={12}>
-          <Stack spacing={0}>
-            <Field.Text
-              mt={{base: '20 !important', md: '0'}}
-              mb="8"
-              as={Heading}
-              fontSize={{base: '4xl', lg: '5xl'}}
-              lineHeight={1}
-              fontWeight="bold"
-              textAlign="left"
-              name="ContentSectionHeadingServices"
-              defaultValue="Services"
-            />
-            <Field.Text
-              fontSize="1.2rem"
-              color="gray.500"
-              name="ContentSectionTextServices"
-              defaultValue="Mit diesen Services unterstützen wir dein Unternehmen im digitalen Zeitalter."
-            />
-            
-          </Stack>
-          {/* <Stack spacing={0}>
-            <Field.Text
-              mt={{base: '20 !important', md: '0'}}
-              mb="8"
-              as={Heading}
-              fontSize={{base: '4xl', lg: '5xl'}}
-              lineHeight={1}
-              fontWeight="bold"
-              textAlign="left"
-              name="ContentSectionHeadingGallery"
-              defaultValue="Beratung vor Ort"
-            />
-            <Field.Text
-              fontSize="1.2rem"
-              color="gray.500"
-              name="ContentSectionTextGallery"
-              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
-            />
-          </Stack>
-          <Gallery /> */}
-          <Container maxW={'4xl'} pb={16} as={Stack} spacing={12}>
-            <Stack spacing={0}>
-              <Field.Text
-                mt={{base: '20 !important', md: '0'}}
-                mb="8"
-                as={Heading}
-                fontSize={{base: '4xl', lg: '5xl'}}
-                lineHeight={1}
-                fontWeight="bold"
-                textAlign="left"
-                name="ContentSectionHeadingNews"
-                defaultValue="Mein Blog"
-              />
-              <Field.Text
-                fontSize="1.2rem"
-                color="gray.500"
-                name="ContentSectionTextNews"
-                defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
-              />
-            </Stack>
-          </Container>
-          <NewsSlider showNewsTitle={true} />
-          <Stack spacing={0}>
-            <Field.Text
-              mt={{base: '20 !important', md: '0'}}
-              mb="8"
-              as={Heading}
-              fontSize={{base: '4xl', lg: '5xl'}}
-              lineHeight={1}
-              fontWeight="bold"
-              textAlign="left"
-              name="ContentSectionHeadingMap"
-              defaultValue="Beratung vor Ort"
-            />
-            <Field.Text
-              fontSize="1.2rem"
-              color="gray.500"
-              name="ContentSectionTextMap"
-              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
-            />
-          </Stack>
-          <Box
-            mb="8"
-            h="xl"
-            w="full"
-            borderRadius="xl"
-            overflow="hidden"
-            boxShadow="dark">
-            <GoogleMaps
-              objectFit="cover"
-              h="full"
-              w="100%"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2733.773688803737!2d14.533973499999995!3d46.74964430000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4770114ec881291b%3A0xc1c76f5632cd333e!2sSt.%20Johanner%20Str.%2010%2C%209371%20Br%C3%BCckl!5e0!3m2!1sen!2sat!4v1702039895770!5m2!1sen!2sat"
-            />
-          </Box>
-          <Stack spacing={0}>
-            <Field.Text
-              mt={{base: '20 !important', md: '0'}}
-              mb="8"
-              as={Heading}
-              fontSize={{base: '4xl', lg: '5xl'}}
-              lineHeight={1}
-              fontWeight="bold"
-              textAlign="left"
-              name="ContentSectionHeadingTeam"
-              defaultValue="Nicht nur essbar"
-            />
-            <Field.Text
-              fontSize="1.2rem"
-              color="gray.500"
-              name="ContentSectionTextTeam"
-              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
-            />
-          </Stack>
-          {/* <Wrap justify="center" mt={10} spacing={10} shouldWrapChildren>
-            {testamonialsDefaults.map((testimonial, index) => (
-              <Testimonial>
-                <TestimonialContent>
-                  <TestimonialHeading>
-                    <Field.Text
-                      name={`TestimonialHeading${index}`}
-                      defaultValue={testimonial.heading}
-                      color="pq.sections.aboutUs.testimonial.heading.color"
-                    />
-                  </TestimonialHeading>
-                  <TestimonialText>
-                    <Field.Text
-                      name={`TestimonialText${index}`}
-                      defaultValue={testimonial.text}
-                    />
-                  </TestimonialText>
-                </TestimonialContent>
-                <TestimonialAvatar
-                  src={testimonial.avatar.src}
-                  name={testimonial.avatar.name}
-                  title={testimonial.avatar.title}
-                  to={testimonial.avatar.to}
-                />
-              </Testimonial>
-            ))}
-          </Wrap> */}
-        </Container>
+        <Services />
       </Container>
     </Box>
   )

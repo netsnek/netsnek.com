@@ -10,11 +10,8 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <HeroSection />
+      <ContentSection/>
     </>
-    // <Box as="main">
-    //   <HeroSection />
-    //   {/* <ContentSection/> */}
-    // </Box>
   )
 }
 
