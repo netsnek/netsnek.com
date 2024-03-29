@@ -32,6 +32,7 @@ import HamburgerMenuIcon, {
   THamburgerMenuIconStylerProps
 } from '../../../shared/components/HamburgerMenuIcon'
 import SearchMenu from './SearchMenu'
+import { FadeIn } from '../FadeIn'
 
 interface IHeaderProps {
   path: string
@@ -68,7 +69,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
 
   return (
     <Box
-      as="header"
+      as={FadeIn}
       pos="relative"
       overflow="hidden"
       height={isOpen ? '100vh' : {base: '12vh', md: '15vh'}}

@@ -14,6 +14,7 @@ import {
 import {useContactModal} from '../services/contact'
 import Netsnek from '../../gatsby-plugin-jaen/components/Netsnek'
 import {useScrollSync} from '../hooks/useScrollSync'
+import { FadeIn } from './FadeIn';
 
 interface ScrollArrowsProps {
   isVisible: boolean;
@@ -75,7 +76,7 @@ const HeroSection = () => {
       gridTemplateRows={{base: 'auto 1fr auto', md: '1fr auto'}}
       pt={16}
       gap={{base: 8, md: 16}}>
-      <Box position="relative" gridArea="image">
+      <Box as={FadeIn} position="relative" gridArea="image">
         <AspectRatio ratio={4 / 3} w="full" h="auto">
           <Box position="relative" w="full" h="full">
             <Image
@@ -112,8 +113,7 @@ const HeroSection = () => {
           </Box>
         </AspectRatio>
       </Box>
-
-      <VStack spacing={4} align="left" gridArea="content">
+      <VStack as={FadeIn} spacing={4} align="left" gridArea="content">
         <Box>
           <Heading
             as="h3"
@@ -132,12 +132,12 @@ const HeroSection = () => {
             size={{base: 'xl', lg: '2xl'}}
             fontWeight="900"
             lineHeight="1.1em">
-            Professioneller Webauftritt für dein Unternehmen<chakra.span color="brand.500">.</chakra.span>
+            Professionelle Softwareentwicklung<chakra.span color="brand.500">.</chakra.span>
           </Heading>
         </Box>
         <Text fontSize={'lg'} opacity={.5}>
-          Ihr Entwickler in Österreich. Gemeinsam gestalten wir einen modernen,
-          stilvollen und effektiven Online-Auftritt für dein Unternehmen.
+          Ihr Entwickler in Österreich. 
+          Wir verhelfen Ihnen zu einer professionellen Webpräsenz und individuellen Softwarelösungen.
         </Text>
         <HStack spacing={4} mt={4}>
           <Button

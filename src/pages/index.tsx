@@ -8,10 +8,13 @@ import ContentSection from '../liba/components/Content'
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <Box as="main">
+    <>
       <HeroSection />
-      <ContentSection/>
-    </Box>
+    </>
+    // <Box as="main">
+    //   <HeroSection />
+    //   {/* <ContentSection/> */}
+    // </Box>
   )
 }
 
