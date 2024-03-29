@@ -137,7 +137,7 @@ const HeroSection = () => {
         </Box>
         <Text fontSize={'lg'} opacity={.5}>
           Ihr Entwickler in Österreich. 
-          Wir verhelfen Ihnen zu einer professionellen Webpräsenz und individuellen Softwarelösungen.
+          Wir verhelfen Ihnen zu individuellen Softwarelösungen und einer professionellen Webpräsenz.
         </Text>
         <HStack spacing={4} mt={4}>
           <Button
