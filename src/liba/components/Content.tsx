@@ -465,8 +465,8 @@ const ContentSection = () => {
         borderColor={useColorModeValue('brand.500', 'brand.200')}
         mb={20}
         position="relative"
-        //overflow="hidden"
         //mt="-25px"
+        overflow={{base: 'hidden', lg: 'visible'}}
         px={{base: 5, lg: 0}}
         bgColor="black"
         zIndex={0}>
@@ -499,7 +499,7 @@ const ContentSection = () => {
           // zIndex={1}
         /> */}
         <Flex
-          px={16}
+          px={{base: '8', lg: '16'}}
           color={'white'}
           wrap={{base: 'wrap', lg: 'nowrap'}}
           alignItems={'center'}
