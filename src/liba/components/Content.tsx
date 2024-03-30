@@ -17,7 +17,8 @@ import {
   GridItem,
   Grid,
   AspectRatio,
-  VStack
+  VStack,
+  chakra
 } from '@chakra-ui/react'
 import {useContactModal} from '../services/contact'
 import {Field} from '@atsnek/jaen'
@@ -46,6 +47,8 @@ import {LibaIcon} from '../../gatsby-plugin-jaen/components/liba'
 import {FHKITIcon} from '../../gatsby-plugin-jaen/components/fhkit'
 import {MyP5Icon} from '../../gatsby-plugin-jaen/components/p5'
 import {WGIcon} from '../../gatsby-plugin-jaen/components/wgstros'
+
+import {FadeIn} from './FadeIn'
 
 interface Props {
   children: React.ReactNode
@@ -127,6 +130,143 @@ function ProjectsLinkGrid() {
           <Field.Text
             name="FooterLinkAllProjects"
             defaultValue="Lassen Sie sich inspirieren"
+            fontSize="xl"
+            //fontWeight="500"
+          />
+        </Link>
+      </GridItem>
+    </Grid>
+  )
+}
+
+function ClientsLinkGrid() {
+  // Sample list of your links and icons, assuming you will replace these with your actual data
+  const clients = [
+    {
+      href: 'https://www.agt-guntrade.at/',
+      name: 'AGT Gun Trade',
+      logo: '/images/clients/agt.svg'
+    },
+    {
+      href: 'https://www.univie.ac.at/',
+      name: 'Universität Wien',
+      logo: '/images/clients/univie.svg'
+    },
+    {
+      href: 'https://www.ballons-ballons.at/',
+      name: 'Ballons & Ballons',
+      logo: '/images/clients/ballons.svg'
+    },
+    {
+      href: 'https://kanbon.at/',
+      name: 'Kanbon',
+      logo: '/images/clients/kanbon.svg'
+    },
+    {
+      href: 'https://www.pharmaziegasse.at/',
+      name: 'Pharmaziegasse',
+      logo: '/images/clients/pharmaziegasse.png'
+    },
+    {
+      href: 'https://www.andenkenschenken.at/',
+      name: 'Andenken Schenken',
+      logo: '/images/clients/andenken-schenken.png'
+    },
+    {
+      href: 'https://www.citypension.at/',
+      name: 'City Pension',
+      logo: '/images/clients/citypension.png'
+    }
+  ]
+
+  return (
+    <Grid
+      templateColumns="repeat(7, 1fr)"
+      gap={10}
+      p="16"
+      w="full"
+      maxW="full"
+      color="white"
+      alignItems={'center'}>
+      <GridItem
+        mb={4}
+        pos="relative"
+        display="flex"
+        colSpan={7}
+        flexDir={'column'}
+        justifyContent={'center'}
+        alignItems={'center'}>
+        {/* <ImportantArrow pos="absolute" top="-150%" right="-10%" h="300%" /> */}
+        <LinkBox
+          w="25%"
+          h="auto"
+          bg="white"
+          p={2}
+          borderRadius="2xl"
+          overflow="hidden"
+          transition="bg 0.2s"
+          _hover={{bg: 'brand.500'}}>
+          <LinkOverlay
+            href={'https://www.wko.at/oe/aussenwirtschaft'}
+            isExternal>
+            <AspectRatio ratio={4 / 3}>
+              {/* Assuming you have a way to dynamically select your icon component */}
+              <Image
+                src={'/images/austria-a-aussenwirtschaft-austria.png'}
+                alt={'Austria'}
+                w="full"
+                h="full"
+                objectFit="contain !important"
+              />
+            </AspectRatio>
+          </LinkOverlay>
+        </LinkBox>
+        <Heading
+          as="h2"
+          size="xl"
+          mt={4}
+          textAlign="center"
+          fontWeight="500">
+          Ihre Softwareagentur in Österreich<chakra.span color="brand.500">.</chakra.span>
+        </Heading>
+      </GridItem>
+      {clients.map((client, index) => (
+        <LinkBox
+          key={index}
+          w="auto"
+          h="auto"
+          bg="white"
+          p={2}
+          borderRadius="2xl"
+          overflow="hidden"
+          transition="bg 0.2s"
+          _hover={{bg: 'brand.500'}}>
+          <LinkOverlay href={client.href} isExternal>
+            <AspectRatio ratio={4 / 3}>
+              {/* Assuming you have a way to dynamically select your icon component */}
+              <Image
+                src={client.logo}
+                alt={client.name}
+                w="full"
+                h="full"
+                objectFit="contain !important"
+              />
+            </AspectRatio>
+          </LinkOverlay>
+        </LinkBox>
+      ))}
+      {/* Den Wrapper um den Link mit GridItem oder einer ähnlichen Komponente und setze colSpan auf 3 */}
+      <GridItem colSpan={7}>
+        <Link
+          href="/projects"
+          variant="hover-theme"
+          //textDecor={"underline"}
+          opacity={0.7}
+          w="100%"
+          textAlign="center">
+          <Field.Text
+            name="FooterLinkAllCustomers"
+            defaultValue="Sie sind in guter Gesellschaft"
             fontSize="xl"
             //fontWeight="500"
           />
@@ -279,6 +419,22 @@ const ContentSection = () => {
 
   return (
     <Box>
+      <Container
+        maxW="8xl"
+        borderRadius="2xl"
+        borderTop="1px solid"
+        borderColor={useColorModeValue('brand.500', 'brand.200')}
+        mb={{base: '0', lg: '16'}}
+        position="relative"
+        //mt="-25px"
+        overflow={{base: 'hidden', lg: 'visible'}}
+        px={{base: 5, lg: 0}}
+        bgColor="black"
+        zIndex={0}>
+        <Box w="full">
+          <ClientsLinkGrid />
+        </Box>
+      </Container>
       <Container
         maxW="6xl"
         borderRadius="2xl"
