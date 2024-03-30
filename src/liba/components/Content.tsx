@@ -126,7 +126,7 @@ function ProjectsLinkGrid() {
           textAlign="end">
           <Field.Text
             name="FooterLinkAllProjects"
-            defaultValue="Oder lassen Sie sich inspirieren"
+            defaultValue="Lassen Sie sich inspirieren"
             fontSize="xl"
             //fontWeight="500"
           />
