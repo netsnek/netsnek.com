@@ -33,17 +33,19 @@ import {
   TestimonialText
 } from './Testimonials'
 import University_Vienna from '../../gatsby-plugin-jaen/components/University_Vienna'
-import Ballons_Ballons, { HBalloon } from '../../gatsby-plugin-jaen/components/Ballons_Ballons'
+import Ballons_Ballons, {
+  HBalloon
+} from '../../gatsby-plugin-jaen/components/Ballons_Ballons'
 import Kanbon from '../../gatsby-plugin-jaen/components/Kanbon'
 import {StylizedImage} from './StylizedImage'
 import servicesSvg from '../../common/assets/services.svg'
 import ContactButton from './ContactButton'
-import { ImportantArrow } from '../../gatsby-plugin-jaen/components/ImportantArrow'
-import { AGTIcon } from '../../gatsby-plugin-jaen/components/agtguntrade'
-import { LibaIcon } from '../../gatsby-plugin-jaen/components/liba'
-import { FHKITIcon } from '../../gatsby-plugin-jaen/components/fhkit'
-import { MyP5Icon } from '../../gatsby-plugin-jaen/components/p5'
-import { WGIcon } from '../../gatsby-plugin-jaen/components/wgstros'
+import {ImportantArrow} from '../../gatsby-plugin-jaen/components/ImportantArrow'
+import {AGTIcon} from '../../gatsby-plugin-jaen/components/agtguntrade'
+import {LibaIcon} from '../../gatsby-plugin-jaen/components/liba'
+import {FHKITIcon} from '../../gatsby-plugin-jaen/components/fhkit'
+import {MyP5Icon} from '../../gatsby-plugin-jaen/components/p5'
+import {WGIcon} from '../../gatsby-plugin-jaen/components/wgstros'
 
 interface Props {
   children: React.ReactNode
@@ -75,8 +77,26 @@ function ProjectsLinkGrid() {
         colSpan={3}
         justifyContent={'center'}
         alignItems={'center'}>
-        <ImportantArrow pos="absolute" top="-150%" right="-10%" h="300%"/>
-        <ContactButton size={'lg'} mt={10} inverted />
+        {/* <ImportantArrow pos="absolute" top="-150%" right="-10%" h="300%" /> */}
+        <ContactButton
+          pos="relative"
+          _before={{
+            zIndex: '-1',
+            top: '-150px',
+            left: '-45px',
+            pos: 'absolute',
+            content: `""`,
+            h: '500px',
+            maxW: '325px',
+            w: '100vw',
+            bgImage: '/images/importantarrow.svg',
+            bgSize: '100%,contain',
+            bgRepeat: 'no-repeat'
+          }}
+          size={'lg'}
+          mt={10}
+          inverted
+        />
       </GridItem>
       {links.map((link, index) => (
         <LinkBox
@@ -445,6 +465,7 @@ const ContentSection = () => {
         borderColor={useColorModeValue('brand.500', 'brand.200')}
         mb={20}
         position="relative"
+        //overflow="hidden"
         //mt="-25px"
         px={{base: 5, lg: 0}}
         bgColor="black"
@@ -486,8 +507,8 @@ const ContentSection = () => {
           <VStack
             alignItems={{base: 'center', lg: 'start'}}
             py={16}
-            w={{base: 'full', lg: '50%'}}
-            textAlign={{base: 'center', lg: 'initial'}}>
+            //textAlign={{base: 'center', lg: 'initial'}}
+            w={{base: 'full', lg: '50%'}}>
             <Field.Text
               name="FooterTitleLine1"
               defaultValue="Erzählen Sie uns<br>
@@ -513,7 +534,7 @@ const ContentSection = () => {
               mt={10}
               maxW={{base: 'full', lg: '50%'}}
               fontSize="1.1rem"
-              textAlign={{base: 'center', lg: 'initial'}}
+              // textAlign={{base: 'center', lg: 'initial'}}
             />
           </VStack>
           <ProjectsLinkGrid />
