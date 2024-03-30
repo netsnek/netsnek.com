@@ -123,7 +123,7 @@ const HeroSection = () => {
             textTransform="uppercase"
             lineHeight="1.5em"
             letterSpacing="4.2px">
-            STILVOLL<chakra.span color="brand.500">.</chakra.span> WIRKSAM<chakra.span color="brand.500">.</chakra.span>
+            INNOVATIV<chakra.span color="brand.500">.</chakra.span> EFFEKTIV<chakra.span color="brand.500">.</chakra.span>
           </Heading>
         </Box>
         <Box>
