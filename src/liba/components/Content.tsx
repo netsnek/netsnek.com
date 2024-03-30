@@ -499,7 +499,7 @@ const ContentSection = () => {
           // zIndex={1}
         /> */}
         <Flex
-          px={{base: '8', lg: '16'}}
+          px={{base: '4', lg: '16'}}
           color={'white'}
           wrap={{base: 'wrap', lg: 'nowrap'}}
           alignItems={'center'}
@@ -513,11 +513,11 @@ const ContentSection = () => {
               name="FooterTitleLine1"
               defaultValue="Erzählen Sie uns<br>
                 von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>"
-              fontSize="4xl"
+              fontSize={{base: '3xl', lg: '4xl'}}
               fontWeight="500"
               w={{base: 'full', lg: 'fit-content'}}
               display={{base: 'block', lg: 'initial'}}
-              mr={{base: 0, md: 3}}
+              //mr={{base: 0, md: 3}}
             />
             <Field.Text
               name="FooterTextNew"
@@ -532,6 +532,7 @@ const ContentSection = () => {
               1030, Wien<br>
               Österreich'
               mt={10}
+              w="full"
               maxW={{base: 'full', lg: '50%'}}
               fontSize="1.1rem"
               // textAlign={{base: 'center', lg: 'initial'}}
