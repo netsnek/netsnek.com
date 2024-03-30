@@ -386,39 +386,6 @@ const ContentSection = () => {
               lineHeight={1}
               fontWeight="bold"
               textAlign="left"
-              name="ContentSectionHeadingMap"
-              defaultValue="Beratung vor Ort"
-            />
-            <Field.Text
-              fontSize="1.2rem"
-              color="gray.500"
-              name="ContentSectionTextMap"
-              defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
-            />
-          </Stack>
-          <Box
-            mb="8"
-            h="xl"
-            w="full"
-            borderRadius="xl"
-            overflow="hidden"
-            boxShadow="dark">
-            <GoogleMaps
-              objectFit="cover"
-              h="full"
-              w="100%"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2733.773688803737!2d14.533973499999995!3d46.74964430000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4770114ec881291b%3A0xc1c76f5632cd333e!2sSt.%20Johanner%20Str.%2010%2C%209371%20Br%C3%BCckl!5e0!3m2!1sen!2sat!4v1702039895770!5m2!1sen!2sat"
-            />
-          </Box>
-          <Stack spacing={0}>
-            <Field.Text
-              mt={{base: '20 !important', md: '0'}}
-              mb="8"
-              as={Heading}
-              fontSize={{base: '4xl', lg: '5xl'}}
-              lineHeight={1}
-              fontWeight="bold"
-              textAlign="left"
               name="ContentSectionHeadingTeam"
               defaultValue="Nicht nur essbar"
             />
@@ -464,7 +431,7 @@ const ContentSection = () => {
         borderRadius="2xl"
         borderTop="1px solid"
         borderColor={useColorModeValue('brand.500', 'brand.200')}
-        mb={20}
+        mb={4}
         position="relative"
         //mt="-25px"
         overflow={{base: 'hidden', lg: 'visible'}}
@@ -558,6 +525,12 @@ const ContentSection = () => {
             </Box> */}
         </Flex>
       </Container>
+      <GoogleMaps
+        objectFit="cover"
+        h="full"
+        w="100%"
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d995.97587950944!2d16.392940417133016!3d48.20781426146578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDjCsDEyJzI3LjUiTiAxNsKwMjMnMzUuOCJF!5e0!3m2!1sen!2sat!4v1711776420986!5m2!1sen!2sat"
+      />
     </Box>
   )
 }
