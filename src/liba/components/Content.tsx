@@ -82,6 +82,7 @@ function ProjectsLinkGrid() {
           pos="relative"
           _before={{
             zIndex: '-1',
+            pointerEvents: 'none',
             top: '-150px',
             left: '-45px',
             pos: 'absolute',
