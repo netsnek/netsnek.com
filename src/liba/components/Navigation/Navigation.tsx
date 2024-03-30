@@ -96,10 +96,10 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
           }} // Set the first row height to 15vh
           templateColumns={{base: '1fr', md: '1fr 1fr'}}
           templateAreas={{
-            base: `"empty" "work" "about" "process" "blog" "offices" "social"`,
+            base: `"empty" "work" "services" "team" "blog" "offices" "social"`,
             md: `"empty empty"
-                       "work about"
-                       "process blog"
+                       "work services"
+                       "team blog"
                        "offices social"`
           }}
           //gap={4}
@@ -126,10 +126,10 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             _hover={{
               color: 'brand.500'
             }}>
-            <LinkOverlay href="/work">Our Work</LinkOverlay>
+            <LinkOverlay href="/work">Unsere Projekte</LinkOverlay>
           </LinkBox>
           <LinkBox
-            gridArea="about"
+            gridArea="services"
             display="flex"
             pl={{base: '8', md: '16'}}
             alignItems="center"
@@ -143,10 +143,10 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             _hover={{
               color: 'brand.500'
             }}>
-            <LinkOverlay href="/about">About Us</LinkOverlay>
+            <LinkOverlay href="/services">Services</LinkOverlay>
           </LinkBox>
           <LinkBox
-            gridArea="process"
+            gridArea="team"
             display="flex"
             pl={{base: '8', md: '16'}}
             alignItems="center"
@@ -159,7 +159,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             _hover={{
               color: 'brand.500'
             }}>
-            <LinkOverlay href="/process">Our Process</LinkOverlay>
+            <LinkOverlay href="/team">Unser Team</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="blog"
@@ -190,10 +190,10 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             borderColor={useColorModeValue('gray.900', 'gray.600')}>
             {/* Office information here */}
             <Text color="white" fontWeight="bold" fontSize="lg" pb="4">
-              Our offices
+              Im Herzen von Wien
             </Text>
             <Text color="white" fontSize="md">
-              Headquarter
+              Hauptquartier
             </Text>
             <Text color="gray.400" fontSize="md">
               Löwengasse 28
@@ -215,9 +215,9 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             borderColor={useColorModeValue('gray.900', 'gray.600')}>
             {/* Social media links here */}
             <Text color="white" fontWeight="bold" fontSize="lg">
-              Follow us
+              Folge uns auf
             </Text>
-            <HStack spacing="12">
+            <HStack spacing="8">
               <LinkBox
                 mr="4"
                 display="flex"
@@ -300,7 +300,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 fontWeight="semibold"
                 color="white"
                 display={{base: 'none', md: 'block'}}>
-                Contact us
+                Jetzt anfragen
               </Button>
               <Button
                 ml={4}
@@ -311,7 +311,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 fontWeight="semibold"
                 color="white"
                 display={{base: 'none', md: 'block'}}>
-                Sign In
+                Login
               </Button>
               <IconButton
                 ml={4}
@@ -386,7 +386,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 bg="white"
                 color="black"
                 display={{base: 'none', md: 'block'}}>
-                Contact us
+                Jetzt anfragen
               </Button>
               <Button
                 ml={4}
@@ -402,7 +402,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 bg="white"
                 color="black"
                 display={{base: 'none', md: 'block'}}>
-                Sign In
+                Login
               </Button>
               <IconButton
                 ml={4}
