@@ -112,8 +112,7 @@ const AppLayout: FC<AppLayoutProps> = ({
           as="main"
           minW="210px"
           h="max(100%, 100vh)"
-          minH="100vh"
-          pb={5}>
+          minH="100vh">
             <GridPattern
               position="absolute"
               insetX="0"

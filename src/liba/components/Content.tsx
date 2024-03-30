@@ -431,7 +431,7 @@ const ContentSection = () => {
         borderRadius="2xl"
         borderTop="1px solid"
         borderColor={useColorModeValue('brand.500', 'brand.200')}
-        mb={4}
+        mb={{base: '0', lg: '16'}}
         position="relative"
         //mt="-25px"
         overflow={{base: 'hidden', lg: 'visible'}}
