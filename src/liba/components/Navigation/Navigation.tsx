@@ -72,7 +72,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
       as={FadeIn}
       pos="relative"
       overflow="hidden"
-      height={isOpen ? 'calc(100vh - 5px)' : {base: '12vh', md: '15vh'}}
+      height={isOpen ? 'calc(100vh + 15px)' : {base: '12vh', md: '15vh'}}
       minH={isOpen ? '600px' : '100px'}
       transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
       borderBottomRadius={"2xl"}
@@ -82,14 +82,14 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
         bg="#0A0A0A"
         color="white"
         transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
-        height={isOpen ? 'max(600px, 100vh)' : '0'}
+        height={isOpen ? 'max(600px, calc(100vh + 15px))' : '0'}
         minH={isOpen ? 'fit-content' : '0'}
         width="100%"
         overflow="hidden">
         <Grid
           as={Container}
           maxW="8xl"
-          minH="max(600px, 100vh)"
+          minH="max(600px, calc(100vh + 15px))"
           templateRows={{
             base: 'auto repeat(7, 1fr)',
             md: 'auto repeat(3, 1fr)'
