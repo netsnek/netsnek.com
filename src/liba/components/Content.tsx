@@ -332,7 +332,7 @@ function Services() {
           Services
         </Text> */}
         <Heading as="h2" size="xl" mt="4">
-          Wir unterstützen <chakra.span color="brand.500">Ihr Unternehmen</chakra.span> im digitalen Zeitalter<chakra.span color="brand.500">.</chakra.span>
+          Wir unterstützen<br/><chakra.span color="brand.500">Ihr Unternehmen</chakra.span><br/>im digitalen Zeitalter<chakra.span color="brand.500">.</chakra.span>
         </Heading>
         {/* <Text mt="4">
           Bei Netsnek bieten wir eine breite Palette von Dienstleistungen an,
