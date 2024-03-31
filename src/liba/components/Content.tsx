@@ -49,6 +49,7 @@ import {MyP5Icon} from '../../gatsby-plugin-jaen/components/p5'
 import {WGIcon} from '../../gatsby-plugin-jaen/components/wgstros'
 
 import {FadeIn} from './FadeIn'
+import ClientsCarousel from './ClientsMarquee'
 
 interface Props {
   children: React.ReactNode
@@ -230,31 +231,7 @@ function ClientsLinkGrid() {
           Ihre Softwareagentur in Österreich<chakra.span color="brand.500">.</chakra.span>
         </Heading>
       </GridItem>
-      {clients.map((client, index) => (
-        <LinkBox
-          key={index}
-          w="auto"
-          h="auto"
-          bg="white"
-          p={2}
-          borderRadius="2xl"
-          overflow="hidden"
-          transition="bg 0.2s"
-          _hover={{bg: 'brand.500'}}>
-          <LinkOverlay href={client.href} isExternal>
-            <AspectRatio ratio={4 / 3}>
-              {/* Assuming you have a way to dynamically select your icon component */}
-              <Image
-                src={client.logo}
-                alt={client.name}
-                w="full"
-                h="full"
-                objectFit="contain !important"
-              />
-            </AspectRatio>
-          </LinkOverlay>
-        </LinkBox>
-      ))}
+
       {/* Den Wrapper um den Link mit GridItem oder einer ähnlichen Komponente und setze colSpan auf 3 */}
       <GridItem colSpan={7}>
         <Link
@@ -410,6 +387,44 @@ function Services() {
 }
 
 const ContentSection = () => {
+  const clients = [
+    {
+      href: 'https://www.agt-guntrade.at/',
+      name: 'AGT Gun Trade',
+      logo: '/images/clients/agt.svg'
+    },
+    {
+      href: 'https://www.univie.ac.at/',
+      name: 'Universität Wien',
+      logo: '/images/clients/univie.svg'
+    },
+    {
+      href: 'https://www.ballons-ballons.at/',
+      name: 'Ballons & Ballons',
+      logo: '/images/clients/ballons.svg'
+    },
+    {
+      href: 'https://kanbon.at/',
+      name: 'Kanbon',
+      logo: '/images/clients/kanbon.svg'
+    },
+    {
+      href: 'https://www.pharmaziegasse.at/',
+      name: 'Pharmaziegasse',
+      logo: '/images/clients/pharmaziegasse.svg'
+    },
+    {
+      href: 'https://www.andenkenschenken.at/',
+      name: 'Andenken Schenken',
+      logo: '/images/clients/andenken-schenken.png'
+    },
+    {
+      href: 'https://www.citypension.at/',
+      name: 'City Pension',
+      logo: '/images/clients/citypension.png'
+    }
+  ]
+
   const contactModal = useContactModal()
   const onContactClick = () => {
     contactModal.onOpen({
@@ -419,6 +434,7 @@ const ContentSection = () => {
 
   return (
     <Box>
+      <ClientsCarousel clients={clients} w="full" />
       <Container
         maxW="8xl"
         borderRadius="2xl"
