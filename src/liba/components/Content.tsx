@@ -646,7 +646,7 @@ const ContentSection = () => {
             </Stack>
           </Container>
           <NewsSlider showNewsTitle={true} />
-          <Stack spacing={0}>
+          {/* <Stack spacing={0}>
             <Field.Text
               mt={{base: '20 !important', md: '0'}}
               mb="8"
@@ -664,7 +664,7 @@ const ContentSection = () => {
               name="ContentSectionTextTeam"
               defaultValue="Ich biete branchenübergreifende Kundenberatung und -betreuung mit Unterstützung von Experten aus meinem umfassenden Netzwerk an. In Zusammenarbeit mit meinen Partnern gewährleisten wir ein breites Angebot an Dienstleistungen. Mein Ziel ist es, gemeinsam mit Ihnen alle Ihre technologischen Herausforderungen zu meistern."
             />
-          </Stack>
+          </Stack> */}
           {/* <Wrap justify="center" mt={10} spacing={10} shouldWrapChildren>
             {testamonialsDefaults.map((testimonial, index) => (
               <Testimonial>
