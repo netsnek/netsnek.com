@@ -218,7 +218,11 @@ function AssociatesLinkGrid() {
           </LinkOverlay>
         </LinkBox>
         <Heading as="h2" size="xl" mt={4} textAlign="center" fontWeight="500">
-          Ihre Softwareagentur in Österreich
+          {/* Software in Österreich */}
+          {/* Softwareentwicklung in Österreich */}
+          {/* Österreichische Qualitätssoftware */}
+          {/* Softwareentwicklung in Österreich */}
+          Wir entwickeln für Sie in Österreich
           <chakra.span color="brand.500">.</chakra.span>
         </Heading>
       </GridItem>
@@ -264,7 +268,10 @@ function AssociatesLinkGrid() {
           /> */}
           <Field.Text
             name="FooterLinkAllCustomers"
-            defaultValue="Werden Sie Teil unseres Netzwerks"
+            // defaultValue="Werden Sie Teil unseres Netzwerks"
+            // I need something that makes clear that these are not customers but partners
+            // And that they are Austrian
+            defaultValue="Experten aus unserem Netzwerk"
             fontSize="xl"
             //fontWeight="500"
           />
@@ -321,17 +328,17 @@ function Services() {
   return (
     <Box mt={{base: '24', sm: '32', lg: '40'}}>
       <Box>
-        <Text fontSize="sm" fontWeight="medium">
+        {/* <Text fontSize="sm" fontWeight="medium">
           Services
-        </Text>
+        </Text> */}
         <Heading as="h2" size="xl" mt="4">
-          Tailored solutions for your business needs
+          Wir unterstützen <chakra.span color="brand.500">Ihr Unternehmen</chakra.span> im digitalen Zeitalter<chakra.span color="brand.500">.</chakra.span>
         </Heading>
-        <Text mt="4">
+        {/* <Text mt="4">
           Bei Netsnek bieten wir eine breite Palette von Dienstleistungen an,
           die auf die individuellen Bedürfnisse unserer Kunden zugeschnitten
           sind.
-        </Text>
+        </Text> */}
       </Box>
       <Container maxW="container.xl" mt="16">
         <Flex
@@ -477,7 +484,7 @@ const ContentSection = () => {
           fontWeight="bold"
           textAlign="left"
           name="ContentSectionHeadingServices"
-          defaultValue="Wir liefern in Tagen,<br/>
+          defaultValue="Wir verwirklichen in Tagen,<br/>
           <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>"
         />
         <Grid templateColumns={{base: '1fr', lg: '1fr 1fr'}} gap={10}>
