@@ -473,7 +473,7 @@ const ContentSection = () => {
         //mt="-25px"
         overflow={{base: 'hidden', lg: 'visible'}}
         px={{base: 5, lg: 0}}
-        //bgColor="black"
+        //bgColor="#0A0A0A"
         zIndex={0}>
         <Field.Text
           mt={{base: '20 !important', md: '0'}}
@@ -555,7 +555,7 @@ const ContentSection = () => {
         //mt="-25px"
         overflow={{base: 'hidden', lg: 'visible'}}
         px={{base: 5, lg: 0}}
-        bgColor="black"
+        bgColor="#0A0A0A"
         zIndex={0}>
         <AssociatesLinkGrid />
       </Container>
@@ -705,7 +705,7 @@ const ContentSection = () => {
         //mt="-25px"
         overflow={{base: 'hidden', lg: 'visible'}}
         px={{base: 5, lg: 0}}
-        bgColor="black"
+        bgColor="#0A0A0A"
         zIndex={0}>
         {/* <Box
           position="absolute"

@@ -145,7 +145,7 @@ const Footer: FC = () => {
         //mt="-25px"
         px={{base: 5, lg: 0}}
         overflowX="hidden"
-        bgColor="black"
+        bgColor="#0A0A0A"
         zIndex={0}>
         <Container maxW="7xl" h="100%">
           <Flex mt={20} color="white" wrap={{base: 'wrap', sm: 'nowrap'}}>
