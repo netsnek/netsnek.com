@@ -422,11 +422,11 @@ const ContentSection = () => {
       name: 'Ballons & Ballons',
       logo: '/images/clients/ballons.svg'
     },
-    {
-      href: 'https://kanbon.at/',
-      name: 'Kanbon',
-      logo: '/images/clients/kanbon.svg'
-    },
+    // {
+    //   href: 'https://kanbon.at/',
+    //   name: 'Kanbon',
+    //   logo: '/images/clients/kanbon.svg'
+    // },
     {
       href: 'https://www.pharmaziegasse.at/',
       name: 'Pharmaziegasse',
