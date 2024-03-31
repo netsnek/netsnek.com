@@ -302,7 +302,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 display={{base: 'none', md: 'block'}}>
                 Jetzt anfragen
               </Button>
-              <Button
+              {/* <Button
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 borderRadius={'full'}
@@ -312,7 +312,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 color="white"
                 display={{base: 'none', md: 'block'}}>
                 Login
-              </Button>
+              </Button> */}
               <IconButton
                 ml={4}
                 icon={
@@ -388,7 +388,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 display={{base: 'none', md: 'block'}}>
                 Jetzt anfragen
               </Button>
-              <Button
+              {/* <Button
                 ml={4}
                 _hover={{
                   bg: 'brand.500'
@@ -403,7 +403,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
                 color="black"
                 display={{base: 'none', md: 'block'}}>
                 Login
-              </Button>
+              </Button> */}
               <IconButton
                 ml={4}
                 _hover={{
