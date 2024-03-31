@@ -11,8 +11,8 @@
    <![CDATA[
     .fil4 {fill:#FEFEFE}
     
-    .fil2 {fill:#fff;fill-rule:nonzero}
-    .fil3 {fill:#fff;fill-rule:nonzero}
+    .fil2 {fill:#2B2A29;fill-rule:nonzero}
+    .fil3 {fill:#2B2A29;fill-rule:nonzero}
     .fil1 {fill:#E31E24;fill-rule:nonzero}
    ]]>
   </style>
