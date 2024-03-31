@@ -137,7 +137,7 @@ const HeroSection = () => {
         </Box>
         <Text fontSize={'lg'} opacity={.5}>
           Ihre Softwareagentur in Österreich.
-          Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen und einer professionellen Webpräsenz.
+          Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen.
         </Text>
         <HStack spacing={4} mt={4}>
           <Button
