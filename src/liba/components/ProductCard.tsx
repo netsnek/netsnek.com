@@ -228,7 +228,7 @@ export const ProductCard = ({
   if (product.media.length === 0) {
     borderline = false
   }
-  borderline =true
+
   const coloredBadges: Array<{name: string; color: string; bg: string}> = []
 
   if (
@@ -294,7 +294,7 @@ export const ProductCard = ({
             </>
           </AspectRatio>
 
-          {product.media.slice(0, 3).map((media, index) => (
+          {product.media.slice(0, 3).map((media: any, index: number) => (
             <Box key={index}>
               {index !== 0 && (
                 <Box>
@@ -353,7 +353,7 @@ export const ProductCard = ({
             boxSize={'full'}
             py="0.5rem"
             px="1">
-            {product.media.slice(0, 3).map((m, index) => (
+            {product.media.slice(0, 3).map((media: any, index: number) => (
               <label htmlFor={'imgbox-' + cardId + '-' + index} key={index}>
                 <Box
                   transform="scale(0.97)"
@@ -366,8 +366,8 @@ export const ProductCard = ({
                   {/* <GatsbyImage
                     onDragStart={e => e.preventDefault()}
                     draggable="false"
-                    image={m.image.gatsbyImageData}
-                    alt={m.image.altText || ''}
+                    image={media.image.gatsbyImageData}
+                    alt={media.image.altText || ''}
                   /> */}
                 </Box>
               </label>
@@ -451,36 +451,36 @@ function ImageBoxWithTags(
   )
 }
 
-const ProductPrices = ({
-  prices
-}: {
-  prices: ReturnType<typeof getFormattedProductPrices>
-}) => {
-  if (prices.compareAtPriceFormatted) {
-    return (
-      <HStack
-        wrap="wrap"
-        justifyContent={{
-          base: 'center',
-          md: 'flex-start'
-        }}>
-        <Text
-          fontSize="sm"
-          fontWeight="semibold"
-          color="gray.600"
-          textDecoration={'line-through !important'}>
-          {prices.compareAtPriceFormatted}
-        </Text>
-        <Text fontSize="sm" fontWeight="bold" color="red.500" ml={2}>
-          {prices.priceFormatted}
-        </Text>
-      </HStack>
-    )
-  }
+// const ProductPrices = ({
+//   prices
+// }: {
+//   prices: ReturnType<typeof getFormattedProductPrices>
+// }) => {
+//   if (prices.compareAtPriceFormatted) {
+//     return (
+//       <HStack
+//         wrap="wrap"
+//         justifyContent={{
+//           base: 'center',
+//           md: 'flex-start'
+//         }}>
+//         <Text
+//           fontSize="sm"
+//           fontWeight="semibold"
+//           color="gray.600"
+//           textDecoration={'line-through !important'}>
+//           {prices.compareAtPriceFormatted}
+//         </Text>
+//         <Text fontSize="sm" fontWeight="bold" color="red.500" ml={2}>
+//           {prices.priceFormatted}
+//         </Text>
+//       </HStack>
+//     )
+//   }
 
-  return (
-    <Box fontSize="sm" fontWeight="semibold" mb={2}>
-      <Text>{prices.priceFormatted}</Text>
-    </Box>
-  )
-}
+//   return (
+//     <Box fontSize="sm" fontWeight="semibold" mb={2}>
+//       <Text>{prices.priceFormatted}</Text>
+//     </Box>
+//   )
+// }
