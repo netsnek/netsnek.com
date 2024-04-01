@@ -19,7 +19,7 @@ import {v1 as uuidv1} from 'uuid'
 //import { useWholesaleUser } from '../../../hooks/use-wholesale-user'
 
 import {css} from '@emotion/react'
-import { Field } from '@atsnek/jaen'
+import {Field} from '@atsnek/jaen'
 
 const borderColor = (color?: string) => (color ? color : '#f77f00')
 const transformWidth = (width?: string) =>
@@ -55,18 +55,21 @@ export const cardStyle = (
       text-decoration: none;
 
       &:before {
+        box-sizing: border-box;
         transition: all 150ms;
         position: absolute;
         content: '';
         width: 100%;
-        height: 50%;
+        height: 100%;
         left: 50%;
         margin-left: -50%;
-        top: 25%;
+        top: 0%;
         border-color: rgba(255, 255, 255, 0);
         border-style: solid;
         border-width: 0 2px;
-        border-radius: 5px;
+        border-radius: var(--chakra-radii-2xl);
+        background-color: #fff;
+        z-index: 1;
       }
 
       &:after {
@@ -118,8 +121,8 @@ export const cardStyle = (
     }
 
     &:hover .borderline:before {
-      height: 100%;
-      top: 0%;
+      height: calc(100% - 4px);
+      top: 2px;
     }
     &:hover .imgline {
       ${borderline ? '' : 'display: none;'}
@@ -394,7 +397,11 @@ function ImageBoxWithTags(
   const {image, tags} = props
 
   return (
-    <Box overflow="hidden" position="relative" pointerEvents={"none"} {...props}>
+    <Box
+      overflow="hidden"
+      position="relative"
+      pointerEvents={'none'}
+      {...props}>
       {/* {image ? (
         <Image
           onDragStart={e => e.preventDefault()}
@@ -410,7 +417,7 @@ function ImageBoxWithTags(
             objectPosition: 'center'
           }}
         /> */}
-        {image ? (
+      {image ? (
         <Field.Image
           //onDragStart={e => e.preventDefault()}
           //draggable="false"
