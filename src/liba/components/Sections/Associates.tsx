@@ -19,10 +19,15 @@ const Associates = () => {
       name: 'cronit',
       logo: '/images/associates/cronit.svg'
     },
+    // {
+    //   href: 'https://kanbon.at/',
+    //   name: 'Kanbon',
+    //   logo: '/images/clients/kanbon.svg'
+    // },
     {
-      href: 'https://kanbon.at/',
+      href: 'https://pra.st/',
       name: 'Kanbon',
-      logo: '/images/clients/kanbon.svg'
+      logo: '/images/associates/simon_prast.jpg'
     },
     {
       href: 'https://fhkit.at/',
@@ -51,12 +56,11 @@ const Associates = () => {
       as="section"
       position="relative"
       borderRadius="2xl"
-      mx={{base: 5, lg: 0}}
       bgColor="#0A0A0A"
       borderTop="1px solid"
       borderColor="brand.500"
-      templateColumns="repeat(6, 1fr)"
-      gap={10}
+      templateColumns={{base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(6, 1fr)'}}
+      gap={{base: 4, sm: 8}}
       p="16"
       w="full"
       maxW="full"
@@ -66,13 +70,13 @@ const Associates = () => {
         mb={4}
         pos="relative"
         display="flex"
-        colSpan={6}
+        colSpan={{base: 2, sm: 3, md: 6}}
         flexDir={'column'}
         justifyContent={'center'}
         alignItems={'center'}>
         {/* <ImportantArrow pos="absolute" top="-150%" right="-10%" h="300%" /> */}
         <LinkBox
-          w="25%"
+          w={{base: "70%", sm: "50%", md: "25%"}}
           h="auto"
           bg="white"
           p={2}
@@ -134,7 +138,7 @@ const Associates = () => {
         </LinkBox>
       ))}
       {/* Den Wrapper um den Link mit GridItem oder einer ähnlichen Komponente und setze colSpan auf 3 */}
-      <GridItem display="flex" colSpan={6} justifyContent="center">
+      <GridItem display="flex" colSpan={{base: 2, sm: 3, md: 6}} justifyContent="center">
         <Link
           href="/projects"
           variant="hover-theme"
