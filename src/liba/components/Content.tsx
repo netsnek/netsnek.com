@@ -50,6 +50,7 @@ import {WGIcon} from '../../gatsby-plugin-jaen/components/wgstros'
 
 import {FadeIn} from './FadeIn'
 import ClientsMarquee from './ClientsMarquee'
+import {ProductCard} from './ProductCard'
 
 interface Props {
   children: React.ReactNode
@@ -332,7 +333,11 @@ function Services() {
           Services
         </Text> */}
         <Heading as="h2" size="xl" mt="4">
-          Wir unterstützen<br/><chakra.span color="brand.500">Ihr Unternehmen</chakra.span><br/>im digitalen Zeitalter<chakra.span color="brand.500">.</chakra.span>
+          Wir unterstützen
+          <br />
+          <chakra.span color="brand.500">Ihr Unternehmen</chakra.span>
+          <br />
+          im digitalen Zeitalter<chakra.span color="brand.500">.</chakra.span>
         </Heading>
         {/* <Text mt="4">
           Bei Netsnek bieten wir eine breite Palette von Dienstleistungen an,
@@ -453,6 +458,42 @@ const ContentSection = () => {
     }
   ]
 
+  const products = [
+    {
+      handle: 'product-1',
+      title: 'Cool T-Shirt',
+      price: '29.99',
+      compareAtPrice: '39.99',
+      discount: '25%',
+      tags: ['New', 'T-Shirt', 'Summer'],
+      taxable: true,
+      createdAt: '2023-10-25T00:00:00Z', // Example date
+      media: [
+        // {
+        //   image: {
+        //     altText: 'Cool T-Shirt - Front',
+        //     gatsbyImageData: {
+        //       // ... your Gatsby image data
+        //     }
+        //   }
+        // },
+        // ... more media objects
+      ]
+    },
+    {
+      handle: 'product-2',
+      title: 'Stylish Hat',
+      price: '19.99',
+      tags: ['Hat', 'Accessories'],
+      taxable: false,
+      createdAt: '2023-10-20T00:00:00Z', // Example date
+      media: [
+        // ... image data
+      ]
+    }
+    // ... more product objects
+  ]
+
   const contactModal = useContactModal()
   const onContactClick = () => {
     contactModal.onOpen({
@@ -484,11 +525,11 @@ const ContentSection = () => {
           fontWeight="bold"
           textAlign="left"
           name="ContentSectionHeadingServices"
-          defaultValue="Wir verwirklichen in Tagen,<br/>
+          defaultValue="Wir verwirklichen in Wochen,<br/>
           <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>"
         />
         <Grid templateColumns={{base: '1fr', lg: '1fr 1fr'}} gap={10}>
-        {/* <GridItem colSpan={2} >
+          {/* <GridItem colSpan={2} >
             <Field.Text
               fontSize="1.2rem"
               color="gray.500"
@@ -503,7 +544,10 @@ const ContentSection = () => {
               borderRadius="xl"
               p={6}
               h="full"
-              w="full">
+              w="full"
+              border="1px"
+              borderColor="#f9f9f9"
+              boxShadow="sm">
               <Image
                 src="https://kanbon.at/wp-content/uploads/2024/02/beratung.jpg"
                 alt="Beratung"
@@ -526,7 +570,10 @@ const ContentSection = () => {
               borderRadius="2xl"
               p={6}
               h="full"
-              w="full">
+              w="full"
+              border="1px"
+              borderColor="#f9f9f9"
+              boxShadow="sm">
               <Image
                 src="https://kanbon.at/wp-content/uploads/2021/12/Mockup_Arneitz-scaled.jpg"
                 alt="Entwicklung"
@@ -539,7 +586,8 @@ const ContentSection = () => {
                 Entwicklung
               </Text>
               <Text mt={2} fontSize="md" color="gray.500">
-                Wir entwickeln individuelle Softwarelösungen für Ihr Unternehmen.
+                Wir entwickeln individuelle Softwarelösungen für Ihr
+                Unternehmen.
               </Text>
             </Box>
           </GridItem>
@@ -646,6 +694,13 @@ const ContentSection = () => {
             </Stack>
           </Container>
           <NewsSlider showNewsTitle={true} />
+          <Grid
+            templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)'}}
+            gap={6}>
+            {products.map(product => (
+              <ProductCard key={product.handle} product={product} />
+            ))}
+          </Grid>
           {/* <Stack spacing={0}>
             <Field.Text
               mt={{base: '20 !important', md: '0'}}
