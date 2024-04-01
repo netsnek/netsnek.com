@@ -32,7 +32,7 @@ import HamburgerMenuIcon, {
   THamburgerMenuIconStylerProps
 } from '../../../shared/components/HamburgerMenuIcon'
 import SearchMenu from './SearchMenu'
-import { FadeIn } from '../FadeIn'
+import {FadeIn} from '../FadeIn'
 
 interface IHeaderProps {
   path: string
@@ -75,8 +75,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
       height={isOpen ? 'calc(100vh + 15px)' : {base: '12vh', md: '15vh'}}
       minH={isOpen ? '600px' : '100px'}
       transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
-      borderBottomRadius={"2xl"}
-      >
+      borderBottomRadius={'2xl'}>
       <Box
         pos="relative"
         bg="#0A0A0A"
@@ -96,10 +95,10 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
           }} // Set the first row height to 15vh
           templateColumns={{base: '1fr', md: '1fr 1fr'}}
           templateAreas={{
-            base: `"empty" "work" "services" "team" "blog" "offices" "social"`,
+            base: `"empty" "services" "team" "portfolio" "blog" "offices" "social"`,
             md: `"empty empty"
-                       "work services"
-                       "team blog"
+                       "services team"
+                       "portfolio blog"
                        "offices social"`
           }}
           //gap={4}
@@ -112,7 +111,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             minH={{base: '100px', md: '100px'}}
           />
           <LinkBox
-            gridArea="work"
+            gridArea="services"
             display="flex"
             pl={{base: '8', md: '16'}}
             alignItems="center"
@@ -126,10 +125,10 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             _hover={{
               color: 'brand.500'
             }}>
-            <LinkOverlay href="/work">Unsere Projekte</LinkOverlay>
+            <LinkOverlay href="/services">Unsere Services</LinkOverlay>
           </LinkBox>
           <LinkBox
-            gridArea="services"
+            gridArea="team"
             display="flex"
             pl={{base: '8', md: '16'}}
             alignItems="center"
@@ -143,10 +142,10 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             _hover={{
               color: 'brand.500'
             }}>
-            <LinkOverlay href="/services">Services</LinkOverlay>
+            <LinkOverlay href="/team">Experten</LinkOverlay>
           </LinkBox>
           <LinkBox
-            gridArea="team"
+            gridArea="portfolio"
             display="flex"
             pl={{base: '8', md: '16'}}
             alignItems="center"
@@ -159,7 +158,7 @@ const Header: FC<IHeaderProps> = ({path, hamburgerIconProps}) => {
             _hover={{
               color: 'brand.500'
             }}>
-            <LinkOverlay href="/team">Unser Team</LinkOverlay>
+            <LinkOverlay href="/portfolio">Unser Portfolio</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="blog"
