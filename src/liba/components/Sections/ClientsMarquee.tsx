@@ -32,11 +32,11 @@ const clients: Client[] = [
     name: 'Ballons & Ballons',
     logo: '/images/clients/ballons.svg'
   },
-  // {
-  //   href: 'https://kanbon.at/',
-  //   name: 'Kanbon',
-  //   logo: '/images/clients/kanbon.svg'
-  // },
+  {
+    href: 'https://kanbon.at/',
+    name: 'Kanbon',
+    logo: '/images/clients/kanbon.svg'
+  },
   {
     href: 'https://www.pharmaziegasse.at/',
     name: 'Pharmaziegasse',
@@ -61,14 +61,12 @@ interface ClientsMarqueeProps extends BoxProps {
 const ClientsMarquee: React.FC<ClientsMarqueeProps> = ({...props}) => {
   // Defaulting to a 16:9 aspect ratio
   // For TypeScript, setting explicit return types on hooks is not typically necessary due to its inference
-  const boxSize = useBreakpointValue({base: '100px', md: '180px', lg: '240px'})
+  const boxSize = useBreakpointValue({base: '230px', md: '260px'})
 
   return (
     <Box as="section" {...props}>
       <Marquee gradient={false} speed={60}>
         <Box display="flex" gridGap="32px">
-          {' '}
-          {/* Adapted for accessibility inside marquee */}
           {clients.map((client, index) => (
             <LinkBox
               key={index}
