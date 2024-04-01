@@ -19,8 +19,9 @@ import {v1 as uuidv1} from 'uuid'
 //import { useWholesaleUser } from '../../../hooks/use-wholesale-user'
 
 import {css} from '@emotion/react'
+import { Field } from '@atsnek/jaen'
 
-const borderColor = (color?: string) => (color ? color : '#ef3340')
+const borderColor = (color?: string) => (color ? color : '#f77f00')
 const transformWidth = (width?: string) =>
   width ? 'scaleX(1.' + width.split('%')[0] + ')' : 'scaleX(1.3)'
 const borderlinWidth = (width?: string) => (width ? width : '30%')
@@ -225,16 +226,16 @@ export const ProductCard = ({
   const cardId = uuidv1()
 
   if (product.media.length === 0) {
-    borderline = true
+    borderline = false
   }
-
+  borderline =true
   const coloredBadges: Array<{name: string; color: string; bg: string}> = []
 
   if (
     new Date(product.createdAt).getTime() >
     Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
-    coloredBadges.push({name: 'Neu', color: 'black', bg: 'brand.500'})
+    coloredBadges.push({name: 'Neu', color: 'white', bg: 'brand.500'})
   }
 
   if (prices.discountFormatted) {
@@ -344,11 +345,7 @@ export const ProductCard = ({
           borderRadius="2xl"
           border="1px"
           borderColor="#f9f9f9"
-          boxShadow="sm"
-          _hover={{
-            before: {borderColor: 'agt.red'},
-            _after: {borderColor: 'agt.red'}
-          }}>
+          boxShadow="sm">
           <VStack
             className="imgline"
             position="absolute"
@@ -366,12 +363,12 @@ export const ProductCard = ({
                   _hover={{borderColor: 'agt.red'}}
                   onMouseOver={() => (radioRef.current[index]!.checked = true)}
                   onMouseLeave={() => (radioRef.current[0]!.checked = true)}>
-                  <GatsbyImage
+                  {/* <GatsbyImage
                     onDragStart={e => e.preventDefault()}
                     draggable="false"
                     image={m.image.gatsbyImageData}
                     alt={m.image.altText || ''}
-                  />
+                  /> */}
                 </Box>
               </label>
             ))}
@@ -386,7 +383,9 @@ function ImageBoxWithTags(
   props: {
     image?: {
       altText: string | null
-      gatsbyImageData: IGatsbyImageData
+      name: string
+      defaultValue: string
+      //gatsbyImageData: IGatsbyImageData
     }
     tags: Array<{name: string; color: string; bg: string}>
   } & BoxProps
@@ -395,14 +394,31 @@ function ImageBoxWithTags(
   const {image, tags} = props
 
   return (
-    <Box overflow="hidden" position="relative" {...props}>
-      {image ? (
+    <Box overflow="hidden" position="relative" pointerEvents={"none"} {...props}>
+      {/* {image ? (
         <Image
           onDragStart={e => e.preventDefault()}
           draggable="false"
           src={image.gatsbyImageData.images.fallback?.src}
           sizes={image.gatsbyImageData.images.fallback?.sizes}
           srcSet={image.gatsbyImageData.images.fallback?.srcSet}
+          alt={image.altText || '-'}
+          style={{
+            height: '100%',
+            width: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center'
+          }}
+        /> */}
+        {image ? (
+        <Field.Image
+          //onDragStart={e => e.preventDefault()}
+          //draggable="false"
+          //src={image.gatsbyImageData.images.fallback?.src}
+          //sizes={image.gatsbyImageData.images.fallback?.sizes}
+          //srcSet={image.gatsbyImageData.images.fallback?.srcSet}
+          name={image.name}
+          defaultValue={image.defaultValue}
           alt={image.altText || '-'}
           style={{
             height: '100%',
