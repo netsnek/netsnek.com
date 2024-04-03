@@ -23,10 +23,12 @@ import TbUser from '../shared/components/icons/tabler/TbUser'
 import {useSearch} from '../search/use-search'
 import Navigation from './components/Navigation/Navigation'
 import { GridPattern } from './components/GridPattern'
+import ProductLayout from './ProductLayout'
 
 interface AppLayoutProps {
   children?: React.ReactNode
   isBlog?: boolean
+  isProduct?: boolean
   isCommunity?: boolean
   path?: string
   footer?: FC
@@ -40,6 +42,7 @@ interface AppLayoutProps {
 const AppLayout: FC<AppLayoutProps> = ({
   children,
   isBlog,
+  isProduct,
   isCommunity,
   path,
   footer,
@@ -76,6 +79,12 @@ const AppLayout: FC<AppLayoutProps> = ({
     )
   // } else if (isCommunity) {
   //   childrenElmnt = <CommunityLayout>{children}</CommunityLayout>
+  } else if (isProduct) { 
+    childrenElmnt = (
+      <ProductLayout path={path} isCommunity={isCommunity}>
+        {children}
+      </ProductLayout>
+    )
   } else {
     childrenElmnt = children
   }

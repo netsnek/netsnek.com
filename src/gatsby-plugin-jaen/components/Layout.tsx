@@ -8,7 +8,8 @@ const Layout: React.FC<LayoutProps> = ({ children, pageProps }) => {
   const path = useLocation().pathname;
   const hiddenTopNavPaths = ['/profile', '/blog-post'];
 
-  const docsPaths = ['/blog'];
+  const blogPaths = ['/blog'];
+  const productPaths = ['/product'];
 
 
   // if (path.startsWith('/admin') || path === '/') {
@@ -19,7 +20,8 @@ const Layout: React.FC<LayoutProps> = ({ children, pageProps }) => {
     <CMSManagement>
       <ContactModalProvider location={{ pathname: path, search: "" }}>
         <AppLayout
-          isBlog={docsPaths.some(docsPath => path.startsWith(docsPath))}
+          isBlog={blogPaths.some(blogPaths => path.startsWith(blogPaths))}
+          isProduct={productPaths.some(productPaths => path.startsWith(productPaths))}
           isCommunity={path.startsWith('/community')}
           path={path}
           // topNavProps={{
