@@ -34,7 +34,7 @@ const ContentSection = () => {
       <Container maxW="6xl" mb="20">
         <Services />
         <Associates />
-        <PortfolioSlider />
+        {/* <PortfolioSlider /> */}
         {/* <NewsSlider showNewsTitle={true} /> */}
         {/* <ServicesDetails /> */}
       </Container>
