@@ -1,8 +1,8 @@
 import { withRedux } from '@atsnek/jaen';
-import { Button, Kbd } from '@chakra-ui/react';
+import { Button, ButtonProps, Kbd } from '@chakra-ui/react';
 import { FC } from 'react';
 
-interface ISearchButtonProps {
+interface ISearchButtonProps extends ButtonProps {
   openModal: () => void;
   navigate: (isUp: boolean) => void;
 }
@@ -11,7 +11,7 @@ interface ISearchButtonProps {
  * Search button component - shows a button that opens the search menu
  */
 const SearchButton: FC<ISearchButtonProps> = withRedux(
-  ({ openModal, navigate }) => {
+  ({ openModal, navigate, ...props }) => {
     // const [isMobile] = useMediaQuery('(max-width: 768px)'); // Adjust the breakpoint as needed
 
     const onKeyPress = (e: any) => {
@@ -75,6 +75,7 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
           e.currentTarget.removeEventListener('keypress', onKeyPress);
         }}
         onClick={openModal}
+        {...props}
       >
         Type{' '}
         <Kbd

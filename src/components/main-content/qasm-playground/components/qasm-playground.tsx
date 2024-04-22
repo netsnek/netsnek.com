@@ -70,10 +70,10 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
     borderRadius: '3xl',
     overflow: 'hidden',
     _hover: {
-      transform: {
-        base: 'none',
-        sm: 'scale(1.01)'
-      },
+      // transform: {
+      //   base: 'none',
+      //   sm: 'scale(1.01)'
+      // },
       boxShadow: {
         base: 'none',
         sm: '6px 4px 20px -12px rgba(0,0,0,0.25)'

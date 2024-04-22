@@ -77,7 +77,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
         matchMethod: 'includes'
       },
       {
-        name: 'Experiments',
+        name: 'Blog',
         href: '/experiments/',
         matchMethod: 'includes'
       }

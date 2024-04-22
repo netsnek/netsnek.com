@@ -57,11 +57,11 @@ const PageDirectory: FC<PageDirectoryProps> = ({
 
   const baseMenuItems: NavMenuSection[] = [
     {
-      name: 'Research',
+      name: 'Blog',
       icon: <TbUsers />,
       items: [
         {
-          name: 'Experiments',
+          name: 'Posts',
           href: '/experiments',
           isActive: path?.startsWith('/experiments')
         }
@@ -72,7 +72,7 @@ const PageDirectory: FC<PageDirectoryProps> = ({
       icon: <FaLink />,
       items: [
         {
-          name: 'PhotonQ',
+          name: 'Netsnek',
           href: '/'
         }
       ]

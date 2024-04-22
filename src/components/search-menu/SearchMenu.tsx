@@ -5,7 +5,9 @@ import {
   VStack,
   useDisclosure,
   Text,
-  Box
+  Box,
+  BoxProps,
+  ButtonProps
 } from '@chakra-ui/react';
 import {
   FC,
@@ -41,12 +43,12 @@ import { TSearchResults } from '../../utils/search/types';
 import { useDebounce } from 'use-debounce';
 import { useLocation } from '@reach/router';
 
-interface SearchMenuProps {}
+interface SearchMenuProps extends ButtonProps {}
 
 /**
  * Search menu component - shows a navigatable list of search results
  */
-const SearchMenu: FC<SearchMenuProps> = ({}) => {
+const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
   const [navigateIdx, setNavigateIdx] = useState<number>(-1);
   const modalDisclosure = useDisclosure();
@@ -311,7 +313,7 @@ const SearchMenu: FC<SearchMenuProps> = ({}) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SearchButton openModal={onOpen} navigate={handleNavigate} />
+      <SearchButton openModal={onOpen} navigate={handleNavigate} {...props} />
       <SearchModal
         defaultQuery={searchQuery}
         isOpen={modalDisclosure.isOpen}
