@@ -22,7 +22,7 @@ const config: GatsbyConfig = {
       options: {
         pylonUrl: 'https://pylons.photonq.org/jaen-agent/graphql',
         remote: {
-          repository: 'atsnek/photonq'
+          repository: 'netsnek/netsnek'
         },
         zitadel: {
           organizationId: '263581005107959413',
