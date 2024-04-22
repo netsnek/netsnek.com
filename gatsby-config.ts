@@ -30,7 +30,7 @@ const config: GatsbyConfig = {
           authority: 'https://accounts.photonq.org',
           redirectUri:
             process.env.NODE_ENV === 'production'
-              ? 'https://photonq.org'
+              ? 'https://netsnek.com'
               : 'https://opulent-carnival-pg7v6wp7prhr556-8000.app.github.dev',
           projectIds: ['263491274097563233']
         },
