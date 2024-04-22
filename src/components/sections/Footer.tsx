@@ -37,19 +37,23 @@ const Footer: FC = () => {
       },
       {
         label: 'GitHub',
-        href: 'https://github.com/in/kleberbaum/'
+        href: 'https://github.com/netsnek/'
       },
+      // {
+      //   label: 'LinkedIn',
+      //   href: 'https://www.linkedin.com/in/kleberbaum/'
+      // },
+      // {
+      //   label: 'Telegram',
+      //   href: 'https://t.me/kleberbaum'
+      // },
       {
-        label: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/kleberbaum/'
-      },
-      {
-        label: 'Telegram',
-        href: 'https://t.me/kleberbaum'
+        label: 'Facebook',
+        href: 'https://facebook.com/netsnek/'
       },
       {
         label: 'Instagram',
-        href: 'https://www.instagram.com/kleberbaum/'
+        href: 'https://instagram.com/netsnek/'
       },
       {
         label: 'Impressum',
@@ -77,7 +81,7 @@ const Footer: FC = () => {
       },
       {
         label: 'Florian H. Kleber',
-        href: 'https://github.com/in/kleberbaum/'
+        href: 'https://fhkit.at'
       },
       {
         label: 'Nico Schett',
@@ -206,7 +210,7 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://facebook.com" isExternal>
+              <LinkOverlay href="https://facebook.com/netsnek" isExternal>
                 <Icon as={FaFacebook} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
@@ -217,7 +221,7 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://instagram.com" isExternal>
+              <LinkOverlay href="https://instagram.com/netsnek" isExternal>
                 <Icon as={FaInstagram} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
@@ -228,7 +232,7 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://twitter.com" isExternal>
+              <LinkOverlay href="https://twitter.com/netsnek_com" isExternal>
                 <Icon as={FaTwitter} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
@@ -239,7 +243,7 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://github.com" isExternal>
+              <LinkOverlay href="https://github.com/netsnek" isExternal>
                 <Icon as={FaGithub} boxSize="5" />
               </LinkOverlay>
             </LinkBox>

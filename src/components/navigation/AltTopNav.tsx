@@ -230,7 +230,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://facebook.com" isExternal>
+                <LinkOverlay href="https://facebook.com/netsnek" isExternal>
                   <Icon as={FaFacebook} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -242,7 +242,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://instagram.com" isExternal>
+                <LinkOverlay href="https://instagram.com/netsnek" isExternal>
                   <Icon as={FaInstagram} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -254,7 +254,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://twitter.com" isExternal>
+                <LinkOverlay href="https://twitter.com/netsnek_com" isExternal>
                   <Icon as={FaTwitter} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -266,7 +266,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://github.com" isExternal>
+                <LinkOverlay href="https://github.com/netsnek" isExternal>
                   <Icon as={FaGithub} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
