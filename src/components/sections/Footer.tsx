@@ -53,7 +53,7 @@ const Footer: FC = () => {
       },
       {
         label: 'Impressum',
-        href: '/impressum'
+        href: '/imprint'
       }
     ],
     [
