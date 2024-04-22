@@ -24,12 +24,12 @@ import { useContactModal } from '../../services/contact';
 const Contact = () => {
   // Sample list of your links and icons, assuming you will replace these with your actual data
   const links = [
-    { href: 'https://facebook.com', icon: HBalloon },
-    { href: 'https://facebook.com', icon: AGTIcon },
-    { href: 'https://facebook.com', icon: LibaIcon },
-    { href: 'https://facebook.com', icon: FHKITIcon },
-    { href: 'https://facebook.com', icon: MyP5Icon },
-    { href: 'https://facebook.com', icon: WGIcon }
+    { href: 'https://ballons-ballons.at', icon: HBalloon },
+    { href: 'https://ried.agt-guntrade.at', icon: AGTIcon },
+    { href: 'https://barbara-mauz.at', icon: LibaIcon },
+    { href: 'https://fhkit.at', icon: FHKITIcon },
+    { href: 'https://my.pharmaziegasse.com', icon: MyP5Icon },
+    { href: 'https://wg.snek.at', icon: WGIcon }
   ];
 
   const contactModal = useContactModal();
