@@ -90,7 +90,7 @@ const useSocialSearch = (query?: string) => {
         icon: <TbUsers />
       },
       posts: {
-        title: 'Experiments',
+        title: 'Blog',
         sections: postsResult ? [postsResult] : [],
         icon: <FaFlask />
       }
