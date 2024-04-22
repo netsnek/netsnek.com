@@ -19,6 +19,7 @@ import { LibaIcon } from '../../gatsby-plugin-jaen/components/liba';
 import { FHKITIcon } from '../../gatsby-plugin-jaen/components/fhkit';
 import { MyP5Icon } from '../../gatsby-plugin-jaen/components/p5';
 import { WGIcon } from '../../gatsby-plugin-jaen/components/wgstros';
+import { useContactModal } from '../../services/contact';
 
 const Contact = () => {
   // Sample list of your links and icons, assuming you will replace these with your actual data
@@ -31,12 +32,12 @@ const Contact = () => {
     { href: 'https://facebook.com', icon: WGIcon }
   ];
 
-  // const contactModal = useContactModal();
+  const contactModal = useContactModal();
 
   const handleOnContactClick = () => {
-    // contactModal.onOpen({
-    //   meta: {}
-    // });
+    contactModal.onOpen({
+      meta: {}
+    });
   };
 
   return (

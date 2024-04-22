@@ -16,7 +16,7 @@ import {
   Tooltip
 } from '@chakra-ui/react';
 import { FC, useState } from 'react';
-//import { useContactModal } from '../../services/contact';
+import { useContactModal } from '../../services/contact';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
@@ -39,11 +39,12 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
   hamburgerIconProps = {
     color: 'red.500'
   };
-  //const contactModal = useContactModal();
+  const contactModal = useContactModal();
   const handleOnContactClick = () => {
-    // contactModal.onOpen({
-    //   meta: {}
-    // });
+    console.log('contactModal', contactModal);
+    contactModal.onOpen({
+      meta: {}
+    });
   };
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hamburgerClass, setHamburgerClass] = useState('');

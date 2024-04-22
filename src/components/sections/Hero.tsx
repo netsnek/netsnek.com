@@ -21,6 +21,7 @@ import { Link } from 'gatsby-plugin-jaen';
 import Netsnek from '../../gatsby-plugin-jaen/components/Netsnek';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { FadeIn } from '../FadeIn';
+import { useContactModal } from '../../services/contact';
 
 interface ScrollArrowsProps {
   isVisible: boolean;
@@ -65,13 +66,12 @@ const Hero: FC = () => {
   //const {ref, scrollTop} = useScrollSync(500)
   const scrollPos = useScrollPosition();
 
-  //const contactModal = useContactModal()
-  const contactModal = () => {};
+  const contactModal = useContactModal()
 
   const onContactClick = () => {
-    // contactModal.onOpen({
-    //   meta: {}
-    // })
+    contactModal.onOpen({
+      meta: {}
+    })
   };
 
   return (
