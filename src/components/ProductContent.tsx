@@ -87,7 +87,7 @@ const SliderItem = connectBlock(
           borderRadius="xl"
           overflow="hidden"
           isolation="isolate">
-          <Field.Image name="image" lightbox lightboxGroup />
+          <Field.Image name="image" />
         </Box>
       </Box>
     )
