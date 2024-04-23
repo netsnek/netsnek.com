@@ -90,7 +90,7 @@ export const useJaenProducts = (
       hasOnlyDefaultVariant: true,
       id: jaenPage.id,
       shopifyId: 'your-shopify-id',
-      handle: jaenPage.slug || 'none',
+      handle: "products/" + jaenPage.slug || 'none',
       description: jaenPage.jaenPageMetadata?.description || '',
       descriptionHtml: jaenPage.jaenPageMetadata?.description || '',
       title: jaenPage.jaenPageMetadata?.title || '',

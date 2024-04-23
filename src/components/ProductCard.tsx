@@ -331,10 +331,11 @@ export const ProductCard = ({
           {tags.otherString}
         </Text>
         <Text fontWeight="semibold">{product.title}</Text>
-        {product.price}
+        <Text fontWeight="normal">{product.description}</Text>
+        {/*{product.price}
         <Text fontSize="xs" color="gray.600" textAlign={'center'}>
           {taxable ? 'inkl.' : 'exkl.'} Ust.
-        </Text>
+        </Text>*/}
         <Spacer
           position="absolute"
           className="bspacer"

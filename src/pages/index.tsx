@@ -31,7 +31,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Container maxW="5xl" mb="20">
         <Services />
         <Associates />
-        {/* <Portfolio /> */}
+        <Portfolio />
         {/* <NewsSlider showNewsTitle={true} /> */}
         <ServicesDetails />
       </Container>
