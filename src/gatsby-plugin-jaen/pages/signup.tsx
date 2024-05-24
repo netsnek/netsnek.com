@@ -285,6 +285,57 @@ const SignupForm: React.FC<SignupFormProps> = ({ welcomeText }) => {
 
   const [step, setStep] = useState<SignupFormStep>(SignupFormStep.Email);
 
+  // Validation rules for the email field
+
+  const emailValidationRules = {
+    required: 'Bitte fülle dieses Feld aus.',
+
+    pattern: {
+      value: /^\S+@\S+$/i,
+
+      message: 'Bitte gib eine gültige E-Mail-Adresse ein, die ein "@" enthält.'
+    },
+
+    validate: (value: string) => {
+      const disallowedSymbols = [
+        '*',
+        '!',
+        '#',
+        '$',
+        '%',
+        '^',
+        '&',
+        '(',
+        ')',
+        '=',
+        '+',
+        '{',
+        '}',
+        '[',
+        ']',
+        ':',
+        ';',
+        '"',
+        "'",
+        '<',
+        '>',
+        ',',
+        '?',
+        '/',
+        '\\',
+        '|'
+      ];
+
+      for (const symbol of disallowedSymbols) {
+        if (value.includes(symbol)) {
+          return `Die E-Mail-Adresse darf das Symbol "${symbol}" nicht enthalten.`;
+        }
+      }
+
+      return true;
+    }
+  };
+
   const onSubmit = async (data: SignupFormData) => {
     console.log(data);
     // Validation based on step
@@ -319,21 +370,20 @@ const SignupForm: React.FC<SignupFormProps> = ({ welcomeText }) => {
         shouldJumpToNextStep = false;
       }
     } else if (step === SignupFormStep.Complete) {
-      const [_, errors] = await sq.mutate(
-        m =>
-          m.userCreate({
-            createProfile: true,
-            values: {
-              password: data.password,
-              username: data.username,
-              emailAddress: data.email,
-              details: {
-                firstName: data.details.firstName,
-                lastName: data.details.lastName
-              }
-            },
-            organizationId: __JAEN_ZITADEL__.organizationId
-          })
+      const [_, errors] = await sq.mutate(m =>
+        m.userCreate({
+          createProfile: true,
+          values: {
+            password: data.password,
+            username: data.username,
+            emailAddress: data.email,
+            details: {
+              firstName: data.details.firstName,
+              lastName: data.details.lastName
+            }
+          },
+          organizationId: __JAEN_ZITADEL__.organizationId
+        })
       );
 
       if (errors?.length > 0) {
@@ -403,7 +453,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ welcomeText }) => {
         {displayText}
       </Text>
       {showInput && (
-        <Stack as="form" onSubmit={handleSubmit(onSubmit)}>
+        <Stack as="form" noValidate onSubmit={handleSubmit(onSubmit)}>
           <FormControl
             isInvalid={!!errors.email}
             isRequired
@@ -416,9 +466,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ welcomeText }) => {
               <Input
                 autoFocus
                 type="email"
-                {...register('email', {
-                  required: 'E-Mail Adresse ist erforderlich'
-                })}
+                {...register('email', emailValidationRules)}
               />
               {step === 0 && (
                 <Button type="submit" isLoading={isSubmitting}>
