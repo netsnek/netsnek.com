@@ -78,7 +78,7 @@ import {
             fullScreen: true,
             background: {
               color: {
-                value: useColorModeValue('#F6F7FA', '#0d47a1')
+                value: useColorModeValue('#F6F7FA', '#F77F00')
               }
             },
             fpsLimit: 120,
@@ -106,10 +106,10 @@ import {
             },
             particles: {
               color: {
-                value: useColorModeValue('#0d47a1', '#FFFFFF')
+                value: useColorModeValue('#F77F00', '#FFFFFF')
               },
               links: {
-                color: useColorModeValue('#0d47a1', '#FFFFFF'),
+                color: useColorModeValue('#F77F00', '#FFFFFF'),
                 distance: 150,
                 enable: true,
                 opacity: 0.5,
