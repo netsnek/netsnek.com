@@ -301,12 +301,12 @@ import {
       let shouldJumpToNextStep = true;
   
       if (step === SignupFormStep.Email) {
-        const [is] = await sq.query(
+        const [isUnique] = await sq.query(
           q => q.getIsUnique({ loginName: data.email })
         );
   
         // check if user exists
-        if (is) {
+        if (!isUnique) {
           setError('email', {
             type: 'manual',
             message: 'Email is already registered'
@@ -315,12 +315,12 @@ import {
           shouldJumpToNextStep = false;
         }
       } else if (step === SignupFormStep.Username) {
-        const [is] = await sq.query(
+        const [isUnique] = await sq.query(
           q => q.getIsUnique({ loginName: data.username })
         );
   
         // check if user exists
-        if (!is) {
+        if (!isUnique) {
           setError('username', {
             type: 'manual',
             message: 'Username is already registered'
@@ -684,4 +684,3 @@ import {
   };
   
   export { Head } from '@atsnek/jaen';
-  
