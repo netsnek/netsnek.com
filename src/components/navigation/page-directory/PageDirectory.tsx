@@ -18,6 +18,7 @@ import { generateMenuItem } from './utils/pageDirectory';
 
 interface PageDirectoryProps {
   data: ReturnType<typeof createPageTree>;
+  baseMenuItems?: NavMenuSection[];
   isExpanded?: boolean;
   isMobile?: boolean;
   closeMobileDrawer?: () => void;
@@ -28,6 +29,7 @@ interface PageDirectoryProps {
  */
 const PageDirectory: FC<PageDirectoryProps> = ({
   data,
+  baseMenuItems = [],
   isExpanded = true,
   isMobile = false,
   closeMobileDrawer,
@@ -54,30 +56,6 @@ const PageDirectory: FC<PageDirectoryProps> = ({
     }
     if (!isIncluded) setExpandedIdx([...expandedIdx, idx]);
   };
-
-  const baseMenuItems: NavMenuSection[] = [
-    {
-      name: 'Blog',
-      icon: <TbUsers />,
-      items: [
-        {
-          name: 'Posts',
-          href: '/experiments',
-          isActive: path?.startsWith('/experiments')
-        }
-      ]
-    },
-    {
-      name: 'More',
-      icon: <FaLink />,
-      items: [
-        {
-          name: 'Netsnek',
-          href: '/'
-        }
-      ]
-    }
-  ];
 
   if (path === '/') {
     baseMenuItems.unshift({

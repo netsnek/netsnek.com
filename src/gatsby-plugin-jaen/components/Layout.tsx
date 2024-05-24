@@ -10,7 +10,7 @@ import { ContactModalProvider } from '../../services/contact';
 const Layout: React.FC<LayoutProps> = ({ children, pageProps }) => {
   const path = useLocation().pathname;
 
-  const docsPaths = ['/docs', '/experiments', '/new/experiment'];
+  const docsPaths = ['/docs'];
 
   const jaenFrame = useJaenFrameMenuContext();
 

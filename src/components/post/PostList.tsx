@@ -98,8 +98,8 @@ const PostList: FC<PostListProps> = props => {
           },
     query,
     pagination: {
-      first: paginationCursor.before ? undefined : 1,
-      last: paginationCursor.before ? 1 : undefined,
+      first: paginationCursor.before ? undefined : 6,
+      last: paginationCursor.before ? 6 : undefined,
       after: paginationCursor.after,
       before: paginationCursor.before
     }
@@ -227,7 +227,7 @@ const PostList: FC<PostListProps> = props => {
         </HStack>
       </Collapse>
 
-      <List spacing={3}>
+      <List spacing={3} mt="4">
         {allPosts.nodes.map((post, idx) => (
           <PostCard
             key={idx}

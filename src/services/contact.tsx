@@ -126,9 +126,9 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({
     }
 
     return {
-      firstName: authentication.user.profile.given_name,
-      lastName: authentication.user.profile.family_name,
-      email: authentication.user.profile.email,
+      firstName: authentication.user.profile?.given_name,
+      lastName: authentication.user.profile?.family_name,
+      email: authentication.user.profile?.email,
     };
   }, [authentication.user]);
 

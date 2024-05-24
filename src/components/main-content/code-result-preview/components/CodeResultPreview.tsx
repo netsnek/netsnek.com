@@ -108,6 +108,20 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
                 </AlertDescription>
               </Alert>
             )}
+            {infos && infos.length > 0 && (
+              <Alert status="info" my={2}>
+                <AlertIcon />
+                <AlertDescription overflowX="auto">
+                  <UnorderedList>
+                    {infos.map((info, index) => (
+                      <ListItem key={index} fontSize="sm">
+                        {info}
+                      </ListItem>
+                    ))}
+                  </UnorderedList>
+                </AlertDescription>
+              </Alert>
+            )}
 
             {infos && infos.length > 0 && (
               <Alert status="info" my={2}>

@@ -11,6 +11,7 @@ import CommunityLayout from './CommunityLayout';
 import DocsLayout from './DocsLayout';
 import Footer from './Footer';
 import { GridPattern } from '../GridPattern';
+import PostLayout from './PostLayout';
 
 interface AppLayoutProps {
   children?: React.ReactNode;
@@ -50,6 +51,13 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
     );
   } else if (isCommunity) {
     childrenElmnt = <CommunityLayout>{children}</CommunityLayout>;
+  } else if (
+    (path.startsWith('/experiments') &&
+      path !== '/experiments/' &&
+      path !== '/experiments') ||
+    path.startsWith('/new/experiment')
+  ) {
+    childrenElmnt = <PostLayout>{children}</PostLayout>;
   } else {
     childrenElmnt = children;
   }
