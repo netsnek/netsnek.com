@@ -6,7 +6,7 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://netsnek.com`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -22,7 +22,7 @@ const config: GatsbyConfig = {
       options: {
         pylonUrl: 'https://pylons.photonq.org/jaen-agent/graphql',
         remote: {
-          repository: 'netsnek/netsnek'
+          repository: 'netsnek/netsnek.com'
         },
         zitadel: {
           organizationId: '268207341512496739',
