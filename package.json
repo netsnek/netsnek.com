@@ -31,18 +31,19 @@
     "gatsby-plugin-cloudflare-pages": "^1.0.2",
     "gatsby-plugin-jaen": "^1.0.0-rc.102",
     "github-slugger": "^2.0.0",
+    "hast-util-sanitize": "^5.0.1",
     "prismjs": "^1.29.0",
     "quantum-circuit": "^0.9.218",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.4",
     "react-highlight-words": "^0.20.0",
-    "react-tsparticles": "^2.12.2",
-    "tsparticles": "^2.12.0",
-    "zxcvbn": "^4.4.2",
     "react-simple-code-editor": "^0.13.1",
+    "react-tsparticles": "^2.12.2",
     "snek-query": "^0.0.114",
-    "use-debounce": "^10.0.0"
+    "tsparticles": "^2.12.0",
+    "use-debounce": "^10.0.0",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "@types/github-slugger": "^2.0.0",
