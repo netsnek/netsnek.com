@@ -40,7 +40,7 @@ const CodeMdxEditor: FC<ICodeMdxEditorProps> = ({
       pt={14}
       sx={{
         '.cm-editor': {
-          height: '60dvh'
+          height: '90dvh'
         }
       }}
     >

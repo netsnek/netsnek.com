@@ -4464,23 +4464,18 @@ const Hero: FC = () => {
         <Box as={FadeIn} position="relative" gridArea="image">
           <AspectRatio ratio={4 / 3} w="full" h="auto">
             <Box position="relative" w="full" h="full">
-              <Stack
-                w="full"
-                h="500px"
-              >
-                <SvgMdxEditor
-                  key={"mdxKey"}
-                  value={parsedContent}
-                  isEditing={true}
-                  onUpdateValue={value => {
-                    console.log('my cool content', JSON.stringify(value));
-                    setValues({
-                      ...values,
-                      content: JSON.stringify(value)
-                    });
-                  }}
-                />
-              </Stack>
+              <SvgMdxEditor
+                key={"mdxKey"}
+                value={parsedContent}
+                isEditing={true}
+                onUpdateValue={value => {
+                  console.log('my cool content', JSON.stringify(value));
+                  setValues({
+                    ...values,
+                    content: JSON.stringify(value)
+                  });
+                }}
+              />
 
               <Netsnek
                 display="none"
