@@ -76,7 +76,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
     >
       <Box
         pos="relative"
-        bg="#0A0A0A"
+        bg="brand.900"
         color="white"
         transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
         height={isOpen ? 'max(600px, calc(100vh + 15px))' : '0'}
@@ -126,7 +126,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Unsere Services</LinkOverlay>
+            <LinkOverlay href="/docs">Meine Beratung</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="team"
@@ -144,7 +144,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Dokumentation</LinkOverlay>
+            <LinkOverlay href="/docs">Meine Kunden</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="portfolio"
@@ -161,7 +161,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Unser Portfolio</LinkOverlay>
+            <LinkOverlay href="/docs">Rezepte</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="blog"
@@ -286,13 +286,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             py={{ base: '2', md: '4' }}
             justifyContent="space-between"
           >
-            <LinkBox flex="2" mr="4" display="flex">
+            <LinkBox height="100%" flex="2" mr="4" display="flex">
               <LinkOverlay href="/" color="white">
-                <Logo height="100%" color="black" />
+                <Logo height="100%" />
               </LinkOverlay>
             </LinkBox>
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
-              <SearchMenu
+              {/* <SearchMenu
                 boxSizing={'border-box'}
                 borderWidth={{ base: 0, lg: 2 }}
                 color={{ base: 'white', lg: 'gray.400' }}
@@ -300,23 +300,69 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   borderColor: 'brand.600',
                   bg: { base: 'brand.600', lg: 'transparent' }
                 }}
-              />
+              /> */}
+              <Button
+                variant="ghost"
+                ml={4}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={handleOnContactClick}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', md: 'block' }}
+              >
+                Meine Beratung
+              </Button>
+              <Button
+                variant="ghost"
+                ml={4}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={handleOnContactClick}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', md: 'block' }}
+              >
+                Meine Kunden
+              </Button>
+              <Button
+                variant="ghost"
+                ml={4}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={handleOnContactClick}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', md: 'block' }}
+              >
+                Rezepte
+              </Button>
+              <Button
+                variant="ghost"
+                ml={4}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={handleOnContactClick}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', md: 'block' }}
+              >
+                Blog
+              </Button>
               <Button
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
                 onClick={handleOnContactClick}
                 fontSize="sm"
                 fontWeight="semibold"
                 color="white"
                 display={{ base: 'none', md: 'block' }}
               >
-                Jetzt anfragen
+                Kontakt
               </Button>
               {/* <Button
                   ml={4}
                   filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                  borderRadius={'lg'}
                   onClick={handleOnContactClick}
                   fontSize="sm"
                   fontWeight="semibold"
@@ -325,6 +371,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   Login
                 </Button> */}
               <IconButton
+                variant="ghost"
+                display={{ base: 'block', md: 'none' }}
                 ml={4}
                 icon={
                   <HamburgerMenuIcon
@@ -334,12 +382,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                       // ...hamburgerIconProps,
                       //boxSize: '6',
                       //boxSize: '100%',
-                      backgroundColor: 'white'
+                      backgroundColor: 'brand.700'
                     }}
                   />
                 }
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -368,13 +415,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             py={{ base: '2', md: '4' }}
             justifyContent="space-between"
           >
-            <LinkBox flex="2" mr="4" display="flex">
+            <LinkBox height="100%" flex="2" mr="4" display="flex">
               <LinkOverlay href="/" color="white">
                 <Logo height="100%" color="white" />
               </LinkOverlay>
             </LinkBox>
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
-              <SearchMenu
+              {/* <SearchMenu
                 borderColor={'white'}
                 boxSizing={'border-box'}
                 borderWidth={{ base: 0, lg: 2 }}
@@ -384,13 +431,12 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   borderColor: 'brand.500',
                   bg: { base: 'brand.500', lg: 'transparent' }
                 }}
-              />
+              /> */}
               <Button
                 ml={4}
                 _hover={{
                   bg: 'brand.500'
                 }}
-                borderRadius={'lg'}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 //variant="ghost"
                 onClick={handleOnContactClick}
@@ -400,14 +446,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 color="black"
                 display={{ base: 'none', md: 'block' }}
               >
-                Jetzt anfragen
+                Kontakt
               </Button>
               {/* <Button
                   ml={4}
                   _hover={{
                     bg: 'brand.500'
                   }}
-                  borderRadius={'lg'}
                   filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                   //variant="ghost"
                   onClick={handleOnContactClick}
@@ -419,6 +464,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   Login
                 </Button> */}
               <IconButton
+                variant="ghost"
+                display={{ base: 'block', md: 'none' }}
                 ml={4}
                 _hover={{
                   bg: 'brand.500'
@@ -431,17 +478,17 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                       // ...hamburgerIconProps,
                       //boxSize: '6',
                       //boxSize: '100%',
-                      backgroundColor: 'black'
+                      backgroundColor: 'brand.700'
                     }}
                   />
                 }
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
+                
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 onClick={toggleMobileMenu}
-                bg={'white'}
+                //bg={'white'}
                 color={'black'}
               />
             </Flex>

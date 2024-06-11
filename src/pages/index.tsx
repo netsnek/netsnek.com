@@ -18,13 +18,13 @@ import Contact from '../components/sections/Contact';
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
-      {/* <Global
+      <Global
         styles={{
           body: {
-            backgroundColor: '#0D0E11'
+            backgroundColor: '#dee9ec'
           }
         }}
-      /> */}
+      />
 
       <Hero />
       <ClientsMarquee w="full" />

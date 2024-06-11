@@ -1,10 +1,42 @@
 const smtButtonComponent = {
+  solid: {
+    color: {
+      default: 'white',
+      _dark: 'white'
+    },
+    bgColor: {
+      default: 'brand.700',
+      _dark: 'brand.700'
+    },
+    hover: {
+      bgColor: {
+        default: 'brand.600',
+        _dark: 'brand.600'
+      }
+    },
+    active: {
+      bgColor: {
+        default: 'brand.600',
+        _dark: 'brand.600'
+      }
+    },
+    disabled: {
+      bgColor: {
+        default: 'gray.300',
+        _dark: 'gray.600'
+      },
+      color: {
+        default: 'gray.500',
+        _dark: 'gray.500'
+      }
+    }
+  },
   ghost: {
     hover: {
       outline: {
         color: {
-          default: 'brand.500',
-          _dark: 'brand.500'
+          default: 'brand.700',
+          _dark: 'brand.700'
         }
       },
       bgColor: {
@@ -16,23 +48,23 @@ const smtButtonComponent = {
   ghostHoverOpacity: {
     active: {
       color: {
-        default: 'brand.500',
-        _dark: 'brand.500'
+        default: 'brand.700',
+        _dark: 'brand.700'
       }
     }
   },
   outline: {
     color: {
-      default: 'brand.500',
-      _dark: 'brand.500'
+      default: 'brand.700',
+      _dark: 'brand.700'
     },
     borderColor: {
-      default: 'brand.500',
+      default: 'brand.700',
       _dark: 'brand.800'
     },
     hover: {
       borderColor: {
-        default: 'brand.500',
+        default: 'brand.700',
         _dark: 'brand.800'
       },
       color: {
@@ -40,7 +72,7 @@ const smtButtonComponent = {
         _dark: 'gray.200'
       },
       bgColor: {
-        default: 'brand.500',
+        default: 'brand.700',
         _dark: 'brand.800'
       }
     }

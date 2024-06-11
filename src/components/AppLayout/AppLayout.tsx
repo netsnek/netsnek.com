@@ -70,7 +70,7 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
           minW="210px"
           h="max(100%, 100vh)"
           minH="100vh">
-            {path === "/" && <GridPattern
+            {/* {path === "/" && <GridPattern
               position="absolute"
               insetX="0"
               top="-14" // In Chakra UI the values are in base 4 pixels, '-14' here might not directly translate. Adjust accordingly.
@@ -88,7 +88,7 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
               }}
               yOffset={-96}
               interactive
-            />}
+            />} */}
           {!isAuthenticated && path !== "/" && <TopNav path={path} />}
           {!isAuthenticated && path === "/" && <AltTopNav path={path} />}
           {childrenElmnt}

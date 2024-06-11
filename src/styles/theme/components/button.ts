@@ -3,9 +3,33 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 const themeButtonComponent: ComponentStyleConfig = {
   variants: {
     solid: {
+      borderRadius: 'full',
+      //textTransform: 'capitalize',
+      bgColor: 'components.button.solid.bgColor',
+      _hover: {
+        bgColor: 'components.button.solid.hover.bgColor',
+        opacity: 1
+      },
+      _focus: {
+        bgColor: 'components.button.solid.hover.bgColor',
+        opacity: 1
+      }
+    },
+    outline: {
+      borderRadius: 'full',
       textTransform: 'capitalize',
+      borderColor: 'components.button.outline.borderColor',
+      _hover: {
+        borderColor: 'components.button.outline.hover.borderColor',
+        opacity: 1
+      },
+      _focus: {
+        bgColor: 'components.button.outline.hover.borderColor',
+        opacity: 1
+      }
     },
     invisible: {
+      borderRadius: 'full',
       textTransform: 'capitalize',
       bgColor: 'transparent',
       border: 'none',
@@ -21,7 +45,22 @@ const themeButtonComponent: ComponentStyleConfig = {
       cursor: 'default',
       paddingInline: 3
     },
+    'ghost': {
+      borderRadius: 'full',
+      textTransform: 'capitalize',
+      bgColor: 'transparent',
+      opacity: 0.7,
+      _hover: {
+        bgColor: 'components.button.ghost.hover.bgColor',
+        opacity: 1
+      },
+      _focus: {
+        bgColor: 'components.button.ghost.hover.bgColor',
+        opacity: 1
+      }
+    },
     'ghost-hover': {
+      borderRadius: 'full',
       textTransform: 'capitalize',
       bgColor: 'transparent',
       opacity: 0.7,
@@ -35,6 +74,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       }
     },
     'ghost-hover-opacity': {
+      borderRadius: 'full',
       textTransform: 'capitalize',
       bgColor: 'transparent',
       opacity: 0.5,
@@ -44,6 +84,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       }
     },
     'outline-hover-filled': {
+      borderRadius: 'full',
       textTransform: 'capitalize',
       bgColor: 'transparent',
       border: '1px solid',
@@ -59,6 +100,7 @@ const themeButtonComponent: ComponentStyleConfig = {
         'background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out'
     },
     'ghost-hover-outline': {
+      borderRadius: 'full',
       textTransform: 'capitalize',
       bgColor: 'transparent',
       border: '1px solid',
