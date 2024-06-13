@@ -58,50 +58,50 @@ const Customer = () => {
       </GridItem>
 
       {/* Pair 1 */}
-      <GridItem area="heading1">
+      <GridItem area="heading1" px="9">
         <Heading as="h3" size="md" mb={4}>
           Du bist Unternehmer und möchtest den ganzen Tag über konzentriert Entscheidungen treffen?
         </Heading>
       </GridItem>
-      <GridItem area="text1">
+      <GridItem area="text1" px="9">
         <Text>
           Wir lernen gemeinsam kennen, wie dein Körper auf unterschiedliche Lebensmittel reagiert. Auf was solltest du beim schnellen Mittagessen achten? Welche Essgewohnheiten bringen dir Energie, welche mindern sie? Mit welchen Lebensmitteln gelingt eine gesunde, selbstgekochte Mahlzeit, wenns nur 10 Minuten dauern darf?
         </Text>
       </GridItem>
 
       {/* Pair 2 */}
-      <GridItem area="heading2">
+      <GridItem area="heading2" px="9">
         <Heading as="h3" size="md" mb={4}>
           Du bist Mutter/Vater und möchtest mehr Zeit für deine Familie schaffen?
         </Heading>
       </GridItem>
-      <GridItem area="text2">
+      <GridItem area="text2" px="9">
         <Text>
           Wichtig ist, dass jeder gerne bei der Ernährungsweise mitmacht und dass das Kochen keine Stunden benötigt. Wie kann man sich ausführlich belohnen, ohne gesunde Routinen zu brechen? Ziel ist es, dass ihr auch abends noch Energie für Aktivitäten oder für gemeinsame Hausaufgaben habt.
         </Text>
       </GridItem>
 
       {/* Pair 3 */}
-      <GridItem area="heading3">
+      <GridItem area="heading3" px="9">
         <Heading as="h3" size="md" mb={4}>
           Du arbeitest körperlich und hast am Abend keine Energie mehr für deine persönlichen Bedürfnisse?
         </Heading>
       </GridItem>
-      <GridItem area="text3">
+      <GridItem area="text3" px="9">
         <Text>
           Von was profitiert dein Körper? Woher nimmt dein Körper die Energie? Wir finden heraus, welche Speisen nicht nur ausreichend Energie für den Alltag bringen, sondern auch deine Gesundheit nachhaltig verbessern.
         </Text>
       </GridItem>
 
       {/* Bottom Text */}
-      <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-text">
+      <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-text" px="9">
         <Text>
           Jeder Mensch profitiert von mehr Energie und klareren Gedanken. Wir erhöhen deine Lebensqualität, indem du deinen Körper besser zu verstehen lernst.
         </Text>
       </GridItem>
 
       {/* Bottom Button */}
-      <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-button">
+      <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-button" px="9">
         <Button colorScheme="brand" onClick={onContactClick}>Finden wir heraus, ob du von mir profitierst</Button>
       </GridItem>
     </Grid>
