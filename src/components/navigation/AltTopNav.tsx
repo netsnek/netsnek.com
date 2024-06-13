@@ -15,7 +15,7 @@ import {
   useColorModeValue,
   Tooltip
 } from '@chakra-ui/react';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useContactModal } from '../../services/contact';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
@@ -39,6 +39,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
   hamburgerIconProps = {
     color: 'red.500'
   };
+
   const contactModal = useContactModal();
   const handleOnContactClick = () => {
     console.log('contactModal', contactModal);
@@ -46,6 +47,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
       meta: {}
     });
   };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hamburgerClass, setHamburgerClass] = useState('');
 
@@ -63,6 +65,21 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
     if (hamburgerClass === 'open') closeDrawer();
     else openDrawer();
   };
+
+  // Handle window resize and close menu if window width is >= 768px (md breakpoint)
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     if (window.innerWidth >= 768) {
+  //       closeDrawer();
+  //     }
+  //   };
+
+  //   window.addEventListener('resize', handleResize);
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   return (
     <Box
@@ -155,6 +172,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderStyle="solid"
             borderRight="1px"
             borderLeft="0"
+            borderBottom="0"
             borderColor={useColorModeValue('gray.900', 'gray.600')}
             transition="color 0.2s"
             _hover={{
@@ -169,9 +187,10 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             pl={{ base: '8', md: '16' }}
             alignItems="center"
             borderWidth="1px"
+            borderStyle="solid"
+            borderBottom="1px"
             borderRight="0"
             borderLeft={{ base: '1px', md: '0px' }}
-            borderStyle="solid"
             borderColor={useColorModeValue('gray.900', 'gray.600')}
             transition="color 0.2s"
             _hover={{
@@ -185,12 +204,12 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             pt={{ base: '8' }}
             pl={{ base: '8', md: '16' }}
             borderWidth="1px"
-            borderTop="0"
+            borderTop="1px"
             borderBottom="0"
             borderRight={{ base: '1px', md: '0px' }}
             borderLeft="0"
             borderStyle="solid"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={{ base: 'transparent', md: useColorModeValue('gray.900', 'gray.600') }}
           >
             {/* Office information here */}
             <Text color="white" fontWeight="bold" fontSize="lg" pb="4">
@@ -286,7 +305,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             py={{ base: '2', md: '4' }}
             justifyContent="space-between"
           >
-            <LinkBox flex="2" mr="4" display="flex">
+            <LinkBox height="100%" flex="2" mr="4" display="flex">
               <LinkOverlay href="/" color="white">
                 <Logo height="100%" color="black" />
               </LinkOverlay>
@@ -368,7 +387,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             py={{ base: '2', md: '4' }}
             justifyContent="space-between"
           >
-            <LinkBox flex="2" mr="4" display="flex">
+            <LinkBox height="100%" flex="2" mr="4" display="flex">
               <LinkOverlay href="/" color="white">
                 <Logo height="100%" color="white" />
               </LinkOverlay>
