@@ -15,7 +15,7 @@ import {
   useColorModeValue,
   Tooltip
 } from '@chakra-ui/react';
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useContactModal } from '../../services/contact';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
@@ -39,6 +39,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
   hamburgerIconProps = {
     color: 'red.500'
   };
+
   const contactModal = useContactModal();
   const handleOnContactClick = () => {
     console.log('contactModal', contactModal);
@@ -46,6 +47,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
       meta: {}
     });
   };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hamburgerClass, setHamburgerClass] = useState('');
 
@@ -63,6 +65,21 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
     if (hamburgerClass === 'open') closeDrawer();
     else openDrawer();
   };
+
+  // Handle window resize and close menu if window width is >= 768px (md breakpoint)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        closeDrawer();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <Box
@@ -120,7 +137,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderRight="1px"
             borderLeft="0"
             borderBottom="0"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
@@ -138,7 +155,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderBottom="0"
             borderRight="0"
             borderLeft={{ base: '1px', md: '0px' }}
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
@@ -155,7 +172,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderStyle="solid"
             borderRight="1px"
             borderLeft="0"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderBottom="0"
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
@@ -169,10 +187,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             pl={{ base: '8', md: '16' }}
             alignItems="center"
             borderWidth="1px"
+            borderStyle="solid"
+            borderBottom="1px"
             borderRight="0"
             borderLeft={{ base: '1px', md: '0px' }}
-            borderStyle="solid"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
@@ -185,25 +204,25 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             pt={{ base: '8' }}
             pl={{ base: '8', md: '16' }}
             borderWidth="1px"
-            borderTop="0"
+            borderTop="1px"
             borderBottom="0"
             borderRight={{ base: '1px', md: '0px' }}
             borderLeft="0"
             borderStyle="solid"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={{ base: 'transparent', md: useColorModeValue('brand.800', 'gray.600') }}
           >
             {/* Office information here */}
             <Text color="white" fontWeight="bold" fontSize="lg" pb="4">
-              Im Herzen von Wien
+              Im Herzen von Klagenfurt
             </Text>
             <Text color="white" fontSize="md">
               Hauptquartier
             </Text>
             <Text color="gray.400" fontSize="md">
-              Löwengasse 28
+              Sterneckstraße 23/20
             </Text>
             <Text color="gray.400" fontSize="md">
-              1030 Vienna, Austria
+              9020 Klagenfurt, Österreich
             </Text>
           </Box>
           <Box
@@ -216,7 +235,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderRight="0"
             borderLeft="0"
             borderStyle="solid"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
           >
             {/* Social media links here */}
             <Text color="white" fontWeight="bold" fontSize="lg">
@@ -382,7 +401,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                       // ...hamburgerIconProps,
                       //boxSize: '6',
                       //boxSize: '100%',
-                      backgroundColor: 'brand.700'
+                      backgroundColor: isOpen ? 'white' : 'brand.700'
                     }}
                   />
                 }
@@ -478,17 +497,17 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                       // ...hamburgerIconProps,
                       //boxSize: '6',
                       //boxSize: '100%',
-                      backgroundColor: 'brand.700'
+                      backgroundColor: isOpen ? 'white' : 'brand.700'
                     }}
                   />
                 }
-                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                
+                //filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 onClick={toggleMobileMenu}
-                //bg={'white'}
+                bg={'brand.900'}
                 color={'black'}
               />
             </Flex>

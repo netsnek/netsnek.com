@@ -137,6 +137,7 @@ const Hero: FC = () => {
         <VStack pt={`calc(${navOffset})`} as={FadeIn} spacing={4} align="left" gridArea="content">
           <Heading
             as="h3"
+            variant="cursive"
             size={{ base: 'sm', lg: 'md' }}
             style={{ animationDelay: '300ms' }}
             fontWeight="500"

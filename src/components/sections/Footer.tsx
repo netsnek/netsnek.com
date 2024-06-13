@@ -32,11 +32,11 @@ const Footer: FC = () => {
   const links = [
     [
       {
-        label: 'Links',
+        label: 'Seiten',
         isTitle: true
       },
       {
-        label: 'GitHub',
+        label: 'Startseite',
         href: 'https://github.com/netsnek/'
       },
       // {
@@ -48,46 +48,58 @@ const Footer: FC = () => {
       //   href: 'https://t.me/kleberbaum'
       // },
       {
-        label: 'Facebook',
+        label: 'Meine Beratung',
         href: 'https://facebook.com/netsnek/'
       },
       {
-        label: 'Instagram',
+        label: 'Rezepte',
         href: 'https://instagram.com/netsnek/'
       },
       {
-        label: 'Impressum',
+        label: 'Blog',
+        href: '/imprint'
+      },
+      {
+        label: 'Kontakt',
         href: '/imprint'
       }
     ],
     [
       {
-        label: 'Partner',
+        label: 'Wichtige Links',
         isTitle: true
       },
       {
-        label: 'Kanbon',
+        label: 'Liste essentieller Lebensmittel',
         href: 'https://kanbon.at'
       },
       {
-        label: 'Neurons',
+        label: 'Glykämischer Index (GI)-Tabellegängiger Lebensmittel',
+        href: 'https://neurons.at'
+      },
+      {
+        label: 'Ernährungspläne für spezielle Diäten',
+        href: 'https://neurons.at'
+      },
+      {
+        label: 'Saisonkalender Obst und Gemüse',
         href: 'https://neurons.at'
       }
     ],
-    [
-      {
-        label: 'Gestaltet von',
-        isTitle: true
-      },
-      {
-        label: 'Florian H. Kleber',
-        href: 'https://fhkit.at'
-      },
-      {
-        label: 'Nico Schett',
-        href: 'https://schett.net'
-      }
-    ]
+    // [
+    //   {
+    //     label: 'Gestaltet von',
+    //     isTitle: true
+    //   },
+    //   {
+    //     label: 'Florian H. Kleber',
+    //     href: 'https://fhkit.at'
+    //   },
+    //   {
+    //     label: 'Nico Schett',
+    //     href: 'https://schett.net'
+    //   }
+    // ]
   ]
 
   const linkElmnts: ReactNode[] = []
@@ -100,6 +112,7 @@ const Footer: FC = () => {
             return (
               <Field.Text
                 key={i}
+                color="white"
                 name={'FooterLinkTitle' + link.label}
                 defaultValue={link.label}
                 fontWeight="500"
@@ -107,8 +120,9 @@ const Footer: FC = () => {
             )
           }
           return (
-            <Link key={i} href={link.href} variant="hover-theme" opacity={0.7}>
+            <Link key={i} href={link.href} ariant="hover-theme" opacity={0.7}>
               <Field.Text
+                color="white"
                 name={'FooterLink' + link.label}
                 defaultValue={link.label}
               />
@@ -130,13 +144,13 @@ const Footer: FC = () => {
         //mt="-25px"
         px={{base: 5, lg: 0}}
         overflowX="hidden"
-        bgColor="#0A0A0A"
+        bgColor="brand.900"
         zIndex={0}>
         <Container maxW="7xl" h="100%">
-          <Flex mt={20} color="white" wrap={{base: 'wrap', sm: 'nowrap'}}>
+          <Flex mt={20} wrap={{base: 'wrap', sm: 'nowrap'}}>
             <Box>
               <Flex alignItems={'center'}>
-                <Logo h="100px" />
+                <Logo color="white" h="100px" />
               </Flex>
             </Box>
             <Spacer minW={{base: '5rem', lg: '25%'}} />
@@ -251,7 +265,7 @@ const Footer: FC = () => {
           <Divider mt={8} opacity={0.2} />
           <Field.Text
             name="FooterBottomText"
-            defaultValue="Copyright © 2024 Netsnek, Florian Herbert Kleber IT & Werbeagentur Nico Schett. All rights reserved."
+            defaultValue="Copyright © 2024 Netsnek, Florian Herbert Kleber IT & Kanbon GmbH. All rights reserved."
             mt={5}
             color="white"
             opacity={0.2}
