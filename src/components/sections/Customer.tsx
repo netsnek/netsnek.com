@@ -1,53 +1,102 @@
-import {
-  Link,
-  Image,
-  Heading,
-  LinkBox,
-  LinkOverlay,
-  GridItem,
-  Grid,
-  AspectRatio,
-  chakra
-} from '@chakra-ui/react'
-import {Field} from '@atsnek/jaen'
+import { Grid, GridItem, Heading, Text, Button, chakra } from '@chakra-ui/react';
 
 const Customer = () => {
-  // Sample list of your links and icons, assuming you will replace these with your actual data
-
   return (
     <Grid
       as="section"
-      templateColumns={{base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(6, 1fr)'}}
-      gap={{base: 4, sm: 8}}
+      templateAreas={{
+        base: `
+          "heading-main"
+          "heading1"
+          "text1"
+          "heading2"
+          "text2"
+          "heading3"
+          "text3"
+          "bottom-text"
+          "bottom-button"
+        `,
+        md: `
+          "heading-main heading-main"
+          "heading1 heading2"
+          "text1 text2"
+          "heading3 heading3"
+          "text3 text3"
+          "bottom-text bottom-text"
+          "bottom-button bottom-button"
+        `,
+        lg: `
+          "heading-main heading-main heading-main"
+          "heading1 heading2 heading3"
+          "text1 text2 text3"
+          "bottom-text bottom-text bottom-text"
+          "bottom-button bottom-button bottom-button"
+        `,
+      }}
+      gap={{ base: 4, sm: 8 }}
       mt={{ base: '24', sm: '32', lg: '40' }}
       p="16"
       w="full"
       maxW="full"
       color="white"
-      alignItems={'center'}>
-      <GridItem
-        mb={4}
-        pos="relative"
-        display="flex"
-        colSpan={{base: 2, sm: 3, md: 6}}
-        flexDir={'column'}
-        justifyContent={'center'}
-        alignItems={'center'}>
-        {/* <ImportantArrow pos="absolute" top="-150%" right="-10%" h="300%" /> */}
-        <Heading as="h2" size="xl" mt={4} textAlign="center" fontWeight="500">
-          {/* Software in Österreich */}
-          {/* Softwareentwicklung in Österreich */}
-          {/* Österreichische Qualitätssoftware */}
-          {/* Softwareentwicklung in Österreich */}
+      alignItems="start"
+    >
+      <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} mb={4} textAlign="center" area="heading-main">
+        <Heading as="h2" size="xl" mt={4} fontWeight="500">
           Meine Kunden
           <chakra.span color="brand.500">.</chakra.span>
         </Heading>
       </GridItem>
-      
 
-      {/* Den Wrapper um den Link mit GridItem oder einer ähnlichen Komponente und setze colSpan auf 3 */}
+      {/* Pair 1 */}
+      <GridItem area="heading1">
+        <Heading as="h3" size="md" mb={4}>
+          Du bist Unternehmer und möchtest den ganzen Tag über konzentriert Entscheidungen treffen?
+        </Heading>
+      </GridItem>
+      <GridItem area="text1">
+        <Text>
+          Wir lernen gemeinsam kennen, wie dein Körper auf unterschiedliche Lebensmittel reagiert. Auf was solltest du beim schnellen Mittagessen achten? Welche Essgewohnheiten bringen dir Energie, welche mindern sie? Mit welchen Lebensmitteln gelingt eine gesunde, selbstgekochte Mahlzeit, wenns nur 10 Minuten dauern darf?
+        </Text>
+      </GridItem>
+
+      {/* Pair 2 */}
+      <GridItem area="heading2">
+        <Heading as="h3" size="md" mb={4}>
+          Du bist Mutter/Vater und möchtest mehr Zeit für deine Familie schaffen?
+        </Heading>
+      </GridItem>
+      <GridItem area="text2">
+        <Text>
+          Wichtig ist, dass jeder gerne bei der Ernährungsweise mitmacht und dass das Kochen keine Stunden benötigt. Wie kann man sich ausführlich belohnen, ohne gesunde Routinen zu brechen? Ziel ist es, dass ihr auch abends noch Energie für Aktivitäten oder für gemeinsame Hausaufgaben habt.
+        </Text>
+      </GridItem>
+
+      {/* Pair 3 */}
+      <GridItem area="heading3">
+        <Heading as="h3" size="md" mb={4}>
+          Du arbeitest körperlich und hast am Abend keine Energie mehr für deine persönlichen Bedürfnisse?
+        </Heading>
+      </GridItem>
+      <GridItem area="text3">
+        <Text>
+          Von was profitiert dein Körper? Woher nimmt dein Körper die Energie? Wir finden heraus, welche Speisen nicht nur ausreichend Energie für den Alltag bringen, sondern auch deine Gesundheit nachhaltig verbessern.
+        </Text>
+      </GridItem>
+
+      {/* Bottom Text */}
+      <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-text">
+        <Text>
+          Jeder Mensch profitiert von mehr Energie und klareren Gedanken. Wir erhöhen deine Lebensqualität, indem du deinen Körper besser zu verstehen lernst.
+        </Text>
+      </GridItem>
+
+      {/* Bottom Button */}
+      <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-button">
+        <Button colorScheme="brand">Finden wir heraus, ob du von mir profitierst</Button>
+      </GridItem>
     </Grid>
-  )
-}
+  );
+};
 
-export default Customer
+export default Customer;
