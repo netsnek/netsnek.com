@@ -30,7 +30,7 @@ const LastCall = () => {
       flexDir={{ base: 'column-reverse', lg: 'row' }}
       w={"full"}
       borderRadius="2xl"
-      mb={{ base: '0', lg: '16' }}
+      mb={{ base: '4', lg: '16' }}
       mt={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
