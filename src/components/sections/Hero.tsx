@@ -155,7 +155,7 @@ const Hero: FC = () => {
             fontWeight="900"
             textAlign="left"
             name="HeroTitle"
-            defaultValue="Dein Leben. <br/> Deine Ernährung. <br/> Perfekt abgestimmt."
+            defaultValue="Dein <u>Leben</u>. <br/> Deine <u>Ernährung</u>. <br/> Perfekt abgestimmt."
           />
           <Field.Text
             as={Text}

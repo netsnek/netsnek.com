@@ -12,6 +12,10 @@ i {
     font-weight: 'normal';
 }
 
+u {
+  text-decoration-color: #F5DEC5
+}
+
 /* * { 
   image-rendering: high-quality !important;
   shape-rendering: geometricPrecision !important;

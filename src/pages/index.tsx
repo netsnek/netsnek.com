@@ -19,6 +19,7 @@ import Associates from '../components/sections/Associates';
 import Portfolio from '../components/sections/Portfolio/Portfolio';
 import { GoogleMaps } from '../components/GoogleMaps';
 import Contact from '../components/sections/Contact';
+import Customer from '../components/sections/Customer';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -45,6 +46,7 @@ const IndexPage: React.FC<PageProps> = () => {
         bg="white"
       >
         <Muffin />
+        <Customer />
       </Box>
       {/* <Container maxW="5xl" mb="20">
         <Services />

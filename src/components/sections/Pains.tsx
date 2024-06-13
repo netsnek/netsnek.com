@@ -12,8 +12,16 @@ import {
   Flex
 } from '@chakra-ui/react'
 import { Field, Head } from '@atsnek/jaen'
+import { useContactModal } from '../../services/contact';
 
 const Pains = () => {
+  const contactModal = useContactModal()
+
+  const onContactClick = () => {
+    contactModal.onOpen({
+      meta: {}
+    })
+  };
   return (
     <Flex
       as="section"
@@ -87,6 +95,7 @@ Möchtest du deine Zeit <i>aktiver und erfüllter</i> nutzen können?<br/>
         >
           <Button
             mr={{ base: '0', lg: '8' }}
+            onClick={onContactClick}
           >
             Lernen wir uns kennen
           </Button>
@@ -95,13 +104,13 @@ Möchtest du deine Zeit <i>aktiver und erfüllter</i> nutzen können?<br/>
             //mb="8"
             as={Text}
             fontSize={{ base: 'sm', lg: 'md' }}
-            opacity={0.8}
+            //opacity={0.8}
             lineHeight={1}
             //fontWeight="bold"
             textAlign="left"
             name="PainsSectionSubheading1"
-            defaultValue="Kostenlos und unverbindlich.<br/>
-            Eine Stunde nur für dich.
+            defaultValue="<u>Kostenlos und unverbindlich.<br/>
+            Eine Stunde nur für dich.</u>
           "
           />
         </Flex>

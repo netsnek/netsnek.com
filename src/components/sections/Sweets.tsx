@@ -12,8 +12,17 @@ import {
   Button
 } from '@chakra-ui/react'
 import { Field, Head } from '@atsnek/jaen'
+import { useContactModal } from '../../services/contact';
 
 const Sweets = () => {
+  const contactModal = useContactModal()
+
+  const onContactClick = () => {
+    contactModal.onOpen({
+      meta: {}
+    })
+  };
+
   return (
     <Flex
       as="section"
@@ -71,7 +80,9 @@ Auch die Bedürfnisse deiner Partnerin, deines Partners oder deiner Kinder sind 
 Ob du beruflich oft unterwegs bist und häufig außer Haus isst oder es vorziehst, selbst zu kochen und deine Mahlzeiten daheim zuzubereiten – wir gestalten einen Ernährungsplan, der zu deinem Lebensstil passt.
           "
         />
-        <Button>
+        <Button
+          onClick={onContactClick}
+        >
           Unverbindliches Gespräch vereinbaren
         </Button>
       </Container>
