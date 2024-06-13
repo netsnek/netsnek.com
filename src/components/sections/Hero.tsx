@@ -141,7 +141,7 @@ const Hero: FC = () => {
             size={{ base: 'sm', lg: 'md' }}
             style={{ animationDelay: '300ms' }}
             fontWeight="500"
-            textTransform="uppercase"
+            //textTransform="uppercase"
             lineHeight="1.5em"
             letterSpacing="4.2px"
           >
