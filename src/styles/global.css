@@ -7,6 +7,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 /* import ShadowsIntoLight-Regular from '/fonts/ShadowsIntoLight-Regular.ttf'; */
 
+i {
+    font-family: 'Shadows Into Light', sans-serif;
+    font-weight: 'normal';
+}
+
 /* * { 
   image-rendering: high-quality !important;
   shape-rendering: geometricPrecision !important;

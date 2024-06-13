@@ -12,6 +12,7 @@ import Services from '../components/sections/Services';
 import Mushroom from '../components/sections/Mushroom';
 import Muffin from '../components/sections/Muffin';
 import Special from '../components/sections/Special';
+import Pains from '../components/sections/Pains';
 import Sweets from '../components/sections/Sweets';
 import ServicesDetails from '../components/sections/ServiceDetails';
 import Associates from '../components/sections/Associates';
@@ -37,6 +38,7 @@ const IndexPage: React.FC<PageProps> = () => {
       >
         <Mushroom />
       </Box>
+      <Pains />
       <Special />
       <Sweets />
       <Box

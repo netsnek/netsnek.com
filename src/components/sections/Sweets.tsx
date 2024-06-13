@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { Field, Head } from '@atsnek/jaen'
 
-const Special = () => {
+const Sweets = () => {
   return (
     <HStack
       as="section"
@@ -38,7 +38,7 @@ const Special = () => {
           lineHeight="1.5em"
           //letterSpacing="4.2px"
           textAlign="left"
-          name="SpecialSectionHeading1"
+          name="SweetsSectionHeading1"
           defaultValue="Jeder Mensch ist einzigartig."
         />
         <Field.Text
@@ -49,7 +49,7 @@ const Special = () => {
           lineHeight={1}
           //fontWeight="bold"
           textAlign="left"
-          name="SpecialSectionHeading2"
+          name="SweetsSectionHeading2"
           defaultValue="Du liebst Süßigkeiten, genießt gelegentlich frittierte Speisen und findest es schwer, auf etwas zu verzichten?"
         />
         <Field.Text
@@ -60,7 +60,7 @@ const Special = () => {
           lineHeight={1}
           //fontWeight="bold"
           textAlign="left"
-          name="SpecialSectionSubheading1"
+          name="SweetsSectionSubheading1"
           defaultValue="
           <b>Deine Ernährung sollte deine Vorlieben berücksichtigen.</b>
 <br/><br/>
@@ -82,4 +82,4 @@ Ob du beruflich oft unterwegs bist und häufig außer Haus isst oder es vorziehs
   )
 }
 
-export default Special
+export default Sweets
