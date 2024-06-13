@@ -8,14 +8,16 @@ import {
   Grid,
   HStack,
   Center,
-  Button
+  Button,
+  Flex
 } from '@chakra-ui/react'
 import { Field, Head } from '@atsnek/jaen'
 
 const Pains = () => {
   return (
-    <HStack
+    <Flex
       as="section"
+      flexDir={{ base: 'column', lg: 'row' }}
       w={"full"}
       borderRadius="2xl"
       mb={{ base: '0', lg: '16' }}
@@ -26,6 +28,7 @@ const Pains = () => {
       zIndex={0}>
       <Image
         w={"500px"}
+        mb="8"
         src="images/pains-image-1.png"
         alt="grapes"
       />
@@ -78,14 +81,17 @@ Möchtest du deine Zeit <i>aktiver und erfüllter</i> nutzen können?<br/>
           Mein Ziel ist es, dass du nicht nur deine eigenen Ziele übertriffst, sondern auch außerhalb der Arbeit aktiv und erfüllt leben kannst. Jeder Tag bietet dir 24 Stunden. Wenn du gesunde 8 Stunden schläfst, bleiben dir noch 16 wertvolle Stunden – und jede einzelne davon sollte lebenswert sein.
           "
         />
-        <HStack alignItems="center">
+        <Flex
+          alignItems="center"
+          flexDir={{ base: 'column-reverse', lg: 'row' }}
+        >
           <Button
-            mr="8"
+            mr={{ base: '0', lg: '8' }}
           >
             Lernen wir uns kennen
           </Button>
           <Field.Text
-            //mt={{ base: '20 !important', md: '0' }}
+            mb={{ base: '2', md: '0' }}
             //mb="8"
             as={Text}
             fontSize={{ base: 'sm', lg: 'md' }}
@@ -94,14 +100,13 @@ Möchtest du deine Zeit <i>aktiver und erfüllter</i> nutzen können?<br/>
             //fontWeight="bold"
             textAlign="left"
             name="PainsSectionSubheading1"
-            defaultValue="
-            Kostenlos und unverbindlich.<br/>
+            defaultValue="Kostenlos und unverbindlich.<br/>
             Eine Stunde nur für dich.
           "
           />
-        </HStack>
+        </Flex>
       </Container>
-    </HStack>
+    </Flex>
   )
 }
 

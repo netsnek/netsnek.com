@@ -62,18 +62,22 @@ const Special = () => {
           alt="apple"
         />
         <Image
+          display={{ base: 'none', lg: 'block' }}
           src="images/svg/spaghetti.svg"
           alt="spaghetti"
         />
         <Image
+          display={{ base: 'none', lg: 'block' }}
           src="images/svg/fish.svg"
           alt="fish"
         />
         <Image
+          display={{ base: 'none', lg: 'block' }}
           src="images/svg/cut_mushroom.svg"
           alt="cut mushroom"
         />
         <Image
+          display={{ base: 'none', lg: 'block' }}
           src="images/svg/wine_glass.svg"
           alt="wine glass"
         />

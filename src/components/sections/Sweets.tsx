@@ -1,6 +1,7 @@
 import {
   Image,
   Box,
+  Flex,
   Container,
   Heading,
   Text,
@@ -14,8 +15,9 @@ import { Field, Head } from '@atsnek/jaen'
 
 const Sweets = () => {
   return (
-    <HStack
+    <Flex
       as="section"
+      flexDir={{ base: 'column-reverse', lg: 'row' }}
       w={"full"}
       borderRadius="2xl"
       mb={{ base: '0', lg: '16' }}
@@ -74,11 +76,12 @@ Ob du beruflich oft unterwegs bist und häufig außer Haus isst oder es vorziehs
         </Button>
       </Container>
       <Image
+        mb="8"
         w={"500px"}
         src="images/sweets-image-1.png"
         alt="grapes"
       />
-    </HStack>
+    </Flex>
   )
 }
 
