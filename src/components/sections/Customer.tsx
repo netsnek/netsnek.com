@@ -44,7 +44,7 @@ const Customer = () => {
       }}
       gap={{ base: 4, sm: 8 }}
       mt={{ base: '12', sm: '12', lg: '20' }}
-      p="16"
+      //p="16"
       w="full"
       maxW="full"
       color="white"
