@@ -14,6 +14,7 @@ import Muffin from '../components/sections/Muffin';
 import Special from '../components/sections/Special';
 import Pains from '../components/sections/Pains';
 import Sweets from '../components/sections/Sweets';
+import LastCall from '../components/sections/LastCall';
 import ServicesDetails from '../components/sections/ServiceDetails';
 import Associates from '../components/sections/Associates';
 import Portfolio from '../components/sections/Portfolio/Portfolio';
@@ -48,6 +49,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <Muffin />
         <Customer />
       </Box>
+      <LastCall />
       {/* <Container maxW="5xl" mb="20">
         <Services />
         <Associates />
