@@ -107,8 +107,8 @@ const Hero: FC = () => {
                 w="full"
                 h="full"
                 sx={{
-                  borderRadius: 'md',
-                  filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
+                  //borderRadius: 'md',
+                  //filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
                 }}
               />
               <Netsnek

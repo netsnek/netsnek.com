@@ -1,6 +1,15 @@
 import { Grid, GridItem, Heading, Text, Button, chakra } from '@chakra-ui/react';
+import { useContactModal } from '../../services/contact';
 
 const Customer = () => {
+  const contactModal = useContactModal()
+
+  const onContactClick = () => {
+    contactModal.onOpen({
+      meta: {}
+    })
+  };
+
   return (
     <Grid
       as="section"
@@ -93,7 +102,7 @@ const Customer = () => {
 
       {/* Bottom Button */}
       <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-button">
-        <Button colorScheme="brand">Finden wir heraus, ob du von mir profitierst</Button>
+        <Button colorScheme="brand" onClick={onContactClick}>Finden wir heraus, ob du von mir profitierst</Button>
       </GridItem>
     </Grid>
   );
