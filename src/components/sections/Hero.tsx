@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { FC, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Field, useAuth } from '@atsnek/jaen';
+import { Field, useAuth } from 'jaen';
 import useNavOffset from '../../hooks/use-nav-offset';
 import { Link } from 'gatsby-plugin-jaen';
 
@@ -23,7 +23,7 @@ import Netsnek from '../../gatsby-plugin-jaen/components/Netsnek';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { FadeIn } from '../FadeIn';
 import { useContactModal } from '../../services/contact';
-import { UncontrolledMdxField } from '@atsnek/jaen-fields-mdx';
+import { UncontrolledMdxField } from 'jaen-fields-mdx';
 import SvgMdxEditor from '../mdx-editor/SvgMdxEditor';
 
 interface ScrollArrowsProps {

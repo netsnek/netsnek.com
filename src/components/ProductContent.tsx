@@ -27,10 +27,10 @@ import React from "react";
 import { FaShare } from "@react-icons/all-files/fa/FaShare";
 import { FaShoppingBasket } from "@react-icons/all-files/fa/FaShoppingBasket";
 // import {useBasket} from '../../../services/basket'
-import { connectBlock, Field } from "@atsnek/jaen";
+import { connectBlock, Field } from 'jaen';
 import MdxEditor from "./mdx-editor/MdxEditor";
 
-// import {PhotoProvider} from '@atsnek/jaen'
+// import {PhotoProvider} from 'jaen'
 
 const useBasket = () => {
   return {

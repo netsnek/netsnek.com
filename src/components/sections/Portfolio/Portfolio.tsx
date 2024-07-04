@@ -4,7 +4,7 @@ import {useNewsPages} from '../../../hooks/use-news-pages'
 import PortfolioGrid from './PortfolioGrid'
 import PortfolioSlider from './PortfolioSlider'
 import { useJaenProducts } from '../../../hooks/use-products'
-import { PageProvider, useField } from '@atsnek/jaen'
+import { PageProvider, useField } from 'jaen'
 
 interface INewsSlidesProps {
   productIndex: any

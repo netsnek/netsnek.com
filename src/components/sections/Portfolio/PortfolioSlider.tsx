@@ -10,7 +10,7 @@ import {
   VStack,
   useColorModeValue
 } from '@chakra-ui/react'
-import {Field, useContentManagement} from '@atsnek/jaen'
+import {Field, useContentManagement} from 'jaen'
 import {Link} from 'gatsby'
 import {FC} from 'react'
 import Slider from 'react-slick'

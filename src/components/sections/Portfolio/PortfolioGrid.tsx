@@ -11,7 +11,7 @@ import {
   VStack,
   useColorModeValue
 } from '@chakra-ui/react'
-import {Field, usePageContext} from '@atsnek/jaen'
+import {Field, usePageContext} from 'jaen'
 import {Link} from 'gatsby'
 import {FC} from 'react'
 import {ProductCard} from '../../ProductCard'

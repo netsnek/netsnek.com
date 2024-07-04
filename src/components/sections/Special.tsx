@@ -9,7 +9,7 @@ import {
   HStack,
   Center
 } from '@chakra-ui/react'
-import { Field } from '@atsnek/jaen'
+import { Field } from 'jaen'
 
 const Special = () => {
   return (

@@ -1,4 +1,4 @@
-import { PageConfig, PageProps } from '@atsnek/jaen';
+import { PageConfig, PageProps } from 'jaen';
 import { Global } from '@emotion/react';
 
 import { graphql } from 'gatsby';
@@ -93,4 +93,4 @@ export const query = graphql`
   }
 `;
 
-export { Head } from '@atsnek/jaen';
+export { Head } from 'jaen';

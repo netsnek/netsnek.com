@@ -8,7 +8,7 @@ import {
   ContactFormValues,
   ContactModal,
 } from "../components/ContactModal/ContactModal";
-import { useAuth } from "@atsnek/jaen";
+import { useAuth } from 'jaen';
 import { useQueryRouter } from "../hooks/use-query-router";
 import { navigate } from "gatsby";
 

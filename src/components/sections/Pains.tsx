@@ -11,7 +11,7 @@ import {
   Button,
   Flex
 } from '@chakra-ui/react'
-import { Field, Head } from '@atsnek/jaen'
+import { Field, Head } from 'jaen'
 import { useContactModal } from '../../services/contact';
 
 const Pains = () => {

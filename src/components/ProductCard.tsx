@@ -19,7 +19,7 @@ import { v1 as uuidv1 } from 'uuid';
 //import { useWholesaleUser } from '../../../hooks/use-wholesale-user'
 
 import { css } from '@emotion/react';
-import { Field } from '@atsnek/jaen';
+import { Field } from 'jaen';
 
 const borderColor = (color?: string) => (color ? color : '#f77f00');
 const transformWidth = (width?: string) =>

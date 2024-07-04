@@ -1,4 +1,4 @@
-import {useJaenPageIndex, usePageContext, PageProvider} from '@atsnek/jaen'
+import {useJaenPageIndex, usePageContext, PageProvider} from 'jaen'
 import {IGatsbyImageData} from 'gatsby-plugin-image'
 import {useMemo} from 'react'
 
