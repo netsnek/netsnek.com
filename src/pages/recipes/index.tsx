@@ -115,7 +115,7 @@ const IndexPage: React.FC<PageProps> = () => {
 export default IndexPage;
 
 export const pageConfig: PageConfig = {
-  label: 'Experiments',
+  label: 'Recipes',
   icon: 'FaFlask',
   withoutJaenFrameStickyHeader: true,
   menu: {
