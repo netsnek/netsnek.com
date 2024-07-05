@@ -89,7 +89,7 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
               yOffset={-96}
               interactive
             />} */}
-          {!isAuthenticated && path !== "/" && <TopNav path={path} />}
+          {!isAuthenticated && path !== "/" && <AltTopNav path={path} />}
           {!isAuthenticated && path === "/" && <AltTopNav path={path} />}
           {childrenElmnt}
         </Box>

@@ -90,6 +90,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
       minH={isOpen ? '600px' : '100px'}
       transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
       borderBottomRadius={'2xl'}
+      backgroundColor='#dee9ec'
     >
       <Box
         pos="relative"
@@ -179,7 +180,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Rezepte</LinkOverlay>
+            <LinkOverlay href="/recipes/">Rezepte</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="blog"
@@ -348,7 +349,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 variant="ghost"
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                onClick={handleOnContactClick}
+                onClick={() => window.location.href = '/recipes'}
                 fontSize="sm"
                 fontWeight="semibold"
                 color="#273E53"
