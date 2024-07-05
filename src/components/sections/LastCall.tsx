@@ -30,12 +30,12 @@ const LastCall = () => {
       flexDir={{ base: 'column-reverse', lg: 'row' }}
       w={"full"}
       borderRadius="2xl"
-      mb={{ base: '4', lg: '16' }}
+      //mb={{ base: '4', lg: '16' }}
       mt={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
       px={{ base: 5, lg: 0 }}
-      py={8}
+      pt={8}
       maxW="4xl"
       zIndex={0}>
       <Box>
@@ -70,7 +70,7 @@ const LastCall = () => {
         </Button>
       </Box>
       <Image
-        mb="8"
+        //mb="8"
         w={"500px"}
         src="images/header-portrait-image.png"
         alt="Barbara"

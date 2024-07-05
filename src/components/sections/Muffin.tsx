@@ -19,7 +19,7 @@ import {
         position="relative"
         overflow={{ base: 'hidden', lg: 'visible' }}
         px={{ base: 5, lg: 0 }}
-        pt={20}
+        pt={40}
         zIndex={0}>
         <Image
           margin="0 auto"

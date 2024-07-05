@@ -29,11 +29,11 @@ const Sweets = () => {
       flexDir={{ base: 'column-reverse', lg: 'row' }}
       w={"full"}
       borderRadius="2xl"
-      mb={{ base: '0', lg: '16' }}
+      //mb={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
       px={{ base: 5, lg: 0 }}
-      py={8}
+      pt={16}
       zIndex={0}>
       <Container
         maxW="2xl"
@@ -87,7 +87,7 @@ Ob du beruflich oft unterwegs bist und häufig außer Haus isst oder es vorziehs
         </Button>
       </Container>
       <Image
-        mb="8"
+        //mb="8"
         w={"500px"}
         src="images/sweets-image-1.png"
         alt="grapes"

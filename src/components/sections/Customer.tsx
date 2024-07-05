@@ -14,6 +14,7 @@ const Customer = () => {
     <Container
       maxW="8xl"
       as="section"
+      p={16}
     >
       <Grid
         templateAreas={{

@@ -42,6 +42,7 @@ const Pains = () => {
       />
       <Container
         maxW="2xl"
+        pt={{ base: '0', lg: '16' }}
       >
         <Field.Text
           as={Text}

@@ -61,7 +61,7 @@ const ScrollArrows: React.FC<ScrollArrowsProps> = ({ isVisible }) => {
   );
 };
 
-const Hero: FC = () => {
+const RecipeHero: FC = () => {
   const navOffset = useNavOffset();
 
   const isAuthenticated = useAuth().user !== null;
@@ -91,25 +91,26 @@ const Hero: FC = () => {
         }}
         gridTemplateColumns={{ md: '1fr 1fr' }}
         gridTemplateRows={{ base: 'auto 1fr auto', md: '1fr auto' }}
+        //gap={{ base: 8, md: 16 }}
         pt={{ base: 8, md: 16 }}
-        px={{ base: 8, md: 16 }}
-        id="hero"
+        //px={{ base: 8, md: 16 }}
+        id="RecipeHero"
         overflow="hidden"
       //p={{ base: 5, lg: 0 }}
       // pt={`calc(${navOffset})`}
       >
         <Box as={FadeIn} position="relative" gridArea="image">
-          <AspectRatio ratio={1 / 1.04} w="full" h="auto" maxH="700px">
+          {/* <AspectRatio ratio={1 / 1.04} w="full" h="auto" maxH="700px"> */}
             <Box position="relative" w="full" h="full">
               <Box
-                defaultValue="/images/header-portrait-image.png"
-                name="heroimage"
+                defaultValue="/images/sweets-image-3.png"
+                name="RecipeHeroimage"
                 as={Field.Image}
-                alt="hero image"
-                objectFit="cover"
+                alt="RecipeHero image"
+                objectFit="contain"
                 w="full"
                 h="full"
-                ml={{ base: 8, md: 16 }}
+                //ml={{ base: 8, md: 16 }}
                 sx={{
                   //borderRadius: 'md',
                   //filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
@@ -117,7 +118,7 @@ const Hero: FC = () => {
               />
               {/* <Image
                 src="images/header-portrait-image.png"
-                alt="hero image"
+                alt="RecipeHero image"
                 objectFit="cover"
                 w="full"
                 h="full"
@@ -127,7 +128,7 @@ const Hero: FC = () => {
                 }}
               /> */}
             </Box>
-          </AspectRatio>
+          {/* </AspectRatio> */}
         </Box>
         <VStack pt={`calc(${navOffset})`} as={FadeIn} spacing={4} align="left" gridArea="content" pr={{ base: 8, md: 16 }}>
           <Heading
@@ -149,39 +150,30 @@ const Hero: FC = () => {
             lineHeight={1}
             fontWeight="900"
             textAlign="left"
-            name="HeroTitle"
-            defaultValue="Dein <u>Leben</u>. <br/> Deine <u>Ernährung</u>. <br/> Perfekt abgestimmt."
+            name="RecipeHeroTitle"
+            defaultValue="<u>Rezepte</u>"
           />
           <Field.Text
             as={Text}
             fontSize={'lg'}
             opacity={0.5}
             textAlign="left"
-            name="HeroLead"
+            name="RecipeHeroLead"
             defaultValue="Werde dir bewusst, wie deine Ernährung Körper und Geist beeinflusst – und erlerne die Kunst, dein Wohlbefinden gezielt zu steuern."
           />
-          <HStack spacing={4} mt={4}>
-            <Button
-              variant="solid"
-              filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-              onClick={onContactClick}
-            >
-              Persönliches Gespräch vereinbaren
-            </Button>
-            {/* <Button
-              variant="outline"
-              bg={'white'}
-              filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-              onClick={() => (window.location.href = '/docs')}
-              borderWidth={2}
-            >
-              Projekte ansehen
-            </Button> */}
-          </HStack>
         </VStack>
-        <Box gridArea="customer">
+        <Box gridArea="customer" p={16}>
           {/* <Text>Customer Testimonials or Data</Text> */}
           {/* <ScrollArrows isVisible={scrollPos < 100} /> */}
+          <Field.Text
+            as={Heading}
+            fontSize={{ base: '2xl', lg: '4xl' }}
+            lineHeight={1}
+            fontWeight="900"
+            textAlign="center"
+            name="RecipeLead2"
+            defaultValue="Was gibts heute?"
+          />
           {/* Any additional content for the customer area goes here */}
         </Box>
       </Grid>
@@ -189,4 +181,4 @@ const Hero: FC = () => {
   );
 };
 
-export default Hero;
+export default RecipeHero;

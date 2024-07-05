@@ -15,11 +15,11 @@ const Mushroom = () => {
       as="section"
       maxW="3xl"
       borderRadius="2xl"
-      mb={{ base: '0', lg: '16' }}
+      //mb={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
       px={{ base: 5, lg: 0 }}
-      py={8}
+      py={16}
       zIndex={0}>
       <Image
         margin="0 auto"
