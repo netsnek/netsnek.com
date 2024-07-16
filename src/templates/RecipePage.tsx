@@ -11,6 +11,7 @@ import MainBottomNav from '../components/navigation/MainBottomNav';
 import { Global } from '@emotion/react';
 import RecipeHero from '../components/sections/RecipeHero';
 import LastCall from '../components/sections/LastCall';
+import { useEffect, useState } from 'react';
 
 // Example links - these would probably be fetched from a CMS or other data source
 const links = [
@@ -26,6 +27,7 @@ const links = [
 
 interface IStepProps {
     isLeft: boolean
+    position: number
 }
 
 interface IStepSectionProps { }
@@ -40,98 +42,62 @@ interface IStepsProps {
     about: string
 }
 
-const Step: React.FC<IStepProps> = ({ isLeft }) => {
+const Step: React.FC<IStepProps> = ({ isLeft, position }) => {
+    const [step, setStep] = useState<number>(position);
+  
+    useEffect(() => {
+      setStep(position);
+    }, [position]);
+  
     return (
-        <>
-            <Flex
-                justify={{ md: isLeft ? 'left' : 'right' }}
-                py="8"
-                display={{ base: 'none', md: 'flex' }}>
-                <Flex
-                    align="center"
-                    flexDir={{ md: isLeft ? 'row' : 'row-reverse' }}
-                    flexGrow="1"
-                    gap="8"
-                    maxW="71.875rem"
-                    justify="space-between">
-                    <VStack flex="1">
-                        <Grid placeItems="center" pos="relative">
-                            {/* <Image src="/images/about_us/profile_bg.svg" /> */}
-                            {/* <chakra.svg
-                  as={Shape1}
-                  sx={{
-                    '#Selection': {
-                      fill: '#f6f8fa'
-                    }
-                  }}
-                  w="30rem"
-                  maxW="100%"
-                  h="auto"
-                  pb="1rem"
-                  transform="rotate(190deg)"
-                /> */}
-                            {/* <Image src={image} pos="absolute" boxShadow="dark" w="80%" borderRadius="full" /> */}
-                            <AspectRatio
-                                ratio={1}
-                                pos="absolute"
-                                boxShadow="dark"
-                                overflow="hidden"
-                                isolation="isolate"
-                                w="75%"
-                                bg="white"
-                                borderRadius="full">
-                                <Field.Image name="image" />
-                            </AspectRatio>
-                        </Grid>
-                        {/* <Heading size="h3015" fontWeight="semibold">
-                {name}
-              </Heading> */}
-                        {/* <Field.Text
-                name="name"
+      <>
+        <Flex
+          justify={{ md: isLeft ? 'left' : 'right' }}
+          py="8"
+          display={{ base: 'none', md: 'flex' }}>
+          <Flex
+            align="center"
+            flexDir={{ md: isLeft ? 'row' : 'row-reverse' }}
+            flexGrow="1"
+            gap="8"
+            maxW="71.875rem"
+            justify="space-between">
+            <VStack flex="1">
+              <Grid placeItems="center" pos="relative">
+                <Field.Image name="image" />
+              </Grid>
+            </VStack>
+            <Stack flex="1" borderLeft={"5px solid"} borderColor="brand.900" p="8">
+              <Field.Text
+                name="title"
                 as={Heading}
-                size="h3015"
+                color="brand.900"
+                size="24"
                 fontWeight="semibold"
-                //textAlign={{ base: isLeft ? 'left' : 'right' }}
-                //fontWeight="semibold"
-                defaultValue={'Name'}
-              /> */}
-                    </VStack>
-                    <Stack flex="1" borderLeft={"5px solid"} borderColor="brand.900" p="8">
-                        {/* <Heading color="brand.900" size="h4015" fontWeight="semibold">
-                {qoute}
-              </Heading> */}
-                        <Field.Text
-                            name="title"
-                            as={Heading}
-                            color="brand.900"
-                            size="24"
-                            fontWeight="semibold"
-                            textAlign={'left'}
-                            //fontWeight="semibold"
-                            defaultValue={'Step 1'}
-                        />
-                        <Field.Text
-                            name="lead"
-                            fontWeight="semibold"
-                            color="gray.800"
-                            size="xl"
-                            textAlign={'left'}
-                            defaultValue={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'}
-                        />
-                        <Field.Text
-                            name="content"
-                            //fontWeight="semibold"
-                            color="gray.900"
-                            textAlign={'left'}
-                            //fontWeight="semibold"
-                            defaultValue={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
-                        />
-                    </Stack>
-                </Flex>
-            </Flex>
-        </>
-    )
-}
+                textAlign={'left'}
+                defaultValue={'Schritt ' + step}
+                isDisabled
+              />
+              <Field.Text
+                name="lead"
+                fontWeight="semibold"
+                color="gray.800"
+                size="xl"
+                textAlign={'left'}
+                defaultValue={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.'}
+              />
+              <Field.Text
+                name="content"
+                color="gray.900"
+                textAlign={'left'}
+                defaultValue={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
+              />
+            </Stack>
+          </Flex>
+        </Flex>
+      </>
+    );
+  };
 
 export const StepsSection = connectBlock(
     () => {
@@ -195,7 +161,7 @@ export const StepsSection = connectBlock(
                     bgSize="contain"
                     pointerEvents="none"></Box>
                 <Container maxW={'8xl'}>
-                    <Step isLeft={blockContext!.position % 2 === 0} />
+                    <Step isLeft={blockContext!.position % 2 === 0} position={position} />
                 </Container>
             </Box>
         )
