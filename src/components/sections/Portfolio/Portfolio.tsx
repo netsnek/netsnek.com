@@ -1,6 +1,6 @@
 import {Box, Text, Image, chakra} from '@chakra-ui/react'
 import {FC} from 'react'
-import {useNewsPages} from '../../../hooks/use-news-pages'
+import {useNewsPages} from '../../../hooks/use-recipe-pages'
 import PortfolioGrid from './PortfolioGrid'
 import PortfolioSlider from './PortfolioSlider'
 import { useJaenProducts } from '../../../hooks/use-products'

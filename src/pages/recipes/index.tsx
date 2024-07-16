@@ -15,7 +15,9 @@ import { useQuery } from 'snek-query/react-hooks';
 import PostCard from '../../components/post/PostCard';
 import PostCardSkeleton from '../../components/post/PostCardSkeleton';
 import PostList from '../../components/post/PostList';
-import RecipeHero from '../../components/sections/RecipeHero';
+import RecipesHero from '../../components/sections/RecipesHero';
+import { Field } from 'jaen';
+import { useNewsPages } from '../../hooks/use-recipe-pages';
 
 export const POST_FETCH_LIMIT = 3;
 
@@ -25,12 +27,36 @@ const gradientAnimation = keyframes`
   100%{background-position:0% 50%}
 `;
 
-const IndexPage: React.FC<PageProps> = () => {
-  const { data, isSafe, refetch } = useQuery(sq);
+const NewsSlider: FC<INewsSlidesProps> = ({productIndex, showNewsTitle}) => {
+  const cmsmedia = useField<any>("media_nodes", 'IMA:MEDIA_NODES').value
+    //cmsMediaPage//.jaenPage.jaenFields?.['media_nodes']?.['IMA:MEDIA_NODES']
+
+  const {products} = useJaenProducts(productIndex, cmsmedia)
 
   return (
+    <Box as="section">
+      <PortfolioGrid
+        products={products}
+        display={{base: 'none', sm: 'grid'}}
+        mt="16"
+      />
+
+      {/* Form mobile */}
+      {/* <PortfolioSlider index={index} display={{base: 'block', sm: 'none'}} /> */}
+    </Box>
+  )
+}
+
+const RecipeIndexPage: React.FC<PageProps> = () => {
+  const { data, isSafe, refetch } = useQuery(sq);
+  const index = useNewsPages()
+
+  return (
+   
+
     <Stack>
-    <RecipeHero />
+      <NewsSlider productIndex={index} />
+    <RecipesHero />
       <Box
         borderRadius="xl"
         mt={10}
@@ -112,12 +138,13 @@ const IndexPage: React.FC<PageProps> = () => {
   );
 };
 
-export default IndexPage;
+export default RecipeIndexPage;
 
 export const pageConfig: PageConfig = {
   label: 'Recipes',
   icon: 'FaFlask',
   withoutJaenFrameStickyHeader: true,
+  childTemplates: ['RecipePage'],
   menu: {
     type: 'app',
     order: 200,

@@ -31,7 +31,7 @@ const config: GatsbyConfig = {
           redirectUri:
             process.env.NODE_ENV === 'production'
               ? 'https://netsnek.com'
-              : 'https://opulent-carnival-pg7v6wp7prhr556-8000.app.github.dev',
+              : 'https://psychic-dollop-6vwv6x9vq9jf464g-8000.app.github.dev',
           projectIds: ['263491274097563233']
         },
         // sentry: {

@@ -61,7 +61,7 @@ const ScrollArrows: React.FC<ScrollArrowsProps> = ({ isVisible }) => {
   );
 };
 
-const RecipeHero: FC = () => {
+const RecipesHero: FC = () => {
   const navOffset = useNavOffset();
 
   const isAuthenticated = useAuth().user !== null;
@@ -151,7 +151,7 @@ const RecipeHero: FC = () => {
             fontWeight="900"
             textAlign="left"
             name="RecipeHeroTitle"
-            defaultValue="Mega Brain Food: Overnight Oats"
+            defaultValue="<u>Rezepte</u>"
           />
           <Field.Text
             as={Text}
@@ -165,7 +165,7 @@ const RecipeHero: FC = () => {
         <Box gridArea="customer" p={16}>
           {/* <Text>Customer Testimonials or Data</Text> */}
           {/* <ScrollArrows isVisible={scrollPos < 100} /> */}
-          {/* <Field.Text
+          <Field.Text
             as={Heading}
             fontSize={{ base: '2xl', lg: '4xl' }}
             lineHeight={1}
@@ -173,7 +173,7 @@ const RecipeHero: FC = () => {
             textAlign="center"
             name="RecipeLead2"
             defaultValue="Was gibts heute?"
-          /> */}
+          />
           {/* Any additional content for the customer area goes here */}
         </Box>
       </Grid>
@@ -181,4 +181,4 @@ const RecipeHero: FC = () => {
   );
 };
 
-export default RecipeHero;
+export default RecipesHero;
