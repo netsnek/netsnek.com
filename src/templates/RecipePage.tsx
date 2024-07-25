@@ -161,7 +161,7 @@ export const StepsSection = connectBlock(
                     bgSize="contain"
                     pointerEvents="none"></Box>
                 <Container maxW={'8xl'}>
-                    <Step isLeft={blockContext!.position % 2 === 0} position={position} />
+                    <Step isLeft={blockContext!.position % 2 === 0} position={blockContext!.position} />
                 </Container>
             </Box>
         )
