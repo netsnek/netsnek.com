@@ -253,8 +253,6 @@ export const ProductCard = ({
     });
   }
 
-  console.log('faaaak', product.media.slice(0, 3));
-
   return (
     <VStack
       as={GatsbyLink}
@@ -330,8 +328,8 @@ export const ProductCard = ({
         <Text fontSize="sm" noOfLines={1}>
           {tags.otherString}
         </Text>
-        <Text fontWeight="semibold">{product.title}</Text>
-        <Text fontWeight="normal">{product.description}</Text>
+        <Text fontSize={"2xl"} fontWeight="bold">{product.title}</Text>
+        {/* <Text fontWeight="normal">{product.description}</Text> */}
         {/*{product.price}
         <Text fontSize="xs" color="gray.600" textAlign={'center'}>
           {taxable ? 'inkl.' : 'exkl.'} Ust.

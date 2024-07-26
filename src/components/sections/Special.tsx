@@ -50,35 +50,35 @@ const Special = () => {
       />
       <HStack justifyContent="space-between" mb={8}>
         <Image
-          src="images/svg/grapes.svg"
+          src="/images/svg/grapes.svg"
           alt="grapes"
         />
         <Image
-          src="images/svg/cup.svg"
+          src="/images/svg/cup.svg"
           alt="cup"
         />
         <Image
-          src="images/svg/apple.svg"
+          src="/images/svg/apple.svg"
           alt="apple"
         />
         <Image
           display={{ base: 'none', lg: 'block' }}
-          src="images/svg/spaghetti.svg"
+          src="/images/svg/spaghetti.svg"
           alt="spaghetti"
         />
         <Image
           display={{ base: 'none', lg: 'block' }}
-          src="images/svg/fish.svg"
+          src="/images/svg/fish.svg"
           alt="fish"
         />
         <Image
           display={{ base: 'none', lg: 'block' }}
-          src="images/svg/cut_mushroom.svg"
+          src="/images/svg/cut_mushroom.svg"
           alt="cut mushroom"
         />
         <Image
           display={{ base: 'none', lg: 'block' }}
-          src="images/svg/wine_glass.svg"
+          src="/images/svg/wine_glass.svg"
           alt="wine glass"
         />
       </HStack>

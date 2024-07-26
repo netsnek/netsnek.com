@@ -322,22 +322,32 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 }}
               /> */}
               <Button
-                variant="ghost"
-                ml={4}
-                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                onClick={handleOnContactClick}
-                fontSize="sm"
-                fontWeight="semibold"
-                color="#273E53"
-                display={{ base: 'none', md: 'block' }}
-              >
-                Meine Beratung
-              </Button>
+                  variant="ghost"
+                  ml={4}
+                  filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                  onClick={() => {
+                    const element = document.getElementById('meine_beratung');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  fontSize="sm"
+                  fontWeight="semibold"
+                  color="#273E53"
+                  display={{ base: 'none', md: 'block' }}
+                >
+                  Meine Beratung
+                </Button>
               <Button
                 variant="ghost"
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                onClick={handleOnContactClick}
+                onClick={() => {
+                  const element = document.getElementById('meine_kunden');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 fontSize="sm"
                 fontWeight="semibold"
                 color="#273E53"
@@ -357,7 +367,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               >
                 Rezepte
               </Button>
-              <Button
+              {/* <Button
                 variant="ghost"
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
@@ -368,7 +378,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 display={{ base: 'none', md: 'block' }}
               >
                 Blog
-              </Button>
+              </Button> */}
               <Button
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"

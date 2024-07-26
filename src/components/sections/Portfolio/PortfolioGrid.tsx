@@ -35,7 +35,7 @@ const PortfolioGrid: FC<IPortfolioGridProps> = ({products, ...props}) => {
         console.log('my full index', index)
         console.log('!!!product!!!', product)
         return(
-          <ProductCard key={index} product={product} />
+          <ProductCard key={index} bcolor='#a0c1d9' product={product} />
         )
       })}
     </Grid>

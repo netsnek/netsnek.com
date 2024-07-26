@@ -72,7 +72,7 @@ const LastCall = () => {
       <Image
         //mb="8"
         w={"500px"}
-        src="images/header-portrait-image.png"
+        src="/images/header-portrait-image.png"
         alt="Barbara"
       />
     </Container>

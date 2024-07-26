@@ -53,13 +53,15 @@ export interface IJaenProduct {
 // Limit products count to 3 (sort by date)
 export const useJaenProducts = (
   productIndex: any,
-  cmsmedia: any,
+  cmsmediapage: any,
   options?: {unlimited?: boolean}
 ) => {
   const index = productIndex
 
   // override index children to exclude a blog page if it is the current page
   const {jaenPage} = usePageContext()
+  // productHandle is the buildpath with removed starting slash
+  const productHandle = jaenPage.buildPath.slice(1)
 
   // const globalMedia = (cms.childPages.find(
   //   child => child.id === 'JaenPage /cms/media/'
@@ -70,12 +72,18 @@ export const useJaenProducts = (
   //     }
   //   }
   // })['IMA:MEDIA_NODES'].media_nodes.value
-
-  const globalMedia = cmsmedia
+  const sectionFieldName = 'content'
+  const globalMedia = (cmsmediapage?.jaenFields || {
+      'IMA:MEDIA_NODES': {
+        media_nodes: {
+          value: {}
+        }
+      }
+    })['IMA:MEDIA_NODES'].media_nodes.value
 
   const products: IJaenProduct[] = index.childPages
     .filter((child: { id: string }) => child.id !== jaenPage.id)
-    .map((jaenPage: { id: any; slug: any; jaenPageMetadata: { description: any; title: any; blogPost: { date: any }; image: any }; mediaNodes: any[]; sections: any[] }) => ({
+    .map((jaenChildPage: { id: any; slug: any; jaenPageMetadata: { description: any; title: any; blogPost: { date: any }; image: any }; mediaNodes: any[]; sections: any[] }) => ({
       variants: [
         {
           id: 'VariantId',
@@ -90,20 +98,23 @@ export const useJaenProducts = (
       hasOnlyDefaultVariant: true,
       id: jaenPage.id,
       shopifyId: 'your-shopify-id',
-      handle: "products/" + jaenPage.slug || 'none',
-      description: jaenPage.jaenPageMetadata?.description || '',
-      descriptionHtml: jaenPage.jaenPageMetadata?.description || '',
-      title: jaenPage.jaenPageMetadata?.title || '',
+      handle: productHandle + jaenChildPage.slug || 'none',
+      description: jaenChildPage.jaenPageMetadata?.description || '',
+      descriptionHtml: jaenChildPage.jaenPageMetadata?.description || '',
+      title: jaenChildPage.jaenPageMetadata?.title || '',
       tags: ['New', 'T-Shirt', 'Summer'],
       status: 'ACTIVE' as 'ACTIVE' | 'DRAFT' | 'ARCHIVED',
       totalInventory: 100, // Assuming available inventory
-      createdAt: jaenPage.jaenPageMetadata?.blogPost?.date || '',
+      createdAt: jaenChildPage.jaenPageMetadata?.blogPost?.date || '',
       vendor: 'VendorName',
       productType: 'ProductType',
-      media: jaenPage.sections
-      ?.find(section => section.fieldName === 'productImageSection')
-      ?.items.map((item: { jaenFields: any; id: any; altText: any }) => {
-
+      media: jaenChildPage.sections
+      ?.find(section => section.fieldName === sectionFieldName)
+      // filter out all items that arent IMA:ImageField
+      ?.items.filter((item: { jaenFields: { [x: string]: any } }) => item.jaenFields['IMA:ImageField'])
+      ?.map((item: { jaenFields: any; id: any; altText: any }) => {
+        console.log("!!imageID", item.jaenFields)
+        
         const imageId = (item.jaenFields || {
           'IMA:ImageField': {
             image: {
@@ -122,9 +133,10 @@ export const useJaenProducts = (
           }
         }
       }) || [],
-      featuredMedia: jaenPage.sections
-      ?.find(section => section.fieldName === 'productImageSection')
-      ?.items.map((item: { jaenFields: any; id: any; altText: any }) => {
+      featuredMedia: jaenChildPage.sections
+      ?.find(section => section.fieldName === sectionFieldName)
+      ?.items.filter((item: { jaenFields: { [x: string]: any } }) => item.jaenFields['IMA:ImageField'])
+      ?.map((item: { jaenFields: any; id: any; altText: any }) => {
 
         const imageId = (item.jaenFields || {
           'IMA:ImageField': {
@@ -146,8 +158,10 @@ export const useJaenProducts = (
       })?.[0] || null,
       metafields: [], // Assuming empty: provide actual values based on your setup
       index: index,
+      indexPage: jaenPage,
+      childPage: jaenChildPage,
       gmedia: globalMedia,
-      sections: jaenPage.sections
+      sections: jaenChildPage.sections
         ?.find(section => section.fieldName === 'productImageSection')
         ?.items.map((item: { jaenFields: any; id: any; altText: any }) => {
 

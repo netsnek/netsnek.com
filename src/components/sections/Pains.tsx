@@ -24,6 +24,7 @@ const Pains = () => {
   };
   return (
     <Flex
+      id='meine_beratung'
       as="section"
       flexDir={{ base: 'column', lg: 'row' }}
       w={"full"}

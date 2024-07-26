@@ -25,6 +25,7 @@ import { FadeIn } from '../FadeIn';
 import { useContactModal } from '../../services/contact';
 import { UncontrolledMdxField } from 'jaen-fields-mdx';
 import SvgMdxEditor from '../mdx-editor/SvgMdxEditor';
+import { Interface } from 'readline';
 
 interface ScrollArrowsProps {
   isVisible: boolean;
@@ -61,7 +62,12 @@ const ScrollArrows: React.FC<ScrollArrowsProps> = ({ isVisible }) => {
   );
 };
 
-const RecipeHero: FC = () => {
+interface RecipeHeroProps {
+  defaultHeading: string;
+  defaultLead: string;
+}
+
+const RecipeHero: FC<RecipeHeroProps> = ({ defaultHeading, defaultLead }) => {
   const navOffset = useNavOffset();
 
   const isAuthenticated = useAuth().user !== null;
@@ -101,22 +107,22 @@ const RecipeHero: FC = () => {
       >
         <Box as={FadeIn} position="relative" gridArea="image">
           {/* <AspectRatio ratio={1 / 1.04} w="full" h="auto" maxH="700px"> */}
-            <Box position="relative" w="full" h="full">
-              <Box
-                defaultValue="/images/sweets-image-3.png"
-                name="RecipeHeroimage"
-                as={Field.Image}
-                alt="RecipeHero image"
-                objectFit="contain"
-                w="full"
-                h="full"
-                //ml={{ base: 8, md: 16 }}
-                sx={{
-                  //borderRadius: 'md',
-                  //filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
-                }}
-              />
-              {/* <Image
+          <Box position="relative" w="full" h="full">
+            <Box
+              defaultValue="/images/sweets-image-3.png"
+              name="RecipeHeroimage"
+              as={Field.Image}
+              alt="RecipeHero image"
+              objectFit="contain"
+              w="full"
+              h="full"
+              //ml={{ base: 8, md: 16 }}
+              sx={{
+                //borderRadius: 'md',
+                //filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
+              }}
+            />
+            {/* <Image
                 src="images/header-portrait-image.png"
                 alt="RecipeHero image"
                 objectFit="cover"
@@ -127,7 +133,7 @@ const RecipeHero: FC = () => {
                   //filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
                 }}
               /> */}
-            </Box>
+          </Box>
           {/* </AspectRatio> */}
         </Box>
         <VStack pt={`calc(${navOffset})`} as={FadeIn} spacing={4} align="left" gridArea="content" pr={{ base: 8, md: 16 }}>
@@ -144,14 +150,14 @@ const RecipeHero: FC = () => {
             Gesund<chakra.span color="brand.500">·</chakra.span>Einfach
             <chakra.span color="brand.500">·</chakra.span>Ehrlich
           </Heading>
-          <Field.Text
+          {/* <Field.Text
             as={Heading}
             fontSize={{ base: '2xl', lg: '4xl' }}
             lineHeight={1}
             fontWeight="900"
             textAlign="left"
             name="RecipeHeroTitle"
-            defaultValue="Mega Brain Food: Overnight Oats"
+            defaultValue={defaultHeading} // "Mega Brain Food: Overnight Oats"
           />
           <Field.Text
             as={Text}
@@ -159,8 +165,23 @@ const RecipeHero: FC = () => {
             opacity={0.5}
             textAlign="left"
             name="RecipeHeroLead"
-            defaultValue="Werde dir bewusst, wie deine Ernährung Körper und Geist beeinflusst – und erlerne die Kunst, dein Wohlbefinden gezielt zu steuern."
-          />
+            defaultValue={defaultLead} //"Werde dir bewusst, wie deine Ernährung Körper und Geist beeinflusst – und erlerne die Kunst, dein Wohlbefinden gezielt zu steuern."
+          /> */}
+          <Heading
+            fontSize={{ base: '2xl', lg: '4xl' }}
+            lineHeight={1}
+            fontWeight="900"
+            textAlign="left"
+          >
+            {defaultHeading}
+          </Heading>
+          <Text
+            fontSize={'lg'}
+            opacity={0.5}
+            textAlign="left"
+          >
+            {defaultLead}
+          </Text>
         </VStack>
         <Box gridArea="customer" p={16}>
           {/* <Text>Customer Testimonials or Data</Text> */}

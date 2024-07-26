@@ -12,6 +12,7 @@ const Customer = () => {
 
   return (
     <Container
+      id='meine_kunden'
       maxW="8xl"
       as="section"
       p={16}
