@@ -326,6 +326,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   ml={4}
                   filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                   onClick={() => {
+                    // if not on the homepage, redirect to the homepage first
+                    if (path !== '/') {
+                      window.location.href = '/';
+                    }
+
                     const element = document.getElementById('meine_beratung');
                     if (element) {
                       element.scrollIntoView({ behavior: 'smooth' });
@@ -343,6 +348,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 onClick={() => {
+                  // if not on the homepage, redirect to the homepage first
+                  if (path !== '/') {
+                    window.location.href = '/';
+                  }
+
                   const element = document.getElementById('meine_kunden');
                   if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
