@@ -14,15 +14,15 @@ const Layout: React.FC<LayoutProps> = ({ children, pageProps }) => {
 
   const jaenFrame = useJaenFrameMenuContext();
 
-  useEffect(() => {
-    jaenFrame.extendAddMenu({
-      experimentNew: {
-        label: 'New experiment',
-        icon: FaFlask,
-        path: '/new/experiment'
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   jaenFrame.extendAddMenu({
+  //     experimentNew: {
+  //       label: 'New experiment',
+  //       icon: FaFlask,
+  //       path: '/new/experiment'
+  //     }
+  //   });
+  // }, []);
 
   const isDocs = docsPaths.some(docsPath => path.startsWith(docsPath));
 
