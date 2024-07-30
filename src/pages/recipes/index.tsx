@@ -1,5 +1,5 @@
 import { sq } from '@/clients/social';
-import { PageConfig, PageProps, usePage, useField } from 'jaen';
+import { PageConfig, PageProps, usePage, useField, useJaenPageIndex } from 'jaen';
 
 import {
   Box,
@@ -20,10 +20,11 @@ import PostCard from '../../components/post/PostCard';
 import PostCardSkeleton from '../../components/post/PostCardSkeleton';
 import PostList from '../../components/post/PostList';
 import RecipesHero from '../../components/sections/RecipesHero';
-import { useNewsPages } from '../../hooks/use-recipe-pages';
+import { useRecipePages } from '../../hooks/use-recipe-pages';
 import { useJaenProducts, IJaenProduct } from '../../hooks/use-products'
 import PortfolioGrid from '../../components/sections/Portfolio/PortfolioGrid'
 import { ProductCard } from '../../components/ProductCard'
+import RezepteIndex from '../../components/RezepteIndex'
 
 export const POST_FETCH_LIMIT = 3;
 
@@ -46,16 +47,21 @@ const RecipeSlider: FC<INewsSlidesProps> = ({ productIndex, showNewsTitle }) => 
   //const cmsmedia = useField<any>("media_nodes", 'IMA:MEDIA_NODES').value
   //cmsMediaPage//.jaenPage.jaenFields?.['media_nodes']?.['IMA:MEDIA_NODES']
   console.log('!!All media data', cmsmediapage)
-  const { products } = useJaenProducts(productIndex, cmsmediapage)
+  const { products, featuredProducts, moreProducts, abcProducts } = useJaenProducts(productIndex, cmsmediapage)
 
   return (
     <Box as="section">
-      <PortfolioGrid
+      {/* <PortfolioGrid
         products={products}
         display={{ base: 'none', sm: 'grid' }}
         mt="16"
+      /> */}
+      <RezepteIndex
+        featuredProducts={featuredProducts}
+        abcProducts={abcProducts}
+        display={{ base: 'none', sm: 'grid' }}
+        mt="16"
       />
-
       {/* Form mobile */}
       {/* <PortfolioSlider index={index} display={{base: 'block', sm: 'none'}} /> */}
     </Box>
@@ -90,7 +96,7 @@ const RecipeGrid: FC<IPortfolioGridProps> = ({ products, ...props }) => {
 
 const RecipeIndexPage: React.FC<PageProps> = () => {
   const { data, isSafe, refetch } = useQuery(sq);
-  const productIndex = useNewsPages()
+  const productIndex = useRecipePages()
 
   return (
   <>

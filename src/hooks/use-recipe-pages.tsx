@@ -1,7 +1,7 @@
 import {useJaenPageIndex, usePageContext} from 'jaen'
 import {useMemo} from 'react'
 
-export const useNewsPages = (options?: {unlimited?: boolean}) => {
+export const useRecipePages = (options?: {unlimited?: boolean}) => {
   const index = useJaenPageIndex({
     jaenPageId: 'JaenPage /recipes/'
   })
