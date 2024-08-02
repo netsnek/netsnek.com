@@ -25,9 +25,9 @@ const config: GatsbyConfig = {
           repository: 'netsnek/netsnek.com'
         },
         zitadel: {
-          organizationId: '268207341512496739',
-          clientId: '268418317486724723@photonq',
-          authority: 'https://accounts.photonq.org',
+          organizationId: '278641258304378483',
+          clientId: '278642690558596723@barbara-mauz',
+          authority: 'https://accounts.netsnek.com',
           redirectUri:
             process.env.NODE_ENV === 'production'
               ? 'https://dev.barbara-mauz.at'
