@@ -230,13 +230,6 @@ const RecipePage: React.FC<PageProps> = props => {
   console.log('!!All page data', jaenPage)
   return (
     <>
-      <Global
-        styles={{
-          body: {
-            backgroundColor: '#dee9ec'
-          }
-        }}
-      />
       <RecipeHero defaultHeading={jaenPage?.jaenPageMetadata?.title || ""} defaultLead={jaenPage?.jaenPageMetadata?.description || ""} />
       <Container maxW="8xl" mb="20">
         <Flex alignItems={'start'} flexDir={{ base: "column", md: "row" }}>

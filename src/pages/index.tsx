@@ -25,31 +25,24 @@ import Customer from '../components/sections/Customer';
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
-      <Global
-        styles={{
-          body: {
-            backgroundColor: '#dee9ec'
-          }
-        }}
-      />
-
       <Hero />
       {/* <ClientsMarquee w="full" /> */}
+      <Mushroom />
       <Box
-        bg="white"
+        bg="#dee9ec"
       >
-        <Mushroom />
+        <Pains />
+        <Special />
+        <Sweets />
       </Box>
-      <Pains />
-      <Special />
-      <Sweets />
+      <Muffin />
+      <Customer />
       <Box
-        bg="white"
+        bg="#dee9ec"
       >
-        <Muffin />
-        <Customer />
+        <LastCall />
       </Box>
-      <LastCall />
+
       {/* <Container maxW="5xl" mb="20">
         <Services />
         <Associates />
