@@ -89,7 +89,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
       height={isOpen ? 'calc(100vh + 15px)' : { base: '12vh', md: '15vh' }}
       minH={isOpen ? '600px' : '100px'}
       transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
-      borderBottomRadius={'2xl'}
+      //borderBottomRadius={'2xl'}
       backgroundColor='#dee9ec'
     >
       <Box
