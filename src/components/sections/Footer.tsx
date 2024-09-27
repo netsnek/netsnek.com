@@ -48,17 +48,41 @@ const Footer: FC = () => {
       //   href: 'https://t.me/kleberbaum'
       // },
       {
-        label: 'Rezepte',
+        label: 'Angebot',
         href: '/recipes'
       },
       {
-        label: 'Meine Beratung',
-        href: '/#meine_beratung'
+        label: 'Rezepte',
+        href: '/recipes'
       },
       // {
       //   label: 'Blog',
       //   href: '/imprint'
       // },
+      {
+        label: 'Meine Beratung',
+        href: '/#meine_beratung'
+      },
+      {
+        label: 'Kurse & Webinare',
+        href: '/imprint'
+      },
+      // {
+      //   label: 'Mitgliederbereich',
+      //   href: '/imprint'
+      // },
+      {
+        label: 'FAQs',
+        href: '/meine_kunden'
+      },
+      {
+        label: 'Über mich',
+        href: '/mushroom'
+      },
+      {
+        label: 'Kontakt',
+        href: '/imprint'
+      },
       {
         label: 'Impressum',
         href: '/imprint'
@@ -71,19 +95,19 @@ const Footer: FC = () => {
       },
       {
         label: 'Liste essentieller Lebensmittel',
-        href: 'https://kanbon.at'
+        href: ''
       },
       {
         label: 'Glykämischer Index (GI)-Tabellegängiger Lebensmittel',
-        href: 'https://neurons.at'
+        href: ''
       },
       {
         label: 'Ernährungspläne für spezielle Diäten',
-        href: 'https://neurons.at'
+        href: ''
       },
       {
         label: 'Saisonkalender Obst und Gemüse',
-        href: 'https://neurons.at'
+        href: ''
       }
     ],
     // [
@@ -120,13 +144,13 @@ const Footer: FC = () => {
             )
           }
           return (
-            <Link key={i} href={link.href} ariant="hover-theme" opacity={0.7}>
+            <Box as={link.href?Link:undefined} key={i} href={link.href} ariant="hover-theme" opacity={0.7}>
               <Field.Text
                 color="white"
                 name={'FooterLink' + link.label}
                 defaultValue={link.label}
               />
-            </Link>
+            </Box>
           )
         })}
       </VStack>

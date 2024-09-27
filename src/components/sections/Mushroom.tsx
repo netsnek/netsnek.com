@@ -20,7 +20,9 @@ const Mushroom = () => {
       overflow={{ base: 'hidden', lg: 'visible' }}
       px={{ base: 5, lg: 0 }}
       py={16}
-      zIndex={0}>
+      zIndex={0}
+      id="mushroom"
+      >
       <Image
         margin="0 auto"
         mb="8"
