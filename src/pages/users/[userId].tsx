@@ -57,6 +57,8 @@ import TbStar from '../../components/icons/tabler/TbStar';
 import {
   Activity,
   ActivityType,
+  Privacy,
+  PrivacyInput,
   SortOrderInput
 } from '@/clients/social/src/schema.generated';
 import { asEnumKey } from 'snek-query';
@@ -126,7 +128,6 @@ const EditableImage: React.FC<{
   displayName: string;
   userId: string;
 }> = ({ avatarUrl, userId, displayName }) => {
-  const auth = useAuth();
   const authUser = useAuthUser();
 
   const imageRef = useRef<HTMLInputElement>(null);
@@ -147,16 +148,16 @@ const EditableImage: React.FC<{
           if (file) {
             await authUser.profileAvatarUpdate(file);
 
-            // Reload window
-            window.location.reload();
+            // // Reload window
+            // window.location.reload();
           }
         }}
       />
 
       <AvatarImage
-        src={avatarUrl || undefined}
+        src={authUser.user?.human?.profile?.avatarUrl || avatarUrl || undefined}
         displayName={displayName}
-        cursor={userId === authUser.user.id ? 'pointer' : 'default'}
+        cursor={userId === authUser.user?.id ? 'pointer' : 'default'}
         onClick={() => {
           if (userId === authUser.user.id) {
             imageRef.current?.click();
@@ -189,7 +190,9 @@ const ActivityList: React.FC<{
     [key: string]: ResolvedActivity[];
   }>((acc, activity) => {
     const date = new Date(activity.createdAt);
-    const key = `${date.getFullYear()}-${date.getMonth()}`;
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Convert month to 1-indexed and pad with leading zero if needed.
+    const key = `${year}-${month}-01`;
 
     if (!acc[key]) {
       acc[key] = [];
@@ -216,8 +219,6 @@ const ActivityList: React.FC<{
 
     return acc;
   }, {});
-
-  console.log(groupByDate);
 
   const [batch, setBatch] = useState(0);
 
@@ -337,6 +338,11 @@ const ActivityList: React.FC<{
 };
 
 const Page: React.FC<PageProps> = ({ location, pageContext, params }) => {
+  useEffect(() => {
+    // add sq to window
+    window.sq = sq;
+  }, []);
+
   const offset = useNavOffset();
 
   const userId = params.userId;
@@ -350,6 +356,10 @@ const Page: React.FC<PageProps> = ({ location, pageContext, params }) => {
       id: userId
     }
   });
+
+  useEffect(() => {
+    document.title = `${user.profile.displayName} (@${user.profile.userName})`;
+  }, [user]);
 
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -369,6 +379,23 @@ const Page: React.FC<PageProps> = ({ location, pageContext, params }) => {
 
   const [isFollow, setIsFollow] = useState(false);
 
+  const handlePostDelete = async (id: string) => {
+    await sq.mutate(m => m.postDelete({ id }));
+
+    refetch();
+  };
+
+  const handlePostPrivacy = async (id: string, privacy: Privacy) => {
+    await sq.mutate(m =>
+      m.postUpdate({
+        id,
+        values: { privacy: asEnumKey(PrivacyInput, privacy) }
+      })
+    );
+
+    refetch();
+  };
+
   return (
     <Box minH="100dvh" mt={offset}>
       <MainGrid>
@@ -376,13 +403,11 @@ const Page: React.FC<PageProps> = ({ location, pageContext, params }) => {
           <Box alignSelf="center">
             <Flex justifyContent="center" boxSize={250} mt="4">
               {userId === auth.user?.profile?.sub ? (
-                <AuthUserProvider>
-                  <EditableImage
-                    avatarUrl={user.profile.avatarUrl}
-                    userId={userId}
-                    displayName={user.profile.displayName}
-                  />
-                </AuthUserProvider>
+                <EditableImage
+                  avatarUrl={user.profile.avatarUrl}
+                  userId={userId}
+                  displayName={user.profile.displayName}
+                />
               ) : (
                 <AvatarImage
                   src={user.profile.avatarUrl || undefined}
@@ -595,6 +620,8 @@ const Page: React.FC<PageProps> = ({ location, pageContext, params }) => {
                       post={post}
                       hideAuthor
                       isSafe={isSafe}
+                      onDelete={handlePostDelete}
+                      onSetPrivacy={handlePostPrivacy}
                     />
                   ))}
                 </SimpleGrid>
@@ -622,6 +649,8 @@ const Page: React.FC<PageProps> = ({ location, pageContext, params }) => {
                             post={p}
                             hideAuthor
                             isSafe={isSafe}
+                            onDelete={handlePostDelete}
+                            onSetPrivacy={handlePostPrivacy}
                           />
                         );
                       })}
@@ -748,16 +777,15 @@ export const pageConfig: PageConfig = {
   breadcrumbs: [
     async () => {
       // get username from url
-      let username = window.location.pathname.split('/user/')[1];
+      let userId = window.location.pathname.split('/users/')[1];
 
-      if (!username) return { label: 'User', path: '/user' };
+      userId = userId.split('/')[0];
 
-      // Remove trailing slash
-      if (username.endsWith('/')) {
-        username = username.substring(0, username.length - 1);
-      }
+      const [userName] = await window.sq.query(
+        q => q.user({ where: { id: userId } }).profile.userName
+      );
 
-      return { label: username, path: `/users/${username}` };
+      return { label: userName, path: `/users/${userId}/` };
     }
   ],
   menu: {
@@ -768,3 +796,5 @@ export const pageConfig: PageConfig = {
     }
   }
 };
+
+export { Head } from 'jaen';
