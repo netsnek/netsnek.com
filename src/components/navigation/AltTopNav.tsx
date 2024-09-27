@@ -83,7 +83,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
 
   return (
     <Box
-      as={FadeIn}
+      //as={FadeIn}
       pos="relative"
       overflow="hidden"
       height={isOpen ? 'calc(100vh + 15px)' : { base: '12vh', md: '15vh' }}

@@ -99,7 +99,11 @@ const RecipesHero: FC = () => {
       //p={{ base: 5, lg: 0 }}
       // pt={`calc(${navOffset})`}
       >
-        <Box as={FadeIn} position="relative" gridArea="image">
+        <Box
+          // as={FadeIn}
+          position="relative"
+          gridArea="image"
+        >
           {/* <AspectRatio ratio={1 / 1.04} w="full" h="auto" maxH="700px"> */}
             <Box position="relative" w="full" h="full">
               <Box
@@ -130,7 +134,13 @@ const RecipesHero: FC = () => {
             </Box>
           {/* </AspectRatio> */}
         </Box>
-        <VStack pt={`calc(${navOffset})`} as={FadeIn} spacing={4} align="left" gridArea="content" pr={{ base: 8, md: 16 }}>
+        <VStack
+          // as={FadeIn}
+          pt={`calc(${navOffset})`}
+          spacing={4} align="left"
+          gridArea="content"
+          pr={{ base: 8, md: 16 }}
+        >
           <Heading
             as="h3"
             variant="cursive"
