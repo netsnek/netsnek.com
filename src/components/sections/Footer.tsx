@@ -37,7 +37,7 @@ const Footer: FC = () => {
       },
       {
         label: 'Startseite',
-        href: 'https://github.com/netsnek/'
+        href: '/'
       },
       // {
       //   label: 'LinkedIn',
@@ -48,19 +48,19 @@ const Footer: FC = () => {
       //   href: 'https://t.me/kleberbaum'
       // },
       {
-        label: 'Meine Beratung',
-        href: 'https://facebook.com/netsnek/'
-      },
-      {
         label: 'Rezepte',
-        href: 'https://instagram.com/netsnek/'
+        href: '/recipes'
       },
       {
-        label: 'Blog',
-        href: '/imprint'
+        label: 'Meine Beratung',
+        href: '/#meine_beratung'
       },
+      // {
+      //   label: 'Blog',
+      //   href: '/imprint'
+      // },
       {
-        label: 'Kontakt',
+        label: 'Impressum',
         href: '/imprint'
       }
     ],
