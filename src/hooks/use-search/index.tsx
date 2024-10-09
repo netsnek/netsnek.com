@@ -21,7 +21,7 @@ const useSearch = (
   const searchResult = useMemo(() => {
     return {
       docs: {
-        title: 'Documentation',
+        title: 'Rezepte',
         sections: docsSearch.searchResults,
         icon: <TbBooks />
       },

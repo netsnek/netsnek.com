@@ -1,7 +1,7 @@
 import { sq } from '@/clients/social';
 import { ReactNode, useEffect, useMemo } from 'react';
 import { useLazyQuery, useQuery } from 'snek-query/react-hooks';
-import { FaFlask } from '@react-icons/all-files/fa/FaFlask';
+import { FaCarrot } from '@react-icons/all-files/fa/FaCarrot';
 import TbUser from '../../components/icons/tabler/TbUser';
 import TbUsers from '../../components/icons/tabler/TbUsers';
 
@@ -75,7 +75,7 @@ const useSocialSearch = (query?: string) => {
           description: post.matchingQuery({ query }) || post.summary || '',
           to: `/experiments/${post.slug}`
         })),
-        resultIcon: <FaFlask />
+        resultIcon: <FaCarrot />
       };
     }
 
@@ -92,7 +92,7 @@ const useSocialSearch = (query?: string) => {
       posts: {
         title: 'Blog',
         sections: postsResult ? [postsResult] : [],
-        icon: <FaFlask />
+        icon: <FaCarrot />
       }
     } as TSearchResults;
   }, [query, data, isLoading]);

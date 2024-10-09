@@ -297,7 +297,7 @@ const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
                   key={sidx}
                   defaultHighlight={itemIdx === 0}
                   icon={chapter.icon}
-                  isDocs={!!section.results[0]?.to?.startsWith('/docs/')}
+                  isDocs={!!section.results[0]?.to?.startsWith('/recipes/')}
                 />
               );
 
