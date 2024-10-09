@@ -8,7 +8,7 @@ import {
   SimpleGrid,
   Stack,
   VStack,
-  keyframes,
+  // keyframes,
   GridProps,
   Container
 } from '@chakra-ui/react';
@@ -28,11 +28,11 @@ import RezepteIndex from '../../components/RezepteIndex'
 
 export const POST_FETCH_LIMIT = 3;
 
-const gradientAnimation = keyframes`
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-`;
+// const gradientAnimation = keyframes`
+//   0%{background-position:0% 50%}
+//   50%{background-position:100% 50%}
+//   100%{background-position:0% 50%}
+// `;
 
 interface INewsSlidesProps {
   productIndex: any
