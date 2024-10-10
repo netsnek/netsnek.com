@@ -1,4 +1,3 @@
-export { UseSearchResult } from './use-docs-search';
 export type { SearchIndex } from './types';
 
 import { useMemo } from 'react';
