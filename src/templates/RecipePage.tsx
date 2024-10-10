@@ -230,7 +230,7 @@ const RecipePage: React.FC<PageProps> = props => {
   console.log('!!All page data', jaenPage)
   return (
     <>
-      <RecipeHero defaultHeading={jaenPage?.jaenPageMetadata?.title || ""} defaultLead={jaenPage?.jaenPageMetadata?.description || ""} />
+      <RecipeHero defaultHeading={jaenPage?.jaenPageMetadata?.title || ""} defaultLead={jaenPage?.jaenPageMetadata?.description || ""} defautlImage={jaenPage?.jaenPageMetadata?.image || ""} />
       <Container maxW="8xl" mb="20">
         <Flex alignItems={'start'} flexDir={{ base: "column", md: "row" }}>
           <Box my="8" w={{ base: "100%", md: "20%" }} mr={{ base: "0", md: "16" }}>

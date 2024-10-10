@@ -88,7 +88,7 @@ const RecipeGrid: FC<IRecipeGridProps> = ({
   return (
     <VStack spacing={8} align="stretch" {...props}>
       {/* Header Section with Link to Blog */}
-      <Box textAlign="center" py={4}>
+      {/* <Box textAlign="center" py={4}>
         <Heading as="h1" size="xl">
           Rezepte Übersicht
         </Heading>
@@ -99,7 +99,7 @@ const RecipeGrid: FC<IRecipeGridProps> = ({
           </Link>{' '}
           für mehr Inspiration!
         </Text>
-      </Box>
+      </Box> */}
 
       {/* Tag Filter Buttons */}
       <Wrap spacing={2} justify="center" mb={4}>
@@ -148,7 +148,6 @@ const RecipeGrid: FC<IRecipeGridProps> = ({
                   key={index}
                   bcolor="#a0c1d9"
                   product={product}
-                  showNewBadge={true} // Only these cards show 'Neu' badge
                 />
               ))}
           </Grid>
@@ -200,7 +199,7 @@ const RecipeGrid: FC<IRecipeGridProps> = ({
               my={6}
             >
               {products.map((product, index) => (
-                <ProductCard key={index} product={product} />
+                <ProductCard bcolor="#a0c1d9" key={index} product={product} />
               ))}
             </Grid>
           </Box>

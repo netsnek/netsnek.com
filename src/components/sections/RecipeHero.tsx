@@ -65,9 +65,10 @@ const ScrollArrows: React.FC<ScrollArrowsProps> = ({ isVisible }) => {
 interface RecipeHeroProps {
   defaultHeading: string;
   defaultLead: string;
+  defautlImage: string;
 }
 
-const RecipeHero: FC<RecipeHeroProps> = ({ defaultHeading, defaultLead }) => {
+const RecipeHero: FC<RecipeHeroProps> = ({ defaultHeading, defaultLead, defautlImage }) => {
   const navOffset = useNavOffset();
 
   const isAuthenticated = useAuth().user !== null;
@@ -125,7 +126,8 @@ const RecipeHero: FC<RecipeHeroProps> = ({ defaultHeading, defaultLead }) => {
                   w="75%"
                 //borderRadius="full"
                 >
-                  <Field.Image name="RecipeHeroimage" />
+                  <Field.Image name="RecipeHeroimage" defaultValue={defautlImage} isDisabled />
+                  {/* <Image src={defautlImage} alt="RecipeHero image" objectFit="cover" w="full" h="full" /> */}
                 </AspectRatio>
                 <chakra.svg
                   zIndex={100}

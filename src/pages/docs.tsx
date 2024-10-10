@@ -74,8 +74,8 @@ const DocsPage: React.FC<PageProps> = () => {
 export default DocsPage;
 
 export const pageConfig: PageConfig = {
-  label: 'Documentation',
-  icon: 'FaBook',
+  label: 'Blog',
+  icon: 'FaApple',
   childTemplates: ['DocPage'],
   withoutJaenFrameStickyHeader: true,
   menu: {

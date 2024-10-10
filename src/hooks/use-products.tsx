@@ -54,6 +54,7 @@ interface IJaenPage {
   id: string;
   slug: string;
   jaenPageMetadata: {
+    image?: string;
     description?: string;
     title?: string;
     blogPost?: {
@@ -146,21 +147,14 @@ export const useJaenProducts = (
           }
         };
       }) || [],
-    featuredMedia: jaenChildPage.sections
-      ?.find(section => section.fieldName === sectionFieldName)
-      ?.items.filter(item => item.jaenFields['IMA:ImageField'])
-      ?.map(item => {
-        const imageId = item.jaenFields['IMA:ImageField'].image.value;
-
-        return {
-          id: imageId,
-          image: {
-            src: globalMedia[imageId]?.preview?.url || "",
-            gatsbyImageData: null,
-            altText: globalMedia[imageId]?.altText || null,
-          }
-        }
-      })?.[0] || null,
+    featuredMedia: {
+      id: "007",
+      image: {
+        src: jaenChildPage.jaenPageMetadata?.image || "",
+        gatsbyImageData: null,
+        altText:  null,
+      }
+    },
     metafields: [],
     index: index,
     sections: jaenChildPage.sections

@@ -8,6 +8,7 @@ import { createBreadCrumbParts } from '../../utils/navigation';
 import { MainBreadcrumbPart } from '../../utils/navigation/types';
 import Links from '../Links';
 import TbUsers from '../icons/tabler/TbUsers';
+import TbBooks from '../icons/tabler/TbBooks';
 import MainBottomNav from '../navigation/MainBottomNav';
 import MainBreadcrumb from '../navigation/MainBreadcrumb';
 import TableOfContent from '../navigation/TableOfContent';
@@ -38,7 +39,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
   const breadcrumbParts: MainBreadcrumbPart[] = useMemo(() => {
     return [
       {
-        name: 'Documentation',
+        name: 'Artikel',
         isDisabled: path === '/docs/',
         href: '/docs'
       },
@@ -72,22 +73,22 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
               path={path}
               baseMenuItems={[
                 {
-                  name: 'Community Research',
-                  icon: <TbUsers />,
+                  name: 'Rezept Etnwicklung',
+                  icon: <TbBooks />,
                   items: [
                     {
-                      name: 'Experiments',
-                      href: '/experiments',
+                      name: 'Rezepte',
+                      href: '/recipes',
                       isActive: path?.startsWith('/experiments')
                     }
                   ]
                 },
                 {
-                  name: 'More',
+                  name: 'Mehr',
                   icon: <FaLink />,
                   items: [
                     {
-                      name: 'PhotonQ',
+                      name: 'Hauptseite',
                       href: '/'
                     }
                   ]

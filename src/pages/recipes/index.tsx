@@ -112,7 +112,7 @@ export default RecipeIndexPage;
 
 export const pageConfig: PageConfig = {
   label: 'Recipes',
-  icon: 'FaFlask',
+  icon: 'FaBook',
   withoutJaenFrameStickyHeader: true,
   childTemplates: ['RecipePage'],
   menu: {

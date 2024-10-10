@@ -55,10 +55,10 @@ const Footer: FC = () => {
         label: 'Rezepte',
         href: '/recipes'
       },
-      // {
-      //   label: 'Blog',
-      //   href: '/imprint'
-      // },
+      {
+        label: 'Blog',
+        href: '/docs'
+      },
       {
         label: 'Meine Beratung',
         href: '/#meine_beratung'

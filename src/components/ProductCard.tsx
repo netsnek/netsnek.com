@@ -303,6 +303,10 @@ export const ProductCard = ({
 
   // Determine if the border line should be displayed
   borderline = borderline !== undefined ? borderline : true;
+  
+  if (product.media.length === 0) {
+    borderline = false;
+  }
   if (isMobile) {
     borderline = false;
   }
