@@ -26,6 +26,7 @@ export type TSearchResultSection = {
   results: TSearchResult[];
   icon?: ReactNode;
   resultIcon?: ReactNode;
+  to?: string;
 };
 
 /**

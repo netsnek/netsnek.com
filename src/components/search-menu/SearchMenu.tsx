@@ -48,7 +48,7 @@ interface SearchMenuProps extends ButtonProps {}
 /**
  * Search menu component - shows a navigatable list of search results
  */
-const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
+const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
   const [navigateIdx, setNavigateIdx] = useState<number>(-1);
   const modalDisclosure = useDisclosure();
@@ -64,6 +64,8 @@ const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
   const [query] = useDebounce(searchQuery, 500);
 
   const search = useSearch(query);
+
+  console.log('the search', search);
 
   const location = useLocation();
 
@@ -238,6 +240,7 @@ const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
     });
   }, [search.searchResult, navigateIdx]);
 
+  console.log('DATA', data);
   /**
    * Navigate to the active item's href
    */
@@ -297,7 +300,10 @@ const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
                   key={sidx}
                   defaultHighlight={itemIdx === 0}
                   icon={chapter.icon}
-                  isDocs={!!section.results[0]?.to?.startsWith('/recipes/')}
+                  isDocs={
+                    !!section.to?.startsWith('/recipes/') ||
+                    !!section.results[0]?.to?.startsWith('/recipes/')
+                  }
                 />
               );
 

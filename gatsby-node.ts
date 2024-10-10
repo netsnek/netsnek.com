@@ -35,6 +35,16 @@ export const onPostBuild: GatsbyNode['onPostBuild'] = async ({
         jaenFields: Record<string, any> | null;
         pageConfig: PageConfig | null;
         buildPath: string;
+        sections: Array<{
+          items: Array<{
+            jaenFields: Record<string, any>;
+            sections: Array<{
+              items: Array<{
+                jaenFields: Record<string, any>;
+              }>;
+            }>;
+          }>;
+        }>;
       }>;
     };
   }>(`
@@ -53,6 +63,16 @@ export const onPostBuild: GatsbyNode['onPostBuild'] = async ({
           jaenFields
           pageConfig
           buildPath
+          sections {
+            items {
+              jaenFields
+              sections {
+                items {
+                  jaenFields
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -85,6 +105,16 @@ async function preparePagesAndBuildSearch(allJaenPage: {
     jaenFields: Record<string, any> | null;
     pageConfig: PageConfig | null;
     buildPath: string;
+    sections: Array<{
+      items: Array<{
+        jaenFields: Record<string, any>;
+        sections: Array<{
+          items: Array<{
+            jaenFields: Record<string, any>;
+          }>;
+        }>;
+      }>;
+    }>;
   }>;
 }) {
   const nodesForSearchIndex = allJaenPage.nodes.map(node => {

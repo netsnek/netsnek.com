@@ -412,6 +412,7 @@ type File = Node & {
   readonly size: Scalars['Int'];
   readonly sourceInstanceName: Scalars['String'];
   readonly uid: Scalars['Int'];
+  readonly url: Maybe<Scalars['String']>;
 };
 
 
@@ -556,6 +557,7 @@ type FileFieldSelector = {
   readonly size: InputMaybe<FieldSelectorEnum>;
   readonly sourceInstanceName: InputMaybe<FieldSelectorEnum>;
   readonly uid: InputMaybe<FieldSelectorEnum>;
+  readonly url: InputMaybe<FieldSelectorEnum>;
 };
 
 type FileFilterInput = {
@@ -599,6 +601,7 @@ type FileFilterInput = {
   readonly size: InputMaybe<IntQueryOperatorInput>;
   readonly sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   readonly uid: InputMaybe<IntQueryOperatorInput>;
+  readonly url: InputMaybe<StringQueryOperatorInput>;
 };
 
 type FileGroupConnection = {
@@ -683,6 +686,7 @@ type FileSortInput = {
   readonly size: InputMaybe<SortOrderEnum>;
   readonly sourceInstanceName: InputMaybe<SortOrderEnum>;
   readonly uid: InputMaybe<SortOrderEnum>;
+  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type FloatQueryOperatorInput = {
@@ -2613,6 +2617,7 @@ type Query_fileArgs = {
   size: InputMaybe<IntQueryOperatorInput>;
   sourceInstanceName: InputMaybe<StringQueryOperatorInput>;
   uid: InputMaybe<IntQueryOperatorInput>;
+  url: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -3645,7 +3650,7 @@ type JaenTemplateDataFragment = { readonly id: string, readonly label: string, r
 type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly allJaenPage: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly slug: string, readonly template: string | null, readonly jaenFields: Record<string, unknown> | null, readonly pageConfig: Record<string, unknown> | null, readonly buildPath: string | null, readonly parentPage: { readonly id: string } | null, readonly jaenPageMetadata: { readonly title: string } }> } };
+type Unnamed_1_Query = { readonly allJaenPage: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly slug: string, readonly template: string | null, readonly jaenFields: Record<string, unknown> | null, readonly pageConfig: Record<string, unknown> | null, readonly buildPath: string | null, readonly parentPage: { readonly id: string } | null, readonly jaenPageMetadata: { readonly title: string }, readonly sections: ReadonlyArray<{ readonly items: ReadonlyArray<{ readonly jaenFields: Record<string, unknown> | null, readonly sections: ReadonlyArray<{ readonly items: ReadonlyArray<{ readonly jaenFields: Record<string, unknown> | null }> }> }> }> }> } };
 
 
 }

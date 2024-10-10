@@ -96,7 +96,7 @@ export const SearchResultSection: FC<{
             title: section.title,
             to: section.results?.[0]?.to
               ? pageToWithoutHash(section.results?.[0]?.to)
-              : '',
+              : section.to ?? '',
             description: ''
           }}
           query={query}

@@ -29,6 +29,12 @@ interface Node {
       }
     >;
   };
+  sections: Array<{
+    items: Array<{
+      jaenFields: Node['jaenFields'];
+      sections: Node['sections'];
+    }>;
+  }>;
   type: string;
 }
 
@@ -49,9 +55,14 @@ export const buildSearchIndex = async (nodes: Node[]) => {
       '': description
     };
 
-    if (node.jaenFields) {
-      const mdxField = node.jaenFields['IMA:MdxField'];
-      const textField = node.jaenFields['IMA:TextField'];
+    const processJaenFields = (fields: Node['jaenFields']) => {
+
+      if (!fields) {
+        return
+      }
+
+      const mdxField = fields['IMA:MdxField'];
+      const textField = fields['IMA:TextField'];
 
       if (mdxField) {
         let currentHeading: string | null = null;
@@ -138,6 +149,19 @@ export const buildSearchIndex = async (nodes: Node[]) => {
         }
       }
     }
+
+    const processSections = (sections: Node['sections']) => {
+      for (const section of sections) {
+        for (const item of section.items) {
+          processJaenFields(item.jaenFields);
+          processSections(item.sections || []);
+        }
+      }
+    }
+
+    processJaenFields(node.jaenFields);
+
+    processSections(node.sections || []);
 
     searchIndex[pagePath] = {
       id: node.id,

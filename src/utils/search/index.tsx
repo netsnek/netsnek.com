@@ -125,6 +125,7 @@ export function searchDocs(
   return Object.entries(searchResults).map(([path, result]) => {
     return {
       title: result.document.title,
+      to: path,
       results: Object.entries(result.document.data).map(([key, value]) => {
         const slug = key.split('#')[0];
         const title = key.split('#')[1] || key;
