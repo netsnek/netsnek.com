@@ -2,7 +2,7 @@ import { Divider, HStack, Heading, Stack, VStack } from '@chakra-ui/react';
 import { FC } from 'react';
 import useTocNavigation from '../../hooks/use-toc-navigation';
 
-import { MdastRoot } from '@atsnek/jaen-fields-mdx/dist/MdxField/components/types';
+import { MdastRoot } from 'jaen-fields-mdx/dist/MdxField/components/types';
 import { Link } from 'gatsby-plugin-jaen';
 import { useTOCContext } from '../../contexts/toc';
 
@@ -19,8 +19,6 @@ const TableOfContent: FC<ITableOfContentProps> = ({
   fieldContent
 }) => {
   const toc = useTOCContext();
-
-  console.log('TOC', toc);
 
   const data = useTocNavigation(
     mdxFieldName ? mdxFieldName : toc.value ? undefined : 'documentation',
