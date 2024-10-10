@@ -9,7 +9,7 @@ import {
   Stack
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
-import { TSearchResult } from '../../../shared/types/search';
+import { TSearchResult } from '../../utils/search/types';
 import Highlighter from 'react-highlight-words';
 import { Link } from 'gatsby-plugin-jaen';
 
