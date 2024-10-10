@@ -125,7 +125,7 @@ export const useJaenProducts = (
     description: jaenChildPage.jaenPageMetadata?.description || '',
     descriptionHtml: jaenChildPage.jaenPageMetadata?.description || '',
     title: jaenChildPage.jaenPageMetadata?.title || '',
-    tags: ['New', 'T-Shirt', 'Summer'],
+    tags: ['Neu', 'Backen', 'Kochen'],
     status: 'ACTIVE',
     totalInventory: 100,
     createdAt: jaenChildPage.jaenPageMetadata?.blogPost?.date || '',

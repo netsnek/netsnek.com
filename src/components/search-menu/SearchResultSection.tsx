@@ -55,8 +55,8 @@ export const SearchResultSectionTitle: FC<
           }
         }}
       >
-        {heading}
         {icon}
+        {heading}
       </HStack>
     );
   }

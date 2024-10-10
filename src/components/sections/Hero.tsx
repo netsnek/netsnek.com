@@ -10,7 +10,8 @@ import {
   Image,
   Container,
   chakra,
-  Stack
+  Stack,
+  useBreakpointValue
 } from '@chakra-ui/react';
 import { FC, useEffect, useMemo, useRef, useState } from 'react';
 
@@ -77,6 +78,8 @@ const Hero: FC = () => {
     })
   };
 
+  const ComponentFade = useBreakpointValue({ base: VStack, md: FadeIn });
+
   return (
     <Box as="header" backgroundColor='#dee9ec'>
       <Grid
@@ -92,6 +95,7 @@ const Hero: FC = () => {
         gridTemplateColumns={{ md: '1fr 1fr' }}
         gridTemplateRows={{ base: 'auto 1fr auto', md: '1fr auto' }}
         pt={{ base: 8, md: 16 }}
+        pb={{ base: '16', lg: '0' }}
         px={{ base: 8, md: 16 }}
         id="hero"
         overflow="hidden"
@@ -134,10 +138,12 @@ const Hero: FC = () => {
           </AspectRatio>
         </Box>
         <VStack
-          as={FadeIn}
+          as={ComponentFade}
           pt={`calc(${navOffset})`}
           spacing={4}
           align="left"
+          alignItems="flex-start"
+          //justify="flex-start"
           gridArea="content"
           pr={{ base: 8, md: 16 }}
         >

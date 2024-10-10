@@ -34,8 +34,8 @@ const LastCall = () => {
       mt={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
-      px={{ base: 5, lg: 0 }}
-      py={8}
+      pb={{ base: '16', lg: '0' }}
+      pt={8}
       maxW="4xl"
       zIndex={0}>
       <Box>

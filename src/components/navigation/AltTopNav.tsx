@@ -240,7 +240,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
           >
             {/* Social media links here */}
             <Text color="white" fontWeight="bold" fontSize="lg">
-              Folge uns auf
+              Folge mir auf
             </Text>
             <HStack spacing="8">
               <LinkBox
@@ -312,15 +312,6 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               </LinkOverlay>
             </LinkBox>
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
-              {/* <SearchMenu
-                boxSizing={'border-box'}
-                borderWidth={{ base: 0, lg: 2 }}
-                color={{ base: 'white', lg: 'gray.400' }}
-                _hover={{
-                  borderColor: 'brand.600',
-                  bg: { base: 'brand.600', lg: 'transparent' }
-                }}
-              /> */}
               <Button
                   variant="ghost"
                   ml={4}
@@ -389,6 +380,17 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               >
                 Blog
               </Button> */}
+              <SearchMenu
+                display={{ base: 'none', md: 'block' }}
+                ml={4}
+                boxSizing={'border-box'}
+                borderWidth={{ base: 0, lg: 2 }}
+                color={{ base: 'white', lg: 'gray.400' }}
+                _hover={{
+                  borderColor: 'brand.600',
+                  bg: { base: 'brand.600', md: 'transparent' }
+                }}
+              />
               <Button
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
@@ -461,7 +463,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               </LinkOverlay>
             </LinkBox>
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
-              {/* <SearchMenu
+              <SearchMenu
                 borderColor={'white'}
                 boxSizing={'border-box'}
                 borderWidth={{ base: 0, lg: 2 }}
@@ -469,9 +471,9 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 color={{ base: 'black', lg: 'gray.400' }}
                 _hover={{
                   borderColor: 'brand.500',
-                  bg: { base: 'brand.500', lg: 'transparent' }
+                  bg: { base: 'white', md: 'transparent' }
                 }}
-              /> */}
+              />
               <Button
                 ml={4}
                 _hover={{

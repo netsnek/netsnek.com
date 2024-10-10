@@ -32,7 +32,7 @@ const Pains = () => {
       mb={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
-      px={{ base: 5, lg: 0 }}
+      px={0}
       pb={8}
       zIndex={0}>
       <Image

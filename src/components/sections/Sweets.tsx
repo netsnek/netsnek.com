@@ -32,13 +32,14 @@ const Sweets = () => {
       //mb={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
-      px={{ base: 5, lg: 0 }}
+      px={0}
+      pb={{ base: '16', lg: '0' }}
       pt={16}
       zIndex={0}>
       <Container
         maxW="2xl"
       >
-        <Field.Text
+        {/* <Field.Text
           as={Heading}
           variant="cursive"
           mb="8"
@@ -51,10 +52,10 @@ const Sweets = () => {
           textAlign="left"
           name="SweetsSectionHeading1"
           defaultValue="Jeder Mensch ist einzigartig."
-        />
+        /> */}
         <Field.Text
           //mt={{ base: '20 !important', md: '0' }}
-          mb="8"
+          my="8"
           as={Heading}
           fontSize={{ base: 'xl', lg: '2xl' }}
           lineHeight={1}

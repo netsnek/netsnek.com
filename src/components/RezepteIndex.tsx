@@ -1,148 +1,212 @@
-import { JaenPage, useJaenPageIndex } from 'jaen'
+import React, { FC, useState, useMemo } from 'react';
 import {
   VStack,
-  SimpleGrid,
   Box,
   Heading,
-  Text,
-  Button,
-  LinkOverlay,
-  LinkBox,
-  useBreakpointValue,
-  AspectRatio,
   Grid,
-  GridProps,
   StackProps,
-  Link
-} from '@chakra-ui/react'
-import React, { FC } from 'react'
-import { ProductCard } from './ProductCard'
-import { IJaenProduct } from '../hooks/use-products'
-//import JaenImage from '../../../../shared/components/JaenImage'
-// import MdxHeading from '../../../../shared/components/MdxHeading'
+  Button,
+  Wrap,
+  WrapItem,
+  Link,
+  Divider,
+  Text,
+} from '@chakra-ui/react';
+import { ProductCard } from './ProductCard';
 
-// New Interface for abcProducts
+interface IJaenProduct {
+  handle: string;
+  tags?: string[];
+  title: string;
+  description?: string;
+  price?: string;
+  createdAt: string;
+  featuredMedia?: {
+    image: {
+      src: string;
+      altText?: string | null;
+    };
+  };
+  media: Array<{
+    image: {
+      src: string;
+      altText?: string | null;
+    };
+  }>;
+}
+
 interface IAbcProducts {
   [key: string]: IJaenProduct[];
 }
 
 interface IRecipeGridProps extends StackProps {
-  featuredProducts: IJaenProduct[]
-  abcProducts: IAbcProducts
+  featuredProducts: IJaenProduct[];
+  abcProducts: IAbcProducts;
 }
 
-const RecipeGrid: FC<IRecipeGridProps> = ({ featuredProducts, abcProducts, ...props }) => {
+const RecipeGrid: FC<IRecipeGridProps> = ({
+  featuredProducts,
+  abcProducts,
+  ...props
+}) => {
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  console.log('!!!abcproducts!!!', abcProducts)
-  console.log('!!!featuredproducts!!!', featuredProducts)
-  // Determines the number of columns based on the breakpoint
-  const columns = useBreakpointValue({ base: 1, sm: 2, lg: 3 })
+  // Combine all products into one array for filtering
+  const allProducts = useMemo(
+    () => Object.values(abcProducts).flat(),
+    [abcProducts]
+  );
+
+  // Get unique tags from all products, excluding 'Gratis'
+  const allTags = useMemo(() => {
+    const tags = allProducts.flatMap((product) => product.tags || []);
+    return Array.from(new Set(tags.filter((tag) => tag !== 'Gratis')));
+  }, [allProducts]);
+
+  // Filter products based on selected tag
+  const filteredProducts = useMemo(() => {
+    if (selectedTag) {
+      return allProducts.filter((product) =>
+        product.tags?.includes(selectedTag)
+      );
+    }
+    return allProducts;
+  }, [allProducts, selectedTag]);
+
+  // Group filtered products alphabetically
+  const groupedProducts = useMemo(() => {
+    return filteredProducts.reduce<IAbcProducts>((acc, product) => {
+      const firstLetter = product.title.charAt(0).toUpperCase();
+      if (!acc[firstLetter]) {
+        acc[firstLetter] = [];
+      }
+      acc[firstLetter].push(product);
+      return acc;
+    }, {});
+  }, [filteredProducts]);
 
   return (
-    <VStack spacing="4" align="stretch" {...props}>
-      <Heading as="h2" size="lg" noOfLines={2}>
-        Neue Rezepte
-      </Heading>
-      <Grid
-        templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
-        gap={6}
-        mb={6}
-      >
-        {featuredProducts?.map((product, index) => {
+    <VStack spacing={8} align="stretch" {...props}>
+      {/* Header Section with Link to Blog */}
+      <Box textAlign="center" py={4}>
+        <Heading as="h1" size="xl">
+          Rezepte Übersicht
+        </Heading>
+        <Text mt={2}>
+          Entdecke unsere vielfältigen Rezepte oder besuche unseren{' '}
+          <Link href="/blog" color="blue.500">
+            Blog
+          </Link>{' '}
+          für mehr Inspiration!
+        </Text>
+      </Box>
 
-          console.log('my full index', index)
-          console.log('!!!product!!!', product)
-          return (
-            <ProductCard key={index} bcolor='#a0c1d9' product={product} />
-          )
-        })}
-      </Grid>
-      <Heading as="h2" size="lg" noOfLines={2}>
-        Alle Rezepte - nach Buchstaben sortiert&nbsp;
-      </Heading>
-      <Heading as="h2" size="lg" noOfLines={2}>
-        {Object.keys(abcProducts).map((letter) => (
-          <>
-            ·&nbsp;
-            <Link
-              onClick={() => {
-                // if not on the homepage, redirect to the homepage first
-                // if (path !== '/') {
-                //   window.location.href = '/';
-                // }
-                //alert('clicked')
-                const element = document.getElementById(letter);
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              {letter}
-            </Link>
-            {/* <Link href={`#${letter}`}>{letter}</Link>  */}
-          </>
-        ))}
-      </Heading>
-      {Object.entries(abcProducts).map(([letter, products]) => (
-        <Box key={letter} width="100%">
-          {/* <MdxHeading variant="h3" id={`index-${letter}`} pb="3">
-            {letter.toUpperCase()}
-          </MdxHeading> */}
-          <Heading id={letter} as="h3" size="md" noOfLines={2}>
-            {letter.toUpperCase()}
-          </Heading>
-
-          <Grid
-            templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
-            gap={6}
-            my={6}
+      {/* Tag Filter Buttons */}
+      <Wrap spacing={2} justify="center" mb={4}>
+        <WrapItem>
+          <Button
+            size="sm"
+            variant={selectedTag === null ? 'solid' : 'outline'}
+            onClick={() => setSelectedTag(null)}
           >
-            {products.map((product, index) => (
-              <ProductCard key={index} product={product} />
-              // <LinkBox key={product.title || 'missing-key'} borderWidth="1px" borderRadius="lg" overflow="hidden">
-              //   {/* <AspectRatio ratio={4 / 3}>
-              //     <JaenImage
-              //       name={page.slug ? page.slug : 'missing-slug'}
-              //       defaultValue={page.jaenPageMetadata?.image || 'default-image-url'}
-              //       alt={page.jaenPageMetadata?.description || 'Image'}
-              //       style={{
-              //         objectFit: 'cover',
-              //         width: '100%',
-              //         height: '100%',
-              //       }}
-              //     />
-              //   </AspectRatio> */}
-              //   <Box p={5}>
-              //     <Heading as="h3" size="md" noOfLines={2}>
-              //       {product.title || 'Untitled'}
-              //     </Heading>
-              //     <Text fontSize="sm" mt={1} noOfLines={3}>
-              //       {product.description || 'No description'}
-              //     </Text>
-              //     {/* <Text fontSize="xs" color="gray.500" mt={1}>
-              //       {page.jaenPageMetadata?.blogPost?.date
-              //         ? new Date(page.jaenPageMetadata.blogPost.date).toLocaleDateString('de-DE', {
-              //             year: 'numeric',
-              //             month: 'long',
-              //             day: 'numeric',
-              //             timeZone: 'UTC'
-              //           })
-              //         : null}
-              //     </Text> */}
-              //     <LinkOverlay href={`${product.handle || 'none'}/`} isExternal={false}>
-              //       <Button size="sm" mt={2}>
-              //         Zum Artikel
-              //       </Button>
-              //     </LinkOverlay>
-              //   </Box>
-              // </LinkBox>
-            ))}
+            Alle
+          </Button>
+        </WrapItem>
+        {/* Add 'Neu' to the filter buttons */}
+        {['Neu', ...allTags.filter((tag) => tag !== 'Neu')].map((tag) => (
+          <WrapItem key={tag}>
+            <Button
+              size="sm"
+              variant={selectedTag === tag ? 'solid' : 'outline'}
+              onClick={() => setSelectedTag(tag)}
+            >
+              {tag}
+            </Button>
+          </WrapItem>
+        ))}
+      </Wrap>
+
+      {/* Neue Rezepte (New Recipes) Section */}
+      {!selectedTag && (
+        <>
+          <Heading as="h2" size="lg" mt={8}>
+            Neue Rezepte
+          </Heading>
+          <Grid
+            templateColumns={{
+              sm: 'repeat(1, 1fr)', // Mobile devices: 1 column
+              md: 'repeat(2, 1fr)', // Small screens: 2 columns
+              lg: 'repeat(4, 1fr)', // Large screens: 4 columns
+            }}
+            gap={6}
+            mb={6}
+          >
+            {featuredProducts
+              ?.filter((product) => product.tags?.includes('Neu'))
+              .map((product, index) => (
+                <ProductCard
+                  key={index}
+                  bcolor="#a0c1d9"
+                  product={product}
+                  showNewBadge={true} // Only these cards show 'Neu' badge
+                />
+              ))}
           </Grid>
-        </Box>
-      ))}
+          <Divider />
+        </>
+      )}
+
+      {/* Alphabetical Shortcuts */}
+      <Heading as="h2" size="lg" mt={8}>
+        Alle Rezepte - nach Buchstaben sortiert
+      </Heading>
+      <Wrap spacing={2} justify="center" mb={4}>
+        {Object.keys(groupedProducts)
+          .sort()
+          .map((letter) => (
+            <WrapItem key={letter}>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => {
+                  const element = document.getElementById(`letter-${letter}`);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                {letter}
+              </Button>
+            </WrapItem>
+          ))}
+      </Wrap>
+
+      {/* Grouped Products by Alphabet */}
+      {Object.entries(groupedProducts)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([letter, products]) => (
+          <Box key={letter} width="100%">
+            <Heading id={`letter-${letter}`} as="h3" size="md" mt={4} mb={2}>
+              {letter.toUpperCase()}
+            </Heading>
+
+            <Grid
+              templateColumns={{
+                sm: 'repeat(1, 1fr)', // Mobile devices: 1 column
+                md: 'repeat(2, 1fr)', // Small screens: 2 columns
+                lg: 'repeat(4, 1fr)', // Large screens: 4 columns
+              }}
+              gap={6}
+              my={6}
+            >
+              {products.map((product, index) => (
+                <ProductCard key={index} product={product} />
+              ))}
+            </Grid>
+          </Box>
+        ))}
     </VStack>
+  );
+};
 
-  )
-}
-
-export default RecipeGrid
+export default RecipeGrid;

@@ -4,6 +4,7 @@ import { useLazyQuery, useQuery } from 'snek-query/react-hooks';
 import { FaCarrot } from '@react-icons/all-files/fa/FaCarrot';
 import TbUser from '../../components/icons/tabler/TbUser';
 import TbUsers from '../../components/icons/tabler/TbUsers';
+import TbApple from '../../components/icons/tabler/TbApple';
 
 /**
  * A single search result.
@@ -73,7 +74,7 @@ const useSocialSearch = (query?: string) => {
           description: post.matchingQuery({ query }) || post.summary || '',
           to: `/experiments/${post.slug}`
         })),
-        resultIcon: <FaCarrot />
+        resultIcon: <TbApple />
       };
     }
 
@@ -82,15 +83,15 @@ const useSocialSearch = (query?: string) => {
     }
 
     return {
-      users: {
-        title: 'Users',
-        sections: usersResult ? [usersResult] : [],
-        icon: <TbUsers />
-      },
+      // users: {
+      //   title: 'Users',
+      //   sections: usersResult ? [usersResult] : [],
+      //   icon: <TbUsers />
+      // },
       posts: {
-        title: 'Blog',
+        title: 'Artikel',
         sections: postsResult ? [postsResult] : [],
-        icon: <FaCarrot />
+        icon: <TbApple />
       }
     } as TSearchResults;
   }, [query, data, isLoading]);

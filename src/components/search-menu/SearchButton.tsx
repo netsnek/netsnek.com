@@ -55,8 +55,9 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
     return (
       <Button
         display="flex"
+        mx={4}
         size="sm"
-        minH="9"
+        minH="10"
         variant="outline"
         bgColor="blackAlpha.50"
         color="topNav.input.color"
@@ -65,8 +66,14 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         _hover={{
           borderColor: 'topNav.input.hover.borderColor'
         }}
+        // _active={{
+        //   bgColor: 'topNav.input.active.bgColor'
+        // }}
         _active={{
-          bgColor: 'topNav.input.active.bgColor'
+          bgColor: { base: 'white', md: 'transparent' }
+        }}
+        _focus={{
+          bgColor: { base: 'white', md: 'transparent' }
         }}
         onFocus={e => {
           e.currentTarget.addEventListener('keypress', onKeyPress);
@@ -77,19 +84,19 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         onClick={openModal}
         {...props}
       >
-        Type{' '}
+        {/* Type{' '} */}
         <Kbd
           borderBottomWidth={1}
           borderRadius={4}
           py={0.5}
-          mx={2}
+          mr={2}
           bgColor={'transparent'}
           borderColor={'topNav.input.borderColor'}
           variant="outline"
         >
           /
         </Kbd>
-        to search
+        Suche
       </Button>
     );
   }

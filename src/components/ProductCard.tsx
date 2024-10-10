@@ -1,31 +1,60 @@
+import React from 'react';
 import {
   AspectRatio,
   Badge,
   Box,
   BoxProps,
   Flex,
-  HStack,
   Image,
   Spacer,
   Text,
-  useColorModeValue,
-  VStack
+  useBreakpointValue,
+  VStack,
 } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
-import React from 'react';
-import { v1 as uuidv1 } from 'uuid';
-
-//import { useWholesaleUser } from '../../../hooks/use-wholesale-user'
-
 import { css } from '@emotion/react';
-import { Field } from 'jaen';
+import { v4 as uuidv4 } from 'uuid';
+
+// Define the product interface for better type safety
+interface Product {
+  handle: string;
+  tags?: string[];
+  title: string;
+  description?: string;
+  price?: string; // Price as a string to include currency symbol
+  compareAtPrice?: string;
+  discount?: string;
+  createdAt: string;
+  featuredMedia?: {
+    image: {
+      src: string;
+      altText?: string | null;
+    };
+  };
+  media: Array<{
+    image: {
+      src: string;
+      altText?: string | null;
+    };
+  }>;
+  taxable?: boolean;
+}
+
+export interface ProductCardProps {
+  product: Product;
+  borderline?: boolean;
+  left?: boolean;
+  bwidth?: string;
+  bcolor?: string;
+  prefixPath?: string;
+}
 
 const borderColor = (color?: string) => (color ? color : '#f77f00');
 const transformWidth = (width?: string) =>
   width ? 'scaleX(1.' + width.split('%')[0] + ')' : 'scaleX(1.3)';
 const borderlinWidth = (width?: string) => (width ? width : '30%');
 
+// CSS-in-JS styling using Emotion
 export const cardStyle = (
   borderline?: boolean,
   bwidth?: string,
@@ -190,287 +219,35 @@ export const cardStyle = (
   }
 `;
 
-export interface ProductCardProps {
-  product: any; // Replace ShopifyProduct with your product type
-  borderline?: boolean;
-  left?: boolean;
-  bwidth?: string;
-  bcolor?: string;
-  prefixPath?: string;
-}
-
-export const ProductCard = ({
-  product,
-  borderline,
-  left,
-  bwidth,
-  bcolor,
-  prefixPath
-}: ProductCardProps) => {
-  const prefixPathTrimmed = prefixPath
-    ? prefixPath.trim().replace(/\/+$/, '')
-    : '';
-  const path = `${prefixPathTrimmed}/${product.handle}`;
-
-  const radioRef = React.useRef<(HTMLInputElement | null)[]>([]);
-
-  // Replace getProductTags with your logic
-  const tags = product.tags || [];
-
-  // Replace getFormattedProductPrices with your logic
-  const prices = {
-    priceFormatted: product.price,
-    compareAtPriceFormatted: product.compareAtPrice,
-    discountFormatted: product.discount
-  };
-
-  const isWholesale = true; //useWholesaleUser()
-
-  // Adapt taxable logic based on your product structure
-  const taxable = isWholesale ? false : product.taxable;
-
-  const cardId = uuidv1();
-
-  if (product.media.length === 0) {
-    borderline = false;
-  }
-  borderline = true;
-
-  const coloredBadges: Array<{ name: string; color: string; bg: string }> = [];
-
-  if (
-    new Date(product.createdAt).getTime() >
-    Date.now() - 7 * 24 * 60 * 60 * 1000
-  ) {
-    coloredBadges.push({ name: 'Neu', color: 'white', bg: 'brand.500' });
-  }
-
-  if (prices.discountFormatted) {
-    coloredBadges.push({
-      name: prices.discountFormatted,
-      color: 'white',
-      bg: 'agt.red'
-    });
-  }
-
-  return (
-    <VStack
-      as={GatsbyLink}
-      to={path}
-      display={'block'}
-      css={cardStyle(borderline, bwidth, bcolor, left)}
-      boxSize={'full'}
-      cursor="pointer"
-      // bg="red"
-      textAlign={{
-        base: 'center',
-        md: 'left'
-      }}
-    >
-      <Box
-        className="pcard"
-        position="relative"
-        cursor="pointer"
-        bg="primary"
-        px={{ base: '1', md: '2', lg: '3' }}
-        py="5"
-        // h={'full'}
-        minH={'full'}
-        borderRadius="2xl"
-        // boxShadow="lg"
-        // border="1px"
-        // borderColor="#f9f9f9"
-        // mt="3"
-      >
-        <Box position="relative">
-          <AspectRatio ratio={10 / 9}>
-            <>
-              <input
-                type="radio"
-                className="radioimg"
-                name={'imgbox-' + cardId}
-                id={'imgbox-' + cardId + '-' + 0}
-                key={0}
-                ref={el => (radioRef.current[0] = el)}
-                readOnly
-                checked
-              ></input>
-              <ImageBoxWithTags
-                image={product.featuredMedia?.image}
-                tags={coloredBadges}
-                className="main"
-              />
-            </>
-          </AspectRatio>
-
-          {product.media.slice(0, 3).map((media: any, index: number) => (
-            <Box key={index}>
-              {index !== 0 && (
-                <Box>
-                  <input
-                    type="radio"
-                    className="radioimg"
-                    name={'imgbox-' + cardId}
-                    id={'imgbox-' + cardId + '-' + index}
-                    ref={el => (radioRef.current[index] = el)}
-                  />
-                  <ImageBoxWithTags
-                    image={media.image}
-                    tags={coloredBadges}
-                    className="preview"
-                  />
-                </Box>
-              )}
-            </Box>
-          ))}
-        </Box>
-
-        <Text fontSize="sm" noOfLines={1}>
-          {tags.otherString}
-        </Text>
-        <Text fontSize={"2xl"} fontWeight="bold">{product.title}</Text>
-        {/* <Text fontWeight="normal">{product.description}</Text> */}
-        {/*{product.price}
-        <Text fontSize="xs" color="gray.600" textAlign={'center'}>
-          {taxable ? 'inkl.' : 'exkl.'} Ust.
-        </Text>*/}
-        <Spacer
-          position="absolute"
-          className="bspacer"
-          w="0"
-          h="90%"
-          top="5%"
-          borderLeft="1px"
-          borderColor="#f9f9f9"
-          transform="scale(0.97)"
-        />
-        <Box
-          className="borderline"
-          cursor="pointer"
-          bg={useColorModeValue('white', 'gray.700')}
-          px={{ base: '1', md: '2', lg: '3' }}
-          py="5"
-          // h={'full'}
-          // minH={'full'}
-          borderRadius="2xl"
-          border="1px"
-          borderColor="#f9f9f9"
-          boxShadow="sm"
-        >
-          <VStack
-            className="imgline"
-            position="absolute"
-            opacity="0"
-            boxSize={'full'}
-            py="calc(var(--chakra-space-5) - 2px)"
-            px="1"
-          >
-            {product.media.slice(0, 3).map((media: any, index: number) => (
-              <label htmlFor={'imgbox-' + cardId + '-' + index} key={index}>
-                <Box
-                  transform="scale(0.97)"
-                  borderBottom="1px"
-                  borderColor="#f9f9f9"
-                  _hover={{ borderColor: 'agt.red' }}
-                  onMouseOver={() => (radioRef.current[index]!.checked = true)}
-                  onMouseLeave={() => (radioRef.current[0]!.checked = true)}
-                >
-                  {/* <GatsbyImage
-                    onDragStart={e => e.preventDefault()}
-                    draggable="false"
-                    image={media.image.gatsbyImageData}
-                    alt={media.image.altText || ''}
-                  /> */}
-                  <Image
-                    onDragStart={e => e.preventDefault()}
-                    draggable="false"
-                    src={media.image.src}
-                    alt={media.image.altText || '-'}
-                    style={{
-                      height: 'auto',
-                      width: 'full',
-                      objectFit: 'contain',
-                      objectPosition: 'center'
-                    }}
-                  />
-                  {/* {media.image.defaultValue && (
-                    <Field.Image
-                      //onDragStart={e => e.preventDefault()}
-                      //draggable="false"
-                      //src={image.gatsbyImageData.images.fallback?.src}
-                      //sizes={image.gatsbyImageData.images.fallback?.sizes}
-                      //srcSet={image.gatsbyImageData.images.fallback?.srcSet}
-                      name={media.image.name} //{media.image.name}
-                      isDisabled
-                      defaultValue={media.image.defaultValue}
-                      alt={media.image.altText || 'Product Image'}
-                      style={{
-                        height: '100%',
-                        width: '100%',
-                        objectFit: 'contain',
-                        objectPosition: 'center'
-                      }}
-                    />
-                  )} */}
-                </Box>
-              </label>
-            ))}
-          </VStack>
-        </Box>
-      </Box>
-    </VStack>
-  );
-};
-
 function ImageBoxWithTags(
   props: {
     image?: {
       src: string;
-      gatsbyImageData: IGatsbyImageData;
-      altText: string | null;
-      //gatsbyImageData: IGatsbyImageData
+      altText?: string | null;
     };
     tags: Array<{ name: string; color: string; bg: string }>;
   } & BoxProps
 ) {
-  // Box with image as background and tags on bottom
   const { image, tags } = props;
 
   return (
     <Box overflow="hidden" position="relative" {...props}>
       {image ? (
         <Image
-          onDragStart={e => e.preventDefault()}
+          onDragStart={(e) => e.preventDefault()}
           draggable="false"
           src={image.src}
           alt={image.altText || '-'}
           style={{
             height: 'auto',
-            width: 'full',
+            width: '100%',
             objectFit: 'cover',
-            objectPosition: 'center'
+            objectPosition: 'center',
           }}
         />
       ) : (
         'no image'
       )}
-      {/* <Field.Image
-          //onDragStart={e => e.preventDefault()}
-          //draggable="false"
-          //src={image.gatsbyImageData.images.fallback?.src}
-          //sizes={image.gatsbyImageData.images.fallback?.sizes}
-          //srcSet={image.gatsbyImageData.images.fallback?.srcSet}
-          name={"image.id"}
-          isDisabled
-          defaultValue={image.src}
-          alt={image.altText || '-'}
-          style={{
-            height: '100%',
-            width: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center'
-          }}
-        /> */}
       <Flex position="absolute" top="0" left="0" right="0" p={2}>
         {tags.map((tag, index) => (
           <Badge
@@ -493,36 +270,204 @@ function ImageBoxWithTags(
   );
 }
 
-// const ProductPrices = ({
-//   prices
-// }: {
-//   prices: ReturnType<typeof getFormattedProductPrices>
-// }) => {
-//   if (prices.compareAtPriceFormatted) {
-//     return (
-//       <HStack
-//         wrap="wrap"
-//         justifyContent={{
-//           base: 'center',
-//           md: 'flex-start'
-//         }}>
-//         <Text
-//           fontSize="sm"
-//           fontWeight="semibold"
-//           color="gray.600"
-//           textDecoration={'line-through !important'}>
-//           {prices.compareAtPriceFormatted}
-//         </Text>
-//         <Text fontSize="sm" fontWeight="bold" color="red.500" ml={2}>
-//           {prices.priceFormatted}
-//         </Text>
-//       </HStack>
-//     )
-//   }
+export const ProductCard = ({
+  product,
+  borderline,
+  left,
+  bwidth,
+  bcolor,
+  prefixPath,
+}: ProductCardProps) => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
-//   return (
-//     <Box fontSize="sm" fontWeight="semibold" mb={2}>
-//       <Text>{prices.priceFormatted}</Text>
-//     </Box>
-//   )
-// }
+  // Construct the path to the product page
+  const prefixPathTrimmed = prefixPath
+    ? prefixPath.trim().replace(/\/+$/, '')
+    : '';
+  const path = `${prefixPathTrimmed}/${product.handle}`;
+
+  const radioRef = React.useRef<(HTMLInputElement | null)[]>([]);
+
+  // Get product tags or default to empty array
+  const tags = product.tags || [];
+
+  // Price handling
+  let priceFormatted = product.price;
+  // If price is '0€' or undefined, display 'Gratis'
+  if (!priceFormatted || priceFormatted === '0€') {
+    priceFormatted = 'Gratis';
+  }
+
+  // Generate a unique ID for radio inputs
+  const cardId = uuidv4();
+
+  // Determine if the border line should be displayed
+  borderline = borderline !== undefined ? borderline : true;
+  if (isMobile) {
+    borderline = false;
+  }
+
+  // Prepare badges for 'Neu' (New) and discount
+  const coloredBadges: Array<{ name: string; color: string; bg: string }> = [];
+
+  // Check if the product is new (created within the last 7 days)
+  if (
+    product.tags?.includes('Neu') ||
+    new Date(product.createdAt).getTime() >
+      Date.now() - 7 * 24 * 60 * 60 * 1000
+  ) {
+    coloredBadges.push({ name: 'Neu', color: 'white', bg: 'brand.500' });
+  }
+
+  // Check for discounts
+  if (product.discount) {
+    coloredBadges.push({
+      name: product.discount,
+      color: 'white',
+      bg: 'agt.red',
+    });
+  }
+
+  return (
+    <VStack
+      as={GatsbyLink}
+      to={path}
+      display={'block'}
+      css={cardStyle(borderline, bwidth, bcolor, left)}
+      boxSize={'full'}
+      cursor="pointer"
+      textAlign={{
+        base: 'center',
+        md: 'left',
+      }}
+    >
+      <Box
+        className="pcard"
+        position="relative"
+        cursor="pointer"
+        bg="primary"
+        px={{ base: '1', md: '2', lg: '3' }}
+        py="5"
+        minH={'full'}
+        borderRadius="2xl"
+      >
+        {/* Adjust layout based on screen size */}
+        <Flex direction={isMobile ? 'row' : 'column'} align="stretch">
+          {/* Image section */}
+          <Box
+            position="relative"
+            flex={isMobile ? '0 0 40%' : '1'}
+            mr={isMobile ? '4' : '0'}
+          >
+            <AspectRatio ratio={isMobile ? 4 / 3 : 10 / 9}>
+              <>
+                {/* Radio inputs for image previews */}
+                <input
+                  type="radio"
+                  className="radioimg"
+                  name={'imgbox-' + cardId}
+                  id={'imgbox-' + cardId + '-' + 0}
+                  key={0}
+                  ref={(el) => (radioRef.current[0] = el)}
+                  readOnly
+                  checked
+                ></input>
+                <ImageBoxWithTags
+                  image={product.featuredMedia?.image}
+                  tags={coloredBadges}
+                  className="main"
+                />
+              </>
+            </AspectRatio>
+          </Box>
+
+          {/* Text content section */}
+          <Box flex="1" mt={isMobile ? '0' : '4'}>
+            {/* Display product tags (other than 'Neu') */}
+            <Text fontSize="sm" noOfLines={1}>
+              {tags.filter((tag) => tag !== 'Neu').join(', ')}
+            </Text>
+
+            {/* Product title */}
+            <Text fontSize={'2xl'} fontWeight="bold">
+              {product.title}
+            </Text>
+
+            {/* Product description */}
+            <Text fontSize="md" noOfLines={2}>
+              {product.description}
+            </Text>
+
+            {/* Product price */}
+            <Text fontSize="lg" fontWeight="semibold" color="agt.red">
+              {priceFormatted}
+            </Text>
+          </Box>
+        </Flex>
+
+        {/* Spacer and borderline for hover effects */}
+        <Spacer
+          position="absolute"
+          className="bspacer"
+          w="0"
+          h="90%"
+          top="5%"
+          borderLeft="1px"
+          borderColor="#f9f9f9"
+          transform="scale(0.97)"
+        />
+        <Box
+          className="borderline"
+          cursor="pointer"
+          bg="white"
+          px={{ base: '1', md: '2', lg: '3' }}
+          py="5"
+          borderRadius="2xl"
+          border="1px"
+          borderColor="#f9f9f9"
+          boxShadow="sm"
+        >
+          {/* Image preview line */}
+          <VStack
+            className="imgline"
+            position="absolute"
+            opacity="0"
+            boxSize={'full'}
+            py="calc(var(--chakra-space-5) - 2px)"
+            px="1"
+          >
+            {product.media.slice(0, 3).map((media, index) => (
+              <label htmlFor={'imgbox-' + cardId + '-' + index} key={index}>
+                <Box
+                  transform="scale(0.97)"
+                  borderBottom="1px"
+                  borderColor="#f9f9f9"
+                  _hover={{ borderColor: 'agt.red' }}
+                  onMouseOver={() =>
+                    (radioRef.current[index]!.checked = true)
+                  }
+                  onMouseLeave={() =>
+                    (radioRef.current[0]!.checked = true)
+                  }
+                >
+                  <Image
+                    onDragStart={(e) => e.preventDefault()}
+                    draggable="false"
+                    src={media.image.src}
+                    alt={media.image.altText || '-'}
+                    style={{
+                      height: 'auto',
+                      width: '100%',
+                      objectFit: 'contain',
+                      objectPosition: 'center',
+                    }}
+                  />
+                </Box>
+              </label>
+            ))}
+          </VStack>
+        </Box>
+      </Box>
+    </VStack>
+  );
+};

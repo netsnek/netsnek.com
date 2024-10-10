@@ -18,10 +18,11 @@ import {
         mb={{ base: '0', lg: '16' }}
         position="relative"
         overflow={{ base: 'hidden', lg: 'visible' }}
-        px={{ base: 5, lg: 0 }}
+        px={0}
         pt={40}
         zIndex={0}>
         <Image
+          w={{ base: '50%', lg: 'unset' }}
           margin="0 auto"
           mb="8"
           src="images/svg/muffin.svg"
@@ -31,7 +32,7 @@ import {
           as={Heading}
           variant="cursive"
           mb="8"
-          size={{ base: 'sm', lg: 'md' }}
+          size={{ base: 'md', lg: 'md' }}
           style={{ animationDelay: '300ms' }}
           fontWeight="500"
           //textTransform="uppercase"

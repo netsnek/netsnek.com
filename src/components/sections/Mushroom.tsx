@@ -18,7 +18,7 @@ const Mushroom = () => {
       //mb={{ base: '0', lg: '16' }}
       position="relative"
       overflow={{ base: 'hidden', lg: 'visible' }}
-      px={{ base: 5, lg: 0 }}
+      px={0}
       py={16}
       zIndex={0}
       id="mushroom"
