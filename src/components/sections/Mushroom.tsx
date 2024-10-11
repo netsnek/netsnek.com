@@ -52,9 +52,10 @@ const Mushroom = () => {
         fontWeight="900"
         textAlign="center"
         name="MushroomSectionSubheading1"
-        defaultValue="“Indem ich erkenne, wie meine Ernährung meinen Körper beeinflusst, wächst meine Bereitschaft, positive Veränderungen vorzunehmen.”"
+        //defaultValue="“Indem ich erkenne, wie meine Ernährung meinen Körper beeinflusst, wächst meine Bereitschaft, positive Veränderungen vorzunehmen.”"
+        defaultValue="“Gesunde ausgewogene Ernährung ist der einfachste und günstigste Weg deine Gesundheit und deine Lebensqualität signifikant zu verbessern.”"
       />
-      <Field.Text
+      {/* <Field.Text
         //mt={{ base: '20 !important', md: '0' }}
         mb="8"
         as={Text}
@@ -75,7 +76,7 @@ const Mushroom = () => {
         textAlign="center"
         name="MushroomSectionHeading2"
         defaultValue="Indem wir deine individuellen Lebensumstände genau betrachten, entwickeln wir gemeinsam eine gesunde Ernährungsweise, die du mühelos in deinen Alltag integrieren kannst."
-      />
+      /> */}
       {/* <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={10}>
         <GridItem colSpan={1}>
           <Box

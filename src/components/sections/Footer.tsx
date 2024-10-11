@@ -144,13 +144,19 @@ const Footer: FC = () => {
             )
           }
           return (
-            <Box as={link.href?Link:undefined} key={i} href={link.href} ariant="hover-theme" opacity={0.7}>
+            <Link
+              key={i}
+              href={link.href}
+              variant="pq-footer"
+              color="white"
+              opacity={0.7}
+            >
               <Field.Text
                 color="white"
                 name={'FooterLink' + link.label}
                 defaultValue={link.label}
               />
-            </Box>
+            </Link>
           )
         })}
       </VStack>

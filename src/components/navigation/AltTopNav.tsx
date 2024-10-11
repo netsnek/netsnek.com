@@ -330,9 +330,9 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   fontSize="sm"
                   fontWeight="semibold"
                   color="#273E53"
-                  display={{ base: 'none', md: 'block' }}
+                  display={{ base: 'none', lg: 'block' }}
                 >
-                  Meine Beratung
+                  Kurse & Webinare
                 </Button>
               <Button
                 variant="ghost"
@@ -352,9 +352,9 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 fontSize="sm"
                 fontWeight="semibold"
                 color="#273E53"
-                display={{ base: 'none', md: 'block' }}
+                display={{ base: 'none', lg: 'block' }}
               >
-                Meine Kunden
+                Über mich
               </Button>
               <Button
                 variant="ghost"
@@ -364,28 +364,28 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 fontSize="sm"
                 fontWeight="semibold"
                 color="#273E53"
-                display={{ base: 'none', md: 'block' }}
+                display={{ base: 'none', lg: 'block' }}
               >
                 Rezepte
               </Button>
-              {/* <Button
+              <Button
                 variant="ghost"
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                onClick={handleOnContactClick}
+                onClick={() => window.location.href = '/docs'}
                 fontSize="sm"
                 fontWeight="semibold"
                 color="#273E53"
-                display={{ base: 'none', md: 'block' }}
+                display={{ base: 'none', lg: 'block' }}
               >
                 Blog
-              </Button> */}
+              </Button>
               <SearchMenu
-                display={{ base: 'none', md: 'block' }}
+                display={{ base: 'none', lg: 'block' }}
                 ml={4}
                 boxSizing={'border-box'}
                 borderWidth={{ base: 0, lg: 2 }}
-                color={{ base: 'white', lg: 'gray.400' }}
+                color={{ base: 'white', md: 'gray.400' }}
                 _hover={{
                   borderColor: 'brand.600',
                   bg: { base: 'brand.600', md: 'transparent' }
@@ -398,7 +398,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 fontSize="sm"
                 fontWeight="semibold"
                 color="white"
-                display={{ base: 'none', md: 'block' }}
+                display={{ base: 'none', lg: 'block' }}
               >
                 Kontakt
               </Button>
@@ -414,7 +414,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 </Button> */}
               <IconButton
                 variant="ghost"
-                display={{ base: 'block', md: 'none' }}
+                display={{ base: 'block', lg: 'none' }}
                 ml={4}
                 icon={
                   <HamburgerMenuIcon
@@ -473,6 +473,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   borderColor: 'brand.500',
                   bg: { base: 'white', md: 'transparent' }
                 }}
+                mx={0}
+                ml={4}
               />
               <Button
                 ml={4}
@@ -507,7 +509,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 </Button> */}
               <IconButton
                 variant="ghost"
-                display={{ base: 'block', md: 'none' }}
+                display={{ base: 'block', lg: 'none' }}
                 ml={4}
                 _hover={{
                   bg: 'brand.500'

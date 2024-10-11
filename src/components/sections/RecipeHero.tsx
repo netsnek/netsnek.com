@@ -10,11 +10,12 @@ import {
   Image,
   Container,
   chakra,
-  Stack
+  Stack,
+  ButtonGroup
 } from '@chakra-ui/react';
 import { FC, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Field, useAuth } from 'jaen';
+import { checkUserRoles, Field, useAuth, useContentManagement, usePageContext } from 'jaen';
 import useNavOffset from '../../hooks/use-nav-offset';
 import { Link } from 'gatsby-plugin-jaen';
 
@@ -26,6 +27,7 @@ import { useContactModal } from '../../services/contact';
 import { UncontrolledMdxField } from 'jaen-fields-mdx';
 import SvgMdxEditor from '../mdx-editor/SvgMdxEditor';
 import { Interface } from 'readline';
+import { EditIcon, SettingsIcon } from '@chakra-ui/icons';
 
 interface ScrollArrowsProps {
   isVisible: boolean;
@@ -71,7 +73,7 @@ interface RecipeHeroProps {
 const RecipeHero: FC<RecipeHeroProps> = ({ defaultHeading, defaultLead, defautlImage }) => {
   const navOffset = useNavOffset();
 
-  const isAuthenticated = useAuth().user !== null;
+  // const isAuthenticated = useAuth().user !== null;
 
   //const {ref, scrollTop} = useScrollSync(500)
   const scrollPos = useScrollPosition();
@@ -84,8 +86,35 @@ const RecipeHero: FC<RecipeHeroProps> = ({ defaultHeading, defaultLead, defautlI
     })
   };
 
+  const { isAuthenticated, user, isLoading } = useAuth();
+  const { isEditing, toggleIsEditing } = useContentManagement();
+  const { jaenPage } = usePageContext();
+
+  const canEdit = isAuthenticated && checkUserRoles(user, ['jaen:admin']);
+
   return (
     <Box as="header" backgroundColor='#dee9ec'>
+            {canEdit && isLoading === false && (
+        <ButtonGroup>
+          <Button
+            leftIcon={<EditIcon />}
+            variant="outline"
+            colorScheme={isEditing ? 'red' : undefined}
+            onClick={() => toggleIsEditing()}
+          >
+            {isEditing ? 'Stop Editing' : 'Edit'}
+          </Button>
+
+          <Link
+            leftIcon={<SettingsIcon />}
+            variant="outline"
+            as={Button}
+            to={`/cms/pages/#${btoa(jaenPage.id)}`}
+          >
+            Page Settings
+          </Link>
+        </ButtonGroup>
+      )}
       <Grid
         as={Container}
         maxW="6xl"

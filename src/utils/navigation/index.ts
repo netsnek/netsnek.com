@@ -81,7 +81,7 @@ export function createPageTree(
 
   const menuData: NavMenuSection[] = [
     {
-      name: 'Documentation',
+      name: 'Blog Artikel',
       items: docsTree.children
         .filter((child: any) => !child.deleted)
         .map(({ id }: any) => buildMenuItem(id))

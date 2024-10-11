@@ -90,28 +90,34 @@ const Footer: FC = () => {
 
   links.forEach((linkGroup, i) => {
     linkElmnts.push(
-      <VStack spacing={3} alignItems="start" wrap="wrap" key={i}>
-        {linkGroup.map((link, i) => {
-          if ('isTitle' in link) {
-            return (
-              <Field.Text
-                key={i}
-                name={'FooterLinkTitle' + link.label}
-                defaultValue={link.label}
-                fontWeight="500"
-              />
-            )
-          }
-          return (
-            <Link key={i} href={link.href} variant="hover-theme" opacity={0.7}>
-              <Field.Text
-                name={'FooterLink' + link.label}
-                defaultValue={link.label}
-              />
-            </Link>
-          )
-        })}
-      </VStack>
+      // <VStack spacing={3} alignItems="start" wrap="wrap" key={i}>
+      //   {linkGroup.map((link, i) => {
+      //     if ('isTitle' in link) {
+      //       return (
+      //         <Field.Text
+      //           key={i}
+      //           name={'FooterLinkTitle' + link.label}
+      //           defaultValue={link.label}
+      //           fontWeight="500"
+      //         />
+      //       )
+      //     }
+      //     return (
+      //       <Link
+      //         key={i}
+      //         href={link.href}
+      //         variant="pq-footer"
+      //         color="white"
+      //         opacity={0.7}
+      //       >
+      //         <Field.Text
+      //           name={'FooterLink' + link.label}
+      //           defaultValue={link.label}
+      //         />
+      //       </Link>
+      //     )
+      //   })}
+      // </VStack>
     )
   })
 
@@ -136,13 +142,13 @@ const Footer: FC = () => {
               </Flex>
             </Box>
             <Spacer minW={{base: '5rem', lg: '25%'}} />
-            <HStack
+            {/* <HStack
               alignItems="start"
               spacing={{base: 5, sm: 20}}
               wrap={{base: 'wrap', md: 'nowrap'}}
               mt={{base: 10, md: 0}}>
               {linkElmnts}
-            </HStack>
+            </HStack> */}
           </Flex>
           {/* <Stack
             mt={20}

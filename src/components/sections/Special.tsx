@@ -37,7 +37,7 @@ const Special = () => {
         name="SpecialSectionHeading1"
         defaultValue="Jeder Mensch ist einzigartig."
       />
-      <Field.Text
+      {/* <Field.Text
         //mt={{ base: '20 !important', md: '0' }}
         mb="8"
         as={Text}
@@ -47,7 +47,7 @@ const Special = () => {
         textAlign="center"
         name="SpecialSectionSubheading1"
         defaultValue="... und genau so individuell sollte die Ernährung an deine persönlichen Lebensumstände angepasst sein. Gemeinsam ermitteln wir eine Ernährungsweise, die du mühelos in deinen Alltag integrieren und vor allem langfristig beibehalten kannst, ohne Einbußen in deiner Lebensqualität hinnehmen zu müssen."
-      />
+      /> */}
       <HStack justifyContent="space-between" mb={8}>
         <Image
           src="/images/svg/grapes.svg"
@@ -91,7 +91,7 @@ const Special = () => {
         //fontWeight="bold"
         textAlign="center"
         name="SpecialSectionHeading2"
-        defaultValue="Die richtige Ernährung verleiht dir mehr Energie und Konzentration für den Alltag und schafft so zusätzlichen Freiraum für dich und deine Liebsten."
+        defaultValue="Auf dich angepasste Ernährung verleiht dir mehr Energie und Konzentration für den Alltag und schafft so zusätzlichen Freiraum für dich und deine Liebsten."
       />
     </Container>
   )
