@@ -49,12 +49,12 @@ export interface ProductCardProps {
   prefixPath?: string;
 }
 
+// CSS-in-JS styling using Emotion
 const borderColor = (color?: string) => (color ? color : '#f77f00');
 const transformWidth = (width?: string) =>
   width ? 'scaleX(1.' + width.split('%')[0] + ')' : 'scaleX(1.3)';
 const borderlinWidth = (width?: string) => (width ? width : '30%');
 
-// CSS-in-JS styling using Emotion
 export const cardStyle = (
   borderline?: boolean,
   bwidth?: string,
@@ -226,12 +226,14 @@ function ImageBoxWithTags(
       altText?: string | null;
     };
     tags: Array<{ name: string; color: string; bg: string }>;
+    className?: string;
+    objectFit?: 'cover' | 'contain';
   } & BoxProps
 ) {
-  const { image, tags } = props;
+  const { image, tags, className, objectFit = 'cover' } = props;
 
   return (
-    <Box overflow="hidden" position="relative" {...props}>
+    <Box overflow="hidden" position="relative" className={className} {...props}>
       {image ? (
         <Image
           onDragStart={(e) => e.preventDefault()}
@@ -239,9 +241,9 @@ function ImageBoxWithTags(
           src={image.src}
           alt={image.altText || '-'}
           style={{
-            height: 'auto',
+            height: '100%',
             width: '100%',
-            objectFit: 'cover',
+            objectFit: objectFit,
             objectPosition: 'center',
           }}
         />
@@ -286,6 +288,7 @@ export const ProductCard = ({
     : '';
   const path = `${prefixPathTrimmed}/${product.handle}`;
 
+  // Ref for radio inputs to control image previews
   const radioRef = React.useRef<(HTMLInputElement | null)[]>([]);
 
   // Get product tags or default to empty array
@@ -303,7 +306,7 @@ export const ProductCard = ({
 
   // Determine if the border line should be displayed
   borderline = borderline !== undefined ? borderline : true;
-  
+
   if (product.media.length === 0) {
     borderline = false;
   }
@@ -314,9 +317,9 @@ export const ProductCard = ({
   // Prepare badges for 'Neu' (New) and discount
   const coloredBadges: Array<{ name: string; color: string; bg: string }> = [];
 
-  // Check if the product is new (created within the last 7 days)
+  // Check if the product is new (created within the last 7 days) or has 'Neu' tag
   if (
-    product.tags?.includes('Neu') ||
+    tags.includes('Neu') ||
     new Date(product.createdAt).getTime() >
       Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
@@ -366,21 +369,35 @@ export const ProductCard = ({
             <AspectRatio ratio={isMobile ? 4 / 3 : 10 / 9}>
               <>
                 {/* Radio inputs for image previews */}
-                <input
-                  type="radio"
-                  className="radioimg"
-                  name={'imgbox-' + cardId}
-                  id={'imgbox-' + cardId + '-' + 0}
-                  key={0}
-                  ref={(el) => (radioRef.current[0] = el)}
-                  readOnly
-                  checked
-                ></input>
-                <ImageBoxWithTags
-                  image={product.featuredMedia?.image}
-                  tags={coloredBadges}
-                  className="main"
-                />
+                {product.media.map((media, index) => (
+                  <React.Fragment key={index}>
+                    <input
+                      type="radio"
+                      className="radioimg"
+                      name={'imgbox-' + cardId}
+                      id={'imgbox-' + cardId + '-' + index}
+                      ref={(el) => (radioRef.current[index] = el)}
+                      readOnly
+                      // The first image (featured media) is checked by default
+                      defaultChecked={index === 0}
+                    />
+                    {index === 0 ? (
+                      <ImageBoxWithTags
+                        image={product.featuredMedia?.image}
+                        tags={coloredBadges}
+                        className="main"
+                        objectFit="cover" // Featured image uses 'cover'
+                      />
+                    ) : (
+                      <ImageBoxWithTags
+                        image={media.image}
+                        tags={coloredBadges}
+                        className="preview"
+                        objectFit="contain" // Preview images use 'contain'
+                      />
+                    )}
+                  </React.Fragment>
+                ))}
               </>
             </AspectRatio>
           </Box>
@@ -440,19 +457,26 @@ export const ProductCard = ({
             py="calc(var(--chakra-space-5) - 2px)"
             px="1"
           >
-            {product.media.slice(0, 3).map((media, index) => (
-              <label htmlFor={'imgbox-' + cardId + '-' + index} key={index}>
+            {product.media.slice(1, 4).map((media, index) => (
+              <label
+                htmlFor={'imgbox-' + cardId + '-' + (index + 1)}
+                key={index}
+              >
                 <Box
                   transform="scale(0.97)"
                   borderBottom="1px"
                   borderColor="#f9f9f9"
                   _hover={{ borderColor: 'agt.red' }}
-                  onMouseOver={() =>
-                    (radioRef.current[index]!.checked = true)
-                  }
-                  onMouseLeave={() =>
-                    (radioRef.current[0]!.checked = true)
-                  }
+                  onMouseOver={() => {
+                    if (radioRef.current[index + 1]) {
+                      radioRef.current[index + 1]!.checked = true;
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (radioRef.current[0]) {
+                      radioRef.current[0]!.checked = true;
+                    }
+                  }}
                 >
                   <Image
                     onDragStart={(e) => e.preventDefault()}
@@ -462,7 +486,7 @@ export const ProductCard = ({
                     style={{
                       height: 'auto',
                       width: '100%',
-                      objectFit: 'contain',
+                      objectFit: 'contain', // Changed to 'contain' for preview images
                       objectPosition: 'center',
                     }}
                   />
