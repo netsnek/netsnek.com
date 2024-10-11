@@ -144,7 +144,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Meine Beratung</LinkOverlay>
+            <LinkOverlay href="/docs">Über mich</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="team"
@@ -162,7 +162,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Meine Kunden</LinkOverlay>
+            <LinkOverlay href="/docs">Kurse & Webinare</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="portfolio"
@@ -313,28 +313,6 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             </LinkBox>
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
               <Button
-                  variant="ghost"
-                  ml={4}
-                  filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                  onClick={() => {
-                    // if not on the homepage, redirect to the homepage first
-                    if (path !== '/') {
-                      window.location.href = '/';
-                    }
-
-                    const element = document.getElementById('meine_beratung');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  fontSize="sm"
-                  fontWeight="semibold"
-                  color="#273E53"
-                  display={{ base: 'none', lg: 'block' }}
-                >
-                  Kurse & Webinare
-                </Button>
-              <Button
                 variant="ghost"
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
@@ -355,6 +333,28 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 display={{ base: 'none', lg: 'block' }}
               >
                 Über mich
+              </Button>
+              <Button
+                variant="ghost"
+                ml={4}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={() => {
+                  // if not on the homepage, redirect to the homepage first
+                  if (path !== '/') {
+                    window.location.href = '/';
+                  }
+
+                  const element = document.getElementById('meine_beratung');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', lg: 'block' }}
+              >
+                Kurse & Webinare
               </Button>
               <Button
                 variant="ghost"
