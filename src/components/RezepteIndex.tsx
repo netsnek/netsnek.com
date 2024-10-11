@@ -39,12 +39,12 @@ interface IAbcProducts {
   [key: string]: IJaenProduct[];
 }
 
-interface IRecipeGridProps extends StackProps {
+interface IRezepteIndexProps extends StackProps {
   featuredProducts: IJaenProduct[];
   abcProducts: IAbcProducts;
 }
 
-const RecipeGrid: FC<IRecipeGridProps> = ({
+const RezepteIndex: FC<IRezepteIndexProps> = ({
   featuredProducts,
   abcProducts,
   ...props
@@ -208,4 +208,4 @@ const RecipeGrid: FC<IRecipeGridProps> = ({
   );
 };
 
-export default RecipeGrid;
+export default RezepteIndex;

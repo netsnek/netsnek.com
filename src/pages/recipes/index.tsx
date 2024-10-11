@@ -59,7 +59,6 @@ const RecipeSlider: FC<INewsSlidesProps> = ({ productIndex, showNewsTitle }) => 
       <RezepteIndex
         featuredProducts={featuredProducts}
         abcProducts={abcProducts}
-        display={{ base: 'none', sm: 'grid' }}
         mt="16"
       />
       {/* Form mobile */}
