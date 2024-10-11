@@ -10538,10 +10538,10 @@ jaen-fields-mdx@^1.0.1:
     vfile-message "^4.0.2"
     vfile-statistics "^3.0.0"
 
-jaen@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/jaen/-/jaen-1.2.0.tgz#aeb128239e135ca0244ec43b5883c0ad58b97b71"
-  integrity sha512-lBzGj3X2sLPBVzo3duc3X5qvKyX1wdmtF6avdHLDrF67QR191dfbggQ/ORs/QLI1ogyZ9/FpF14FNSPe4poATw==
+jaen@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/jaen/-/jaen-1.2.1.tgz#14f18352538c71f06051b24389a6394c4807e2e0"
+  integrity sha512-dGfZ0Tnik4rV1uDGr5K5WF1dc8Aju96pT6yAvaqDaxxjb+BP3CDFCMHAE7lXJM1OE5vZzqBEibLnQwt2aP9UbQ==
   dependencies:
     "@chakra-ui/icons" "^2.1.1"
     "@chakra-ui/react" "^2.8.0"
