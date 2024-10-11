@@ -298,7 +298,7 @@ export const ProductCard = ({
   let priceFormatted = product.price;
   // If price is '0€' or undefined, display 'Gratis'
   if (!priceFormatted || priceFormatted === '0€') {
-    priceFormatted = 'Gratis';
+    priceFormatted = undefined;
   }
 
   // Generate a unique ID for radio inputs
@@ -321,7 +321,7 @@ export const ProductCard = ({
   if (
     tags.includes('Neu') ||
     new Date(product.createdAt).getTime() >
-      Date.now() - 7 * 24 * 60 * 60 * 1000
+    Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
     coloredBadges.push({ name: 'Neu', color: 'white', bg: 'brand.500' });
   }
@@ -420,9 +420,11 @@ export const ProductCard = ({
             </Text>
 
             {/* Product price */}
-            <Text fontSize="lg" fontWeight="semibold" color="agt.red">
-              {priceFormatted}
-            </Text>
+            {priceFormatted && (
+              <Text fontSize="lg" fontWeight="semibold" color="agt.red">
+                {priceFormatted}
+              </Text>
+            )}
           </Box>
         </Flex>
 
