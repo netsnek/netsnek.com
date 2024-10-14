@@ -1,5 +1,11 @@
 import { sq } from '@/clients/social';
-import { PageConfig, PageProps, usePage, useField, useJaenPageIndex } from 'jaen';
+import {
+  PageConfig,
+  PageProps,
+  usePage,
+  useField,
+  useJaenPageIndex
+} from 'jaen';
 
 import {
   Box,
@@ -14,17 +20,17 @@ import {
 } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 //import * as React from 'react';
-import { FC } from 'react'
+import { FC } from 'react';
 import { useQuery } from 'snek-query/react-hooks';
 import PostCard from '../../components/post/PostCard';
 import PostCardSkeleton from '../../components/post/PostCardSkeleton';
 import PostList from '../../components/post/PostList';
 import RecipesHero from '../../components/sections/RecipesHero';
 import { useRecipePages } from '../../hooks/use-recipe-pages';
-import { useJaenProducts, IJaenProduct } from '../../hooks/use-products'
-import PortfolioGrid from '../../components/sections/Portfolio/PortfolioGrid'
-import { ProductCard } from '../../components/ProductCard'
-import RezepteIndex from '../../components/RezepteIndex'
+import { useJaenProducts, IJaenProduct } from '../../hooks/use-products';
+import PortfolioGrid from '../../components/sections/Portfolio/PortfolioGrid';
+import { ProductCard } from '../../components/ProductCard';
+import RezepteIndex from '../../components/RezepteIndex';
 
 export const POST_FETCH_LIMIT = 3;
 
@@ -35,19 +41,26 @@ export const POST_FETCH_LIMIT = 3;
 // `;
 
 interface INewsSlidesProps {
-  productIndex: any
-  showNewsTitle?: boolean
+  productIndex: any;
+  showNewsTitle?: boolean;
 }
 
-const RecipeSlider: FC<INewsSlidesProps> = ({ productIndex, showNewsTitle }) => {
-  console.log('!!All index data', productIndex)
-  const cmsmediapage = usePage({ id: 'JaenPage /cms/media/', injectMedia: true })
+const RecipeSlider: FC<INewsSlidesProps> = ({
+  productIndex,
+  showNewsTitle
+}) => {
+  console.log('!!All index data', productIndex);
+  const cmsmediapage = usePage({
+    id: 'JaenPage /cms/media/',
+    injectMedia: true
+  });
   //console.log('!!All page data', page)
   //const images = Object.entries(page.jaenFields['IMA:ImageField'])
   //const cmsmedia = useField<any>("media_nodes", 'IMA:MEDIA_NODES').value
   //cmsMediaPage//.jaenPage.jaenFields?.['media_nodes']?.['IMA:MEDIA_NODES']
-  console.log('!!All media data', cmsmediapage)
-  const { products, featuredProducts, moreProducts, abcProducts } = useJaenProducts(productIndex, cmsmediapage)
+  console.log('!!All media data', cmsmediapage);
+  const { products, featuredProducts, moreProducts, abcProducts } =
+    useJaenProducts(productIndex, cmsmediapage);
 
   return (
     <Box as="section">
@@ -64,46 +77,44 @@ const RecipeSlider: FC<INewsSlidesProps> = ({ productIndex, showNewsTitle }) => 
       {/* Form mobile */}
       {/* <PortfolioSlider index={index} display={{base: 'block', sm: 'none'}} /> */}
     </Box>
-  )
-}
+  );
+};
 
 interface IPortfolioGridProps extends GridProps {
-  products: IJaenProduct[]
+  products: IJaenProduct[];
 }
 
 const RecipeGrid: FC<IPortfolioGridProps> = ({ products, ...props }) => {
-
   return (
     <Grid
-      templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }}
+      templateColumns={{
+        base: 'repeat(1, 1fr)',
+        sm: 'repeat(2, 1fr)',
+        md: 'repeat(4, 1fr)'
+      }}
       gap={6}
-      {...props}>
+      {...props}
+    >
       {products.map((product, index) => {
-
-        console.log('my full index', index)
-        console.log('!!!product!!!', product)
-        return (
-          <ProductCard key={index} product={product} />
-        )
+        console.log('my full index', index);
+        console.log('!!!product!!!', product);
+        return <ProductCard key={index} product={product} />;
       })}
     </Grid>
-  )
-}
-
-
-
+  );
+};
 
 const RecipeIndexPage: React.FC<PageProps> = () => {
   const { data, isSafe, refetch } = useQuery(sq);
-  const productIndex = useRecipePages()
+  const productIndex = useRecipePages();
 
   return (
-  <>
-    <RecipesHero />
-    <Container maxW={"7xl"} my="16">
-      <RecipeSlider productIndex={productIndex} />
-    </Container>
-  </>
+    <>
+      <RecipesHero />
+      <Container maxW={'7xl'} my="16">
+        <RecipeSlider productIndex={productIndex} />
+      </Container>
+    </>
   );
 };
 
@@ -123,7 +134,12 @@ export const pageConfig: PageConfig = {
 
 export const query = graphql`
   query ($jaenPageId: String!) {
-    ...JaenPageQuery
+    jaenPage(id: { eq: $jaenPageId }) {
+      ...JaenPageData
+      childPages {
+        ...JaenPageChildrenData
+      }
+    }
     allJaenPage {
       nodes {
         ...JaenPageData
