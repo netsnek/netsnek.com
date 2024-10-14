@@ -132,9 +132,19 @@ export const SearchResultItem: FC<{
         </LinkOverlay>
       </Box>
       <Spacer />
-      <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
-        Go to
-      </Text>
+      {item.to?.startsWith('/docs/') ? (
+        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
+          Zum Artikel
+        </Text>
+      ) : item.to?.startsWith('/recipes/') ? (
+        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
+          Zum Rezept
+        </Text>
+      ) : (
+        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
+          Zur Seite
+        </Text>
+      )}
     </LinkBox>
   );
 };

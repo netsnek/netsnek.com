@@ -7,6 +7,7 @@ import useDocsSearch from './use-docs-search';
 import useSocialSearch from './use-social-search';
 import TbBooks from '../../components/icons/tabler/TbBooks';
 import TbUsers from '../../components/icons/tabler/TbUsers';
+import TbApple from '../../components/icons/tabler/TbApple';
 
 const useSearch = (
   query?: string
@@ -21,10 +22,21 @@ const useSearch = (
     return {
       docs: {
         title: 'Rezepte',
-        sections: docsSearch.searchResults,
+        sections: docsSearch.searchResults.filter((section) =>
+          !!section.to?.startsWith('/recipes/') ||
+          !!section.results[0]?.to?.startsWith('/recipes/')
+        ),
         icon: <TbBooks />
       },
-      ...socialSearch.searchResults
+      blog: {
+        title: 'Blog',
+        sections: docsSearch.searchResults.filter((section) =>
+          !!section.to?.startsWith('/docs/') ||
+          !!section.results[0]?.to?.startsWith('/docs/')
+        ),
+        icon: <TbApple />
+      },
+      //...socialSearch.searchResults
     };
   }, [docsSearch, socialSearch]);
 
