@@ -31,7 +31,7 @@ interface Product {
       altText?: string | null;
     };
   };
-  media: Array<{
+  media?: Array<{
     image: {
       src: string;
       altText?: string | null;
@@ -301,18 +301,24 @@ export const ProductCard = ({
     priceFormatted = undefined;
   }
 
-  // Generate a unique ID for radio inputs
-  const cardId = uuidv4();
-
   // Determine if the border line should be displayed
   borderline = borderline !== undefined ? borderline : true;
+  
+  // Prepare media for previews
+  const previewMedia = product.media || [];
 
-  if (product.media.length === 0) {
+  if (previewMedia.length === 0) {
     borderline = false;
   }
   if (isMobile) {
     borderline = false;
   }
+
+  // Generate a unique ID for radio inputs
+  const cardId = uuidv4();
+
+  // Determine if the border line should be displayed
+  borderline = borderline !== undefined ? borderline : true;
 
   // Prepare badges for 'Neu' (New) and discount
   const coloredBadges: Array<{ name: string; color: string; bg: string }> = [];
@@ -321,7 +327,7 @@ export const ProductCard = ({
   if (
     tags.includes('Neu') ||
     new Date(product.createdAt).getTime() >
-    Date.now() - 7 * 24 * 60 * 60 * 1000
+      Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
     coloredBadges.push({ name: 'Neu', color: 'white', bg: 'brand.500' });
   }
@@ -368,34 +374,39 @@ export const ProductCard = ({
           >
             <AspectRatio ratio={isMobile ? 4 / 3 : 10 / 9}>
               <>
-                {/* Radio inputs for image previews */}
-                {product.media.map((media, index) => (
+                {/* Radio input for the featured image */}
+                <input
+                  type="radio"
+                  className="radioimg"
+                  name={'imgbox-' + cardId}
+                  id={'imgbox-' + cardId + '-featured'}
+                  ref={(el) => (radioRef.current[0] = el)}
+                  readOnly
+                  defaultChecked
+                />
+                <ImageBoxWithTags
+                  image={product.featuredMedia?.image}
+                  tags={coloredBadges}
+                  className="main"
+                  objectFit="cover" // Featured image uses 'cover'
+                />
+                {/* Radio inputs for preview images */}
+                {previewMedia.map((media, index) => (
                   <React.Fragment key={index}>
                     <input
                       type="radio"
                       className="radioimg"
                       name={'imgbox-' + cardId}
-                      id={'imgbox-' + cardId + '-' + index}
-                      ref={(el) => (radioRef.current[index] = el)}
+                      id={'imgbox-' + cardId + '-media-' + index}
+                      ref={(el) => (radioRef.current[index + 1] = el)}
                       readOnly
-                      // The first image (featured media) is checked by default
-                      defaultChecked={index === 0}
                     />
-                    {index === 0 ? (
-                      <ImageBoxWithTags
-                        image={product.featuredMedia?.image}
-                        tags={coloredBadges}
-                        className="main"
-                        objectFit="cover" // Featured image uses 'cover'
-                      />
-                    ) : (
-                      <ImageBoxWithTags
-                        image={media.image}
-                        tags={coloredBadges}
-                        className="preview"
-                        objectFit="contain" // Preview images use 'contain'
-                      />
-                    )}
+                    <ImageBoxWithTags
+                      image={media.image}
+                      tags={[]}
+                      className="preview"
+                      objectFit="contain" // Preview images use 'contain'
+                    />
                   </React.Fragment>
                 ))}
               </>
@@ -459,9 +470,9 @@ export const ProductCard = ({
             py="calc(var(--chakra-space-5) - 2px)"
             px="1"
           >
-            {product.media.slice(1, 4).map((media, index) => (
+            {previewMedia.slice(0, 3).map((media, index) => (
               <label
-                htmlFor={'imgbox-' + cardId + '-' + (index + 1)}
+                htmlFor={'imgbox-' + cardId + '-media-' + index}
                 key={index}
               >
                 <Box
@@ -488,7 +499,7 @@ export const ProductCard = ({
                     style={{
                       height: 'auto',
                       width: '100%',
-                      objectFit: 'contain', // Changed to 'contain' for preview images
+                      objectFit: 'contain', // Preview images use 'contain'
                       objectPosition: 'center',
                     }}
                   />
