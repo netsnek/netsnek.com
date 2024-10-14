@@ -8,7 +8,6 @@ import {
   Image,
   Spacer,
   Text,
-  useBreakpointValue,
   VStack,
 } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
@@ -47,6 +46,7 @@ export interface ProductCardProps {
   bwidth?: string;
   bcolor?: string;
   prefixPath?: string;
+  isMobile?: boolean;
 }
 
 // CSS-in-JS styling using Emotion
@@ -279,9 +279,8 @@ export const ProductCard = ({
   bwidth,
   bcolor,
   prefixPath,
+  isMobile,
 }: ProductCardProps) => {
-  const isMobile = useBreakpointValue({ base: true, md: false });
-
   // Construct the path to the product page
   const prefixPathTrimmed = prefixPath
     ? prefixPath.trim().replace(/\/+$/, '')

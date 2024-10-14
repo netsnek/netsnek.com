@@ -11,6 +11,7 @@ import {
   Link,
   Divider,
   Text,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { ProductCard } from './ProductCard';
 
@@ -148,6 +149,7 @@ const RezepteIndex: FC<IRezepteIndexProps> = ({
                   key={index}
                   bcolor="#a0c1d9"
                   product={product}
+                  isMobile={useBreakpointValue({ base: true, md: false })}
                 />
               ))}
           </Grid>
