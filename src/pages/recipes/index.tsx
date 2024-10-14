@@ -138,6 +138,13 @@ export const query = graphql`
       ...JaenPageData
       childPages {
         ...JaenPageChildrenData
+        sections {
+          fieldName
+          items {
+            id
+            jaenFields
+          }
+        }
       }
     }
     allJaenPage {
