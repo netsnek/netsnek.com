@@ -139,7 +139,7 @@ const Customer = () => {
 
         {/* Bottom Button */}
         <GridItem colSpan={{ base: 1, md: 2, lg: 3 }} textAlign="center" area="bottom-button" mb={4}>
-          <Button colorScheme="brand" onClick={onContactClick}>Finden wir heraus, ob du von mir profitierst</Button>
+          <Button colorScheme="brand" onClick={onContactClick}>Finden wir heraus, wie du von mir profitierst</Button>
         </GridItem>
       </Grid>
     </Container>

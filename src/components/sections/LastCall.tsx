@@ -66,7 +66,7 @@ const LastCall = () => {
         <Button
           onClick={onContactClick}
         >
-          Unverbindliches Gespräch vereinbaren
+          Lernen wir uns kennen
         </Button>
       </Box>
       <Image

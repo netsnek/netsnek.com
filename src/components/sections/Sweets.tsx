@@ -84,7 +84,7 @@ Ob du beruflich oft unterwegs bist und häufig außer Haus isst oder es vorziehs
         <Button
           onClick={onContactClick}
         >
-          Unverbindliches Gespräch vereinbaren
+          Lernen wir uns kennen
         </Button>
       </Container>
       <Image

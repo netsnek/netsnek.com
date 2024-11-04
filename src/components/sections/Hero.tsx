@@ -183,7 +183,7 @@ const Hero: FC = () => {
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
               onClick={onContactClick}
             >
-              Persönliches Gespräch vereinbaren
+              Lernen wir uns kennen
             </Button>
             {/* <Button
               variant="outline"
