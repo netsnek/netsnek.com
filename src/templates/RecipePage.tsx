@@ -49,18 +49,27 @@ const Step: React.FC<IStepProps> = ({ isLeft, position }) => {
       <Flex
         justify={{ md: isLeft ? 'left' : 'right' }}
         py="8"
-        display={{ base: 'none', md: 'flex' }}>
+        // display={{ base: 'none', md: 'flex' }}
+        display={'flex'}
+        >
         <Flex
           align="center"
-          flexDir={{ md: isLeft ? 'row' : 'row-reverse' }}
+          flexDir={{ base: 'column', md: isLeft ? 'row' : 'row-reverse' }}
           flexGrow="1"
           gap="8"
           maxW="71.875rem"
           justify="space-between">
           <VStack flex="1">
-            <Grid placeItems="center" pos="relative">
-
-
+          <AspectRatio
+                ratio={1}
+                boxShadow="dark"
+                w="75%"
+                overflow="hidden"
+                borderRadius="2xl"
+              >
+                <Field.Image name="image" />
+              </AspectRatio>
+            {/* <Grid placeItems="center" pos="relative">
               <AspectRatio
                 ratio={1}
                 pos="absolute"
@@ -120,7 +129,7 @@ const Step: React.FC<IStepProps> = ({ isLeft, position }) => {
              423.00,83.00 407.00,82.14 407.00,82.14
              407.00,82.14 332.00,82.14 332.00,82.14 Z" />
               </chakra.svg>
-            </Grid>
+            </Grid> */}
           </VStack>
           <Stack flex="1" borderLeft={"5px solid"} borderColor="brand.900" p="8">
             <Text
