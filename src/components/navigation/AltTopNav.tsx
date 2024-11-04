@@ -216,9 +216,9 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             <Text color="white" fontWeight="bold" fontSize="lg" pb="4">
               Im Herzen von Klagenfurt
             </Text>
-            <Text color="white" fontSize="md">
+            {/* <Text color="white" fontSize="md">
               Hauptquartier
-            </Text>
+            </Text> */}
             <Text color="gray.400" fontSize="md">
               Sterneckstraße 23/20
             </Text>
