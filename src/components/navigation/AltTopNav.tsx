@@ -314,7 +314,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
               <Button
                 variant="ghost"
-                ml={4}
+                ml={1}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 onClick={() => {
                   // if not on the homepage, redirect to the homepage first
@@ -336,7 +336,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               </Button>
               <Button
                 variant="ghost"
-                ml={4}
+                ml={1}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 onClick={() => {
                   // if not on the homepage, redirect to the homepage first
@@ -358,7 +358,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               </Button>
               <Button
                 variant="ghost"
-                ml={4}
+                ml={1}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 onClick={() => window.location.href = '/recipes'}
                 fontSize="sm"
@@ -370,7 +370,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               </Button>
               <Button
                 variant="ghost"
-                ml={4}
+                ml={1}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 onClick={() => window.location.href = '/docs'}
                 fontSize="sm"
@@ -385,14 +385,17 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 ml={4}
                 boxSizing={'border-box'}
                 borderWidth={{ base: 0, lg: 2 }}
-                color={{ base: 'white', md: 'gray.400' }}
+                color={{ base: 'white', md: 'brand.700' }}
+                fontWeight={'semibold'}
+                opacity="0.7"
                 _hover={{
-                  borderColor: 'brand.600',
-                  bg: { base: 'brand.600', md: 'transparent' }
+                  opacity: "1",
+                  borderColor: 'brand.500',
+                  bg: { base: 'brand.500', md: 'transparent' }
                 }}
               />
               <Button
-                ml={4}
+                ml={2}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 onClick={handleOnContactClick}
                 fontSize="sm"
