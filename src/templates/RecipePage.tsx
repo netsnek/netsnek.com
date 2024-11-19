@@ -51,7 +51,7 @@ const Step: React.FC<IStepProps> = ({ isLeft, position }) => {
         py="8"
         // display={{ base: 'none', md: 'flex' }}
         display={'flex'}
-        >
+      >
         <Flex
           align="center"
           flexDir={{ base: 'column', md: isLeft ? 'row' : 'row-reverse' }}
@@ -59,16 +59,16 @@ const Step: React.FC<IStepProps> = ({ isLeft, position }) => {
           gap="8"
           maxW="71.875rem"
           justify="space-between">
-          <VStack flex="1">
-          <AspectRatio
-                ratio={1}
-                boxShadow="dark"
-                w="75%"
-                overflow="hidden"
-                borderRadius="2xl"
-              >
-                <Field.Image name="image" />
-              </AspectRatio>
+          <VStack flex="1" w="100%">
+            <AspectRatio
+              ratio={1}
+              boxShadow="dark"
+              w="75%"
+              overflow="hidden"
+              borderRadius="2xl"
+            >
+              <Field.Image name="image" />
+            </AspectRatio>
             {/* <Grid placeItems="center" pos="relative">
               <AspectRatio
                 ratio={1}
