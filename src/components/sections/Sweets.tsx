@@ -57,7 +57,7 @@ const Sweets = () => {
           //mt={{ base: '20 !important', md: '0' }}
           my="8"
           as={Heading}
-          fontSize={{ base: 'xl', lg: '2xl' }}
+          fontSize={{ base: '3xl', lg: '4xl' }}
           lineHeight={1}
           //fontWeight="bold"
           textAlign="left"
