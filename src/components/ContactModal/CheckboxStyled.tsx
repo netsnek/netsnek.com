@@ -2,7 +2,7 @@ import {Checkbox, CheckboxProps} from '@chakra-ui/react'
 import {forwardRef} from 'react'
 
 const bgColor = '#EDEDF0'
-const controlColor = '#4C589E'
+const controlColor = 'brand.500'
 const focusColor = '#B4BBE2'
 
 const defaultClasses = ({radius = '1px', controlRadius = '1px'}) => {

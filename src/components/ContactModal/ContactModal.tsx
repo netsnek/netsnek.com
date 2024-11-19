@@ -125,6 +125,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       required: true
                     })}
                     isDisabled={!!fixedValues?.firstName}
+                    focusBorderColor= "brand.500"
+                    _focus={{
+                      borderColor: 'brand.500'
+                    }}
                   />
 
                   <FormErrorMessage fontSize="sm">
@@ -142,6 +146,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       required: true
                     })}
                     isDisabled={!!fixedValues?.lastName}
+                    focusBorderColor= "brand.500"
+                    _focus={{
+                      borderColor: 'brand.500'
+                    }}
                   />
 
                   <FormErrorMessage fontSize="sm">
@@ -162,6 +170,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       required: true
                     })}
                     isDisabled={!!fixedValues?.email}
+                    focusBorderColor= "brand.500"
+                    _focus={{
+                      borderColor: 'brand.500'
+                    }}
                   />
 
                   <FormErrorMessage fontSize="sm">
@@ -180,6 +192,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       required: false
                     })}
                     isDisabled={!!fixedValues?.phone}
+                    focusBorderColor= "brand.500"
+                    _focus={{
+                      borderColor: 'brand.500'
+                    }}
                   />
 
                   <FormErrorMessage fontSize="sm">
@@ -196,6 +212,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   placeholder="Nachricht"
                   defaultValue={defaultValues?.message}
                   {...register('message', { required: true })}
+                  focusBorderColor= "brand.500"
+                  _focus={{
+                    borderColor: 'brand.500'
+                  }}
                 />
 
                 <FormErrorMessage fontSize="sm">
