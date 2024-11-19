@@ -2,10 +2,32 @@
     margin: auto;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
-/* import ShadowsIntoLight-Regular from '/fonts/ShadowsIntoLight-Regular.ttf'; */
+/* Other font imports */
+@font-face {
+  font-family: 'Shadows Into Light';
+  src: url('/fonts/ShadowsIntoLight-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Cabin Variable Font excluding the '@' sign */
+@font-face {
+  font-family: 'Cabin Custom';
+  src: url('/fonts/Cabin-VariableFont_wght.ttf') format('truetype');
+  unicode-range: U+0000-003F, U+0041-10FFFF;
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 i {
     font-family: 'Shadows Into Light', sans-serif;
