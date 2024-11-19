@@ -22,7 +22,7 @@ import {
         pt={40}
         zIndex={0}>
         <Image
-          w={{ base: '50%', lg: 'unset' }}
+          w={{ base: '50%', lg: 28 }}
           margin="0 auto"
           mb="8"
           src="images/svg/muffin.svg"
@@ -32,7 +32,7 @@ import {
           as={Heading}
           variant="cursive"
           mb="8"
-          size={{ base: 'md', lg: 'md' }}
+          size={{ base: 'md', lg: 'lg' }}
           style={{ animationDelay: '300ms' }}
           fontWeight="500"
           //textTransform="uppercase"
