@@ -83,7 +83,7 @@ const SearchModal: FC<ISearchModalProps> = ({
               placeholder="Search"
               size="sm"
               borderRadius="lg"
-              focusBorderColor="brand.400"
+              focusBorderColor="brand.500"
               onChange={e => {
                 setSearchQuery(e.target.value);
               }}

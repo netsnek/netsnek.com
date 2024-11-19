@@ -61,7 +61,7 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         variant="outline"
         bgColor="blackAlpha.50"
         color="topNav.input.color"
-        borderColor="topNav.input.borderColor"
+        borderColor="brad.700"
         fontWeight="normal"
         _hover={{
           borderColor: 'topNav.input.hover.borderColor'
