@@ -4,6 +4,7 @@ const themeButtonComponent: ComponentStyleConfig = {
   variants: {
     solid: {
       borderRadius: 'full',
+      px: 5,
       //textTransform: 'capitalize',
       bgColor: 'components.button.solid.bgColor',
       _hover: {
@@ -17,6 +18,7 @@ const themeButtonComponent: ComponentStyleConfig = {
     },
     outline: {
       borderRadius: 'full',
+      px: 5,
       textTransform: 'capitalize',
       borderColor: 'components.button.outline.borderColor',
       _hover: {
@@ -30,6 +32,7 @@ const themeButtonComponent: ComponentStyleConfig = {
     },
     invisible: {
       borderRadius: 'full',
+      px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
       border: 'none',
@@ -47,6 +50,7 @@ const themeButtonComponent: ComponentStyleConfig = {
     },
     'ghost': {
       borderRadius: 'full',
+      px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
       opacity: 0.7,
@@ -61,6 +65,7 @@ const themeButtonComponent: ComponentStyleConfig = {
     },
     'ghost-hover': {
       borderRadius: 'full',
+      px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
       opacity: 0.7,
@@ -75,6 +80,7 @@ const themeButtonComponent: ComponentStyleConfig = {
     },
     'ghost-hover-opacity': {
       borderRadius: 'full',
+      px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
       opacity: 0.5,
@@ -85,6 +91,7 @@ const themeButtonComponent: ComponentStyleConfig = {
     },
     'outline-hover-filled': {
       borderRadius: 'full',
+      px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
       border: '1px solid',
@@ -101,6 +108,7 @@ const themeButtonComponent: ComponentStyleConfig = {
     },
     'ghost-hover-outline': {
       borderRadius: 'full',
+      px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
       border: '1px solid',
