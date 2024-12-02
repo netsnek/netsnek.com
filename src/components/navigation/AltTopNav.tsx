@@ -251,7 +251,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://facebook.com/netsnek" isExternal>
+                <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
                   <Icon as={FaFacebook} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -263,11 +263,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://instagram.com/netsnek" isExternal>
+                <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
                   <Icon as={FaInstagram} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
-              <LinkBox
+              {/* <LinkBox
                 mr="4"
                 display="flex"
                 transition="color 0.2s"
@@ -290,7 +290,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 <LinkOverlay href="https://github.com/netsnek" isExternal>
                   <Icon as={FaGithub} boxSize="6" />
                 </LinkOverlay>
-              </LinkBox>
+              </LinkBox> */}
             </HStack>
           </Box>
         </Grid>

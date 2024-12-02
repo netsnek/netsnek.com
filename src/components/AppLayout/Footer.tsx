@@ -213,7 +213,7 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://facebook.com" isExternal>
+              <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
                 <Icon as={FaFacebook} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
@@ -224,11 +224,11 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://instagram.com" isExternal>
+              <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
                 <Icon as={FaInstagram} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
-            <LinkBox
+            {/* <LinkBox
               mr="4"
               display="flex"
               transition="color 0.2s"
@@ -249,7 +249,7 @@ const Footer: FC = () => {
               <LinkOverlay href="https://github.com" isExternal>
                 <Icon as={FaGithub} boxSize="5" />
               </LinkOverlay>
-            </LinkBox>
+            </LinkBox> */}
           </HStack>
           <Divider mt={0} opacity={0.2} border="1px" />
           <Field.Text
