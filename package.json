@@ -44,7 +44,8 @@
     "snek-query": "^0.0.114",
     "tsparticles": "^2.12.0",
     "use-debounce": "^10.0.0",
-    "zxcvbn": "^4.4.2"
+    "zxcvbn": "^4.4.2",
+    "gqty": "^3.2.2"
   },
   "devDependencies": {
     "@types/github-slugger": "^2.0.0",
