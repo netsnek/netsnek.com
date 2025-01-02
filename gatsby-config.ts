@@ -47,7 +47,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-jaen-mailpress`,
       options: {
-        pylonUrl: 'https://pylons.photonq.org/mailpress/graphql'
+        pylonUrl: 'https://mailpress.netsnek.com/graphql'
       }
     },
     //`gatsby-jaen-lens`
