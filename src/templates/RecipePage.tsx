@@ -131,7 +131,14 @@ const Step: React.FC<IStepProps> = ({ isLeft, position }) => {
               </chakra.svg>
             </Grid> */}
           </VStack>
-          <Stack flex="1" borderLeft={"5px solid"} borderColor="brand.900" p="8">
+          <Stack
+            flex="1"
+            borderColor="brand.900"
+            p="8"
+            borderLeft="5px solid"
+          //borderLeft={isLeft ? "5px solid" : "none"}
+          //borderRight={isLeft ? "none" : "5px solid"}
+          >
             <Text
               as={Heading}
               color="brand.900"
@@ -164,6 +171,7 @@ export const StepsSection = connectBlock(
   () => {
     const blockContext = useSectionBlockContext()
     const position = blockContext!.position + 1
+    const isLeft = position % 2 !== 0
 
     console.log('position', blockContext)
 
@@ -171,7 +179,7 @@ export const StepsSection = connectBlock(
       <Box
         pos={'relative'}
         pt={
-          position % 2 === 0
+          isLeft
             ? {
               base: '12',
               md: '16'
@@ -215,14 +223,14 @@ export const StepsSection = connectBlock(
           h={'100%'}
           w={'100%'}
           bgImage={
-            position % 2 === 0 ? '/images/about_us/thread1.svg' : undefined
+            isLeft ? '/images/about_us/thread1.svg' : undefined
           }
           bgRepeat="no-repeat"
           bgPos={'0 -20px'}
           bgSize="contain"
           pointerEvents="none"></Box>
         <Container maxW={'8xl'}>
-          <Step isLeft={position % 2 !== 0} position={position} />
+          <Step isLeft={isLeft} position={position} />
         </Container>
       </Box>
     )
@@ -245,11 +253,11 @@ const RecipePage: React.FC<PageProps> = props => {
           <Box my="8" w={{ base: "100%", md: "20%" }} mr={{ base: "0", md: "16" }}>
             <Box p={8} bg="brand.900" borderRadius={"xl"} w={'full'}>
               <Heading pb="4" color="white">Zutaten</Heading>
-              <Field.Text name="ingredientsText" color="white" defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+              <Field.Text name="ingredientsText" color="white" defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
             </Box>
             <Box my="8" p={8} bg="brand.900" borderRadius={"xl"} w={'full'}>
               <Heading pb="4" color="white">Tipp</Heading>
-              <Field.Text name="tippText" color="white" defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+              <Field.Text name="tippText" color="white" defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
             </Box>
           </Box>
           <Box w="full">
