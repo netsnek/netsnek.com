@@ -1,9 +1,8 @@
 import { useToast } from "@chakra-ui/react";
-import { sq } from 'gatsby-jaen-mailpress';
+import { sendTemplateMail } from "gatsby-jaen-mailpress";
 import React, { useMemo } from "react";
 import { RouteComponentProps } from "@reach/router";
 import { asEnumKey, doNotConvertToString } from "snek-query";
-
 import {
   ContactFormValues,
   ContactModal,
@@ -80,23 +79,40 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({
 
     console.log(data, meta);
 
-    const [_, errors] = await sq.mutate(m =>
-      m.sendTemplateMail({
+    const { ok, message, errors } = await sendTemplateMail(
+      '68d4c136-7d75-40cc-ba74-079a0dca4044', // replace with your actual template ID
+      {
         envelope: {
           replyTo: data.email
         },
-
-        id: '68d4c136-7d75-40cc-ba74-079a0dca4044',
         values: {
           firstName: data.firstName,
           lastName: data.lastName,
           email: data.email,
-          phone: data.phone,
+          phone: data.phone || '',
           message: data.message,
           invokedOnUrl: meta?.url
         }
-      })
-    )
+      }
+    );
+
+    // const [_, errors] = await sq.mutate(m =>
+    //   m.sendTemplateMail({
+    //     envelope: {
+    //       replyTo: data.email
+    //     },
+
+    //     id: '68d4c136-7d75-40cc-ba74-079a0dca4044',
+    //     values: {
+    //       firstName: data.firstName,
+    //       lastName: data.lastName,
+    //       email: data.email,
+    //       phone: data.phone,
+    //       message: data.message,
+    //       invokedOnUrl: meta?.url
+    //     }
+    //   })
+    // )
 
     if (errors) {
       // Deutsch
