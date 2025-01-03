@@ -86,6 +86,8 @@ const RezepteIndex: FC<IRezepteIndexProps> = ({
     }, {});
   }, [filteredProducts]);
 
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   return (
     <VStack spacing={8} align="stretch" {...props}>
       {/* Header Section with Link to Blog */}
@@ -142,14 +144,12 @@ const RezepteIndex: FC<IRezepteIndexProps> = ({
             gap={6}
             mb={6}
           >
-            {featuredProducts
-              ?.filter((product) => product.tags?.includes('Neu'))
-              .map((product, index) => (
+              {featuredProducts.map((product, index) => (
                 <ProductCard
                   key={index}
                   bcolor="#a0c1d9"
                   product={product}
-                  isMobile={useBreakpointValue({ base: true, md: false })}
+                  isMobile={isMobile}
                 />
               ))}
           </Grid>

@@ -130,8 +130,6 @@ export const useJaenProducts = (
       ...(isRecent || isOneOfMostRecent ? ["Neu"] : [])
     ];
 
-    console.log("index", index);
-
     return {
       variants: [
         {
