@@ -261,6 +261,7 @@ function ImageBoxWithTags(
             rounded="md"
             px={2}
             mr={2}
+            mt={2}
             color={tag.color}
             bgColor={tag.bg}
             textTransform="none"
