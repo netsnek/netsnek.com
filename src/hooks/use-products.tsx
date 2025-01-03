@@ -1,6 +1,6 @@
-import {useMemo} from 'react';
-import {useJaenPageIndex, usePageContext, PageProvider} from 'jaen';
-import {IGatsbyImageData} from 'gatsby-plugin-image';
+import { useMemo } from 'react';
+import { useJaenPageIndex, usePageContext, PageProvider } from 'jaen';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 export interface IJaenProduct {
   variants: Array<{
@@ -23,6 +23,8 @@ export interface IJaenProduct {
   status: 'ACTIVE' | 'ARCHIVED' | 'DRAFT';
   totalInventory: number | null;
   createdAt: string;
+  category: string;
+  date: string;
   vendor: string;
   productType: string;
   media: Array<{
@@ -58,7 +60,9 @@ interface IJaenPage {
     description?: string;
     title?: string;
     blogPost?: {
-      date?: string;
+      author: string
+      category: string;
+      date: string;
     };
   };
   sections: Array<Section>;
@@ -95,7 +99,7 @@ export const useJaenProducts = (
 ) => {
   const index = productIndex;
 
-  const {jaenPage} = usePageContext();
+  const { jaenPage } = usePageContext();
   const productHandle = jaenPage.buildPath.slice(1);
 
   const sectionFieldName = 'content';
@@ -107,101 +111,127 @@ export const useJaenProducts = (
     },
   })['IMA:MEDIA_NODES'].media_nodes.value;
 
-  const transformToProduct = (jaenChildPage: IJaenPage): IJaenProduct => ({
-    variants: [
-      {
-        id: 'VariantId',
-        shopifyId: 'your-shopify-id',
-        taxable: true,
-        sku: 'SKU123',
-        compareAtPrice: null,
-        price: 29.99,
-        availableForSale: true,
+  const transformToProduct = (jaenChildPage: IJaenPage, i: number): IJaenProduct => {
+    const releaseDateStr = jaenChildPage.jaenPageMetadata?.blogPost?.date;
+    const releaseDate = releaseDateStr ? new Date(releaseDateStr) : null;
+    const isRecent =
+      releaseDate &&
+      (Date.now() - releaseDate.getTime()) / (1000 * 3600 * 24) < 30;
+
+    const categoryStr = jaenChildPage.jaenPageMetadata?.blogPost?.category || "";
+    const categoryTags = categoryStr
+      .split(",")
+      .map(tag => tag.trim())
+      .filter(Boolean);
+    const isOneOfMostRecent = i < 4;
+
+    const tags = [
+      ...categoryTags,
+      ...(isRecent || isOneOfMostRecent ? ["Neu"] : [])
+    ];
+
+    console.log("index", index);
+
+    return {
+      variants: [
+        {
+          id: "VariantId",
+          shopifyId: "your-shopify-id",
+          taxable: true,
+          sku: "SKU123",
+          compareAtPrice: null,
+          price: 29.99,
+          availableForSale: true,
+        },
+      ],
+      hasOnlyDefaultVariant: true,
+      id: jaenPage.id,
+      shopifyId: "your-shopify-id",
+      handle: productHandle + jaenChildPage.slug || "none",
+      description: jaenChildPage.jaenPageMetadata?.description || "",
+      descriptionHtml: jaenChildPage.jaenPageMetadata?.description || "",
+      title: jaenChildPage.jaenPageMetadata?.title || "",
+      tags,
+      status: "ACTIVE",
+      totalInventory: 100,
+      createdAt: releaseDateStr || "",
+      category: jaenChildPage.jaenPageMetadata?.blogPost?.category || "",
+      date: releaseDateStr || "",
+      vendor: "VendorName",
+      productType: "ProductType",
+      media:
+        jaenChildPage.sections
+          ?.find(section => section.fieldName === sectionFieldName)
+          ?.items.filter(item => item.jaenFields["IMA:ImageField"])
+          ?.map(item => {
+            const imageId = item.jaenFields["IMA:ImageField"].image.value;
+            return {
+              id: imageId,
+              image: {
+                src: globalMedia[imageId]?.preview?.url || "",
+                gatsbyImageData: null,
+                altText: globalMedia[imageId]?.altText || null,
+              },
+            };
+          }) || [],
+      featuredMedia: {
+        id: "007",
+        image: {
+          src: jaenChildPage.jaenPageMetadata?.image || "",
+          gatsbyImageData: null,
+          altText: null,
+        },
       },
-    ],
-    hasOnlyDefaultVariant: true,
-    id: jaenPage.id,
-    shopifyId: 'your-shopify-id',
-    handle: productHandle + jaenChildPage.slug || 'none',
-    description: jaenChildPage.jaenPageMetadata?.description || '',
-    descriptionHtml: jaenChildPage.jaenPageMetadata?.description || '',
-    title: jaenChildPage.jaenPageMetadata?.title || '',
-    tags: ['Neu', 'Backen', 'Kochen'],
-    status: 'ACTIVE',
-    totalInventory: 100,
-    createdAt: jaenChildPage.jaenPageMetadata?.blogPost?.date || '',
-    vendor: 'VendorName',
-    productType: 'ProductType',
-    media: jaenChildPage.sections
-      ?.find(section => section.fieldName === sectionFieldName)
-      ?.items.filter(item => item.jaenFields['IMA:ImageField'])
-      ?.map(item => {
-        const imageId = item.jaenFields['IMA:ImageField'].image.value;
-
-        return {
-          id: imageId,
-          image: {
-            src: globalMedia[imageId]?.preview?.url || "",
-            gatsbyImageData: null,
-            altText: globalMedia[imageId]?.altText || null,
-          }
-        };
-      }) || [],
-    featuredMedia: {
-      id: "007",
-      image: {
-        src: jaenChildPage.jaenPageMetadata?.image || "",
-        gatsbyImageData: null,
-        altText:  null,
-      }
-    },
-    metafields: [],
-    index: index,
-    sections: jaenChildPage.sections
-      ?.find(section => section.fieldName === 'productImageSection')
-      ?.items.map(item => {
-        const imageId = item.jaenFields['IMA:ImageField'].image.value;
-
-        return {
-          item,
-          id: item.id,
-          image: {
-            field: item.jaenFields['IMA:ImageField'],
-            id: imageId,
-            url: globalMedia[imageId]?.url,
-            preview: globalMedia[imageId]?.preview.url,
-            gatsbyImageData: null,
-            altText: item.altText || null,
-          }
-        };
-      }) || []
-  });
+      metafields: [],
+      index: index,
+      sections:
+        jaenChildPage.sections
+          ?.find(section => section.fieldName === "productImageSection")
+          ?.items.map(item => {
+            const imageId = item.jaenFields["IMA:ImageField"].image.value;
+            return {
+              item,
+              id: item.id,
+              image: {
+                field: item.jaenFields["IMA:ImageField"],
+                id: imageId,
+                url: globalMedia[imageId]?.url,
+                preview: globalMedia[imageId]?.preview.url,
+                gatsbyImageData: null,
+                altText: item.altText || null,
+              },
+            };
+          }) || [],
+    };
+  };
 
   const products: IJaenProduct[] = index.childPages
     .filter(child => child.id !== jaenPage.id)
+    .reverse()
     .map(transformToProduct)
     .slice(0, options?.unlimited ? undefined : 5);
 
   // Generate abcProducts
   const abcProducts = index.childPages
     .filter(child => child.id !== jaenPage.id)
-    .reduce<{ [key: string]: IJaenProduct[] }>((acc, jaenChildPage) => {
-      const product = transformToProduct(jaenChildPage);
+    .reverse()
+    .reduce<{ [key: string]: IJaenProduct[] }>((acc, jaenChildPage, i) => {
+      const product = transformToProduct(jaenChildPage, i);
       const firstLetter = jaenChildPage.slug[0].toUpperCase();
-      
+
       if (!acc[firstLetter]) {
         acc[firstLetter] = [];
       }
-      
+
       acc[firstLetter].push(product);
 
       return acc;
     }, {});
 
-  const {featuredProducts, moreProducts} = useMemo(() => {
+  const { featuredProducts, moreProducts } = useMemo(() => {
     const featuredProducts = products.slice(0, 4);
     const moreProducts = products.slice(4);
-    return {featuredProducts, moreProducts};
+    return { featuredProducts, moreProducts };
   }, [products]);
 
   return {

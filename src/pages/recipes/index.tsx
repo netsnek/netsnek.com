@@ -62,6 +62,7 @@ const RecipeSlider: FC<INewsSlidesProps> = ({
   const { products, featuredProducts, moreProducts, abcProducts } =
     useJaenProducts(productIndex, cmsmediapage);
 
+  console.log('!!All products data', products);
   return (
     <Box as="section">
       {/* <PortfolioGrid
