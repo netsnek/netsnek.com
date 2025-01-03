@@ -6,6 +6,7 @@ import {
   BoxProps,
   Flex,
   Image,
+  Skeleton,
   Spacer,
   Text,
   VStack,
@@ -302,7 +303,7 @@ export const ProductCard = ({
 
   // Determine if the border line should be displayed
   borderline = borderline !== undefined ? borderline : true;
-  
+
   // Prepare media for previews
   const previewMedia = product.media || [];
 
@@ -326,7 +327,7 @@ export const ProductCard = ({
   if (
     tags.includes('Neu') ||
     new Date(product.createdAt).getTime() >
-      Date.now() - 7 * 24 * 60 * 60 * 1000
+    Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
     coloredBadges.push({ name: 'Neu', color: 'white', bg: 'brand.500' });
   }
@@ -339,6 +340,19 @@ export const ProductCard = ({
       bg: 'agt.red',
     });
   }
+
+  const [loading, setLoading] = React.useState(true);
+  // React.useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 200);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // loading should be set to false when dom is rendered
+  React.useEffect(() => {
+    setLoading(false);
+  }, []);
 
   return (
     <VStack
@@ -372,7 +386,7 @@ export const ProductCard = ({
             mr={isMobile ? '4' : '0'}
           >
             <AspectRatio ratio={isMobile ? 4 / 3 : 10 / 9}>
-              <>
+              <Skeleton isLoaded={!loading}>
                 {/* Radio input for the featured image */}
                 <input
                   type="radio"
@@ -408,7 +422,7 @@ export const ProductCard = ({
                     />
                   </React.Fragment>
                 ))}
-              </>
+              </Skeleton>
             </AspectRatio>
           </Box>
 

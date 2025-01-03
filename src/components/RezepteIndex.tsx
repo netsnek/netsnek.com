@@ -12,6 +12,7 @@ import {
   Divider,
   Text,
   useBreakpointValue,
+  Skeleton,
 } from '@chakra-ui/react';
 import { ProductCard } from './ProductCard';
 
@@ -88,6 +89,19 @@ const RezepteIndex: FC<IRezepteIndexProps> = ({
 
   const isMobile = useBreakpointValue({ base: true, md: false });
 
+  const [loading, setLoading] = React.useState(true);
+  // React.useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 200);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+  // loading should be set to false when dom is rendered
+  React.useEffect(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <VStack spacing={8} align="stretch" {...props}>
       {/* Header Section with Link to Blog */}
@@ -135,15 +149,16 @@ const RezepteIndex: FC<IRezepteIndexProps> = ({
           <Heading as="h2" size="lg" mt={8}>
             Neue Rezepte
           </Heading>
-          <Grid
-            templateColumns={{
-              sm: 'repeat(1, 1fr)', // Mobile devices: 1 column
-              md: 'repeat(2, 1fr)', // Small screens: 2 columns
-              lg: 'repeat(4, 1fr)', // Large screens: 4 columns
-            }}
-            gap={6}
-            mb={6}
-          >
+          <Skeleton isLoaded={!loading}>
+            <Grid
+              templateColumns={{
+                sm: 'repeat(1, 1fr)', // Mobile devices: 1 column
+                md: 'repeat(2, 1fr)', // Small screens: 2 columns
+                lg: 'repeat(4, 1fr)', // Large screens: 4 columns
+              }}
+              gap={6}
+              mb={6}
+            >
               {featuredProducts.map((product, index) => (
                 <ProductCard
                   key={index}
@@ -152,7 +167,8 @@ const RezepteIndex: FC<IRezepteIndexProps> = ({
                   isMobile={isMobile}
                 />
               ))}
-          </Grid>
+            </Grid>
+          </Skeleton>
           <Divider />
         </>
       )}
@@ -161,26 +177,28 @@ const RezepteIndex: FC<IRezepteIndexProps> = ({
       <Heading as="h2" size="lg" mt={8}>
         Alle Rezepte - nach Buchstaben sortiert
       </Heading>
-      <Wrap spacing={2} justify="center" mb={4}>
-        {Object.keys(groupedProducts)
-          .sort()
-          .map((letter) => (
-            <WrapItem key={letter}>
-              <Button
-                size="sm"
-                variant="ghost"
-                onClick={() => {
-                  const element = document.getElementById(`letter-${letter}`);
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                {letter}
-              </Button>
-            </WrapItem>
-          ))}
-      </Wrap>
+      <Skeleton isLoaded={!loading}>
+        <Wrap spacing={2} justify="center" mb={4}>
+          {Object.keys(groupedProducts)
+            .sort()
+            .map((letter) => (
+              <WrapItem key={letter}>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => {
+                    const element = document.getElementById(`letter-${letter}`);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  {letter}
+                </Button>
+              </WrapItem>
+            ))}
+        </Wrap>
+      </Skeleton>
 
       {/* Grouped Products by Alphabet */}
       {Object.entries(groupedProducts)
