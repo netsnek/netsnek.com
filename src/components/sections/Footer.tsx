@@ -110,20 +110,20 @@ const Footer: FC = () => {
         href: ''
       }
     ],
-    // [
-    //   {
-    //     label: 'Gestaltet von',
-    //     isTitle: true
-    //   },
-    //   {
-    //     label: 'Florian H. Kleber',
-    //     href: 'https://fhkit.at'
-    //   },
-    //   {
-    //     label: 'Nico Schett',
-    //     href: 'https://schett.net'
-    //   }
-    // ]
+    [
+      {
+        label: 'Empfehlungen',
+        isTitle: true
+      },
+      {
+        label: 'Marthese',
+        href: 'https://www.tenutalemandorlai.it'
+      },
+      {
+        label: 'Florian',
+        href: 'https://netsnek.com'
+      },
+    ]
   ]
 
   const linkElmnts: ReactNode[] = []
