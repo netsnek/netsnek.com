@@ -480,7 +480,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 ml={4}
               />
               <Button
-                ml={4}
+                ml={2}
                 _hover={{
                   bg: 'brand.500'
                 }}
