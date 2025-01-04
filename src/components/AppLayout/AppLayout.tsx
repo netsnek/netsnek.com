@@ -17,7 +17,7 @@ interface AppLayoutProps {
   children?: React.ReactNode;
   isDocs?: boolean;
   path: string;
-  footer?: FC;
+  footer?: FC<{ pullUp?: boolean }>;
 }
 
 /**
@@ -92,7 +92,7 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
           {childrenElmnt}
         </Box>
       </MenuStructureContext.Provider>
-      <FooterComp />
+      <FooterComp pullUp={path === '/'} />
     </>
   );
 };

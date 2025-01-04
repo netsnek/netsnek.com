@@ -1,6 +1,7 @@
 import { withRedux } from 'jaen';
 import { Button, ButtonProps, Kbd } from '@chakra-ui/react';
 import { FC } from 'react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 interface ISearchButtonProps extends ButtonProps {
   openModal: () => void;
@@ -90,9 +91,26 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
           borderRadius={4}
           py={0.5}
           mr={2}
-          bgColor={'transparent'}
-          borderColor={'topNav.input.borderColor'}
+          //bgColor={'transparent'}
+          //borderColor={'topNav.input.borderColor'}
           variant="outline"
+          bgColor="blackAlpha.50"
+          color="topNav.input.color"
+          borderColor="topNav.input.borderColor"
+          fontWeight="normal"
+          _hover={{
+            borderColor: 'topNav.input.hover.borderColor'
+          }}
+          _active={{
+            bgColor: 'topNav.input.active.bgColor'
+          }}
+          onFocus={e => {
+            e.currentTarget.addEventListener('keypress', onKeyPress);
+          }}
+          onBlur={e => {
+            e.currentTarget.removeEventListener('keypress', onKeyPress);
+          }}
+          onClick={openModal}
         >
           /
         </Kbd>
