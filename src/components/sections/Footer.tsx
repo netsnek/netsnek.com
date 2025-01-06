@@ -80,6 +80,10 @@ const Footer: FC = () => {
         href: '/#mushroom'
       },
       {
+        label: 'Login',
+        href: '/login'
+      },
+      {
         label: 'Kontakt',
         href: '/imprint'
       },
