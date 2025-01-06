@@ -1,4 +1,4 @@
-import { connectBlock, Field, PageConfig, usePage, usePageContext, useSectionBlockContext } from 'jaen';
+import { connectBlock, Field, PageConfig, usePage, usePageContext, useSectionBlockContext, PhotoProvider } from 'jaen';
 import { AspectRatio, Box, chakra, Container, Flex, Grid, Heading, Stack, Text, VStack } from '@chakra-ui/react';
 import { PageProps, graphql } from 'gatsby';
 import * as React from 'react';
@@ -67,7 +67,7 @@ const Step: React.FC<IStepProps> = ({ isLeft, position }) => {
               overflow="hidden"
               borderRadius="2xl"
             >
-              <Field.Image name="image" />
+              <Field.Image name="image" lightbox lightboxGroup />
             </AspectRatio>
             {/* <Grid placeItems="center" pos="relative">
               <AspectRatio
@@ -246,7 +246,7 @@ const RecipePage: React.FC<PageProps> = props => {
   const jaenPage = usePage()
   console.log('!!All page data', jaenPage)
   return (
-    <>
+    <PhotoProvider maskOpacity={0.8}>
       <RecipeHero defaultHeading={jaenPage?.jaenPageMetadata?.title || ""} defaultLead={jaenPage?.jaenPageMetadata?.description || ""} defautlImage={jaenPage?.jaenPageMetadata?.image || ""} />
       <Container maxW="8xl" mb="20">
         <Flex alignItems={'start'} flexDir={{ base: "column", md: "row" }}>
@@ -301,7 +301,7 @@ const RecipePage: React.FC<PageProps> = props => {
             w="100%"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2740.0340435405824!2d14.295087575992476!3d46.626089555171056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47707481801f6b21%3A0x8399759ad0778c8f!2sSterneckstra%C3%9Fe%2023%2F20%2C%209020%20Klagenfurt%20am%20W%C3%B6rthersee!5e0!3m2!1sen!2sat!4v1718256423376!5m2!1sen!2sat"
           /> */}
-    </>
+    </PhotoProvider>
   );
 };
 
