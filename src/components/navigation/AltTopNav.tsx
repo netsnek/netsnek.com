@@ -251,8 +251,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
-                  <Icon as={FaFacebook} boxSize="6" />
+                <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
+                  <Icon as={FaInstagram} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
               <LinkBox
@@ -263,8 +263,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
-                  <Icon as={FaInstagram} boxSize="6" />
+                <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
+                  <Icon as={FaFacebook} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
               {/* <LinkBox

@@ -254,8 +254,8 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
-                <Icon as={FaFacebook} boxSize="5" />
+              <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
+                <Icon as={FaInstagram} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
             <LinkBox
@@ -265,8 +265,8 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
-                <Icon as={FaInstagram} boxSize="5" />
+              <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
+                <Icon as={FaFacebook} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
             {/* <LinkBox
