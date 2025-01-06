@@ -65,7 +65,7 @@ const Footer: FC = () => {
       },
       {
         label: 'Kurse & Webinare',
-        href: '/imprint'
+        href: '/#meine_beratung'
       },
       // {
       //   label: 'Mitgliederbereich',
@@ -73,11 +73,11 @@ const Footer: FC = () => {
       // },
       {
         label: 'FAQs',
-        href: '/meine_kunden'
+        href: '/#meine_kunden'
       },
       {
         label: 'Über mich',
-        href: '/mushroom'
+        href: '/#mushroom'
       },
       {
         label: 'Kontakt',
