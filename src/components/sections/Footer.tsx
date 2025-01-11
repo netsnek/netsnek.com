@@ -124,6 +124,14 @@ const Footer: FC = () => {
         href: 'https://www.tenutalemandorlai.it'
       },
       {
+        label: 'Marthese',
+        href: 'https://www.tenutalemandorlaie.it'
+      },
+      {
+        label: 'Karin',
+        href: 'https://karinkraschl.at'
+      },
+      {
         label: 'Florian',
         href: 'https://netsnek.com'
       },
