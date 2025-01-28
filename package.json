@@ -28,7 +28,7 @@
     "framer-motion": "^10.16.1",
     "gatsby": "^5.11.0",
     "gatsby-jaen-lens": "1.2.0",
-    "gatsby-jaen-mailpress": "^2.0.0",
+    "gatsby-jaen-mailpress": "^2.1.1",
     "gatsby-plugin-cloudflare-pages": "^1.0.3",
     "gatsby-plugin-jaen": "^1.4.0",
     "github-slugger": "^2.0.0",
