@@ -788,13 +788,13 @@ export const pageConfig: PageConfig = {
       return { label: userName, path: `/users/${userId}/` };
     }
   ],
-  menu: {
-    type: 'user',
-    label: 'Your profile',
-    path: ({ auth }) => {
-      return `/users/${auth.user?.profile?.sub}`;
-    }
-  }
+  // menu: {
+  //   type: 'user',
+  //   label: 'Your profile',
+  //   path: ({ auth }) => {
+  //     return `/users/${auth.user?.profile?.sub}`;
+  //   }
+  // }
 };
 
 export { Head } from 'jaen';

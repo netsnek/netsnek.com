@@ -340,10 +340,10 @@ export const pageConfig: PageConfig = {
       path: '/new/experiment'
     }
   ],
-  menu: {
-    type: 'user',
-    label: 'New experiment'
-  },
+  // menu: {
+  //   type: 'user',
+  //   label: 'New experiment'
+  // },
   auth: {
     isRequired: true
   }
