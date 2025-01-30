@@ -14,15 +14,18 @@ import MainBreadcrumb from '../navigation/MainBreadcrumb';
 import TableOfContent from '../navigation/TableOfContent';
 import PageDirectory from '../navigation/page-directory/PageDirectory';
 
-const links = [
-  {
-    name: 'Question? Give us feedback',
-    href: '/contact'
-  },
-  {
-    name: 'Edit this page on Jaen',
-    href: '/cms/pages'
-  }
+const links: {
+  name: string;
+  href: string;
+}[] = [
+  // {
+  //   name: 'Question? Give us feedback',
+  //   href: '/contact'
+  // },
+  // {
+  //   name: 'Edit this page on Jaen',
+  //   href: '/cms/pages'
+  // }
 ];
 
 interface DocsLayoutProps {
