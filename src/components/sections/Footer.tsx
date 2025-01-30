@@ -120,19 +120,19 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
-        label: 'Marthese',
-        href: 'https://www.tenutalemandorlai.it'
-      },
-      {
-        label: 'Marthese',
+        label: 'Olivenöl extra vergine rabattcode „barbara10“',
         href: 'https://www.tenutalemandorlaie.it'
       },
       {
-        label: 'Karin',
+        label: 'Bewegung und Gehirn Karin Kraschl',
         href: 'https://karinkraschl.at'
       },
       {
-        label: 'Florian',
+        label: 'Dr. Ada Sommerfeldt',
+        href: 'https://adasommerfeldt.com/'
+      },
+      {
+        label: 'Webdesigner Florian Kleber',
         href: 'https://netsnek.com'
       },
     ]
