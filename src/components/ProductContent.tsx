@@ -37,17 +37,6 @@ const useBasket = () => {
     addProduct: () => {},
   };
 };
-// Example links - these would probably be fetched from a CMS or other data source
-const links = [
-  {
-    name: "Question? Give us feedback",
-    href: "/contact",
-  },
-  {
-    name: "Edit this page on Jaen",
-    href: "/cms/pages",
-  },
-];
 
 export type JaenProduct = {
   handle: string;

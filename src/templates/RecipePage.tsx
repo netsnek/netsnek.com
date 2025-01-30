@@ -5,7 +5,6 @@ import * as React from 'react';
 import TableOfContent from '../components/navigation/TableOfContent';
 import useNavOffset from '../hooks/use-nav-offset';
 import MdxEditor from '../components/mdx-editor/MdxEditor';
-import Links from '../components/Links';
 import RightNav from '../components/navigation/RightNav';
 import MainBottomNav from '../components/navigation/MainBottomNav';
 import { Global } from '@emotion/react';
@@ -13,18 +12,6 @@ import RecipeHero from '../components/sections/RecipeHero';
 import LastCall from '../components/sections/LastCall';
 import { useEffect, useState } from 'react';
 import Special from '../components/sections/Special';
-
-// Example links - these would probably be fetched from a CMS or other data source
-const links = [
-  {
-    name: 'Question? Give us feedback',
-    href: '/contact'
-  },
-  {
-    name: 'Edit this page on Jaen',
-    href: '/cms/pages'
-  }
-];
 
 interface IStepProps {
   isLeft: boolean
