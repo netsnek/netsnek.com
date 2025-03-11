@@ -1,12 +1,10 @@
-import {
-  PageConfig,
-  PageProps,
-  osg,
-  useNotificationsContext
-} from '@atsnek/jaen';
+import { PageConfig, PageProps, osg, useNotificationsContext } from 'jaen';
 import {
   Avatar,
   Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
   Button,
   ButtonGroup,
   Divider,
@@ -68,6 +66,10 @@ const DocsPage: React.FC<PageProps> = ({ params }) => {
 
   const post = data.post({ where: { slug: params.slug } });
 
+  useEffect(() => {
+    document.title = post.title;
+  }, [post]);
+
   const [values, setValues] = useState({
     title: post.title,
     summary: post.summary,
@@ -84,17 +86,17 @@ const DocsPage: React.FC<PageProps> = ({ params }) => {
     });
   }, [post]);
 
-  useEffect(() => {
-    if (values.content) {
-      try {
-        toc.setValue(JSON.parse(values.content));
-      } catch {
-        toc.setValue(undefined);
-      }
-    } else {
-      toc.setValue(undefined);
-    }
-  }, [values.content]);
+  // useEffect(() => {
+  //   if (values.content) {
+  //     try {
+  //       toc.setValue(JSON.parse(values.content));
+  //     } catch {
+  //       toc.setValue(undefined);
+  //     }
+  //   } else {
+  //     toc.setValue(undefined);
+  //   }
+  // }, [values.content]);
 
   const hasChanges = useMemo(() => {
     return (
@@ -112,29 +114,45 @@ const DocsPage: React.FC<PageProps> = ({ params }) => {
 
   const [isImageUploading, setIsImageUploading] = useState(false);
 
-  const parsedContent = useMemo(() => {
+  const parsedContext = useMemo(() => {
+    if (!values.content) {
+      return undefined;
+    }
+
     try {
-      return JSON.parse(values.content || '');
+      // Legacy parse to get posts with old content (MDAST)
+      return JSON.parse(values.content);
     } catch {
+      if (typeof values.content === 'string') {
+        return values.content;
+      }
+
       return undefined;
     }
   }, [values.content]);
 
   return (
     <Stack key={post.id} spacing={8}>
-      <Stack spacing="4">
-        <Flex justifyContent="space-between">
-          <HStack spacing="1">
-            <Icon
-              as={FaUsers}
-              display="inline-block"
-              color="brand.500"
-              mr="2"
-            />
-            <Text color="gray.600">Community experiment</Text>
-          </HStack>
-        </Flex>
+      <Breadcrumb mb="4">
+        <BreadcrumbItem>
+          <BreadcrumbLink as={Link} to="/experiments">
+            <HStack spacing="1">
+              <Icon
+                as={FaUsers}
+                display="inline-block"
+                color="brand.500"
+                mr="2"
+              />
+              <Text color="gray.600">Community Experiments</Text>
+            </HStack>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
 
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink href="#">{post.title}</BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
+      <Stack spacing="4">
         <Stack display={post.isOwner ? 'flex' : 'none'}>
           <Divider />
           <Flex justifyContent="space-between" alignItems="center">
@@ -501,7 +519,14 @@ const DocsPage: React.FC<PageProps> = ({ params }) => {
         <Divider />
       </Stack>
 
-      <TableOfContent />
+      <Box
+        display={{
+          base: 'block',
+          xl: 'none'
+        }}
+      >
+        <TableOfContent />
+      </Box>
 
       {/* Placeholder for Editor Component */}
       <SkeletonText
@@ -512,14 +537,15 @@ const DocsPage: React.FC<PageProps> = ({ params }) => {
       >
         <UncontrolledMdxEditor
           key={mdxKey}
-          value={parsedContent}
+          value={parsedContext}
           isEditing={post.isOwner}
-          onUpdateValue={value => {
-            toc.setValue(value);
-
+          onMdast={mdast => {
+            toc.setValue(mdast);
+          }}
+          onUpdateValue={(_, value) => {
             setValues({
               ...values,
-              content: JSON.stringify(value)
+              content: value
             });
           }}
         />
@@ -550,4 +576,4 @@ export const query = graphql`
   }
 `;
 
-export { Head } from '@atsnek/jaen';
+export { Head } from 'jaen';

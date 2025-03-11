@@ -20,12 +20,12 @@ import {
 } from 'react';
 import { FaFlask } from '@react-icons/all-files/fa/FaFlask';
 
-import {
-  fetchDefaultSearchresult,
-  searchDocs,
-  searchSocialPosts,
-  searchUser
-} from '../../utils/search';
+// import {
+//   fetchDefaultSearchresult,
+//   searchDocs,
+//   searchSocialPosts,
+//   searchUser
+// } from '../../utils/search';
 import useSearch from '../../hooks/use-search';
 import theme from '../../styles/theme/theme';
 import {
@@ -36,7 +36,7 @@ import SearchButton from './SearchButton';
 import SearchModal from './SearchModal';
 import TbBooks from '../icons/tabler/TbBooks';
 import TbUser from '../icons/tabler/TbUser';
-import { useAuth } from '@atsnek/jaen';
+import { useAuth } from 'jaen';
 import { navigate } from 'gatsby';
 import { useSearchContext } from '../../contexts/search';
 import { TSearchResults } from '../../utils/search/types';
@@ -48,7 +48,7 @@ interface SearchMenuProps extends ButtonProps {}
 /**
  * Search menu component - shows a navigatable list of search results
  */
-const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
+const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
   const [searchQuery, setSearchQuery] = useState<string | undefined>(undefined);
   const [navigateIdx, setNavigateIdx] = useState<number>(-1);
   const modalDisclosure = useDisclosure();
@@ -293,11 +293,14 @@ const SearchMenu: FC<SearchMenuProps> = ({...props}) => {
                 <SearchResultSection
                   section={section}
                   idx={itemIdx}
-                  query={searchQuery}
+                  query={searchQuery || ''}
                   key={sidx}
                   defaultHighlight={itemIdx === 0}
                   icon={chapter.icon}
-                  isDocs={!!section.results[0]?.to?.startsWith('/docs/')}
+                  isDocs={ true
+                    // !!section.to?.startsWith('/docs/') ||
+                    // !!section.results[0]?.to?.startsWith('/docs/')
+                  }
                 />
               );
 

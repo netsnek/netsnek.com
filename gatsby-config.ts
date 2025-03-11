@@ -6,7 +6,7 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://netsnek.com`
+    siteUrl: `https://barbara-mauz.at/`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -25,13 +25,13 @@ const config: GatsbyConfig = {
           repository: 'netsnek/netsnek.com'
         },
         zitadel: {
-          organizationId: '268207341512496739',
-          clientId: '268418317486724723@photonq',
-          authority: 'https://accounts.photonq.org',
+          organizationId: '278641258304378483',
+          clientId: '278642690558596723@barbara-mauz',
+          authority: 'https://accounts.netsnek.com',
           redirectUri:
             process.env.NODE_ENV === 'production'
               ? 'https://netsnek.com'
-              : 'https://opulent-carnival-pg7v6wp7prhr556-8000.app.github.dev',
+              : 'https://redesigned-carnival-4gq4rvwqwvhq4pp-8000.app.github.dev',
           projectIds: ['263491274097563233']
         },
         // sentry: {
@@ -47,9 +47,10 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-jaen-mailpress`,
       options: {
-        pylonUrl: 'https://pylons.photonq.org/mailpress/graphql'
+        pylonUrl: 'https://mailpress.netsnek.com/graphql'
       }
-    }
+    },
+    //`gatsby-jaen-lens`
   ]
 };
 

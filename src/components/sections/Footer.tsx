@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 import { Link } from 'gatsby-plugin-jaen';
-import { Field } from '@atsnek/jaen';
+import { Field } from 'jaen';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
@@ -43,10 +43,10 @@ const Footer: FC = () => {
       //   label: 'LinkedIn',
       //   href: 'https://www.linkedin.com/in/kleberbaum/'
       // },
-      // {
-      //   label: 'Telegram',
-      //   href: 'https://t.me/kleberbaum'
-      // },
+      {
+        label: 'Telegram',
+        href: 'https://t.me/kleberbaum'
+      },
       {
         label: 'Facebook',
         href: 'https://facebook.com/netsnek/'
@@ -100,6 +100,7 @@ const Footer: FC = () => {
             return (
               <Field.Text
                 key={i}
+                color="white"
                 name={'FooterLinkTitle' + link.label}
                 defaultValue={link.label}
                 fontWeight="500"
@@ -107,8 +108,15 @@ const Footer: FC = () => {
             )
           }
           return (
-            <Link key={i} href={link.href} variant="hover-theme" opacity={0.7}>
+            <Link
+              key={i}
+              href={link.href}
+              variant="pq-footer"
+              color="white"
+              opacity={0.7}
+            >
               <Field.Text
+                color="white"
                 name={'FooterLink' + link.label}
                 defaultValue={link.label}
               />
@@ -133,10 +141,10 @@ const Footer: FC = () => {
         bgColor="#0A0A0A"
         zIndex={0}>
         <Container maxW="7xl" h="100%">
-          <Flex mt={20} color="white" wrap={{base: 'wrap', sm: 'nowrap'}}>
+          <Flex mt={20} wrap={{base: 'wrap', sm: 'nowrap'}}>
             <Box>
               <Flex alignItems={'center'}>
-                <Logo h="100px" />
+                <Logo color="white" h="100px" />
               </Flex>
             </Box>
             <Spacer minW={{base: '5rem', lg: '25%'}} />

@@ -4,18 +4,18 @@ import { Box } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import * as React from 'react';
 
-const ImprintPage: React.FC<PageProps> = () => {
+const TermsOfServicePage: React.FC<PageProps> = () => {
   return (
     <Box as="main">
-      <Field.Editor name="imprint" />
+      <Field.Editor name="terms-of-service" />
     </Box>
   );
 };
 
-export default ImprintPage;
+export default TermsOfServicePage;
 
 export const pageConfig: PageConfig = {
-  label: 'Imprint page',
+  label: 'TermsOfServicePage page',
   icon: 'FaPassport'
 };
 

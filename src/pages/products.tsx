@@ -1,4 +1,4 @@
-import { PageConfig } from '@atsnek/jaen';
+import { PageConfig } from 'jaen';
 import { PageProps, graphql } from 'gatsby';
 import * as React from 'react';
 import { ProductContent } from '../components/ProductContent';
@@ -9,7 +9,7 @@ const ProductPage: React.FC<PageProps> = props => {
 
 export default ProductPage;
 
-export { Head } from '@atsnek/jaen';
+export { Head } from 'jaen';
 
 export const pageConfig: PageConfig = {
   label: 'ProductPage',

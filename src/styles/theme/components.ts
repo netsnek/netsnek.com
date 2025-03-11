@@ -3,6 +3,8 @@ import themeAccordionComponent from './components/accordion';
 import themeAlertComponent from './components/alert';
 import themeAvatarComponent from './components/avatar';
 import themeButtonComponent from './components/button';
+import themeHeadingComponent from './components/heading';
+import themeTextComponent from './components/text';
 import themeCheckboxComponent from './components/checkbox';
 import themeInputComponent from './components/input';
 import themeLinkComponent from './components/link';
@@ -20,6 +22,8 @@ const themeComponents: { [key: string]: ComponentStyleConfig } = {
   Menu: themeMenuComponent,
   Alert: themeAlertComponent,
   Checkbox: themeCheckboxComponent,
+  Heading: themeHeadingComponent,
+  Text: themeTextComponent,
   Avatar: themeAvatarComponent,
   Input: themeInputComponent,
   Switch: themeSwitchComponent,

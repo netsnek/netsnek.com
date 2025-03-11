@@ -1,9 +1,9 @@
-import {useJaenPageIndex, usePageContext} from '@atsnek/jaen'
+import {useJaenPageIndex, usePageContext} from 'jaen'
 import {useMemo} from 'react'
 
-export const useNewsPages = (options?: {unlimited?: boolean}) => {
+export const useRecipePages = (options?: {unlimited?: boolean}) => {
   const index = useJaenPageIndex({
-    jaenPageId: 'JaenPage /products/'
+    jaenPageId: 'JaenPage /recipes/'
   })
 
   // override index children to exclude a blog page if it is the current page

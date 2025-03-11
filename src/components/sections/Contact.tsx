@@ -10,7 +10,7 @@ import {
   Grid,
   AspectRatio
 } from '@chakra-ui/react';
-import { Field } from '@atsnek/jaen';
+import { Field } from 'jaen';
 // import ContactButton from '../ContactButton'
 
 import { HBalloon } from '../../gatsby-plugin-jaen/components/Ballons_Ballons';
@@ -51,7 +51,8 @@ const Contact = () => {
       position="relative"
       //mt="-25px"
       overflow={{ base: 'hidden', lg: 'visible' }}
-      px={{ base: 5, lg: 0 }}
+      px={0}
+      pb={16}
       bgColor="#0A0A0A"
       zIndex={0}
     >

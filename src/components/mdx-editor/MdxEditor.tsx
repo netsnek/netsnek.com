@@ -23,8 +23,8 @@ import {
   useAuthUser,
   useContentManagement,
   usePageContext
-} from '@atsnek/jaen';
-import { MdxField, MdxFieldProps } from '@atsnek/jaen-fields-mdx';
+} from 'jaen';
+import { MdxField, MdxFieldProps } from 'jaen-fields-mdx';
 import { EditIcon, SettingsIcon } from '@chakra-ui/icons';
 import { Link } from 'gatsby-plugin-jaen';
 
@@ -40,24 +40,36 @@ import JaenImage from '../JaenImage';
 
 interface IMdxEditorProps {
   hideHeadingHash?: boolean;
+  onMdast: (mdast: any) => void;
 }
 
 export const mdxEditorComponents: MdxFieldProps['components'] = {
   // TEXT
-  p: props => <Text children={props.children} />,
+  p: props => <Text id={props.id} children={props.children} />,
   // LIST
-  ul: (props: any) => <UnorderedList children={props.children}></UnorderedList>,
-  ol: (props: any) => <OrderedList children={props.children}></OrderedList>,
-  li: (props: any) => <ListItem children={props.children}></ListItem>,
+  ul: (props: any) => (
+    <UnorderedList id={props.id} children={props.children}></UnorderedList>
+  ),
+  ol: (props: any) => (
+    <OrderedList id={props.id} children={props.children}></OrderedList>
+  ),
+  li: (props: any) => (
+    <ListItem id={props.id} children={props.children}></ListItem>
+  ),
   // TABLE
   table: (props: any) => (
-    <Table variant="striped" w="fit-content" children={props.children} />
+    <Table
+      id={props.id}
+      variant="striped"
+      w="fit-content"
+      children={props.children}
+    />
   ),
-  thead: (props: any) => <Thead children={props.children} />,
-  tbody: (props: any) => <Tbody children={props.children} />,
-  tr: (props: any) => <Tr children={props.children} />,
-  th: (props: any) => <Th children={props.children} />,
-  td: (props: any) => <Td children={props.children} />,
+  thead: (props: any) => <Thead id={props.id} children={props.children} />,
+  tbody: (props: any) => <Tbody id={props.id} children={props.children} />,
+  tr: (props: any) => <Tr id={props.id} children={props.children} />,
+  th: (props: any) => <Th id={props.id} children={props.children} />,
+  td: (props: any) => <Td id={props.id} children={props.children} />,
   // MISC
   code: ({
     className,
@@ -71,7 +83,6 @@ export const mdxEditorComponents: MdxFieldProps['components'] = {
     withoutSimulate?: boolean;
     withoutTranslate?: boolean;
   }) => {
-    console.log('code pprops', className, playground, props);
     const lang = className?.replace('language-', '') || 'text';
 
     if (playground) {
@@ -93,35 +104,18 @@ export const mdxEditorComponents: MdxFieldProps['components'] = {
       />
     );
   },
+  img: JaenImage,
+  Image: JaenImage,
   // CUSTOM COMPONENTS
-  QASMPlayground: props => {
-    console.log('props', props);
-
-    return (
-      <QASMPlayground
-        children={props.children}
-        withoutTranslate={props.withoutTranslate}
-        withoutSimulate={props.withoutSimulate}
-      />
-    );
-  },
-  Filesystem: props => <Filesystem structure={props.structure} />,
-  ImageCard: props => (
-    <ImageCard
-      id={props.id}
-      image={props.image}
-      link={props.link}
-      size={props.size}
-    />
-  ),
-  Callout: props => (
-    <Callout icon={props.icon} type={props.type} children={props.children} />
-  ),
-  IconCard: props => <IconCard icon={props.icon} link={props.link} />,
-  DocsIndex: props => <DocsIndex type={props.type} />
+  QASMPlayground,
+  Filesystem,
+  ImageCard,
+  Callout,
+  IconCard,
+  DocsIndex
 };
 
-const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash }) => {
+const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash, onMdast }) => {
   const { isAuthenticated, user, isLoading } = useAuth();
   const { isEditing, toggleIsEditing } = useContentManagement();
   const { jaenPage } = usePageContext();
@@ -186,6 +180,7 @@ const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash }) => {
             wrapper: ({ children }) => <Stack>{children}</Stack>,
             ...mdxEditorComponents
           }}
+          onMdast={onMdast}
         />
       </div>
     </Stack>

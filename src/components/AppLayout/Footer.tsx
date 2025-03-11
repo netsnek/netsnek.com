@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 import { Link } from 'gatsby-plugin-jaen';
-import { Field } from '@atsnek/jaen';
+import { Field } from 'jaen';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
@@ -90,28 +90,34 @@ const Footer: FC = () => {
 
   links.forEach((linkGroup, i) => {
     linkElmnts.push(
-      <VStack spacing={3} alignItems="start" wrap="wrap" key={i}>
-        {linkGroup.map((link, i) => {
-          if ('isTitle' in link) {
-            return (
-              <Field.Text
-                key={i}
-                name={'FooterLinkTitle' + link.label}
-                defaultValue={link.label}
-                fontWeight="500"
-              />
-            )
-          }
-          return (
-            <Link key={i} href={link.href} variant="hover-theme" opacity={0.7}>
-              <Field.Text
-                name={'FooterLink' + link.label}
-                defaultValue={link.label}
-              />
-            </Link>
-          )
-        })}
-      </VStack>
+      // <VStack spacing={3} alignItems="start" wrap="wrap" key={i}>
+      //   {linkGroup.map((link, i) => {
+      //     if ('isTitle' in link) {
+      //       return (
+      //         <Field.Text
+      //           key={i}
+      //           name={'FooterLinkTitle' + link.label}
+      //           defaultValue={link.label}
+      //           fontWeight="500"
+      //         />
+      //       )
+      //     }
+      //     return (
+      //       <Link
+      //         key={i}
+      //         href={link.href}
+      //         variant="pq-footer"
+      //         color="white"
+      //         opacity={0.7}
+      //       >
+      //         <Field.Text
+      //           name={'FooterLink' + link.label}
+      //           defaultValue={link.label}
+      //         />
+      //       </Link>
+      //     )
+      //   })}
+      // </VStack>
     )
   })
 
@@ -136,13 +142,13 @@ const Footer: FC = () => {
               </Flex>
             </Box>
             <Spacer minW={{base: '5rem', lg: '25%'}} />
-            <HStack
+            {/* <HStack
               alignItems="start"
               spacing={{base: 5, sm: 20}}
               wrap={{base: 'wrap', md: 'nowrap'}}
               mt={{base: 10, md: 0}}>
               {linkElmnts}
-            </HStack>
+            </HStack> */}
           </Flex>
           {/* <Stack
             mt={20}
@@ -207,7 +213,7 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://facebook.com" isExternal>
+              <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
                 <Icon as={FaFacebook} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
@@ -218,11 +224,11 @@ const Footer: FC = () => {
               _hover={{
                 color: 'brand.500'
               }}>
-              <LinkOverlay href="https://instagram.com" isExternal>
+              <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
                 <Icon as={FaInstagram} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
-            <LinkBox
+            {/* <LinkBox
               mr="4"
               display="flex"
               transition="color 0.2s"
@@ -243,7 +249,7 @@ const Footer: FC = () => {
               <LinkOverlay href="https://github.com" isExternal>
                 <Icon as={FaGithub} boxSize="5" />
               </LinkOverlay>
-            </LinkBox>
+            </LinkBox> */}
           </HStack>
           <Divider mt={0} opacity={0.2} border="1px" />
           <Field.Text

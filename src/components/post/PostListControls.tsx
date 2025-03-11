@@ -27,7 +27,7 @@ import TbPlus from '../../shared/components/icons/tabler/TbPlus';
 import Link from '../../shared/components/Link';
 import { sq } from '@snek-functions/origin';
 import { formatPostDate } from '../../shared/utils/features/post';
-import { useAuth } from '@atsnek/jaen';
+import { useAuth } from 'jaen';
 
 interface IPostListControlsProps extends StackProps {
   fetchPosts: (
@@ -226,7 +226,6 @@ const PostListControls: FC<IPostListControlsProps> = ({
                     dateToRef.current.value = '';
                     dateTo = null;
                   }
-                  console.log('date', date, dateTo);
                   setDateRange(
                     isNaN(date.getTime()) ? undefined : date,
                     dateTo

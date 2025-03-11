@@ -1,4 +1,4 @@
-import { PageConfig, PageProps } from '@atsnek/jaen';
+import { PageConfig, PageProps } from 'jaen';
 import { Global } from '@emotion/react';
 
 import { graphql } from 'gatsby';
@@ -11,7 +11,6 @@ import { Container } from '@chakra-ui/react';
 import Services from '../components/sections/Services';
 import ServicesDetails from '../components/sections/ServiceDetails';
 import Associates from '../components/sections/Associates';
-import Portfolio from '../components/sections/Portfolio/Portfolio';
 import { GoogleMaps } from '../components/GoogleMaps';
 import Contact from '../components/sections/Contact';
 
@@ -31,7 +30,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Container maxW="5xl" mb="20">
         <Services />
         <Associates />
-        <Portfolio />
+        {/* <Portfolio /> */}
         {/* <NewsSlider showNewsTitle={true} /> */}
         <ServicesDetails />
       </Container>
@@ -71,4 +70,4 @@ export const query = graphql`
   }
 `;
 
-export { Head } from '@atsnek/jaen';
+export { Head } from 'jaen';
