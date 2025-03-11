@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { FC } from 'react';
 
-import { Field, useAuth } from '@atsnek/jaen';
+import { Field, useAuth } from 'jaen';
 import useNavOffset from '../../hooks/use-nav-offset';
 import { Link } from 'gatsby-plugin-jaen';
 

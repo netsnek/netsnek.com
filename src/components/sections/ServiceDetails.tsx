@@ -10,7 +10,7 @@ import {
 
 import { StylizedImage } from '../StylizedImage';
 import servicesSvg from '../../assets/images/services.svg';
-import { Field } from '@atsnek/jaen';
+import { Field } from 'jaen';
 
 import { QASMPlayground } from '../main-content/qasm-playground/components/qasm-playground';
 

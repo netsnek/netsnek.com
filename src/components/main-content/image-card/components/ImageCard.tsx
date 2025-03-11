@@ -3,7 +3,7 @@ import { Box, Card, CardProps, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { FC } from 'react';
 import { IMainContentComponentBaseProps } from '../../types/mainContent';
 import { TImageData } from '../types/imageCard';
-import { useContentManagement, useEditingContext } from '@atsnek/jaen';
+import { useContentManagement, useEditingContext } from 'jaen';
 import { TLinkData } from '../../../types';
 import JaenImage from '../../../JaenImage';
 import { Link } from 'gatsby-plugin-jaen';
@@ -33,8 +33,6 @@ const ImageCard: FC<IImageCardProps> = ({
     const editingContext = useEditingContext();
     isEditing = editingContext.isEditing;
   } catch (e) {
-    console.log('error', e);
-
     isEditing = cms.isEditing;
   }
 
@@ -68,6 +66,7 @@ const ImageCard: FC<IImageCardProps> = ({
             height: 'var(--chakra-sizes-xs)',
             objectFit: 'cover'
           }}
+          useAspectRatio={false}
         />
         <Box p={4}>
           <Link
@@ -95,10 +94,7 @@ ImageCard.defaultProps = {
   },
   //@ts-expect-error
   id: () => `${(Math.random() + 1).toString(36).substring(7)}`,
-  image: {
-    src: 'https://picsum.photos/200',
-    alt: 'Placeholder image'
-  },
+
   link: {
     href: '#',
     name: 'Placeholder link'

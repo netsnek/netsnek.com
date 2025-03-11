@@ -1,6 +1,7 @@
-import { withRedux } from '@atsnek/jaen';
+import { withRedux } from 'jaen';
 import { Button, ButtonProps, Kbd } from '@chakra-ui/react';
 import { FC } from 'react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 interface ISearchButtonProps extends ButtonProps {
   openModal: () => void;
@@ -55,18 +56,25 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
     return (
       <Button
         display="flex"
+        mx={4}
         size="sm"
-        minH="9"
+        minH="10"
         variant="outline"
         bgColor="blackAlpha.50"
         color="topNav.input.color"
-        borderColor="topNav.input.borderColor"
+        borderColor="brand.500"
         fontWeight="normal"
         _hover={{
           borderColor: 'topNav.input.hover.borderColor'
         }}
+        // _active={{
+        //   bgColor: 'topNav.input.active.bgColor'
+        // }}
         _active={{
-          bgColor: 'topNav.input.active.bgColor'
+          bgColor: { base: 'white', md: 'transparent' }
+        }}
+        _focus={{
+          bgColor: { base: 'white', md: 'transparent' }
         }}
         onFocus={e => {
           e.currentTarget.addEventListener('keypress', onKeyPress);
@@ -77,19 +85,36 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         onClick={openModal}
         {...props}
       >
-        Type{' '}
+        {/* Type{' '} */}
         <Kbd
           borderBottomWidth={1}
           borderRadius={4}
           py={0.5}
-          mx={2}
-          bgColor={'transparent'}
-          borderColor={'topNav.input.borderColor'}
+          mr={2}
+          //bgColor={'transparent'}
+          //borderColor={'topNav.input.borderColor'}
           variant="outline"
+          bgColor="blackAlpha.50"
+          color="topNav.input.color"
+          borderColor="topNav.input.borderColor"
+          fontWeight="normal"
+          _hover={{
+            borderColor: 'topNav.input.hover.borderColor'
+          }}
+          _active={{
+            bgColor: 'topNav.input.active.bgColor'
+          }}
+          onFocus={e => {
+            e.currentTarget.addEventListener('keypress', onKeyPress);
+          }}
+          onBlur={e => {
+            e.currentTarget.removeEventListener('keypress', onKeyPress);
+          }}
+          onClick={openModal}
         >
           /
         </Kbd>
-        to search
+        Suche
       </Button>
     );
   }

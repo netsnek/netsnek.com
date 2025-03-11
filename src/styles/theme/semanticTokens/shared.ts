@@ -15,6 +15,8 @@ const smtShared = {
       _dark: 'gray.300'
     }
   },
+  // This is the default color for the body background
+  // and overrides chakra-body-bg
   body: {
     bgColor: {
       default: 'white',

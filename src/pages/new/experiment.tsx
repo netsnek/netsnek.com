@@ -9,29 +9,37 @@ import {
   osg,
   useAuth,
   useNotificationsContext
-} from '@atsnek/jaen';
+} from 'jaen';
 import { CloseIcon } from '@chakra-ui/icons';
 import {
   Avatar,
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
   Button,
   ButtonGroup,
   Divider,
   Flex,
   HStack,
+  Icon,
   IconButton,
   Input,
   SkeletonCircle,
   Stack,
-  Switch
+  Switch,
+  Text
 } from '@chakra-ui/react';
 
-import { graphql, navigate } from 'gatsby';
+import { graphql, Link, navigate } from 'gatsby';
 import * as React from 'react';
 import { asEnumKey } from 'snek-query';
 import { TextControl } from '../../components/TextControl';
 import UncontrolledMdxEditor from '../../components/mdx-editor/UncontrolledMdxEditor';
 import { useTOCContext } from '../../contexts/toc';
 import TableOfContent from '../../components/navigation/TableOfContent';
+import { globalHistory, useLocation } from '@reach/router';
+import { FaUsers } from '@react-icons/all-files/fa/FaUsers';
 
 const IndexPage: React.FC<PageProps> = () => {
   const notify = useNotificationsContext();
@@ -51,57 +59,34 @@ const IndexPage: React.FC<PageProps> = () => {
       "This is my new experiment's summary. You should give a brief description of what you're trying to achieve.",
     language: LanguageInput.EN,
     privacy: PrivacyInput.PRIVATE,
-    content: JSON.stringify({
-      type: 'root',
-      children: [
-        {
-          type: 'code',
-          lang: 'qasm',
-          meta: 'playground',
-          value:
-            '// Define a quantum circuit with 2 qubits\nOPENQASM 2.0;            // Set the QASM version[^1]\ninclude "qelib1.inc";    // Include standard library[^2]\n\nqreg qubits[2];          // Declare a 2-qubit register[^3]\ncx qubits[0], qubits[1]; // Apply CNOT gate between qubits[^4]\n',
-          position: {
-            start: {
-              line: 1,
-              column: 1,
-              offset: 0
-            },
-            end: {
-              line: 40,
-              column: 4,
-              offset: 735
-            }
-          }
-        }
-      ],
-      position: {
-        start: {
-          line: 1,
-          column: 1,
-          offset: 0
-        },
-        end: {
-          line: 41,
-          column: 1,
-          offset: 736
-        }
-      }
-    })
+    content: `\`\`\`qasm playground
+// Define a quantum circuit with 2 qubits
+OPENQASM 2.0;            // Set the QASM version[^1]
+include "qelib1.inc";    // Include standard library[^2]
+
+qreg qubits[2];          // Declare a 2-qubit register[^3]
+cx qubits[0], qubits[1]; // Apply CNOT gate between qubits[^4]
+
+\`\`\`
+`
   });
+
+  React.useEffect(() => {
+    const storedValues = localStorage.getItem('new-experiment');
+
+    if (storedValues) {
+      setValues(JSON.parse(storedValues));
+    }
+  }, []);
+
+  // Persist values in local storage
+  React.useEffect(() => {
+    localStorage.setItem('new-experiment', JSON.stringify(values));
+  }, [values]);
 
   const toc = useTOCContext();
 
-  React.useEffect(() => {
-    if (values.content) {
-      try {
-        toc.setValue(JSON.parse(values.content));
-      } catch {
-        toc.setValue(undefined);
-      }
-    } else {
-      toc.setValue(undefined);
-    }
-  }, [values.content]);
+  const [parsedContent, setParsedContent] = React.useState<any>();
 
   const [isCreating, setIsCreating] = React.useState(false);
 
@@ -110,16 +95,45 @@ const IndexPage: React.FC<PageProps> = () => {
 
   const { user } = useAuth();
 
-  const parsedContent = React.useMemo(() => {
-    try {
-      return JSON.parse(values.content);
-    } catch {
-      return undefined;
-    }
-  }, [values.content]);
+  const curLocation = useLocation();
+  React.useEffect(() => {
+    return globalHistory.listen(({ action, location }) => {
+      if (
+        (action === 'PUSH' &&
+          !location.pathname.includes('/new/experiment') &&
+          !isCreating) ||
+        action === 'POP'
+      ) {
+        if (!window.confirm('Are you sure you want to leave this page?')) {
+          navigate(`${curLocation.pathname}`);
+        }
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCreating]);
 
   return (
     <Stack spacing="8">
+      <Breadcrumb mb="4">
+        <BreadcrumbItem>
+          <BreadcrumbLink as={Link} to="/experiments">
+            <HStack spacing="1">
+              <Icon
+                as={FaUsers}
+                display="inline-block"
+                color="brand.500"
+                mr="2"
+              />
+              <Text color="gray.600">Community Experiments</Text>
+            </HStack>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+
+        <BreadcrumbItem isCurrentPage>
+          <BreadcrumbLink href="#">New</BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
+
       <Stack>
         <Divider />
         <Flex justifyContent="space-between" alignItems="center">
@@ -158,7 +172,7 @@ const IndexPage: React.FC<PageProps> = () => {
                     }).slug
                 );
 
-                setIsCreating(false);
+                localStorage.removeItem('new-experiment');
 
                 if (errors) {
                   notify.toast({
@@ -282,18 +296,26 @@ const IndexPage: React.FC<PageProps> = () => {
         editable={true}
       />
 
-      <TableOfContent />
+      <Box
+        display={{
+          base: 'block',
+          xl: 'none'
+        }}
+      >
+        <TableOfContent />
+      </Box>
 
       {/* Placeholder for Editor Component */}
       <UncontrolledMdxEditor
-        value={parsedContent}
+        value={values.content}
         isEditing={true}
-        onUpdateValue={value => {
-          toc.setValue(value);
-
+        onMdast={mdast => {
+          toc.setValue(mdast);
+        }}
+        onUpdateValue={(mdast, value) => {
           setValues({
             ...values,
-            content: JSON.stringify(value)
+            content: value
           });
         }}
       />
@@ -318,10 +340,10 @@ export const pageConfig: PageConfig = {
       path: '/new/experiment'
     }
   ],
-  menu: {
-    type: 'user',
-    label: 'New experiment'
-  },
+  // menu: {
+  //   type: 'user',
+  //   label: 'New experiment'
+  // },
   auth: {
     isRequired: true
   }
@@ -341,4 +363,4 @@ export const query = graphql`
   }
 `;
 
-export { Head } from '@atsnek/jaen';
+export { Head } from 'jaen';

@@ -67,33 +67,34 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
   };
 
   // Handle window resize and close menu if window width is >= 768px (md breakpoint)
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (window.innerWidth >= 768) {
-  //       closeDrawer();
-  //     }
-  //   };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        closeDrawer();
+      }
+    };
 
-  //   window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <Box
-      as={FadeIn}
+      //as={FadeIn}
       pos="relative"
       overflow="hidden"
       height={isOpen ? 'calc(100vh + 15px)' : { base: '12vh', md: '15vh' }}
       minH={isOpen ? '600px' : '100px'}
       transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
-      borderBottomRadius={'2xl'}
+      //borderBottomRadius={'2xl'}
+      backgroundColor='#dee9ec'
     >
       <Box
         pos="relative"
-        bg="#0A0A0A"
+        bg="brand.900"
         color="white"
         transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
         height={isOpen ? 'max(600px, calc(100vh + 15px))' : '0'}
@@ -137,13 +138,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderRight="1px"
             borderLeft="0"
             borderBottom="0"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Unsere Services</LinkOverlay>
+            <LinkOverlay href="/docs">Über mich</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="team"
@@ -155,13 +156,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderBottom="0"
             borderRight="0"
             borderLeft={{ base: '1px', md: '0px' }}
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Dokumentation</LinkOverlay>
+            <LinkOverlay href="/docs">Kurse & Webinare</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="portfolio"
@@ -173,13 +174,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderRight="1px"
             borderLeft="0"
             borderBottom="0"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Unser Portfolio</LinkOverlay>
+            <LinkOverlay href="/recipes/">Rezepte</LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="blog"
@@ -191,13 +192,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderBottom="1px"
             borderRight="0"
             borderLeft={{ base: '1px', md: '0px' }}
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
             transition="color 0.2s"
             _hover={{
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/experiments">Blog</LinkOverlay>
+            <LinkOverlay href="/docs/">Blog</LinkOverlay>
           </LinkBox>
           <Box
             gridArea="offices"
@@ -209,20 +210,20 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderRight={{ base: '1px', md: '0px' }}
             borderLeft="0"
             borderStyle="solid"
-            borderColor={{ base: 'transparent', md: useColorModeValue('gray.900', 'gray.600') }}
+            borderColor={{ base: 'transparent', md: useColorModeValue('brand.800', 'gray.600') }}
           >
             {/* Office information here */}
             <Text color="white" fontWeight="bold" fontSize="lg" pb="4">
-              Im Herzen von Wien
+              Im Herzen von Klagenfurt
             </Text>
-            <Text color="white" fontSize="md">
+            {/* <Text color="white" fontSize="md">
               Hauptquartier
+            </Text> */}
+            <Text color="gray.400" fontSize="md">
+              Sterneckstraße 23/20
             </Text>
             <Text color="gray.400" fontSize="md">
-              Löwengasse 28
-            </Text>
-            <Text color="gray.400" fontSize="md">
-              1030 Vienna, Austria
+              9020 Klagenfurt, Österreich
             </Text>
           </Box>
           <Box
@@ -235,11 +236,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderRight="0"
             borderLeft="0"
             borderStyle="solid"
-            borderColor={useColorModeValue('gray.900', 'gray.600')}
+            borderColor={useColorModeValue('brand.800', 'gray.600')}
           >
             {/* Social media links here */}
             <Text color="white" fontWeight="bold" fontSize="lg">
-              Folge uns auf
+              Folge mir auf
             </Text>
             <HStack spacing="8">
               <LinkBox
@@ -250,8 +251,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://facebook.com/netsnek" isExternal>
-                  <Icon as={FaFacebook} boxSize="6" />
+                <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
+                  <Icon as={FaInstagram} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
               <LinkBox
@@ -262,11 +263,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://instagram.com/netsnek" isExternal>
-                  <Icon as={FaInstagram} boxSize="6" />
+                <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
+                  <Icon as={FaFacebook} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
-              <LinkBox
+              {/* <LinkBox
                 mr="4"
                 display="flex"
                 transition="color 0.2s"
@@ -289,7 +290,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 <LinkOverlay href="https://github.com/netsnek" isExternal>
                   <Icon as={FaGithub} boxSize="6" />
                 </LinkOverlay>
-              </LinkBox>
+              </LinkBox> */}
             </HStack>
           </Box>
         </Grid>
@@ -307,35 +308,106 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
           >
             <LinkBox height="100%" flex="2" mr="4" display="flex">
               <LinkOverlay href="/" color="white">
-                <Logo height="100%" color="black" />
+                <Logo height="100%" />
               </LinkOverlay>
             </LinkBox>
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
+              <Button
+                variant="ghost"
+                ml={1}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={() => {
+                  // if not on the homepage, redirect to the homepage first
+                  if (path !== '/docs') {
+                    window.location.href = '/docs';
+                  }
+
+                  // const element = document.getElementById('meine_kunden');
+                  // if (element) {
+                  //   element.scrollIntoView({ behavior: 'smooth' });
+                  // }
+                }}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', lg: 'block' }}
+              >
+                Über mich
+              </Button>
+              <Button
+                variant="ghost"
+                ml={1}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={() => {
+                  // if not on the homepage, redirect to the homepage first
+                  if (path !== '/') {
+                    window.location.href = '/';
+                  }
+
+                  const element = document.getElementById('meine_beratung');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', lg: 'block' }}
+              >
+                Kurse & Webinare
+              </Button>
+              <Button
+                variant="ghost"
+                ml={1}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={() => window.location.href = '/recipes'}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', lg: 'block' }}
+              >
+                Rezepte
+              </Button>
+              <Button
+                variant="ghost"
+                ml={1}
+                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                onClick={() => window.location.href = '/docs'}
+                fontSize="sm"
+                fontWeight="semibold"
+                color="#273E53"
+                display={{ base: 'none', lg: 'block' }}
+              >
+                Blog
+              </Button>
               <SearchMenu
+                display={{ base: 'none', lg: 'block' }}
+                ml={4}
                 boxSizing={'border-box'}
                 borderWidth={{ base: 0, lg: 2 }}
-                color={{ base: 'white', lg: 'gray.400' }}
+                color={{ base: 'white', md: 'brand.700' }}
+                fontWeight={'semibold'}
+                opacity="0.7"
                 _hover={{
-                  borderColor: 'brand.600',
-                  bg: { base: 'brand.600', lg: 'transparent' }
+                  opacity: "1",
+                  borderColor: 'brand.500',
+                  bg: { base: 'brand.500', md: 'transparent' }
                 }}
               />
               <Button
-                ml={4}
+                ml={2}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
                 onClick={handleOnContactClick}
                 fontSize="sm"
                 fontWeight="semibold"
                 color="white"
-                display={{ base: 'none', md: 'block' }}
+                display={{ base: 'none', lg: 'block' }}
               >
-                Jetzt anfragen
+                Kontakt
               </Button>
               {/* <Button
                   ml={4}
                   filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                  borderRadius={'lg'}
                   onClick={handleOnContactClick}
                   fontSize="sm"
                   fontWeight="semibold"
@@ -344,6 +416,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   Login
                 </Button> */}
               <IconButton
+                variant="ghost"
+                display={{ base: 'block', lg: 'none' }}
                 ml={4}
                 icon={
                   <HamburgerMenuIcon
@@ -353,12 +427,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                       // ...hamburgerIconProps,
                       //boxSize: '6',
                       //boxSize: '100%',
-                      backgroundColor: 'white'
+                      backgroundColor: isOpen ? 'white' : 'brand.700'
                     }}
                   />
                 }
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -401,15 +474,16 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 color={{ base: 'black', lg: 'gray.400' }}
                 _hover={{
                   borderColor: 'brand.500',
-                  bg: { base: 'brand.500', lg: 'transparent' }
+                  bg: { base: 'white', md: 'transparent' }
                 }}
+                mx={0}
+                ml={4}
               />
               <Button
-                ml={4}
+                ml={2}
                 _hover={{
                   bg: 'brand.500'
                 }}
-                borderRadius={'lg'}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 //variant="ghost"
                 onClick={handleOnContactClick}
@@ -419,14 +493,13 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 color="black"
                 display={{ base: 'none', md: 'block' }}
               >
-                Jetzt anfragen
+                Kontakt
               </Button>
               {/* <Button
                   ml={4}
                   _hover={{
                     bg: 'brand.500'
                   }}
-                  borderRadius={'lg'}
                   filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                   //variant="ghost"
                   onClick={handleOnContactClick}
@@ -438,6 +511,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   Login
                 </Button> */}
               <IconButton
+                variant="ghost"
+                display={{ base: 'block', lg: 'none' }}
                 ml={4}
                 _hover={{
                   bg: 'brand.500'
@@ -450,17 +525,17 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                       // ...hamburgerIconProps,
                       //boxSize: '6',
                       //boxSize: '100%',
-                      backgroundColor: 'black'
+                      backgroundColor: isOpen ? 'white' : 'brand.700'
                     }}
                   />
                 }
-                filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
+                //filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 onClick={toggleMobileMenu}
-                bg={'white'}
+                bg={'brand.900'}
                 color={'black'}
               />
             </Flex>

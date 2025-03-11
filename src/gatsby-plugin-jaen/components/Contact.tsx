@@ -9,7 +9,7 @@ import {
   Grid,
   AspectRatio
 } from '@chakra-ui/react'
-import {Field} from '@atsnek/jaen'
+import {Field} from 'jaen'
 import ContactButton from '../ContactButton'
 
 import {HBalloon} from '../../gatsby-plugin-jaen/components/Ballons_Ballons'

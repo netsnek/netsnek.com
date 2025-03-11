@@ -3,7 +3,7 @@ import React, { FC, ReactNode, useMemo } from 'react';
 import TopNav from '../navigation/TopNav';
 import AltTopNav from '../navigation/AltTopNav';
 
-import { useAuth, useCMSManagementContext } from '@atsnek/jaen';
+import { useAuth, useCMSManagementContext } from 'jaen';
 import { useLocation } from '@reach/router';
 import { MenuStructureContext } from '../../contexts/menu-structure';
 import { createPageTree } from '../../utils/navigation';
@@ -17,7 +17,7 @@ interface AppLayoutProps {
   children?: React.ReactNode;
   isDocs?: boolean;
   path: string;
-  footer?: FC;
+  footer?: FC<{ pullUp?: boolean }>;
 }
 
 /**
@@ -43,14 +43,12 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
 
   const isCommunity = ['/experiments', '/experiments/'].includes(path);
 
-  if (isDocs) {
+  if (isDocs || isCommunity) {
     childrenElmnt = (
       <DocsLayout path={path} isCommunity={isCommunity}>
         {children}
       </DocsLayout>
     );
-  } else if (isCommunity) {
-    childrenElmnt = <CommunityLayout>{children}</CommunityLayout>;
   } else if (
     (path.startsWith('/experiments') &&
       path !== '/experiments/' &&
@@ -89,12 +87,12 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
               yOffset={-96}
               interactive
             />}
-          {!isAuthenticated && path !== "/" && <TopNav path={path} />}
+          {!isAuthenticated && path !== "/" && <AltTopNav path={path} />}
           {!isAuthenticated && path === "/" && <AltTopNav path={path} />}
           {childrenElmnt}
         </Box>
       </MenuStructureContext.Provider>
-      <FooterComp />
+      <FooterComp pullUp={path === '/'} />
     </>
   );
 };

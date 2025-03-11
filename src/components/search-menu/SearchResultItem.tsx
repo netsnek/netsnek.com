@@ -9,7 +9,7 @@ import {
   Stack
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
-import { TSearchResult } from '../../../shared/types/search';
+import { TSearchResult } from '../../utils/search/types';
 import Highlighter from 'react-highlight-words';
 import { Link } from 'gatsby-plugin-jaen';
 
@@ -132,9 +132,19 @@ export const SearchResultItem: FC<{
         </LinkOverlay>
       </Box>
       <Spacer />
-      <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
-        Go to
-      </Text>
+      {item.to?.startsWith('/docs/') ? (
+        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
+          Zum Artikel
+        </Text>
+      ) : item.to?.startsWith('/recipes/') ? (
+        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
+          Zum Rezept
+        </Text>
+      ) : (
+        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
+          Zur Seite
+        </Text>
+      )}
     </LinkBox>
   );
 };

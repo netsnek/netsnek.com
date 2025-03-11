@@ -1,4 +1,4 @@
-import { useCMSManagementContext } from '@atsnek/jaen';
+import { useCMSManagementContext } from 'jaen';
 import {
   NavMenuSection,
   NavMenuItem,
@@ -81,6 +81,7 @@ export function createPageTree(
 
   const menuData: NavMenuSection[] = [
     {
+      name: 'Blog Artikel',
       items: docsTree.children
         .filter((child: any) => !child.deleted)
         .map(({ id }: any) => buildMenuItem(id))

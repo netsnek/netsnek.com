@@ -4,9 +4,9 @@ import { buildSearchIndex } from '../../utils/search/build-search-index';
 import { getBuiltSearchIndex } from '../../utils/search/get-built-search-index';
 import { mergeSearchIndex } from '../../utils/search/merge-search-index';
 import { SearchIndex } from './types';
-import { useDynamicPaths } from '@atsnek/jaen';
+import { useDynamicPaths } from 'jaen';
 import { useJaenPagePaths } from 'gatsby-plugin-jaen';
-import { useAppSelector } from '@atsnek/jaen';
+import { useAppSelector } from 'jaen';
 import { getDefaultSearchDocs, searchDocs } from '../../utils/search';
 import { TSearchResultSection } from '../../utils/search/types';
 
@@ -49,8 +49,6 @@ const useDocsSearch = (query?: string): UseSearchResult => {
         setSearchIndex(builtSearchIndexRef.current);
       } else {
         const builtSearchIndex = await getBuiltSearchIndex();
-
-        console.log('builtSearchIndex', builtSearchIndex);
 
         if (builtSearchIndex) {
           builtSearchIndexRef.current = builtSearchIndex; // Cache the builtSearchIndex
@@ -109,6 +107,7 @@ const useDocsSearch = (query?: string): UseSearchResult => {
       if (!searchIndex) {
         setSearchResults([]);
       } else if (!query) {
+        // Set default search results
         setSearchResults(searchDocs('OpenQASM', searchIndex));
       } else {
         const docsResults = searchDocs(query, searchIndex);
