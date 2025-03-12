@@ -34,9 +34,10 @@ const useSearch = (
           !!section.to?.startsWith('/docs/') ||
           !!section.results[0]?.to?.startsWith('/docs/')
         ),
-        icon: <TbApple />
+        icon: <TbBooks />
       },
-      ...socialSearch.searchResults
+      // Temporarily disable community search results
+      // ...socialSearch.searchResults
     };
   }, [docsSearch, socialSearch]);
 
