@@ -52,7 +52,7 @@ const useSocialSearch = (query?: string) => {
     let usersResult: TSearchResultSection | undefined = undefined;
     let postsResult: TSearchResultSection | undefined = undefined;
 
-    if (searched.users?.nodes) {
+    if (searched.users?.nodes?.length) {
       usersResult = {
         title: 'Users',
         results: searched.users.nodes.map(user => ({
@@ -65,7 +65,7 @@ const useSocialSearch = (query?: string) => {
       };
     }
 
-    if (searched.posts?.nodes) {
+    if (searched.posts?.nodes?.length) {
       postsResult = {
         title: 'Experiments',
         results: searched.posts.nodes.map(post => ({
