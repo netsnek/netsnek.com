@@ -6,7 +6,7 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://barbara-mauz.at/`
+    siteUrl: `https://netsnek.com/`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -25,8 +25,8 @@ const config: GatsbyConfig = {
           repository: 'netsnek/netsnek.com'
         },
         zitadel: {
-          organizationId: '278641258304378483',
-          clientId: '278642690558596723@barbara-mauz',
+          organizationId: '268210807970535009',
+          clientId: '268283382465631862@cms',
           authority: 'https://accounts.netsnek.com',
           redirectUri:
             process.env.NODE_ENV === 'production'
