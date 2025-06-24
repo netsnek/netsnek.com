@@ -69,7 +69,7 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ childr
 
   const onSubmit = async (data: ContactFormValues): Promise<void> => {
     const { errors } = await sendTemplateMail(
-      '68d4c136-7d75-40cc-ba74-079a0dca4044', // replace with your actual template ID
+      '5b8c57b7-acc4-4ab2-9268-aba3f2f5d4de', // replace with your actual template ID
       {
         envelope: {
           replyTo: data.email,
