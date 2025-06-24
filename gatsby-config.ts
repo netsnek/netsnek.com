@@ -32,7 +32,9 @@ const config: GatsbyConfig = {
             process.env.NODE_ENV === 'production'
               ? 'https://netsnek.com'
               : 'https://redesigned-carnival-4gq4rvwqwvhq4pp-8000.app.github.dev',
-          projectIds: ['263491274097563233']
+          projectIds: [
+            '2268283277977065078'
+          ]
         },
         // sentry: {
         //   org: 'photonq',
