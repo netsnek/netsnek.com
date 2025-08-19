@@ -20,7 +20,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-jaen`,
       options: {
-        pylonUrl: 'https://pylons.photonq.org/jaen-agent/graphql',
+        pylonUrl: 'https://services.netsnek.com/jaen/graphql',
         remote: {
           repository: 'netsnek/netsnek.com'
         },
@@ -33,7 +33,7 @@ const config: GatsbyConfig = {
               ? 'https://netsnek.com'
               : 'https://redesigned-carnival-4gq4rvwqwvhq4pp-8000.app.github.dev',
           projectIds: [
-            '2268283277977065078'
+            '268283277977065078'
           ]
         },
         // sentry: {
