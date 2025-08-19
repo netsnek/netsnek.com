@@ -219,10 +219,10 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               Hauptquartier
             </Text>
             <Text color="gray.400" fontSize="md">
-              Löwengasse 28
+              Löwengasse 14 / Lokal 2
             </Text>
             <Text color="gray.400" fontSize="md">
-              1030 Vienna, Austria
+              1030 Wien, Österreich
             </Text>
           </Box>
           <Box
