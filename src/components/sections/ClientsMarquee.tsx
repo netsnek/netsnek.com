@@ -33,11 +33,6 @@ const clients: Client[] = [
     logo: '/images/clients/ballons.svg'
   },
   {
-    href: 'https://kanbon.at/',
-    name: 'Kanbon',
-    logo: '/images/clients/kanbon.svg'
-  },
-  {
     href: 'https://www.pharmaziegasse.at/',
     name: 'Pharmaziegasse',
     logo: '/images/clients/pharmaziegasse.svg'
