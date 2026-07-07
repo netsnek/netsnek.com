@@ -44,7 +44,7 @@ const Services = () => {
             borderColor="#f9f9f9"
             boxShadow="sm">
             <Image
-              src="https://kanbon.at/wp-content/uploads/2024/02/beratung.jpg"
+              src="/images/services/beratung.jpg"
               alt="Beratung"
               h="200px"
               w="full"
@@ -70,7 +70,7 @@ const Services = () => {
             borderColor="#f9f9f9"
             boxShadow="sm">
             <Image
-              src="https://kanbon.at/wp-content/uploads/2021/12/Mockup_Arneitz-scaled.jpg"
+              src="/images/services/mockup-arneitz.jpg"
               alt="Entwicklung"
               h="200px"
               w="full"
