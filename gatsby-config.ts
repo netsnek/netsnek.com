@@ -36,11 +36,6 @@ const config: GatsbyConfig = {
             '268283277977065078'
           ]
         },
-        // sentry: {
-        //   org: 'photonq',
-        //   project: 'website',
-        //   dsn: 'https://37ffbc7589f79cfab5936ce5fca4f310@sentry.cronit.io/10'
-        // },
         googleAnalytics: {
           trackingIds: ['G-7PWLR452L9']
         }
