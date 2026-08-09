@@ -108,7 +108,7 @@ const useDocsSearch = (query?: string): UseSearchResult => {
         setSearchResults([]);
       } else if (!query) {
         // Set default search results
-        setSearchResults(searchDocs('OpenQASM', searchIndex));
+        setSearchResults(getDefaultSearchDocs(searchIndex));
       } else {
         const docsResults = searchDocs(query, searchIndex);
 

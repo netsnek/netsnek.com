@@ -7,11 +7,9 @@ import { useAuth, useCMSManagementContext } from 'jaen';
 import { useLocation } from '@reach/router';
 import { MenuStructureContext } from '../../contexts/menu-structure';
 import { createPageTree } from '../../utils/navigation';
-import CommunityLayout from './CommunityLayout';
 import DocsLayout from './DocsLayout';
 import Footer from './Footer';
 import { GridPattern } from '../GridPattern';
-import PostLayout from './PostLayout';
 
 interface AppLayoutProps {
   children?: React.ReactNode;
@@ -41,21 +39,8 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
 
   let childrenElmnt: ReactNode = null;
 
-  const isCommunity = ['/experiments', '/experiments/'].includes(path);
-
-  if (isDocs || isCommunity) {
-    childrenElmnt = (
-      <DocsLayout path={path} isCommunity={isCommunity}>
-        {children}
-      </DocsLayout>
-    );
-  } else if (
-    (path.startsWith('/experiments') &&
-      path !== '/experiments/' &&
-      path !== '/experiments') ||
-    path.startsWith('/new/experiment')
-  ) {
-    childrenElmnt = <PostLayout>{children}</PostLayout>;
+  if (isDocs) {
+    childrenElmnt = <DocsLayout path={path}>{children}</DocsLayout>;
   } else {
     childrenElmnt = children;
   }

@@ -18,14 +18,6 @@ import {
   useRef,
   useState
 } from 'react';
-import { FaFlask } from '@react-icons/all-files/fa/FaFlask';
-
-// import {
-//   fetchDefaultSearchresult,
-//   searchDocs,
-//   searchSocialPosts,
-//   searchUser
-// } from '../../utils/search';
 import useSearch from '../../hooks/use-search';
 import theme from '../../styles/theme/theme';
 import {
@@ -34,8 +26,6 @@ import {
 } from './SearchResultSection';
 import SearchButton from './SearchButton';
 import SearchModal from './SearchModal';
-import TbBooks from '../icons/tabler/TbBooks';
-import TbUser from '../icons/tabler/TbUser';
 import { useAuth } from 'jaen';
 import { navigate } from 'gatsby';
 import { useSearchContext } from '../../contexts/search';
