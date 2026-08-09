@@ -16,7 +16,10 @@ import {
   Tooltip
 } from '@chakra-ui/react';
 import { FC, useState, useEffect } from 'react';
+import { useIntl } from 'react-intl';
 import { useContactModal } from '../../services/contact';
+import { usePageLocale } from '../../contexts/locale';
+import LanguageSwitcher from '../LanguageSwitcher';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
@@ -39,6 +42,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
   hamburgerIconProps = {
     color: 'red.500'
   };
+
+  const intl = useIntl();
+  const { prefix } = usePageLocale();
+
+  const localizeHref = (href: string) => (prefix ? `/${prefix}${href}` : href);
 
   const contactModal = useContactModal();
   const handleOnContactClick = () => {
@@ -143,7 +151,12 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Unsere Services</LinkOverlay>
+            <LinkOverlay href={localizeHref('/docs')}>
+              {intl.formatMessage({
+                id: 'AltNavServices',
+                defaultMessage: 'Unsere Services'
+              })}
+            </LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="team"
@@ -161,7 +174,12 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Dokumentation</LinkOverlay>
+            <LinkOverlay href={localizeHref('/docs')}>
+              {intl.formatMessage({
+                id: 'AltNavDocs',
+                defaultMessage: 'Dokumentation'
+              })}
+            </LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="portfolio"
@@ -179,7 +197,12 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Unser Portfolio</LinkOverlay>
+            <LinkOverlay href={localizeHref('/docs')}>
+              {intl.formatMessage({
+                id: 'AltNavPortfolio',
+                defaultMessage: 'Unser Portfolio'
+              })}
+            </LinkOverlay>
           </LinkBox>
           <LinkBox
             gridArea="blog"
@@ -197,7 +220,12 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/docs">Blog</LinkOverlay>
+            <LinkOverlay href={localizeHref('/docs')}>
+              {intl.formatMessage({
+                id: 'AltNavBlog',
+                defaultMessage: 'Blog'
+              })}
+            </LinkOverlay>
           </LinkBox>
           <Box
             gridArea="offices"
@@ -239,7 +267,10 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
           >
             {/* Social media links here */}
             <Text color="white" fontWeight="bold" fontSize="lg">
-              Folge uns auf
+              {intl.formatMessage({
+                id: 'AltNavFollowUs',
+                defaultMessage: 'Folge uns auf'
+              })}
             </Text>
             <HStack spacing="8">
               <LinkBox
@@ -306,7 +337,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             justifyContent="space-between"
           >
             <LinkBox height="100%" flex="2" mr="4" display="flex">
-              <LinkOverlay href="/" color="white">
+              <LinkOverlay href={localizeHref('/')} color="white">
                 <Logo height="100%" color="black" />
               </LinkOverlay>
             </LinkBox>
@@ -330,7 +361,10 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 color="white"
                 display={{ base: 'none', md: 'block' }}
               >
-                Jetzt anfragen
+                {intl.formatMessage({
+                  id: 'AltNavRequestNow',
+                  defaultMessage: 'Jetzt anfragen'
+                })}
               </Button>
               {/* <Button
                   ml={4}
@@ -343,6 +377,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   display={{base: 'none', md: 'block'}}>
                   Login
                 </Button> */}
+              <LanguageSwitcher ml={4} color="white" />
               <IconButton
                 ml={4}
                 icon={
@@ -388,7 +423,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             justifyContent="space-between"
           >
             <LinkBox height="100%" flex="2" mr="4" display="flex">
-              <LinkOverlay href="/" color="white">
+              <LinkOverlay href={localizeHref('/')} color="white">
                 <Logo height="100%" color="white" />
               </LinkOverlay>
             </LinkBox>
@@ -419,7 +454,10 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 color="black"
                 display={{ base: 'none', md: 'block' }}
               >
-                Jetzt anfragen
+                {intl.formatMessage({
+                  id: 'AltNavRequestNow',
+                  defaultMessage: 'Jetzt anfragen'
+                })}
               </Button>
               {/* <Button
                   ml={4}
@@ -437,6 +475,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   display={{base: 'none', md: 'block'}}>
                   Login
                 </Button> */}
+              <LanguageSwitcher ml={4} color="white" />
               <IconButton
                 ml={4}
                 _hover={{

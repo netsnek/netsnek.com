@@ -19,7 +19,10 @@ import {
 import { useLocation } from '@reach/router';
 import { Link } from 'gatsby-plugin-jaen';
 import { FC, useEffect, useMemo, useState } from 'react';
+import { useIntl } from 'react-intl';
+import { usePageLocale } from '../../contexts/locale';
 import Logo from '../../gatsby-plugin-jaen/components/Logo';
+import LanguageSwitcher from '../LanguageSwitcher';
 import useWindowSize from '../../hooks/use-current-window-size';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import HamburgerMenuIcon from '../HamburgerMenuIcon';
@@ -63,28 +66,41 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
 
   const location = useLocation();
   const windowSize = useWindowSize();
+  const intl = useIntl();
+  const { prefix } = usePageLocale();
+
+  const localizeHref = (href: string) => (prefix ? `/${prefix}${href}` : href);
 
   const links: { left: TTopNavLinkData[]; right: TTopNavLinkData[] } = {
     left: [
       {
-        name: 'Home',
-        href: '/',
+        name: intl.formatMessage({ id: 'NavHome', defaultMessage: 'Home' }),
+        href: localizeHref('/'),
         matchMethod: 'exact'
       },
       {
-        name: 'Documentation',
-        href: '/docs/',
+        name: intl.formatMessage({
+          id: 'NavDocs',
+          defaultMessage: 'Dokumentation'
+        }),
+        href: localizeHref('/docs/'),
         matchMethod: 'includes'
       }
     ],
     right: [
       {
-        name: 'Sign In',
+        name: intl.formatMessage({
+          id: 'NavSignIn',
+          defaultMessage: 'Anmelden'
+        }),
         matchMethod: 'exact',
         onClick: signinRedirect
       },
       {
-        name: 'Sign Up',
+        name: intl.formatMessage({
+          id: 'NavSignUp',
+          defaultMessage: 'Registrieren'
+        }),
         matchMethod: 'exact',
         href: '/signup',
         style: {
@@ -237,7 +253,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
           <Flex w="full" maxW="7xl">
             <Link
               h="60px"
-              to="/"
+              to={localizeHref('/')}
               w="150px"
               _hover={{
                 transform: 'scale(1.1)'
@@ -311,6 +327,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
                     color: 'topNav.links.active.color'
                   }}
                 />
+                <LanguageSwitcher />
               </HStack>
             </Center>
           </Flex>

@@ -1,9 +1,10 @@
-import { Box, Collapse, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Collapse, Flex, HStack, Spacer } from '@chakra-ui/react';
 import { Global } from '@emotion/react';
 import { useLocation } from '@reach/router';
 import { FC } from 'react';
 import { useMenuStructureContext } from '../../contexts/menu-structure';
 import useNavOffset from '../../hooks/use-nav-offset';
+import LanguageSwitcher from '../LanguageSwitcher';
 import SearchMenu from '../search-menu';
 import NavbarControls from './NavbarControls';
 import PageDirectory from './page-directory/PageDirectory';
@@ -47,7 +48,10 @@ const MobileNavDrawer: FC<MobileNavDrawerProps> = ({
             px={9}
             overflowY="scroll"
           >
-            <SearchMenu />
+            <HStack alignItems="center" spacing={2}>
+              <SearchMenu />
+              <LanguageSwitcher />
+            </HStack>
             <Box mt={5}>
               <PageDirectory
                 isMobile
