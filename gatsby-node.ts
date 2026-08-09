@@ -4,18 +4,6 @@ import path from 'path';
 import fs from 'fs';
 import { buildSearchIndex } from './src/utils/search/build-search-index';
 
-export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
-  actions
-}) => {
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        '@/clients': path.resolve(__dirname, 'src/clients')
-      }
-    }
-  });
-};
-
 export const onPostBuild: GatsbyNode['onPostBuild'] = async ({
   graphql,
   reporter
