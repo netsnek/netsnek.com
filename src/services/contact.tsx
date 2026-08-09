@@ -1,7 +1,8 @@
 // contact.tsx
 import React, { useMemo } from "react"
 import { useToast } from "@chakra-ui/react"
-import { sendTemplateMail } from "gatsby-jaen-mailpress"
+import { sendTemplateMail } from "gatsby-jaen-emailwerk"
+import { useIntl } from "react-intl"
 import { useLocation } from "@reach/router"
 import { ContactFormValues, ContactModal } from "../components/ContactModal/ContactModal"
 import { useAuth } from "jaen"
@@ -46,6 +47,7 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ childr
   }, [isCalled])
 
   const toast = useToast()
+  const intl = useIntl()
   const authentication = useAuth()
 
   const onOpen: ContactModalContextProps["onOpen"] = (args) => {
@@ -68,7 +70,7 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ childr
   }
 
   const onSubmit = async (data: ContactFormValues): Promise<void> => {
-    const { errors } = await sendTemplateMail(
+    const result = await sendTemplateMail(
       '5b8c57b7-acc4-4ab2-9268-aba3f2f5d4de', // replace with your actual template ID
       {
         envelope: {
@@ -85,18 +87,30 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ childr
       }
     )
 
-    if (errors) {
+    if (!result.ok) {
       toast({
-        title: "Fehler",
-        description: "Es ist ein Fehler aufgetreten.",
+        title: intl.formatMessage({
+          id: "ContactToastErrorTitle",
+          defaultMessage: "Fehler",
+        }),
+        description: intl.formatMessage({
+          id: "ContactToastErrorDescription",
+          defaultMessage: "Es ist ein Fehler aufgetreten.",
+        }),
         status: "error",
         duration: 5000,
         isClosable: true,
       })
     } else {
       toast({
-        title: "Erfolg",
-        description: "Ihre Nachricht wurde erfolgreich versendet.",
+        title: intl.formatMessage({
+          id: "ContactToastSuccessTitle",
+          defaultMessage: "Erfolg",
+        }),
+        description: intl.formatMessage({
+          id: "ContactToastSuccessDescription",
+          defaultMessage: "Ihre Nachricht wurde erfolgreich versendet.",
+        }),
         status: "success",
         duration: 5000,
         isClosable: true,
