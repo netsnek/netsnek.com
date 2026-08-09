@@ -84,7 +84,7 @@ export const pageConfig: PageConfig = {
   menu: {
     type: 'app',
     order: 100,
-    group: 'photonq'
+    group: 'netsnek'
   }
 };
 

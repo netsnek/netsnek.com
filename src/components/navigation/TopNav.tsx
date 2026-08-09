@@ -182,7 +182,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
     wrapperProps = {
       ...wrapperProps,
       backgroundColor: 'rgba(13, 14, 17, 0.7)',
-      color: 'pq.layout.topNav.color',
+      color: 'white',
       borderBottom: 'none'
     };
     linkProps = {
@@ -201,7 +201,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
     linkProps = {
       ...linkProps,
       _hover: {
-        color: 'pq.500'
+        color: 'brand.500'
       }
     };
   }
@@ -284,8 +284,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
                   {...(colorMode === 'dark'
                     ? {
                         _hover: {
-                          bgColor:
-                            'pq.layout.topNav.dark.mobileMenuButton.backgroundColor'
+                          bgColor: 'rgba(22, 23, 29, 0.3)'
                         }
                       }
                     : {})}
@@ -293,7 +292,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
                   <HamburgerMenuIcon
                     wrapperProps={{ className: hamburgerClass }}
                     iconProps={{
-                      bgColor: `pq.layout.topNav.${colorMode}.hamburger.backgroundColor`
+                      bgColor: colorMode === 'dark' ? 'white' : 'black'
                     }}
                   />
                 </Button>

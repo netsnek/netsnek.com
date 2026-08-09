@@ -106,7 +106,7 @@ const Footer: FC = () => {
       //       <Link
       //         key={i}
       //         href={link.href}
-      //         variant="pq-footer"
+      //         variant="footer"
       //         color="white"
       //         opacity={0.7}
       //       >

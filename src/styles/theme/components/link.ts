@@ -22,7 +22,7 @@ const themeLinkComponent = {
       },
       transition: 'opacity 0.1s ease-in-out'
     },
-    'pq-footer': {
+    footer: {
       fontWeight: 500,
       opacity: 0.6,
       _hover: {

@@ -13,11 +13,7 @@ import smtLeftNav from './layout/leftNav';
 import smtMain from './layout/main';
 import smtRightNav from './layout/rightNav';
 import smtTopNav from './layout/topNav';
-import smtPqTopNav from '../photonq/semanticTokens/layout/topNav';
-import smtPqShared from '../photonq/semanticTokens/shared';
 import smtShared from './shared';
-import smtPqSectionLabel from '../photonq/semanticTokens/components/sectionLabel';
-import smtPqFeatureCard from '../photonq/semanticTokens/components/featureCard';
 import smtcodeResultPreviewComponent from '../../../components/main-content/code-result-preview/styles/codeResultPreview';
 // import smtUserProfilePage from '../../../components/user/profile/styles/userProfile';
 // import smtUserActivityComponent from '../../../components/user/activity/styles/userActivity';
@@ -36,13 +32,9 @@ import smtImageComponent from './components/image';
 import smtBadgeComponent from './components/badge';
 // import smtSinglePostPage from '../../../components/post/styles/singlePost';
 import smtSearchFeature from './features/search';
-import smtPqFeaturesSection from '../photonq/semanticTokens/sections/features';
-import smtPqPhotonQSection from '../photonq/semanticTokens/sections/photonQ';
-import smtPqAboutUsSection from '../photonq/semanticTokens/sections/aboutUs';
 import smtPageDirectoryComponent from '../components/pageDirectory';
 // import smtUserAvatarComponent from '../../../components/user/avatar/styles/userAvatar';
 import smtLinkComponent from './components/link';
-import smtPqSectionTitle from '../photonq/semanticTokens/components/sectionTitle';
 
 const themeSemanticTokens = {
   colors: {
@@ -98,27 +90,7 @@ const themeSemanticTokens = {
     leftNav: smtLeftNav,
     main: smtMain,
     rightNav: smtRightNav,
-    footer: smtFooter,
-
-    /**
-     * PHOTONQ SECTION
-     */
-    pq: {
-      shared: smtPqShared,
-      layout: {
-        topNav: smtPqTopNav
-      },
-      components: {
-        sectionLabel: smtPqSectionLabel,
-        sectionTitle: smtPqSectionTitle,
-        featureCard: smtPqFeatureCard
-      },
-      sections: {
-        features: smtPqFeaturesSection,
-        photonq: smtPqPhotonQSection,
-        aboutUs: smtPqAboutUsSection
-      }
-    }
+    footer: smtFooter
   }
 };
 
