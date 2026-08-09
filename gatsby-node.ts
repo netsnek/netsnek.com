@@ -28,6 +28,83 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
   };
 
 /**
+ * WORKAROUND for a jaen-side SSR bug: the CMS pages of the i18n branch use
+ * function labels (`({intl}) => intl.formatMessage(...)`) in their
+ * pageConfig. readPageConfig serializes them into the page context as
+ * `{type: 'function', value: '<source>'}`, and jaen's Head renders
+ * `pageContext.pageConfig.label` directly (packages/jaen/src/Head/
+ * Head.tsx:31) — an object child crashes static HTML generation for every
+ * /cms/* page. Until jaen skips non-string labels in Head, rewrite the
+ * serialized function labels to their defaultMessage string.
+ */
+const DEFAULT_MESSAGE_PATTERN = /defaultMessage:\s*["'`]([^"'`]*)["'`]/;
+
+const isSerializedFunction = (value: unknown): value is { value: string } =>
+  typeof value === 'object' &&
+  value !== null &&
+  (value as { type?: string }).type === 'function' &&
+  typeof (value as { value?: string }).value === 'string';
+
+/** Serialized function label -> its defaultMessage string (or null). */
+const sanitizeLabel = (label: unknown): unknown => {
+  if (isSerializedFunction(label)) {
+    return DEFAULT_MESSAGE_PATTERN.exec(label.value)?.[1] ?? null;
+  }
+
+  return label;
+};
+
+const sanitizePageConfig = (pageConfig: any): { changed: boolean; next: any } => {
+  let changed = false;
+
+  const next = { ...pageConfig };
+
+  if (isSerializedFunction(next.label)) {
+    next.label = sanitizeLabel(next.label);
+    changed = true;
+  }
+
+  if (next.menu && isSerializedFunction(next.menu.label)) {
+    next.menu = { ...next.menu, label: sanitizeLabel(next.menu.label) };
+    changed = true;
+  }
+
+  if (Array.isArray(next.breadcrumbs)) {
+    const breadcrumbs = next.breadcrumbs.map((crumb: any) =>
+      crumb && isSerializedFunction(crumb.label)
+        ? { ...crumb, label: sanitizeLabel(crumb.label) }
+        : crumb
+    );
+
+    if (breadcrumbs.some((crumb: any, i: number) => crumb !== next.breadcrumbs[i])) {
+      next.breadcrumbs = breadcrumbs;
+      changed = true;
+    }
+  }
+
+  return { changed, next };
+};
+
+export const onCreatePage: GatsbyNode['onCreatePage'] = ({ page, actions }) => {
+  const pageConfig = (page.context as any)?.pageConfig;
+
+  if (!pageConfig) return;
+
+  const { changed, next } = sanitizePageConfig(pageConfig);
+
+  if (!changed) return;
+
+  actions.deletePage(page);
+  actions.createPage({
+    ...page,
+    context: {
+      ...page.context,
+      pageConfig: next
+    }
+  });
+};
+
+/**
  * The jaen packages are consumed via yarn `link:` from the local monorepo.
  * Their own node_modules would otherwise pull in a second copy of react,
  * emotion and chakra — alias the singletons to the site's copies.
