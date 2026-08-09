@@ -2,10 +2,7 @@ import { PageConfig, PageProps } from 'jaen';
 import { Global } from '@emotion/react';
 
 import { graphql } from 'gatsby';
-import AboutUs from '../components/sections/AboutUs';
-import Features from '../components/sections/Features';
 import Hero from '../components/sections/Hero';
-import PhotonQ from '../components/sections/PhotonQ';
 import ClientsMarquee from '../components/sections/ClientsMarquee';
 import { Container } from '@chakra-ui/react';
 import Services from '../components/sections/Services';
@@ -34,9 +31,6 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <NewsSlider showNewsTitle={true} /> */}
         <ServicesDetails />
       </Container>
-      {/* <Features />
-      <PhotonQ />
-      <AboutUs /> */}
       <Contact />
       <GoogleMaps
         objectFit="cover"
