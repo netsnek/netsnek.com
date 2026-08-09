@@ -46,6 +46,7 @@
   },
   "resolutions": {
     "msgpackr": "^1.10.2",
+    "ordered-binary": "^1.5.3",
     "jaen": "link:../jaen/packages/jaen",
     "gatsby-plugin-jaen": "link:../jaen/packages/gatsby-plugin-jaen",
     "gatsby-source-jaen": "link:../jaen/packages/gatsby-source-jaen",
