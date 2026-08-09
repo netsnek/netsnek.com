@@ -47,6 +47,7 @@
   "resolutions": {
     "msgpackr": "^1.10.2",
     "ordered-binary": "^1.5.3",
+    "graphql": "link:../jaen/node_modules/graphql",
     "jaen": "link:../jaen/packages/jaen",
     "gatsby-plugin-jaen": "link:../jaen/packages/gatsby-plugin-jaen",
     "gatsby-source-jaen": "link:../jaen/packages/gatsby-source-jaen",
@@ -61,6 +62,7 @@
     "@types/react-dom": "^18.2.6",
     "@types/react-highlight-words": "^0.16.4",
     "@types/uuid": "^9.0.8",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "patch-package": "^8.0.0",
     "typescript": "^5.1.6"
   }
