@@ -8,8 +8,11 @@ import {
   Grid
 } from '@chakra-ui/react'
 import { Field } from 'jaen'
+import { useIntl } from 'react-intl'
 
 const Services = () => {
+  const intl = useIntl()
+
   return (
     <Container
       as="section"
@@ -52,10 +55,17 @@ const Services = () => {
               borderRadius="md"
             />
             <Text mt={4} fontSize="xl" fontWeight="bold">
-              Beratung
+              {intl.formatMessage({
+                id: 'ServicesCardConsultingTitle',
+                defaultMessage: 'Beratung'
+              })}
             </Text>
             <Text mt={2} fontSize="md" color="gray.500">
-              Wir beraten Sie in allen Fragen rund um die Digitalisierung.
+              {intl.formatMessage({
+                id: 'ServicesCardConsultingText',
+                defaultMessage:
+                  'Wir beraten Sie in allen Fragen rund um die Digitalisierung.'
+              })}
             </Text>
           </Box>
         </GridItem>
@@ -78,10 +88,17 @@ const Services = () => {
               borderRadius="md"
             />
             <Text mt={4} fontSize="xl" fontWeight="bold">
-              Entwicklung
+              {intl.formatMessage({
+                id: 'ServicesCardDevelopmentTitle',
+                defaultMessage: 'Entwicklung'
+              })}
             </Text>
             <Text mt={2} fontSize="md" color="gray.500">
-              Wir entwickeln individuelle Softwarelösungen für Ihr Unternehmen.
+              {intl.formatMessage({
+                id: 'ServicesCardDevelopmentText',
+                defaultMessage:
+                  'Wir entwickeln individuelle Softwarelösungen für Ihr Unternehmen.'
+              })}
             </Text>
           </Box>
         </GridItem>

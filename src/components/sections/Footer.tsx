@@ -15,6 +15,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
+import { useIntl } from 'react-intl';
 import { Link } from 'gatsby-plugin-jaen';
 import { Field } from 'jaen';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
@@ -29,10 +30,15 @@ const year = new Date().getFullYear();
  * Footer component.
  */
 const Footer: FC = () => {
+  const intl = useIntl();
+
   const links = [
     [
       {
-        label: 'Links',
+        label: intl.formatMessage({
+          id: 'FooterLinksTitle',
+          defaultMessage: 'Links'
+        }),
         isTitle: true
       },
       {
@@ -62,7 +68,10 @@ const Footer: FC = () => {
     ],
     [
       {
-        label: 'Partner',
+        label: intl.formatMessage({
+          id: 'FooterPartnerTitle',
+          defaultMessage: 'Partner'
+        }),
         isTitle: true
       },
       {
@@ -76,7 +85,10 @@ const Footer: FC = () => {
     ],
     [
       {
-        label: 'Gestaltet von',
+        label: intl.formatMessage({
+          id: 'FooterDesignedByTitle',
+          defaultMessage: 'Gestaltet von'
+        }),
         isTitle: true
       },
       {
@@ -97,14 +109,11 @@ const Footer: FC = () => {
       <VStack spacing={3} alignItems="start" wrap="wrap" key={i}>
         {linkGroup.map((link, i) => {
           if ('isTitle' in link) {
+            // Group titles are localized chrome (react-intl), not CMS fields.
             return (
-              <Field.Text
-                key={i}
-                color="white"
-                name={'FooterLinkTitle' + link.label}
-                defaultValue={link.label}
-                fontWeight="500"
-              />
+              <Text key={i} color="white" fontWeight="500">
+                {link.label}
+              </Text>
             )
           }
           return (

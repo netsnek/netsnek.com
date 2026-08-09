@@ -12,10 +12,12 @@ import {
   chakra
 } from '@chakra-ui/react';
 import { FC } from 'react';
+import { useIntl } from 'react-intl';
 
 import { Field, useAuth } from 'jaen';
 import useNavOffset from '../../hooks/use-nav-offset';
 import { Link } from 'gatsby-plugin-jaen';
+import { usePageLocale } from '../../contexts/locale';
 
 // import {useContactModal} from '../services/contact'
 import Netsnek from '../../gatsby-plugin-jaen/components/Netsnek';
@@ -58,8 +60,26 @@ const ScrollArrows: React.FC<ScrollArrowsProps> = ({ isVisible }) => {
   );
 };
 
+/**
+ * Renders a localized string with every sentence terminator (`.` or `。`)
+ * in the brand color, reproducing the accent-dot styling of the original
+ * hardcoded headings across all locales.
+ */
+const withAccentDots = (text: string) =>
+  text.split(/([.。])/).map((part, index) =>
+    /^[.。]$/.test(part) ? (
+      <chakra.span key={index} color="brand.500">
+        {part}
+      </chakra.span>
+    ) : (
+      part
+    )
+  );
+
 const Hero: FC = () => {
   const navOffset = useNavOffset();
+  const intl = useIntl();
+  const { prefix } = usePageLocale();
 
   const isAuthenticated = useAuth().user !== null;
 
@@ -142,8 +162,12 @@ const Hero: FC = () => {
               lineHeight="1.5em"
               letterSpacing="4.2px"
             >
-              INNOVATIV<chakra.span color="brand.500">.</chakra.span> EFFEKTIV
-              <chakra.span color="brand.500">.</chakra.span>
+              {withAccentDots(
+                intl.formatMessage({
+                  id: 'HeroTitle',
+                  defaultMessage: 'INNOVATIV. EFFEKTIV.'
+                })
+              )}
             </Heading>
           </Box>
           <Box>
@@ -153,13 +177,20 @@ const Hero: FC = () => {
               fontWeight="900"
               lineHeight="1.1em"
             >
-              Professionelle Softwareentwicklung
-              <chakra.span color="brand.500">.</chakra.span>
+              {withAccentDots(
+                intl.formatMessage({
+                  id: 'HeroSubtitle',
+                  defaultMessage: 'Professionelle Softwareentwicklung.'
+                })
+              )}
             </Heading>
           </Box>
           <Text fontSize={'lg'} opacity={0.5}>
-            Ihre Softwareagentur in Österreich. Wir verhelfen Ihnen zu
-            maßgeschneiderten Softwarelösungen.
+            {intl.formatMessage({
+              id: 'HeroText',
+              defaultMessage:
+                'Ihre Softwareagentur in Österreich. Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen.'
+            })}
           </Text>
           <HStack spacing={4} mt={4}>
             <Button
@@ -168,20 +199,28 @@ const Hero: FC = () => {
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
               onClick={onContactClick}
             >
-              Kontakt
+              {intl.formatMessage({
+                id: 'HeroButtonContact',
+                defaultMessage: 'Kontakt'
+              })}
             </Button>
             <Button
               variant="outline"
               bg={'white'}
               borderRadius={'lg'}
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-              onClick={() => (window.location.href = '/docs')}
+              onClick={() =>
+                (window.location.href = prefix ? `/${prefix}/docs` : '/docs')
+              }
               borderColor={'brand.500'}
               color={'brand.500'}
               borderWidth={2}
               _hover={{ borderColor: 'brand.600', color: 'brand.600' }}
             >
-              Projekte ansehen
+              {intl.formatMessage({
+                id: 'HeroButtonProjects',
+                defaultMessage: 'Projekte ansehen'
+              })}
             </Button>
           </HStack>
         </VStack>

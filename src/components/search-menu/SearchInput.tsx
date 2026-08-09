@@ -19,6 +19,7 @@ import {
   KeyboardEvent as ReactKeyboardEvent,
   useState
 } from 'react';
+import { useIntl } from 'react-intl';
 
 import { getPlatform, isTouchDevice } from '../../utils/general';
 
@@ -38,6 +39,7 @@ interface SearchInputProps {
  */
 const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
   ({ setSearchQuery, openFirstLink, styleProps }, ref) => {
+    const intl = useIntl();
     const menu = useMenuContext();
     const menuButton = useMenuButton(
       {
@@ -107,7 +109,10 @@ const SearchInput = forwardRef<HTMLDivElement, SearchInputProps>(
           <Input
             type="text"
             htmlSize={20}
-            placeholder="Suche"
+            placeholder={intl.formatMessage({
+              id: 'SearchInputPlaceholder',
+              defaultMessage: 'Suche'
+            })}
             borderRadius="md"
             backgroundColor="blackAlpha.50"
             borderColor="topNav.input.borderColor"

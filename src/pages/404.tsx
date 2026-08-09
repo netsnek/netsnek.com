@@ -1,10 +1,13 @@
 import {PageConfig} from 'jaen'
 import {chakra, Box, Heading, Text, Button} from '@chakra-ui/react'
 import {graphql, Link, PageProps} from 'gatsby'
+import {useIntl} from 'react-intl'
 
 // import HBalloon from '../common/assets/hballoon.inline.svg'
 
 const Page = (props: PageProps) => {
+  const intl = useIntl()
+
   return (
     <Box textAlign="center" py={10} px={6}>
       <Heading
@@ -24,10 +27,16 @@ const Page = (props: PageProps) => {
         404
       </Heading>
       <Text fontSize="18px" mt={3} mb={2}>
-        Seite nicht gefunden
+        {intl.formatMessage({
+          id: 'NotFoundTitle',
+          defaultMessage: 'Seite nicht gefunden'
+        })}
       </Text>
       <Text color={'gray.500'} mb={6}>
-        Diese Seite existiert nicht.
+        {intl.formatMessage({
+          id: 'NotFoundText',
+          defaultMessage: 'Diese Seite existiert nicht.'
+        })}
       </Text>
 
       <Button
@@ -36,7 +45,10 @@ const Page = (props: PageProps) => {
         bgGradient="linear(to-r, brand.400, brand.500, brand.600)"
         color="white"
         variant="solid">
-        Zurück zur Startseite
+        {intl.formatMessage({
+          id: 'NotFoundBackHome',
+          defaultMessage: 'Zurück zur Startseite'
+        })}
       </Button>
     </Box>
   )

@@ -1,6 +1,7 @@
 import { withRedux } from 'jaen';
 import { Button, ButtonProps, Kbd } from '@chakra-ui/react';
 import { FC } from 'react';
+import { useIntl } from 'react-intl';
 import { SearchIcon } from '@chakra-ui/icons';
 
 interface ISearchButtonProps extends ButtonProps {
@@ -13,6 +14,7 @@ interface ISearchButtonProps extends ButtonProps {
  */
 const SearchButton: FC<ISearchButtonProps> = withRedux(
   ({ openModal, navigate, ...props }) => {
+    const intl = useIntl();
     // const [isMobile] = useMediaQuery('(max-width: 768px)'); // Adjust the breakpoint as needed
 
     const onKeyPress = (e: any) => {
@@ -114,7 +116,10 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         >
           /
         </Kbd>
-        Suche
+        {intl.formatMessage({
+          id: 'SearchButtonLabel',
+          defaultMessage: 'Suche'
+        })}
       </Button>
     );
   }

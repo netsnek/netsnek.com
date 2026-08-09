@@ -11,8 +11,11 @@ import {
 import { StylizedImage } from '../StylizedImage';
 import servicesSvg from '../../assets/images/services.svg';
 import { Field } from 'jaen';
+import { useIntl } from 'react-intl';
 
 const Services = () => {
+  const intl = useIntl();
+
   return (
     <Box as="section">
       <Field.Text
@@ -56,46 +59,62 @@ const Services = () => {
             {/* For each ListItem you can create a custom component or structure here */}
             <Box mb="6">
               <Heading as="h4" size="md">
-                UX-Konzeption
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemUxTitle',
+                  defaultMessage: 'UX-Konzeption'
+                })}
               </Heading>
               <Text mt="2">
-                Durch den Einsatz moderner UX-Methoden gestalten wir
-                benutzerfreundliche und intuitive Oberflächen.
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemUxText',
+                  defaultMessage:
+                    'Durch den Einsatz moderner UX-Methoden gestalten wir benutzerfreundliche und intuitive Oberflächen.'
+                })}
               </Text>
             </Box>
             <Box mb="6">
               <Heading as="h4" size="md">
-                Web development
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemWebTitle',
+                  defaultMessage: 'Web development'
+                })}
               </Heading>
               <Text mt="2">
-                Wir kreieren moderne Websites und Webanwendungen, die exakt auf
-                Ihre individuellen Bedürfnisse zugeschnitten sind.
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemWebText',
+                  defaultMessage:
+                    'Wir kreieren moderne Websites und Webanwendungen, die exakt auf Ihre individuellen Bedürfnisse zugeschnitten sind.'
+                })}
               </Text>
             </Box>
             <Box mb="6">
               <Heading as="h4" size="md">
-                Backend development
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemBackendTitle',
+                  defaultMessage: 'Backend development'
+                })}
               </Heading>
               <Text mt="2">
-                Unsere maßgeschneiderten Backend-Lösungen werden speziell auf
-                Ihre Anforderungen abgestimmt und basieren auf dem Framework{' '}
-                <Link href="/jaen" textDecoration="underline">
-                  Pylon
-                </Link>
-                .
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemBackendText',
+                  defaultMessage:
+                    'Unsere maßgeschneiderten Backend-Lösungen werden speziell auf Ihre Anforderungen abgestimmt und basieren auf dem Framework Pylon.'
+                })}
               </Text>
             </Box>
             <Box mb="6">
               <Heading as="h4" size="md">
-                Content management
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemCmsTitle',
+                  defaultMessage: 'Content management'
+                })}
               </Heading>
               <Text mt="2">
-                Mit{' '}
-                <Link href="/jaen" textDecoration="underline">
-                  Jaen
-                </Link>{' '}
-                als Content-Management-System ermöglichen wir es Ihnen, Ihre
-                Website eigenständig zu verwalten.
+                {intl.formatMessage({
+                  id: 'ServiceDetailsItemCmsText',
+                  defaultMessage:
+                    'Mit Jaen als Content-Management-System ermöglichen wir es Ihnen, Ihre Website eigenständig zu verwalten.'
+                })}
               </Text>
             </Box>
           </Box>

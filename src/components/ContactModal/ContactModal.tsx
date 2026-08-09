@@ -17,6 +17,7 @@ import {
   Textarea
 } from '@chakra-ui/react'
 import React from 'react'
+import { useIntl } from 'react-intl'
 import { Controller, useForm } from 'react-hook-form'
 import { CheckboxStyled } from './CheckboxStyled'
 
@@ -55,6 +56,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   fixedValues,
   defaultValues
 }) => {
+  const intl = useIntl()
+
   const {
     register,
     control,
@@ -105,22 +108,34 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   md: 'lg'
                 }}
               >
-                Kontaktieren Sie uns
+                {intl.formatMessage({
+                  id: 'ContactModalHeading',
+                  defaultMessage: 'Kontaktieren Sie uns'
+                })}
               </Heading>
 
               <Text size="b2015">
-                Wir freuen uns über Ihre Nachricht und werden uns
-                schnellstmöglich bei Ihnen melden.
+                {intl.formatMessage({
+                  id: 'ContactModalIntro',
+                  defaultMessage:
+                    'Wir freuen uns über Ihre Nachricht und werden uns schnellstmöglich bei Ihnen melden.'
+                })}
               </Text>
 
               <HStack>
                 <FormControl isRequired isInvalid={!!errors.firstName}>
                   <FormLabel htmlFor="firstName" fontSize="sm">
-                    Vorname
+                    {intl.formatMessage({
+                      id: 'ContactModalFirstNameLabel',
+                      defaultMessage: 'Vorname'
+                    })}
                   </FormLabel>
                   <Input
                     id="firstName"
-                    placeholder="Max"
+                    placeholder={intl.formatMessage({
+                      id: 'ContactModalFirstNamePlaceholder',
+                      defaultMessage: 'Max'
+                    })}
                     {...register('firstName', {
                       required: true
                     })}
@@ -137,11 +152,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </FormControl>
                 <FormControl isRequired isInvalid={!!errors.lastName}>
                   <FormLabel htmlFor="lastName" fontSize="sm">
-                    Nachname
+                    {intl.formatMessage({
+                      id: 'ContactModalLastNameLabel',
+                      defaultMessage: 'Nachname'
+                    })}
                   </FormLabel>
                   <Input
                     id="lastName"
-                    placeholder="Mustermann"
+                    placeholder={intl.formatMessage({
+                      id: 'ContactModalLastNamePlaceholder',
+                      defaultMessage: 'Mustermann'
+                    })}
                     {...register('lastName', {
                       required: true
                     })}
@@ -160,11 +181,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <HStack>
                 <FormControl isRequired isInvalid={!!errors.email}>
                   <FormLabel htmlFor="email" fontSize="sm">
-                    E-Mail
+                    {intl.formatMessage({
+                      id: 'ContactModalEmailLabel',
+                      defaultMessage: 'E-Mail'
+                    })}
                   </FormLabel>
                   <Input
                     id="email"
-                    placeholder="max.mustermann@example.com"
+                    placeholder={intl.formatMessage({
+                      id: 'ContactModalEmailPlaceholder',
+                      defaultMessage: 'max.mustermann@example.com'
+                    })}
                     type="email"
                     {...register('email', {
                       required: true
@@ -182,11 +209,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </FormControl>
                 <FormControl isInvalid={!!errors.email}>
                   <FormLabel htmlFor="phone" fontSize="sm">
-                    Telefonnummer
+                    {intl.formatMessage({
+                      id: 'ContactModalPhoneLabel',
+                      defaultMessage: 'Telefonnummer'
+                    })}
                   </FormLabel>
                   <Input
                     id="phone"
-                    placeholder="+43 123 456 789"
+                    placeholder={intl.formatMessage({
+                      id: 'ContactModalPhonePlaceholder',
+                      defaultMessage: '+43 123 456 789'
+                    })}
                     type="phone"
                     {...register('phone', {
                       required: false
@@ -205,11 +238,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               </HStack>
               <FormControl isRequired isInvalid={!!errors.message}>
                 <FormLabel htmlFor="message" fontSize="sm">
-                  Wie können wir Ihnen helfen?
+                  {intl.formatMessage({
+                    id: 'ContactModalMessageLabel',
+                    defaultMessage: 'Wie können wir Ihnen helfen?'
+                  })}
                 </FormLabel>
                 <Textarea
                   id="message"
-                  placeholder="Nachricht"
+                  placeholder={intl.formatMessage({
+                    id: 'ContactModalMessagePlaceholder',
+                    defaultMessage: 'Nachricht'
+                  })}
                   defaultValue={defaultValues?.message}
                   {...register('message', { required: true })}
                   focusBorderColor= "brand.500"
@@ -239,16 +278,22 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                           md: 'sm'
                         }}
                       >
-                        Ich bin damit einverstanden, dass meine Angaben zur
-                        Kontaktaufnahme und für Rückfragen gespeichert werden.
+                        {intl.formatMessage({
+                          id: 'ContactModalTerms',
+                          defaultMessage:
+                            'Ich bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden.'
+                        })}
                       </Text>
                     </CheckboxStyled>
                   )}
                   name="agreeToTerms"
                   control={control}
                   rules={{
-                    required:
-                      'Bitte bestätigen Sie die Bedinungen zur Kontaktaufnahme'
+                    required: intl.formatMessage({
+                      id: 'ContactModalTermsRequired',
+                      defaultMessage:
+                        'Bitte bestätigen Sie die Bedingungen zur Kontaktaufnahme'
+                    })
                   }}
                 />
                 <FormErrorMessage fontSize="sm">
@@ -264,7 +309,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               type="submit"
               // py="7 !important"
             >
-              Senden
+              {intl.formatMessage({
+                id: 'ContactModalSubmit',
+                defaultMessage: 'Senden'
+              })}
             </Button>
           </ModalFooter>
         </form>

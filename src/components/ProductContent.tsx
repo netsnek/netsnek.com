@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import { FC } from "react";
 import {
   Box,
@@ -179,6 +180,8 @@ const ProductDetail = (props: {
 }) => {
   // const productMetatfields = getProductMetafields(props.product)
 
+  const intl = useIntl();
+
   const stepperStep = 1;
   const minQuantity = stepperStep;
 
@@ -287,10 +290,18 @@ const ProductDetail = (props: {
 
           {availableForSale ? (
             <Text color="green" fontSize="sm">
-              Verfügbar
+              {intl.formatMessage({
+                id: 'ProductAvailable',
+                defaultMessage: 'Verfügbar'
+              })}
             </Text>
           ) : (
-            <Text color="red.500">Derzeit nicht verfügbar</Text>
+            <Text color="red.500">
+              {intl.formatMessage({
+                id: 'ProductNotAvailable',
+                defaultMessage: 'Derzeit nicht verfügbar'
+              })}
+            </Text>
           )}
 
           <HStack>
