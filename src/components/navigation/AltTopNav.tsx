@@ -197,7 +197,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               color: 'brand.500'
             }}
           >
-            <LinkOverlay href="/experiments">Blog</LinkOverlay>
+            <LinkOverlay href="/docs">Blog</LinkOverlay>
           </LinkBox>
           <Box
             gridArea="offices"

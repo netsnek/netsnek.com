@@ -44,11 +44,7 @@ export function createPageTree(
       if (page.children.length > 0) indexPages(page.children);
     });
   };
-  indexPages(
-    docsTree.children.filter(
-      page => page.label.toLocaleLowerCase() != 'experiments'
-    )
-  );
+  indexPages(docsTree.children);
 
   // Recursively build a menu item from a page
   const buildMenuItem = (pageId: string): NavMenuItem | undefined => {
