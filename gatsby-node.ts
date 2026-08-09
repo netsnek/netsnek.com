@@ -5,6 +5,29 @@ import fs from 'fs';
 import { buildSearchIndex } from './src/utils/search/build-search-index';
 
 /**
+ * The patch history still delivers JaenPage entries for pages removed from
+ * the site (photonq strip, e.g. /experiments/[slug]/). Without a stateful
+ * page the source plugin's id-assurance pass never heals their missing
+ * `sections`, and a single malformed node fails every query selecting
+ * JaenPage.sections. Defaulting the resolver keeps the non-null contract.
+ */
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+  ({ actions, schema }) => {
+    actions.createTypes(
+      schema.buildObjectType({
+        name: 'JaenPage',
+        fields: {
+          sections: {
+            type: '[JaenSection!]!',
+            resolve: (source: { sections?: unknown }) =>
+              Array.isArray(source.sections) ? source.sections : []
+          }
+        }
+      })
+    );
+  };
+
+/**
  * The jaen packages are consumed via yarn `link:` from the local monorepo.
  * Their own node_modules would otherwise pull in a second copy of react,
  * emotion and chakra — alias the singletons to the site's copies.
@@ -114,8 +137,8 @@ const SITE_LOCALES = ['de', 'en', 'sl', 'it', 'ja'];
 const SITE_DEFAULT_LOCALE = 'de';
 
 /** Locale of a build path, derived from its first path segment. */
-const localeOfBuildPath = (buildPath: string): string => {
-  const first = buildPath.split('/').filter(Boolean)[0]?.toLowerCase();
+const localeOfBuildPath = (buildPath: string | null | undefined): string => {
+  const first = (buildPath ?? '').split('/').filter(Boolean)[0]?.toLowerCase();
 
   if (first && first !== SITE_DEFAULT_LOCALE && SITE_LOCALES.includes(first)) {
     return first;
