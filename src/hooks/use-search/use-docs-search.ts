@@ -3,11 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { buildSearchIndex } from '../../utils/search/build-search-index';
 import { getBuiltSearchIndex } from '../../utils/search/get-built-search-index';
 import { mergeSearchIndex } from '../../utils/search/merge-search-index';
-import { SearchIndex } from './types';
+import { LocalizedSearchIndex, SearchIndex } from './types';
 import { useDynamicPaths } from 'jaen';
 import { useJaenPagePaths } from 'gatsby-plugin-jaen';
 import { useAppSelector } from 'jaen';
+import { usePageLocale } from '../../contexts/locale';
 import { getDefaultSearchDocs, searchDocs } from '../../utils/search';
+import { docsRootForLocale, localeOfPath } from '../../utils/search/locale';
 import { TSearchResultSection } from '../../utils/search/types';
 
 /**
@@ -30,7 +32,10 @@ export interface UseSearchResult {
  */
 const useDocsSearch = (query?: string): UseSearchResult => {
   const [searchIndex, setSearchIndex] = useState<SearchIndex | null>(null);
-  const builtSearchIndexRef = useRef<SearchIndex | null>(null); // Ref to cache builtSearchIndex
+  const builtSearchIndexRef = useRef<LocalizedSearchIndex | null>(null); // Ref to cache the localized builtSearchIndex
+
+  const { locale } = usePageLocale();
+  const localeKey = locale.split(/[-_]/)[0]?.toLowerCase() || 'de';
 
   const pages = useAppSelector(state => state.page.pages.nodes);
 
@@ -41,13 +46,12 @@ const useDocsSearch = (query?: string): UseSearchResult => {
 
   useEffect(() => {
     /**
-     * Loads the search index by merging the builtSearchIndex with the page search index.
+     * Loads the search index by merging the builtSearchIndex of the active
+     * locale with the page search index. Runtime CMS pages are filtered to
+     * the active locale by their path prefix, so results stay in-language.
      */
     const loadSearchIndex = async () => {
-      if (builtSearchIndexRef.current) {
-        // Use the cached builtSearchIndex if available
-        setSearchIndex(builtSearchIndexRef.current);
-      } else {
+      if (!builtSearchIndexRef.current) {
         const builtSearchIndex = await getBuiltSearchIndex();
 
         if (builtSearchIndex) {
@@ -55,20 +59,21 @@ const useDocsSearch = (query?: string): UseSearchResult => {
         }
       }
 
+      const localeSearchIndex: SearchIndex =
+        builtSearchIndexRef.current?.[localeKey] || {};
+
       const pageValuesWithId = Object.entries(pages).map(([pageId, value]) => {
         const dynamicPagePath = Object.entries(dynamicPaths).find(
           ([_, node]) => node.jaenPageId === pageId
         )?.[0];
 
-        const builtPagePath = Object.entries(
-          builtSearchIndexRef.current || {}
-        ).find(([_, node]) => node.id === pageId)?.[0];
+        const builtPagePath = Object.entries(localeSearchIndex).find(
+          ([_, node]) => node.id === pageId
+        )?.[0];
 
         const title =
           value?.jaenPageMetadata?.title ||
-          (builtPagePath
-            ? builtSearchIndexRef.current?.[builtPagePath]?.title
-            : undefined);
+          (builtPagePath ? localeSearchIndex[builtPagePath]?.title : undefined);
 
         return {
           ...value,
@@ -82,17 +87,18 @@ const useDocsSearch = (query?: string): UseSearchResult => {
         };
       });
 
-      const pageSearchIndex = await buildSearchIndex(pageValuesWithId as any);
-      const merged = mergeSearchIndex(
-        builtSearchIndexRef.current || {},
-        pageSearchIndex
+      const localePageValues = pageValuesWithId.filter(
+        page => !page.path || localeOfPath(page.path) === localeKey
       );
+
+      const pageSearchIndex = await buildSearchIndex(localePageValues as any);
+      const merged = mergeSearchIndex(localeSearchIndex, pageSearchIndex);
 
       setSearchIndex(merged);
     };
 
     void loadSearchIndex();
-  }, [pages, dynamicPaths]);
+  }, [pages, dynamicPaths, localeKey]);
 
   const [searchResults, setSearchResults] = useState<TSearchResultSection[]>(
     []
@@ -108,7 +114,9 @@ const useDocsSearch = (query?: string): UseSearchResult => {
         setSearchResults([]);
       } else if (!query) {
         // Set default search results
-        setSearchResults(getDefaultSearchDocs(searchIndex));
+        setSearchResults(
+          getDefaultSearchDocs(searchIndex, docsRootForLocale(localeKey))
+        );
       } else {
         const docsResults = searchDocs(query, searchIndex);
 
@@ -119,7 +127,7 @@ const useDocsSearch = (query?: string): UseSearchResult => {
     };
 
     void search();
-  }, [searchIndex, query]);
+  }, [searchIndex, query, localeKey]);
 
   return {
     searchResults,

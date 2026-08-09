@@ -133,11 +133,12 @@ export function searchDocs(
 }
 
 export function getDefaultSearchDocs(
-  data: SearchIndex
+  data: SearchIndex,
+  docsRoot: string = '/docs/'
 ): TSearchResultSection[] {
   const results: TSearchResultSection[] = [];
   Object.keys(data).forEach(key => {
-    if (!key.startsWith('/docs/') || key === '/docs/') return;
+    if (!key.startsWith(docsRoot) || key === docsRoot) return;
     const item = data[key];
     const summary = Object.keys(item.data)
       .find(key => key.length > 0 && item.data[key].length > 0)

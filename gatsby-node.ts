@@ -105,6 +105,25 @@ export const onPostBuild: GatsbyNode['onPostBuild'] = async ({
   await preparePagesAndBuildSearch(allJaenPage);
 };
 
+/**
+ * Locales of the site; keep in sync with the i18n block in
+ * gatsby-config.ts and src/locales/messages.ts. The default locale is
+ * unprefixed, every other locale lives under its path prefix.
+ */
+const SITE_LOCALES = ['de', 'en', 'sl', 'it', 'ja'];
+const SITE_DEFAULT_LOCALE = 'de';
+
+/** Locale of a build path, derived from its first path segment. */
+const localeOfBuildPath = (buildPath: string): string => {
+  const first = buildPath.split('/').filter(Boolean)[0]?.toLowerCase();
+
+  if (first && first !== SITE_DEFAULT_LOCALE && SITE_LOCALES.includes(first)) {
+    return first;
+  }
+
+  return SITE_DEFAULT_LOCALE;
+};
+
 async function preparePagesAndBuildSearch(allJaenPage: {
   nodes: Array<{
     id: string;
@@ -149,10 +168,20 @@ async function preparePagesAndBuildSearch(allJaenPage: {
     };
   });
 
-  const searchIndex = await buildSearchIndex(nodesForSearchIndex as any);
+  // Segment the index by page locale so search results stay in-language:
+  // search-index.json is {de: SearchIndex, en: SearchIndex, ...}.
+  const localizedSearchIndex: Record<string, unknown> = {};
+
+  for (const locale of SITE_LOCALES) {
+    const localeNodes = nodesForSearchIndex.filter(
+      node => localeOfBuildPath(node.path) === locale
+    );
+
+    localizedSearchIndex[locale] = await buildSearchIndex(localeNodes as any);
+  }
 
   await fs.promises.writeFile(
     path.join('public', 'search-index.json'),
-    JSON.stringify(searchIndex)
+    JSON.stringify(localizedSearchIndex)
   );
 }
