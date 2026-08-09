@@ -6,7 +6,7 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://netsnek.com/`
+    siteUrl: `https://netsnek.com`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -24,14 +24,25 @@ const config: GatsbyConfig = {
         remote: {
           repository: 'netsnek/netsnek.com'
         },
-        zitadel: {
+        siteUrl: 'https://netsnek.com',
+        i18n: {
+          defaultLocale: 'de',
+          locales: [
+            { locale: 'de' },
+            { locale: 'en' },
+            { locale: 'sl' },
+            { locale: 'it' },
+            { locale: 'ja' }
+          ]
+        },
+        zitadelGql: {
           organizationId: '268210807970535009',
           clientId: '268283382465631862@cms',
           authority: 'https://accounts.netsnek.com',
           redirectUri:
             process.env.NODE_ENV === 'production'
               ? 'https://netsnek.com'
-              : 'https://redesigned-carnival-4gq4rvwqwvhq4pp-8000.app.github.dev',
+              : 'http://localhost:8000',
           projectIds: [
             '268283277977065078'
           ]
@@ -42,9 +53,9 @@ const config: GatsbyConfig = {
       }
     },
     {
-      resolve: `gatsby-jaen-mailpress`,
+      resolve: `gatsby-jaen-emailwerk`,
       options: {
-        pylonUrl: 'https://mailpress.netsnek.com/graphql'
+        url: 'https://emailwerk.netsnek.com/graphql'
       }
     },
     //`gatsby-jaen-lens`
