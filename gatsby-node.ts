@@ -4,6 +4,32 @@ import path from 'path';
 import fs from 'fs';
 import { buildSearchIndex } from './src/utils/search/build-search-index';
 
+/**
+ * The jaen packages are consumed via yarn `link:` from the local monorepo.
+ * Their own node_modules would otherwise pull in a second copy of react,
+ * emotion and chakra — alias the singletons to the site's copies.
+ */
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
+  actions
+}) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        react: path.resolve(__dirname, 'node_modules/react'),
+        'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+        '@emotion/react': path.resolve(
+          __dirname,
+          'node_modules/@emotion/react'
+        ),
+        '@chakra-ui/react': path.resolve(
+          __dirname,
+          'node_modules/@chakra-ui/react'
+        )
+      }
+    }
+  });
+};
+
 export const onPostBuild: GatsbyNode['onPostBuild'] = async ({
   graphql,
   reporter

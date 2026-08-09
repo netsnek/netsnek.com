@@ -17,8 +17,8 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "jaen": "^1.2.2",
-    "jaen-fields-mdx": "^1.2.1",
+    "jaen": "link:../jaen/packages/jaen",
+    "jaen-fields-mdx": "link:../jaen/packages/jaen-fields-mdx",
     "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
@@ -27,10 +27,11 @@
     "flexsearch": "^0.7.43",
     "framer-motion": "^10.16.1",
     "gatsby": "^5.11.0",
+    "gatsby-jaen-emailwerk": "link:../jaen/packages/gatsby-jaen-emailwerk",
     "gatsby-jaen-lens": "1.2.0",
-    "gatsby-jaen-mailpress": "^2.1.1",
     "gatsby-plugin-cloudflare-pages": "^1.0.3",
-    "gatsby-plugin-jaen": "^1.4.0",
+    "gatsby-plugin-jaen": "link:../jaen/packages/gatsby-plugin-jaen",
+    "gatsby-source-jaen": "link:../jaen/packages/gatsby-source-jaen",
     "github-slugger": "^2.0.0",
     "hast-util-sanitize": "^5.0.1",
     "prismjs": "^1.29.0",
@@ -38,9 +39,17 @@
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.4",
     "react-highlight-words": "^0.20.0",
+    "react-intl": "6.8.9",
     "react-simple-code-editor": "^0.13.1",
     "use-debounce": "^10.0.0",
     "gqty": "^3.2.2"
+  },
+  "resolutions": {
+    "jaen": "link:../jaen/packages/jaen",
+    "gatsby-plugin-jaen": "link:../jaen/packages/gatsby-plugin-jaen",
+    "gatsby-source-jaen": "link:../jaen/packages/gatsby-source-jaen",
+    "gatsby-jaen-emailwerk": "link:../jaen/packages/gatsby-jaen-emailwerk",
+    "jaen-fields-mdx": "link:../jaen/packages/jaen-fields-mdx"
   },
   "devDependencies": {
     "@types/github-slugger": "^2.0.0",
