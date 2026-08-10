@@ -99,20 +99,9 @@ const Hero: FC = () => {
         pt={`calc(${navOffset})`}
       >
         <Box as={FadeIn} position="relative" gridArea="image">
-          <HeroShowcase
-            logoSx={{
-              '.squarel': {
-                display: 'none'
-              },
-              '.snek': {
-                stroke: 'black',
-                filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
-              },
-              '.arrows': {
-                display: 'none'
-              }
-            }}
-          />
+          {/* Tablet and mark are one editable drawing now, and the styles
+              the hero used to hand down are rules inside it. */}
+          <HeroShowcase />
         </Box>
         <VStack as={FadeIn} spacing={4} align="left" gridArea="content">
           <Box>

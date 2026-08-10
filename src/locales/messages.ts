@@ -30,9 +30,9 @@ export const messagesDe = {
     'Ihre Softwareagentur in Österreich. Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen.',
   HeroButtonContact: 'Kontakt',
   HeroButtonProjects: 'Projekte ansehen',
-  HeroIpadImageAlt: 'iPad image',
 
-  // Animated logo headings (src/gatsby-plugin-jaen/components/Netsnek.tsx).
+  // Animated logo headings (src/gatsby-plugin-jaen/components/Netsnek.tsx
+  // and the same mark inside the hero playground).
   // The trailing accent dot is painted by a mask of its own.
   LogoHeadingIdea: 'Ihre Idee.',
   LogoHeadingKnowHow: 'Unser Know-How.',
@@ -289,7 +289,6 @@ export const messagesEn: MessageCatalog = {
   HeroText: "Your software agency in Austria. We build custom software solutions tailored to your needs.",
   HeroButtonContact: "Contact",
   HeroButtonProjects: "View projects",
-  HeroIpadImageAlt: "iPad image",
   LogoHeadingIdea: "Your idea.",
   LogoHeadingKnowHow: "Our know-how.",
   NavHome: "Home",
@@ -431,7 +430,6 @@ export const messagesSl: MessageCatalog = {
   HeroText: "Vaša agencija za razvoj programske opreme v Avstriji. Pomagamo vam do programskih rešitev po meri.",
   HeroButtonContact: "Kontakt",
   HeroButtonProjects: "Oglejte si projekte",
-  HeroIpadImageAlt: "Slika iPada",
   LogoHeadingIdea: "Vaša ideja.",
   LogoHeadingKnowHow: "Naše znanje.",
   NavHome: "Domov",
@@ -573,7 +571,6 @@ export const messagesIt: MessageCatalog = {
   HeroText: "La vostra agenzia software in Austria. Vi aiutiamo a realizzare soluzioni software su misura.",
   HeroButtonContact: "Contatti",
   HeroButtonProjects: "Scopri i progetti",
-  HeroIpadImageAlt: "Immagine iPad",
   LogoHeadingIdea: "La vostra idea.",
   LogoHeadingKnowHow: "Il nostro know-how.",
   NavHome: "Home",
@@ -715,7 +712,6 @@ export const messagesJa: MessageCatalog = {
   HeroText: "オーストリアのソフトウェアエージェンシー。お客様に最適なオーダーメイドのソフトウェアソリューションをご提供します。",
   HeroButtonContact: "お問い合わせ",
   HeroButtonProjects: "プロジェクトを見る",
-  HeroIpadImageAlt: "iPadの画像",
   LogoHeadingIdea: "あなたのアイデア。",
   LogoHeadingKnowHow: "私たちのノウハウ。",
   NavHome: "ホーム",
