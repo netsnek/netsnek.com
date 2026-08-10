@@ -54,11 +54,20 @@ const PageDirectory: FC<PageDirectoryProps> = ({
   const [expandedIdx, setExpandedIdx] = useState<number[]>(defaultExpandedIdx);
 
   // On navigation the active path changes but this component may stay
-  // mounted, so the initial state never recomputes. Merge the new defaults
-  // in instead of replacing, so nothing the user opened snaps shut.
+  // mounted, so the initial state never recomputes. Replace the expansion
+  // with the new page's ancestors: merging instead would accumulate every
+  // section visited during the session until the whole tree stands open.
+  // Sections the reader opens by hand survive until they navigate away.
+  //
+  // Keyed on the joined indices, not the array: the tree object is rebuilt
+  // on renders that do not change the active path, and depending on its
+  // identity would reset a hand-opened section on the next render.
+  const defaultExpandedKey = defaultExpandedIdx.join(',');
+
   useEffect(() => {
-    setExpandedIdx(prev => Array.from(new Set([...prev, ...defaultExpandedIdx])));
-  }, [defaultExpandedIdx]);
+    setExpandedIdx(defaultExpandedIdx);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defaultExpandedKey]);
   const { isAuthenticated, signinRedirect } = useAuth();
   const isSmallScreen = useBreakpointValue(
     { base: true, md: false },

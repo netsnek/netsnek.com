@@ -110,17 +110,27 @@ export const generateMenuItem = (
               to={item.href}
               onClick={(e: MouseEvent<HTMLAnchorElement>) => {
                 const target = e.target as HTMLElement;
-                const hasClickedOnArrow =
-                  target instanceof SVGElement ||
-                  target instanceof SVGPathElement;
-                updateExpandedIdx(
-                  expandedIdx,
-                  hasClickedOnArrow ? 'toggle' : 'set'
+                // The whole chevron box toggles, not just the glyph. Testing
+                // for an SVG element made the padding around the icon
+                // navigate instead of toggling, so hitting the same visual
+                // arrow did two different things depending on the pixel.
+                const hasClickedOnArrow = Boolean(
+                  target.closest?.('[data-nav-toggle]')
                 );
-                linkClickHandler(e);
-                if (!hasClickedOnArrow && closeMobileDrawer) {
-                  closeMobileDrawer();
+
+                // The chevron only ever folds. It sits inside the link, and
+                // its wrapper is a span, which linkClickHandler treats as a
+                // navigation target, so the default has to be stopped here.
+                if (hasClickedOnArrow) {
+                  e.preventDefault();
+                  updateExpandedIdx(expandedIdx, 'toggle');
+                  return;
                 }
+
+                // Everything else navigates to the section and unfolds it.
+                updateExpandedIdx(expandedIdx, 'set');
+                linkClickHandler(e);
+                closeMobileDrawer?.();
               }}
             >
               <AccordionButton
@@ -141,6 +151,7 @@ export const generateMenuItem = (
                 <Center
                   {...styleProps}
                   as="span"
+                  data-nav-toggle="true"
                   borderRadius="sm"
                   transition="background-color 0.2s ease-in-out"
                   backgroundColor="transparent"
@@ -151,7 +162,10 @@ export const generateMenuItem = (
                   <AccordionIcon
                     className="prv-link"
                     opacity="inherit"
+                    // Driven by the item's own accordion state, so the arrow
+                    // can never disagree with the panel below it.
                     transform={`rotate(${isExpanded ? 0 : -90}deg)`}
+                    transition="transform 0.2s ease-in-out"
                   />
                 </Center>
               </AccordionButton>

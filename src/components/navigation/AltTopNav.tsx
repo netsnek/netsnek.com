@@ -18,7 +18,8 @@ import {
 import { FC, useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useContactModal } from '../../services/contact';
-import { useLocalizeHref } from '../../contexts/locale';
+import { useLocalizeHref, usePageLocale } from '../../contexts/locale';
+import { stripLocalePrefix } from '../../utils/navigation';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
@@ -45,6 +46,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
 
   const intl = useIntl();
   const localizeHref = useLocalizeHref();
+
+  // Landing page = the locale root ('/', '/en/', ...), never a subpage.
+  const { prefix } = usePageLocale();
+  const isLandingPage =
+    stripLocalePrefix(path ?? '', prefix).replace(/\/+$/, '') === '';
 
   const contactModal = useContactModal();
   const handleOnContactClick = () => {
@@ -89,7 +95,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
 
   return (
     <Box
-      as={FadeIn}
+      // The header fades and slides in on the landing page, where it is part
+      // of the first impression. On a subpage the reader arrived to read
+      // something, and a header that animates in every time is noise, so
+      // there it just renders.
+      as={isLandingPage ? FadeIn : undefined}
       pos="relative"
       overflow="hidden"
       height={isOpen ? 'calc(100vh + 15px)' : { base: '12vh', md: '15vh' }}
