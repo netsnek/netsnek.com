@@ -1,4 +1,3 @@
-import type { HeadProps } from 'gatsby';
 import { Head as JaenHead } from 'jaen';
 import * as React from 'react';
 
