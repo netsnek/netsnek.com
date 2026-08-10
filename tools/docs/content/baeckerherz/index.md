@@ -1,12 +1,12 @@
 ---
 title: Bäckerherz
-description: Wie Florian und Momo beim Aufbau des Backwaren-Startups Bäckerherz mitgeholfen haben, warum es am Ende nicht gereicht hat und was sie daraus über Startups gelernt haben.
+description: Wie Florian Kleber und seine Partnerin beim Aufbau des Backwaren-Startups Bäckerherz mitgeholfen haben, warum es am Ende nicht gereicht hat und was sie daraus über Startups gelernt haben.
 path: /docs/baeckerherz
 ---
 
 # Bäckerherz
 
-Bäckerherz war ein kleines Startup mit einer einfachen und schönen Idee: frische Backwaren vom regionalen Bäcker, frühmorgens direkt an die Haustür geliefert, in Villach und Umgebung. Momo und ich haben beim Aufbau mitgeholfen. Am Ende hat es leider doch nicht geklappt. Diese Seite erzählt die Geschichte und hält fest, was wir daraus über Startups gelernt haben.
+Bäckerherz war ein kleines Startup mit einer einfachen und schönen Idee: frische Backwaren vom regionalen Bäcker, frühmorgens direkt an die Haustür geliefert, in Villach und Umgebung. Meine Partnerin und ich haben beim Aufbau mitgeholfen. Am Ende hat es leider doch nicht geklappt. Diese Seite erzählt die Geschichte und hält fest, was wir daraus über Startups gelernt haben.
 
 ## Was Bäckerherz war
 
@@ -18,7 +18,7 @@ Technisch lief der Betrieb auf einem Django-Backend mit GraphQL-API und einem Ku
 
 Ich habe auf der Software-Seite mitgeholfen: Automatisierung, Werkzeuge zum Abruf und zur Auswertung von Bestellungen im Backend und kleine Helfer für den Alltag. Das sichtbarste Stück davon war der [OpenClaw Dienstplan-Bot](/docs/baeckerherz/openclaw) in Telegram, dazu kamen digitale Formulare und andere kleine Werkzeuge nach demselben Muster.
 
-Momo arbeitete im operativen Herz des Betriebs. Sie verantwortete Vertrieb und Telefonvertrieb, erstellte und präsentierte Vertriebsberichte für Managemententscheidungen, koordinierte die Dienstpläne und visualisierte Vertriebsrouten in Google My Maps. Viele ihrer Verbesserungsideen landeten direkt in den täglich genutzten Systemen. Ihre aktive Zeit dort dauerte bis ins Frühjahr 2026.
+Meine Partnerin arbeitete im operativen Herz des Betriebs, vom Vertrieb über Berichte für Managemententscheidungen bis zur Koordination der Dienstpläne. Viele ihrer Verbesserungsideen landeten direkt in den täglich genutzten Systemen.
 
 ## Wie es ausging
 
@@ -34,7 +34,7 @@ Trotz treuer Kundschaft und viel Einsatz hat es am Ende nicht gereicht. Bäckerh
 
 **Werkzeuge müssen dorthin, wo das Team ohnehin ist.** Der Dienstplan lief dort, wo das Team ohnehin täglich schrieb: in Telegram. Digitale Formulare ersetzten Zettel, ohne dass jemand eine neue App lernen musste. Kleine Werkzeuge, die wirklich benutzt werden, schlagen große Plattformen, die keiner öffnet.
 
-**Wer täglich im Betrieb steht, sieht, welche Software fehlt.** Die besten Anforderungen kamen nicht aus Meetings, sondern aus Momos Tagesgeschäft zwischen Telefonvertrieb, Berichten und Dienstplanung. Software für einen Betrieb baut man am besten mit den Menschen, die ihn tragen.
+**Wer täglich im Betrieb steht, sieht, welche Software fehlt.** Die besten Anforderungen kamen nicht aus Meetings, sondern aus dem Tagesgeschäft meiner Partnerin zwischen Vertrieb, Berichten und Dienstplanung. Software für einen Betrieb baut man am besten mit den Menschen, die ihn tragen.
 
 **Ein Ende ist kein Totalverlust.** Die Erfahrung bleibt, die Werkzeuge zum Teil auch. Der Versuch war es wert, und beim nächsten Mal starten wir mit all dem im Gepäck.
 

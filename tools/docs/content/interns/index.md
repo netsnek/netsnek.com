@@ -10,7 +10,7 @@ Diese Sektion sammelt kurze Geschichten über Menschen, die bei Netsnek e.U. ein
 
 ## Sommerpraktikum 2026
 
-Im Juni 2026 absolvierte ein HTL-Schüler aus Wien ein einwöchiges Sommerpraktikum bei Netsnek e.U. Sein Hauptprojekt war eine eigenständig entwickelte Remote-Management-API auf Basis von Node.js und GraphQL, über die sich Serverdienste programmatisch verwalten und fernsteuern lassen.
+Im Sommer 2026 absolvierte ein Schüler ein einwöchiges Praktikum bei Netsnek e.U. Sein Hauptprojekt war eine eigenständig entwickelte Remote-Management-API auf Basis von Node.js und GraphQL, über die sich Serverdienste programmatisch verwalten und fernsteuern lassen.
 
 Daneben arbeitete er in der Webentwicklung mit HTML, CSS und JavaScript mit und sammelte Praxis in der Linux-Serveradministration. Er richtete Dienste mit systemd ein, arbeitete mit OpenSSL und RCON und automatisierte die Datensicherung über ein selbst geschriebenes Bash-Skript. Er arbeitete dabei schon mit minimalen Anweisungen selbständig und lieferte durchwegs sehr gute Arbeit.
 

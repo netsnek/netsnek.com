@@ -6,7 +6,7 @@ path: /docs/baeckerherz/openclaw
 
 # OpenClaw Dienstplan-Bot
 
-Bei [Bäckerherz](/docs/baeckerherz) begann der Arbeitstag, bevor die meisten Menschen aufstehen. Wer wann bäckt, kommissioniert und ausliefert, musste laufend abgestimmt werden. Die Koordination der Dienstpläne war tägliche operative Arbeit und lag bei Momo. Der Dienstplan-Bot brachte diese Arbeit dorthin, wo das Team ohnehin schrieb: nach Telegram.
+Bei [Bäckerherz](/docs/baeckerherz) begann der Arbeitstag, bevor die meisten Menschen aufstehen. Wer wann bäckt, kommissioniert und ausliefert, musste laufend abgestimmt werden. Die Koordination der Dienstpläne war tägliche operative Arbeit und lag bei meiner Partnerin. Der Dienstplan-Bot brachte diese Arbeit dorthin, wo das Team ohnehin schrieb: nach Telegram.
 
 ## Was OpenClaw ist
 

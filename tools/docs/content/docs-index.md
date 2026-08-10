@@ -18,4 +18,4 @@ Hier sammelt Netsnek die Dokumentation zu den eigenen Projekten und Themen. Jede
 - [Linuxtage](/docs/linuxtage): Vorträge und Slides von Community-Events, beginnend mit den Grazer Linuxtagen.
 - [Praktika](/docs/interns): Geschichten über Praktikantinnen und Praktikanten bei Netsnek und ihre Projekte.
 - [LED-Art](/docs/ledart): Gemeinsame LED-Art-Projekte mit Andreas Prix.
-- [Bäckerherz](/docs/baeckerherz): Die Geschichte eines Backwaren-Startups, bei dem Florian und Momo mitgeholfen haben, und was sie daraus über Startups gelernt haben.
+- [Bäckerherz](/docs/baeckerherz): Die Geschichte eines Backwaren-Startups, bei dem Florian Kleber und seine Partnerin mitgeholfen haben, und was sie daraus über Startups gelernt haben.
