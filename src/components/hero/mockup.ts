@@ -195,9 +195,13 @@ export const buildMockup = (artwork: string = ''): string =>
           <line x1="426.3" y1="96.8" x2="427.9" y2="98.1" />
         </g>
 
-        {/* Platzhalter, so wie er im Original steht */}
+        {/* Platzhalter, so wie er im Original steht. textLength haelt
+             ihn auf den gemessenen 40.5 Einheiten, egal welche Schrift
+             der Rechner des Besuchers wirklich hergibt. Ohne das laeuft
+             er je nach System unter die Tastenkappe. */}
         <text x="434" y="97.6" fill="#a0aec0" font-size="6.6"
-              font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="400">Finde Rezepte</text>
+              font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="400"
+              textLength="40.5" lengthAdjust="spacingAndGlyphs">Finde Rezepte</text>
 
         {/* Tastenkappe Strg */}
         <rect x="477" y="91" width="17" height="9" rx="1.6" ry="1.6" fill="#edf2f7" />
@@ -221,10 +225,15 @@ export const buildMockup = (artwork: string = ''): string =>
         <rect x="523" y="87" width="44" height="17" rx="8.5" ry="8.5" />
         <rect x="573" y="87" width="33" height="17" rx="8.5" ry="8.5" />
 
+        {/* Auch die Beschriftungen stehen auf ihrer gemessenen Breite,
+             29 und 18 Einheiten. Die fette Systemschrift faellt sonst
+             breiter aus als im Original und stoesst an den Rand. */}
         <g fill="#ffffff" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="700"
            text-anchor="middle">
-          <text x="545" y="97.7" font-size="5.9">Contact Us</text>
-          <text x="589.5" y="97.7" font-size="6.1">Sign In</text>
+          <text x="545" y="97.7" font-size="5.9"
+                textLength="29" lengthAdjust="spacingAndGlyphs">Contact Us</text>
+          <text x="589.5" y="97.7" font-size="6.1"
+                textLength="18" lengthAdjust="spacingAndGlyphs">Sign In</text>
         </g>
       </g>
 
