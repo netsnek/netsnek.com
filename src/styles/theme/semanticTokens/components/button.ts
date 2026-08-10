@@ -1,4 +1,20 @@
 const smtButtonComponent = {
+  // The solid variant is the primary control colour of the site. Without
+  // these tokens the variant emitted `background-color: components.button.
+  // solid.bgColor` as literal text, which browsers drop, so the buttons were
+  // relying on an unrelated declaration to stay orange at all.
+  solid: {
+    bgColor: {
+      default: 'brand.500',
+      _dark: 'brand.500'
+    },
+    hover: {
+      bgColor: {
+        default: 'brand.600',
+        _dark: 'brand.400'
+      }
+    }
+  },
   ghost: {
     hover: {
       outline: {

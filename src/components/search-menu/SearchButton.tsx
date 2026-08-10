@@ -1,5 +1,5 @@
 import { withRedux } from 'jaen';
-import { Button, ButtonProps, Kbd } from '@chakra-ui/react';
+import { Button, ButtonProps, Kbd, chakra } from '@chakra-ui/react';
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
 import { SearchIcon } from '@chakra-ui/icons';
@@ -58,11 +58,26 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
     return (
       <Button
         display="flex"
-        mx={4}
+        // Below lg the wide search field would crowd the header, so it
+        // collapses to a square magnifier that sits beside the hamburger and
+        // wears the same solid brand background as that button.
+        mx={{ base: 0, lg: 4 }}
+        ml={{ base: 4, lg: 4 }}
+        w={{ base: 10, lg: 'auto' }}
+        minW={{ base: 10, lg: 'auto' }}
+        px={{ base: 0, lg: 4 }}
         size="sm"
         minH="10"
         variant="outline"
-        bgColor="blackAlpha.50"
+        borderRadius={{ base: 'lg', lg: 'md' }}
+        filter={{
+          base: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))',
+          lg: 'none'
+        }}
+        bgColor={{
+          base: 'components.button.solid.bgColor',
+          lg: 'blackAlpha.50'
+        }}
         color="topNav.input.color"
         borderColor="brand.500"
         fontWeight="normal"
@@ -87,8 +102,9 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         onClick={openModal}
         {...props}
       >
-        {/* Type{' '} */}
+        <SearchIcon display={{ base: 'block', lg: 'none' }} boxSize={4} />
         <Kbd
+          display={{ base: 'none', lg: 'inline-block' }}
           borderBottomWidth={1}
           borderRadius={4}
           py={0.5}
@@ -116,10 +132,12 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         >
           /
         </Kbd>
-        {intl.formatMessage({
-          id: 'SearchButtonLabel',
-          defaultMessage: 'Suche'
-        })}
+        <chakra.span display={{ base: 'none', lg: 'inline' }}>
+          {intl.formatMessage({
+            id: 'SearchButtonLabel',
+            defaultMessage: 'Suche'
+          })}
+        </chakra.span>
       </Button>
     );
   }
