@@ -24,7 +24,7 @@ E il servizio non inventa nulla. Per esempio non esiste un claim e-mail, perché
 
 ## La cerimonia di signup
 
-E poi la cerimonia per cui tutto è cominciato. Chi vuole aderire firma in modo qualificato un PDF di registrazione. Il gestore controfirma, con recapito come mail soggetta a obbligo di firma tramite [emailwerk](/docs/emailwerk). La mail di risposta contiene un link di attivazione, e solo il clic confermato su di esso crea l'account. Gli account esistenti non vengono mai collegati automaticamente a una firma, perché in quel momento l'indirizzo e-mail indicato è ancora non confermato.
+E poi la cerimonia per cui tutto è cominciato. Chi vuole aderire firma in modo qualificato un PDF di registrazione. Il gestore controfirma, con recapito come mail soggetta a obbligo di firma tramite [Emailwerk](/docs/emailwerk). La mail di risposta contiene un link di attivazione, e solo il clic confermato su di esso crea l'account. Gli account esistenti non vengono mai collegati automaticamente a una firma, perché in quel momento l'indirizzo e-mail indicato è ancora non confermato.
 
 ## Dove gira
 

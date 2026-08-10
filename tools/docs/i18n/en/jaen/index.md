@@ -14,6 +14,6 @@ Technically, Jaen is an open source CMS for Gatsby. The content is built statica
 
 Jaen grew on real projects. [PhotonQ](/docs/photonq) became one of its reference sites, netsnek.com in turn came out of the PhotonQ code, and the text you are reading right now is delivered by Jaen. Most recently we made Jaen multilingual. This site therefore exists in German, English, Slovenian, Italian and Japanese, although I only write the German version and the rest is machine translated.
 
-Part of the foundation is also [emailwerk](/docs/emailwerk), the mail project with Nico that comes out of the same collaboration and that, among other things, sends this site's contact form.
+Part of the foundation is also [Emailwerk](/docs/emailwerk), the mail project with Nico that comes out of the same collaboration and that, among other things, sends this site's contact form.
 
 The code is open: [github.com/jaenjs/jaen](https://github.com/jaenjs/jaen).

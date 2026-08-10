@@ -14,7 +14,7 @@ path: /docs
 
 - [PhotonQ](/docs/photonq): 私たちが Walthergruppe と一緒に PhotonQ をどう作ったか。OpenQASM から測定型量子計算まで、プロジェクトから生まれた量子ドキュメントも含めて。
 - [Jaen](/docs/jaen): Nico と一緒に開発している CMS プロジェクト。私たちは共同で、コンテンツ管理を21世紀に連れてこようとしています。このサイトもその上で動いています。
-- [emailwerk](/docs/emailwerk): テンプレート、マルチプロバイダー送信、組み込みの管理画面を備えた、私のセルフホスト型トランザクションメールサービス。
+- [Emailwerk](/docs/emailwerk): テンプレート、マルチプロバイダー送信、組み込みの管理画面を備えた、私のセルフホスト型トランザクションメールサービス。
 - [qtamp](/docs/qtamp): オリジナルの Winamp スキンを Classic も Modern も実行する、私の Qt ネイティブな音楽プレイヤー。Modern は完全な Maki VM 経由で。
 - [Apple Silicon 上の Linux](/docs/linux): MacBook Pro 上の私の Asahi Linux セットアップと、自前の RPM リポジトリ rpm.netsnek.com。
 - [セキュリティ](/docs/security): ハードウェアキーと適格電子署名を使って私がどう仕事をしているか。決定論的な YubiKey の鍵から、ID Austria による OIDC ログインまで。

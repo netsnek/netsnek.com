@@ -1,12 +1,12 @@
 ---
 title: Kontaktni obrazec
-description: Kako kontaktni obrazec strani netsnek.com brez prijave pošilja neposredno v emailwerk in zakaj to kljub temu ni odprt rele.
+description: Kako kontaktni obrazec strani netsnek.com brez prijave pošilja neposredno v Emailwerk in zakaj to kljub temu ni odprt rele.
 path: /docs/emailwerk/kontaktformular
 ---
 
 # Kontaktni obrazec brez odprtega releja
 
-Javni kontaktni obrazec nima prijave. Kljub temu mora nekdo smeti sprožiti sporočilo, ne da bi iz tega nastal rele. Prav na to vprašanje emailwerk odgovori v podatkovnem modelu namesto v preverjalni rutini.
+Javni kontaktni obrazec nima prijave. Kljub temu mora nekdo smeti sprožiti sporočilo, ne da bi iz tega nastal rele. Prav na to vprašanje Emailwerk odgovori v podatkovnem modelu namesto v preverjalni rutini.
 
 Rešitev je nespektakularna, in prav zato mi je všeč. Ni druge končne točke in ni lastne poti REST. Ista operacija GraphQL na isti končni točki se le vede drugače, glede na to, ali zahteva prispe prijavljena ali ne.
 

@@ -6,7 +6,7 @@ path: /docs/emailwerk/api
 
 # GraphQL API
 
-emailwerk exposes its entire functionality through a single GraphQL endpoint at `/graphql`. The schema is reflected by Pylon v3 directly from the TypeScript types. There is no handwritten SDL. The built-in admin interface talks to the same endpoint internally too.
+Emailwerk exposes its entire functionality through a single GraphQL endpoint at `/graphql`. The schema is reflected by Pylon v3 directly from the TypeScript types. There is no handwritten SDL. The built-in admin interface talks to the same endpoint internally too.
 
 ## Roles
 

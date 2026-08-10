@@ -24,7 +24,7 @@ In storitev si ničesar ne izmišlja. Ni na primer nobenega zahtevka za e-pošto
 
 ## Ceremonija registracije
 
-In potem ceremonija, zaradi katere se je vse začelo. Kdor želi postati član, kvalificirano podpiše registracijski PDF. Upravljavec sopodpiše, dostavljeno kot pošta z obveznim podpisom prek [emailwerk](/docs/emailwerk). Odgovorna pošta vsebuje aktivacijsko povezavo in šele potrjen klik nanjo ustvari račun. Obstoječi računi se pri tem nikoli samodejno ne povežejo s podpisom, saj je navedeni e-poštni naslov v tem trenutku še nepotrjen.
+In potem ceremonija, zaradi katere se je vse začelo. Kdor želi postati član, kvalificirano podpiše registracijski PDF. Upravljavec sopodpiše, dostavljeno kot pošta z obveznim podpisom prek [Emailwerk](/docs/emailwerk). Odgovorna pošta vsebuje aktivacijsko povezavo in šele potrjen klik nanjo ustvari račun. Obstoječi računi se pri tem nikoli samodejno ne povežejo s podpisom, saj je navedeni e-poštni naslov v tem trenutku še nepotrjen.
 
 ## Kje teče
 

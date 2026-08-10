@@ -12,4 +12,4 @@ Pri [YubiKey PIV Restore](/docs/security/piv) gre za strah pred izgubo. Strojni 
 
 Pri [QES-OIDC](/docs/security/qes-oidc) gre za prijavo. Namesto vtipkavanja gesla podpišeš kratko besedilo z ID Austria, iz kvalificiranega podpisa pa nastane čisto navadna prijava OpenID Connect. Začelo se je s prijavo v društvo, pri kateri postane član samo tisti, ki resnično podpiše.
 
-V poštni storitvi [emailwerk](/docs/emailwerk) se oba srečata. Pošta lahko tam čaka, dokler ni na voljo kvalificiran podpis, ključ z YubiKeyja pa hkrati podpiše natančno vsebino. En podpis dokazuje, kdo pošilja. Drugi, da na poti nihče ni ničesar spremenil.
+V poštni storitvi [Emailwerk](/docs/emailwerk) se oba srečata. Pošta lahko tam čaka, dokler ni na voljo kvalificiran podpis, ključ z YubiKeyja pa hkrati podpiše natančno vsebino. En podpis dokazuje, kdo pošilja. Drugi, da na poti nihče ni ničesar spremenil.

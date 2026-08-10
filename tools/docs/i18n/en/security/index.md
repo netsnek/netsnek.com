@@ -12,4 +12,4 @@ Behind this section are two projects that occupied me for a long time. Both circ
 
 [QES-OIDC](/docs/security/qes-oidc) is about the login. Instead of typing a password, you sign a short text with ID Austria, and the qualified signature turns into a perfectly ordinary OpenID Connect login. It all started with an association sign-up where you only become a member if you really sign.
 
-The two meet in the mail service [emailwerk](/docs/emailwerk). A mail can wait there until a qualified signature is in place, and the key from the YubiKey signs the exact content along with it. One signature proves who is sending. The other proves that nobody changed anything along the way.
+The two meet in the mail service [Emailwerk](/docs/emailwerk). A mail can wait there until a qualified signature is in place, and the key from the YubiKey signs the exact content along with it. One signature proves who is sending. The other proves that nobody changed anything along the way.

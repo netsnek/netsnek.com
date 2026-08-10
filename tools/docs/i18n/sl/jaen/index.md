@@ -14,6 +14,6 @@ Tehnično je Jaen odprtokodni CMS za Gatsby. Vsebine se statično zgradijo zrave
 
 Jaen je zrasel ob resničnih projektih. [PhotonQ](/docs/photonq) je postal ena od njegovih referenčnih strani, netsnek.com je nato nastal iz kode PhotonQ, in besedilo, ki ga pravkar bereš, dostavlja Jaen. Nazadnje sva Jaen naredila večjezičnega. Ta stran zato obstaja v nemščini, angleščini, slovenščini, italijanščini in japonščini, pri čemer pišem samo nemško različico, ostalo pa se prevaja strojno.
 
-K temelju sodi tudi [emailwerk](/docs/emailwerk), poštni projekt z Nicom, ki izvira iz istega sodelovanja in med drugim pošilja s kontaktnega obrazca te strani.
+K temelju sodi tudi [Emailwerk](/docs/emailwerk), poštni projekt z Nicom, ki izvira iz istega sodelovanja in med drugim pošilja s kontaktnega obrazca te strani.
 
 Koda je odprta: [github.com/jaenjs/jaen](https://github.com/jaenjs/jaen).

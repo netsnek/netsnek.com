@@ -50,8 +50,14 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
   );
 
   return (
-    <Box position="relative">
-      <HStack justify="center" mb={3} spacing={3}>
+    <Box
+      position="relative"
+      h="full"
+      display="flex"
+      flexDirection="column"
+      minH={0}
+    >
+      <HStack justify="center" mb={3} spacing={3} flexShrink={0}>
         <ButtonGroup
           size="xs"
           spacing={1}
@@ -102,6 +108,8 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
       <Box
         borderRadius="xl"
         overflow="hidden"
+        flex="1"
+        minH={0}
         borderWidth={2}
         transition="border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out"
         borderColor={
@@ -119,10 +127,19 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
             : 'none'
         }
         sx={{
-          // The editor is a full CodeMirror instance, so it needs a height to
-          // live in and its own scroll rather than growing the hero.
-          '.cm-editor': { height: '340px' },
-          '.cm-scroller': { fontSize: '12px' }
+          // CodeMirror only scrolls inside itself when it has a definite
+          // height. A fixed one taller than this box meant the editor never
+          // overflowed its own scroller, so the surplus was simply clipped by
+          // the parent and unreachable. Filling the box makes the scroller do
+          // its job.
+          '.cm-editor': { height: '100%', maxHeight: '100%' },
+          '.cm-scroller': {
+            fontSize: '12px',
+            overflow: 'auto',
+            // Keep the wheel inside the editor instead of scrolling the page
+            // on once the source is at its end.
+            overscrollBehavior: 'contain'
+          }
         }}
       >
         {tabs[tab]?.content}

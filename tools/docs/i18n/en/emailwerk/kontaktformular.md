@@ -1,12 +1,12 @@
 ---
 title: Contact form
-description: How the contact form of netsnek.com sends directly to emailwerk without a login and why that is still not an open relay.
+description: How the contact form of netsnek.com sends directly to Emailwerk without a login and why that is still not an open relay.
 path: /docs/emailwerk/kontaktformular
 ---
 
 # A contact form without an open relay
 
-A public contact form has no login. Somebody still has to be allowed to trigger a mail without that turning into a relay. That is exactly the question emailwerk answers in the data model instead of in a check routine.
+A public contact form has no login. Somebody still has to be allowed to trigger a mail without that turning into a relay. That is exactly the question Emailwerk answers in the data model instead of in a check routine.
 
 The solution is unspectacular, and that is precisely why I like it. There is no second endpoint and no REST route of its own. The same GraphQL operation on the same endpoint simply behaves differently depending on whether the request arrives authenticated or not.
 

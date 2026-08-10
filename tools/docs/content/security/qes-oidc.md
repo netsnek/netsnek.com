@@ -24,7 +24,7 @@ Und der Dienst erfindet nichts. Es gibt zum Beispiel keinen E-Mail-Claim, weil d
 
 ## Die Signup-Zeremonie
 
-Und dann die Zeremonie, für die alles begann. Wer beitreten will, signiert ein Registrierungs-PDF qualifiziert. Der Betreiber zeichnet gegen, zugestellt als signaturpflichtige Mail über [emailwerk](/docs/emailwerk). Die Antwortmail enthält einen Aktivierungslink, und erst der bestätigte Klick darauf legt das Konto an. Bestehende Konten werden dabei nie automatisch mit einer Signatur verknüpft, denn die angegebene E-Mail-Adresse ist in diesem Moment noch unbestätigt.
+Und dann die Zeremonie, für die alles begann. Wer beitreten will, signiert ein Registrierungs-PDF qualifiziert. Der Betreiber zeichnet gegen, zugestellt als signaturpflichtige Mail über [Emailwerk](/docs/emailwerk). Die Antwortmail enthält einen Aktivierungslink, und erst der bestätigte Klick darauf legt das Konto an. Bestehende Konten werden dabei nie automatisch mit einer Signatur verknüpft, denn die angegebene E-Mail-Adresse ist in diesem Moment noch unbestätigt.
 
 ## Wo es läuft
 

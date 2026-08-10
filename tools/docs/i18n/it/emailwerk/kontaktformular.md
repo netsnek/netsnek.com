@@ -1,12 +1,12 @@
 ---
 title: Modulo di contatto
-description: Come il modulo di contatto di netsnek.com invia senza login direttamente a emailwerk e perché comunque non è un relay aperto.
+description: Come il modulo di contatto di netsnek.com invia senza login direttamente a Emailwerk e perché comunque non è un relay aperto.
 path: /docs/emailwerk/kontaktformular
 ---
 
 # Modulo di contatto senza relay aperto
 
-Un modulo di contatto pubblico non ha login. Qualcuno deve comunque poter far partire una e-mail, senza che ne venga fuori un relay. È esattamente questa la domanda a cui emailwerk risponde nel modello dati invece che in una routine di controllo.
+Un modulo di contatto pubblico non ha login. Qualcuno deve comunque poter far partire una e-mail, senza che ne venga fuori un relay. È esattamente questa la domanda a cui Emailwerk risponde nel modello dati invece che in una routine di controllo.
 
 La soluzione non è spettacolare, ed è proprio per questo che mi piace. Non c'è un secondo endpoint né una route REST dedicata. La stessa operazione GraphQL sullo stesso endpoint si comporta soltanto in modo diverso, a seconda che la richiesta arrivi autenticata oppure no.
 

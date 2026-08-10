@@ -1,12 +1,12 @@
 ---
 title: Kontaktformular
-description: Wie das Kontaktformular von netsnek.com ohne Login direkt an emailwerk sendet und warum das trotzdem kein offenes Relay ist.
+description: Wie das Kontaktformular von netsnek.com ohne Login direkt an Emailwerk sendet und warum das trotzdem kein offenes Relay ist.
 path: /docs/emailwerk/kontaktformular
 ---
 
 # Kontaktformular ohne offenes Relay
 
-Ein öffentliches Kontaktformular hat keinen Login. Irgendwer muss trotzdem eine Mail auslösen dürfen, ohne dass daraus ein Relay wird. Genau diese Frage beantwortet emailwerk im Datenmodell statt in einer Prüfroutine.
+Ein öffentliches Kontaktformular hat keinen Login. Irgendwer muss trotzdem eine Mail auslösen dürfen, ohne dass daraus ein Relay wird. Genau diese Frage beantwortet Emailwerk im Datenmodell statt in einer Prüfroutine.
 
 Die Lösung ist unspektakulär, und genau deshalb mag ich sie. Es gibt keinen zweiten Endpunkt und keine eigene REST-Route. Dieselbe GraphQL-Operation auf demselben Endpunkt verhält sich nur anders, je nachdem ob die Anfrage angemeldet ankommt oder nicht.
 

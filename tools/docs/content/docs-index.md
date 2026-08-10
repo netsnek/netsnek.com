@@ -14,7 +14,7 @@ Wenn sich durch alles ein roter Faden zieht, dann dieser: Netsnek definiert sich
 
 - [PhotonQ](/docs/photonq): Wie wir mit der Walthergruppe PhotonQ gebaut haben, samt der Quanten-Doku aus dem Projekt, von OpenQASM bis zum messbasierten Quantencomputing.
 - [Jaen](/docs/jaen): Das CMS-Projekt, das ich mit Nico entwickle. Gemeinsam versuchen wir, Content-Management ins 21. Jahrhundert zu bringen. Diese Seite läuft darauf.
-- [emailwerk](/docs/emailwerk): Mein selbst gehosteter Transaktionsmail-Dienst mit Vorlagen, Multi-Provider-Versand und eingebauter Admin-Oberfläche.
+- [Emailwerk](/docs/emailwerk): Mein selbst gehosteter Transaktionsmail-Dienst mit Vorlagen, Multi-Provider-Versand und eingebauter Admin-Oberfläche.
 - [qtamp](/docs/qtamp): Mein Qt-nativer Musikplayer, der originale Winamp-Skins ausführt, Classic wie Modern, letztere über eine vollständige Maki-VM.
 - [Linux auf Apple Silicon](/docs/linux): Mein Asahi-Linux-Setup auf dem MacBook Pro und mein eigenes RPM-Repository rpm.netsnek.com.
 - [Security](/docs/security): Wie ich mit Hardware-Schlüsseln und qualifizierten elektronischen Signaturen arbeite, von deterministischen YubiKey-Schlüsseln bis zum OIDC-Login per ID Austria.

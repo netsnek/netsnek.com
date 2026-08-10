@@ -24,7 +24,7 @@ And the service invents nothing. There is no email claim, for example, because t
 
 ## The signup ceremony
 
-And then the ceremony that started it all. Whoever wants to join signs a registration PDF with a qualified signature. The operator countersigns, delivered as a signature-required mail via [emailwerk](/docs/emailwerk). The reply mail contains an activation link, and only the confirmed click on it creates the account. Existing accounts are never automatically linked to a signature in the process, because at that moment the email address given is still unconfirmed.
+And then the ceremony that started it all. Whoever wants to join signs a registration PDF with a qualified signature. The operator countersigns, delivered as a signature-required mail via [Emailwerk](/docs/emailwerk). The reply mail contains an activation link, and only the confirmed click on it creates the account. Existing accounts are never automatically linked to a signature in the process, because at that moment the email address given is still unconfirmed.
 
 ## Where it runs
 

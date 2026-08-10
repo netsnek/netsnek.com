@@ -14,7 +14,7 @@ Se c'è un filo rosso che attraversa tutto, è questo: Netsnek si definisce attr
 
 - [PhotonQ](/docs/photonq): come abbiamo costruito PhotonQ con die Walthergruppe, insieme alla documentazione quantistica nata dal progetto, da OpenQASM fino al calcolo quantistico basato sulla misura.
 - [Jaen](/docs/jaen): il progetto CMS che sviluppo con Nico. Insieme proviamo a portare il content management nel XXI secolo. Questo sito ci gira sopra.
-- [emailwerk](/docs/emailwerk): il mio servizio di e-mail transazionali self-hosted con template, invio multi-provider e interfaccia di amministrazione integrata.
+- [Emailwerk](/docs/emailwerk): il mio servizio di e-mail transazionali self-hosted con template, invio multi-provider e interfaccia di amministrazione integrata.
 - [qtamp](/docs/qtamp): il mio player musicale nativo in Qt che esegue le skin originali di Winamp, sia Classic sia Modern, queste ultime tramite una VM Maki completa.
 - [Linux su Apple Silicon](/docs/linux): il mio setup Asahi Linux sul MacBook Pro e il mio repository RPM rpm.netsnek.com.
 - [Security](/docs/security): come lavoro con chiavi hardware e firme elettroniche qualificate, dalle chiavi YubiKey deterministiche al login OIDC con ID Austria.

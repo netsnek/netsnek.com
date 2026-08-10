@@ -14,7 +14,7 @@ If there is one common thread running through all of it, it is this: Netsnek def
 
 - [PhotonQ](/docs/photonq): How we built PhotonQ with die Walthergruppe, including the quantum documentation from the project, from OpenQASM to measurement-based quantum computing.
 - [Jaen](/docs/jaen): The CMS project I develop with Nico. Together we are trying to bring content management into the 21st century. This site runs on it.
-- [emailwerk](/docs/emailwerk): My self-hosted transactional mail service with templates, multi-provider sending and a built-in admin interface.
+- [Emailwerk](/docs/emailwerk): My self-hosted transactional mail service with templates, multi-provider sending and a built-in admin interface.
 - [qtamp](/docs/qtamp): My Qt-native music player that runs original Winamp skins, classic as well as modern, the latter through a complete Maki VM.
 - [Linux on Apple Silicon](/docs/linux): My Asahi Linux setup on the MacBook Pro and my own RPM repository rpm.netsnek.com.
 - [Security](/docs/security): How I work with hardware keys and qualified electronic signatures, from deterministic YubiKey keys to the OIDC login via ID Austria.

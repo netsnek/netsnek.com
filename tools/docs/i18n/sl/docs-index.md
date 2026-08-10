@@ -14,7 +14,7 @@ Tukaj zbiram zgodbe in dokumentacijo o svojih projektih. Vsako področje ima svo
 
 - [PhotonQ](/docs/photonq): Kako smo z Walthergruppe zgradili PhotonQ, skupaj s kvantno dokumentacijo iz projekta, od OpenQASM do kvantnega računalništva na osnovi meritev.
 - [Jaen](/docs/jaen): Projekt CMS, ki ga razvijam z Nicom. Skupaj poskušava upravljanje vsebin pripeljati v 21. stoletje. Ta stran teče na njem.
-- [emailwerk](/docs/emailwerk): Moja lastno gostovana storitev za transakcijsko pošto s predlogami, pošiljanjem prek več ponudnikov in vgrajenim skrbniškim vmesnikom.
+- [Emailwerk](/docs/emailwerk): Moja lastno gostovana storitev za transakcijsko pošto s predlogami, pošiljanjem prek več ponudnikov in vgrajenim skrbniškim vmesnikom.
 - [qtamp](/docs/qtamp): Moj glasbeni predvajalnik, izvorno napisan v Qt, ki izvaja originalne teme Winampa, tako Classic kot Modern, slednje prek popolnega navideznega stroja Maki.
 - [Linux na Apple Silicon](/docs/linux): Moja nastavitev Asahi Linuxa na MacBooku Pro in moj lastni repozitorij RPM rpm.netsnek.com.
 - [Varnost](/docs/security): Kako delam s strojnimi ključi in kvalificiranimi elektronskimi podpisi, od determinističnih ključev YubiKey do prijave OIDC prek ID Austria.
