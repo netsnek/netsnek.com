@@ -1,0 +1,157 @@
+{
+ "oldPath": "/docs",
+ "locale": "it",
+ "title": "Documentazione",
+ "description": "Documentazione su PhotonQ.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Documentazione e guide pratiche",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 34,
+           "offset": 33
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 34,
+         "offset": 33
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ciascuna di queste guide e documentazioni contiene consigli e approfondimenti per fornirti linee guida per il successo del tuo esperimento di computazione quantistica.",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 35
+          },
+          "end": {
+           "line": 3,
+           "column": 141,
+           "offset": 175
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 35
+        },
+        "end": {
+         "line": 3,
+         "column": 141,
+         "offset": 175
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "br",
+       "attributes": [],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 177
+        },
+        "end": {
+         "line": 5,
+         "column": 7,
+         "offset": 183
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "DocsIndex",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "test",
+         "value": "test",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 12,
+           "offset": 196
+          },
+          "end": {
+           "line": 7,
+           "column": 23,
+           "offset": 207
+          }
+         }
+        }
+       ],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 185
+        },
+        "end": {
+         "line": 7,
+         "column": 26,
+         "offset": 210
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 8,
+       "column": 1,
+       "offset": 211
+      }
+     }
+    },
+    "props": {}
+   }
+  }
+ }
+}

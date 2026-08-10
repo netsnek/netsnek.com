@@ -1,0 +1,150 @@
+{
+ "oldPath": "/docs/openqasm/gates/cnot-gate",
+ "locale": "it",
+ "title": "Porta CNOT",
+ "description": "In questo capitolo del tutorial di OpenQASM imparerai come applicare la porta CNOT ai qubit.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Porta CNOT"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "La computazione quantistica si basa fortemente su principi della meccanica quantistica come la sovrapposizione quantistica e l'entanglement quantistico. La porta CNOT (talvolta nota anche come porta CX) può essere utilizzata per creare entanglement tra gli stati di 2 qubit, il che la rende una porta quantistica molto importante. In questo capitolo del tutorial di OpenQASM imparerai come applicare la porta CNOT ai qubit."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOT (o CX) è una porta fondamentale a due qubit nel campo della computazione quantistica. In OpenQASM, CNOT è una porta integrata e pertanto OpenQASM fornisce la sintassi per applicare una porta CNOT a due qubit."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Porta CNOT"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "La porta CNOT è una porta a due qubit che applica una porta NOT condizionale a un qubit bersaglio se e solo se il qubit di controllo si trova nello stato |1>"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "La seguente sintassi si usa per applicare la porta CNOT con qubit di controllo qr1[index] e qubit bersaglio qr2[index]:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "cx qr1[index], qr2[index];"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Nota:"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": " CNOT è una porta integrata, pertanto cx è una parola chiave riservata."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esempio"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Di seguito è riportato un esempio di applicazione della porta CNOT in cui il qubit di controllo è il primo qubit del registro quantistico qubits e il qubit bersaglio è il secondo qubit del registro quantistico qubits:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\n\n// Define quantum registers\nqreg qubits[2];\n\n// Apply CX gate\ncx qubits[0], qubits[1];"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Nota:"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": " Il qubit di controllo e il qubit bersaglio possono trovarsi sia nello stesso registro quantistico sia in registri quantistici diversi."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Di seguito una rappresentazione del codice dell'esempio precedente"
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

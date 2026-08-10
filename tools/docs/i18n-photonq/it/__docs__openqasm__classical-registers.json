@@ -1,0 +1,341 @@
+{
+ "oldPath": "/docs/openqasm/classical-registers",
+ "locale": "it",
+ "title": "Registri Classici",
+ "description": "In questo capitolo del tutorial di OpenQASM imparerai a dichiarare e indicizzare i registri classici nel linguaggio di programmazione OpenQASM.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Registri Classici in OpenQASM"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Così come i qubit sono i mattoni fondamentali della computazione quantistica, i bit classici sono la base dell'informatica classica. OpenQASM offre la possibilità di raggruppare i bit in "
+        },
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "registri classici"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": ", il che è particolarmente utile quando si lavora con le misurazioni provenienti da operazioni quantistiche. Questo capitolo ti insegnerà a creare e utilizzare i registri classici in OpenQASM."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Comprendere i Registri Classici"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Un registro classico è simile a un array nella programmazione classica, ma è progettato per contenere bit, che rappresentano gli stati binari 0 o 1."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "In OpenQASM, un registro classico si dichiara con la parola chiave "
+        },
+        {
+         "type": "inlineCode",
+         "value": "creg"
+        },
+        {
+         "type": "text",
+         "value": ", un identificatore e il numero di bit come dimensione:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "creg <identifier>[<size>];"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "L'identificatore deve rispettare le regole di denominazione di OpenQASM e la dimensione deve essere un intero positivo."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esperimento: Creare e Utilizzare un Registro Classico"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Esploriamo un esperimento in cui creiamo un registro classico per registrare l'esito di misurazioni quantistiche"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "3",
+         "label": "3"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "4",
+         "label": "4"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "5",
+         "label": "5"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "6",
+         "label": "6"
+        },
+        {
+         "type": "text",
+         "value": ":"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0;                 // Specify OpenQASM version [^1]\ninclude \"qelib1.inc\";         // Include the standard quantum library [^2]\n\n// Quantum register with a single qubit and classical register with two bits\nqreg qubit[1];                // Single-qubit quantum register [^4]\ncreg bits[2];                 // Two-bit classical register [^3]\n\n// Prepare qubit in a superposition state\nh qubit[0];                   // Apply Hadamard gate to the qubit [^5]\n\n// Measure the qubit and store the result in the first bit of classical register\nmeasure qubit[0] -> bits[0];  // Measurement operation [^6]\n\n// The second bit remains in its initial state (0)"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "In questo esperimento combinato, un registro quantistico contiene un singolo qubit che prepariamo in uno stato di sovrapposizione utilizzando una porta di Hadamard. Misuriamo quindi lo stato del qubit e memorizziamo il risultato della misurazione nel primo bit del nostro registro classico a due bit. Il secondo bit del registro rimane invariato e dimostra la possibilità di memorizzare più esiti di misurazione o di utilizzare bit aggiuntivi per altre computazioni classiche."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Registri Classici a Singolo Bit"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Sebbene OpenQASM non consenta la dichiarazione di bit classici isolati, puoi dichiarare un registro a un bit per gli scenari che ne richiedono soltanto uno:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "// One-bit classical register declaration\ncreg flag[1]; // Single-bit register named 'flag' [^3]"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "In sintesi, i registri classici in OpenQASM sono indispensabili per ottenere e conservare i risultati delle misurazioni quantistiche, consentendo le elaborazioni successive necessarie negli algoritmi quantistici."
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/version-string/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Stringa di Versione"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "2",
+       "label": "2",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/include/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione di Include"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "3",
+       "label": "3",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/registers/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione dei Registri Classici"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "4",
+       "label": "4",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/registers/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione dei Registri Quantistici"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "5",
+       "label": "5",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/gates/hadamard/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Porta di Hadamard"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "6",
+       "label": "6",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/gates/measure/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Misurazione"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

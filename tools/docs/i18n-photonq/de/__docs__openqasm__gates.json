@@ -1,0 +1,490 @@
+{
+ "oldPath": "/docs/openqasm/gates",
+ "locale": "de",
+ "title": "Gatter",
+ "description": "In diesem Kapitel des OpenQASM-Tutorials lernen Sie die Quantengatter in OpenQASM im Überblick kennen. In den folgenden Kapiteln dieses OpenQASM-Tutorials lernen Sie die Verwendung dieser Quantengatter in OpenQASM im Detail kennen.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Gatter",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 8,
+           "offset": 7
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 8,
+         "offset": 7
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Im klassischen Computing werden klassische Gatter verwendet, um Operationen auf einem oder mehreren Bits auszuführen. Ähnlich werden im Quantencomputing Quantengatter verwendet, um eine reversible Operation auf einem oder mehreren Qubits auszuführen. OpenQASM stellt einige eingebaute Quantengatter bereit. In diesem Kapitel des OpenQASM-Tutorials lernen Sie die Quantengatter in OpenQASM im Überblick kennen. In den folgenden Kapiteln dieses OpenQASM-Tutorials lernen Sie die Verwendung dieser Quantengatter in OpenQASM im Detail kennen.",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 9
+          },
+          "end": {
+           "line": 3,
+           "column": 486,
+           "offset": 494
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 9
+        },
+        "end": {
+         "line": 3,
+         "column": 486,
+         "offset": 494
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Im Bereich des Quantencomputings gibt es verschiedene Standard-Quantengatter, die zum Erstellen von Quantenalgorithmen verwendet werden. Allerdings sind nicht alle dieser Quantengatter fundamentale Quantengatter. Fundamentale Quantengatter sind Quantengatter, mit denen sich andere Quantengatter erzeugen lassen.",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 1,
+           "offset": 496
+          },
+          "end": {
+           "line": 5,
+           "column": 287,
+           "offset": 782
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 496
+        },
+        "end": {
+         "line": 5,
+         "column": 287,
+         "offset": 782
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "OpenQASM stellt die folgenden zwei eingebauten Quantengatter bereit:",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 1,
+           "offset": 784
+          },
+          "end": {
+           "line": 7,
+           "column": 60,
+           "offset": 843
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 784
+        },
+        "end": {
+         "line": 7,
+         "column": 60,
+         "offset": 843
+        }
+       }
+      },
+      {
+       "type": "list",
+       "ordered": false,
+       "start": null,
+       "spread": false,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "U-Gatter",
+             "position": {
+              "start": {
+               "line": 9,
+               "column": 3,
+               "offset": 847
+              },
+              "end": {
+               "line": 9,
+               "column": 9,
+               "offset": 853
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 9,
+             "column": 3,
+             "offset": 847
+            },
+            "end": {
+             "line": 9,
+             "column": 9,
+             "offset": 853
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 1,
+           "offset": 845
+          },
+          "end": {
+           "line": 9,
+           "column": 9,
+           "offset": 853
+          }
+         }
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "CX-Gatter",
+             "position": {
+              "start": {
+               "line": 10,
+               "column": 3,
+               "offset": 856
+              },
+              "end": {
+               "line": 10,
+               "column": 10,
+               "offset": 863
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 10,
+             "column": 3,
+             "offset": 856
+            },
+            "end": {
+             "line": 10,
+             "column": 10,
+             "offset": 863
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 10,
+           "column": 1,
+           "offset": 854
+          },
+          "end": {
+           "line": 10,
+           "column": 10,
+           "offset": 863
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 845
+        },
+        "end": {
+         "line": 10,
+         "column": 10,
+         "offset": 863
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Das U-Gatter ist ein Quantengatter, mit dem sich der Zustand eines Qubits ändern lässt. Das CX-Gatter ist ein Quantengatter, das verwendet wird, um die Zustände zweier Qubits zu verschränken. Beide Quantengatter sind fundamentale Quantengatter. Mit dem U-Gatter und dem CX-Gatter können Sie jedes andere Quantengatter erzeugen.",
+         "position": {
+          "start": {
+           "line": 12,
+           "column": 1,
+           "offset": 865
+          },
+          "end": {
+           "line": 12,
+           "column": 291,
+           "offset": 1155
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 12,
+         "column": 1,
+         "offset": 865
+        },
+        "end": {
+         "line": 12,
+         "column": 291,
+         "offset": 1155
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Tatsächlich nutzt die Standard-OpenQASM-2-Bibliothek qelib1.inc",
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 1,
+           "offset": 1157
+          },
+          "end": {
+           "line": 14,
+           "column": 50,
+           "offset": 1206
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 50,
+           "offset": 1206
+          },
+          "end": {
+           "line": 14,
+           "column": 54,
+           "offset": 1210
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " die fundamentalen Quantengatter U und CX, um die am häufigsten verwendeten und einige seltener verwendete Quantengatter zu erzeugen.",
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 54,
+           "offset": 1210
+          },
+          "end": {
+           "line": 14,
+           "column": 177,
+           "offset": 1333
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 14,
+         "column": 1,
+         "offset": 1157
+        },
+        "end": {
+         "line": 14,
+         "column": 177,
+         "offset": 1333
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "In den folgenden Kapiteln lernen Sie das U-Gatter und das CX-Gatter im Detail kennen.",
+         "position": {
+          "start": {
+           "line": 16,
+           "column": 1,
+           "offset": 1335
+          },
+          "end": {
+           "line": 16,
+           "column": 89,
+           "offset": 1423
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 16,
+         "column": 1,
+         "offset": 1335
+        },
+        "end": {
+         "line": 16,
+         "column": 89,
+         "offset": 1423
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://deeplearninguniversity.com/openqasm2-0/openqasm-qelib1-inc/",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://deeplearninguniversity.com/openqasm2-0/openqasm-qelib1-inc/",
+             "position": {
+              "start": {
+               "line": 18,
+               "column": 8,
+               "offset": 1432
+              },
+              "end": {
+               "line": 18,
+               "column": 75,
+               "offset": 1499
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 18,
+             "column": 7,
+             "offset": 1431
+            },
+            "end": {
+             "line": 18,
+             "column": 145,
+             "offset": 1569
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 18,
+           "column": 7,
+           "offset": 1431
+          },
+          "end": {
+           "line": 18,
+           "column": 145,
+           "offset": 1569
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 18,
+         "column": 1,
+         "offset": 1425
+        },
+        "end": {
+         "line": 18,
+         "column": 145,
+         "offset": 1569
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 19,
+       "column": 1,
+       "offset": 1570
+      }
+     }
+    },
+    "props": {}
+   }
+  }
+ }
+}

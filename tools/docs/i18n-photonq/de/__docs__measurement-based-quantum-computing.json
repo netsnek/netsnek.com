@@ -1,0 +1,1224 @@
+{
+ "oldPath": "/docs/measurement-based-quantum-computing",
+ "locale": "de",
+ "title": "Messbasiertes Quantencomputing",
+ "description": "Überblick über das Schema des messbasierten Quantencomputings (MBQC).",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Messbasierte Quantenberechnung",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 40,
+           "offset": 39
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 40,
+         "offset": 39
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Im Schaltkreismodell wird Quanteninformation durch das Anwenden von Gattern verarbeitet, die eine\nkohärente unitäre Entwicklung realisieren. Im Gegensatz dazu wird bei der messbasierten Quantenberechnung (MBQC)\nInformation durch Sequenzen adaptiver Einzel-Qubit-Messungen verarbeitet, die an hochgradig\nverschränkten mehrteiligen Zuständen ausgeführt werden, den sogenannten ",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 41
+          },
+          "end": {
+           "line": 6,
+           "column": 47,
+           "offset": 363
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Graphenzuständen",
+           "position": {
+            "start": {
+             "line": 6,
+             "column": 48,
+             "offset": 364
+            },
+            "end": {
+             "line": 6,
+             "column": 60,
+             "offset": 376
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 6,
+           "column": 47,
+           "offset": 363
+          },
+          "end": {
+           "line": 6,
+           "column": 61,
+           "offset": 377
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ". Die beiden Modelle sind äquivalent,\ndas letztere hat jedoch kein klassisches Gegenstück und ist rein quantenmechanisch.",
+         "position": {
+          "start": {
+           "line": 6,
+           "column": 61,
+           "offset": 377
+          },
+          "end": {
+           "line": 7,
+           "column": 70,
+           "offset": 479
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 41
+        },
+        "end": {
+         "line": 7,
+         "column": 70,
+         "offset": 479
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "br",
+       "attributes": [],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 481
+        },
+        "end": {
+         "line": 9,
+         "column": 7,
+         "offset": 487
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Der Hauptvorteil von MBQC liegt in seinen günstigen Architekturanforderungen für manche\nPlattformen. Anstatt Hunderte von Gattern anzuwenden, verlagert dieses Modell den\nAufwand in den Schritt der Zustandspräparation, der offline ausgeführt werden kann. Danach\nbenötigt die Berechnung nur noch Einzel-Qubit-Messungen, was allgemein als einfache Aufgabe gilt, sowie klassische\nFeed-Forward-Elektronik und Modulatoren, um die Adaptivität umzusetzen.",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 1,
+           "offset": 489
+          },
+          "end": {
+           "line": 15,
+           "column": 65,
+           "offset": 907
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 11,
+         "column": 1,
+         "offset": 489
+        },
+        "end": {
+         "line": 15,
+         "column": 65,
+         "offset": 907
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "br",
+       "attributes": [],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 17,
+         "column": 1,
+         "offset": 909
+        },
+        "end": {
+         "line": 17,
+         "column": 7,
+         "offset": 915
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Das Funktionsprinzip dieses Schemas lässt sich als Verallgemeinerung der Quantenteleportation\nverstehen, eines Grundbausteins der Quanteninformationsverarbeitung, der 1993 eingeführt",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 1,
+           "offset": 917
+          },
+          "end": {
+           "line": 20,
+           "column": 82,
+           "offset": 1088
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 82,
+           "offset": 1088
+          },
+          "end": {
+           "line": 20,
+           "column": 86,
+           "offset": 1092
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nund 1999 demonstriert wurde",
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 86,
+           "offset": 1092
+          },
+          "end": {
+           "line": 21,
+           "column": 25,
+           "offset": 1117
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2",
+         "position": {
+          "start": {
+           "line": 21,
+           "column": 25,
+           "offset": 1117
+          },
+          "end": {
+           "line": 21,
+           "column": 29,
+           "offset": 1121
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ".",
+         "position": {
+          "start": {
+           "line": 21,
+           "column": 29,
+           "offset": 1121
+          },
+          "end": {
+           "line": 21,
+           "column": 30,
+           "offset": 1122
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 19,
+         "column": 1,
+         "offset": 917
+        },
+        "end": {
+         "line": 21,
+         "column": 30,
+         "offset": 1122
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Quantenteleportation",
+         "position": {
+          "start": {
+           "line": 23,
+           "column": 4,
+           "offset": 1127
+          },
+          "end": {
+           "line": 23,
+           "column": 25,
+           "offset": 1148
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 23,
+         "column": 1,
+         "offset": 1124
+        },
+        "end": {
+         "line": 23,
+         "column": 25,
+         "offset": 1148
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Das Ziel der Quantenteleportation ist es, einen Quantenzustand  ",
+         "position": {
+          "start": {
+           "line": 25,
+           "column": 1,
+           "offset": 1150
+          },
+          "end": {
+           "line": 25,
+           "column": 62,
+           "offset": 1211
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "| \\alpha \\rangle ",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "| \\alpha \\rangle "
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 25,
+           "column": 62,
+           "offset": 1211
+          },
+          "end": {
+           "line": 25,
+           "column": 81,
+           "offset": 1230
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " von A (Alice)\nzu B (Bob) zu senden, die weit voneinander entfernt sein können und nur klassische Information übertragen dürfen.\nGenauer gesagt lautet der Quantenschaltkreis, der die Teleportation eines Zustands",
+         "position": {
+          "start": {
+           "line": 25,
+           "column": 81,
+           "offset": 1230
+          },
+          "end": {
+           "line": 27,
+           "column": 84,
+           "offset": 1419
+          }
+         }
+        },
+        {
+         "type": "break",
+         "position": {
+          "start": {
+           "line": 27,
+           "column": 84,
+           "offset": 1419
+          },
+          "end": {
+           "line": 28,
+           "column": 1,
+           "offset": 1421
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "| \\alpha \\rangle ",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "| \\alpha \\rangle "
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 28,
+           "column": 1,
+           "offset": 1421
+          },
+          "end": {
+           "line": 28,
+           "column": 20,
+           "offset": 1440
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "  bewerkstelligt, wie folgt:",
+         "position": {
+          "start": {
+           "line": 28,
+           "column": 20,
+           "offset": 1440
+          },
+          "end": {
+           "line": 28,
+           "column": 39,
+           "offset": 1459
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 25,
+         "column": 1,
+         "offset": 1150
+        },
+        "end": {
+         "line": 28,
+         "column": 39,
+         "offset": 1459
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "Image",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "name",
+         "value": "image-762dm",
+         "position": {
+          "start": {
+           "line": 30,
+           "column": 8,
+           "offset": 1468
+          },
+          "end": {
+           "line": 30,
+           "column": 26,
+           "offset": 1486
+          }
+         }
+        },
+        {
+         "type": "mdxJsxAttribute",
+         "name": "defaultValue",
+         "value": "https://via.placeholder.com/150",
+         "position": {
+          "start": {
+           "line": 30,
+           "column": 27,
+           "offset": 1487
+          },
+          "end": {
+           "line": 30,
+           "column": 73,
+           "offset": 1533
+          }
+         }
+        },
+        {
+         "type": "mdxJsxAttribute",
+         "name": "width",
+         "value": "50",
+         "position": {
+          "start": {
+           "line": 30,
+           "column": 74,
+           "offset": 1534
+          },
+          "end": {
+           "line": 30,
+           "column": 84,
+           "offset": 1544
+          }
+         }
+        }
+       ],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 30,
+         "column": 1,
+         "offset": 1461
+        },
+        "end": {
+         "line": 30,
+         "column": 87,
+         "offset": 1547
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Alice führt eine Bell-Messung an den Zuständen aus, die sie besitzt, dann teilt sie Bob das\nErgebnis der Messung mit. Er überführt den Zustand, den er anfangs gespeichert hat, in  ",
+         "position": {
+          "start": {
+           "line": 32,
+           "column": 1,
+           "offset": 1549
+          },
+          "end": {
+           "line": 33,
+           "column": 79,
+           "offset": 1716
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "| \\alpha \\rangle ",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "| \\alpha \\rangle "
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 33,
+           "column": 79,
+           "offset": 1716
+          },
+          "end": {
+           "line": 33,
+           "column": 98,
+           "offset": 1735
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ",\nindem er Einzel-Qubit-Rotationen anwendet, die vom Messergebnis abhängen.",
+         "position": {
+          "start": {
+           "line": 33,
+           "column": 98,
+           "offset": 1735
+          },
+          "end": {
+           "line": 34,
+           "column": 76,
+           "offset": 1811
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 32,
+         "column": 1,
+         "offset": 1549
+        },
+        "end": {
+         "line": 34,
+         "column": 76,
+         "offset": 1811
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "br",
+       "attributes": [],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 36,
+         "column": 1,
+         "offset": 1813
+        },
+        "end": {
+         "line": 36,
+         "column": 7,
+         "offset": 1819
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Anstatt ein Gatter direkt auf einen Zustand anzuwenden, kann man sich daher vorstellen, diesen\nZustand mithilfe einer modifizierten gemeinsamen Ressource zu teleportieren. Genauer gesagt kann eine Operation ",
+         "position": {
+          "start": {
+           "line": 38,
+           "column": 1,
+           "offset": 1821
+          },
+          "end": {
+           "line": 39,
+           "column": 75,
+           "offset": 1983
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "U",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "U"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 39,
+           "column": 75,
+           "offset": 1983
+          },
+          "end": {
+           "line": 39,
+           "column": 78,
+           "offset": 1986
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " entweder\nauf einen Zustand  ",
+         "position": {
+          "start": {
+           "line": 39,
+           "column": 78,
+           "offset": 1986
+          },
+          "end": {
+           "line": 40,
+           "column": 21,
+           "offset": 2021
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "| \\alpha \\rangle ",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "| \\alpha \\rangle "
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 40,
+           "column": 21,
+           "offset": 2021
+          },
+          "end": {
+           "line": 40,
+           "column": 40,
+           "offset": 2040
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " angewendet werden, oder dieser Zustand  ",
+         "position": {
+          "start": {
+           "line": 40,
+           "column": 40,
+           "offset": 2040
+          },
+          "end": {
+           "line": 40,
+           "column": 57,
+           "offset": 2057
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "| \\alpha \\rangle ",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "| \\alpha \\rangle "
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 40,
+           "column": 57,
+           "offset": 2057
+          },
+          "end": {
+           "line": 40,
+           "column": 76,
+           "offset": 2076
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " kann\nunter Verwendung des modifizierten Bell-Zustands ",
+         "position": {
+          "start": {
+           "line": 40,
+           "column": 76,
+           "offset": 2076
+          },
+          "end": {
+           "line": 41,
+           "column": 31,
+           "offset": 2125
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "(\\mathbb{I} \\otimes U) |\\phi^+ \\rangle",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "(\\mathbb{I} \\otimes U) |\\phi^+ \\rangle"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 41,
+           "column": 31,
+           "offset": 2125
+          },
+          "end": {
+           "line": 41,
+           "column": 71,
+           "offset": 2165
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " teleportiert werden. Der Unterschied zum\nStandardansatz ist klar: Anstatt Operationen an unbekannten Zuständen auszuführen, genügt es,\nbekannte Zustände als Offline-Ressourcen zu konstruieren.",
+         "position": {
+          "start": {
+           "line": 41,
+           "column": 71,
+           "offset": 2165
+          },
+          "end": {
+           "line": 43,
+           "column": 58,
+           "offset": 2339
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 38,
+         "column": 1,
+         "offset": 1821
+        },
+        "end": {
+         "line": 43,
+         "column": 58,
+         "offset": 2339
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "br",
+       "attributes": [],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 45,
+         "column": 1,
+         "offset": 2341
+        },
+        "end": {
+         "line": 45,
+         "column": 7,
+         "offset": 2347
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.70.1895",
+           "children": [
+            {
+             "type": "text",
+             "value": "Bennett C H, Brassard G, Crépeau C, Jozsa R, Peres A and Wootters W K, 1993,\nTeleporting an unknown quantum state via dual classical and Einstein–Podolsky–Rosen channels,\n",
+             "position": {
+              "start": {
+               "line": 47,
+               "column": 8,
+               "offset": 2356
+              },
+              "end": {
+               "line": 49,
+               "column": 1,
+               "offset": 2531
+              }
+             }
+            },
+            {
+             "type": "emphasis",
+             "children": [
+              {
+               "type": "text",
+               "value": "Phys. Rev. Lett.",
+               "position": {
+                "start": {
+                 "line": 49,
+                 "column": 6,
+                 "offset": 2536
+                },
+                "end": {
+                 "line": 49,
+                 "column": 22,
+                 "offset": 2552
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 49,
+               "column": 5,
+               "offset": 2535
+              },
+              "end": {
+               "line": 49,
+               "column": 23,
+               "offset": 2553
+              }
+             }
+            },
+            {
+             "type": "text",
+             "value": " ",
+             "position": {
+              "start": {
+               "line": 49,
+               "column": 23,
+               "offset": 2553
+              },
+              "end": {
+               "line": 49,
+               "column": 24,
+               "offset": 2554
+              }
+             }
+            },
+            {
+             "type": "strong",
+             "children": [
+              {
+               "type": "text",
+               "value": "70 1895–9",
+               "position": {
+                "start": {
+                 "line": 49,
+                 "column": 26,
+                 "offset": 2556
+                },
+                "end": {
+                 "line": 49,
+                 "column": 35,
+                 "offset": 2565
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 49,
+               "column": 24,
+               "offset": 2554
+              },
+              "end": {
+               "line": 49,
+               "column": 37,
+               "offset": 2567
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 47,
+             "column": 7,
+             "offset": 2355
+            },
+            "end": {
+             "line": 49,
+             "column": 105,
+             "offset": 2635
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 7,
+           "offset": 2355
+          },
+          "end": {
+           "line": 49,
+           "column": 105,
+           "offset": 2635
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 47,
+         "column": 1,
+         "offset": 2349
+        },
+        "end": {
+         "line": 49,
+         "column": 105,
+         "offset": 2635
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "2",
+       "label": "2",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://www.nature.com/articles/37539",
+           "children": [
+            {
+             "type": "text",
+             "value": " Bouwmeester D, Pan J-W, Mattle K, Eibl M, Weinfurter H and Zeilinger A, 1997,\nExperimental quantum teleportation, ",
+             "position": {
+              "start": {
+               "line": 51,
+               "column": 8,
+               "offset": 2644
+              },
+              "end": {
+               "line": 52,
+               "column": 41,
+               "offset": 2763
+              }
+             }
+            },
+            {
+             "type": "emphasis",
+             "children": [
+              {
+               "type": "text",
+               "value": "Nature",
+               "position": {
+                "start": {
+                 "line": 52,
+                 "column": 42,
+                 "offset": 2764
+                },
+                "end": {
+                 "line": 52,
+                 "column": 48,
+                 "offset": 2770
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 52,
+               "column": 41,
+               "offset": 2763
+              },
+              "end": {
+               "line": 52,
+               "column": 49,
+               "offset": 2771
+              }
+             }
+            },
+            {
+             "type": "text",
+             "value": ", ",
+             "position": {
+              "start": {
+               "line": 52,
+               "column": 49,
+               "offset": 2771
+              },
+              "end": {
+               "line": 52,
+               "column": 51,
+               "offset": 2773
+              }
+             }
+            },
+            {
+             "type": "strong",
+             "children": [
+              {
+               "type": "text",
+               "value": "390 575–9",
+               "position": {
+                "start": {
+                 "line": 52,
+                 "column": 53,
+                 "offset": 2775
+                },
+                "end": {
+                 "line": 52,
+                 "column": 62,
+                 "offset": 2784
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 52,
+               "column": 51,
+               "offset": 2773
+              },
+              "end": {
+               "line": 52,
+               "column": 64,
+               "offset": 2786
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 51,
+             "column": 7,
+             "offset": 2643
+            },
+            "end": {
+             "line": 52,
+             "column": 104,
+             "offset": 2826
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 51,
+           "column": 7,
+           "offset": 2643
+          },
+          "end": {
+           "line": 52,
+           "column": 104,
+           "offset": 2826
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 51,
+         "column": 1,
+         "offset": 2637
+        },
+        "end": {
+         "line": 52,
+         "column": 104,
+         "offset": 2826
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 53,
+       "column": 1,
+       "offset": 2827
+      }
+     }
+    },
+    "props": {}
+   }
+  },
+  "IMA:ImageField": {
+   "image-762dm": {
+    "value": "ad809995-f8c7-49d9-8c81-8e357b701823",
+    "props": {}
+   }
+  }
+ }
+}

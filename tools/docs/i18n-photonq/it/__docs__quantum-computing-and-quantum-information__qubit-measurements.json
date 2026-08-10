@@ -1,0 +1,2717 @@
+{
+ "oldPath": "/docs/quantum-computing-and-quantum-information/qubit-measurements",
+ "locale": "it",
+ "title": "Misurazioni dei Qubit",
+ "description": "Descrizione delle misurazioni dei qubit",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Misurare i Qubit"
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "L'Importanza della Misurazione per i Qubit"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Possiamo ottenere informazioni su un qubit in uno stato sconosciuto soltanto misurandolo. Durante una misurazione, il qubit collassa esattamente in uno di due valori. Lo stato originale non può più essere ricostruito e apprendiamo solo una piccola parte di ciò che ci sarebbe da sapere sullo stato.\nSe "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\phi_0} = \\alpha \\ket{0} + \\beta \\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\phi_0} = \\alpha \\ket{0} + \\beta \\ket{1}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è uno stato sconosciuto e il risultato della misurazione è "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ",\nl'unica cosa che si può affermare con certezza su "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\phi_0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\phi_0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è che "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\alpha \\neq 0",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\alpha \\neq 0"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " doveva valere.\nUlteriori informazioni su "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\phi_0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\phi_0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " non possono più essere ottenute, perché il qubit ha perso irreversibilmente la sua sovrapposizione in seguito alla misurazione."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Misurazione di Singoli Bit in un Registro"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Abbiamo già visto che possiamo misurare anche singoli bit in un registro, poiché ciò ha effetto anche sul risultato della misurazione degli altri qubit."
+        },
+        {
+         "type": "break"
+        },
+        {
+         "type": "text",
+         "value": "Come cambia lo stato di un registro misurando un singolo qubit? Sappiamo che un registro composto da due qubit "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{x}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{x}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{y}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{y}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " si trova nello stato"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "inlineMath",
+         "value": "\\ket{xy} = \\alpha_{00} \\ket{00}+\\alpha_{01} \\ket{01}+\\alpha_{10} \\ket{10}\\alpha_{11} \\ket{11}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{xy} = \\alpha_{00} \\ket{00}+\\alpha_{01} \\ket{01}+\\alpha_{10} \\ket{10}\\alpha_{11} \\ket{11}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nper qualsiasi "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\alpha_{00}, \\alpha_{01}, \\alpha_{10}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\alpha_{00}, \\alpha_{01}, \\alpha_{10}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\alpha_{11}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\alpha_{11}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ".\nLa probabilità di misurare "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{x} = \\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{x} = \\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "p(\\ket{x} = \\ket{0}) = |\\alpha_{00}|^2 + |\\alpha_{01}|^2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "p(\\ket{x} = \\ket{0}) = |\\alpha_{00}|^2 + |\\alpha_{01}|^2"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Se ora misuriamo "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{x} = \\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{x} = \\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", il registro si trova nello stato"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0y} = \\beta_{00} \\ket{00}+\\beta_{01} \\ket{01}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0y} = \\beta_{00} \\ket{00}+\\beta_{01} \\ket{01}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nVale quanto segue:\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\beta_{0i} = \\frac{\\alpha_{0i}}{\\sqrt{|\\alpha_{00}|^2+|\\alpha_{01}|^2}}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\beta_{0i} = \\frac{\\alpha_{0i}}{\\sqrt{|\\alpha_{00}|^2+|\\alpha_{01}|^2}}"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Questo significa: le ampiezze di "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{00}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{00}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{01}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{01}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " vengono mantenute in proporzione, ma vengono normalizzate in modo che le probabilità di misurazione tornino a sommarsi a 1."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Misurazioni in Basi diverse dalla Base Computazionale"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Finora solo "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " sono stati presentati come possibili risultati di misurazione. Tuttavia, questo approccio ignora il fatto che i qubit vengono sempre misurati rispetto a una certa "
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "base"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": ". Finora si trattava della cosiddetta base computazionale "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\{\\ket{0},\\ket{1}\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\{\\ket{0},\\ket{1}\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "."
+        }
+       ]
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "Callout",
+       "attributes": [],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "strong",
+           "children": [
+            {
+             "type": "text",
+             "value": "Promemoria:"
+            }
+           ]
+          },
+          {
+           "type": "text",
+           "value": "\nUna base di uno spazio vettoriale "
+          },
+          {
+           "type": "inlineMath",
+           "value": "n",
+           "data": {
+            "hName": "code",
+            "hProperties": {
+             "className": [
+              "language-math",
+              "math-inline"
+             ]
+            },
+            "hChildren": [
+             {
+              "type": "text",
+              "value": "n"
+             }
+            ]
+           }
+          },
+          {
+           "type": "text",
+           "value": "-dimensionale è un insieme di vettori di base "
+          },
+          {
+           "type": "inlineMath",
+           "value": "\\{b_0, b_1, ..., b_{n-1}\\}",
+           "data": {
+            "hName": "code",
+            "hProperties": {
+             "className": [
+              "language-math",
+              "math-inline"
+             ]
+            },
+            "hChildren": [
+             {
+              "type": "text",
+              "value": "\\{b_0, b_1, ..., b_{n-1}\\}"
+             }
+            ]
+           }
+          },
+          {
+           "type": "text",
+           "value": " per cui vale quanto segue: ogni vettore di base è "
+          },
+          {
+           "type": "inlineMath",
+           "value": "n",
+           "data": {
+            "hName": "code",
+            "hProperties": {
+             "className": [
+              "language-math",
+              "math-inline"
+             ]
+            },
+            "hChildren": [
+             {
+              "type": "text",
+              "value": "n"
+             }
+            ]
+           }
+          },
+          {
+           "type": "text",
+           "value": "-dimensionale e i vettori sono linearmente indipendenti (cioè nessun vettore può essere scritto come combinazione lineare degli altri vettori).\nSe tutti i vettori di base hanno lunghezza "
+          },
+          {
+           "type": "inlineMath",
+           "value": "1",
+           "data": {
+            "hName": "code",
+            "hProperties": {
+             "className": [
+              "language-math",
+              "math-inline"
+             ]
+            },
+            "hChildren": [
+             {
+              "type": "text",
+              "value": "1"
+             }
+            ]
+           }
+          },
+          {
+           "type": "text",
+           "value": " e sono a due a due ortogonali, si parla di "
+          },
+          {
+           "type": "strong",
+           "children": [
+            {
+             "type": "text",
+             "value": "base ortonormale"
+            }
+           ]
+          },
+          {
+           "type": "text",
+           "value": ".\n"
+          },
+          {
+           "type": "inlineMath",
+           "value": "\\|b_i\\|=1 \\qquad , \\qquad \\langle b_i , b_j\\rangle = 0 \\qquad \\forall i,j \\in \\{0, ..., n-1\\}, i\\neq j",
+           "data": {
+            "hName": "code",
+            "hProperties": {
+             "className": [
+              "language-math",
+              "math-inline"
+             ]
+            },
+            "hChildren": [
+             {
+              "type": "text",
+              "value": "\\|b_i\\|=1 \\qquad , \\qquad \\langle b_i , b_j\\rangle = 0 \\qquad \\forall i,j \\in \\{0, ..., n-1\\}, i\\neq j"
+             }
+            ]
+           }
+          }
+         ]
+        }
+       ],
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Dalla scuola si può ricordare che uno spazio vettoriale bidimensionale può avere basi diverse.\nQuindi non solo "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\left\\{\\begin{psmallmatrix}1\\\\0\\end{psmallmatrix}, \\begin{psmallmatrix}0\\\\1\\end{psmallmatrix} \\right\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\left\\{\\begin{psmallmatrix}1\\\\0\\end{psmallmatrix}, \\begin{psmallmatrix}0\\\\1\\end{psmallmatrix} \\right\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è una base di "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\mathbb{R}^2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\mathbb{R}^2"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", ma anche, ad esempio, l'insieme "
+        },
+        {
+         "type": "inlineMath",
+         "value": "B= \\left\\{\\begin{psmallmatrix}-\\frac{4}{5}\\\\\\frac{3}{5}\\end{psmallmatrix},\\begin{psmallmatrix}\\frac{3}{5}\\\\\\frac{4}{5}\\end{psmallmatrix} \\right\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "B= \\left\\{\\begin{psmallmatrix}-\\frac{4}{5}\\\\\\frac{3}{5}\\end{psmallmatrix},\\begin{psmallmatrix}\\frac{3}{5}\\\\\\frac{4}{5}\\end{psmallmatrix} \\right\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ". Sia "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\begin{psmallmatrix}0\\\\1\\end{psmallmatrix}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\begin{psmallmatrix}0\\\\1\\end{psmallmatrix}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " sia "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\begin{psmallmatrix}1\\\\0\\end{psmallmatrix}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\begin{psmallmatrix}1\\\\0\\end{psmallmatrix}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " possono essere rappresentati come combinazione lineare di questi vettori.\nSi possono trovare come segue (esempio: "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\begin{psmallmatrix}1\\\\0\\end{psmallmatrix}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\begin{psmallmatrix}1\\\\0\\end{psmallmatrix}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "):"
+        }
+       ]
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "\\begin{aligned}\n  \\begin{pmatrix}1\\\\0\\end{pmatrix} & = \\lambda \\begin{pmatrix}-\\frac{4}{5}\\\\\\frac{3}{5}\\end{pmatrix} + \\mu \\begin{pmatrix}\\frac{3}{5}\\\\\\frac{4}{5}\\end{pmatrix}\n\\end{aligned}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "\\begin{aligned}\n  \\begin{pmatrix}1\\\\0\\end{pmatrix} & = \\lambda \\begin{pmatrix}-\\frac{4}{5}\\\\\\frac{3}{5}\\end{pmatrix} + \\mu \\begin{pmatrix}\\frac{3}{5}\\\\\\frac{4}{5}\\end{pmatrix}\n\\end{aligned}"
+           }
+          ]
+         }
+        ]
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Cerchiamo quindi "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\lambda, \\mu \\in \\mathbb{R}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\lambda, \\mu \\in \\mathbb{R}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ne risultano due equazioni:"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "I)  "
+        },
+        {
+         "type": "inlineMath",
+         "value": "1 = \\frac{-4}{5} \\lambda + \\frac{3}{5} \\mu",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "1 = \\frac{-4}{5} \\lambda + \\frac{3}{5} \\mu"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nII)  "
+        },
+        {
+         "type": "inlineMath",
+         "value": "0 = \\frac{3}{5} \\lambda + \\frac{4}{5} \\mu",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "0 = \\frac{3}{5} \\lambda + \\frac{4}{5} \\mu"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "\\begin{aligned}\nII) \\Rightarrow \\lambda &= \\frac{-4}{3} \\mu \\\\\nI) \\Rightarrow 5 &= -4 \\lambda + 3 \\mu = -4 \\cdot \\frac{-4}{3} \\mu + 3 \\mu = \\frac{16}{3} \\mu + 3 \\mu = \\frac{25}{3} \\mu \\\\\n \\mu &= 5 \\cdot \\frac{3}{25} = \\frac{3}{5} \\\\\n \\Rightarrow \\lambda &= -\\frac{4}{3} \\cdot \\frac{3}{5} = - \\frac{4}{5} \\\\\n \\Rightarrow  \\begin{pmatrix}1\\\\0\\end{pmatrix} &= -\\frac{4}{5} \\cdot \\begin{pmatrix}-\\frac{4}{5}\\\\\\frac{3}{5}\\end{pmatrix}+\\frac{3}{5} \\cdot \\begin{pmatrix}\\frac{3}{5}\\\\\\frac{4}{5}\\end{pmatrix} \\quad and $ \\mu, \\lambda \\in \\mathbb{R} $.\n\\end{aligned}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "\\begin{aligned}\nII) \\Rightarrow \\lambda &= \\frac{-4}{3} \\mu \\\\\nI) \\Rightarrow 5 &= -4 \\lambda + 3 \\mu = -4 \\cdot \\frac{-4}{3} \\mu + 3 \\mu = \\frac{16}{3} \\mu + 3 \\mu = \\frac{25}{3} \\mu \\\\\n \\mu &= 5 \\cdot \\frac{3}{25} = \\frac{3}{5} \\\\\n \\Rightarrow \\lambda &= -\\frac{4}{3} \\cdot \\frac{3}{5} = - \\frac{4}{5} \\\\\n \\Rightarrow  \\begin{pmatrix}1\\\\0\\end{pmatrix} &= -\\frac{4}{5} \\cdot \\begin{pmatrix}-\\frac{4}{5}\\\\\\frac{3}{5}\\end{pmatrix}+\\frac{3}{5} \\cdot \\begin{pmatrix}\\frac{3}{5}\\\\\\frac{4}{5}\\end{pmatrix} \\quad and $ \\mu, \\lambda \\in \\mathbb{R} $.\n\\end{aligned}"
+           }
+          ]
+         }
+        ]
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Invece di rappresentare un qubit nella base computazionale (cioè l'asse z della sfera di Bloch) come "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi} = \\alpha \\ket{0} + \\beta \\ket{1},",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi} = \\alpha \\ket{0} + \\beta \\ket{1},"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\npossiamo anche scegliere "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\{\\ket{+}, \\ket{-}\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\{\\ket{+}, \\ket{-}\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " (l'asse x) oppure "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\{\\ket{i}, \\ket{-i}\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\{\\ket{i}, \\ket{-i}\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " (l'asse y) come base dello spazio vettoriale bidimensionale:\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{+} = \\frac{1}{\\sqrt{2}} (\\ket{0}+\\ket{1}) \\text{ and } \\ket{-} = \\frac{1}{\\sqrt{2}} (\\ket{0}-\\ket{1})",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{+} = \\frac{1}{\\sqrt{2}} (\\ket{0}+\\ket{1}) \\text{ and } \\ket{-} = \\frac{1}{\\sqrt{2}} (\\ket{0}-\\ket{1})"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{i} = \\frac{1}{\\sqrt{2}} (\\ket{0}+i\\ket{1}) \\text{ and } \\ket{-i} = \\frac{1}{\\sqrt{2}} (\\ket{0}-i\\ket{1})",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{i} = \\frac{1}{\\sqrt{2}} (\\ket{0}+i\\ket{1}) \\text{ and } \\ket{-i} = \\frac{1}{\\sqrt{2}} (\\ket{0}-i\\ket{1})"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Le basi sono, in ciascun caso, autovettori normalizzati delle corrispondenti matrici di Pauli con autovalori "
+        },
+        {
+         "type": "inlineMath",
+         "value": "+1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "+1"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "-1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "-1"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ". Questo vale anche per la base Z standard e per la matrice Z di Pauli. L'autovettore per l'autovalore "
+        },
+        {
+         "type": "inlineMath",
+         "value": "+1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "+1"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e per "
+        },
+        {
+         "type": "inlineMath",
+         "value": "-1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "-1"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ":\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "Z\\ket{0} = +1\\cdot\\ket{0}, Z\\ket{1} = -1\\cdot\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "Z\\ket{0} = +1\\cdot\\ket{0}, Z\\ket{1} = -1\\cdot\\ket{1}"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Nelle altre basi, lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " ha quindi la rappresentazione\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi} = \\hat{\\alpha} \\ket{+} + \\hat{\\beta} \\ket{-} = \\tilde{\\alpha}\\ket{i} + \\tilde{\\beta}\\ket{-i}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi} = \\hat{\\alpha} \\ket{+} + \\hat{\\beta} \\ket{-} = \\tilde{\\alpha}\\ket{i} + \\tilde{\\beta}\\ket{-i}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nCon\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\alpha \\ket{0} + \\beta \\ket{1} = \\hat{\\alpha} \\ket{+} + \\hat{\\beta} \\ket{-} = \\tilde{\\alpha}\\ket{i} + \\tilde{\\beta}\\ket{-i}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\alpha \\ket{0} + \\beta \\ket{1} = \\hat{\\alpha} \\ket{+} + \\hat{\\beta} \\ket{-} = \\tilde{\\alpha}\\ket{i} + \\tilde{\\beta}\\ket{-i}"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "possiamo calcolare "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\hat{\\alpha}, \\hat{\\beta}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\hat{\\alpha}, \\hat{\\beta}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\tilde{\\alpha}, \\tilde{\\beta}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\tilde{\\alpha}, \\tilde{\\beta}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ". Il risultato è:"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "inlineMath",
+         "value": "\\hat{\\alpha} = \\frac{1}{\\sqrt{2}} (\\alpha + \\beta);\\ \\hat{\\beta}= \\frac{1}{\\sqrt{2}} (\\alpha - \\beta)",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\hat{\\alpha} = \\frac{1}{\\sqrt{2}} (\\alpha + \\beta);\\ \\hat{\\beta}= \\frac{1}{\\sqrt{2}} (\\alpha - \\beta)"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\tilde{\\alpha} = \\frac{1}{\\sqrt{2}} (\\alpha -i\\beta);\\ \\tilde{\\beta}= \\frac{1}{\\sqrt{2}} (\\alpha + i\\beta)",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\tilde{\\alpha} = \\frac{1}{\\sqrt{2}} (\\alpha -i\\beta);\\ \\tilde{\\beta}= \\frac{1}{\\sqrt{2}} (\\alpha + i\\beta)"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{+}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{+}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " viene misurato con probabilità "
+        },
+        {
+         "type": "inlineMath",
+         "value": "|\\hat{\\alpha}|^2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|\\hat{\\alpha}|^2"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{-}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{-}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " con "
+        },
+        {
+         "type": "inlineMath",
+         "value": "|\\hat{\\beta}|^2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|\\hat{\\beta}|^2"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", analogamente lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{i}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{i}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " con probabilità "
+        },
+        {
+         "type": "inlineMath",
+         "value": "|\\tilde{\\alpha}|^2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|\\tilde{\\alpha}|^2"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{-i}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{-i}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " con "
+        },
+        {
+         "type": "inlineMath",
+         "value": "|\\tilde{\\beta}|^2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|\\tilde{\\beta}|^2"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ".\nAnche in questo caso vale:\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "|\\hat{\\alpha}|^2 + |\\hat{\\beta}|^2 = 1,\\text{ or } |\\tilde{\\alpha}|^2 + |\\tilde{\\beta}|^2 = 1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|\\hat{\\alpha}|^2 + |\\hat{\\beta}|^2 = 1,\\text{ or } |\\tilde{\\alpha}|^2 + |\\tilde{\\beta}|^2 = 1"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Matematicamente, una misurazione rispetto a una base corrisponde a una proiezione del vettore nei sottospazi della base.\nNella figura, i sottospazi sono gli assi del sistema di coordinate. Il risultato di misurazione "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " significa quindi che il vettore è stato proiettato nel sottospazio "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ". La probabilità di questo evento\ncorrisponde alla lunghezza del vettore proiettato."
+        },
+        {
+         "type": "break"
+        },
+        {
+         "type": "text",
+         "value": "Per garantire che i risultati di misurazione si escludano a vicenda, per i sistemi quantistici sono necessarie basi in cui due vettori di base "
+        },
+        {
+         "type": "inlineMath",
+         "value": "b_i",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "b_i"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "b_j",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "b_j"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " siano ortogonali tra loro, cioè: "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\braket{b_i}{b_j} = 0",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\braket{b_i}{b_j} = 0"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ".\nAltrimenti, la misurazione di un vettore di base potrebbe dare come risultato l'altro vettore di base con probabilità "
+        },
+        {
+         "type": "inlineMath",
+         "value": ">0",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": ">0"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", il che non avrebbe senso.\nCome base sono possibili solo vettori di qubit validi e, poiché la loro lunghezza è sempre "
+        },
+        {
+         "type": "inlineMath",
+         "value": "1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "1"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", ogni base per un sistema quantistico è una base ortonormale."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Il Risultato della Misurazione"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Di conseguenza, un qubit può trovarsi in sovrapposizione non solo rispetto a "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " e "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", ma anche rispetto a un'altra base.\nDurante la misurazione, la sovrapposizione rispetto alla base di misurazione viene distrutta e viene assunto uno degli stati di base corrispondenti. Questo significa quindi:"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "ordered": true,
+       "start": 1,
+       "spread": true,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "Quando si misura un qubit, si ottiene un bit di informazione classica."
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "Il qubit assume uno stato successivo, che può essere una sovrapposizione rispetto a un'altra base."
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "Se lo stato originale è noto, la misurazione indica in quale stato successivo si trova il qubit. Questo può essere utilizzato per ulteriori calcoli."
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Osservabili"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Un quadro più generale della misurazione è descritto dalla "
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "misurazione proiettiva"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": " rispetto a un'osservabile.\nLe osservabili sono operatori hermitiani che descrivono le proprietà fisiche quantistiche di un sistema.\nIn una misurazione proiettiva, l'osservabile "
+        },
+        {
+         "type": "inlineMath",
+         "value": "O",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "O"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è definita come\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "O = \\sum_m mP_m\\text{,}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "O = \\sum_m mP_m\\text{,}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\ndove "
+        },
+        {
+         "type": "inlineMath",
+         "value": "P_m",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "P_m"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è una proiezione sull'autospazio dell'osservabile "
+        },
+        {
+         "type": "inlineMath",
+         "value": "O",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "O"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ". La misurazione fornisce un autovalore "
+        },
+        {
+         "type": "inlineMath",
+         "value": "m",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "m"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " dell'osservabile e porta il sistema nel corrispondente autovettore "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{e_m}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{e_m}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ". La probabilità di misurare l'autovalore "
+        },
+        {
+         "type": "inlineMath",
+         "value": "m",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "m"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " per uno stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " è\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "p(m)=\\bra{\\psi}P_m\\ket{\\psi}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "p(m)=\\bra{\\psi}P_m\\ket{\\psi}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nOsservabili tipiche sono le matrici di Pauli "
+        },
+        {
+         "type": "inlineMath",
+         "value": "X,Y,Z",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "X,Y,Z"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " con possibili autovettori ("
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\{\\ket{+}, \\ket{-}\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\{\\ket{+}, \\ket{-}\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\{\\ket{i}, \\ket{-i}\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\{\\ket{i}, \\ket{-i}\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\{\\ket{0},\\ket{1}\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\{\\ket{0},\\ket{1}\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ") e autovalori corrispondenti "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\{+1, -1\\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\{+1, -1\\}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": "."
+        },
+        {
+         "type": "break"
+        },
+        {
+         "type": "text",
+         "value": "Ad esempio, la matrice "
+        },
+        {
+         "type": "inlineMath",
+         "value": "Z",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "Z"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " può essere composta da proiezioni come segue:"
+        }
+       ]
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "\\begin{pmatrix}1 & 0 \\\\ 0 & -1\\end{pmatrix} = +1\\cdot \\ket{0}\\bra{0} + (-1)\\cdot \\ket{1}\\bra{1} ",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "\\begin{pmatrix}1 & 0 \\\\ 0 & -1\\end{pmatrix} = +1\\cdot \\ket{0}\\bra{0} + (-1)\\cdot \\ket{1}\\bra{1} "
+           }
+          ]
+         }
+        ]
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Se vogliamo calcolare la probabilità di misurare "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{+}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{+}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": " per lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", il risultato è"
+        }
+       ]
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "\\bra{+}(\\ket{0}\\bra{0})\\ket{+} = \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix}\\begin{pmatrix}1 & 0 \\\\ 0 & 0\\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\frac{1}{2}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "\\bra{+}(\\ket{0}\\bra{0})\\ket{+} = \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix}\\begin{pmatrix}1 & 0 \\\\ 0 & 0\\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\frac{1}{2}"
+           }
+          ]
+         }
+        ]
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Possiamo anche usare l'osservabile per calcolare il "
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "valore atteso"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": " della misurazione di uno stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ":\n"
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\bra{\\psi}O\\ket{\\psi}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\bra{\\psi}O\\ket{\\psi}"
+           }
+          ]
+         }
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Importante:"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": " il valore atteso si calcola a partire dagli autovalori dell'osservabile, non dalle probabilità di misurazione."
+        },
+        {
+         "type": "break"
+        },
+        {
+         "type": "text",
+         "value": "Come esempio, calcoliamo il valore atteso della misurazione nella base Z per lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi} = \\ket{+} = \\frac{1}{\\sqrt{2}} (\\ket{0} + \\ket{1})",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi} = \\ket{+} = \\frac{1}{\\sqrt{2}} (\\ket{0} + \\ket{1})"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ":"
+        }
+       ]
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "\\begin{aligned}\n\t\\bra{+}Z\\ket{+} &=  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\\\\n\t\t\t\t\t&= \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} = 0\n\\end{aligned}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "\\begin{aligned}\n\t\\bra{+}Z\\ket{+} &=  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\\\\n\t\t\t\t\t&= \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} = 0\n\\end{aligned}"
+           }
+          ]
+         }
+        ]
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "In linea di principio, possiamo considerare come osservabile qualsiasi matrice hermitiana. Ad esempio, possiamo combinare basi e misurare nella base ZX della sfera di Bloch, oppure usare matrici non unitarie per valutare stati rispetto a una funzione di costo (rilevante per gli algoritmi ibridi più avanti nella lezione)."
+        },
+        {
+         "type": "break"
+        },
+        {
+         "type": "text",
+         "value": "Se misuriamo lo stato "
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{+}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{+}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", ad esempio, rispetto a "
+        },
+        {
+         "type": "inlineMath",
+         "value": "O_1 = \\begin{pmatrix} 2 & 0 \\\\ 0 & 4 \\end{pmatrix}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "O_1 = \\begin{pmatrix} 2 & 0 \\\\ 0 & 4 \\end{pmatrix}"
+           }
+          ]
+         }
+        },
+        {
+         "type": "text",
+         "value": ", otteniamo il valore atteso:"
+        }
+       ]
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "\\begin{aligned}\n\t\t\\bra{+}O_1\\ket{+} &=  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\begin{pmatrix} 2 & 0 \\\\ 0 & 4 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\\\\n\t\t&= \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix} = 3\n\t\n\\end{aligned}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "\\begin{aligned}\n\t\t\\bra{+}O_1\\ket{+} &=  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\begin{pmatrix} 2 & 0 \\\\ 0 & 4 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\\\\n\t\t&= \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\end{pmatrix} \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix} = 3\n\t\n\\end{aligned}"
+           }
+          ]
+         }
+        ]
+       }
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

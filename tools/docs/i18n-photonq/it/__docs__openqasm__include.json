@@ -1,0 +1,476 @@
+{
+ "oldPath": "/docs/openqasm/include",
+ "locale": "it",
+ "title": "Include",
+ "description": "In questo capitolo del tutorial di OpenQASM imparerai come accedere ai contenuti di un altro file in un file OpenQASM utilizzando la parola chiave include.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Modularizzare il Codice con Include"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Per evitare disordine e migliorare la manutenibilità, i programmi quantistici possono trarre vantaggio dalla modularità. Ciò si ottiene suddividendo un programma in file separati. OpenQASM facilita questo processo fornendo la parola chiave "
+        },
+        {
+         "type": "inlineCode",
+         "value": "include"
+        },
+        {
+         "type": "text",
+         "value": ", che consente di accedere senza problemi ai contenuti di file esterni. Questo capitolo ti guiderà nell'uso della parola chiave "
+        },
+        {
+         "type": "inlineCode",
+         "value": "include"
+        },
+        {
+         "type": "text",
+         "value": " in OpenQASM."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "L'Istruzione Include"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "In OpenQASM, l'istruzione "
+        },
+        {
+         "type": "inlineCode",
+         "value": "include"
+        },
+        {
+         "type": "text",
+         "value": " incorpora i contenuti di un file esterno, trattandoli come parte del file principale. Questo approccio è simile a copiare e incollare il contenuto del file incluso nel punto in cui si trova l'istruzione "
+        },
+        {
+         "type": "inlineCode",
+         "value": "include"
+        },
+        {
+         "type": "text",
+         "value": "."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Per includere un file denominato \"filename.ext\":"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "include \"filename.ext\";"
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esempio di Utilizzo"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Supponiamo che tu abbia un file chiamato "
+        },
+        {
+         "type": "inlineCode",
+         "value": "headerfile"
+        },
+        {
+         "type": "text",
+         "value": ":"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "// Common definitions and setups\nstatement1;\nstatement2;"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "E il tuo file di programma principale "
+        },
+        {
+         "type": "inlineCode",
+         "value": "myprogram"
+        },
+        {
+         "type": "text",
+         "value": ":"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "include \"headerfile\" // Includes \"headerfile\" here\nstatement3;\nstatement4;"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Dopo l'inclusione, "
+        },
+        {
+         "type": "inlineCode",
+         "value": "myprogram"
+        },
+        {
+         "type": "text",
+         "value": " si comporterà come se contenesse:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "// \"headerfile\" contents followed by \"myprogram\" contents\nstatement1;\nstatement2;\nstatement3;\nstatement4;"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Nota"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": ": se il file incluso non si trova nella stessa directory, il percorso deve essere relativo alla directory di lavoro corrente."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esperimento: Importare qelib1.inc"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Il file "
+        },
+        {
+         "type": "inlineCode",
+         "value": "qelib1.inc"
+        },
+        {
+         "type": "text",
+         "value": " è essenziale per la programmazione in OpenQASM, poiché contiene le definizioni di molte porte quantistiche standard. Includerlo nel tuo programma è semplice. "
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "3",
+         "label": "3"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "4",
+         "label": "4"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "5",
+         "label": "5"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "// PhotonQ Experiment: Importing qelib1.inc [^5]\nOPENQASM 2.0;           // Declares the version of OpenQASM [^1]\ninclude \"qelib1.inc\";   // Brings in the standard gate definitions [^2]\n\n// Quantum register declaration\nqreg qubits[2]; // Defines a quantum register with two qubits [^3]\n\n// Quantum gate application\nh qubits[0]; // Applies a Hadamard gate to the first qubit [^4]"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Includendo "
+        },
+        {
+         "type": "inlineCode",
+         "value": "qelib1.inc"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "6",
+         "label": "6"
+        },
+        {
+         "type": "text",
+         "value": ", hai accesso a una varietà di operazioni quantistiche da utilizzare nei tuoi circuiti quantistici."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ulteriori informazioni sul file "
+        },
+        {
+         "type": "inlineCode",
+         "value": "qelib1.inc"
+        },
+        {
+         "type": "text",
+         "value": " sono disponibili qui:"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "ordered": false,
+       "start": null,
+       "spread": false,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "mdxJsxFlowElement",
+           "name": "u",
+           "attributes": [],
+           "children": [
+            {
+             "type": "strong",
+             "children": [
+              {
+               "type": "link",
+               "title": null,
+               "url": "https://photonq.org/docs/openqasm/include/",
+               "children": [
+                {
+                 "type": "text",
+                 "value": "Documentazione di qelib1.inc"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "data": {
+            "_mdxExplicitJsx": true
+           }
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/version-string/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Stringa di Versione"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "2",
+       "label": "2",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/include/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione di Include"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "3",
+       "label": "3",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/registers/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione dei Registri Quantistici"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "4",
+       "label": "4",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/gates/hadamard/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Porta di Hadamard"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "5",
+       "label": "5",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/experiments/importing-qelib1.inc/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Esperimento: Importare qelib1.inc"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "6",
+       "label": "6",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/include/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione di qelib1.inc"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

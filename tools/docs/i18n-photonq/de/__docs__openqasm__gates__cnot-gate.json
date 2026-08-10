@@ -1,0 +1,498 @@
+{
+ "oldPath": "/docs/openqasm/gates/cnot-gate",
+ "locale": "de",
+ "title": "CNOT-Gatter",
+ "description": "In diesem Kapitel des OpenQASM-Tutorials lernen Sie, wie man das CNOT-Gatter auf Qubits anwendet.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOT-Gatter",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 12,
+           "offset": 11
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 12,
+         "offset": 11
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Quantencomputing stützt sich stark auf Prinzipien der Quantenmechanik wie Quantensuperposition und Quantenverschränkung. Das CNOT-Gatter (manchmal auch als CX-Gatter bekannt) kann verwendet werden, um die Zustände von 2 Qubits zu verschränken, was es zu einem sehr wichtigen Quantengatter macht. In diesem Kapitel des OpenQASM-Tutorials lernen Sie, wie Sie das CNOT-Gatter auf Qubits anwenden.",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 13
+          },
+          "end": {
+           "line": 3,
+           "column": 373,
+           "offset": 385
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 13
+        },
+        "end": {
+         "line": 3,
+         "column": 373,
+         "offset": 385
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOT (oder CX) ist ein fundamentales Zwei-Qubit-Gatter im Bereich des Quantencomputings. In OpenQASM ist CNOT ein eingebautes Gatter und daher stellt OpenQASM die Syntax bereit, um ein CNOT-Gatter auf zwei Qubits anzuwenden.",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 1,
+           "offset": 387
+          },
+          "end": {
+           "line": 5,
+           "column": 195,
+           "offset": 581
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 387
+        },
+        "end": {
+         "line": 5,
+         "column": 195,
+         "offset": 581
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOT-Gatter",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 4,
+           "offset": 586
+          },
+          "end": {
+           "line": 7,
+           "column": 13,
+           "offset": 595
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 583
+        },
+        "end": {
+         "line": 7,
+         "column": 13,
+         "offset": 595
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Das CNOT-Gatter ist ein Zwei-Qubit-Gatter, das genau dann ein bedingtes NOT-Gatter auf ein Ziel-Qubit anwendet, wenn sich das Kontroll-Qubit im Zustand |1> befindet",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 1,
+           "offset": 597
+          },
+          "end": {
+           "line": 9,
+           "column": 138,
+           "offset": 734
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 597
+        },
+        "end": {
+         "line": 9,
+         "column": 138,
+         "offset": 734
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Die folgende Syntax wird verwendet, um das CNOT-Gatter mit dem Kontroll-Qubit qr1[index] und dem Ziel-Qubit qr2[index] anzuwenden:",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 1,
+           "offset": 736
+          },
+          "end": {
+           "line": 11,
+           "column": 117,
+           "offset": 852
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 11,
+         "column": 1,
+         "offset": 736
+        },
+        "end": {
+         "line": 11,
+         "column": 117,
+         "offset": 852
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "cx qr1[index], qr2[index];",
+       "position": {
+        "start": {
+         "line": 13,
+         "column": 1,
+         "offset": 854
+        },
+        "end": {
+         "line": 15,
+         "column": 4,
+         "offset": 892
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Hinweis:",
+           "position": {
+            "start": {
+             "line": 17,
+             "column": 3,
+             "offset": 896
+            },
+            "end": {
+             "line": 17,
+             "column": 8,
+             "offset": 901
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 1,
+           "offset": 894
+          },
+          "end": {
+           "line": 17,
+           "column": 10,
+           "offset": 903
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " CNOT ist ein eingebautes Gatter, daher ist cx ein reserviertes Schlüsselwort.",
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 10,
+           "offset": 903
+          },
+          "end": {
+           "line": 17,
+           "column": 70,
+           "offset": 963
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 17,
+         "column": 1,
+         "offset": 894
+        },
+        "end": {
+         "line": 17,
+         "column": 70,
+         "offset": 963
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Beispiel",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 5,
+           "offset": 969
+          },
+          "end": {
+           "line": 19,
+           "column": 12,
+           "offset": 976
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 19,
+         "column": 1,
+         "offset": 965
+        },
+        "end": {
+         "line": 19,
+         "column": 12,
+         "offset": 976
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Nachfolgend ein Beispiel für die Anwendung des CNOT-Gatters mit dem ersten Qubit des Quantenregisters qubits als Kontroll-Qubit und dem zweiten Qubit des Quantenregisters qubits als Ziel-Qubit:",
+         "position": {
+          "start": {
+           "line": 21,
+           "column": 1,
+           "offset": 978
+          },
+          "end": {
+           "line": 21,
+           "column": 168,
+           "offset": 1145
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 21,
+         "column": 1,
+         "offset": 978
+        },
+        "end": {
+         "line": 21,
+         "column": 168,
+         "offset": 1145
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\n\n// Define quantum registers\nqreg qubits[2];\n\n// Apply CX gate\ncx qubits[0], qubits[1];",
+       "position": {
+        "start": {
+         "line": 23,
+         "column": 1,
+         "offset": 1147
+        },
+        "end": {
+         "line": 32,
+         "column": 4,
+         "offset": 1293
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Hinweis:",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 3,
+             "offset": 1297
+            },
+            "end": {
+             "line": 34,
+             "column": 8,
+             "offset": 1302
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 34,
+           "column": 1,
+           "offset": 1295
+          },
+          "end": {
+           "line": 34,
+           "column": 10,
+           "offset": 1304
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " Kontroll-Qubit und Ziel-Qubit können sich sowohl im selben als auch in verschiedenen Quantenregistern befinden.",
+         "position": {
+          "start": {
+           "line": 34,
+           "column": 10,
+           "offset": 1304
+          },
+          "end": {
+           "line": 34,
+           "column": 103,
+           "offset": 1397
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 34,
+         "column": 1,
+         "offset": 1295
+        },
+        "end": {
+         "line": 34,
+         "column": 103,
+         "offset": 1397
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Nachfolgend eine Darstellung des Codes aus dem obigen Beispiel",
+         "position": {
+          "start": {
+           "line": 36,
+           "column": 1,
+           "offset": 1399
+          },
+          "end": {
+           "line": 36,
+           "column": 59,
+           "offset": 1457
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 36,
+         "column": 1,
+         "offset": 1399
+        },
+        "end": {
+         "line": 36,
+         "column": 59,
+         "offset": 1457
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 37,
+       "column": 1,
+       "offset": 1458
+      }
+     }
+    },
+    "props": {}
+   }
+  }
+ }
+}

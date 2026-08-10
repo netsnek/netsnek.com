@@ -1,0 +1,4772 @@
+{
+ "oldPath": "/docs/quantum-computing-and-quantum-information/quantum-gates",
+ "locale": "sl",
+ "title": "Kvantna vrata",
+ "description": "Formalni opis kvantnih vrat",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Kvantno računalništvo in kvantne informacije",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 44,
+           "offset": 43
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 44,
+         "offset": 43
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Kvantna vrata",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 3,
+           "offset": 47
+          },
+          "end": {
+           "line": 3,
+           "column": 16,
+           "offset": 60
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 45
+        },
+        "end": {
+         "line": 3,
+         "column": 16,
+         "offset": 60
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Podobno kot v klasičnem računalništvu lahko operacije na kubitih opišemo z vrati. Med najpomembnejšimi so tri tako imenovana ",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 1,
+           "offset": 62
+          },
+          "end": {
+           "line": 5,
+           "column": 145,
+           "offset": 206
+          }
+         }
+        },
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Paulijeva vrata",
+           "position": {
+            "start": {
+             "line": 5,
+             "column": 147,
+             "offset": 208
+            },
+            "end": {
+             "line": 5,
+             "column": 158,
+             "offset": 219
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 145,
+           "offset": 206
+          },
+          "end": {
+           "line": 5,
+           "column": 160,
+           "offset": 221
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " (znana tudi kot ",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 160,
+           "offset": 221
+          },
+          "end": {
+           "line": 5,
+           "column": 176,
+           "offset": 237
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "vrata X, Y in Z",
+           "position": {
+            "start": {
+             "line": 5,
+             "column": 177,
+             "offset": 238
+            },
+            "end": {
+             "line": 5,
+             "column": 194,
+             "offset": 255
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 176,
+           "offset": 237
+          },
+          "end": {
+           "line": 5,
+           "column": 195,
+           "offset": 256
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ") ter Hadamardova vrata.\nMatematično prehod stanja opišemo z ",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 195,
+           "offset": 256
+          },
+          "end": {
+           "line": 6,
+           "column": 58,
+           "offset": 338
+          }
+         }
+        },
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "unitarno matriko",
+           "position": {
+            "start": {
+             "line": 6,
+             "column": 60,
+             "offset": 340
+            },
+            "end": {
+             "line": 6,
+             "column": 74,
+             "offset": 354
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 6,
+           "column": 58,
+           "offset": 338
+          },
+          "end": {
+           "line": 6,
+           "column": 76,
+           "offset": 356
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", npr.:",
+         "position": {
+          "start": {
+           "line": 6,
+           "column": 76,
+           "offset": 356
+          },
+          "end": {
+           "line": 6,
+           "column": 82,
+           "offset": 362
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 62
+        },
+        "end": {
+         "line": 6,
+         "column": 82,
+         "offset": 362
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": " U =  \\begin{pmatrix}a & b \\\\ c & d \\end{pmatrix} ",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": " U =  \\begin{pmatrix}a & b \\\\ c & d \\end{pmatrix} "
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 8,
+         "column": 1,
+         "offset": 364
+        },
+        "end": {
+         "line": 10,
+         "column": 3,
+         "offset": 420
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "To velja tako za preprosta vrata na posameznem kubitu kot tudi v kompleksnejših sistemih z več kubiti.",
+         "position": {
+          "start": {
+           "line": 12,
+           "column": 1,
+           "offset": 422
+          },
+          "end": {
+           "line": 12,
+           "column": 103,
+           "offset": 524
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 12,
+         "column": 1,
+         "offset": 422
+        },
+        "end": {
+         "line": 12,
+         "column": 103,
+         "offset": 524
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Uporabo vrat ",
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 1,
+           "offset": 526
+          },
+          "end": {
+           "line": 14,
+           "column": 27,
+           "offset": 552
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "U",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "U"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 27,
+           "offset": 552
+          },
+          "end": {
+           "line": 14,
+           "column": 30,
+           "offset": 555
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " na kubitu ",
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 30,
+           "offset": 555
+          },
+          "end": {
+           "line": 14,
+           "column": 42,
+           "offset": 567
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 42,
+           "offset": 567
+          },
+          "end": {
+           "line": 14,
+           "column": 54,
+           "offset": 579
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " opišemo z",
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 54,
+           "offset": 579
+          },
+          "end": {
+           "line": 14,
+           "column": 72,
+           "offset": 597
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 14,
+         "column": 1,
+         "offset": 526
+        },
+        "end": {
+         "line": 14,
+         "column": 72,
+         "offset": 597
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 17,
+             "column": 10,
+             "offset": 617
+            },
+            "end": {
+             "line": 17,
+             "column": 23,
+             "offset": 630
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-zm3pv",
+           "position": {
+            "start": {
+             "line": 17,
+             "column": 24,
+             "offset": 631
+            },
+            "end": {
+             "line": 17,
+             "column": 42,
+             "offset": 649
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://via.placeholder.com/150",
+           "position": {
+            "start": {
+             "line": 17,
+             "column": 43,
+             "offset": 650
+            },
+            "end": {
+             "line": 17,
+             "column": 89,
+             "offset": 696
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 3,
+           "offset": 610
+          },
+          "end": {
+           "line": 17,
+           "column": 92,
+           "offset": 699
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 16,
+         "column": 1,
+         "offset": 599
+        },
+        "end": {
+         "line": 18,
+         "column": 10,
+         "offset": 709
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Za izračun novega stanja ",
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 1,
+           "offset": 711
+          },
+          "end": {
+           "line": 20,
+           "column": 28,
+           "offset": 738
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi'}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi'}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 28,
+           "offset": 738
+          },
+          "end": {
+           "line": 20,
+           "column": 41,
+           "offset": 751
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " matriko, ki ustreza vratom, z leve pomnožimo z začetnim stanjem ",
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 41,
+           "offset": 751
+          },
+          "end": {
+           "line": 20,
+           "column": 129,
+           "offset": 839
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{\\psi}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{\\psi}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 129,
+           "offset": 839
+          },
+          "end": {
+           "line": 20,
+           "column": 141,
+           "offset": 851
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " kubita:",
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 141,
+           "offset": 851
+          },
+          "end": {
+           "line": 20,
+           "column": 155,
+           "offset": 865
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 20,
+         "column": 1,
+         "offset": 711
+        },
+        "end": {
+         "line": 20,
+         "column": 155,
+         "offset": 865
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "U \\ket{\\psi} =  \\begin{pmatrix}a & b \\\\ c & d \\end{pmatrix}  \\cdot \\begin{pmatrix} \\alpha \\\\ \\beta \\end{pmatrix} = \\begin{pmatrix}a \\cdot \\alpha + b \\cdot \\beta \\\\ c \\cdot \\alpha + d \\cdot \\beta \\end{pmatrix} = \\begin{pmatrix} \\alpha' \\\\ \\beta' \\end{pmatrix} = \\ket{\\psi'}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "U \\ket{\\psi} =  \\begin{pmatrix}a & b \\\\ c & d \\end{pmatrix}  \\cdot \\begin{pmatrix} \\alpha \\\\ \\beta \\end{pmatrix} = \\begin{pmatrix}a \\cdot \\alpha + b \\cdot \\beta \\\\ c \\cdot \\alpha + d \\cdot \\beta \\end{pmatrix} = \\begin{pmatrix} \\alpha' \\\\ \\beta' \\end{pmatrix} = \\ket{\\psi'}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 22,
+         "column": 1,
+         "offset": 867
+        },
+        "end": {
+         "line": 24,
+         "column": 3,
+         "offset": 1145
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Geometrijsko lahko uporabo vrat na posameznem kubitu razumemo kot rotacijo vektorja stanja okoli neke osi v Blochovi sferi.",
+         "position": {
+          "start": {
+           "line": 26,
+           "column": 1,
+           "offset": 1147
+          },
+          "end": {
+           "line": 26,
+           "column": 143,
+           "offset": 1289
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 26,
+         "column": 1,
+         "offset": 1147
+        },
+        "end": {
+         "line": 26,
+         "column": 143,
+         "offset": 1289
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Paulijeva vrata",
+         "position": {
+          "start": {
+           "line": 28,
+           "column": 3,
+           "offset": 1293
+          },
+          "end": {
+           "line": 28,
+           "column": 14,
+           "offset": 1304
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 28,
+         "column": 1,
+         "offset": 1291
+        },
+        "end": {
+         "line": 28,
+         "column": 14,
+         "offset": 1304
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Vrata X",
+         "position": {
+          "start": {
+           "line": 30,
+           "column": 4,
+           "offset": 1309
+          },
+          "end": {
+           "line": 30,
+           "column": 10,
+           "offset": 1315
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 30,
+         "column": 1,
+         "offset": 1306
+        },
+        "end": {
+         "line": 30,
+         "column": 10,
+         "offset": 1315
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Vrata X oziroma vrata NOT se obnašajo podobno kot vrata ",
+         "position": {
+          "start": {
+           "line": 32,
+           "column": 1,
+           "offset": 1317
+          },
+          "end": {
+           "line": 32,
+           "column": 49,
+           "offset": 1365
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "NOT",
+           "position": {
+            "start": {
+             "line": 32,
+             "column": 50,
+             "offset": 1366
+            },
+            "end": {
+             "line": 32,
+             "column": 53,
+             "offset": 1369
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 32,
+           "column": 49,
+           "offset": 1365
+          },
+          "end": {
+           "line": 32,
+           "column": 54,
+           "offset": 1370
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " na\nklasičnem bitu. Opisujejo rotacijo za kot ",
+         "position": {
+          "start": {
+           "line": 32,
+           "column": 54,
+           "offset": 1370
+          },
+          "end": {
+           "line": 33,
+           "column": 51,
+           "offset": 1431
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\pi",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\pi"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 33,
+           "column": 51,
+           "offset": 1431
+          },
+          "end": {
+           "line": 33,
+           "column": 56,
+           "offset": 1436
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " okoli\nosi x Blochove sfere. V vezju jih predstavimo takole:",
+         "position": {
+          "start": {
+           "line": 33,
+           "column": 56,
+           "offset": 1436
+          },
+          "end": {
+           "line": 34,
+           "column": 72,
+           "offset": 1519
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 32,
+         "column": 1,
+         "offset": 1317
+        },
+        "end": {
+         "line": 34,
+         "column": 72,
+         "offset": 1519
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "QASMPlayground",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "withoutTranslate",
+         "value": "true",
+         "position": {
+          "start": {
+           "line": 36,
+           "column": 17,
+           "offset": 1537
+          },
+          "end": {
+           "line": 36,
+           "column": 40,
+           "offset": 1560
+          }
+         }
+        }
+       ],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\nx q[0];",
+           "position": {
+            "start": {
+             "line": 37,
+             "column": 3,
+             "offset": 1564
+            },
+            "end": {
+             "line": 40,
+             "column": 11,
+             "offset": 1626
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 37,
+           "column": 3,
+           "offset": 1564
+          },
+          "end": {
+           "line": 40,
+           "column": 11,
+           "offset": 1626
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 36,
+         "column": 1,
+         "offset": 1521
+        },
+        "end": {
+         "line": 41,
+         "column": 18,
+         "offset": 1644
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Predstavitev z unitarno matriko je",
+         "position": {
+          "start": {
+           "line": 43,
+           "column": 1,
+           "offset": 1646
+          },
+          "end": {
+           "line": 43,
+           "column": 42,
+           "offset": 1687
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 43,
+         "column": 1,
+         "offset": 1646
+        },
+        "end": {
+         "line": 43,
+         "column": 42,
+         "offset": 1687
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "X = \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "X = \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 45,
+         "column": 1,
+         "offset": 1689
+        },
+        "end": {
+         "line": 47,
+         "column": 3,
+         "offset": 1742
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ko jih torej uporabimo na ",
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 1,
+           "offset": 1744
+          },
+          "end": {
+           "line": 49,
+           "column": 23,
+           "offset": 1766
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 23,
+           "offset": 1766
+          },
+          "end": {
+           "line": 49,
+           "column": 32,
+           "offset": 1775
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " in ",
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 32,
+           "offset": 1775
+          },
+          "end": {
+           "line": 49,
+           "column": 37,
+           "offset": 1780
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 37,
+           "offset": 1780
+          },
+          "end": {
+           "line": 49,
+           "column": 46,
+           "offset": 1789
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", dobimo:",
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 46,
+           "offset": 1789
+          },
+          "end": {
+           "line": 49,
+           "column": 63,
+           "offset": 1806
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 49,
+         "column": 1,
+         "offset": 1744
+        },
+        "end": {
+         "line": 49,
+         "column": 63,
+         "offset": 1806
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "X \\ket{0} =  \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\n  X \\ket{1} =  \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "X \\ket{0} =  \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\n  X \\ket{1} =  \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 51,
+         "column": 1,
+         "offset": 1808
+        },
+        "end": {
+         "line": 54,
+         "column": 3,
+         "offset": 2095
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V Diracovem zapisu pišemo:",
+         "position": {
+          "start": {
+           "line": 56,
+           "column": 1,
+           "offset": 2097
+          },
+          "end": {
+           "line": 56,
+           "column": 29,
+           "offset": 2125
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 56,
+         "column": 1,
+         "offset": 2097
+        },
+        "end": {
+         "line": 56,
+         "column": 29,
+         "offset": 2125
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "inlineMath",
+         "value": "X\\ket{0} =\\ket{1}\\qquad X \\ket{1} = \\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "X\\ket{0} =\\ket{1}\\qquad X \\ket{1} = \\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 58,
+           "column": 1,
+           "offset": 2127
+          },
+          "end": {
+           "line": 58,
+           "column": 46,
+           "offset": 2172
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 58,
+         "column": 1,
+         "offset": 2127
+        },
+        "end": {
+         "line": 58,
+         "column": 46,
+         "offset": 2172
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "To matriko lahko izpeljemo tudi s povezovanjem vhodov in izhodov v zapisu braket (",
+         "position": {
+          "start": {
+           "line": 60,
+           "column": 1,
+           "offset": 2174
+          },
+          "end": {
+           "line": 60,
+           "column": 90,
+           "offset": 2263
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{out}\\bra{in}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{out}\\bra{in}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 60,
+           "column": 90,
+           "offset": 2263
+          },
+          "end": {
+           "line": 60,
+           "column": 109,
+           "offset": 2282
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ") kot v prejšnjem razdelku. V ta namen seštejemo matrike vseh možnih izhodov za bazne vektorje:",
+         "position": {
+          "start": {
+           "line": 60,
+           "column": 109,
+           "offset": 2282
+          },
+          "end": {
+           "line": 60,
+           "column": 215,
+           "offset": 2388
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 60,
+         "column": 1,
+         "offset": 2174
+        },
+        "end": {
+         "line": 60,
+         "column": 215,
+         "offset": 2388
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "To matriko lahko izpeljemo tudi s povezovanjem vhodov in izhodov v\nzapisu braket (",
+         "position": {
+          "start": {
+           "line": 62,
+           "column": 1,
+           "offset": 2390
+          },
+          "end": {
+           "line": 63,
+           "column": 18,
+           "offset": 2479
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{out}\\bra{in}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{out}\\bra{in}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 63,
+           "column": 18,
+           "offset": 2479
+          },
+          "end": {
+           "line": 63,
+           "column": 37,
+           "offset": 2498
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ") kot v prejšnjem razdelku. V ta\nnamen seštejemo matrike vseh možnih izhodov za bazne vektorje:",
+         "position": {
+          "start": {
+           "line": 63,
+           "column": 37,
+           "offset": 2498
+          },
+          "end": {
+           "line": 64,
+           "column": 73,
+           "offset": 2604
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 62,
+         "column": 1,
+         "offset": 2390
+        },
+        "end": {
+         "line": 64,
+         "column": 73,
+         "offset": 2604
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "X = \\ket{0}\\bra{1}+\\ket{1}\\bra{0}\n\t=\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\\begin{pmatrix} 0 & 1 \\end{pmatrix} + \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\\begin{pmatrix} 1 & 0 \\end{pmatrix}\n\t= \\begin{pmatrix}0 & 1 \\\\ 0 & 0 \\end{pmatrix}+\\begin{pmatrix}0 & 0 \\\\ 1 & 0 \\end{pmatrix}= \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "X = \\ket{0}\\bra{1}+\\ket{1}\\bra{0}\n\t=\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}\\begin{pmatrix} 0 & 1 \\end{pmatrix} + \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}\\begin{pmatrix} 1 & 0 \\end{pmatrix}\n\t= \\begin{pmatrix}0 & 1 \\\\ 0 & 0 \\end{pmatrix}+\\begin{pmatrix}0 & 0 \\\\ 1 & 0 \\end{pmatrix}= \\begin{pmatrix}0 & 1 \\\\ 1 & 0 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 66,
+         "column": 1,
+         "offset": 2606
+        },
+        "end": {
+         "line": 70,
+         "column": 3,
+         "offset": 2929
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Vrata Y",
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 4,
+           "offset": 2934
+          },
+          "end": {
+           "line": 72,
+           "column": 10,
+           "offset": 2940
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 72,
+         "column": 1,
+         "offset": 2931
+        },
+        "end": {
+         "line": 72,
+         "column": 10,
+         "offset": 2940
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V Blochovi sferi vrata Y opisujejo rotacijo za kot ",
+         "position": {
+          "start": {
+           "line": 74,
+           "column": 1,
+           "offset": 2942
+          },
+          "end": {
+           "line": 74,
+           "column": 67,
+           "offset": 3008
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\pi",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\pi"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 74,
+           "column": 67,
+           "offset": 3008
+          },
+          "end": {
+           "line": 74,
+           "column": 72,
+           "offset": 3013
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nokoli osi y.",
+         "position": {
+          "start": {
+           "line": 74,
+           "column": 72,
+           "offset": 3013
+          },
+          "end": {
+           "line": 75,
+           "column": 19,
+           "offset": 3032
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 74,
+         "column": 1,
+         "offset": 2942
+        },
+        "end": {
+         "line": 75,
+         "column": 19,
+         "offset": 3032
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V vezju jih predstavimo takole:",
+         "position": {
+          "start": {
+           "line": 77,
+           "column": 1,
+           "offset": 3034
+          },
+          "end": {
+           "line": 77,
+           "column": 44,
+           "offset": 3077
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 77,
+         "column": 1,
+         "offset": 3034
+        },
+        "end": {
+         "line": 77,
+         "column": 44,
+         "offset": 3077
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "QASMPlayground",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "withoutTranslate",
+         "value": "true",
+         "position": {
+          "start": {
+           "line": 79,
+           "column": 17,
+           "offset": 3095
+          },
+          "end": {
+           "line": 79,
+           "column": 40,
+           "offset": 3118
+          }
+         }
+        }
+       ],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\ny q[0];",
+           "position": {
+            "start": {
+             "line": 80,
+             "column": 3,
+             "offset": 3122
+            },
+            "end": {
+             "line": 83,
+             "column": 11,
+             "offset": 3184
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 80,
+           "column": 3,
+           "offset": 3122
+          },
+          "end": {
+           "line": 83,
+           "column": 11,
+           "offset": 3184
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 79,
+         "column": 1,
+         "offset": 3079
+        },
+        "end": {
+         "line": 84,
+         "column": 18,
+         "offset": 3202
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Predstavitev z unitarno matriko je:",
+         "position": {
+          "start": {
+           "line": 86,
+           "column": 1,
+           "offset": 3204
+          },
+          "end": {
+           "line": 86,
+           "column": 43,
+           "offset": 3246
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 86,
+           "column": 43,
+           "offset": 3246
+          },
+          "end": {
+           "line": 86,
+           "column": 52,
+           "offset": 3255
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " in ",
+         "position": {
+          "start": {
+           "line": 86,
+           "column": 52,
+           "offset": 3255
+          },
+          "end": {
+           "line": 86,
+           "column": 57,
+           "offset": 3260
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 86,
+           "column": 57,
+           "offset": 3260
+          },
+          "end": {
+           "line": 86,
+           "column": 66,
+           "offset": 3269
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", dobimo:",
+         "position": {
+          "start": {
+           "line": 86,
+           "column": 66,
+           "offset": 3269
+          },
+          "end": {
+           "line": 86,
+           "column": 83,
+           "offset": 3286
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 86,
+         "column": 1,
+         "offset": 3204
+        },
+        "end": {
+         "line": 86,
+         "column": 83,
+         "offset": 3286
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "Y = \\begin{pmatrix}0 & -i \\\\ i & 0 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "Y = \\begin{pmatrix}0 & -i \\\\ i & 0 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 88,
+         "column": 1,
+         "offset": 3288
+        },
+        "end": {
+         "line": 90,
+         "column": 3,
+         "offset": 3342
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Če jih uporabimo na ",
+         "position": {
+          "start": {
+           "line": 92,
+           "column": 1,
+           "offset": 3344
+          },
+          "end": {
+           "line": 92,
+           "column": 12,
+           "offset": 3355
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 92,
+           "column": 12,
+           "offset": 3355
+          },
+          "end": {
+           "line": 92,
+           "column": 21,
+           "offset": 3364
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " in ",
+         "position": {
+          "start": {
+           "line": 92,
+           "column": 21,
+           "offset": 3364
+          },
+          "end": {
+           "line": 92,
+           "column": 26,
+           "offset": 3369
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 92,
+           "column": 26,
+           "offset": 3369
+          },
+          "end": {
+           "line": 92,
+           "column": 35,
+           "offset": 3378
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", dobimo:",
+         "position": {
+          "start": {
+           "line": 92,
+           "column": 35,
+           "offset": 3378
+          },
+          "end": {
+           "line": 92,
+           "column": 52,
+           "offset": 3395
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 92,
+         "column": 1,
+         "offset": 3344
+        },
+        "end": {
+         "line": 92,
+         "column": 52,
+         "offset": 3395
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "Y \\ket{0} =  \\begin{pmatrix}0 & -i \\\\ i & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ i \\end{pmatrix} \n  Y \\ket{1} =  \\begin{pmatrix}0 & -i \\\\ i & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} -i \\\\ 0 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "Y \\ket{0} =  \\begin{pmatrix}0 & -i \\\\ i & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ i \\end{pmatrix} \n  Y \\ket{1} =  \\begin{pmatrix}0 & -i \\\\ i & 0 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} -i \\\\ 0 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 94,
+         "column": 1,
+         "offset": 3397
+        },
+        "end": {
+         "line": 97,
+         "column": 3,
+         "offset": 3688
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V Diracovem zapisu pišemo:",
+         "position": {
+          "start": {
+           "line": 99,
+           "column": 1,
+           "offset": 3690
+          },
+          "end": {
+           "line": 99,
+           "column": 29,
+           "offset": 3718
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 99,
+         "column": 1,
+         "offset": 3690
+        },
+        "end": {
+         "line": 99,
+         "column": 29,
+         "offset": 3718
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "inlineMath",
+         "value": "Y\\ket{0} =i\\ket{1}\\qquad Y \\ket{1} = -i\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "Y\\ket{0} =i\\ket{1}\\qquad Y \\ket{1} = -i\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 101,
+           "column": 1,
+           "offset": 3720
+          },
+          "end": {
+           "line": 101,
+           "column": 49,
+           "offset": 3768
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 101,
+         "column": 1,
+         "offset": 3720
+        },
+        "end": {
+         "line": 101,
+         "column": 49,
+         "offset": 3768
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Vrata Z",
+         "position": {
+          "start": {
+           "line": 103,
+           "column": 4,
+           "offset": 3773
+          },
+          "end": {
+           "line": 103,
+           "column": 10,
+           "offset": 3779
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 103,
+         "column": 1,
+         "offset": 3770
+        },
+        "end": {
+         "line": 103,
+         "column": 10,
+         "offset": 3779
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V Blochovi sferi vrata Z opisujejo rotacijo za kot ",
+         "position": {
+          "start": {
+           "line": 105,
+           "column": 1,
+           "offset": 3781
+          },
+          "end": {
+           "line": 105,
+           "column": 67,
+           "offset": 3847
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\pi",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\pi"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 105,
+           "column": 67,
+           "offset": 3847
+          },
+          "end": {
+           "line": 105,
+           "column": 72,
+           "offset": 3852
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nokoli osi z.",
+         "position": {
+          "start": {
+           "line": 105,
+           "column": 72,
+           "offset": 3852
+          },
+          "end": {
+           "line": 106,
+           "column": 19,
+           "offset": 3871
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 105,
+         "column": 1,
+         "offset": 3781
+        },
+        "end": {
+         "line": 106,
+         "column": 19,
+         "offset": 3871
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V vezju jih predstavimo takole:",
+         "position": {
+          "start": {
+           "line": 108,
+           "column": 1,
+           "offset": 3873
+          },
+          "end": {
+           "line": 108,
+           "column": 44,
+           "offset": 3916
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 108,
+         "column": 1,
+         "offset": 3873
+        },
+        "end": {
+         "line": 108,
+         "column": 44,
+         "offset": 3916
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "QASMPlayground",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "withoutTranslate",
+         "value": "true",
+         "position": {
+          "start": {
+           "line": 110,
+           "column": 17,
+           "offset": 3934
+          },
+          "end": {
+           "line": 110,
+           "column": 40,
+           "offset": 3957
+          }
+         }
+        }
+       ],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\nz q[0];",
+           "position": {
+            "start": {
+             "line": 111,
+             "column": 3,
+             "offset": 3961
+            },
+            "end": {
+             "line": 114,
+             "column": 11,
+             "offset": 4023
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 111,
+           "column": 3,
+           "offset": 3961
+          },
+          "end": {
+           "line": 114,
+           "column": 11,
+           "offset": 4023
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 110,
+         "column": 1,
+         "offset": 3918
+        },
+        "end": {
+         "line": 115,
+         "column": 18,
+         "offset": 4041
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Predstavitev z unitarno matriko je:",
+         "position": {
+          "start": {
+           "line": 117,
+           "column": 1,
+           "offset": 4043
+          },
+          "end": {
+           "line": 117,
+           "column": 43,
+           "offset": 4085
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 117,
+         "column": 1,
+         "offset": 4043
+        },
+        "end": {
+         "line": 117,
+         "column": 43,
+         "offset": 4085
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "Z = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "Z = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 119,
+         "column": 1,
+         "offset": 4087
+        },
+        "end": {
+         "line": 121,
+         "column": 3,
+         "offset": 4142
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Če jih uporabimo na ",
+         "position": {
+          "start": {
+           "line": 123,
+           "column": 1,
+           "offset": 4144
+          },
+          "end": {
+           "line": 123,
+           "column": 12,
+           "offset": 4155
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 123,
+           "column": 12,
+           "offset": 4155
+          },
+          "end": {
+           "line": 123,
+           "column": 21,
+           "offset": 4164
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " in ",
+         "position": {
+          "start": {
+           "line": 123,
+           "column": 21,
+           "offset": 4164
+          },
+          "end": {
+           "line": 123,
+           "column": 26,
+           "offset": 4169
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 123,
+           "column": 26,
+           "offset": 4169
+          },
+          "end": {
+           "line": 123,
+           "column": 35,
+           "offset": 4178
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", dobimo",
+         "position": {
+          "start": {
+           "line": 123,
+           "column": 35,
+           "offset": 4178
+          },
+          "end": {
+           "line": 123,
+           "column": 51,
+           "offset": 4194
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 123,
+         "column": 1,
+         "offset": 4144
+        },
+        "end": {
+         "line": 123,
+         "column": 51,
+         "offset": 4194
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "Z \\ket{0} =  \\begin{pmatrix}1 & 0 \\\\ 0 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}  \\qquad\n  Z \\ket{1} =  \\begin{pmatrix}1 & 0 \\\\ 0 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "Z \\ket{0} =  \\begin{pmatrix}1 & 0 \\\\ 0 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}  \\qquad\n  Z \\ket{1} =  \\begin{pmatrix}1 & 0 \\\\ 0 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 125,
+         "column": 1,
+         "offset": 4196
+        },
+        "end": {
+         "line": 128,
+         "column": 3,
+         "offset": 4494
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V Diracovem zapisu pišemo:",
+         "position": {
+          "start": {
+           "line": 130,
+           "column": 1,
+           "offset": 4496
+          },
+          "end": {
+           "line": 130,
+           "column": 29,
+           "offset": 4524
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 130,
+         "column": 1,
+         "offset": 4496
+        },
+        "end": {
+         "line": 130,
+         "column": 29,
+         "offset": 4524
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "inlineMath",
+         "value": "Z\\ket{0} =\\ket{0}\\qquad Z \\ket{1} = -\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "Z\\ket{0} =\\ket{0}\\qquad Z \\ket{1} = -\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 132,
+           "column": 1,
+           "offset": 4526
+          },
+          "end": {
+           "line": 132,
+           "column": 47,
+           "offset": 4572
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 132,
+         "column": 1,
+         "offset": 4526
+        },
+        "end": {
+         "line": 132,
+         "column": 47,
+         "offset": 4572
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Lastnosti Paulijevih vrat",
+         "position": {
+          "start": {
+           "line": 134,
+           "column": 4,
+           "offset": 4577
+          },
+          "end": {
+           "line": 134,
+           "column": 34,
+           "offset": 4607
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 134,
+         "column": 1,
+         "offset": 4574
+        },
+        "end": {
+         "line": 134,
+         "column": 34,
+         "offset": 4607
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Skupaj z identiteto Paulijeva vrata tvorijo bazo\n",
+         "position": {
+          "start": {
+           "line": 136,
+           "column": 1,
+           "offset": 4609
+          },
+          "end": {
+           "line": 137,
+           "column": 1,
+           "offset": 4680
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "štiridimenzionalnega kompleksnega vektorskega prostora",
+           "position": {
+            "start": {
+             "line": 137,
+             "column": 2,
+             "offset": 4681
+            },
+            "end": {
+             "line": 137,
+             "column": 36,
+             "offset": 4715
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 137,
+           "column": 1,
+           "offset": 4680
+          },
+          "end": {
+           "line": 137,
+           "column": 37,
+           "offset": 4716
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " vseh kompleksnih\nmatrik ",
+         "position": {
+          "start": {
+           "line": 137,
+           "column": 37,
+           "offset": 4716
+          },
+          "end": {
+           "line": 138,
+           "column": 1,
+           "offset": 4732
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "2 \\times 2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "2 \\times 2"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 138,
+           "column": 1,
+           "offset": 4732
+          },
+          "end": {
+           "line": 138,
+           "column": 13,
+           "offset": 4744
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ". To pomeni, da lahko vsako kompleksno\nmatriko ",
+         "position": {
+          "start": {
+           "line": 138,
+           "column": 13,
+           "offset": 4744
+          },
+          "end": {
+           "line": 139,
+           "column": 1,
+           "offset": 4785
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "2\\times 2",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "2\\times 2"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 139,
+           "column": 1,
+           "offset": 4785
+          },
+          "end": {
+           "line": 139,
+           "column": 12,
+           "offset": 4796
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " predstavimo z linearno\nkombinacijo teh štirih matrik. Poleg tega so tri Paulijeva vrata\nsama sebi inverzna, tj.: ",
+         "position": {
+          "start": {
+           "line": 139,
+           "column": 12,
+           "offset": 4796
+          },
+          "end": {
+           "line": 141,
+           "column": 21,
+           "offset": 4926
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "XX = I;   YY = I; ZZ = I",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "XX = I;   YY = I; ZZ = I"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 141,
+           "column": 21,
+           "offset": 4926
+          },
+          "end": {
+           "line": 141,
+           "column": 47,
+           "offset": 4952
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 136,
+         "column": 1,
+         "offset": 4609
+        },
+        "end": {
+         "line": 141,
+         "column": 47,
+         "offset": 4952
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Hadamardova vrata",
+         "position": {
+          "start": {
+           "line": 143,
+           "column": 3,
+           "offset": 4956
+          },
+          "end": {
+           "line": 143,
+           "column": 16,
+           "offset": 4969
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 143,
+         "column": 1,
+         "offset": 4954
+        },
+        "end": {
+         "line": 143,
+         "column": 16,
+         "offset": 4969
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Hadamardova vrata, poimenovana po francoskem matematiku Jacquesu\nHadamardu, imajo v kvantnem računalništvu pomembno vlogo, ker lahko\nkubit iz \"klasičnega\" baznega stanja postavijo v stanje ",
+         "position": {
+          "start": {
+           "line": 145,
+           "column": 1,
+           "offset": 4971
+          },
+          "end": {
+           "line": 147,
+           "column": 49,
+           "offset": 5153
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "superpozicije",
+           "position": {
+            "start": {
+             "line": 147,
+             "column": 50,
+             "offset": 5154
+            },
+            "end": {
+             "line": 147,
+             "column": 63,
+             "offset": 5167
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 147,
+           "column": 49,
+           "offset": 5153
+          },
+          "end": {
+           "line": 147,
+           "column": 64,
+           "offset": 5168
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ".\nEnakomerno superpozicijo na primer dobimo z uporabo Hadamardovih\nvrat na stanju ",
+         "position": {
+          "start": {
+           "line": 147,
+           "column": 64,
+           "offset": 5168
+          },
+          "end": {
+           "line": 149,
+           "column": 19,
+           "offset": 5267
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 149,
+           "column": 19,
+           "offset": 5267
+          },
+          "end": {
+           "line": 149,
+           "column": 28,
+           "offset": 5276
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", saj sta takrat amplitudi ",
+         "position": {
+          "start": {
+           "line": 149,
+           "column": 28,
+           "offset": 5276
+          },
+          "end": {
+           "line": 149,
+           "column": 61,
+           "offset": 5309
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 149,
+           "column": 61,
+           "offset": 5309
+          },
+          "end": {
+           "line": 149,
+           "column": 70,
+           "offset": 5318
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "\nin ",
+         "position": {
+          "start": {
+           "line": 149,
+           "column": 70,
+           "offset": 5318
+          },
+          "end": {
+           "line": 150,
+           "column": 5,
+           "offset": 5323
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 150,
+           "column": 5,
+           "offset": 5323
+          },
+          "end": {
+           "line": 150,
+           "column": 14,
+           "offset": 5332
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " enaki; pri meritvi bi kubit opazili v stanju ",
+         "position": {
+          "start": {
+           "line": 150,
+           "column": 14,
+           "offset": 5332
+          },
+          "end": {
+           "line": 151,
+           "column": 16,
+           "offset": 5403
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 151,
+           "column": 16,
+           "offset": 5403
+          },
+          "end": {
+           "line": 151,
+           "column": 25,
+           "offset": 5412
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " ali ",
+         "position": {
+          "start": {
+           "line": 151,
+           "column": 25,
+           "offset": 5412
+          },
+          "end": {
+           "line": 151,
+           "column": 29,
+           "offset": 5416
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 151,
+           "column": 29,
+           "offset": 5416
+          },
+          "end": {
+           "line": 151,
+           "column": 38,
+           "offset": 5425
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", vsako z verjetnostjo 50 %.\nV Blochovi sferi ta vrata opisujejo rotacijo za ",
+         "position": {
+          "start": {
+           "line": 151,
+           "column": 38,
+           "offset": 5425
+          },
+          "end": {
+           "line": 152,
+           "column": 55,
+           "offset": 5515
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\pi",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\pi"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 152,
+           "column": 55,
+           "offset": 5515
+          },
+          "end": {
+           "line": 152,
+           "column": 60,
+           "offset": 5520
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " okoli\nosi z, ki ji sledi rotacija za ",
+         "position": {
+          "start": {
+           "line": 152,
+           "column": 60,
+           "offset": 5520
+          },
+          "end": {
+           "line": 153,
+           "column": 35,
+           "offset": 5566
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\frac{\\pi}{2}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\frac{\\pi}{2}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 153,
+           "column": 35,
+           "offset": 5566
+          },
+          "end": {
+           "line": 153,
+           "column": 50,
+           "offset": 5581
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " okoli osi y.",
+         "position": {
+          "start": {
+           "line": 153,
+           "column": 50,
+           "offset": 5581
+          },
+          "end": {
+           "line": 153,
+           "column": 69,
+           "offset": 5600
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 145,
+         "column": 1,
+         "offset": 4971
+        },
+        "end": {
+         "line": 153,
+         "column": 69,
+         "offset": 5600
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V vezju jih predstavimo takole:",
+         "position": {
+          "start": {
+           "line": 155,
+           "column": 1,
+           "offset": 5602
+          },
+          "end": {
+           "line": 155,
+           "column": 44,
+           "offset": 5645
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 155,
+           "column": 44,
+           "offset": 5645
+          },
+          "end": {
+           "line": 155,
+           "column": 53,
+           "offset": 5654
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " in ",
+         "position": {
+          "start": {
+           "line": 155,
+           "column": 53,
+           "offset": 5654
+          },
+          "end": {
+           "line": 155,
+           "column": 58,
+           "offset": 5659
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 155,
+           "column": 58,
+           "offset": 5659
+          },
+          "end": {
+           "line": 155,
+           "column": 67,
+           "offset": 5668
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " dobimo",
+         "position": {
+          "start": {
+           "line": 155,
+           "column": 67,
+           "offset": 5668
+          },
+          "end": {
+           "line": 155,
+           "column": 74,
+           "offset": 5675
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 155,
+         "column": 1,
+         "offset": 5602
+        },
+        "end": {
+         "line": 155,
+         "column": 74,
+         "offset": 5675
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "QASMPlayground",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "withoutTranslate",
+         "value": "true",
+         "position": {
+          "start": {
+           "line": 157,
+           "column": 17,
+           "offset": 5693
+          },
+          "end": {
+           "line": 157,
+           "column": 40,
+           "offset": 5716
+          }
+         }
+        }
+       ],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\nh q[0];",
+           "position": {
+            "start": {
+             "line": 158,
+             "column": 3,
+             "offset": 5720
+            },
+            "end": {
+             "line": 161,
+             "column": 11,
+             "offset": 5782
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 158,
+           "column": 3,
+           "offset": 5720
+          },
+          "end": {
+           "line": 161,
+           "column": 11,
+           "offset": 5782
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 157,
+         "column": 1,
+         "offset": 5677
+        },
+        "end": {
+         "line": 162,
+         "column": 18,
+         "offset": 5800
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Unitarna matrika je podana kot:",
+         "position": {
+          "start": {
+           "line": 164,
+           "column": 1,
+           "offset": 5802
+          },
+          "end": {
+           "line": 164,
+           "column": 32,
+           "offset": 5833
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 164,
+         "column": 1,
+         "offset": 5802
+        },
+        "end": {
+         "line": 164,
+         "column": 32,
+         "offset": 5833
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "H = \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}  = \\begin{pmatrix} \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "H = \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}  = \\begin{pmatrix} \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{2}} \\\\ \\frac{1}{\\sqrt{2}} & -\\frac{1}{\\sqrt{2}} \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 166,
+         "column": 1,
+         "offset": 5835
+        },
+        "end": {
+         "line": 168,
+         "column": 3,
+         "offset": 6025
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Če jih uporabimo na ",
+         "position": {
+          "start": {
+           "line": 170,
+           "column": 1,
+           "offset": 6027
+          },
+          "end": {
+           "line": 170,
+           "column": 12,
+           "offset": 6038
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 170,
+           "column": 12,
+           "offset": 6038
+          },
+          "end": {
+           "line": 170,
+           "column": 21,
+           "offset": 6047
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " in ",
+         "position": {
+          "start": {
+           "line": 170,
+           "column": 21,
+           "offset": 6047
+          },
+          "end": {
+           "line": 170,
+           "column": 26,
+           "offset": 6052
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 170,
+           "column": 26,
+           "offset": 6052
+          },
+          "end": {
+           "line": 170,
+           "column": 35,
+           "offset": 6061
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", dobimo",
+         "position": {
+          "start": {
+           "line": 170,
+           "column": 35,
+           "offset": 6061
+          },
+          "end": {
+           "line": 170,
+           "column": 42,
+           "offset": 6068
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 170,
+         "column": 1,
+         "offset": 6027
+        },
+        "end": {
+         "line": 170,
+         "column": 42,
+         "offset": 6068
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "H \\ket{0} =  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \n  \\qquad\n  H \\ket{1} =  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "H \\ket{0} =  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \n  \\qquad\n  H \\ket{1} =  \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}  \\cdot \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 172,
+         "column": 1,
+         "offset": 6070
+        },
+        "end": {
+         "line": 176,
+         "column": 3,
+         "offset": 6446
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V Diracovem zapisu pišemo:",
+         "position": {
+          "start": {
+           "line": 178,
+           "column": 1,
+           "offset": 6448
+          },
+          "end": {
+           "line": 178,
+           "column": 29,
+           "offset": 6476
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 178,
+         "column": 1,
+         "offset": 6448
+        },
+        "end": {
+         "line": 178,
+         "column": 29,
+         "offset": 6476
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "H\\ket{0} =\\frac{1}{\\sqrt{2}}(\\ket{0}+\\ket{1})\\qquad H \\ket{1} = \\frac{1}{\\sqrt{2}}(\\ket{0}-\\ket{1})",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "H\\ket{0} =\\frac{1}{\\sqrt{2}}(\\ket{0}+\\ket{1})\\qquad H \\ket{1} = \\frac{1}{\\sqrt{2}}(\\ket{0}-\\ket{1})"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 180,
+         "column": 1,
+         "offset": 6478
+        },
+        "end": {
+         "line": 182,
+         "column": 3,
+         "offset": 6583
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Vrata poljubnih rotacij",
+         "position": {
+          "start": {
+           "line": 184,
+           "column": 3,
+           "offset": 6587
+          },
+          "end": {
+           "line": 184,
+           "column": 27,
+           "offset": 6611
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 184,
+         "column": 1,
+         "offset": 6585
+        },
+        "end": {
+         "line": 184,
+         "column": 27,
+         "offset": 6611
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Kubit lahko zavrtimo tudi za poljuben kot okoli poljubne osi, da \"dosežemo\"\nvsa možna stanja na Blochovi površini. V literaturi obstajajo različni\ntako imenovani univerzalni nabori vrat, ki za to zadostujejo. Uporabljamo rotacijska vrata ",
+         "position": {
+          "start": {
+           "line": 186,
+           "column": 1,
+           "offset": 6613
+          },
+          "end": {
+           "line": 189,
+           "column": 33,
+           "offset": 6858
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "R_x(\\theta)",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "R_x(\\theta)"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 189,
+           "column": 33,
+           "offset": 6858
+          },
+          "end": {
+           "line": 189,
+           "column": 46,
+           "offset": 6871
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", ",
+         "position": {
+          "start": {
+           "line": 189,
+           "column": 46,
+           "offset": 6871
+          },
+          "end": {
+           "line": 189,
+           "column": 48,
+           "offset": 6873
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "R_y(\\theta)",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "R_y(\\theta)"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 189,
+           "column": 48,
+           "offset": 6873
+          },
+          "end": {
+           "line": 189,
+           "column": 61,
+           "offset": 6886
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " in\n",
+         "position": {
+          "start": {
+           "line": 189,
+           "column": 61,
+           "offset": 6886
+          },
+          "end": {
+           "line": 190,
+           "column": 1,
+           "offset": 6891
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "R_z(\\theta)",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "R_z(\\theta)"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 190,
+           "column": 1,
+           "offset": 6891
+          },
+          "end": {
+           "line": 190,
+           "column": 14,
+           "offset": 6904
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", definirana takole:",
+         "position": {
+          "start": {
+           "line": 190,
+           "column": 14,
+           "offset": 6904
+          },
+          "end": {
+           "line": 190,
+           "column": 35,
+           "offset": 6925
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 186,
+         "column": 1,
+         "offset": 6613
+        },
+        "end": {
+         "line": 190,
+         "column": 35,
+         "offset": 6925
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "inlineMath",
+         "value": "R_A(\\theta) = e^{-i \\frac{\\theta}{2} A} = \\cos\\left(\\frac{\\theta}{2}\\right) I - i \\cdot \\sin\\left(\\frac{\\theta}{2}\\right) A; \\quad A\\in \\{X,Y,Z\\}$$\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "R_A(\\theta) = e^{-i \\frac{\\theta}{2} A} = \\cos\\left(\\frac{\\theta}{2}\\right) I - i \\cdot \\sin\\left(\\frac{\\theta}{2}\\right) A; \\quad A\\in \\{X,Y,Z\\}$$\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 192,
+           "column": 1,
+           "offset": 6927
+          },
+          "end": {
+           "line": 192,
+           "column": 157,
+           "offset": 7083
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " ali\n",
+         "position": {
+          "start": {
+           "line": 192,
+           "column": 157,
+           "offset": 7083
+          },
+          "end": {
+           "line": 193,
+           "column": 1,
+           "offset": 7087
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 193,
+           "column": 1,
+           "offset": 7087
+          },
+          "end": {
+           "line": 193,
+           "column": 10,
+           "offset": 7096
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " dobimo z verjetnostma, odvisnima od stanja\nkubita. Ta postopek lahko prav tako predstavimo z vrati:",
+         "position": {
+          "start": {
+           "line": 193,
+           "column": 10,
+           "offset": 7096
+          },
+          "end": {
+           "line": 194,
+           "column": 57,
+           "offset": 7214
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 192,
+         "column": 1,
+         "offset": 6927
+        },
+        "end": {
+         "line": 194,
+         "column": 57,
+         "offset": 7214
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Iz tega sledijo naslednje rotacijske matrike:",
+         "position": {
+          "start": {
+           "line": 196,
+           "column": 1,
+           "offset": 7216
+          },
+          "end": {
+           "line": 196,
+           "column": 49,
+           "offset": 7264
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 196,
+         "column": 1,
+         "offset": 7216
+        },
+        "end": {
+         "line": 196,
+         "column": 49,
+         "offset": 7264
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "\\begin{aligned}\n  \t R_x(\\theta) &= \\cos(\\frac{\\theta}{2}) I - i \\cdot \\sin(\\frac{\\theta}{2}) X = \\begin{pmatrix} \\cos(\\frac{\\theta}{2}) & -i\\sin(\\frac{\\theta}{2}) \\\\ -i\\sin(\\frac{\\theta}{2}) & \\cos(\\frac{\\theta}{2}) \\end{pmatrix}\\\\\n\t R_y(\\theta) &= \\cos(\\frac{\\theta}{2}) I - i \\cdot \\sin(\\frac{\\theta}{2}) Y = \\begin{pmatrix} \\cos(\\frac{\\theta}{2}) & -\\sin(\\frac{\\theta}{2}) \\\\ \\sin(\\frac{\\theta}{2}) & \\cos(\\frac{\\theta}{2}) \\end{pmatrix}\\\\\n\t R_z(\\theta) &= \\cos(\\frac{\\theta}{2}) I - i \\cdot \\sin(\\frac{\\theta}{2}) Z = \n\t \t\t\t\t\\begin{pmatrix} \\cos(\\frac{\\theta}{2})-i\\sin(\\frac{\\theta}{2}) & 0 \\\\ 0 & \\cos(\\frac{\\theta}{2})+i\\sin(\\frac{\\theta}{2}) \\end{pmatrix} = \n\t\t\t\t\t\\begin{pmatrix} e^{-i\\frac{\\theta}{2}} & 0 \\\\ 0 & e^{i\\frac{\\theta}{2}} \\end{pmatrix}\n  \n\\end{aligned}",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "\\begin{aligned}\n  \t R_x(\\theta) &= \\cos(\\frac{\\theta}{2}) I - i \\cdot \\sin(\\frac{\\theta}{2}) X = \\begin{pmatrix} \\cos(\\frac{\\theta}{2}) & -i\\sin(\\frac{\\theta}{2}) \\\\ -i\\sin(\\frac{\\theta}{2}) & \\cos(\\frac{\\theta}{2}) \\end{pmatrix}\\\\\n\t R_y(\\theta) &= \\cos(\\frac{\\theta}{2}) I - i \\cdot \\sin(\\frac{\\theta}{2}) Y = \\begin{pmatrix} \\cos(\\frac{\\theta}{2}) & -\\sin(\\frac{\\theta}{2}) \\\\ \\sin(\\frac{\\theta}{2}) & \\cos(\\frac{\\theta}{2}) \\end{pmatrix}\\\\\n\t R_z(\\theta) &= \\cos(\\frac{\\theta}{2}) I - i \\cdot \\sin(\\frac{\\theta}{2}) Z = \n\t \t\t\t\t\\begin{pmatrix} \\cos(\\frac{\\theta}{2})-i\\sin(\\frac{\\theta}{2}) & 0 \\\\ 0 & \\cos(\\frac{\\theta}{2})+i\\sin(\\frac{\\theta}{2}) \\end{pmatrix} = \n\t\t\t\t\t\\begin{pmatrix} e^{-i\\frac{\\theta}{2}} & 0 \\\\ 0 & e^{i\\frac{\\theta}{2}} \\end{pmatrix}\n  \n\\end{aligned}"
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 198,
+         "column": 1,
+         "offset": 7266
+        },
+        "end": {
+         "line": 207,
+         "column": 3,
+         "offset": 8046
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V jeziku vezij so ta vrata videti takole:",
+         "position": {
+          "start": {
+           "line": 209,
+           "column": 1,
+           "offset": 8048
+          },
+          "end": {
+           "line": 209,
+           "column": 54,
+           "offset": 8101
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 209,
+         "column": 1,
+         "offset": 8048
+        },
+        "end": {
+         "line": 209,
+         "column": 54,
+         "offset": 8101
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "QASMPlayground",
+       "attributes": [],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\nrx(pi/2) q[0];\nry(pi/2) q[0];\nrz(pi/2) q[0];",
+           "position": {
+            "start": {
+             "line": 212,
+             "column": 3,
+             "offset": 8122
+            },
+            "end": {
+             "line": 217,
+             "column": 18,
+             "offset": 8227
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 212,
+           "column": 3,
+           "offset": 8122
+          },
+          "end": {
+           "line": 217,
+           "column": 18,
+           "offset": 8227
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 211,
+         "column": 1,
+         "offset": 8103
+        },
+        "end": {
+         "line": 218,
+         "column": 18,
+         "offset": 8245
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Meritev",
+         "position": {
+          "start": {
+           "line": 220,
+           "column": 3,
+           "offset": 8249
+          },
+          "end": {
+           "line": 220,
+           "column": 14,
+           "offset": 8260
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 220,
+         "column": 1,
+         "offset": 8247
+        },
+        "end": {
+         "line": 220,
+         "column": 14,
+         "offset": 8260
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Pri meritvi kubita ustrezen (binarni) izid ",
+         "position": {
+          "start": {
+           "line": 222,
+           "column": 1,
+           "offset": 8262
+          },
+          "end": {
+           "line": 222,
+           "column": 56,
+           "offset": 8317
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{0}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{0}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 222,
+           "column": 56,
+           "offset": 8317
+          },
+          "end": {
+           "line": 222,
+           "column": 65,
+           "offset": 8326
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " ali\n",
+         "position": {
+          "start": {
+           "line": 222,
+           "column": 65,
+           "offset": 8326
+          },
+          "end": {
+           "line": 223,
+           "column": 1,
+           "offset": 8330
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\ket{1}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\ket{1}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 223,
+           "column": 1,
+           "offset": 8330
+          },
+          "end": {
+           "line": 223,
+           "column": 10,
+           "offset": 8339
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " dobimo z verjetnostma, odvisnima od stanja\nkubita. Ta postopek lahko prav tako predstavimo z vrati:",
+         "position": {
+          "start": {
+           "line": 223,
+           "column": 10,
+           "offset": 8339
+          },
+          "end": {
+           "line": 224,
+           "column": 57,
+           "offset": 8457
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 222,
+         "column": 1,
+         "offset": 8262
+        },
+        "end": {
+         "line": 224,
+         "column": 57,
+         "offset": 8457
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "QASMPlayground",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "withoutTranslate",
+         "value": "true",
+         "position": {
+          "start": {
+           "line": 226,
+           "column": 17,
+           "offset": 8475
+          },
+          "end": {
+           "line": 226,
+           "column": 40,
+           "offset": 8498
+          }
+         }
+        },
+        {
+         "type": "mdxJsxAttribute",
+         "name": "withoutSimulate",
+         "value": "true",
+         "position": {
+          "start": {
+           "line": 226,
+           "column": 41,
+           "offset": 8499
+          },
+          "end": {
+           "line": 226,
+           "column": 63,
+           "offset": 8521
+          }
+         }
+        }
+       ],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\ncreg c[1];\nmeasure q[0] -> c[0];",
+           "position": {
+            "start": {
+             "line": 227,
+             "column": 3,
+             "offset": 8525
+            },
+            "end": {
+             "line": 231,
+             "column": 26,
+             "offset": 8616
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 227,
+           "column": 3,
+           "offset": 8525
+          },
+          "end": {
+           "line": 231,
+           "column": 26,
+           "offset": 8616
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 226,
+         "column": 1,
+         "offset": 8459
+        },
+        "end": {
+         "line": 232,
+         "column": 18,
+         "offset": 8634
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Matrične predstavitve ni, saj merjenje ni\noperacija kot vsaka druga: iz kubita prebere bit klasične informacije.\nPoleg tega meritve v nasprotju s prejšnjimi vrati niso\nreverzibilne. V vezjih rišemo dvojno črto, da ločimo\nklasične bite od kubitov.",
+         "position": {
+          "start": {
+           "line": 234,
+           "column": 1,
+           "offset": 8636
+          },
+          "end": {
+           "line": 238,
+           "column": 28,
+           "offset": 8939
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 234,
+         "column": 1,
+         "offset": 8636
+        },
+        "end": {
+         "line": 238,
+         "column": 28,
+         "offset": 8939
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Več o meritvah je opisano v ",
+         "position": {
+          "start": {
+           "line": 240,
+           "column": 1,
+           "offset": 8941
+          },
+          "end": {
+           "line": 240,
+           "column": 38,
+           "offset": 8978
+          }
+         }
+        },
+        {
+         "type": "mdxJsxTextElement",
+         "name": "Link",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "to",
+           "value": "../qubit-measurements",
+           "position": {
+            "start": {
+             "line": 240,
+             "column": 44,
+             "offset": 8984
+            },
+            "end": {
+             "line": 240,
+             "column": 70,
+             "offset": 9010
+            }
+           }
+          }
+         ],
+         "children": [
+          {
+           "type": "text",
+           "value": "Meritve kubitov",
+           "position": {
+            "start": {
+             "line": 240,
+             "column": 71,
+             "offset": 9011
+            },
+            "end": {
+             "line": 240,
+             "column": 88,
+             "offset": 9028
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 240,
+           "column": 38,
+           "offset": 8978
+          },
+          "end": {
+           "line": 240,
+           "column": 95,
+           "offset": 9035
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 240,
+         "column": 1,
+         "offset": 8941
+        },
+        "end": {
+         "line": 240,
+         "column": 95,
+         "offset": 9035
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 241,
+       "column": 1,
+       "offset": 9036
+      }
+     }
+    },
+    "props": {}
+   }
+  },
+  "IMA:ImageField": {
+   "image-zm3pv": {
+    "value": "350c5364-3d75-479f-b5d6-a7cf57622d71",
+    "props": {}
+   }
+  }
+ }
+}

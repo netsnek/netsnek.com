@@ -1,0 +1,1908 @@
+{
+ "oldPath": "/docs/measurement-based-quantum-computing/one-way-computation",
+ "locale": "sl",
+ "title": "Enosmerno računanje",
+ "description": "Shema enosmernega kvantnega računanja",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Enosmerno kvantno računanje",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 30,
+           "offset": 29
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 30,
+         "offset": 29
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Med modeli, temelječimi na meritvah, lahko prepoznamo dva nekoliko različna pristopa: model na osnovi teleportacije, ki temelji na Bellovih parih in meritvah dveh kubitov, ter enosmerni model, ki ga sestavljajo meritve posameznih kubitov na grafovskih stanjih. Oba modela sta enakovredna in tesno povezana s primitivom teleportacije, pri katerem lahko zahvaljujoč adaptivnim meritvam, izvedenim na večdelnih prepletenih stanjih, izvedemo poljubne unitarne transformacije.",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 31
+          },
+          "end": {
+           "line": 3,
+           "column": 459,
+           "offset": 489
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 31
+        },
+        "end": {
+         "line": 3,
+         "column": 459,
+         "offset": 489
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Namesto da bi logično operacijo izvedli z unitarnimi transformacijami, isto operacijo izvedemo z meritvijo množice ",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 1,
+           "offset": 491
+          },
+          "end": {
+           "line": 5,
+           "column": 122,
+           "offset": 612
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "a",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "a"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 122,
+           "offset": 612
+          },
+          "end": {
+           "line": 5,
+           "column": 125,
+           "offset": 615
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " pomožnih kubitov, prepletenih z ",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 125,
+           "offset": 615
+          },
+          "end": {
+           "line": 5,
+           "column": 158,
+           "offset": 648
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "n",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "n"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 158,
+           "offset": 648
+          },
+          "end": {
+           "line": 5,
+           "column": 161,
+           "offset": 651
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " vhodnimi kubiti. Standardni postopek enosmernega kvantnega računanja (OWQC) sestavljajo trije koraki: priprava prepletenega stanja vira z ",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 161,
+           "offset": 651
+          },
+          "end": {
+           "line": 5,
+           "column": 299,
+           "offset": 789
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "m = n + a",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "m = n + a"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 299,
+           "offset": 789
+          },
+          "end": {
+           "line": 5,
+           "column": 310,
+           "offset": 800
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " kubiti, meritev pomožnih kubitov in popravek izhodov. Tretji korak je povsem klasičen in ga lahko izvedemo po dejanskem eksperimentu z naknadno obdelavo rezultatov.",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 310,
+           "offset": 800
+          },
+          "end": {
+           "line": 5,
+           "column": 472,
+           "offset": 962
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 491
+        },
+        "end": {
+         "line": 5,
+         "column": 472,
+         "offset": 962
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Vrstni red in baza, v kateri merimo kubite, določata izvedeno računanje. Ker meritve dajejo nedeterministične izide, je zato vsaka baza odvisna od prejšnjih rezultatov in jo je treba prilagoditi.",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 1,
+           "offset": 964
+          },
+          "end": {
+           "line": 7,
+           "column": 222,
+           "offset": 1185
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 964
+        },
+        "end": {
+         "line": 7,
+         "column": 222,
+         "offset": 1185
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Primer: splošna transformacija enega kubita",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 4,
+           "offset": 1190
+          },
+          "end": {
+           "line": 9,
+           "column": 48,
+           "offset": 1234
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 1187
+        },
+        "end": {
+         "line": 9,
+         "column": 48,
+         "offset": 1234
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V sliki Blochove sfere lahko vsako unitarno transformacijo enega kubita razumemo kot vrtenje za kot ",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 1,
+           "offset": 1236
+          },
+          "end": {
+           "line": 11,
+           "column": 108,
+           "offset": 1343
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\theta",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\theta"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 108,
+           "offset": 1343
+          },
+          "end": {
+           "line": 11,
+           "column": 116,
+           "offset": 1351
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " okoli osi ",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 116,
+           "offset": 1351
+          },
+          "end": {
+           "line": 11,
+           "column": 131,
+           "offset": 1366
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\hat{n}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\hat{n}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 131,
+           "offset": 1366
+          },
+          "end": {
+           "line": 11,
+           "column": 140,
+           "offset": 1375
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ". To pa lahko izrazimo z ",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 140,
+           "offset": 1375
+          },
+          "end": {
+           "line": 11,
+           "column": 191,
+           "offset": 1426
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Eulerjevimi koti",
+           "position": {
+            "start": {
+             "line": 11,
+             "column": 192,
+             "offset": 1427
+            },
+            "end": {
+             "line": 11,
+             "column": 204,
+             "offset": 1439
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 191,
+           "offset": 1426
+          },
+          "end": {
+           "line": 11,
+           "column": 205,
+           "offset": 1440
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 205,
+           "offset": 1440
+          },
+          "end": {
+           "line": 11,
+           "column": 209,
+           "offset": 1444
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 11,
+         "column": 1,
+         "offset": 1236
+        },
+        "end": {
+         "line": 11,
+         "column": 209,
+         "offset": 1444
+        }
+       }
+      },
+      {
+       "type": "math",
+       "meta": null,
+       "value": "| \\psi' \\rangle = U | \\psi \\rangle = R_\\hat{n}(\\theta) | \\psi \\rangle \n                = R_\\hat{x}(\\alpha) R_\\hat{z}(\\beta) R_\\hat{x}(\\gamma) | \\psi \\rangle \\ , ",
+       "data": {
+        "hName": "pre",
+        "hChildren": [
+         {
+          "type": "element",
+          "tagName": "code",
+          "properties": {
+           "className": [
+            "language-math",
+            "math-display"
+           ]
+          },
+          "children": [
+           {
+            "type": "text",
+            "value": "| \\psi' \\rangle = U | \\psi \\rangle = R_\\hat{n}(\\theta) | \\psi \\rangle \n                = R_\\hat{x}(\\alpha) R_\\hat{z}(\\beta) R_\\hat{x}(\\gamma) | \\psi \\rangle \\ , "
+           }
+          ]
+         }
+        ]
+       },
+       "position": {
+        "start": {
+         "line": 13,
+         "column": 1,
+         "offset": 1446
+        },
+        "end": {
+         "line": 16,
+         "column": 3,
+         "offset": 1613
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "zaporedje vrtenj okoli ",
+         "position": {
+          "start": {
+           "line": 18,
+           "column": 1,
+           "offset": 1615
+          },
+          "end": {
+           "line": 18,
+           "column": 35,
+           "offset": 1649
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\hat{x} - \\hat{z} - \\hat{x}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\hat{x} - \\hat{z} - \\hat{x}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 18,
+           "column": 35,
+           "offset": 1649
+          },
+          "end": {
+           "line": 18,
+           "column": 64,
+           "offset": 1678
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " osi. Vir za izvedbo tega računanja je linearno gručasto stanje 4 pomožnih kubitov, prepletenih z vhodnim kubitom, ki kodira ",
+         "position": {
+          "start": {
+           "line": 18,
+           "column": 64,
+           "offset": 1678
+          },
+          "end": {
+           "line": 18,
+           "column": 202,
+           "offset": 1816
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "| \\psi \\rangle",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "| \\psi \\rangle"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 18,
+           "column": 202,
+           "offset": 1816
+          },
+          "end": {
+           "line": 18,
+           "column": 218,
+           "offset": 1832
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", kot prikazuje naslednja slika.",
+         "position": {
+          "start": {
+           "line": 18,
+           "column": 218,
+           "offset": 1832
+          },
+          "end": {
+           "line": 18,
+           "column": 250,
+           "offset": 1864
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 18,
+         "column": 1,
+         "offset": 1615
+        },
+        "end": {
+         "line": 18,
+         "column": 250,
+         "offset": 1864
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "Image",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "name",
+         "value": "image-czr2f",
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 8,
+           "offset": 1873
+          },
+          "end": {
+           "line": 20,
+           "column": 26,
+           "offset": 1891
+          }
+         }
+        },
+        {
+         "type": "mdxJsxAttribute",
+         "name": "defaultValue",
+         "value": "https://via.placeholder.com/150",
+         "position": {
+          "start": {
+           "line": 20,
+           "column": 27,
+           "offset": 1892
+          },
+          "end": {
+           "line": 20,
+           "column": 73,
+           "offset": 1938
+          }
+         }
+        }
+       ],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 20,
+         "column": 1,
+         "offset": 1866
+        },
+        "end": {
+         "line": 20,
+         "column": 82,
+         "offset": 1947
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Po pripravi stanja se računanje nadaljuje z meritvijo prvih 4 kubitov v bazi, ki jo opisuje naslednji operator",
+         "position": {
+          "start": {
+           "line": 22,
+           "column": 1,
+           "offset": 1949
+          },
+          "end": {
+           "line": 22,
+           "column": 145,
+           "offset": 2093
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2",
+         "position": {
+          "start": {
+           "line": 22,
+           "column": 145,
+           "offset": 2093
+          },
+          "end": {
+           "line": 22,
+           "column": 149,
+           "offset": 2097
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 22,
+         "column": 1,
+         "offset": 1949
+        },
+        "end": {
+         "line": 22,
+         "column": 149,
+         "offset": 2097
+        }
+       }
+      },
+      {
+       "type": "table",
+       "align": [],
+       "children": [
+        {
+         "type": "tableRow",
+         "children": [
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "text",
+             "value": "Kubit",
+             "position": {
+              "start": {
+               "line": 24,
+               "column": 3,
+               "offset": 2101
+              },
+              "end": {
+               "line": 24,
+               "column": 8,
+               "offset": 2106
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 24,
+             "column": 1,
+             "offset": 2099
+            },
+            "end": {
+             "line": 24,
+             "column": 9,
+             "offset": 2107
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "text",
+             "value": "Baza",
+             "position": {
+              "start": {
+               "line": 24,
+               "column": 11,
+               "offset": 2109
+              },
+              "end": {
+               "line": 24,
+               "column": 16,
+               "offset": 2114
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 24,
+             "column": 9,
+             "offset": 2107
+            },
+            "end": {
+             "line": 24,
+             "column": 49,
+             "offset": 2147
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "text",
+             "value": "Rezultat",
+             "position": {
+              "start": {
+               "line": 24,
+               "column": 51,
+               "offset": 2149
+              },
+              "end": {
+               "line": 24,
+               "column": 57,
+               "offset": 2155
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 24,
+             "column": 49,
+             "offset": 2147
+            },
+            "end": {
+             "line": 24,
+             "column": 59,
+             "offset": 2157
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 24,
+           "column": 1,
+           "offset": 2099
+          },
+          "end": {
+           "line": 24,
+           "column": 59,
+           "offset": 2157
+          }
+         }
+        },
+        {
+         "type": "tableRow",
+         "children": [
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "text",
+             "value": "1",
+             "position": {
+              "start": {
+               "line": 26,
+               "column": 3,
+               "offset": 2219
+              },
+              "end": {
+               "line": 26,
+               "column": 4,
+               "offset": 2220
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 1,
+             "offset": 2217
+            },
+            "end": {
+             "line": 26,
+             "column": 9,
+             "offset": 2225
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": "M_1[0] ",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": "M_1[0] "
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 26,
+               "column": 11,
+               "offset": 2227
+              },
+              "end": {
+               "line": 26,
+               "column": 20,
+               "offset": 2236
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 9,
+             "offset": 2225
+            },
+            "end": {
+             "line": 26,
+             "column": 49,
+             "offset": 2265
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": "s_1",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": "s_1"
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 26,
+               "column": 51,
+               "offset": 2267
+              },
+              "end": {
+               "line": 26,
+               "column": 56,
+               "offset": 2272
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 49,
+             "offset": 2265
+            },
+            "end": {
+             "line": 26,
+             "column": 59,
+             "offset": 2275
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 26,
+           "column": 1,
+           "offset": 2217
+          },
+          "end": {
+           "line": 26,
+           "column": 59,
+           "offset": 2275
+          }
+         }
+        },
+        {
+         "type": "tableRow",
+         "children": [
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "text",
+             "value": "2",
+             "position": {
+              "start": {
+               "line": 27,
+               "column": 3,
+               "offset": 2278
+              },
+              "end": {
+               "line": 27,
+               "column": 4,
+               "offset": 2279
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 27,
+             "column": 1,
+             "offset": 2276
+            },
+            "end": {
+             "line": 27,
+             "column": 9,
+             "offset": 2284
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": "M_2[(-1)^{(s_1 + 1)}\\alpha ]",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": "M_2[(-1)^{(s_1 + 1)}\\alpha ]"
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 27,
+               "column": 11,
+               "offset": 2286
+              },
+              "end": {
+               "line": 27,
+               "column": 41,
+               "offset": 2316
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 27,
+             "column": 9,
+             "offset": 2284
+            },
+            "end": {
+             "line": 27,
+             "column": 49,
+             "offset": 2324
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": "s_2",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": "s_2"
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 27,
+               "column": 51,
+               "offset": 2326
+              },
+              "end": {
+               "line": 27,
+               "column": 56,
+               "offset": 2331
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 27,
+             "column": 49,
+             "offset": 2324
+            },
+            "end": {
+             "line": 27,
+             "column": 59,
+             "offset": 2334
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 27,
+           "column": 1,
+           "offset": 2276
+          },
+          "end": {
+           "line": 27,
+           "column": 59,
+           "offset": 2334
+          }
+         }
+        },
+        {
+         "type": "tableRow",
+         "children": [
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "text",
+             "value": "3",
+             "position": {
+              "start": {
+               "line": 28,
+               "column": 3,
+               "offset": 2337
+              },
+              "end": {
+               "line": 28,
+               "column": 4,
+               "offset": 2338
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 28,
+             "column": 1,
+             "offset": 2335
+            },
+            "end": {
+             "line": 28,
+             "column": 9,
+             "offset": 2343
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": "M_3[(-1)^{(s_2 + 1)}\\beta ]",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": "M_3[(-1)^{(s_2 + 1)}\\beta ]"
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 28,
+               "column": 11,
+               "offset": 2345
+              },
+              "end": {
+               "line": 28,
+               "column": 40,
+               "offset": 2374
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 28,
+             "column": 9,
+             "offset": 2343
+            },
+            "end": {
+             "line": 28,
+             "column": 49,
+             "offset": 2383
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": "s_3",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": "s_3"
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 28,
+               "column": 51,
+               "offset": 2385
+              },
+              "end": {
+               "line": 28,
+               "column": 56,
+               "offset": 2390
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 28,
+             "column": 49,
+             "offset": 2383
+            },
+            "end": {
+             "line": 28,
+             "column": 59,
+             "offset": 2393
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 28,
+           "column": 1,
+           "offset": 2335
+          },
+          "end": {
+           "line": 28,
+           "column": 59,
+           "offset": 2393
+          }
+         }
+        },
+        {
+         "type": "tableRow",
+         "children": [
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "text",
+             "value": "4",
+             "position": {
+              "start": {
+               "line": 29,
+               "column": 3,
+               "offset": 2396
+              },
+              "end": {
+               "line": 29,
+               "column": 4,
+               "offset": 2397
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 29,
+             "column": 1,
+             "offset": 2394
+            },
+            "end": {
+             "line": 29,
+             "column": 9,
+             "offset": 2402
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": " M_4[(-1)^{(s_1 + s_3 + 1)}\\gamma ]",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": " M_4[(-1)^{(s_1 + s_3 + 1)}\\gamma ]"
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 29,
+               "column": 11,
+               "offset": 2404
+              },
+              "end": {
+               "line": 29,
+               "column": 48,
+               "offset": 2441
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 29,
+             "column": 9,
+             "offset": 2402
+            },
+            "end": {
+             "line": 29,
+             "column": 49,
+             "offset": 2442
+            }
+           }
+          },
+          {
+           "type": "tableCell",
+           "children": [
+            {
+             "type": "inlineMath",
+             "value": "s_4",
+             "data": {
+              "hName": "code",
+              "hProperties": {
+               "className": [
+                "language-math",
+                "math-inline"
+               ]
+              },
+              "hChildren": [
+               {
+                "type": "text",
+                "value": "s_4"
+               }
+              ]
+             },
+             "position": {
+              "start": {
+               "line": 29,
+               "column": 51,
+               "offset": 2444
+              },
+              "end": {
+               "line": 29,
+               "column": 56,
+               "offset": 2449
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 29,
+             "column": 49,
+             "offset": 2442
+            },
+            "end": {
+             "line": 29,
+             "column": 59,
+             "offset": 2452
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 29,
+           "column": 1,
+           "offset": 2394
+          },
+          "end": {
+           "line": 29,
+           "column": 59,
+           "offset": 2452
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 24,
+         "column": 1,
+         "offset": 2099
+        },
+        "end": {
+         "line": 29,
+         "column": 59,
+         "offset": 2452
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "opredeljen kot ",
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 1,
+           "offset": 2454
+          },
+          "end": {
+           "line": 31,
+           "column": 12,
+           "offset": 2465
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": " M[\\theta] =  \\{|0\\rangle \\pm e^{i\\theta}|1\\rangle \\}",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": " M[\\theta] =  \\{|0\\rangle \\pm e^{i\\theta}|1\\rangle \\}"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 12,
+           "offset": 2465
+          },
+          "end": {
+           "line": 31,
+           "column": 67,
+           "offset": 2520
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", tj. ",
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 67,
+           "offset": 2520
+          },
+          "end": {
+           "line": 31,
+           "column": 74,
+           "offset": 2527
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "M(0) = \\langle \\pm |",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "M(0) = \\langle \\pm |"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 74,
+           "offset": 2527
+          },
+          "end": {
+           "line": 31,
+           "column": 96,
+           "offset": 2549
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ". Opazimo, da se nujnost prilagajanja meritev izraža na primer v odvisnosti tretje baze od rezultata izida druge meritve.",
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 96,
+           "offset": 2549
+          },
+          "end": {
+           "line": 31,
+           "column": 262,
+           "offset": 2715
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 31,
+         "column": 1,
+         "offset": 2454
+        },
+        "end": {
+         "line": 31,
+         "column": 263,
+         "offset": 2716
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Po vseh meritvah se stanje kubita glasi ",
+         "position": {
+          "start": {
+           "line": 33,
+           "column": 1,
+           "offset": 2718
+          },
+          "end": {
+           "line": 33,
+           "column": 58,
+           "offset": 2775
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\sigma_x^{s_2+s_4} \\sigma_z^{s_1+s_3} U |\\psi\\rangle ",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\sigma_x^{s_2+s_4} \\sigma_z^{s_1+s_3} U |\\psi\\rangle "
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 33,
+           "column": 58,
+           "offset": 2775
+          },
+          "end": {
+           "line": 33,
+           "column": 113,
+           "offset": 2830
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", pri čemer lahko dodatni Paulijev operator nazadnje odstranimo z naknadno obdelavo rezultatov meritve logičnega kubita.",
+         "position": {
+          "start": {
+           "line": 33,
+           "column": 113,
+           "offset": 2830
+          },
+          "end": {
+           "line": 33,
+           "column": 237,
+           "offset": 2954
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 33,
+         "column": 1,
+         "offset": 2718
+        },
+        "end": {
+         "line": 33,
+         "column": 237,
+         "offset": 2954
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://en.wikipedia.org/wiki/Euler_angles",
+           "children": [
+            {
+             "type": "text",
+             "value": "Eulerjevi koti na Wikipediji",
+             "position": {
+              "start": {
+               "line": 35,
+               "column": 8,
+               "offset": 2963
+              },
+              "end": {
+               "line": 35,
+               "column": 30,
+               "offset": 2985
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 35,
+             "column": 7,
+             "offset": 2962
+            },
+            "end": {
+             "line": 35,
+             "column": 75,
+             "offset": 3030
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 35,
+           "column": 7,
+           "offset": 2962
+          },
+          "end": {
+           "line": 35,
+           "column": 75,
+           "offset": 3030
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 35,
+         "column": 1,
+         "offset": 2956
+        },
+        "end": {
+         "line": 35,
+         "column": 75,
+         "offset": 3030
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "2",
+       "label": "2",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://arxiv.org/abs/quant-ph/0508124",
+           "children": [
+            {
+             "type": "text",
+             "value": "Jozsa, R. ,2006, “An introduction to measurement based quantum computation.” ",
+             "position": {
+              "start": {
+               "line": 37,
+               "column": 8,
+               "offset": 3039
+              },
+              "end": {
+               "line": 37,
+               "column": 85,
+               "offset": 3116
+              }
+             }
+            },
+            {
+             "type": "emphasis",
+             "children": [
+              {
+               "type": "text",
+               "value": "NATO Science Series, III: Computer and Systems Sciences. Quantum Information Processing-From Theory to Experiment,",
+               "position": {
+                "start": {
+                 "line": 37,
+                 "column": 86,
+                 "offset": 3117
+                },
+                "end": {
+                 "line": 37,
+                 "column": 200,
+                 "offset": 3231
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 37,
+               "column": 85,
+               "offset": 3116
+              },
+              "end": {
+               "line": 37,
+               "column": 201,
+               "offset": 3232
+              }
+             }
+            },
+            {
+             "type": "text",
+             "value": " 1.",
+             "position": {
+              "start": {
+               "line": 37,
+               "column": 201,
+               "offset": 3232
+              },
+              "end": {
+               "line": 37,
+               "column": 204,
+               "offset": 3235
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 37,
+             "column": 7,
+             "offset": 3038
+            },
+            "end": {
+             "line": 37,
+             "column": 245,
+             "offset": 3276
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 37,
+           "column": 7,
+           "offset": 3038
+          },
+          "end": {
+           "line": 37,
+           "column": 245,
+           "offset": 3276
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 37,
+         "column": 1,
+         "offset": 3032
+        },
+        "end": {
+         "line": 37,
+         "column": 245,
+         "offset": 3276
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 40,
+       "column": 1,
+       "offset": 3279
+      }
+     }
+    },
+    "props": {}
+   }
+  },
+  "IMA:ImageField": {
+   "image-czr2f": {
+    "value": "b2c92ed2-d1ea-47c5-9f3b-5881dce46ca1",
+    "props": {}
+   }
+  }
+ }
+}

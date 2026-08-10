@@ -1,0 +1,470 @@
+{
+ "oldPath": "/docs/openqasm/registers",
+ "locale": "it",
+ "title": "Registri",
+ "description": "In questo capitolo del tutorial di OpenQASM imparerai a dichiarare e indicizzare i registri quantistici nel linguaggio di programmazione OpenQASM.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Certamente. Di seguito è riportato il capitolo rivisto con modifiche alla sezione \"Esperimento: Registro Quantistico a Singolo Qubit\" per integrare solo la porta di Hadamard, come da tua richiesta, mantenendo l'approccio pedagogico:"
+        }
+       ]
+      },
+      {
+       "type": "thematicBreak"
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Registri Quantistici in OpenQASM"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "I registri quantistici sono uno strumento essenziale per raggruppare e gestire i qubit, le unità fondamentali dell'informazione quantistica, all'interno dei programmi OpenQASM. Questo capitolo esplora il processo di dichiarazione e interazione con i registri quantistici."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Introduzione ai Registri Quantistici"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "I registri quantistici in OpenQASM funzionano in modo molto simile ai registri classici dell'informatica tradizionale, offrendo un mezzo per operare su più qubit all'unisono."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Per dichiarare un registro quantistico, utilizza la parola chiave "
+        },
+        {
+         "type": "inlineCode",
+         "value": "qreg"
+        },
+        {
+         "type": "text",
+         "value": " insieme a un identificatore valido e al numero di qubit da includere:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "qreg <identifier>[<size>];"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "L'identificatore deve seguire le regole di denominazione di OpenQASM, mentre la dimensione è un intero positivo che definisce il numero di qubit del registro."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esempio di Dichiarazione"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ad esempio, per creare un registro quantistico chiamato "
+        },
+        {
+         "type": "inlineCode",
+         "value": "qubits"
+        },
+        {
+         "type": "text",
+         "value": " con 2 qubit:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "// Quantum register creation with two qubits\nqreg qubits[2];"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Nota:"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": " al momento della dichiarazione, ogni qubit di un registro quantistico si trova per impostazione predefinita nello stato \\( |0\\rangle \\)."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Riferirsi ai Qubit all'interno dei Registri"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "I singoli qubit all'interno di un registro sono accessibili tramite indicizzazione, in modo simile agli elementi di un array:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "<identifier>[<index>]"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Gli indici vanno da "
+        },
+        {
+         "type": "inlineCode",
+         "value": "0"
+        },
+        {
+         "type": "text",
+         "value": " fino a "
+        },
+        {
+         "type": "inlineCode",
+         "value": "n-1"
+        },
+        {
+         "type": "text",
+         "value": " per un registro quantistico di dimensione "
+        },
+        {
+         "type": "inlineCode",
+         "value": "n"
+        },
+        {
+         "type": "text",
+         "value": ", secondo la prassi standard dell'indicizzazione a base zero."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esperimento: Usare i Registri Quantistici"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Per applicare porte quantistiche al nostro registro "
+        },
+        {
+         "type": "inlineCode",
+         "value": "qubits"
+        },
+        {
+         "type": "text",
+         "value": " procediamo come segue"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "3",
+         "label": "3"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "4",
+         "label": "4"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "5",
+         "label": "5"
+        },
+        {
+         "type": "text",
+         "value": ":"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0; // Declaration of OpenQASM version [^1]\ninclude \"qelib1.inc\"; // Inclusion of the standard library [^2]\n\n// Initialization of a two-qubit quantum register\nqreg qubits[2]; // Declaration of the quantum register [^3]\n\n// Application of Hadamard gates\nh qubits[0]; // Hadamard on the first qubit [^4]\nh qubits[1]; // Hadamard on the second qubit [^5]"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Qui ogni qubit subisce una porta di Hadamard, che lo pone in uno stato di sovrapposizione ed è un passaggio fondamentale in molti algoritmi quantistici."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esperimento: Registro Quantistico a Singolo Qubit"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "In OpenQASM 2, i registri devono essere utilizzati anche per singoli qubit"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "3",
+         "label": "3"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "4",
+         "label": "4"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "5",
+         "label": "5"
+        },
+        {
+         "type": "text",
+         "value": ":"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0; // Declaration of OpenQASM version [^1]\ninclude \"qelib1.inc\"; // Inclusion of the standard library [^2]\n\n// Single-qubit register declaration\nqreg qubit[1]; // A quantum register representing a single qubit [^3]\n\n// Hadamard gate applied to the single qubit\nh qubit[0]; // Enacting a Hadamard transformation [^4]"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Trattando un singolo qubit come un registro quantistico, manteniamo la coerenza con i costrutti del linguaggio e possiamo applicare operazioni quantistiche al qubit esattamente come faremmo con registri più grandi."
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/version-string/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Stringa di Versione"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "2",
+       "label": "2",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/include/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione di Include"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "3",
+       "label": "3",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/registers/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione dei Registri Quantistici"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "4",
+       "label": "4",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/gates/hadamard/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Porta di Hadamard"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "5",
+       "label": "5",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/registers/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione dei Registri Quantistici"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "thematicBreak"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Le spiegazioni e gli esempi sono stati aggiornati per mantenere l'attenzione sui concetti fondamentali, offrendo al contempo dimostrazioni pratiche attraverso gli \"Esperimenti\". Questa struttura mira a garantire un'esperienza fluida ed educativa per i principianti che imparano i registri quantistici in OpenQASM."
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

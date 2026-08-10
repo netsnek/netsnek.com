@@ -1,0 +1,508 @@
+{
+ "oldPath": "/docs/quantum-computing-and-quantum-information",
+ "locale": "ja",
+ "title": "量子コンピューティングと量子情報",
+ "description": "量子コンピューティングと量子情報の基礎について学びます",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "量子コンピューティングと量子情報",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 44,
+           "offset": 43
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 44,
+         "offset": 43
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "量子コンピューティングは、量子力学ならではの際立った性質を活用して、計算タスクをこれまでとは異なる方法で実行します。その結果、計算時間、消費電力、セキュリティの面で効率が大幅に向上することもあります。",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 45
+          },
+          "end": {
+           "line": 3,
+           "column": 237,
+           "offset": 281
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 45
+        },
+        "end": {
+         "line": 3,
+         "column": 237,
+         "offset": 281
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "以下のページでは、この分野の基本的な概念のいくつかを説明します。\n量子回路については OpenQASM という言語を使用します。この言語の使い方の入門はこちらをご覧ください: ",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 1,
+           "offset": 283
+          },
+          "end": {
+           "line": 6,
+           "column": 133,
+           "offset": 485
+          }
+         }
+        },
+        {
+         "type": "mdxJsxTextElement",
+         "name": "Link",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "to",
+           "value": "../openqasm",
+           "position": {
+            "start": {
+             "line": 6,
+             "column": 139,
+             "offset": 491
+            },
+            "end": {
+             "line": 6,
+             "column": 155,
+             "offset": 507
+            }
+           }
+          }
+         ],
+         "children": [
+          {
+           "type": "text",
+           "value": "OpenQASM について学ぶ",
+           "position": {
+            "start": {
+             "line": 6,
+             "column": 156,
+             "offset": 508
+            },
+            "end": {
+             "line": 6,
+             "column": 176,
+             "offset": 528
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 6,
+           "column": 133,
+           "offset": 485
+          },
+          "end": {
+           "line": 6,
+           "column": 183,
+           "offset": 535
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "text",
+         "value": "。",
+         "position": {
+          "start": {
+           "line": 6,
+           "column": 183,
+           "offset": 535
+          },
+          "end": {
+           "line": 6,
+           "column": 184,
+           "offset": 536
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 283
+        },
+        "end": {
+         "line": 6,
+         "column": 184,
+         "offset": 536
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "DocsIndex",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "type",
+         "value": "toc",
+         "position": {
+          "start": {
+           "line": 8,
+           "column": 12,
+           "offset": 549
+          },
+          "end": {
+           "line": 8,
+           "column": 22,
+           "offset": 559
+          }
+         }
+        }
+       ],
+       "children": [],
+       "position": {
+        "start": {
+         "line": 8,
+         "column": 1,
+         "offset": 538
+        },
+        "end": {
+         "line": 8,
+         "column": 25,
+         "offset": 562
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "参考文献",
+         "position": {
+          "start": {
+           "line": 10,
+           "column": 3,
+           "offset": 566
+          },
+          "end": {
+           "line": 10,
+           "column": 13,
+           "offset": 576
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 10,
+         "column": 1,
+         "offset": 564
+        },
+        "end": {
+         "line": 10,
+         "column": 13,
+         "offset": 576
+        }
+       }
+      },
+      {
+       "type": "list",
+       "ordered": false,
+       "start": null,
+       "spread": false,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://michaelnielsen.org/qcqi/QINFO-book-nielsen-and-chuang-toc-and-chapter1-nov00.pdf",
+             "children": [
+              {
+               "type": "text",
+               "value": "Nielsen, Michael A., and Isaac L. Chuang. Quantum computation and quantum information. Vol. 2. Cambridge: Cambridge university press, 2001.",
+               "position": {
+                "start": {
+                 "line": 12,
+                 "column": 4,
+                 "offset": 581
+                },
+                "end": {
+                 "line": 12,
+                 "column": 143,
+                 "offset": 720
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 12,
+               "column": 3,
+               "offset": 580
+              },
+              "end": {
+               "line": 12,
+               "column": 234,
+               "offset": 811
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 12,
+             "column": 3,
+             "offset": 580
+            },
+            "end": {
+             "line": 12,
+             "column": 234,
+             "offset": 811
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 12,
+           "column": 1,
+           "offset": 578
+          },
+          "end": {
+           "line": 12,
+           "column": 234,
+           "offset": 811
+          }
+         }
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://link.springer.com/book/10.1007/978-3-658-36434-2",
+             "children": [
+              {
+               "type": "text",
+               "value": "Homeister, Matthias. Quantum Computing verstehen. Vieweg+ Teubner, 2008",
+               "position": {
+                "start": {
+                 "line": 13,
+                 "column": 4,
+                 "offset": 815
+                },
+                "end": {
+                 "line": 13,
+                 "column": 75,
+                 "offset": 886
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 13,
+               "column": 3,
+               "offset": 814
+              },
+              "end": {
+               "line": 13,
+               "column": 134,
+               "offset": 945
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 13,
+             "column": 3,
+             "offset": 814
+            },
+            "end": {
+             "line": 13,
+             "column": 134,
+             "offset": 945
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 13,
+           "column": 1,
+           "offset": 812
+          },
+          "end": {
+           "line": 13,
+           "column": 134,
+           "offset": 945
+          }
+         }
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://www.scottaaronson.com/qisii.pdf",
+             "children": [
+              {
+               "type": "text",
+               "value": "Aaronson, Scott. Introduction to quantum information science II lecture notes. (2022)",
+               "position": {
+                "start": {
+                 "line": 14,
+                 "column": 4,
+                 "offset": 949
+                },
+                "end": {
+                 "line": 14,
+                 "column": 89,
+                 "offset": 1034
+                }
+               }
+              }
+             ],
+             "position": {
+              "start": {
+               "line": 14,
+               "column": 3,
+               "offset": 948
+              },
+              "end": {
+               "line": 14,
+               "column": 131,
+               "offset": 1076
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 14,
+             "column": 3,
+             "offset": 948
+            },
+            "end": {
+             "line": 14,
+             "column": 131,
+             "offset": 1076
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 14,
+           "column": 1,
+           "offset": 946
+          },
+          "end": {
+           "line": 14,
+           "column": 131,
+           "offset": 1076
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 12,
+         "column": 1,
+         "offset": 578
+        },
+        "end": {
+         "line": 14,
+         "column": 131,
+         "offset": 1076
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 15,
+       "column": 1,
+       "offset": 1077
+      }
+     }
+    },
+    "props": {}
+   }
+  }
+ }
+}

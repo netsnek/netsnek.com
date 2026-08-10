@@ -1,0 +1,3043 @@
+{
+ "oldPath": "/docs/quantum-computing-with-linear-optics",
+ "locale": "ja",
+ "title": "線形光学量子コンピューティング",
+ "description": "線形光学の基礎と、単一光子で量子コンピューティングを行う方法について学びます",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "線形光学による量子コンピューティング",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 39,
+           "offset": 38
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 39,
+         "offset": 38
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "光は何世紀にもわたってさまざまな用途に利用されてきました。そこで培われた専門知識こそが、フォトニックプラットフォームをスケーラブルな量子コンピュータの成熟した候補にしています。フォトニックチップは今日ますます一般的になっており、光の粒子である光子は、量子応用での利用に有利な多くの注目すべき性質を持っています。以下では、フォトニック量子コンピューティングを紹介します。そこでの中心的な対象は光子であり、量子計算は、さまざまな光学素子による光子の一連の操作として実行されます。",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 40
+          },
+          "end": {
+           "line": 3,
+           "column": 572,
+           "offset": 611
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 40
+        },
+        "end": {
+         "line": 3,
+         "column": 572,
+         "offset": 611
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "量子情報の担い手としての光子",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 4,
+           "offset": 616
+          },
+          "end": {
+           "line": 5,
+           "column": 46,
+           "offset": 658
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 613
+        },
+        "end": {
+         "line": 5,
+         "column": 46,
+         "offset": 658
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "光の粒子である光子は、多くの異なる性質を持っています。光子は所与の媒質中を特定の経路に沿って伝播し、特定の偏光や周波数などを持ち、また生成後の特定の時刻に所与の位置に到達します。これらすべての性質、さらにそれ以外の性質も、情報の表現として利用できます。物理的な観点から見ると、光子は環境とほとんど相互作用しないため外部の雑音や擾乱の影響を受けず、ほぼ完璧な情報の担い手です。しかし同じ理由から、フォトニックコンピュータの計算能力を高めるために光子同士を制御された形で相互作用させる効率的なデバイスを設計するのは困難です。",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 1,
+           "offset": 660
+          },
+          "end": {
+           "line": 7,
+           "column": 722,
+           "offset": 1381
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 660
+        },
+        "end": {
+         "line": 7,
+         "column": 722,
+         "offset": 1381
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "利用する性質として非常によく選ばれるのが、光子の",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 1,
+           "offset": 1383
+          },
+          "end": {
+           "line": 9,
+           "column": 42,
+           "offset": 1424
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "偏光",
+           "position": {
+            "start": {
+             "line": 9,
+             "column": 43,
+             "offset": 1425
+            },
+            "end": {
+             "line": 9,
+             "column": 55,
+             "offset": 1437
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 42,
+           "offset": 1424
+          },
+          "end": {
+           "line": 9,
+           "column": 56,
+           "offset": 1438
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "です。光子は水平偏光にも垂直偏光にも、その中間の任意の偏光にもなり得ます。偏光は右円偏光や左円偏光にもなり得ます。いずれの場合も、所与の光子の(純粋な)偏光は、通常 ",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 56,
+           "offset": 1438
+          },
+          "end": {
+           "line": 9,
+           "column": 359,
+           "offset": 1741
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "|0\\rangle",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|0\\rangle"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 359,
+           "offset": 1741
+          },
+          "end": {
+           "line": 9,
+           "column": 370,
+           "offset": 1752
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " と ",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 370,
+           "offset": 1752
+          },
+          "end": {
+           "line": 9,
+           "column": 375,
+           "offset": 1757
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "|1\\rangle",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|1\\rangle"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 375,
+           "offset": 1757
+          },
+          "end": {
+           "line": 9,
+           "column": 386,
+           "offset": 1768
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " で表される2つの極端な状態の量子重ね合わせとして記述できます。光子の偏光状態は、次の式に対応します。",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 386,
+           "offset": 1768
+          },
+          "end": {
+           "line": 9,
+           "column": 452,
+           "offset": 1834
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 1383
+        },
+        "end": {
+         "line": 9,
+         "column": 452,
+         "offset": 1834
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "math",
+       "meta": null,
+       "value": "|\\psi\\rangle = \\alpha |0\\rangle + \\beta |1\\rangle,",
+       "position": {
+        "start": {
+         "line": 11,
+         "column": 1,
+         "offset": 1836
+        },
+        "end": {
+         "line": 13,
+         "column": 4,
+         "offset": 1898
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "ここで、2つの複素数 ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 1,
+           "offset": 1900
+          },
+          "end": {
+           "line": 15,
+           "column": 31,
+           "offset": 1930
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\alpha",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\alpha"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 31,
+           "offset": 1930
+          },
+          "end": {
+           "line": 15,
+           "column": 39,
+           "offset": 1938
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " と ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 39,
+           "offset": 1938
+          },
+          "end": {
+           "line": 15,
+           "column": 44,
+           "offset": 1943
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\beta",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\beta"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 44,
+           "offset": 1943
+          },
+          "end": {
+           "line": 15,
+           "column": 51,
+           "offset": 1950
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " は規格化条件 ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 51,
+           "offset": 1950
+          },
+          "end": {
+           "line": 15,
+           "column": 88,
+           "offset": 1987
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "|\\alpha|^2 + |\\beta|^2 = 1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|\\alpha|^2 + |\\beta|^2 = 1"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 88,
+           "offset": 1987
+          },
+          "end": {
+           "line": 15,
+           "column": 116,
+           "offset": 2015
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " を満たします。",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 116,
+           "offset": 2015
+          },
+          "end": {
+           "line": 15,
+           "column": 134,
+           "offset": 2033
+          }
+         }
+        },
+        {
+         "type": "link",
+         "title": null,
+         "url": "https://photonq.org/docs/quantum-computing-and-quantum-information/",
+         "children": [
+          {
+           "type": "text",
+           "value": "該当するセクション",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 135,
+             "offset": 2034
+            },
+            "end": {
+             "line": 15,
+             "column": 155,
+             "offset": 2054
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 134,
+           "offset": 2033
+          },
+          "end": {
+           "line": 15,
+           "column": 225,
+           "offset": 2124
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "で説明されているように、この2次元の状態は、量子情報の単位である",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 225,
+           "offset": 2124
+          },
+          "end": {
+           "line": 15,
+           "column": 267,
+           "offset": 2166
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "量子ビット",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 268,
+             "offset": 2167
+            },
+            "end": {
+             "line": 15,
+             "column": 273,
+             "offset": 2172
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 267,
+           "offset": 2166
+          },
+          "end": {
+           "line": 15,
+           "column": 274,
+           "offset": 2173
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "を表します。量子ビットの表現に使われる光子のもう一つの一般的な性質は、その",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 274,
+           "offset": 2173
+          },
+          "end": {
+           "line": 15,
+           "column": 387,
+           "offset": 2286
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "経路",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 388,
+             "offset": 2287
+            },
+            "end": {
+             "line": 15,
+             "column": 392,
+             "offset": 2291
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 387,
+           "offset": 2286
+          },
+          "end": {
+           "line": 15,
+           "column": 393,
+           "offset": 2292
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "です。この場合、量子ビットは一方または他方の経路を伝播する光子に対応し、このシナリオは通常",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 393,
+           "offset": 2292
+          },
+          "end": {
+           "line": 15,
+           "column": 519,
+           "offset": 2418
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "デュアルレール符号化",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 520,
+             "offset": 2419
+            },
+            "end": {
+             "line": 15,
+             "column": 538,
+             "offset": 2437
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 519,
+           "offset": 2418
+          },
+          "end": {
+           "line": 15,
+           "column": 539,
+           "offset": 2438
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "と呼ばれます。",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 539,
+           "offset": 2438
+          },
+          "end": {
+           "line": 15,
+           "column": 540,
+           "offset": 2439
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 15,
+         "column": 1,
+         "offset": 1900
+        },
+        "end": {
+         "line": 15,
+         "column": 540,
+         "offset": 2439
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "量子ハードウェア",
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 4,
+           "offset": 2444
+          },
+          "end": {
+           "line": 17,
+           "column": 20,
+           "offset": 2460
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 17,
+         "column": 1,
+         "offset": 2441
+        },
+        "end": {
+         "line": 17,
+         "column": 20,
+         "offset": 2460
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "光子上での量子コンピューティングは、最も低いレベルでは、ビームスプリッタなどの一連の光学素子によって実行されます。これらの素子は、優れた性質を持つより複雑な光学ゲートの構成要素となります。さらに、これらのゲートが特定のネットワークへと組み上げられ、それが特定の量子アルゴリズムに対応します。以下では、これらすべての抽象化のレベル、すなわち光学素子、光学ゲート、そして量子アルゴリズムを実装する計算アーキテクチャについて詳しく説明します。",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 1,
+           "offset": 2462
+          },
+          "end": {
+           "line": 19,
+           "column": 510,
+           "offset": 2971
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 19,
+         "column": 1,
+         "offset": 2462
+        },
+        "end": {
+         "line": 19,
+         "column": 510,
+         "offset": 2971
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "光学素子",
+         "position": {
+          "start": {
+           "line": 21,
+           "column": 5,
+           "offset": 2977
+          },
+          "end": {
+           "line": 21,
+           "column": 21,
+           "offset": 2993
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 21,
+         "column": 1,
+         "offset": 2973
+        },
+        "end": {
+         "line": 21,
+         "column": 21,
+         "offset": 2993
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "光のビームを操作する方法はさまざまです。鏡はビームを反射し、レンズはビームを集束または発散させ、フィルタは特定の色だけを通す、といった具合です。重要な光学素子の一つが",
+         "position": {
+          "start": {
+           "line": 23,
+           "column": 1,
+           "offset": 2995
+          },
+          "end": {
+           "line": 23,
+           "column": 209,
+           "offset": 3203
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "ビームスプリッタ",
+           "position": {
+            "start": {
+             "line": 23,
+             "column": 210,
+             "offset": 3204
+            },
+            "end": {
+             "line": 23,
+             "column": 223,
+             "offset": 3217
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 23,
+           "column": 209,
+           "offset": 3203
+          },
+          "end": {
+           "line": 23,
+           "column": 224,
+           "offset": 3218
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "で、その写真を下に示します。ビームスプリッタは、入射ビームを部分的に反射し、部分的に透過させます。これとまったく同じ光学素子を、単一光子の操作にも使うことができます。ただし、これらの素子の作用を記述する際には、より注意が必要です。光子は分割できない素粒子であり、より小さな構成要素に分けることはできません。そのため、ビームスプリッタが入射光子を分割して一部を透過させ、残りを反射する、と言うことはできません。その代わり、ビームスプリッタは「光子が透過する」か「反射される」かという2つの可能性の量子重ね合わせを生じさせ、これら2つの可能性は干渉を示します。つまり光子は、ある意味で、透過と反射を同時に行ったかのように振る舞うのです。",
+         "position": {
+          "start": {
+           "line": 23,
+           "column": 224,
+           "offset": 3218
+          },
+          "end": {
+           "line": 23,
+           "column": 1016,
+           "offset": 4010
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 23,
+         "column": 1,
+         "offset": 2995
+        },
+        "end": {
+         "line": 23,
+         "column": 1016,
+         "offset": 4010
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-3nj1ch",
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 8,
+             "offset": 4028
+            },
+            "end": {
+             "line": 26,
+             "column": 27,
+             "offset": 4047
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 28,
+             "offset": 4048
+            },
+            "end": {
+             "line": 26,
+             "column": 41,
+             "offset": 4061
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Optical-beam-splitter_big.jpg",
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 42,
+             "offset": 4062
+            },
+            "end": {
+             "line": 26,
+             "column": 138,
+             "offset": 4158
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 26,
+           "column": 1,
+           "offset": 4021
+          },
+          "end": {
+           "line": 26,
+           "column": 141,
+           "offset": 4161
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(出典: Wikipedia)",
+             "position": {
+              "start": {
+               "line": 28,
+               "column": 2,
+               "offset": 4164
+              },
+              "end": {
+               "line": 28,
+               "column": 21,
+               "offset": 4183
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 28,
+             "column": 1,
+             "offset": 4163
+            },
+            "end": {
+             "line": 28,
+             "column": 22,
+             "offset": 4184
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 28,
+           "column": 1,
+           "offset": 4163
+          },
+          "end": {
+           "line": 28,
+           "column": 22,
+           "offset": 4184
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 25,
+         "column": 1,
+         "offset": 4012
+        },
+        "end": {
+         "line": 29,
+         "column": 10,
+         "offset": 4194
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "ビームスプリッタやすでに述べた素子のほかに、光子の偏光に作用する別の種類の素子があります。その中で最も重要なのが",
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 1,
+           "offset": 4196
+          },
+          "end": {
+           "line": 31,
+           "column": 157,
+           "offset": 4352
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "偏光ビームスプリッタ",
+           "position": {
+            "start": {
+             "line": 31,
+             "column": 158,
+             "offset": 4353
+            },
+            "end": {
+             "line": 31,
+             "column": 182,
+             "offset": 4377
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 157,
+           "offset": 4352
+          },
+          "end": {
+           "line": 31,
+           "column": 183,
+           "offset": 4378
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "で、PBS と略され、その模式図を下に示します。その名前に反して、光子への作用はビームスプリッタとは大きく異なります。PBS は水平偏光の光子を透過させ、垂直偏光の光子を反射します。これにより、光子の偏光に格納された情報を、その伝播経路へと変換できます。光子による量子コンピューティングに不可欠な最後の素子は、位相遅延素子すなわち移相器です。異なる経路を伝播する光子はそれぞれ特定の位相を帯びており、移相器はこの位相を変化させることができます。実は、移相器と鏡とビームスプリッタさえあれば、単一光子の伝播経路に符号化されたクーディット(qudit)に対して、任意のユニタリ操作を実装できるのです。",
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 183,
+           "offset": 4378
+          },
+          "end": {
+           "line": 31,
+           "column": 917,
+           "offset": 5112
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 31,
+         "column": 1,
+         "offset": 4196
+        },
+        "end": {
+         "line": 31,
+         "column": 917,
+         "offset": 5112
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-6gqyng",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 8,
+             "offset": 5130
+            },
+            "end": {
+             "line": 34,
+             "column": 27,
+             "offset": 5149
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 28,
+             "offset": 5150
+            },
+            "end": {
+             "line": 34,
+             "column": 41,
+             "offset": 5163
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://upload.wikimedia.org/wikipedia/commons/d/da/Glan-taylor.png",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 42,
+             "offset": 5164
+            },
+            "end": {
+             "line": 34,
+             "column": 124,
+             "offset": 5246
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 34,
+           "column": 1,
+           "offset": 5123
+          },
+          "end": {
+           "line": 34,
+           "column": 127,
+           "offset": 5249
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(出典: Wikipedia)",
+             "position": {
+              "start": {
+               "line": 36,
+               "column": 2,
+               "offset": 5252
+              },
+              "end": {
+               "line": 36,
+               "column": 21,
+               "offset": 5271
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 36,
+             "column": 1,
+             "offset": 5251
+            },
+            "end": {
+             "line": 36,
+             "column": 22,
+             "offset": 5272
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 36,
+           "column": 1,
+           "offset": 5251
+          },
+          "end": {
+           "line": 36,
+           "column": 22,
+           "offset": 5272
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 33,
+         "column": 1,
+         "offset": 5114
+        },
+        "end": {
+         "line": 37,
+         "column": 10,
+         "offset": 5282
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "私たちの周りには光があふれていますが、量子コンピューティングに適した性質を持つ単一光子を得るのは容易ではありません。単一光子には特別な光源があり、その多くは特殊な結晶中の非線形光学過程に基づいています。生成された単一光子は、一連の光学素子によってさまざまな操作を受け、最後に、非常に高感度な単一光子検出器で検出されます。この検出は、光子の状態の単なる読み出しではありません。むしろ計算そのものの不可欠な構成要素と見なすことができ、光子の検出を量子計算の能動的な一部として利用する多くの手法があります。",
+         "position": {
+          "start": {
+           "line": 39,
+           "column": 1,
+           "offset": 5284
+          },
+          "end": {
+           "line": 39,
+           "column": 706,
+           "offset": 5989
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 39,
+         "column": 1,
+         "offset": 5284
+        },
+        "end": {
+         "line": 39,
+         "column": 706,
+         "offset": 5989
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "光学ゲート",
+         "position": {
+          "start": {
+           "line": 41,
+           "column": 5,
+           "offset": 5995
+          },
+          "end": {
+           "line": 41,
+           "column": 18,
+           "offset": 6008
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 41,
+         "column": 1,
+         "offset": 5991
+        },
+        "end": {
+         "line": 41,
+         "column": 18,
+         "offset": 6008
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "前節で述べた光学素子は低レベルすぎるため、より高度な光子操作には通常それだけでは不十分です。そのため、通常はフォトニックゲートを単位としてアルゴリズムを設計します。これらのゲートは、いくつかの光学素子からなる小さな光学セットアップであり、多くの場合、光子検出器で補完されます。フォトニックゲートの代表例は、2つのタイプがあるフュージョンゲートです",
+         "position": {
+          "start": {
+           "line": 43,
+           "column": 1,
+           "offset": 6010
+          },
+          "end": {
+           "line": 43,
+           "column": 408,
+           "offset": 6417
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 43,
+           "column": 408,
+           "offset": 6417
+          },
+          "end": {
+           "line": 43,
+           "column": 412,
+           "offset": 6421
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "。",
+         "position": {
+          "start": {
+           "line": 43,
+           "column": 412,
+           "offset": 6421
+          },
+          "end": {
+           "line": 43,
+           "column": 413,
+           "offset": 6422
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 43,
+         "column": 1,
+         "offset": 6010
+        },
+        "end": {
+         "line": 43,
+         "column": 413,
+         "offset": 6422
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "Browne, Daniel E., and Terry Rudolph. “Resource-Efficient Linear Optical Quantum Computation.” Physical Review Letters, vol. 95, no. 1, June 2005, p. 010501. APS, ",
+           "position": {
+            "start": {
+             "line": 45,
+             "column": 7,
+             "offset": 6430
+            },
+            "end": {
+             "line": 45,
+             "column": 170,
+             "offset": 6593
+            }
+           }
+          },
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://doi.org/10.1103/PhysRevLett.95.010501",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://doi.org/10.1103/PhysRevLett.95.010501",
+             "position": {
+              "start": {
+               "line": 45,
+               "column": 171,
+               "offset": 6594
+              },
+              "end": {
+               "line": 45,
+               "column": 216,
+               "offset": 6639
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 45,
+             "column": 170,
+             "offset": 6593
+            },
+            "end": {
+             "line": 45,
+             "column": 264,
+             "offset": 6687
+            }
+           }
+          },
+          {
+           "type": "text",
+           "value": ".",
+           "position": {
+            "start": {
+             "line": 45,
+             "column": 264,
+             "offset": 6687
+            },
+            "end": {
+             "line": 45,
+             "column": 265,
+             "offset": 6688
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 45,
+           "column": 7,
+           "offset": 6430
+          },
+          "end": {
+           "line": 45,
+           "column": 265,
+           "offset": 6688
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 45,
+         "column": 1,
+         "offset": 6424
+        },
+        "end": {
+         "line": 45,
+         "column": 265,
+         "offset": 6688
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 4,
+       "children": [
+        {
+         "type": "text",
+         "value": "タイプIフュージョンゲート",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 6,
+           "offset": 6695
+          },
+          "end": {
+           "line": 47,
+           "column": 24,
+           "offset": 6713
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 47,
+         "column": 1,
+         "offset": 6690
+        },
+        "end": {
+         "line": 47,
+         "column": 24,
+         "offset": 6713
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "タイプIフュージョンゲートは、",
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 1,
+           "offset": 6715
+          },
+          "end": {
+           "line": 49,
+           "column": 37,
+           "offset": 6751
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "パリティチェック",
+           "position": {
+            "start": {
+             "line": 49,
+             "column": 38,
+             "offset": 6752
+            },
+            "end": {
+             "line": 49,
+             "column": 50,
+             "offset": 6764
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 37,
+           "offset": 6751
+          },
+          "end": {
+           "line": 49,
+           "column": 51,
+           "offset": 6765
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "としても知られ、2つの光子を受け取り、それらが同じ偏光(水平または垂直)にあるかどうかを調べます。同じ偏光にある場合、一方の光子が検出され、もう一方が返されます。このゲートは、PBS、偏光を45度回転させる波長板、そして PBS の出力ポートの一方に置かれた単一光子検出器から構成されます。全体のセットアップを下の図に示します。",
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 51,
+           "offset": 6765
+          },
+          "end": {
+           "line": 49,
+           "column": 422,
+           "offset": 7136
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 49,
+         "column": 1,
+         "offset": 6715
+        },
+        "end": {
+         "line": 49,
+         "column": 422,
+         "offset": 7136
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-t3kpu",
+           "position": {
+            "start": {
+             "line": 52,
+             "column": 8,
+             "offset": 7154
+            },
+            "end": {
+             "line": 52,
+             "column": 26,
+             "offset": 7172
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 52,
+             "column": 27,
+             "offset": 7173
+            },
+            "end": {
+             "line": 52,
+             "column": 40,
+             "offset": 7186
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://via.placeholder.com/150",
+           "position": {
+            "start": {
+             "line": 52,
+             "column": 41,
+             "offset": 7187
+            },
+            "end": {
+             "line": 52,
+             "column": 87,
+             "offset": 7233
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 52,
+           "column": 1,
+           "offset": 7147
+          },
+          "end": {
+           "line": 52,
+           "column": 90,
+           "offset": 7236
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(出典: ArXiv)",
+             "position": {
+              "start": {
+               "line": 53,
+               "column": 2,
+               "offset": 7238
+              },
+              "end": {
+               "line": 53,
+               "column": 17,
+               "offset": 7253
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 53,
+             "column": 1,
+             "offset": 7237
+            },
+            "end": {
+             "line": 53,
+             "column": 18,
+             "offset": 7254
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 53,
+           "column": 1,
+           "offset": 7237
+          },
+          "end": {
+           "line": 53,
+           "column": 18,
+           "offset": 7254
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 51,
+         "column": 1,
+         "offset": 7138
+        },
+        "end": {
+         "line": 54,
+         "column": 10,
+         "offset": 7264
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "このゲートによって2つのクラスター状態を融合でき、その結果、測定型量子コンピューティングに必要な大きなクラスター状態の生成が可能になります。",
+         "position": {
+          "start": {
+           "line": 56,
+           "column": 1,
+           "offset": 7266
+          },
+          "end": {
+           "line": 56,
+           "column": 161,
+           "offset": 7426
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 56,
+         "column": 1,
+         "offset": 7266
+        },
+        "end": {
+         "line": 56,
+         "column": 161,
+         "offset": 7426
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 4,
+       "children": [
+        {
+         "type": "text",
+         "value": "タイプIIフュージョンゲート",
+         "position": {
+          "start": {
+           "line": 58,
+           "column": 6,
+           "offset": 7433
+          },
+          "end": {
+           "line": 58,
+           "column": 25,
+           "offset": 7452
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 58,
+         "column": 1,
+         "offset": 7428
+        },
+        "end": {
+         "line": 58,
+         "column": 25,
+         "offset": 7452
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "タイプIIフュージョンゲートはタイプIの変形であり、PBS の各ポートに波長板が置かれ、両方の光子が検出されます。このゲートのセットアップは、具体的には次のとおりです。",
+         "position": {
+          "start": {
+           "line": 60,
+           "column": 1,
+           "offset": 7454
+          },
+          "end": {
+           "line": 60,
+           "column": 168,
+           "offset": 7621
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 60,
+         "column": 1,
+         "offset": 7454
+        },
+        "end": {
+         "line": 60,
+         "column": 168,
+         "offset": 7621
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-7a1hj",
+           "position": {
+            "start": {
+             "line": 63,
+             "column": 8,
+             "offset": 7639
+            },
+            "end": {
+             "line": 63,
+             "column": 26,
+             "offset": 7657
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 63,
+             "column": 27,
+             "offset": 7658
+            },
+            "end": {
+             "line": 63,
+             "column": 40,
+             "offset": 7671
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://via.placeholder.com/150",
+           "position": {
+            "start": {
+             "line": 63,
+             "column": 41,
+             "offset": 7672
+            },
+            "end": {
+             "line": 63,
+             "column": 87,
+             "offset": 7718
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 63,
+           "column": 1,
+           "offset": 7632
+          },
+          "end": {
+           "line": 63,
+           "column": 90,
+           "offset": 7721
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(出典: ArXiv)",
+             "position": {
+              "start": {
+               "line": 65,
+               "column": 2,
+               "offset": 7724
+              },
+              "end": {
+               "line": 65,
+               "column": 17,
+               "offset": 7739
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 65,
+             "column": 1,
+             "offset": 7723
+            },
+            "end": {
+             "line": 65,
+             "column": 18,
+             "offset": 7740
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 65,
+           "column": 1,
+           "offset": 7723
+          },
+          "end": {
+           "line": 65,
+           "column": 18,
+           "offset": 7740
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 62,
+         "column": 1,
+         "offset": 7623
+        },
+        "end": {
+         "line": 66,
+         "column": 10,
+         "offset": 7750
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "このゲートもクラスター状態の生成に使用されます。各検出器でちょうど1個ずつ光子が検出されたとき、このゲートは最大もつれ状態への射影測定を実行します。",
+         "position": {
+          "start": {
+           "line": 68,
+           "column": 1,
+           "offset": 7752
+          },
+          "end": {
+           "line": 68,
+           "column": 191,
+           "offset": 7942
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 68,
+         "column": 1,
+         "offset": 7752
+        },
+        "end": {
+         "line": 68,
+         "column": 191,
+         "offset": 7942
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 4,
+       "children": [
+        {
+         "type": "text",
+         "value": "ビームスプリッタと HOM 干渉",
+         "position": {
+          "start": {
+           "line": 70,
+           "column": 6,
+           "offset": 7949
+          },
+          "end": {
+           "line": 70,
+           "column": 40,
+           "offset": 7983
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 70,
+         "column": 1,
+         "offset": 7944
+        },
+        "end": {
+         "line": 70,
+         "column": 40,
+         "offset": 7983
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "単一のビームスプリッタも、2つの光子に作用するゲートと見なすことができます。2つの同一の光子が、2つの異なる入力ポートから対称ビームスプリッタに同時に入射すると、",
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 1,
+           "offset": 7985
+          },
+          "end": {
+           "line": 72,
+           "column": 233,
+           "offset": 8217
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "ホン・オウ・マンデル(HOM)干渉",
+           "position": {
+            "start": {
+             "line": 72,
+             "column": 234,
+             "offset": 8218
+            },
+            "end": {
+             "line": 72,
+             "column": 267,
+             "offset": 8251
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 233,
+           "offset": 8217
+          },
+          "end": {
+           "line": 72,
+           "column": 268,
+           "offset": 8252
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "と呼ばれる純粋に量子的な現象が起こります。これは、2つの光子が決して別々にビームスプリッタから出ていかないことを意味します。両方が一方の出力ポートから出るか、両方が他方の出力ポートから出るかのいずれかです。",
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 268,
+           "offset": 8252
+          },
+          "end": {
+           "line": 72,
+           "column": 407,
+           "offset": 8391
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 72,
+         "column": 1,
+         "offset": 7985
+        },
+        "end": {
+         "line": 72,
+         "column": 407,
+         "offset": 8391
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "mdxJsxTextElement",
+           "name": "Image",
+           "attributes": [
+            {
+             "type": "mdxJsxAttribute",
+             "name": "name",
+             "value": "image-hom",
+             "position": {
+              "start": {
+               "line": 75,
+               "column": 8,
+               "offset": 8409
+              },
+              "end": {
+               "line": 75,
+               "column": 24,
+               "offset": 8425
+              }
+             }
+            },
+            {
+             "type": "mdxJsxAttribute",
+             "name": "defaultValue",
+             "value": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Hong_Ou_Mandel_effect.png",
+             "position": {
+              "start": {
+               "line": 75,
+               "column": 25,
+               "offset": 8426
+              },
+              "end": {
+               "line": 75,
+               "column": 117,
+               "offset": 8518
+              }
+             }
+            }
+           ],
+           "children": [
+            {
+             "type": "text",
+             "value": "HOM 効果",
+             "position": {
+              "start": {
+               "line": 75,
+               "column": 118,
+               "offset": 8519
+              },
+              "end": {
+               "line": 75,
+               "column": 128,
+               "offset": 8529
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 75,
+             "column": 1,
+             "offset": 8402
+            },
+            "end": {
+             "line": 75,
+             "column": 136,
+             "offset": 8537
+            }
+           },
+           "data": {
+            "_mdxExplicitJsx": true
+           }
+          },
+          {
+           "type": "text",
+           "value": "\n",
+           "position": {
+            "start": {
+             "line": 75,
+             "column": 136,
+             "offset": 8537
+            },
+            "end": {
+             "line": 76,
+             "column": 1,
+             "offset": 8538
+            }
+           }
+          },
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(出典: Wikipedia)",
+             "position": {
+              "start": {
+               "line": 76,
+               "column": 2,
+               "offset": 8539
+              },
+              "end": {
+               "line": 76,
+               "column": 21,
+               "offset": 8558
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 76,
+             "column": 1,
+             "offset": 8538
+            },
+            "end": {
+             "line": 76,
+             "column": 22,
+             "offset": 8559
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 75,
+           "column": 1,
+           "offset": 8402
+          },
+          "end": {
+           "line": 76,
+           "column": 22,
+           "offset": 8559
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 74,
+         "column": 1,
+         "offset": 8393
+        },
+        "end": {
+         "line": 77,
+         "column": 10,
+         "offset": 8569
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "光学計算アーキテクチャ",
+         "position": {
+          "start": {
+           "line": 79,
+           "column": 4,
+           "offset": 8574
+          },
+          "end": {
+           "line": 79,
+           "column": 35,
+           "offset": 8605
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 79,
+         "column": 1,
+         "offset": 8571
+        },
+        "end": {
+         "line": 79,
+         "column": 35,
+         "offset": 8605
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "光学素子とゲートの上に構築される計算アーキテクチャには、さまざまなものがあります。以下では、最も重要な3つのアーキテクチャを紹介します。",
+         "position": {
+          "start": {
+           "line": 81,
+           "column": 1,
+           "offset": 8607
+          },
+          "end": {
+           "line": 81,
+           "column": 155,
+           "offset": 8761
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 81,
+         "column": 1,
+         "offset": 8607
+        },
+        "end": {
+         "line": 81,
+         "column": 155,
+         "offset": 8761
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "ボソンサンプリング",
+         "position": {
+          "start": {
+           "line": 83,
+           "column": 5,
+           "offset": 8767
+          },
+          "end": {
+           "line": 83,
+           "column": 19,
+           "offset": 8781
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 83,
+         "column": 1,
+         "offset": 8763
+        },
+        "end": {
+         "line": 83,
+         "column": 19,
+         "offset": 8781
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "ボソンサンプリングとは、多数のビームスプリッタからなる巨大な干渉計に複数の光子を注入し、その後、干渉計の各出力ポートで検出するというシナリオを指します。個々の検出器で光子が検出される出力確率を古典コンピュータで推定するのは非常に困難であることが示されています",
+         "position": {
+          "start": {
+           "line": 85,
+           "column": 1,
+           "offset": 8783
+          },
+          "end": {
+           "line": 85,
+           "column": 361,
+           "offset": 9143
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "boson",
+         "label": "boson",
+         "position": {
+          "start": {
+           "line": 85,
+           "column": 361,
+           "offset": 9143
+          },
+          "end": {
+           "line": 85,
+           "column": 369,
+           "offset": 9151
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "。",
+         "position": {
+          "start": {
+           "line": 85,
+           "column": 369,
+           "offset": 9151
+          },
+          "end": {
+           "line": 85,
+           "column": 370,
+           "offset": 9152
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 85,
+         "column": 1,
+         "offset": 8783
+        },
+        "end": {
+         "line": 85,
+         "column": 370,
+         "offset": 9152
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "したがってボソンサンプリングは、実験的要件が比較的控えめであることから、量子優位性を実証するためのプラットフォームとなります。その一方で、このプラットフォームは限られた機能しか提供せず、万能量子コンピューティングを行うことはできません。",
+         "position": {
+          "start": {
+           "line": 87,
+           "column": 1,
+           "offset": 9154
+          },
+          "end": {
+           "line": 87,
+           "column": 266,
+           "offset": 9419
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 87,
+         "column": 1,
+         "offset": 9154
+        },
+        "end": {
+         "line": 87,
+         "column": 266,
+         "offset": 9419
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "boson",
+       "label": "boson",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "Aaronson, Scott, and Alex Arkhipov. “[No Title Found].” Theory of Computing, vol. 9, no. 1, 2013, pp. 143–252. DOI.org (Crossref), ",
+           "position": {
+            "start": {
+             "line": 89,
+             "column": 11,
+             "offset": 9431
+            },
+            "end": {
+             "line": 89,
+             "column": 143,
+             "offset": 9563
+            }
+           }
+          },
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://doi.org/10.4086/toc.2013.v009a004",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://doi.org/10.4086/toc.2013.v009a004",
+             "position": {
+              "start": {
+               "line": 89,
+               "column": 144,
+               "offset": 9564
+              },
+              "end": {
+               "line": 89,
+               "column": 185,
+               "offset": 9605
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 89,
+             "column": 143,
+             "offset": 9563
+            },
+            "end": {
+             "line": 89,
+             "column": 229,
+             "offset": 9649
+            }
+           }
+          },
+          {
+           "type": "text",
+           "value": ".",
+           "position": {
+            "start": {
+             "line": 89,
+             "column": 229,
+             "offset": 9649
+            },
+            "end": {
+             "line": 89,
+             "column": 230,
+             "offset": 9650
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 89,
+           "column": 11,
+           "offset": 9431
+          },
+          "end": {
+           "line": 89,
+           "column": 230,
+           "offset": 9650
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 89,
+         "column": 1,
+         "offset": 9421
+        },
+        "end": {
+         "line": 89,
+         "column": 230,
+         "offset": 9650
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "KLM 方式",
+         "position": {
+          "start": {
+           "line": 91,
+           "column": 5,
+           "offset": 9656
+          },
+          "end": {
+           "line": 91,
+           "column": 15,
+           "offset": 9666
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 91,
+         "column": 1,
+         "offset": 9652
+        },
+        "end": {
+         "line": 91,
+         "column": 15,
+         "offset": 9666
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "スケーラブルな量子コンピューティングを実現するには、さまざまな光子のペアを所定の方法で相互作用させる能力が必要です。そのような相互作用の自然な候補は、伝播する光の強度に応じて性質が変化する、ある種の光学媒質の非線形性です。しかし、このような非線形性は単一光子に対しては知覚できないほど弱いため、実際の応用には適していません。その代わりにできるのは、光子の検出を計算に組み込み、それを利用して実効的な非線形性を誘起することです。この",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 1,
+           "offset": 9668
+          },
+          "end": {
+           "line": 93,
+           "column": 592,
+           "offset": 10259
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "測定誘起非線形性",
+           "position": {
+            "start": {
+             "line": 93,
+             "column": 593,
+             "offset": 10260
+            },
+            "end": {
+             "line": 93,
+             "column": 626,
+             "offset": 10293
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 592,
+           "offset": 10259
+          },
+          "end": {
+           "line": 93,
+           "column": 627,
+           "offset": 10294
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "を活用すると、",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 627,
+           "offset": 10294
+          },
+          "end": {
+           "line": 93,
+           "column": 707,
+           "offset": 10374
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "KLM 方式",
+           "position": {
+            "start": {
+             "line": 93,
+             "column": 708,
+             "offset": 10375
+            },
+            "end": {
+             "line": 93,
+             "column": 718,
+             "offset": 10385
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 707,
+           "offset": 10374
+          },
+          "end": {
+           "line": 93,
+           "column": 719,
+           "offset": 10386
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "klm",
+         "label": "klm",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 719,
+           "offset": 10386
+          },
+          "end": {
+           "line": 93,
+           "column": 725,
+           "offset": 10392
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "として知られる方式で万能量子計算を実行できます。このアプローチの欠点は、非決定論的であることです。計算は時に失敗し、通常は何度も繰り返す必要があります。",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 725,
+           "offset": 10392
+          },
+          "end": {
+           "line": 93,
+           "column": 864,
+           "offset": 10531
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 93,
+         "column": 1,
+         "offset": 9668
+        },
+        "end": {
+         "line": 93,
+         "column": 864,
+         "offset": 10531
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "klm",
+       "label": "klm",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "Knill, E., et al. “A Scheme for Efficient Quantum Computation with Linear Optics.” Nature, vol. 409, no. 6816, Jan. 2001, pp. 46–52. DOI.org (Crossref), ",
+           "position": {
+            "start": {
+             "line": 95,
+             "column": 9,
+             "offset": 10541
+            },
+            "end": {
+             "line": 95,
+             "column": 162,
+             "offset": 10694
+            }
+           }
+          },
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://doi.org/10.1038/35051009",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://doi.org/10.1038/35051009",
+             "position": {
+              "start": {
+               "line": 95,
+               "column": 163,
+               "offset": 10695
+              },
+              "end": {
+               "line": 95,
+               "column": 195,
+               "offset": 10727
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 95,
+             "column": 162,
+             "offset": 10694
+            },
+            "end": {
+             "line": 95,
+             "column": 230,
+             "offset": 10762
+            }
+           }
+          },
+          {
+           "type": "text",
+           "value": ".",
+           "position": {
+            "start": {
+             "line": 95,
+             "column": 230,
+             "offset": 10762
+            },
+            "end": {
+             "line": 95,
+             "column": 231,
+             "offset": 10763
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 95,
+           "column": 9,
+           "offset": 10541
+          },
+          "end": {
+           "line": 95,
+           "column": 231,
+           "offset": 10763
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 95,
+         "column": 1,
+         "offset": 10533
+        },
+        "end": {
+         "line": 95,
+         "column": 231,
+         "offset": 10763
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "測定型方式",
+         "position": {
+          "start": {
+           "line": 97,
+           "column": 5,
+           "offset": 10769
+          },
+          "end": {
+           "line": 97,
+           "column": 29,
+           "offset": 10793
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 97,
+         "column": 1,
+         "offset": 10765
+        },
+        "end": {
+         "line": 97,
+         "column": 29,
+         "offset": 10793
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "量子コンピューティングへの有望なアプローチが測定型方式です。この方式では、まず光子を、クラスター状態と呼ばれる巨大なもつれ状態に準備し、計算そのものは単一光子の測定のみで構成されます。こうして、光子を相互作用させる難しさは、最初の段階、すなわちクラスター状態の生成へと移されます。このような状態を光子で効率的に生成する方法は、これまで数多く提案されてきました。最も有望なものの一つが、フュージョンゲートに基づく方法です",
+         "position": {
+          "start": {
+           "line": 99,
+           "column": 1,
+           "offset": 10795
+          },
+          "end": {
+           "line": 99,
+           "column": 513,
+           "offset": 11307
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 99,
+           "column": 513,
+           "offset": 11307
+          },
+          "end": {
+           "line": 99,
+           "column": 517,
+           "offset": 11311
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": "(上記参照)。この方法では、フュージョンゲートを繰り返し適用することで、小さなクラスター状態がより大きなものへと結合されていきます。",
+         "position": {
+          "start": {
+           "line": 99,
+           "column": 517,
+           "offset": 11311
+          },
+          "end": {
+           "line": 99,
+           "column": 626,
+           "offset": 11420
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 99,
+         "column": 1,
+         "offset": 10795
+        },
+        "end": {
+         "line": 99,
+         "column": 626,
+         "offset": 11420
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 100,
+       "column": 1,
+       "offset": 11421
+      }
+     }
+    },
+    "props": {}
+   }
+  },
+  "IMA:ImageField": {
+   "image-q9rd6h": {
+    "value": null,
+    "props": {}
+   },
+   "image-td28w": {
+    "value": "cfa46886-9171-461a-a24c-23a25e99e16d",
+    "props": {}
+   },
+   "image-t3kpu": {
+    "value": "8240095d-76de-455e-871c-af5b59982660",
+    "props": {}
+   },
+   "image-7a1hj": {
+    "value": "46154c9c-0e43-48af-88be-f34819535c96",
+    "props": {}
+   }
+  }
+ }
+}

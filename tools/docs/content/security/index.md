@@ -1,23 +1,15 @@
 ---
 title: Security
-description: Sicherheitswerkzeuge von Netsnek e.U. rund um Hardware-Schlüssel und qualifizierte elektronische Signaturen.
+description: Zwei Geschichten über digitale Identität. Ein YubiKey mit Papier-Backup und ein Login, der eine qualifizierte Signatur ist.
 path: /docs/security
 ---
 
 # Security
 
-Netsnek e.U. entwickelt Sicherheitswerkzeuge rund um zwei Fragen. Wie wird ein Hardware-Schlüssel wiederherstellbar, ohne dass der private Schlüssel je den Rechner verlassen muss? Und wie lässt sich eine qualifizierte elektronische Signatur in gewohnte Abläufe wie Login und E-Mail einbauen? Diese Sektion dokumentiert die Ansätze hinter beiden Antworten.
+Hinter dieser Sektion stecken zwei Projekte, die mich lange beschäftigt haben. Beide kreisen um dieselbe Frage. Wie baue ich digitale Identität, die mir wirklich gehört und die etwas aushält?
 
-## Was diese Doku abdeckt
+Bei [YubiKey PIV Restore](/docs/security/piv) geht es um die Angst vor dem Verlust. Ein Hardware-Schlüssel ist wunderbar sicher und genau deshalb endgültig. Ich erzähle, wie ich ihm ein Backup auf Papier verpasst habe und warum am Ende ein einziger Public Key als TON-Wallet, als Kartenschlüssel und als PGP-Hauptschlüssel dient.
 
-### [YubiKey PIV Restore](/docs/security/piv)
+Bei [QES-OIDC](/docs/security/qes-oidc) geht es um den Login. Statt ein Passwort einzutippen signiert man einen kurzen Text mit ID Austria, und aus der qualifizierten Signatur wird ein ganz normaler OpenID-Connect-Login. Angefangen hat das mit einer Vereinsanmeldung, bei der nur Mitglied wird, wer wirklich unterschreibt.
 
-Ein Werkzeug, das die Schlüssel eines YubiKey deterministisch aus einer Wallet-Recovery-Phrase ableitet. Derselbe Ed25519-Public-Key dient als TON-Wallet, als PIV-Signaturschlüssel auf der Karte und als OpenPGP-Hauptschlüssel. Verlust oder Defekt der Karte bedeutet damit nicht mehr Verlust der Identität. Dazu ein age-Plugin, das verschlüsselte Dateien an die physische Karte bindet.
-
-### [QES-OIDC](/docs/security/qes-oidc)
-
-Eine Brücke zwischen qualifizierter elektronischer Signatur und OpenID Connect. Wer sich anmeldet, signiert einen kurzen Anmeldetext mit ID Austria. Der Dienst prüft die Signatur kryptographisch und stellt daraus einen standardkonformen OIDC-Login bereit. Darauf aufbauend gibt es eine signaturbestätigte Registrierung mit Gegenzeichnung.
-
-## Wie beides zusammenspielt
-
-Die beiden Bausteine ergänzen sich im Mail-Dienst [emailwerk](/docs/emailwerk). Dort kann ein Versand angehalten werden, bis eine qualifizierte elektronische Signatur über ID Austria vorliegt. Zusätzlich signiert eine PGP-Ebene den exakten Inhalt mit dem Schlüssel vom YubiKey. Die qualifizierte Signatur belegt die Identität der Absenderin, die Hardware-Signatur den unveränderten Inhalt.
+Im Mail-Dienst [emailwerk](/docs/emailwerk) treffen sich die beiden. Eine Mail kann dort warten, bis eine qualifizierte Signatur vorliegt, und der Schlüssel vom YubiKey signiert den exakten Inhalt gleich mit. Die eine Signatur belegt, wer sendet. Die andere, dass unterwegs niemand etwas verändert hat.

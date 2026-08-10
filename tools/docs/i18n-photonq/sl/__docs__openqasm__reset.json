@@ -1,0 +1,1441 @@
+{
+ "oldPath": "/docs/openqasm/reset",
+ "locale": "sl",
+ "title": "Ponastavitev",
+ "description": "V tem poglavju vodiča po OpenQASM se boste naučili, kako ponastaviti stanje kubita.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Operacija reset v OpenQASM-u",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 30,
+           "offset": 29
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 30,
+         "offset": 29
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Priprava kubitov v znano stanje je bistven del kvantnega računalništva. Ukaz ",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 31
+          },
+          "end": {
+           "line": 3,
+           "column": 83,
+           "offset": 113
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 83,
+           "offset": 113
+          },
+          "end": {
+           "line": 3,
+           "column": 90,
+           "offset": 120
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " v OpenQASM-u je zasnovan prav za ta namen in kubite vrne v stanje \\( |0\\rangle \\). To poglavje bo podrobno opisalo uporabo operacije ",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 90,
+           "offset": 120
+          },
+          "end": {
+           "line": 3,
+           "column": 237,
+           "offset": 267
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 237,
+           "offset": 267
+          },
+          "end": {
+           "line": 3,
+           "column": 244,
+           "offset": 274
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", potem ko kubite pripravimo s Hadamardovimi vrati.",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 244,
+           "offset": 274
+          },
+          "end": {
+           "line": 3,
+           "column": 319,
+           "offset": 349
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 31
+        },
+        "end": {
+         "line": 3,
+         "column": 319,
+         "offset": 349
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Priprava in ponastavitev kubitov",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 4,
+           "offset": 354
+          },
+          "end": {
+           "line": 5,
+           "column": 34,
+           "offset": 384
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 351
+        },
+        "end": {
+         "line": 5,
+         "column": 34,
+         "offset": 384
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Pred ponastavitvijo kubitov običajno uporabimo kvantne operacije, kot so Hadamardova vrata, ki kubite postavijo v superpozicijo stanj. Operacija ",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 1,
+           "offset": 386
+          },
+          "end": {
+           "line": 7,
+           "column": 149,
+           "offset": 534
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 149,
+           "offset": 534
+          },
+          "end": {
+           "line": 7,
+           "column": 156,
+           "offset": 541
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " se nato uporabi, da kubite vrnemo v znano privzeto stanje, pogosto kot pripravljalni korak pred začetkom novega zaporedja kvantnih operacij.",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 156,
+           "offset": 541
+          },
+          "end": {
+           "line": 7,
+           "column": 307,
+           "offset": 692
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 386
+        },
+        "end": {
+         "line": 7,
+         "column": 307,
+         "offset": 692
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Ponastavitev posameznega kubita",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 4,
+           "offset": 697
+          },
+          "end": {
+           "line": 9,
+           "column": 24,
+           "offset": 717
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 694
+        },
+        "end": {
+         "line": 9,
+         "column": 24,
+         "offset": 717
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Za ponastavitev določenega kubita v stanje \\( |0\\rangle \\) lahko uporabite ključno besedo ",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 1,
+           "offset": 719
+          },
+          "end": {
+           "line": 11,
+           "column": 77,
+           "offset": 795
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 77,
+           "offset": 795
+          },
+          "end": {
+           "line": 11,
+           "column": 84,
+           "offset": 802
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " takole:",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 84,
+           "offset": 802
+          },
+          "end": {
+           "line": 11,
+           "column": 104,
+           "offset": 822
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 11,
+         "column": 1,
+         "offset": 719
+        },
+        "end": {
+         "line": 11,
+         "column": 104,
+         "offset": 822
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "reset <quantum_register>[<index>];",
+       "position": {
+        "start": {
+         "line": 13,
+         "column": 1,
+         "offset": 824
+        },
+        "end": {
+         "line": 15,
+         "column": 4,
+         "offset": 870
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Poskus: uporaba Hadamardovih vrat in ponastavitev kubita",
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 5,
+           "offset": 876
+          },
+          "end": {
+           "line": 17,
+           "column": 56,
+           "offset": 927
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 17,
+         "column": 1,
+         "offset": 872
+        },
+        "end": {
+         "line": 17,
+         "column": 56,
+         "offset": 927
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Tu je primer priprave kubita v superpozicijo s Hadamardovimi vrati in njegove ponastavitve",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 1,
+           "offset": 929
+          },
+          "end": {
+           "line": 19,
+           "column": 100,
+           "offset": 1028
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 100,
+           "offset": 1028
+          },
+          "end": {
+           "line": 19,
+           "column": 104,
+           "offset": 1032
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 104,
+           "offset": 1032
+          },
+          "end": {
+           "line": 19,
+           "column": 108,
+           "offset": 1036
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "3",
+         "label": "3",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 108,
+           "offset": 1036
+          },
+          "end": {
+           "line": 19,
+           "column": 112,
+           "offset": 1040
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "4",
+         "label": "4",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 112,
+           "offset": 1040
+          },
+          "end": {
+           "line": 19,
+           "column": 116,
+           "offset": 1044
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ":",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 116,
+           "offset": 1044
+          },
+          "end": {
+           "line": 19,
+           "column": 117,
+           "offset": 1045
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 19,
+         "column": 1,
+         "offset": 929
+        },
+        "end": {
+         "line": 19,
+         "column": 117,
+         "offset": 1045
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0;                 // Define the OpenQASM version [^1]\ninclude \"qelib1.inc\";         // Include the standard quantum library [^2]\n\n// Declare a quantum register\nqreg qubits[1];               // Single-qubit quantum register [^3]\n\n// Place the first qubit in a superposition state\nh qubits[0];                  // Apply Hadamard gate [^4]\n\n// Return the first qubit to its initial state\nreset qubits[0];              // Reset operation",
+       "position": {
+        "start": {
+         "line": 21,
+         "column": 1,
+         "offset": 1047
+        },
+        "end": {
+         "line": 33,
+         "column": 4,
+         "offset": 1515
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V tem poskusu Hadamardova vrata kubit najprej postavijo v superpozicijo, nato pa ga ukaz ",
+         "position": {
+          "start": {
+           "line": 35,
+           "column": 1,
+           "offset": 1517
+          },
+          "end": {
+           "line": 35,
+           "column": 100,
+           "offset": 1616
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 35,
+           "column": 100,
+           "offset": 1616
+          },
+          "end": {
+           "line": 35,
+           "column": 107,
+           "offset": 1623
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " vrne v \\( |0\\rangle \\), kar prikazuje upravljanje stanja kubita.",
+         "position": {
+          "start": {
+           "line": 35,
+           "column": 107,
+           "offset": 1623
+          },
+          "end": {
+           "line": 35,
+           "column": 198,
+           "offset": 1714
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 35,
+         "column": 1,
+         "offset": 1517
+        },
+        "end": {
+         "line": 35,
+         "column": 198,
+         "offset": 1714
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Ponastavitev celotnega kvantnega registra",
+         "position": {
+          "start": {
+           "line": 37,
+           "column": 4,
+           "offset": 1719
+          },
+          "end": {
+           "line": 37,
+           "column": 36,
+           "offset": 1751
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 37,
+         "column": 1,
+         "offset": 1716
+        },
+        "end": {
+         "line": 37,
+         "column": 36,
+         "offset": 1751
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Operacijo ",
+         "position": {
+          "start": {
+           "line": 39,
+           "column": 1,
+           "offset": 1753
+          },
+          "end": {
+           "line": 39,
+           "column": 5,
+           "offset": 1757
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 39,
+           "column": 5,
+           "offset": 1757
+          },
+          "end": {
+           "line": 39,
+           "column": 12,
+           "offset": 1764
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " lahko razširimo tako, da hkrati ponastavi vse kubite v kvantnem registru:",
+         "position": {
+          "start": {
+           "line": 39,
+           "column": 12,
+           "offset": 1764
+          },
+          "end": {
+           "line": 39,
+           "column": 97,
+           "offset": 1849
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 39,
+         "column": 1,
+         "offset": 1753
+        },
+        "end": {
+         "line": 39,
+         "column": 97,
+         "offset": 1849
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "reset <quantum_register>;",
+       "position": {
+        "start": {
+         "line": 41,
+         "column": 1,
+         "offset": 1851
+        },
+        "end": {
+         "line": 43,
+         "column": 4,
+         "offset": 1888
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Poskus: ponastavitev kvantnega registra po superpoziciji",
+         "position": {
+          "start": {
+           "line": 45,
+           "column": 5,
+           "offset": 1894
+          },
+          "end": {
+           "line": 45,
+           "column": 65,
+           "offset": 1954
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 45,
+         "column": 1,
+         "offset": 1890
+        },
+        "end": {
+         "line": 45,
+         "column": 65,
+         "offset": 1954
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Za celoten kvantni register, pripravljen v superpozicijskih stanjih",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 1,
+           "offset": 1956
+          },
+          "end": {
+           "line": 47,
+           "column": 65,
+           "offset": 2020
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 65,
+           "offset": 2020
+          },
+          "end": {
+           "line": 47,
+           "column": 69,
+           "offset": 2024
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 69,
+           "offset": 2024
+          },
+          "end": {
+           "line": 47,
+           "column": 73,
+           "offset": 2028
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "3",
+         "label": "3",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 73,
+           "offset": 2028
+          },
+          "end": {
+           "line": 47,
+           "column": 77,
+           "offset": 2032
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "4",
+         "label": "4",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 77,
+           "offset": 2032
+          },
+          "end": {
+           "line": 47,
+           "column": 81,
+           "offset": 2036
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ":",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 81,
+           "offset": 2036
+          },
+          "end": {
+           "line": 47,
+           "column": 82,
+           "offset": 2037
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 47,
+         "column": 1,
+         "offset": 1956
+        },
+        "end": {
+         "line": 47,
+         "column": 82,
+         "offset": 2037
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0;                 // Define the OpenQASM version [^1]\ninclude \"qelib1.inc\";         // Include the standard quantum library [^2]\n\n// Declare a quantum register with multiple qubits\nqreg qubits[4]; // Single-qubit quantum register [^3]\n\n// Prepare each qubit in a superposition state\nh qubits[0];                  // Apply Hadamard gate to the first qubit [^4]\nh qubits[1];                  // Apply Hadamard gate to the second qubit [^4]\nh qubits[2];                  // Apply Hadamard gate to the third qubit [^4]\nh qubits[3];                  // Apply Hadamard gate to the fourth qubit [^4]\n\n// Reset all qubits in the register to their initial states\nreset qubits;",
+       "position": {
+        "start": {
+         "line": 49,
+         "column": 1,
+         "offset": 2039
+        },
+        "end": {
+         "line": 64,
+         "column": 4,
+         "offset": 2741
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "V tem primeru Hadamardova vrata ustvarijo superpozicijsko stanje za vsak kubit v registru ",
+         "position": {
+          "start": {
+           "line": 66,
+           "column": 1,
+           "offset": 2743
+          },
+          "end": {
+           "line": 66,
+           "column": 88,
+           "offset": 2830
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "qubits",
+         "position": {
+          "start": {
+           "line": 66,
+           "column": 88,
+           "offset": 2830
+          },
+          "end": {
+           "line": 66,
+           "column": 96,
+           "offset": 2838
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", preden jih skupna operacija ",
+         "position": {
+          "start": {
+           "line": 66,
+           "column": 96,
+           "offset": 2838
+          },
+          "end": {
+           "line": 66,
+           "column": 128,
+           "offset": 2870
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 66,
+           "column": 128,
+           "offset": 2870
+          },
+          "end": {
+           "line": 66,
+           "column": 135,
+           "offset": 2877
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " vse vrne v stanje \\( |0\\rangle \\).",
+         "position": {
+          "start": {
+           "line": 66,
+           "column": 135,
+           "offset": 2877
+          },
+          "end": {
+           "line": 66,
+           "column": 194,
+           "offset": 2936
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 66,
+         "column": 1,
+         "offset": 2743
+        },
+        "end": {
+         "line": 66,
+         "column": 194,
+         "offset": 2936
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "Opomba:",
+           "position": {
+            "start": {
+             "line": 68,
+             "column": 3,
+             "offset": 2940
+            },
+            "end": {
+             "line": 68,
+             "column": 8,
+             "offset": 2945
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 68,
+           "column": 1,
+           "offset": 2938
+          },
+          "end": {
+           "line": 68,
+           "column": 10,
+           "offset": 2947
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " Ukaz ",
+         "position": {
+          "start": {
+           "line": 68,
+           "column": 10,
+           "offset": 2947
+          },
+          "end": {
+           "line": 68,
+           "column": 15,
+           "offset": 2952
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 68,
+           "column": 15,
+           "offset": 2952
+          },
+          "end": {
+           "line": 68,
+           "column": 22,
+           "offset": 2959
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", ne glede na to, ali ga uporabimo na posameznih kubitih ali na celotnem registru, je sestavni del OpenQASM-a za ohranjanje nadzora nad stanji kubitov med kvantnimi izračuni.",
+         "position": {
+          "start": {
+           "line": 68,
+           "column": 22,
+           "offset": 2959
+          },
+          "end": {
+           "line": 68,
+           "column": 203,
+           "offset": 3140
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 68,
+         "column": 1,
+         "offset": 2938
+        },
+        "end": {
+         "line": 68,
+         "column": 203,
+         "offset": 3140
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Razumevanje in učinkovita uporaba ukaza ",
+         "position": {
+          "start": {
+           "line": 70,
+           "column": 1,
+           "offset": 3142
+          },
+          "end": {
+           "line": 70,
+           "column": 45,
+           "offset": 3186
+          }
+         }
+        },
+        {
+         "type": "inlineCode",
+         "value": "reset",
+         "position": {
+          "start": {
+           "line": 70,
+           "column": 45,
+           "offset": 3186
+          },
+          "end": {
+           "line": 70,
+           "column": 52,
+           "offset": 3193
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " sta temeljna za pripravo in ponovno uporabo kubitov v kvantnih vezjih ter zagotavljata optimalno delovanje kvantnih algoritmov.",
+         "position": {
+          "start": {
+           "line": 70,
+           "column": 52,
+           "offset": 3193
+          },
+          "end": {
+           "line": 70,
+           "column": 185,
+           "offset": 3326
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 70,
+         "column": 1,
+         "offset": 3142
+        },
+        "end": {
+         "line": 70,
+         "column": 185,
+         "offset": 3326
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/version-string/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Dokumentacija o verzijskem nizu",
+             "position": {
+              "start": {
+               "line": 72,
+               "column": 8,
+               "offset": 3335
+              },
+              "end": {
+               "line": 72,
+               "column": 36,
+               "offset": 3363
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 72,
+             "column": 7,
+             "offset": 3334
+            },
+            "end": {
+             "line": 72,
+             "column": 88,
+             "offset": 3415
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 7,
+           "offset": 3334
+          },
+          "end": {
+           "line": 72,
+           "column": 88,
+           "offset": 3415
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 72,
+         "column": 1,
+         "offset": 3328
+        },
+        "end": {
+         "line": 72,
+         "column": 88,
+         "offset": 3415
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "2",
+       "label": "2",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/include/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Dokumentacija o ukazu include",
+             "position": {
+              "start": {
+               "line": 74,
+               "column": 8,
+               "offset": 3424
+              },
+              "end": {
+               "line": 74,
+               "column": 29,
+               "offset": 3445
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 74,
+             "column": 7,
+             "offset": 3423
+            },
+            "end": {
+             "line": 74,
+             "column": 74,
+             "offset": 3490
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 74,
+           "column": 7,
+           "offset": 3423
+          },
+          "end": {
+           "line": 74,
+           "column": 74,
+           "offset": 3490
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 74,
+         "column": 1,
+         "offset": 3417
+        },
+        "end": {
+         "line": 74,
+         "column": 74,
+         "offset": 3490
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "3",
+       "label": "3",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/registers/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Dokumentacija o registrih",
+             "position": {
+              "start": {
+               "line": 76,
+               "column": 8,
+               "offset": 3499
+              },
+              "end": {
+               "line": 76,
+               "column": 31,
+               "offset": 3522
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 76,
+             "column": 7,
+             "offset": 3498
+            },
+            "end": {
+             "line": 76,
+             "column": 78,
+             "offset": 3569
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 76,
+           "column": 7,
+           "offset": 3498
+          },
+          "end": {
+           "line": 76,
+           "column": 78,
+           "offset": 3569
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 76,
+         "column": 1,
+         "offset": 3492
+        },
+        "end": {
+         "line": 76,
+         "column": 78,
+         "offset": 3569
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "4",
+       "label": "4",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/gates/hadamard/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Dokumentacija o Hadamardovih vratih",
+             "position": {
+              "start": {
+               "line": 78,
+               "column": 8,
+               "offset": 3578
+              },
+              "end": {
+               "line": 78,
+               "column": 35,
+               "offset": 3605
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 78,
+             "column": 7,
+             "offset": 3577
+            },
+            "end": {
+             "line": 78,
+             "column": 87,
+             "offset": 3657
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 78,
+           "column": 7,
+           "offset": 3577
+          },
+          "end": {
+           "line": 78,
+           "column": 87,
+           "offset": 3657
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 78,
+         "column": 1,
+         "offset": 3571
+        },
+        "end": {
+         "line": 78,
+         "column": 87,
+         "offset": 3657
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 79,
+       "column": 1,
+       "offset": 3658
+      }
+     }
+    },
+    "props": {}
+   }
+  }
+ }
+}

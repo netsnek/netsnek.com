@@ -1,0 +1,154 @@
+{
+ "oldPath": "/docs/openqasm/gates",
+ "locale": "it",
+ "title": "Porte",
+ "description": "In questo capitolo del tutorial di OpenQASM imparerai in breve le porte quantistiche in OpenQASM. Nei capitoli successivi di questo tutorial di OpenQASM imparerai in modo approfondito come usare queste porte quantistiche in OpenQASM.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Porte"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Nella computazione classica, le porte classiche vengono utilizzate per eseguire operazioni su uno o più bit. Analogamente, nella computazione quantistica, le porte quantistiche vengono utilizzate per eseguire un'operazione reversibile su uno o più qubit. OpenQASM fornisce alcune porte quantistiche integrate. In questo capitolo del tutorial di OpenQASM imparerai in breve le porte quantistiche in OpenQASM. Nei capitoli successivi di questo tutorial di OpenQASM imparerai in modo approfondito come usare queste porte quantistiche in OpenQASM."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Nel campo della computazione quantistica esistono varie porte quantistiche standard che vengono utilizzate per creare algoritmi quantistici. Tuttavia, non tutte queste porte quantistiche sono porte quantistiche fondamentali. Le porte quantistiche fondamentali sono porte quantistiche che possono essere utilizzate per creare altre porte quantistiche."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "OpenQASM fornisce le seguenti due porte quantistiche integrate:"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "ordered": false,
+       "start": null,
+       "spread": false,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "Porta U"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "Porta CX"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "La porta U è una porta quantistica che può essere utilizzata per cambiare lo stato di un qubit. La porta CX è una porta quantistica utilizzata per creare entanglement tra gli stati di due qubit. Entrambe queste porte quantistiche sono porte quantistiche fondamentali. Utilizzando la porta U e la porta CX è possibile creare qualsiasi altra porta quantistica."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Infatti, la libreria standard di OpenQASM 2 qelib1.inc"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1"
+        },
+        {
+         "type": "text",
+         "value": " utilizza le porte quantistiche fondamentali U e CX per creare le porte quantistiche più comunemente usate e alcune meno comuni."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Nei capitoli successivi imparerai in dettaglio la porta U e la porta CX."
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://deeplearninguniversity.com/openqasm2-0/openqasm-qelib1-inc/",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://deeplearninguniversity.com/openqasm2-0/openqasm-qelib1-inc/"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

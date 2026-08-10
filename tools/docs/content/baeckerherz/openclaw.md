@@ -6,7 +6,7 @@ path: /docs/baeckerherz/openclaw
 
 # OpenClaw Dienstplan-Bot
 
-Bei [Bäckerherz](/docs/baeckerherz) begann der Arbeitstag, bevor die meisten Menschen aufstehen. Wer wann bäckt, kommissioniert und ausliefert, musste laufend abgestimmt werden. Die Koordination der Dienstpläne war tägliche operative Arbeit und lag bei meiner Partnerin. Der Dienstplan-Bot brachte diese Arbeit dorthin, wo das Team ohnehin schrieb: nach Telegram.
+Bei [Bäckerherz](/docs/baeckerherz) begann der Arbeitstag, bevor die meisten Menschen aufstehen. Wer wann bäckt, kommissioniert und ausliefert, musste laufend abgestimmt werden. Die Koordination der Dienstpläne war tägliche operative Arbeit und lag bei [Momo](https://www.linkedin.com/in/momo-matsumoto-746594290/), meiner Partnerin. Der Dienstplan-Bot brachte diese Arbeit dorthin, wo das Team ohnehin schrieb: nach Telegram.
 
 ## Was OpenClaw ist
 
@@ -18,7 +18,7 @@ Für Bäckerherz lief auf dieser Basis ein Dienstplan-Bot in Telegram. Das Team 
 
 ## Betrieb und Stack
 
-Das Gateway lief self-hosted auf einem Server von Netsnek e.U. Der Prozess war nur lokal gebunden, nach außen sprach ausschließlich die Anbindung an den Messenger. Dienstpläne und Teamkommunikation blieben damit auf eigener Infrastruktur statt bei einem weiteren Drittanbieter.
+Das Gateway lief self-hosted auf einem meiner Server. Der Prozess war nur lokal gebunden, nach außen sprach ausschließlich die Anbindung an den Messenger. Dienstpläne und Teamkommunikation blieben damit auf eigener Infrastruktur statt bei einem weiteren Drittanbieter.
 
 ## Das Tooling rund um den Bot
 
@@ -31,6 +31,6 @@ Der Bot war Teil einer Reihe kleiner Werkzeuge nach demselben Muster: einfach, n
 
 Nichts davon war groß. Alles davon wurde täglich benutzt. Genau das war die Idee.
 
-## Was daraus wurde
+## Was ich mitgenommen habe
 
-Bäckerherz hat es als Unternehmen am Ende leider nicht geschafft. Das OpenClaw-Gateway lief danach weiter und war im Sommer 2026 auf einem Server von Netsnek e.U. weiterhin in Betrieb.
+Das Muster aus diesem Projekt, Werkzeuge dorthin zu bringen, wo das Team ohnehin arbeitet, verwende ich bis heute.

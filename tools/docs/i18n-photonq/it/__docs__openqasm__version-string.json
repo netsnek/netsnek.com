@@ -1,0 +1,390 @@
+{
+ "oldPath": "/docs/openqasm/version-string",
+ "locale": "it",
+ "title": "Stringa di Versione",
+ "description": "In questo capitolo del tutorial di OpenQASM imparerai la stringa di versione di OpenQASM.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Specificare la Versione di OpenQASM nei Tuoi Programmi"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Selezionare la stringa di versione corretta di OpenQASM è uno dei primi e più importanti passi nella programmazione quantistica. La stringa di versione indica all'ambiente di esecuzione quantistico quale insieme di regole sintattiche e funzionalità applicare al tuo codice. Questo capitolo fornisce una comprensione completa della stringa di versione di OpenQASM e del suo uso corretto con esempi pratici."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Che cos'è la Stringa di Versione di OpenQASM?"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "La stringa di versione è una direttiva essenziale all'inizio di un file OpenQASM che specifica la versione del linguaggio utilizzata. Questa direttiva garantisce la compatibilità e la corretta interpretazione nei diversi ambienti di elaborazione quantistica."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "La stringa di versione ha il formato \"OPENQASM V.v;\", dove \"V\" è la versione maggiore e \"v\" è il numero di versione minore."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esempio di Stringa di Versione"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ad esempio, per specificare che il tuo programma è scritto in OpenQASM versione 2.0"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1"
+        },
+        {
+         "type": "text",
+         "value": ":"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "OPENQASM 2.0; // Indicates we are using OpenQASM version 2.0 [^1]"
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Regole per la Dichiarazione della Stringa di Versione"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Esistono due regole fondamentali per dichiarare correttamente la stringa di versione:"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "ordered": true,
+       "start": 1,
+       "spread": false,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "strong",
+             "children": [
+              {
+               "type": "text",
+               "value": "Unicità"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "value": ": in ogni file OpenQASM deve essere presente una sola stringa di versione."
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "strong",
+             "children": [
+              {
+               "type": "text",
+               "value": "Posizionamento"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "value": ": la stringa di versione deve essere la prima istruzione eseguibile del file."
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esperimento: Dichiarare la Stringa di Versione"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ecco un programma OpenQASM valido con una stringa di versione posizionata correttamente. "
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "2",
+         "label": "2"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "3",
+         "label": "3"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "4",
+         "label": "4"
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "5",
+         "label": "5"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "// PhotonQ Experiment: Version String Declaration [^5]\nOPENQASM 2.0;             // Correctly specifies OpenQASM version [^1]\ninclude \"qelib1.inc\";     // Including the standard library for convenience [^2]\n\n// Quantum gate application\nqreg qubits[2];           // Declaring a quantum register with two qubits [^3]\ncx qubits[0], qubits[1];  // Applying a CNOT gate to the qubits [^4]"
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Esempi Errati"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Dichiarazioni multiple della stringa di versione non sono consentite e produrranno un errore:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "OPENQASM 2.0; // Redundant declarations cause conflicts and errors\nOPENQASM 3.0;"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Posizionare la stringa di versione dopo righe eseguibili è errato e va evitato:"
+        }
+       ]
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "// Declaration before the version string results in an invalid program structure\nqreg qubits[4]; // This will cause an error\nOPENQASM 2.0;   // Incorrectly placed after an executable line"
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Comprendere e usare correttamente la stringa di versione di OpenQASM è fondamentale per costruire programmi quantistici validi e funzionanti. Nei prossimi capitoli approfondiremo aspetti ancora più interessanti della computazione quantistica con OpenQASM, come lavorare con i registri quantistici e implementare le porte quantistiche!"
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/version-string/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Stringa di Versione"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "2",
+       "label": "2",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/include/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione di Include"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "3",
+       "label": "3",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/registers/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione dei Registri Quantistici"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "4",
+       "label": "4",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/docs/openqasm/gates/cnot/",
+           "children": [
+            {
+             "type": "text",
+             "value": "Documentazione della Porta CNOT"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "5",
+       "label": "5",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://photonq.org/experiments/declaring-the-version-string",
+           "children": [
+            {
+             "type": "text",
+             "value": "Dichiarare la Stringa di Versione"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

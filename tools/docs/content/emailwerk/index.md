@@ -1,71 +1,57 @@
 ---
 title: emailwerk
-description: Selbst gehosteter Transaktionsmail-Dienst mit Vorlagen, Multi-Provider-Versand und eingebauter Admin-Oberfläche. Ein Container, eine Postgres-Datenbank.
+description: Wie aus mailpress emailwerk wurde. Drei Anläufe für einen eigenen Mail-Dienst, was er heute für mich versendet und welche Altlasten ich beim dritten Rewrite begraben habe.
 path: /docs/emailwerk
 ---
 
 # emailwerk
 
-emailwerk ist ein Dienst von Netsnek e.U. für Transaktionsmails. Sie definieren E-Mail-Vorlagen mit typisierten Variablen, verbinden ein oder mehrere Absender-Postfächer und versenden über eine rollengeschützte GraphQL-API oder direkt aus der eingebauten Admin-Oberfläche. Jeder Versand landet in einer abfragbaren Historie. Wiederholungen und Zeitplanung übernimmt eine Job-Queue in Postgres.
+emailwerk ist mein Dienst für Transaktionsmails. Er versendet die Mails hinter dem Kontaktformular von netsnek.com, hält Sendungen an, bis eine qualifizierte Signatur vorliegt, und spricht direkt mit Gmail. Ich entwickle ihn gemeinsam mit [Nico](https://github.com/schettn) von [cronit](https://www.cronit.io) und betreibe ihn unter meiner Firma Netsnek e.U. Diese Seite erzählt, wie es dazu kam.
 
-emailwerk ist auf [Pylon](https://pylon.cronit.io) v3 gebaut. Das GraphQL-Schema wird direkt aus TypeScript reflektiert. Die Admin-Oberfläche rendert der Dienst selbst, als React-Server-Side-Rendering im selben Prozess wie die API. Es gibt kein separates Frontend-Deployment, kein zweites Repository und kein CORS.
+## Drei Anläufe
 
-## Herkunft
+emailwerk ist die dritte Hauptversion eines Projekts, das 2023 als mailpress begann. Dass es drei Versionen gebraucht hat, liegt auch daran, dass das Werkzeug darunter mitgewachsen ist. Nico baut [Pylon](https://pylon.cronit.io), das Framework, auf dem emailwerk läuft. Jede große Pylon-Version hat eine neue mailpress-Version nach sich gezogen.
 
-emailwerk ist die dritte Hauptversion von mailpress und wird von denselben beiden Autoren entwickelt, Florian Kleber (Netsnek e.U.) und Nico Schett (cronit).
+Die erste Version entstand auf snek-functions, dem Vorgänger von Pylon. Die HTML-Vorlagen waren fest im Code verdrahtet, den eigentlichen Versand erledigte ein externer Mailer-Microservice. Vieles daran war provisorisch, aber zwei Ideen von damals haben bis heute überlebt. Verkettete Vorlagen, bei denen ein Versand Folgemails auslöst, etwa eine Anfrage an das Team plus eine Bestätigung an die Kundin. Und verifyReplyTo, eine Prüfung, die verhindert, dass jemand antwortbare Mails im Namen einer fremden Adresse verschickt.
 
-1. **mailpress v1** (2023) entstand auf snek-functions, dem Vorgänger von Pylon. Fest kodierte HTML-Vorlagen, ein externer Mailer-Microservice und die ersten Ideen, die bis heute überlebt haben, etwa `verifyReplyTo` und verknüpfte Vorlagen.
-2. **mailpress v2** (2024 bis 2025, [`getcronit/mailpress`](https://github.com/getcronit/mailpress)) war ein Rewrite auf Pylon v2 mit Prisma und Postgres, Zitadel-Mandantenfähigkeit, Twig-Vorlagen und einer separaten Gatsby-Admin-Oberfläche.
-3. **emailwerk v3** ist der Rewrite auf Pylon v3. Die Admin-Oberfläche zieht in den Dienst selbst ein. Dazu kommen eine Versandhistorie, eine echte Queue und austauschbare Auth- und Provider-Schnittstellen. Bekannte Fehler aus v2 sind behoben, darunter der unsichere JavaScript-Transformer auf `eval()`-Basis und ein Fehler, der Zugangsdaten offenlegen konnte.
+mailpress v2 war 2024 der erste richtige Wurf. Pylon v2, Prisma und Postgres, Mandantenfähigkeit über Zitadel, Twig als Vorlagensprache und eine separate Gatsby-Admin-Oberfläche. Diese Version lief zwei Jahre produktiv. Sie hatte aber Konstruktionsentscheidungen, die ich so nicht wieder treffen würde. Dazu gleich mehr.
 
-## Funktionen
+2026 kam der Rewrite auf Pylon v3, und mit ihm der neue Name. Aus mailpress wurde emailwerk, weil aus dem internen Werkzeug ein Produkt werden soll. Die Admin-Oberfläche zog in den Dienst selbst ein und wird serverseitig im selben Prozess gerendert wie die API. Dazu kamen eine Versandhistorie und eine echte Job-Queue, die in derselben Postgres-Datenbank läuft. Das Ergebnis ist ein einzelner Node-Prozess mit einer Datenbank. Kein separates Frontend-Deployment, kein zweites Repository, kein CORS, kein Redis.
 
-- **Vorlagen mit typisierten Variablen.** Liquid als Standard oder Twig für volle Kompatibilität mit mailpress-v2-Vorlagen. Auch Betreff, Empfänger und Reply-To sind Vorlagen-Strings. Details unter [Vorlagen](/docs/emailwerk/templates).
-- **Vorlagen-Verkettung.** Ein Versand kann Folge-Mails auslösen, etwa eine Anfrage an das Team plus eine Bestätigung an die Kundin. Ein Zyklus-Schutz verhindert Endlosschleifen.
-- **Multi-Provider-Versand.** Eine `EmailBackend`-Schnittstelle, sechs Transporte: SMTP, Gmail, ein integrierter MTA, Haraka eingebettet oder als Inject-Endpunkt und Resend. Absender-Zugangsdaten werden vor dem Speichern live verifiziert.
-- **Öffentliche Kontaktformulare ohne offenes Relay.** Eine als `isPublic` markierte Vorlage darf anonym versendet werden. Die Empfänger bestimmt dabei immer die Vorlage, nie der Aufrufer. Details unter [Kontaktformular](/docs/emailwerk/kontaktformular).
-- **Versandhistorie.** Jede Nachricht bekommt einen Statusdatensatz (`QUEUED`, `SENDING`, `SENT` oder `FAILED`) mit Provider-Message-Id, Fehlertext und Versuchszähler.
-- **Queue, Retry und Zeitplanung.** pg-boss läuft in derselben Postgres-Datenbank. Transaktionales Einreihen, exponentieller Backoff und geplante Sendezeitpunkte, ohne Redis.
-- **Verschlüsselte Zugangsdaten.** SMTP-Passwörter und API-Keys liegen AES-256-GCM-verschlüsselt in einem eigenen Datenmodell, das über GraphQL strukturell nicht erreichbar ist.
-- **Austauschbare Authentifizierung.** Ein schmaler `AuthAdapter` mit den Rollen `emailwerk:admin` und `emailwerk:send`. HTTP Basic und ein offener Dev-Modus sind enthalten, eigene Adapter sind eine Datei.
-- **Qualifizierte Signaturen.** Ein Versand kann angehalten werden, bis eine qualifizierte elektronische Signatur über ID Austria vorliegt. Zusätzlich gibt es eine PGP-Signaturebene über den exakten Inhalt.
-- **Zitadel-Anbindung.** emailwerk kann als HTTP-Notification-Provider einer Zitadel-Instanz dienen und deren OTP-, Passwort-Reset- und Init-Mails zustellen.
+## Was es heute für mich tut
 
-## Architektur
+Am sichtbarsten ist das Kontaktformular von netsnek.com. Wer dort schreibt, löst eine Anfrage an uns aus und bekommt über eine verknüpfte Vorlage eine Bestätigung zurück. Beides läuft ohne Login über den anonymen Zweig von emailwerk, der trotzdem kein offenes Relay ist. Diese Geschichte hat eine [eigene Seite](/docs/emailwerk/kontaktformular).
 
-Ein Node-Prozess, eine Postgres-Datenbank. Pylon v3 reflektiert das GraphQL-Schema aus TypeScript, `usePages()` rendert die React-Admin-Oberfläche serverseitig und pg-boss betreibt die Versand-Queue in derselben Datenbank.
+Dann die Signaturen. emailwerk kann einen Versand anhalten, bis der Inhalt qualifiziert elektronisch signiert ist, mit ID Austria. Die Mail wird beim Einreihen gerendert und eingefroren, dann signiere ich sie in einer Web-Zeremonie, und erst danach geht sie hinaus, mit dem signierten PDF als Anhang. Darunter liegt unser TypeScript-Rewrite von PDF-Over, dazu eine eigene PGP-Ebene über den exakten Inhalt. Wer so eine Mail bekommt, kann die Signatur auf signature.netsnek.com prüfen, im Browser und offline.
 
-```
-Browser ──► Admin-UI (SSR) ─┐
-API-Client ──► /graphql ────┤
-                            ▼
-        Render ─► Message-Datensatz ─► Queue (pg-boss)
-                            ▼
-                      EmailBackend
-        ┌──────┬───────┬─────┬────────┬────────┐
-        │ SMTP │ Gmail │ MTA │ Haraka │ Resend │
-        └──────┴───────┴─────┴────────┴────────┘
-```
+Und Gmail. Ein Absender-Postfach wird per OAuth verbunden, danach versendet emailwerk als dieses Postfach über die Gmail-API. Die im Postfach gepflegte Signatur wandert automatisch mit, bei signierten Sendungen wird sie sogar mitsigniert. Ganz ehrlich, eine Macke hat die Anbindung noch. Die OAuth-App steht bei Google auf Teststatus, deshalb verfallen die Tokens nach rund einer Woche und ich muss die Verbindung neu bestätigen.
 
-## Transporte
+Beim Umstieg habe ich die sechzehn Vorlagen der alten mailpress-Instanz nach emailwerk migriert. Damit sie unverändert rendern, hat emailwerk neben Liquid, dem Standard für Neues, auch Twig als Kompatibilitäts-Engine behalten. Verraten hat sich die Herkunft jeder einzelnen Vorlage am Datumsfilter im Briefkopf, den Twig kennt und Liquid nicht.
 
-Alle Transporte implementieren dieselbe `EmailBackend`-Schnittstelle. Welcher Transport eine Nachricht zustellt, bestimmt der am Absender hinterlegte Typ.
+## Was ich begraben habe
 
-| Transport | Beschreibung |
-|---|---|
-| SMTP | nodemailer über einen konfigurierten SMTP-Server. Die TLS-Zertifikatsprüfung ist standardmäßig aktiv und lässt sich nur pro Absender ausdrücklich lockern. |
-| Gmail | Raw-MIME über die Gmail-REST-API. Die Anbindung läuft über einen OAuth-Connect-Flow mit automatischem Token-Refresh, die im Postfach hinterlegte Gmail-Signatur wird übernommen. |
-| Integrierter MTA | emailwerk stellt selbst zu: MX-Auflösung, SMTP auf Port 25 mit opportunistischem STARTTLS und DKIM-Signierung, alles im selben Prozess. |
-| Haraka eingebettet | Der Haraka-Mailserver läuft als Outbound-Engine im selben Prozess. Die Nachricht wird vor der Übergabe DKIM-signiert, Haraka übernimmt Zustellung, Warteschlange und Bounce-Behandlung. |
-| Haraka-Inject | JSON-Einlieferung an einen entfernt gehosteten Haraka-Endpunkt. Ohne konfigurierten Endpunkt fällt dieser Weg automatisch auf den integrierten MTA zurück. |
-| Resend | Die HTTP-API von Resend, ohne eigene Mail-Infrastruktur nutzbar. Dient als Standard und als Fallback. |
+Der Rewrite war auch ein Begräbnis. Vier Konstruktionen aus mailpress v2 wollte ich nicht mitnehmen.
 
-## emailwerk im Einsatz
+**Der anonyme Versand.** Kontaktformulare brauchen einen Weg ohne Login. In emailwerk bestimmt dabei immer die Vorlage die Empfänger, nie der Aufrufer. Diese Trennung steht nicht in einer Prüfroutine, die jemand vergessen kann, sondern im Datenmodell.
 
-emailwerk wird von Netsnek e.U. entwickelt und betrieben. Der Dienst läuft als ein einzelner Node-Prozess mit einer Postgres-Datenbank und versendet unter anderem die Mails hinter dem Kontaktformular von netsnek.com. Wer emailwerk für ein eigenes Projekt einsetzen möchte, erreicht uns über die auf [netsnek.com](https://netsnek.com) angegebenen Kontaktwege.
+**Der Transformer.** In v2 ließen sich Vorlagen um kleine Skriptbausteine erweitern. In emailwerk gibt es das nicht mehr. Nicht weil ich sie besser eingezäunt hätte, sondern weil der Bedarf verschwunden ist. Betreff, Empfänger und Reply-To sind jetzt selbst Vorlagen-Strings und werden mit denselben Variablen gerendert wie der Inhalt. Bei der Migration der sechzehn Vorlagen sind die alten Bausteine deshalb bewusst liegen geblieben.
 
-## Weiterlesen
+**Zugangsdaten gehören nicht ins Schema.** In emailwerk liegen SMTP-Passwörter und API-Keys verschlüsselt in einem eigenen Datenmodell, das über die GraphQL-API strukturell gar nicht erreichbar ist. Was das Schema nicht kennt, kann kein Resolver versehentlich herausgeben.
 
-- [Vorlagen](/docs/emailwerk/templates). Typisierte Variablen, Engines, Umschlag-Templating und Verkettung.
-- [Kontaktformular](/docs/emailwerk/kontaktformular). Anonymer Versand über `sendTemplateMail` für Website-Formulare.
-- [GraphQL-API](/docs/emailwerk/api). Überblick über Queries, Mutations und Rollen.
+**Verkettete Vorlagen gehören begrenzt.** Eine Kette, die sich selbst wieder anstößt, läuft im Kreis, wenn niemand sie stoppt. In emailwerk steht ein Zyklus-Schutz davor, und die Bestätigungsmail eines Kontaktformulars geht genau eine Ebene tief.
+
+## Was ich gelernt habe
+
+**Gefährliche Features sandboxt man nicht, man macht sie überflüssig.** Der Transformer ist das Lehrstück. Die sichere Version davon war nicht ein besserer Zaun, sondern ein Umschlag, der selbst eine Vorlage ist. Das Feature verschwand, die Fähigkeit blieb.
+
+**Struktur schlägt Disziplin.** Ein Auth-Guard kann vergessen werden, ein Feld kann in einer Antwort durchrutschen. Ein Datenmodell, das im Schema nicht existiert, kann niemand abfragen. Empfänger, die nur aus der Vorlage kommen können, kann kein Aufrufer umbiegen. Die verlässlichsten Sicherheitsentscheidungen in emailwerk sind die, die niemand jedes Mal neu treffen muss.
+
+**Weniger Teile, weniger Sorgen.** Über drei Versionen ist der Dienst nicht größer geworden, sondern kompakter. v1 brauchte einen externen Mailer, v2 eine separate Admin-Oberfläche im eigenen Repository. v3 rendert die Oberfläche im selben Prozess und legt die Queue in dieselbe Datenbank. Jedes Teil, das wegfällt, ist eines, das nicht kaputtgehen kann.
+
+**Ein Rewrite ist kein Neuanfang.** Die guten Ideen ziehen um, verifyReplyTo und die verketteten Vorlagen stammen aus der allerersten Version. Die Daten ziehen um, für die alten Twig-Vorlagen gibt es eigens eine Kompatibilitäts-Engine. Zurück bleiben nur die Fehler, und genau dafür macht man den Rewrite.
+
+## Mehr in dieser Sektion
+
+### [Kontaktformular](/docs/emailwerk/kontaktformular)
+
+Wie das Kontaktformular von netsnek.com ohne Login direkt an emailwerk sendet und warum das trotzdem kein offenes Relay ist.

@@ -1,45 +1,35 @@
 ---
 title: QES-OIDC
-description: Qualifizierte elektronische Signaturen über ID Austria als standardkonformer OpenID-Connect-Login am Cloudflare-Edge.
+description: Warum ich aus der qualifizierten Signatur mit ID Austria einen Login gebaut habe und was eine Beitrittserklärung damit zu tun hat.
 path: /docs/security/qes-oidc
 ---
 
 # QES-OIDC
 
-Eine qualifizierte elektronische Signatur (QES) über ID Austria ist der stärkste digitale Identitätsnachweis, den es in Österreich gibt. QES-OIDC verpackt diesen Nachweis als gewöhnlichen OpenID-Connect-Login. Wer sich anmeldet, signiert einen kurzen, menschenlesbaren Anmeldetext im vertrauten Ablauf des Vertrauensdiensteanbieters A-Trust. Der Dienst prüft die Signatur und stellt daraus ein standardkonformes ID-Token aus.
+Angefangen hat alles mit einer Vereinsanmeldung. Für ein Vereinsprojekt wollte ich, dass nur Mitglied wird, wessen Beitrittserklärung qualifiziert signiert und gegengezeichnet ist. Keine gescannte Unterschrift, kein Häkchen in einem Formular. Eine echte qualifizierte elektronische Signatur über ID Austria, der stärkste digitale Identitätsnachweis, den es in Österreich gibt.
 
-Das Besondere daran: Es braucht keine Service-Provider-Registrierung, keinen Vertrag und keinen Registerzugriff. Die Nutzerin bringt ihre eigene ID Austria mit, der Dienst verifiziert eine Signatur. Die Identität, also Vorname, Nachname und eine personengebundene Seriennummer, stammt direkt aus dem Signaturzertifikat.
+Beim Bauen hat mich dann etwas überrascht. Ich brauche dafür keinen Vertrag, keine Service-Provider-Registrierung und keinen Registerzugriff. Wer sich anmeldet, bringt die eigene ID Austria mit, und ich muss nur eine Signatur prüfen. Vorname, Nachname und eine personengebundene Seriennummer stehen direkt im Signaturzertifikat.
 
-## So läuft ein Login
+Also habe ich diesen Nachweis als das verpackt, was jede Anwendung ohnehin versteht: einen OpenID-Connect-Login.
 
-1. Die Anwendung leitet per OIDC-Authorization-Request weiter, Authorization Code mit PKCE.
-2. Der Dienst startet eine Signatur-Zeremonie bei A-Trust. Die Nutzerin authentifiziert sich auf den Original-Seiten von A-Trust, etwa mit Telefonnummer, Passwort und zweitem Faktor.
-3. Signiert wird ein kurzer deutscher Text mit Anwendungsname, Zeitpunkt und einem einmaligen Anmelde-Code. Der Code bindet jede Signatur an genau einen Login.
-4. A-Trust liefert die Signatur serverseitig an eine einmal verwendbare Abhol-Adresse. Wiederholte Zustellungen laufen ins Leere.
-5. Der Dienst verifiziert die Signatur und bedient danach den normalen OIDC-Ablauf mit Code, Token, Discovery, JWKS, Userinfo und RP-initiiertem Logout.
+## Wie sich das anfühlt
 
-## Verifikation ohne Vertrauensvorschuss
+Aus Sicht der Anwendung ist QES-OIDC ein ganz normaler OIDC-Provider. Aus Sicht der Person läuft es so. Sie wird weitergeleitet, meldet sich auf den vertrauten Seiten von A-Trust an und signiert einen kurzen deutschen Text. Darin stehen der Name der Anwendung, der Zeitpunkt und ein einmaliger Anmelde-Code, der die Signatur an genau diesen einen Login bindet. Der Dienst prüft die Signatur und stellt daraus ein Standard-Token aus.
 
-Die Signaturprüfung schlägt bei jedem Zweifel fehl. Geprüft werden die Signatur selbst, der Hash über den exakten Anmeldetext und das Zeitfenster der Signatur. Die Zertifikatskette wird gegen einen fest verankerten Satz von A-Trust-Zertifikaten validiert. Das Zertifikat muss als qualifiziert ausgewiesen sein, nicht qualifizierte Zertifikate werden abgelehnt. Der Sperrstatus wird live per OCSP beim Aussteller abgefragt. Ein widerrufenes Zertifikat fällt immer durch.
+Die Prüfung habe ich bewusst misstrauisch gebaut. Bei jedem Zweifel schlägt sie fehl, und ein nicht qualifiziertes oder gesperrtes Zertifikat kommt nicht durch.
 
-## Ein stabiles Subject ohne erfundene Daten
+Eine Entscheidung, zu der ich stehe: Es gibt keine stille Session. Jede Anmeldung ist eine frische Signatur-Zeremonie. Das ist unbequemer als ein Cookie, aber genau das ist der Punkt. Wer eingeloggt ist, hat gerade eben signiert.
 
-Das OIDC-Subject wird als Hash über die personengebundene Seriennummer aus dem Zertifikat abgeleitet und bleibt damit über Logins hinweg stabil. Der Dienst erfindet keine Daten. Es gibt insbesondere keinen E-Mail-Claim, weil das Zertifikat keine E-Mail-Adresse enthält. Anwendungen, die eigene Verknüpfungsregeln brauchen, bekommen die rohen Seriennummern als eigene Claims. Weil der Aussteller die Stabilität der Seriennummer nicht vertraglich garantiert, sollten Anwendungen zusätzlich einen Weg zum erneuten Verknüpfen eines Kontos anbieten.
+Und der Dienst erfindet nichts. Es gibt zum Beispiel keinen E-Mail-Claim, weil das Zertifikat schlicht keine E-Mail-Adresse enthält. Das stabile Nutzerkennzeichen leitet sich aus der Seriennummer im Zertifikat ab und bleibt so über Logins hinweg gleich.
 
-## Betrieb am Edge
+## Die Signup-Zeremonie
 
-Der Dienst läuft als Cloudflare Worker. Zeremonien, Auth-Requests, Codes und Tokens leben in einem Durable-Object-Speicher mit atomarer Einmal-Entnahme. Jeder Schlüssel kann genau einmal eingelöst werden, das verhindert Replays auf Speicherebene. Es gibt bewusst keine persistente SSO-Session. Jede Anmeldung ist eine frische Signatur-Zeremonie, einen stillen Re-Login gibt es nicht.
+Und dann die Zeremonie, für die alles begann. Wer beitreten will, signiert ein Registrierungs-PDF qualifiziert. Der Betreiber zeichnet gegen, zugestellt als signaturpflichtige Mail über [emailwerk](/docs/emailwerk). Die Antwortmail enthält einen Aktivierungslink, und erst der bestätigte Klick darauf legt das Konto an. Bestehende Konten werden dabei nie automatisch mit einer Signatur verknüpft, denn die angegebene E-Mail-Adresse ist in diesem Moment noch unbestätigt.
 
-## Föderation
+## Wo es läuft
 
-Jede standardkonforme OIDC-Anwendung kann den Dienst direkt über Discovery anbinden. Alternativ hängt er als externer Identity Provider hinter einem Broker wie Zitadel. Dort erscheint die qualifizierte Signatur dann als weitere Login-Möglichkeit neben Passwort und Passkey.
+Der Dienst läuft als Cloudflare Worker am Edge. Jeder Code und jedes Token darin lässt sich genau einmal einlösen, ein zweiter Versuch läuft ins Leere. Jede standardkonforme OIDC-Anwendung kann direkt andocken. Alternativ hängt der Dienst als externer Identity Provider hinter einem Broker wie Zitadel und erscheint dort als weitere Login-Möglichkeit neben Passwort und Passkey.
 
-## Signaturbestätigte Registrierung
+Die Testsuite prüft unter anderem gegen echte qualifizierte Signaturen, und mehrere Sicherheits-Reviews haben zu gezielten Härtungen geführt.
 
-Auf dem Login-Baustein setzt eine optionale Registrierungs-Zeremonie auf. Die Kandidatin signiert ein serverseitig erzeugtes Registrierungs-PDF qualifiziert. Der Betreiber zeichnet gegen, zugestellt als signaturpflichtige Mail über [emailwerk](/docs/emailwerk). Die Antwortmail enthält einen Aktivierungslink mit einem vom Dienst signierten Berechtigungs-JWT. Erst der bestätigte Klick auf diesen Link provisioniert das Konto, idempotent und mit engem Zeitfenster. Bestehende Konten werden dabei bewusst nie automatisch mit einer Signatur verknüpft, weil die angegebene E-Mail-Adresse unbestätigt ist. Entwickelt wurde dieser Ablauf für ein Vereinsprojekt, bei dem nur beitreten kann, wessen Beitrittserklärung qualifiziert signiert und gegengezeichnet ist.
-
-## Qualität
-
-Der Dienst wird durch eine umfangreiche automatisierte Testsuite abgesichert, darunter Prüfungen gegen echte qualifizierte Signaturen und Live-Statusabfragen beim Aussteller. Mehrere Sicherheits-Reviews führten zu gezielten Härtungen, etwa gegen PKCE-Downgrade, gegen Logout-CSRF und für die Frische von OCSP-Antworten.
-
-Der Quellcode ist offen: [github.com/kleberbaum/qes-oidc](https://github.com/kleberbaum/qes-oidc).
+Der Code ist offen: [github.com/kleberbaum/qes-oidc](https://github.com/kleberbaum/qes-oidc).

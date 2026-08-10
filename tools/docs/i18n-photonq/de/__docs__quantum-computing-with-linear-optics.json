@@ -1,0 +1,3043 @@
+{
+ "oldPath": "/docs/quantum-computing-with-linear-optics",
+ "locale": "de",
+ "title": "Quantencomputing mit linearer Optik",
+ "description": "Lernen Sie die Grundlagen der linearen Optik kennen und wie man mit einzelnen Photonen Quantencomputing betreibt",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Quantencomputing mit linearer Optik",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 39,
+           "offset": 38
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 39,
+         "offset": 38
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Licht wird seit Jahrhunderten für verschiedenste Anwendungen genutzt, und gerade diese dabei gewonnene Expertise macht die photonische Plattform zu einem reifen Kandidaten für einen skalierbaren Quantencomputer. Photonische Chips sind heutzutage zunehmend verbreitet, und Photonen, die Teilchen des Lichts, besitzen viele bemerkenswerte Eigenschaften, die für ihren Einsatz in Quantenanwendungen von Vorteil sind. Im Folgenden wird das photonische Quantencomputing vorgestellt. Das zentrale Objekt ist dabei das Photon, und die Quantenberechnung erfolgt als eine Abfolge von Manipulationen von Photonen durch verschiedene optische Elemente.",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 40
+          },
+          "end": {
+           "line": 3,
+           "column": 572,
+           "offset": 611
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 40
+        },
+        "end": {
+         "line": 3,
+         "column": 572,
+         "offset": 611
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Photonen als Träger von Quanteninformation",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 4,
+           "offset": 616
+          },
+          "end": {
+           "line": 5,
+           "column": 46,
+           "offset": 658
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 613
+        },
+        "end": {
+         "line": 5,
+         "column": 46,
+         "offset": 658
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Die Teilchen des Lichts, die Photonen, haben viele verschiedene Eigenschaften: Sie breiten sich in einem gegebenen Medium entlang eines bestimmten Pfades aus, sie tragen eine bestimmte Polarisation, Frequenz und so weiter, und sie treffen zudem zu bestimmten Zeiten nach ihrer Erzeugung an einem gegebenen Ort ein. All diese Eigenschaften und mehr lassen sich als Darstellung von Information nutzen. Aus physikalischer Sicht sind Photonen nahezu perfekte Informationsträger, denn sie wechselwirken fast nicht mit ihrer Umgebung und werden daher nicht durch äußeres Rauschen und Störungen beeinträchtigt. Aus demselben Grund ist es allerdings schwierig, effiziente Geräte zu entwerfen, die Photonen kontrolliert miteinander wechselwirken lassen, um die Rechenleistung photonischer Computer zu steigern.",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 1,
+           "offset": 660
+          },
+          "end": {
+           "line": 7,
+           "column": 722,
+           "offset": 1381
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 660
+        },
+        "end": {
+         "line": 7,
+         "column": 722,
+         "offset": 1381
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Die Eigenschaft der Wahl ist sehr oft die ",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 1,
+           "offset": 1383
+          },
+          "end": {
+           "line": 9,
+           "column": 42,
+           "offset": 1424
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Polarisation",
+           "position": {
+            "start": {
+             "line": 9,
+             "column": 43,
+             "offset": 1425
+            },
+            "end": {
+             "line": 9,
+             "column": 55,
+             "offset": 1437
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 42,
+           "offset": 1424
+          },
+          "end": {
+           "line": 9,
+           "column": 56,
+           "offset": 1438
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " der Photonen. Ein Photon kann horizontal polarisiert sein, vertikal polarisiert oder alles dazwischen. Die Polarisation kann auch rechts- oder linkszirkular sein. In jedem Fall lässt sich die (reine) Polarisation eines gegebenen Photons als Quantensuperposition zweier extremer Zustände beschreiben, die üblicherweise mit ",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 56,
+           "offset": 1438
+          },
+          "end": {
+           "line": 9,
+           "column": 359,
+           "offset": 1741
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "|0\\rangle",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|0\\rangle"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 359,
+           "offset": 1741
+          },
+          "end": {
+           "line": 9,
+           "column": 370,
+           "offset": 1752
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " und ",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 370,
+           "offset": 1752
+          },
+          "end": {
+           "line": 9,
+           "column": 375,
+           "offset": 1757
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "|1\\rangle",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|1\\rangle"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 375,
+           "offset": 1757
+          },
+          "end": {
+           "line": 9,
+           "column": 386,
+           "offset": 1768
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " bezeichnet werden. Der Polarisationszustand des Photons entspricht dann der Formel",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 386,
+           "offset": 1768
+          },
+          "end": {
+           "line": 9,
+           "column": 452,
+           "offset": 1834
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 1383
+        },
+        "end": {
+         "line": 9,
+         "column": 452,
+         "offset": 1834
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "math",
+       "meta": null,
+       "value": "|\\psi\\rangle = \\alpha |0\\rangle + \\beta |1\\rangle,",
+       "position": {
+        "start": {
+         "line": 11,
+         "column": 1,
+         "offset": 1836
+        },
+        "end": {
+         "line": 13,
+         "column": 4,
+         "offset": 1898
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "wobei die beiden komplexen Zahlen ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 1,
+           "offset": 1900
+          },
+          "end": {
+           "line": 15,
+           "column": 31,
+           "offset": 1930
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\alpha",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\alpha"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 31,
+           "offset": 1930
+          },
+          "end": {
+           "line": 15,
+           "column": 39,
+           "offset": 1938
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " und ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 39,
+           "offset": 1938
+          },
+          "end": {
+           "line": 15,
+           "column": 44,
+           "offset": 1943
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "\\beta",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "\\beta"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 44,
+           "offset": 1943
+          },
+          "end": {
+           "line": 15,
+           "column": 51,
+           "offset": 1950
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " die Normierungsbedingung ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 51,
+           "offset": 1950
+          },
+          "end": {
+           "line": 15,
+           "column": 88,
+           "offset": 1987
+          }
+         }
+        },
+        {
+         "type": "inlineMath",
+         "value": "|\\alpha|^2 + |\\beta|^2 = 1",
+         "data": {
+          "hName": "code",
+          "hProperties": {
+           "className": [
+            "language-math",
+            "math-inline"
+           ]
+          },
+          "hChildren": [
+           {
+            "type": "text",
+            "value": "|\\alpha|^2 + |\\beta|^2 = 1"
+           }
+          ]
+         },
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 88,
+           "offset": 1987
+          },
+          "end": {
+           "line": 15,
+           "column": 116,
+           "offset": 2015
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " erfüllen. Wie in ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 116,
+           "offset": 2015
+          },
+          "end": {
+           "line": 15,
+           "column": 134,
+           "offset": 2033
+          }
+         }
+        },
+        {
+         "type": "link",
+         "title": null,
+         "url": "https://photonq.org/docs/quantum-computing-and-quantum-information/",
+         "children": [
+          {
+           "type": "text",
+           "value": "dem entsprechenden Abschnitt",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 135,
+             "offset": 2034
+            },
+            "end": {
+             "line": 15,
+             "column": 155,
+             "offset": 2054
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 134,
+           "offset": 2033
+          },
+          "end": {
+           "line": 15,
+           "column": 225,
+           "offset": 2124
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " erläutert, stellt dieser zweidimensionale Zustand ein ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 225,
+           "offset": 2124
+          },
+          "end": {
+           "line": 15,
+           "column": 267,
+           "offset": 2166
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Qubit",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 268,
+             "offset": 2167
+            },
+            "end": {
+             "line": 15,
+             "column": 273,
+             "offset": 2172
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 267,
+           "offset": 2166
+          },
+          "end": {
+           "line": 15,
+           "column": 274,
+           "offset": 2173
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " dar, die Einheit der Quanteninformation. Eine weitere beliebte Eigenschaft von Photonen, die zur Darstellung von Qubits genutzt wird, ist ihr ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 274,
+           "offset": 2173
+          },
+          "end": {
+           "line": 15,
+           "column": 387,
+           "offset": 2286
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Pfad",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 388,
+             "offset": 2287
+            },
+            "end": {
+             "line": 15,
+             "column": 392,
+             "offset": 2291
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 387,
+           "offset": 2286
+          },
+          "end": {
+           "line": 15,
+           "column": 393,
+           "offset": 2292
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ". Das Qubit entspricht dann einem Photon, das sich entlang des einen oder des anderen Pfades ausbreitet, und dieses Szenario wird üblicherweise als ",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 393,
+           "offset": 2292
+          },
+          "end": {
+           "line": 15,
+           "column": 519,
+           "offset": 2418
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Dual-Rail-Kodierung",
+           "position": {
+            "start": {
+             "line": 15,
+             "column": 520,
+             "offset": 2419
+            },
+            "end": {
+             "line": 15,
+             "column": 538,
+             "offset": 2437
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 519,
+           "offset": 2418
+          },
+          "end": {
+           "line": 15,
+           "column": 539,
+           "offset": 2438
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " bezeichnet.",
+         "position": {
+          "start": {
+           "line": 15,
+           "column": 539,
+           "offset": 2438
+          },
+          "end": {
+           "line": 15,
+           "column": 540,
+           "offset": 2439
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 15,
+         "column": 1,
+         "offset": 1900
+        },
+        "end": {
+         "line": 15,
+         "column": 540,
+         "offset": 2439
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Quantenhardware",
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 4,
+           "offset": 2444
+          },
+          "end": {
+           "line": 17,
+           "column": 20,
+           "offset": 2460
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 17,
+         "column": 1,
+         "offset": 2441
+        },
+        "end": {
+         "line": 17,
+         "column": 20,
+         "offset": 2460
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Das Quantencomputing mit Photonen wird auf der untersten Ebene durch eine Reihe optischer Elemente wie Strahlteiler realisiert. Diese Elemente bilden Bausteine für kompliziertere optische Gatter mit einigen schönen Eigenschaften. Diese Gatter werden wiederum zu einem bestimmten Netzwerk zusammengesetzt, das einem konkreten Quantenalgorithmus entspricht. Im Folgenden werden all diese Abstraktionsebenen im Detail beschrieben: optische Elemente, optische Gatter und schließlich Rechenarchitekturen, die Quantenalgorithmen implementieren.",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 1,
+           "offset": 2462
+          },
+          "end": {
+           "line": 19,
+           "column": 510,
+           "offset": 2971
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 19,
+         "column": 1,
+         "offset": 2462
+        },
+        "end": {
+         "line": 19,
+         "column": 510,
+         "offset": 2971
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Optische Elemente",
+         "position": {
+          "start": {
+           "line": 21,
+           "column": 5,
+           "offset": 2977
+          },
+          "end": {
+           "line": 21,
+           "column": 21,
+           "offset": 2993
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 21,
+         "column": 1,
+         "offset": 2973
+        },
+        "end": {
+         "line": 21,
+         "column": 21,
+         "offset": 2993
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Es gibt verschiedene Methoden, einen Lichtstrahl zu manipulieren: Spiegel reflektieren den Strahl, Linsen fokussieren oder defokussieren ihn, Filter lassen nur bestimmte Farben durch und so weiter. Ein wichtiges optisches Element ist der ",
+         "position": {
+          "start": {
+           "line": 23,
+           "column": 1,
+           "offset": 2995
+          },
+          "end": {
+           "line": 23,
+           "column": 209,
+           "offset": 3203
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Strahlteiler",
+           "position": {
+            "start": {
+             "line": 23,
+             "column": 210,
+             "offset": 3204
+            },
+            "end": {
+             "line": 23,
+             "column": 223,
+             "offset": 3217
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 23,
+           "column": 209,
+           "offset": 3203
+          },
+          "end": {
+           "line": 23,
+           "column": 224,
+           "offset": 3218
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", dessen Foto unten zu sehen ist und der den einfallenden Strahl teilweise reflektiert und teilweise durchlässt. Genau dieselben optischen Elemente lassen sich auch verwenden, um einzelne Photonen zu manipulieren. Bei der Beschreibung der Wirkung dieser Elemente muss man jedoch vorsichtiger sein. Ein Photon ist ein unteilbares Elementarteilchen und kann nicht in kleinere Bestandteile zerlegt werden. Deshalb können wir nicht sagen, dass ein Strahlteiler das einfallende Photon aufteilt, einen Teil durchlässt und den anderen reflektiert. Stattdessen erzeugt der Strahlteiler eine Quantensuperposition zweier Möglichkeiten: Entweder wird das Photon durchgelassen oder reflektiert, und zwar so, dass diese beiden Möglichkeiten Interferenz zeigen. Das Photon verhält sich in gewissem Sinne so, als wäre es gleichzeitig durchgelassen und reflektiert worden.",
+         "position": {
+          "start": {
+           "line": 23,
+           "column": 224,
+           "offset": 3218
+          },
+          "end": {
+           "line": 23,
+           "column": 1016,
+           "offset": 4010
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 23,
+         "column": 1,
+         "offset": 2995
+        },
+        "end": {
+         "line": 23,
+         "column": 1016,
+         "offset": 4010
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-3nj1ch",
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 8,
+             "offset": 4028
+            },
+            "end": {
+             "line": 26,
+             "column": 27,
+             "offset": 4047
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 28,
+             "offset": 4048
+            },
+            "end": {
+             "line": 26,
+             "column": 41,
+             "offset": 4061
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Optical-beam-splitter_big.jpg",
+           "position": {
+            "start": {
+             "line": 26,
+             "column": 42,
+             "offset": 4062
+            },
+            "end": {
+             "line": 26,
+             "column": 138,
+             "offset": 4158
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 26,
+           "column": 1,
+           "offset": 4021
+          },
+          "end": {
+           "line": 26,
+           "column": 141,
+           "offset": 4161
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(Quelle: Wikipedia)",
+             "position": {
+              "start": {
+               "line": 28,
+               "column": 2,
+               "offset": 4164
+              },
+              "end": {
+               "line": 28,
+               "column": 21,
+               "offset": 4183
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 28,
+             "column": 1,
+             "offset": 4163
+            },
+            "end": {
+             "line": 28,
+             "column": 22,
+             "offset": 4184
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 28,
+           "column": 1,
+           "offset": 4163
+          },
+          "end": {
+           "line": 28,
+           "column": 22,
+           "offset": 4184
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 25,
+         "column": 1,
+         "offset": 4012
+        },
+        "end": {
+         "line": 29,
+         "column": 10,
+         "offset": 4194
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Neben Strahlteilern und den bereits erwähnten Elementen gibt es eine weitere Klasse von Elementen, welche die Polarisation des Photons beeinflussen. Das wichtigste davon ist der ",
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 1,
+           "offset": 4196
+          },
+          "end": {
+           "line": 31,
+           "column": 157,
+           "offset": 4352
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "polarisierende Strahlteiler",
+           "position": {
+            "start": {
+             "line": 31,
+             "column": 158,
+             "offset": 4353
+            },
+            "end": {
+             "line": 31,
+             "column": 182,
+             "offset": 4377
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 157,
+           "offset": 4352
+          },
+          "end": {
+           "line": 31,
+           "column": 183,
+           "offset": 4378
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", kurz PBS und unten schematisch dargestellt. Trotz seines Namens unterscheidet sich seine Wirkung auf Photonen deutlich vom Strahlteiler: Der PBS lässt horizontal polarisierte Photonen durch und reflektiert die vertikal polarisierten. Auf diese Weise können wir die in der Polarisation von Photonen gespeicherte Information in ihren Ausbreitungspfad überführen. Das letzte Element, das für das Quantencomputing mit Photonen entscheidend ist, ist die Phasenverzögerung oder der Phasenschieber. Photonen, die sich entlang verschiedener Pfade ausbreiten, tragen eine bestimmte Phase mit sich, und ein Phasenschieber kann diese Phase verändern. Es zeigt sich, dass Phasenschieber, Spiegel und Strahlteiler alles sind, was man braucht, um eine beliebige unitäre Operation auf Qudits zu implementieren, die in die Ausbreitungspfade eines einzelnen Photons kodiert sind.",
+         "position": {
+          "start": {
+           "line": 31,
+           "column": 183,
+           "offset": 4378
+          },
+          "end": {
+           "line": 31,
+           "column": 917,
+           "offset": 5112
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 31,
+         "column": 1,
+         "offset": 4196
+        },
+        "end": {
+         "line": 31,
+         "column": 917,
+         "offset": 5112
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-6gqyng",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 8,
+             "offset": 5130
+            },
+            "end": {
+             "line": 34,
+             "column": 27,
+             "offset": 5149
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 28,
+             "offset": 5150
+            },
+            "end": {
+             "line": 34,
+             "column": 41,
+             "offset": 5163
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://upload.wikimedia.org/wikipedia/commons/d/da/Glan-taylor.png",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 42,
+             "offset": 5164
+            },
+            "end": {
+             "line": 34,
+             "column": 124,
+             "offset": 5246
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 34,
+           "column": 1,
+           "offset": 5123
+          },
+          "end": {
+           "line": 34,
+           "column": 127,
+           "offset": 5249
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(Quelle: Wikipedia)",
+             "position": {
+              "start": {
+               "line": 36,
+               "column": 2,
+               "offset": 5252
+              },
+              "end": {
+               "line": 36,
+               "column": 21,
+               "offset": 5271
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 36,
+             "column": 1,
+             "offset": 5251
+            },
+            "end": {
+             "line": 36,
+             "column": 22,
+             "offset": 5272
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 36,
+           "column": 1,
+           "offset": 5251
+          },
+          "end": {
+           "line": 36,
+           "column": 22,
+           "offset": 5272
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 33,
+         "column": 1,
+         "offset": 5114
+        },
+        "end": {
+         "line": 37,
+         "column": 10,
+         "offset": 5282
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Auch wenn uns reichlich Licht umgibt, ist es gar nicht so einfach, einzelne Photonen mit Eigenschaften zu erhalten, die für das Quantencomputing geeignet sind. Es gibt spezielle Quellen einzelner Photonen, von denen die meisten auf nichtlinearen optischen Prozessen in speziellen Kristallen beruhen. Nach ihrer Erzeugung durchlaufen die einzelnen Photonen verschiedene Operationen durch eine Abfolge optischer Elemente, und ganz am Ende werden die Photonen mit sehr empfindlichen Einzelphotonendetektoren nachgewiesen. Diese Detektion ist nicht bloß ein Auslesen des Photonenzustands. Sie kann vielmehr als integraler Bestandteil der Berechnung selbst gesehen werden, und es gibt viele Techniken, die die Detektion des Photons als aktiven Teil der Quantenberechnung nutzen.",
+         "position": {
+          "start": {
+           "line": 39,
+           "column": 1,
+           "offset": 5284
+          },
+          "end": {
+           "line": 39,
+           "column": 706,
+           "offset": 5989
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 39,
+         "column": 1,
+         "offset": 5284
+        },
+        "end": {
+         "line": 39,
+         "column": 706,
+         "offset": 5989
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Optische Gatter",
+         "position": {
+          "start": {
+           "line": 41,
+           "column": 5,
+           "offset": 5995
+          },
+          "end": {
+           "line": 41,
+           "column": 18,
+           "offset": 6008
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 41,
+         "column": 1,
+         "offset": 5991
+        },
+        "end": {
+         "line": 41,
+         "column": 18,
+         "offset": 6008
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Die im vorherigen Abschnitt genannten optischen Elemente sind meist zu elementar, um für fortgeschrittenere Photonenmanipulation auszureichen. Deshalb entwirft man einen gegebenen Algorithmus üblicherweise mit photonischen Gattern. Diese Gatter sind kleine optische Aufbauten aus mehreren optischen Elementen, oft ergänzt durch Photonendetektoren. Bemerkenswerte Beispiele photonischer Gatter sind Fusionsgatter, die in zwei Typen vorkommen",
+         "position": {
+          "start": {
+           "line": 43,
+           "column": 1,
+           "offset": 6010
+          },
+          "end": {
+           "line": 43,
+           "column": 408,
+           "offset": 6417
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 43,
+           "column": 408,
+           "offset": 6417
+          },
+          "end": {
+           "line": 43,
+           "column": 412,
+           "offset": 6421
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ":",
+         "position": {
+          "start": {
+           "line": 43,
+           "column": 412,
+           "offset": 6421
+          },
+          "end": {
+           "line": 43,
+           "column": 413,
+           "offset": 6422
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 43,
+         "column": 1,
+         "offset": 6010
+        },
+        "end": {
+         "line": 43,
+         "column": 413,
+         "offset": 6422
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "1",
+       "label": "1",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "Browne, Daniel E., and Terry Rudolph. “Resource-Efficient Linear Optical Quantum Computation.” Physical Review Letters, vol. 95, no. 1, June 2005, p. 010501. APS, ",
+           "position": {
+            "start": {
+             "line": 45,
+             "column": 7,
+             "offset": 6430
+            },
+            "end": {
+             "line": 45,
+             "column": 170,
+             "offset": 6593
+            }
+           }
+          },
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://doi.org/10.1103/PhysRevLett.95.010501",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://doi.org/10.1103/PhysRevLett.95.010501",
+             "position": {
+              "start": {
+               "line": 45,
+               "column": 171,
+               "offset": 6594
+              },
+              "end": {
+               "line": 45,
+               "column": 216,
+               "offset": 6639
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 45,
+             "column": 170,
+             "offset": 6593
+            },
+            "end": {
+             "line": 45,
+             "column": 264,
+             "offset": 6687
+            }
+           }
+          },
+          {
+           "type": "text",
+           "value": ".",
+           "position": {
+            "start": {
+             "line": 45,
+             "column": 264,
+             "offset": 6687
+            },
+            "end": {
+             "line": 45,
+             "column": 265,
+             "offset": 6688
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 45,
+           "column": 7,
+           "offset": 6430
+          },
+          "end": {
+           "line": 45,
+           "column": 265,
+           "offset": 6688
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 45,
+         "column": 1,
+         "offset": 6424
+        },
+        "end": {
+         "line": 45,
+         "column": 265,
+         "offset": 6688
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 4,
+       "children": [
+        {
+         "type": "text",
+         "value": "Fusionsgatter Typ I",
+         "position": {
+          "start": {
+           "line": 47,
+           "column": 6,
+           "offset": 6695
+          },
+          "end": {
+           "line": 47,
+           "column": 24,
+           "offset": 6713
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 47,
+         "column": 1,
+         "offset": 6690
+        },
+        "end": {
+         "line": 47,
+         "column": 24,
+         "offset": 6713
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Das Fusionsgatter vom Typ I, auch bekannt als ",
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 1,
+           "offset": 6715
+          },
+          "end": {
+           "line": 49,
+           "column": 37,
+           "offset": 6751
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Paritätsprüfung",
+           "position": {
+            "start": {
+             "line": 49,
+             "column": 38,
+             "offset": 6752
+            },
+            "end": {
+             "line": 49,
+             "column": 50,
+             "offset": 6764
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 37,
+           "offset": 6751
+          },
+          "end": {
+           "line": 49,
+           "column": 51,
+           "offset": 6765
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", nimmt zwei Photonen entgegen und prüft, ob sie dieselbe Polarisation besitzen, entweder horizontal oder vertikal. Wenn ja, wird ein Photon detektiert und das andere zurückgegeben. Das Gatter besteht aus einem PBS, einem Wellenplättchen, das die Polarisation um 45 Grad dreht, und einem Einzelphotonendetektor an einem der Ausgänge des PBS. Der vollständige Aufbau ist in der folgenden Abbildung gezeigt:",
+         "position": {
+          "start": {
+           "line": 49,
+           "column": 51,
+           "offset": 6765
+          },
+          "end": {
+           "line": 49,
+           "column": 422,
+           "offset": 7136
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 49,
+         "column": 1,
+         "offset": 6715
+        },
+        "end": {
+         "line": 49,
+         "column": 422,
+         "offset": 7136
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-t3kpu",
+           "position": {
+            "start": {
+             "line": 52,
+             "column": 8,
+             "offset": 7154
+            },
+            "end": {
+             "line": 52,
+             "column": 26,
+             "offset": 7172
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 52,
+             "column": 27,
+             "offset": 7173
+            },
+            "end": {
+             "line": 52,
+             "column": 40,
+             "offset": 7186
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://via.placeholder.com/150",
+           "position": {
+            "start": {
+             "line": 52,
+             "column": 41,
+             "offset": 7187
+            },
+            "end": {
+             "line": 52,
+             "column": 87,
+             "offset": 7233
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 52,
+           "column": 1,
+           "offset": 7147
+          },
+          "end": {
+           "line": 52,
+           "column": 90,
+           "offset": 7236
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(Quelle: ArXiv)",
+             "position": {
+              "start": {
+               "line": 53,
+               "column": 2,
+               "offset": 7238
+              },
+              "end": {
+               "line": 53,
+               "column": 17,
+               "offset": 7253
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 53,
+             "column": 1,
+             "offset": 7237
+            },
+            "end": {
+             "line": 53,
+             "column": 18,
+             "offset": 7254
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 53,
+           "column": 1,
+           "offset": 7237
+          },
+          "end": {
+           "line": 53,
+           "column": 18,
+           "offset": 7254
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 51,
+         "column": 1,
+         "offset": 7138
+        },
+        "end": {
+         "line": 54,
+         "column": 10,
+         "offset": 7264
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Dieses Gatter erlaubt es, zwei Cluster-Zustände miteinander zu verschmelzen, und ermöglicht so die Erzeugung großer Cluster-Zustände, die für das messbasierte Quantencomputing notwendig sind.",
+         "position": {
+          "start": {
+           "line": 56,
+           "column": 1,
+           "offset": 7266
+          },
+          "end": {
+           "line": 56,
+           "column": 161,
+           "offset": 7426
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 56,
+         "column": 1,
+         "offset": 7266
+        },
+        "end": {
+         "line": 56,
+         "column": 161,
+         "offset": 7426
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 4,
+       "children": [
+        {
+         "type": "text",
+         "value": "Fusionsgatter Typ II",
+         "position": {
+          "start": {
+           "line": 58,
+           "column": 6,
+           "offset": 7433
+          },
+          "end": {
+           "line": 58,
+           "column": 25,
+           "offset": 7452
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 58,
+         "column": 1,
+         "offset": 7428
+        },
+        "end": {
+         "line": 58,
+         "column": 25,
+         "offset": 7452
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Das Fusionsgatter vom Typ II ist eine Abwandlung von Typ I, bei der sich an jedem Port des PBS ein Wellenplättchen befindet und beide Photonen detektiert werden. Der Aufbau des Gatters lautet explizit:",
+         "position": {
+          "start": {
+           "line": 60,
+           "column": 1,
+           "offset": 7454
+          },
+          "end": {
+           "line": 60,
+           "column": 168,
+           "offset": 7621
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 60,
+         "column": 1,
+         "offset": 7454
+        },
+        "end": {
+         "line": 60,
+         "column": 168,
+         "offset": 7621
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "mdxJsxFlowElement",
+         "name": "Image",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "name",
+           "value": "image-7a1hj",
+           "position": {
+            "start": {
+             "line": 63,
+             "column": 8,
+             "offset": 7639
+            },
+            "end": {
+             "line": 63,
+             "column": 26,
+             "offset": 7657
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "width",
+           "value": "300px",
+           "position": {
+            "start": {
+             "line": 63,
+             "column": 27,
+             "offset": 7658
+            },
+            "end": {
+             "line": 63,
+             "column": 40,
+             "offset": 7671
+            }
+           }
+          },
+          {
+           "type": "mdxJsxAttribute",
+           "name": "defaultValue",
+           "value": "https://via.placeholder.com/150",
+           "position": {
+            "start": {
+             "line": 63,
+             "column": 41,
+             "offset": 7672
+            },
+            "end": {
+             "line": 63,
+             "column": 87,
+             "offset": 7718
+            }
+           }
+          }
+         ],
+         "children": [],
+         "position": {
+          "start": {
+           "line": 63,
+           "column": 1,
+           "offset": 7632
+          },
+          "end": {
+           "line": 63,
+           "column": 90,
+           "offset": 7721
+          }
+         },
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(Quelle: ArXiv)",
+             "position": {
+              "start": {
+               "line": 65,
+               "column": 2,
+               "offset": 7724
+              },
+              "end": {
+               "line": 65,
+               "column": 17,
+               "offset": 7739
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 65,
+             "column": 1,
+             "offset": 7723
+            },
+            "end": {
+             "line": 65,
+             "column": 18,
+             "offset": 7740
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 65,
+           "column": 1,
+           "offset": 7723
+          },
+          "end": {
+           "line": 65,
+           "column": 18,
+           "offset": 7740
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 62,
+         "column": 1,
+         "offset": 7623
+        },
+        "end": {
+         "line": 66,
+         "column": 10,
+         "offset": 7750
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Auch dieses Gatter wird bei der Erzeugung von Cluster-Zuständen eingesetzt. Wird von jedem Detektor genau ein Photon detektiert, führt das Gatter eine projektive Messung auf einen maximal verschränkten Zustand durch.",
+         "position": {
+          "start": {
+           "line": 68,
+           "column": 1,
+           "offset": 7752
+          },
+          "end": {
+           "line": 68,
+           "column": 191,
+           "offset": 7942
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 68,
+         "column": 1,
+         "offset": 7752
+        },
+        "end": {
+         "line": 68,
+         "column": 191,
+         "offset": 7942
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 4,
+       "children": [
+        {
+         "type": "text",
+         "value": "Strahlteiler und HOM-Interferenz",
+         "position": {
+          "start": {
+           "line": 70,
+           "column": 6,
+           "offset": 7949
+          },
+          "end": {
+           "line": 70,
+           "column": 40,
+           "offset": 7983
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 70,
+         "column": 1,
+         "offset": 7944
+        },
+        "end": {
+         "line": 70,
+         "column": 40,
+         "offset": 7983
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ein einzelner Strahlteiler kann auch als Gatter betrachtet werden, das auf zwei Photonen wirkt. Wenn zwei identische Photonen gleichzeitig aus zwei verschiedenen Eingängen auf einen symmetrischen Strahlteiler treffen, durchlaufen sie ein rein quantenmechanisches Phänomen namens ",
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 1,
+           "offset": 7985
+          },
+          "end": {
+           "line": 72,
+           "column": 233,
+           "offset": 8217
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "Hong-Ou-Mandel-Interferenz (HOM)",
+           "position": {
+            "start": {
+             "line": 72,
+             "column": 234,
+             "offset": 8218
+            },
+            "end": {
+             "line": 72,
+             "column": 267,
+             "offset": 8251
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 233,
+           "offset": 8217
+          },
+          "end": {
+           "line": 72,
+           "column": 268,
+           "offset": 8252
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ". Es bedeutet, dass die beiden Photonen den Strahlteiler nie getrennt verlassen: Entweder verlassen beide ihn über den einen oder beide über den anderen Ausgang.",
+         "position": {
+          "start": {
+           "line": 72,
+           "column": 268,
+           "offset": 8252
+          },
+          "end": {
+           "line": 72,
+           "column": 407,
+           "offset": 8391
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 72,
+         "column": 1,
+         "offset": 7985
+        },
+        "end": {
+         "line": 72,
+         "column": 407,
+         "offset": 8391
+        }
+       }
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "center",
+       "attributes": [],
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "mdxJsxTextElement",
+           "name": "Image",
+           "attributes": [
+            {
+             "type": "mdxJsxAttribute",
+             "name": "name",
+             "value": "image-hom",
+             "position": {
+              "start": {
+               "line": 75,
+               "column": 8,
+               "offset": 8409
+              },
+              "end": {
+               "line": 75,
+               "column": 24,
+               "offset": 8425
+              }
+             }
+            },
+            {
+             "type": "mdxJsxAttribute",
+             "name": "defaultValue",
+             "value": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Hong_Ou_Mandel_effect.png",
+             "position": {
+              "start": {
+               "line": 75,
+               "column": 25,
+               "offset": 8426
+              },
+              "end": {
+               "line": 75,
+               "column": 117,
+               "offset": 8518
+              }
+             }
+            }
+           ],
+           "children": [
+            {
+             "type": "text",
+             "value": "HOM-Effekt",
+             "position": {
+              "start": {
+               "line": 75,
+               "column": 118,
+               "offset": 8519
+              },
+              "end": {
+               "line": 75,
+               "column": 128,
+               "offset": 8529
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 75,
+             "column": 1,
+             "offset": 8402
+            },
+            "end": {
+             "line": 75,
+             "column": 136,
+             "offset": 8537
+            }
+           },
+           "data": {
+            "_mdxExplicitJsx": true
+           }
+          },
+          {
+           "type": "text",
+           "value": "\n",
+           "position": {
+            "start": {
+             "line": 75,
+             "column": 136,
+             "offset": 8537
+            },
+            "end": {
+             "line": 76,
+             "column": 1,
+             "offset": 8538
+            }
+           }
+          },
+          {
+           "type": "emphasis",
+           "children": [
+            {
+             "type": "text",
+             "value": "(Quelle: Wikipedia)",
+             "position": {
+              "start": {
+               "line": 76,
+               "column": 2,
+               "offset": 8539
+              },
+              "end": {
+               "line": 76,
+               "column": 21,
+               "offset": 8558
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 76,
+             "column": 1,
+             "offset": 8538
+            },
+            "end": {
+             "line": 76,
+             "column": 22,
+             "offset": 8559
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 75,
+           "column": 1,
+           "offset": 8402
+          },
+          "end": {
+           "line": 76,
+           "column": 22,
+           "offset": 8559
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 74,
+         "column": 1,
+         "offset": 8393
+        },
+        "end": {
+         "line": 77,
+         "column": 10,
+         "offset": 8569
+        }
+       },
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Optische Rechenarchitekturen",
+         "position": {
+          "start": {
+           "line": 79,
+           "column": 4,
+           "offset": 8574
+          },
+          "end": {
+           "line": 79,
+           "column": 35,
+           "offset": 8605
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 79,
+         "column": 1,
+         "offset": 8571
+        },
+        "end": {
+         "line": 79,
+         "column": 35,
+         "offset": 8605
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Es gibt verschiedene Rechenarchitekturen, die auf den optischen Elementen und Gattern aufbauen. Drei der wichtigsten Architekturen werden im Folgenden vorgestellt.",
+         "position": {
+          "start": {
+           "line": 81,
+           "column": 1,
+           "offset": 8607
+          },
+          "end": {
+           "line": 81,
+           "column": 155,
+           "offset": 8761
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 81,
+         "column": 1,
+         "offset": 8607
+        },
+        "end": {
+         "line": 81,
+         "column": 155,
+         "offset": 8761
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Boson-Sampling",
+         "position": {
+          "start": {
+           "line": 83,
+           "column": 5,
+           "offset": 8767
+          },
+          "end": {
+           "line": 83,
+           "column": 19,
+           "offset": 8781
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 83,
+         "column": 1,
+         "offset": 8763
+        },
+        "end": {
+         "line": 83,
+         "column": 19,
+         "offset": 8781
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Boson-Sampling bezeichnet ein Szenario, bei dem mehrere Photonen in ein riesiges Interferometer aus vielen Strahlteilern eingespeist und anschließend an jedem Ausgang des Interferometers detektiert werden. Es lässt sich zeigen, dass es für einen klassischen Computer sehr schwer ist, die Wahrscheinlichkeiten abzuschätzen, mit denen die Photonen von den einzelnen Detektoren nachgewiesen werden",
+         "position": {
+          "start": {
+           "line": 85,
+           "column": 1,
+           "offset": 8783
+          },
+          "end": {
+           "line": 85,
+           "column": 361,
+           "offset": 9143
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "boson",
+         "label": "boson",
+         "position": {
+          "start": {
+           "line": 85,
+           "column": 361,
+           "offset": 9143
+          },
+          "end": {
+           "line": 85,
+           "column": 369,
+           "offset": 9151
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ".",
+         "position": {
+          "start": {
+           "line": 85,
+           "column": 369,
+           "offset": 9151
+          },
+          "end": {
+           "line": 85,
+           "column": 370,
+           "offset": 9152
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 85,
+         "column": 1,
+         "offset": 8783
+        },
+        "end": {
+         "line": 85,
+         "column": 370,
+         "offset": 9152
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Boson-Sampling stellt damit eine Plattform dar, um den Quantenvorteil zu demonstrieren, da seine experimentellen Anforderungen vergleichsweise bescheiden sind. Andererseits bietet diese Plattform nur eingeschränkte Funktionalität und erlaubt kein universelles Quantencomputing.",
+         "position": {
+          "start": {
+           "line": 87,
+           "column": 1,
+           "offset": 9154
+          },
+          "end": {
+           "line": 87,
+           "column": 266,
+           "offset": 9419
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 87,
+         "column": 1,
+         "offset": 9154
+        },
+        "end": {
+         "line": 87,
+         "column": 266,
+         "offset": 9419
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "boson",
+       "label": "boson",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "Aaronson, Scott, and Alex Arkhipov. “[No Title Found].” Theory of Computing, vol. 9, no. 1, 2013, pp. 143–252. DOI.org (Crossref), ",
+           "position": {
+            "start": {
+             "line": 89,
+             "column": 11,
+             "offset": 9431
+            },
+            "end": {
+             "line": 89,
+             "column": 143,
+             "offset": 9563
+            }
+           }
+          },
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://doi.org/10.4086/toc.2013.v009a004",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://doi.org/10.4086/toc.2013.v009a004",
+             "position": {
+              "start": {
+               "line": 89,
+               "column": 144,
+               "offset": 9564
+              },
+              "end": {
+               "line": 89,
+               "column": 185,
+               "offset": 9605
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 89,
+             "column": 143,
+             "offset": 9563
+            },
+            "end": {
+             "line": 89,
+             "column": 229,
+             "offset": 9649
+            }
+           }
+          },
+          {
+           "type": "text",
+           "value": ".",
+           "position": {
+            "start": {
+             "line": 89,
+             "column": 229,
+             "offset": 9649
+            },
+            "end": {
+             "line": 89,
+             "column": 230,
+             "offset": 9650
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 89,
+           "column": 11,
+           "offset": 9431
+          },
+          "end": {
+           "line": 89,
+           "column": 230,
+           "offset": 9650
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 89,
+         "column": 1,
+         "offset": 9421
+        },
+        "end": {
+         "line": 89,
+         "column": 230,
+         "offset": 9650
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "KLM-Schema",
+         "position": {
+          "start": {
+           "line": 91,
+           "column": 5,
+           "offset": 9656
+          },
+          "end": {
+           "line": 91,
+           "column": 15,
+           "offset": 9666
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 91,
+         "column": 1,
+         "offset": 9652
+        },
+        "end": {
+         "line": 91,
+         "column": 15,
+         "offset": 9666
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Um skalierbares Quantencomputing zu erreichen, braucht man die Fähigkeit, verschiedene Photonenpaare auf vorgeschriebene Weise miteinander wechselwirken zu lassen. Ein natürlicher Kandidat für eine solche Wechselwirkung sind nichtlineare Eigenschaften mancher optischer Medien, deren Eigenschaften sich abhängig von der Intensität des propagierenden Lichts ändern. Solche nichtlinearen Eigenschaften sind jedoch zu schwach, um bei einzelnen Photonen bemerkbar zu sein, und eignen sich daher nicht für reale Anwendungen. Stattdessen kann man die Detektion eines Photons in die Berechnung einbeziehen und damit eine effektive Nichtlinearität herbeiführen. Diese ",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 1,
+           "offset": 9668
+          },
+          "end": {
+           "line": 93,
+           "column": 592,
+           "offset": 10259
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "messinduzierte Nichtlinearität",
+           "position": {
+            "start": {
+             "line": 93,
+             "column": 593,
+             "offset": 10260
+            },
+            "end": {
+             "line": 93,
+             "column": 626,
+             "offset": 10293
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 592,
+           "offset": 10259
+          },
+          "end": {
+           "line": 93,
+           "column": 627,
+           "offset": 10294
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " lässt sich nutzen, um universelle Quantenberechnung in einem Schema durchzuführen, das als ",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 627,
+           "offset": 10294
+          },
+          "end": {
+           "line": 93,
+           "column": 707,
+           "offset": 10374
+          }
+         }
+        },
+        {
+         "type": "emphasis",
+         "children": [
+          {
+           "type": "text",
+           "value": "KLM-Schema",
+           "position": {
+            "start": {
+             "line": 93,
+             "column": 708,
+             "offset": 10375
+            },
+            "end": {
+             "line": 93,
+             "column": 718,
+             "offset": 10385
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 707,
+           "offset": 10374
+          },
+          "end": {
+           "line": 93,
+           "column": 719,
+           "offset": 10386
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "klm",
+         "label": "klm",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 719,
+           "offset": 10386
+          },
+          "end": {
+           "line": 93,
+           "column": 725,
+           "offset": 10392
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " bekannt ist. Der Nachteil dieses Ansatzes ist, dass er nichtdeterministisch ist: Manchmal schlägt die Berechnung fehl und muss in der Regel viele Male wiederholt werden.",
+         "position": {
+          "start": {
+           "line": 93,
+           "column": 725,
+           "offset": 10392
+          },
+          "end": {
+           "line": 93,
+           "column": 864,
+           "offset": 10531
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 93,
+         "column": 1,
+         "offset": 9668
+        },
+        "end": {
+         "line": 93,
+         "column": 864,
+         "offset": 10531
+        }
+       }
+      },
+      {
+       "type": "footnoteDefinition",
+       "identifier": "klm",
+       "label": "klm",
+       "children": [
+        {
+         "type": "paragraph",
+         "children": [
+          {
+           "type": "text",
+           "value": "Knill, E., et al. “A Scheme for Efficient Quantum Computation with Linear Optics.” Nature, vol. 409, no. 6816, Jan. 2001, pp. 46–52. DOI.org (Crossref), ",
+           "position": {
+            "start": {
+             "line": 95,
+             "column": 9,
+             "offset": 10541
+            },
+            "end": {
+             "line": 95,
+             "column": 162,
+             "offset": 10694
+            }
+           }
+          },
+          {
+           "type": "link",
+           "title": null,
+           "url": "https://doi.org/10.1038/35051009",
+           "children": [
+            {
+             "type": "text",
+             "value": "https://doi.org/10.1038/35051009",
+             "position": {
+              "start": {
+               "line": 95,
+               "column": 163,
+               "offset": 10695
+              },
+              "end": {
+               "line": 95,
+               "column": 195,
+               "offset": 10727
+              }
+             }
+            }
+           ],
+           "position": {
+            "start": {
+             "line": 95,
+             "column": 162,
+             "offset": 10694
+            },
+            "end": {
+             "line": 95,
+             "column": 230,
+             "offset": 10762
+            }
+           }
+          },
+          {
+           "type": "text",
+           "value": ".",
+           "position": {
+            "start": {
+             "line": 95,
+             "column": 230,
+             "offset": 10762
+            },
+            "end": {
+             "line": 95,
+             "column": 231,
+             "offset": 10763
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 95,
+           "column": 9,
+           "offset": 10541
+          },
+          "end": {
+           "line": 95,
+           "column": 231,
+           "offset": 10763
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 95,
+         "column": 1,
+         "offset": 10533
+        },
+        "end": {
+         "line": 95,
+         "column": 231,
+         "offset": 10763
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "Messbasiertes Schema",
+         "position": {
+          "start": {
+           "line": 97,
+           "column": 5,
+           "offset": 10769
+          },
+          "end": {
+           "line": 97,
+           "column": 29,
+           "offset": 10793
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 97,
+         "column": 1,
+         "offset": 10765
+        },
+        "end": {
+         "line": 97,
+         "column": 29,
+         "offset": 10793
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Ein vielversprechender Ansatz für das Quantencomputing ist das messbasierte Schema, bei dem die Photonen zunächst in einem riesigen verschränkten Zustand präpariert werden, dem sogenannten Cluster-Zustand, und die Berechnung selbst dann nur noch aus Einzelphotonenmessungen besteht. Die Schwierigkeit, Photonen wechselwirken zu lassen, verlagert sich damit ganz an den Anfang, also auf die Erzeugung des Cluster-Zustands. Es gab viele Vorschläge, wie sich solche Zustände mit Photonen effizient herstellen lassen. Einer der vielversprechendsten beruht auf Fusionsgattern",
+         "position": {
+          "start": {
+           "line": 99,
+           "column": 1,
+           "offset": 10795
+          },
+          "end": {
+           "line": 99,
+           "column": 513,
+           "offset": 11307
+          }
+         }
+        },
+        {
+         "type": "footnoteReference",
+         "identifier": "1",
+         "label": "1",
+         "position": {
+          "start": {
+           "line": 99,
+           "column": 513,
+           "offset": 11307
+          },
+          "end": {
+           "line": 99,
+           "column": 517,
+           "offset": 11311
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": ", siehe oben, wobei kleine Cluster-Zustände durch wiederholte Anwendung von Fusionsgattern zu größeren verschmolzen werden.",
+         "position": {
+          "start": {
+           "line": 99,
+           "column": 517,
+           "offset": 11311
+          },
+          "end": {
+           "line": 99,
+           "column": 626,
+           "offset": 11420
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 99,
+         "column": 1,
+         "offset": 10795
+        },
+        "end": {
+         "line": 99,
+         "column": 626,
+         "offset": 11420
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 100,
+       "column": 1,
+       "offset": 11421
+      }
+     }
+    },
+    "props": {}
+   }
+  },
+  "IMA:ImageField": {
+   "image-q9rd6h": {
+    "value": null,
+    "props": {}
+   },
+   "image-td28w": {
+    "value": "cfa46886-9171-461a-a24c-23a25e99e16d",
+    "props": {}
+   },
+   "image-t3kpu": {
+    "value": "8240095d-76de-455e-871c-af5b59982660",
+    "props": {}
+   },
+   "image-7a1hj": {
+    "value": "46154c9c-0e43-48af-88be-f34819535c96",
+    "props": {}
+   }
+  }
+ }
+}

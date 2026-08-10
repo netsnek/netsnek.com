@@ -1,0 +1,172 @@
+{
+ "oldPath": "/docs/quantum-computing-and-quantum-information",
+ "locale": "it",
+ "title": "Computazione Quantistica e Informazione Quantistica",
+ "description": "Scopri le basi della Computazione Quantistica e dell'Informazione Quantistica",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Computazione Quantistica e Informazione Quantistica"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "La computazione quantistica sfrutta le eccezionali peculiarità della meccanica quantistica per svolgere compiti computazionali in modo diverso, talvolta con un'efficienza notevolmente migliorata in termini di tempo di calcolo, consumo energetico o sicurezza."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Le pagine seguenti spiegano alcuni dei concetti di base di questo campo.\nPer quanto riguarda i circuiti quantistici, utilizziamo il linguaggio OpenQASM. Un'introduzione all'uso di questo linguaggio è disponibile qui: "
+        },
+        {
+         "type": "mdxJsxTextElement",
+         "name": "Link",
+         "attributes": [
+          {
+           "type": "mdxJsxAttribute",
+           "name": "to",
+           "value": "../openqasm"
+          }
+         ],
+         "children": [
+          {
+           "type": "text",
+           "value": "Scopri OpenQASM"
+          }
+         ],
+         "data": {
+          "_mdxExplicitJsx": true
+         }
+        },
+        {
+         "type": "text",
+         "value": "."
+        }
+       ]
+      },
+      {
+       "type": "mdxJsxFlowElement",
+       "name": "DocsIndex",
+       "attributes": [
+        {
+         "type": "mdxJsxAttribute",
+         "name": "type",
+         "value": "toc"
+        }
+       ],
+       "children": [],
+       "data": {
+        "_mdxExplicitJsx": true
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "Riferimenti"
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "ordered": false,
+       "start": null,
+       "spread": false,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://michaelnielsen.org/qcqi/QINFO-book-nielsen-and-chuang-toc-and-chapter1-nov00.pdf",
+             "children": [
+              {
+               "type": "text",
+               "value": "Nielsen, Michael A., and Isaac L. Chuang. Quantum computation and quantum information. Vol. 2. Cambridge: Cambridge university press, 2001."
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://link.springer.com/book/10.1007/978-3-658-36434-2",
+             "children": [
+              {
+               "type": "text",
+               "value": "Homeister, Matthias. Quantum Computing verstehen. Vieweg+ Teubner, 2008"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://www.scottaaronson.com/qisii.pdf",
+             "children": [
+              {
+               "type": "text",
+               "value": "Aaronson, Scott. Introduction to quantum information science II lecture notes. (2022)"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

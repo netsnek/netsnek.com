@@ -1,0 +1,159 @@
+{
+ "oldPath": "/docs/openqasm",
+ "locale": "it",
+ "title": "Scopri OpenQASM",
+ "description": "OpenQASM si riferisce al linguaggio esteso che descriviamo qui, in particolare OpenQASM versione 3.0. La forma leggibile dall'uomo di OpenQASM è un semplice linguaggio testuale sensibile alle maiuscole. Le istruzioni sono separate da punti e virgola e gli spazi bianchi vengono ignorati.",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "OpenQASM"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "OpenQASM è un linguaggio di programmazione imperativo per descrivere circuiti quantistici. È in grado di\ndescrivere la computazione quantistica universale utilizzando il modello a circuito, il modello basato sulla misurazione\ned esperimenti di computazione quantistica near-term."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Questo repository contiene la specifica di OpenQASM, esempi e strumenti per la rappresentazione intermedia OpenQASM."
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "OpenQASM è un "
+        },
+        {
+         "type": "link",
+         "title": null,
+         "url": "https://qiskit.org",
+         "children": [
+          {
+           "type": "text",
+           "value": "progetto Qiskit"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "value": ".\nLe sottopagine seguenti offrono un'introduzione al linguaggio, inclusi alcuni esempi interattivi."
+        }
+       ]
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "Formato di citazione"
+        }
+       ]
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "Per gli articoli di ricerca, incoraggiamo gli autori a citare."
+        }
+       ]
+      },
+      {
+       "type": "list",
+       "ordered": false,
+       "start": null,
+       "spread": false,
+       "children": [
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "[Versione 3.0] Andrew W. Cross, Ali Javadi-Abhari, Thomas Alexander, Niel de Beaudrap, Lev S. Bishop, Steven Heidel, Colm A. Ryan, John Smolin, Jay M. Gambetta, Blake R. Johnson \"OpenQASM 3: A broader and deeper quantum assembly language\" "
+            },
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://arxiv.org/abs/2104.14722",
+             "children": [
+              {
+               "type": "text",
+               "value": "[arxiv:2104.14722]"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "value": "."
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "listItem",
+         "spread": false,
+         "checked": null,
+         "children": [
+          {
+           "type": "paragraph",
+           "children": [
+            {
+             "type": "text",
+             "value": "[Versione precedente: 2.0] Andrew W. Cross, Lev S. Bishop, John A. Smolin, Jay M. Gambetta \"Open Quantum Assembly Language\" "
+            },
+            {
+             "type": "link",
+             "title": null,
+             "url": "https://arxiv.org/abs/1707.03429",
+             "children": [
+              {
+               "type": "text",
+               "value": "[arXiv:1707.03429]"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "value": "."
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "props": {}
+   }
+  }
+ }
+}

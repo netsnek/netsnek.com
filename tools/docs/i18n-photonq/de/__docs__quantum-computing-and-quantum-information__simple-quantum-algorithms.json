@@ -1,0 +1,2864 @@
+{
+  "oldPath": "/docs/quantum-computing-and-quantum-information/simple-quantum-algorithms",
+  "locale": "de",
+  "title": "Einfache Quantenalgorithmen",
+  "description": "Einige erste einfache Quantenalgorithmen",
+  "jaenFields": {
+    "IMA:MdxField": {
+      "documentation": {
+        "value": {
+          "type": "root",
+          "children": [
+            {
+              "type": "heading",
+              "depth": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Einfache Quantenalgorithmen",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 3,
+                      "offset": 2
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 28,
+                      "offset": 27
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 28,
+                  "offset": 27
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Die in den vorherigen Kapiteln vorgestellten Gatter können nun verwendet werden, um\neinfache Algorithmen auf Schaltkreisen zu erstellen. Dazu müssen wir zunächst die\nAnwendung mehrerer Gatter auf ein Qubit untersuchen, die wie folgt dargestellt wird:",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1,
+                      "offset": 29
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 64,
+                      "offset": 235
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 29
+                },
+                "end": {
+                  "line": 5,
+                  "column": 64,
+                  "offset": 235
+                }
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "center",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "mdxJsxFlowElement",
+                  "name": "Image",
+                  "attributes": [
+                    {
+                      "type": "mdxJsxAttribute",
+                      "name": "width",
+                      "value": "70%",
+                      "position": {
+                        "start": {
+                          "line": 8,
+                          "column": 10,
+                          "offset": 255
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 21,
+                          "offset": 266
+                        }
+                      }
+                    },
+                    {
+                      "type": "mdxJsxAttribute",
+                      "name": "name",
+                      "value": "image-riac7",
+                      "position": {
+                        "start": {
+                          "line": 8,
+                          "column": 22,
+                          "offset": 267
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 40,
+                          "offset": 285
+                        }
+                      }
+                    },
+                    {
+                      "type": "mdxJsxAttribute",
+                      "name": "defaultValue",
+                      "value": "https://via.placeholder.com/150",
+                      "position": {
+                        "start": {
+                          "line": 8,
+                          "column": 41,
+                          "offset": 286
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 87,
+                          "offset": 332
+                        }
+                      }
+                    }
+                  ],
+                  "children": [],
+                  "position": {
+                    "start": {
+                      "line": 8,
+                      "column": 3,
+                      "offset": 248
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 90,
+                      "offset": 335
+                    }
+                  },
+                  "data": {
+                    "_mdxExplicitJsx": true
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 1,
+                  "offset": 237
+                },
+                "end": {
+                  "line": 9,
+                  "column": 10,
+                  "offset": 345
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "In der QASM-Sprache können wir drei verschiedene u3-Gatter definieren und erhalten damit die drei verschiedenen Gatter ",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 1,
+                      "offset": 347
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 99,
+                      "offset": 445
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "a,b,c",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "a,b,c"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 99,
+                      "offset": 445
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 106,
+                      "offset": 452
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 1,
+                  "offset": 347
+                },
+                "end": {
+                  "line": 11,
+                  "column": 106,
+                  "offset": 452
+                }
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "QASMPlayground",
+              "attributes": [
+                {
+                  "type": "mdxJsxAttribute",
+                  "name": "withoutTranslate",
+                  "value": "true",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 17,
+                      "offset": 470
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 40,
+                      "offset": 493
+                    }
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\nu(pi,pi,pi) q[0];\nu(pi/2,pi/2,pi/2) q[0];\nu(pi/4,pi/4,pi/4) q[0];",
+                      "position": {
+                        "start": {
+                          "line": 14,
+                          "column": 3,
+                          "offset": 497
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 27,
+                          "offset": 623
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 3,
+                      "offset": 497
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 27,
+                      "offset": 623
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 1,
+                  "offset": 454
+                },
+                "end": {
+                  "line": 20,
+                  "column": 18,
+                  "offset": 641
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Die Zustände der Zwischenschritte ",
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 1,
+                      "offset": 643
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 38,
+                      "offset": 680
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{\\psi_1}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{\\psi_1}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 38,
+                      "offset": 680
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 52,
+                      "offset": 694
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " und ",
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 52,
+                      "offset": 694
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 57,
+                      "offset": 699
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{\\psi_2}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{\\psi_2}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 57,
+                      "offset": 699
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 71,
+                      "offset": 713
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\nwerden analog zur Anwendung eines einzelnen Gatters berechnet:",
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 71,
+                      "offset": 713
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 64,
+                      "offset": 777
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 22,
+                  "column": 1,
+                  "offset": 643
+                },
+                "end": {
+                  "line": 23,
+                  "column": 64,
+                  "offset": 777
+                }
+              }
+            },
+            {
+              "type": "math",
+              "meta": null,
+              "value": "\\begin{aligned}\n\\ket{\\psi_1} & =  a \\ket{\\psi}\\\\\n\\ket{\\psi_2} & =  b \\ket{\\psi_1} = b (a \\ket{\\psi})\\\\\n\\ket{\\psi'}  & =  c \\ket{\\psi_2} = c ( b ( a  \\ket{\\psi} ))\n\\end{aligned}",
+              "data": {
+                "hName": "pre",
+                "hChildren": [
+                  {
+                    "type": "element",
+                    "tagName": "code",
+                    "properties": {
+                      "className": [
+                        "language-math",
+                        "math-display"
+                      ]
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "\\begin{aligned}\n\\ket{\\psi_1} & =  a \\ket{\\psi}\\\\\n\\ket{\\psi_2} & =  b \\ket{\\psi_1} = b (a \\ket{\\psi})\\\\\n\\ket{\\psi'}  & =  c \\ket{\\psi_2} = c ( b ( a  \\ket{\\psi} ))\n\\end{aligned}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "position": {
+                "start": {
+                  "line": 25,
+                  "column": 1,
+                  "offset": 779
+                },
+                "end": {
+                  "line": 31,
+                  "column": 3,
+                  "offset": 961
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Bitte beachten Sie, dass die Reihenfolge der Gatter im Allgemeinen nicht vertauscht werden kann.",
+                  "position": {
+                    "start": {
+                      "line": 33,
+                      "column": 1,
+                      "offset": 963
+                    },
+                    "end": {
+                      "line": 33,
+                      "column": 70,
+                      "offset": 1032
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 33,
+                  "column": 1,
+                  "offset": 963
+                },
+                "end": {
+                  "line": 33,
+                  "column": 70,
+                  "offset": 1032
+                }
+              }
+            },
+            {
+              "type": "heading",
+              "depth": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Zufallszahlengenerator",
+                  "position": {
+                    "start": {
+                      "line": 35,
+                      "column": 4,
+                      "offset": 1037
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 27,
+                      "offset": 1060
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 35,
+                  "column": 1,
+                  "offset": 1034
+                },
+                "end": {
+                  "line": 35,
+                  "column": 27,
+                  "offset": 1060
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Die Zustände und die zugehörige Wahrscheinlichkeit, einen bestimmten\nEndzustand zu erhalten, lassen sich berechnen. Gewissheit erlangt man jedoch nur durch\nMessen, was wiederum die mögliche Superposition des Qubits oder der Qubits zerstört. Im Verlauf dieser Vorlesung werden wir oft sehen, dass sich dieser\nEffekt der Messung auch gezielt als Werkzeug für Aufgaben nutzen lässt.",
+                  "position": {
+                    "start": {
+                      "line": 37,
+                      "column": 1,
+                      "offset": 1062
+                    },
+                    "end": {
+                      "line": 41,
+                      "column": 69,
+                      "offset": 1408
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 37,
+                  "column": 1,
+                  "offset": 1062
+                },
+                "end": {
+                  "line": 41,
+                  "column": 69,
+                  "offset": 1408
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Ein einfaches Beispiel ist die Kombination aus einem Hadamard-Gatter und einer Messung,\ndie einen ",
+                  "position": {
+                    "start": {
+                      "line": 43,
+                      "column": 1,
+                      "offset": 1410
+                    },
+                    "end": {
+                      "line": 44,
+                      "column": 17,
+                      "offset": 1500
+                    }
+                  }
+                },
+                {
+                  "type": "emphasis",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "echten",
+                      "position": {
+                        "start": {
+                          "line": 44,
+                          "column": 18,
+                          "offset": 1501
+                        },
+                        "end": {
+                          "line": 44,
+                          "column": 22,
+                          "offset": 1505
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 44,
+                      "column": 17,
+                      "offset": 1500
+                    },
+                    "end": {
+                      "line": 44,
+                      "column": 23,
+                      "offset": 1506
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Zufallszahlengenerator erzeugt:",
+                  "position": {
+                    "start": {
+                      "line": 44,
+                      "column": 23,
+                      "offset": 1506
+                    },
+                    "end": {
+                      "line": 44,
+                      "column": 48,
+                      "offset": 1531
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 43,
+                  "column": 1,
+                  "offset": 1410
+                },
+                "end": {
+                  "line": 44,
+                  "column": 48,
+                  "offset": 1531
+                }
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "QASMPlayground",
+              "attributes": [
+                {
+                  "type": "mdxJsxAttribute",
+                  "name": "withoutTranslate",
+                  "value": "true",
+                  "position": {
+                    "start": {
+                      "line": 46,
+                      "column": 17,
+                      "offset": 1549
+                    },
+                    "end": {
+                      "line": 46,
+                      "column": 40,
+                      "offset": 1572
+                    }
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\ncreg c[1];\nh q[0];\nmeasure q[0] -> c[0];",
+                      "position": {
+                        "start": {
+                          "line": 47,
+                          "column": 3,
+                          "offset": 1576
+                        },
+                        "end": {
+                          "line": 52,
+                          "column": 26,
+                          "offset": 1678
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 47,
+                      "column": 3,
+                      "offset": 1576
+                    },
+                    "end": {
+                      "line": 52,
+                      "column": 26,
+                      "offset": 1678
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 46,
+                  "column": 1,
+                  "offset": 1533
+                },
+                "end": {
+                  "line": 53,
+                  "column": 18,
+                  "offset": 1696
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Der Zustand des Eingangsqubits kann entweder ",
+                  "position": {
+                    "start": {
+                      "line": 55,
+                      "column": 1,
+                      "offset": 1698
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 44,
+                      "offset": 1741
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{0}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{0}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 55,
+                      "column": 44,
+                      "offset": 1741
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 53,
+                      "offset": 1750
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " oder ",
+                  "position": {
+                    "start": {
+                      "line": 55,
+                      "column": 53,
+                      "offset": 1750
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 57,
+                      "offset": 1754
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{1}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{1}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 55,
+                      "column": 57,
+                      "offset": 1754
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 66,
+                      "offset": 1763
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " sein, da in\nbeiden Fällen das Hadamard-Gatter das Qubit in einen Zustand versetzt, in dem\n",
+                  "position": {
+                    "start": {
+                      "line": 55,
+                      "column": 66,
+                      "offset": 1763
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 1,
+                      "offset": 1837
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{0}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{0}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 57,
+                      "column": 1,
+                      "offset": 1837
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 10,
+                      "offset": 1846
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " und ",
+                  "position": {
+                    "start": {
+                      "line": 57,
+                      "column": 10,
+                      "offset": 1846
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 15,
+                      "offset": 1851
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{1}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{1}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 57,
+                      "column": 15,
+                      "offset": 1851
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 24,
+                      "offset": 1860
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " als Messergebnisse gleich wahrscheinlich sind.",
+                  "position": {
+                    "start": {
+                      "line": 57,
+                      "column": 24,
+                      "offset": 1860
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 69,
+                      "offset": 1905
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 55,
+                  "column": 1,
+                  "offset": 1698
+                },
+                "end": {
+                  "line": 57,
+                  "column": 69,
+                  "offset": 1905
+                }
+              }
+            },
+            {
+              "type": "heading",
+              "depth": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Verschränkung",
+                  "position": {
+                    "start": {
+                      "line": 59,
+                      "column": 4,
+                      "offset": 1910
+                    },
+                    "end": {
+                      "line": 59,
+                      "column": 16,
+                      "offset": 1922
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 59,
+                  "column": 1,
+                  "offset": 1907
+                },
+                "end": {
+                  "line": 59,
+                  "column": 16,
+                  "offset": 1922
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Ein weiterer Schaltkreis, der auf den ersten Blick sehr einfach aussieht, ist die\nVerschränkung zweier Qubits.",
+                  "position": {
+                    "start": {
+                      "line": 61,
+                      "column": 1,
+                      "offset": 1924
+                    },
+                    "end": {
+                      "line": 62,
+                      "column": 28,
+                      "offset": 2013
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 61,
+                  "column": 1,
+                  "offset": 1924
+                },
+                "end": {
+                  "line": 62,
+                  "column": 28,
+                  "offset": 2013
+                }
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "QASMPlayground",
+              "attributes": [
+                {
+                  "type": "mdxJsxAttribute",
+                  "name": "withoutTranslate",
+                  "value": "true",
+                  "position": {
+                    "start": {
+                      "line": 64,
+                      "column": 17,
+                      "offset": 2031
+                    },
+                    "end": {
+                      "line": 64,
+                      "column": 40,
+                      "offset": 2054
+                    }
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[2];\nh q[0];\ncx q[0], q[1];",
+                      "position": {
+                        "start": {
+                          "line": 65,
+                          "column": 3,
+                          "offset": 2058
+                        },
+                        "end": {
+                          "line": 69,
+                          "column": 19,
+                          "offset": 2139
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 65,
+                      "column": 3,
+                      "offset": 2058
+                    },
+                    "end": {
+                      "line": 69,
+                      "column": 19,
+                      "offset": 2139
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 64,
+                  "column": 1,
+                  "offset": 2015
+                },
+                "end": {
+                  "line": 70,
+                  "column": 18,
+                  "offset": 2157
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Ist ",
+                  "position": {
+                    "start": {
+                      "line": 72,
+                      "column": 1,
+                      "offset": 2159
+                    },
+                    "end": {
+                      "line": 72,
+                      "column": 4,
+                      "offset": 2162
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{a_1a_0} = \\ket{00}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{a_1a_0} = \\ket{00}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 72,
+                      "column": 4,
+                      "offset": 2162
+                    },
+                    "end": {
+                      "line": 72,
+                      "column": 29,
+                      "offset": 2187
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ", sind die Zustände in den Zwischenschritten\n",
+                  "position": {
+                    "start": {
+                      "line": 72,
+                      "column": 29,
+                      "offset": 2187
+                    },
+                    "end": {
+                      "line": 73,
+                      "column": 1,
+                      "offset": 2226
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{\\psi_i}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{\\psi_i}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 73,
+                      "column": 1,
+                      "offset": 2226
+                    },
+                    "end": {
+                      "line": 73,
+                      "column": 15,
+                      "offset": 2240
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " wie folgt:",
+                  "position": {
+                    "start": {
+                      "line": 73,
+                      "column": 15,
+                      "offset": 2240
+                    },
+                    "end": {
+                      "line": 73,
+                      "column": 31,
+                      "offset": 2256
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 72,
+                  "column": 1,
+                  "offset": 2159
+                },
+                "end": {
+                  "line": 73,
+                  "column": 31,
+                  "offset": 2256
+                }
+              }
+            },
+            {
+              "type": "math",
+              "meta": null,
+              "value": "\\begin{aligned}\n\\ket{\\psi_0} &= \\ket{00}\\\\\n\\ket{\\psi_1} &= \\frac{1}{\\sqrt{2}} (\\ket{0} + \\ket{1}) \\ket{0} = \\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{10})\\\\\n\\ket{\\psi_2} &= \\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{11})\n\\end{aligned}",
+              "data": {
+                "hName": "pre",
+                "hChildren": [
+                  {
+                    "type": "element",
+                    "tagName": "code",
+                    "properties": {
+                      "className": [
+                        "language-math",
+                        "math-display"
+                      ]
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "\\begin{aligned}\n\\ket{\\psi_0} &= \\ket{00}\\\\\n\\ket{\\psi_1} &= \\frac{1}{\\sqrt{2}} (\\ket{0} + \\ket{1}) \\ket{0} = \\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{10})\\\\\n\\ket{\\psi_2} &= \\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{11})\n\\end{aligned}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "position": {
+                "start": {
+                  "line": 75,
+                  "column": 1,
+                  "offset": 2258
+                },
+                "end": {
+                  "line": 81,
+                  "column": 3,
+                  "offset": 2485
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Zum Zeitschritt ",
+                  "position": {
+                    "start": {
+                      "line": 83,
+                      "column": 1,
+                      "offset": 2487
+                    },
+                    "end": {
+                      "line": 83,
+                      "column": 14,
+                      "offset": 2500
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{\\psi_2}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{\\psi_2}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 83,
+                      "column": 14,
+                      "offset": 2500
+                    },
+                    "end": {
+                      "line": 83,
+                      "column": 28,
+                      "offset": 2514
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " ist der Messwert jedes Qubits nicht\nfestgelegt, und es ist gleich wahrscheinlich, ",
+                  "position": {
+                    "start": {
+                      "line": 83,
+                      "column": 28,
+                      "offset": 2514
+                    },
+                    "end": {
+                      "line": 84,
+                      "column": 47,
+                      "offset": 2602
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{0}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{0}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 84,
+                      "column": 47,
+                      "offset": 2602
+                    },
+                    "end": {
+                      "line": 84,
+                      "column": 56,
+                      "offset": 2611
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " oder ",
+                  "position": {
+                    "start": {
+                      "line": 84,
+                      "column": 56,
+                      "offset": 2611
+                    },
+                    "end": {
+                      "line": 84,
+                      "column": 60,
+                      "offset": 2615
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{1}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{1}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 84,
+                      "column": 60,
+                      "offset": 2615
+                    },
+                    "end": {
+                      "line": 84,
+                      "column": 69,
+                      "offset": 2624
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " zu erhalten.\nDennoch zeigt der Zustand ",
+                  "position": {
+                    "start": {
+                      "line": 84,
+                      "column": 69,
+                      "offset": 2624
+                    },
+                    "end": {
+                      "line": 85,
+                      "column": 16,
+                      "offset": 2641
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{11})",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{11})"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 85,
+                      "column": 16,
+                      "offset": 2641
+                    },
+                    "end": {
+                      "line": 85,
+                      "column": 58,
+                      "offset": 2683
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " auch,\ndass die Messergebnisse beider Qubits in jedem Fall gleich sein werden. Messen wir also ",
+                  "position": {
+                    "start": {
+                      "line": 85,
+                      "column": 58,
+                      "offset": 2683
+                    },
+                    "end": {
+                      "line": 87,
+                      "column": 24,
+                      "offset": 2786
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{1}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{1}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 87,
+                      "column": 24,
+                      "offset": 2786
+                    },
+                    "end": {
+                      "line": 87,
+                      "column": 33,
+                      "offset": 2795
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " für ",
+                  "position": {
+                    "start": {
+                      "line": 87,
+                      "column": 33,
+                      "offset": 2795
+                    },
+                    "end": {
+                      "line": 87,
+                      "column": 38,
+                      "offset": 2800
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{a_0}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{a_0}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 87,
+                      "column": 38,
+                      "offset": 2800
+                    },
+                    "end": {
+                      "line": 87,
+                      "column": 49,
+                      "offset": 2811
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ", ist auch das Messergebnis\nvon ",
+                  "position": {
+                    "start": {
+                      "line": 87,
+                      "column": 49,
+                      "offset": 2811
+                    },
+                    "end": {
+                      "line": 88,
+                      "column": 4,
+                      "offset": 2839
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{a_1}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{a_1}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 88,
+                      "column": 4,
+                      "offset": 2839
+                    },
+                    "end": {
+                      "line": 88,
+                      "column": 15,
+                      "offset": 2850
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " festgelegt (nämlich ",
+                  "position": {
+                    "start": {
+                      "line": 88,
+                      "column": 15,
+                      "offset": 2850
+                    },
+                    "end": {
+                      "line": 88,
+                      "column": 38,
+                      "offset": 2873
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{1}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{1}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 88,
+                      "column": 38,
+                      "offset": 2873
+                    },
+                    "end": {
+                      "line": 88,
+                      "column": 47,
+                      "offset": 2882
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "). Das bedeutet auch, dass selbst\nwenn wir die beiden Qubits räumlich trennen und dann unabhängig\nvoneinander messen, die Ergebnisse weiterhin korrelieren.",
+                  "position": {
+                    "start": {
+                      "line": 88,
+                      "column": 47,
+                      "offset": 2882
+                    },
+                    "end": {
+                      "line": 90,
+                      "column": 58,
+                      "offset": 3028
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 83,
+                  "column": 1,
+                  "offset": 2487
+                },
+                "end": {
+                  "line": 90,
+                  "column": 58,
+                  "offset": 3028
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Dieser Zustand ist nach dem irischen Physiker John Bell benannt. Insgesamt gibt es\nvier solcher Zustände, abhängig vom Eingangsregister\n",
+                  "position": {
+                    "start": {
+                      "line": 92,
+                      "column": 1,
+                      "offset": 3030
+                    },
+                    "end": {
+                      "line": 94,
+                      "column": 1,
+                      "offset": 3157
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\ket{a_1a_0}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\ket{a_1a_0}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 94,
+                      "column": 1,
+                      "offset": 3157
+                    },
+                    "end": {
+                      "line": 94,
+                      "column": 15,
+                      "offset": 3171
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ":",
+                  "position": {
+                    "start": {
+                      "line": 94,
+                      "column": 15,
+                      "offset": 3171
+                    },
+                    "end": {
+                      "line": 94,
+                      "column": 16,
+                      "offset": 3172
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 92,
+                  "column": 1,
+                  "offset": 3030
+                },
+                "end": {
+                  "line": 94,
+                  "column": 16,
+                  "offset": 3172
+                }
+              }
+            },
+            {
+              "type": "math",
+              "meta": null,
+              "value": "\\begin{aligned}\n\\ket{a_1a_0} &= \\ket{00} \\Rightarrow \\ket{\\beta_{00}} = \\mathbf{\\Phi^+} = \\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{11})\\\\\n\\ket{a_1a_0} &= \\ket{10} \\Rightarrow \\ket{\\beta_{10}} = \\mathbf{\\Phi^-} = \\frac{1}{\\sqrt{2}} (\\ket{00} - \\ket{11})\\\\\n\\ket{a_1a_0} &= \\ket{01} \\Rightarrow \\ket{\\beta_{01}} = \\mathbf{\\Psi^+} = \\frac{1}{\\sqrt{2}} (\\ket{01} + \\ket{10})\\\\\n\\ket{a_1a_0} &= \\ket{11} \\Rightarrow \\ket{\\beta_{11}} = \\mathbf{\\Psi^-} = \\frac{1}{\\sqrt{2}} (\\ket{01} - \\ket{10})\n\\end{aligned}",
+              "data": {
+                "hName": "pre",
+                "hChildren": [
+                  {
+                    "type": "element",
+                    "tagName": "code",
+                    "properties": {
+                      "className": [
+                        "language-math",
+                        "math-display"
+                      ]
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "\\begin{aligned}\n\\ket{a_1a_0} &= \\ket{00} \\Rightarrow \\ket{\\beta_{00}} = \\mathbf{\\Phi^+} = \\frac{1}{\\sqrt{2}} (\\ket{00} + \\ket{11})\\\\\n\\ket{a_1a_0} &= \\ket{10} \\Rightarrow \\ket{\\beta_{10}} = \\mathbf{\\Phi^-} = \\frac{1}{\\sqrt{2}} (\\ket{00} - \\ket{11})\\\\\n\\ket{a_1a_0} &= \\ket{01} \\Rightarrow \\ket{\\beta_{01}} = \\mathbf{\\Psi^+} = \\frac{1}{\\sqrt{2}} (\\ket{01} + \\ket{10})\\\\\n\\ket{a_1a_0} &= \\ket{11} \\Rightarrow \\ket{\\beta_{11}} = \\mathbf{\\Psi^-} = \\frac{1}{\\sqrt{2}} (\\ket{01} - \\ket{10})\n\\end{aligned}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "position": {
+                "start": {
+                  "line": 96,
+                  "column": 1,
+                  "offset": 3174
+                },
+                "end": {
+                  "line": 103,
+                  "column": 3,
+                  "offset": 3675
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Die vier Zustände unterscheiden sich vor allem darin, dass bei\n",
+                  "position": {
+                    "start": {
+                      "line": 105,
+                      "column": 1,
+                      "offset": 3677
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 1,
+                      "offset": 3747
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\Phi^+",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\Phi^+"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 1,
+                      "offset": 3747
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 9,
+                      "offset": 3755
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " und ",
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 9,
+                      "offset": 3755
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 14,
+                      "offset": 3760
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\Phi^-",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\Phi^-"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 14,
+                      "offset": 3760
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 22,
+                      "offset": 3768
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " auf beiden Qubits dasselbe Ergebnis gemessen wird, während ",
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 22,
+                      "offset": 3768
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 47,
+                      "offset": 3793
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\Psi^+",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\Psi^+"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 47,
+                      "offset": 3793
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 55,
+                      "offset": 3801
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " und ",
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 55,
+                      "offset": 3801
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 60,
+                      "offset": 3806
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\Psi^-",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\Psi^-"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 60,
+                      "offset": 3806
+                    },
+                    "end": {
+                      "line": 106,
+                      "column": 68,
+                      "offset": 3814
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\nentgegengesetzte Messergebnisse liefern. Die beiden Zustände mit positiver\nAmplitude ",
+                  "position": {
+                    "start": {
+                      "line": 106,
+                      "column": 68,
+                      "offset": 3814
+                    },
+                    "end": {
+                      "line": 108,
+                      "column": 11,
+                      "offset": 3892
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\Phi^+",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\Phi^+"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 108,
+                      "column": 11,
+                      "offset": 3892
+                    },
+                    "end": {
+                      "line": 108,
+                      "column": 19,
+                      "offset": 3900
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " und ",
+                  "position": {
+                    "start": {
+                      "line": 108,
+                      "column": 19,
+                      "offset": 3900
+                    },
+                    "end": {
+                      "line": 108,
+                      "column": 24,
+                      "offset": 3905
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\Psi^+",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\Psi^+"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 108,
+                      "column": 24,
+                      "offset": 3905
+                    },
+                    "end": {
+                      "line": 108,
+                      "column": 32,
+                      "offset": 3913
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " werden auch als ",
+                  "position": {
+                    "start": {
+                      "line": 108,
+                      "column": 32,
+                      "offset": 3913
+                    },
+                    "end": {
+                      "line": 108,
+                      "column": 55,
+                      "offset": 3936
+                    }
+                  }
+                },
+                {
+                  "type": "emphasis",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "EPR-Paar",
+                      "position": {
+                        "start": {
+                          "line": 108,
+                          "column": 56,
+                          "offset": 3937
+                        },
+                        "end": {
+                          "line": 108,
+                          "column": 64,
+                          "offset": 3945
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 108,
+                      "column": 55,
+                      "offset": 3936
+                    },
+                    "end": {
+                      "line": 108,
+                      "column": 65,
+                      "offset": 3946
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " bezeichnet, benannt\nnach einer Veröffentlichung von Einstein, Podolski und Rosen",
+                  "position": {
+                    "start": {
+                      "line": 108,
+                      "column": 65,
+                      "offset": 3946
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 52,
+                      "offset": 4005
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "1",
+                  "label": "1",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 52,
+                      "offset": 4005
+                    },
+                    "end": {
+                      "line": 109,
+                      "column": 56,
+                      "offset": 4009
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ". Wir können die Bell-Zustände auch\nüber die Matrixdarstellung berechnen, z. B.\n",
+                  "position": {
+                    "start": {
+                      "line": 109,
+                      "column": 56,
+                      "offset": 4009
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 1,
+                      "offset": 4087
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "\\Phi^+ = CNOT \\cdot(H\\otimes I) \\ket{00}",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "\\Phi^+ = CNOT \\cdot(H\\otimes I) \\ket{00}"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 111,
+                      "column": 1,
+                      "offset": 4087
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 43,
+                      "offset": 4129
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ":",
+                  "position": {
+                    "start": {
+                      "line": 111,
+                      "column": 43,
+                      "offset": 4129
+                    },
+                    "end": {
+                      "line": 111,
+                      "column": 44,
+                      "offset": 4130
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 105,
+                  "column": 1,
+                  "offset": 3677
+                },
+                "end": {
+                  "line": 111,
+                  "column": 44,
+                  "offset": 4130
+                }
+              }
+            },
+            {
+              "type": "math",
+              "meta": null,
+              "value": "\\begin{aligned}\n  H\\otimes I &=  \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix} \\otimes \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \n     \\frac{1}{\\sqrt{2}}\n     \\begin{pmatrix}\n       1 & 0 & 1 & 0\\\\ \n       0 & 1 & 0 & 1\\\\\n       1 & 0 & -1 & 0\\\\\n       0 & 1 & 0  & -1\n     \\end{pmatrix}\\\\\n%     \n  CNOT \\cdot (H\\otimes I) &=\n    \\begin{pmatrix}\n      1 & 0 & 0 & 0\\\\ \n      0 & 1 & 0 & 0\\\\\n      0 & 0 & 0 & 1\\\\\n      0 & 0 & 1 & 0\n    \\end{pmatrix}\n    \\cdot \\frac{1}{\\sqrt{2}}\n    \\begin{pmatrix}\n      1 & 0 & 1 & 0\\\\ \n      0 & 1 & 0 & 1\\\\\n      1 & 0 & -1 & 0\\\\\n      0 & 1 & 0  & -1\n    \\end{pmatrix}\n    = \\frac{1}{\\sqrt{2}}\n    \\begin{pmatrix}\n    1 &\t0 &\t1 &\t0\\\\\n    0 &\t1 &\t0 &\t1\\\\\n    0 &\t1 &\t0 &\t-1\\\\\n    1 &\t0 &\t-1& 0\\\\\n    \\end{pmatrix}\\\\\n  \\ket{\\Phi^+} &=\n  \\frac{1}{\\sqrt{2}}\n  \\begin{pmatrix}\n    1 &\t0 &\t1 &\t0\\\\\n    0 &\t1 &\t0 &\t1\\\\\n    0 &\t1 &\t0 &\t-1\\\\\n    1 &\t0 &\t-1& 0\\\\\n  \\end{pmatrix}\n  \\cdot\n  \\begin{pmatrix} 1 \\\\\t0 \\\\\t0 \\\\\t0  \\end{pmatrix}\n  =    \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\\t0 \\\\\t0 \\\\\t1 \\end{pmatrix}\n  \n\\end{aligned}",
+              "data": {
+                "hName": "pre",
+                "hChildren": [
+                  {
+                    "type": "element",
+                    "tagName": "code",
+                    "properties": {
+                      "className": [
+                        "language-math",
+                        "math-display"
+                      ]
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "\\begin{aligned}\n  H\\otimes I &=  \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix} \\otimes \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \n     \\frac{1}{\\sqrt{2}}\n     \\begin{pmatrix}\n       1 & 0 & 1 & 0\\\\ \n       0 & 1 & 0 & 1\\\\\n       1 & 0 & -1 & 0\\\\\n       0 & 1 & 0  & -1\n     \\end{pmatrix}\\\\\n%     \n  CNOT \\cdot (H\\otimes I) &=\n    \\begin{pmatrix}\n      1 & 0 & 0 & 0\\\\ \n      0 & 1 & 0 & 0\\\\\n      0 & 0 & 0 & 1\\\\\n      0 & 0 & 1 & 0\n    \\end{pmatrix}\n    \\cdot \\frac{1}{\\sqrt{2}}\n    \\begin{pmatrix}\n      1 & 0 & 1 & 0\\\\ \n      0 & 1 & 0 & 1\\\\\n      1 & 0 & -1 & 0\\\\\n      0 & 1 & 0  & -1\n    \\end{pmatrix}\n    = \\frac{1}{\\sqrt{2}}\n    \\begin{pmatrix}\n    1 &\t0 &\t1 &\t0\\\\\n    0 &\t1 &\t0 &\t1\\\\\n    0 &\t1 &\t0 &\t-1\\\\\n    1 &\t0 &\t-1& 0\\\\\n    \\end{pmatrix}\\\\\n  \\ket{\\Phi^+} &=\n  \\frac{1}{\\sqrt{2}}\n  \\begin{pmatrix}\n    1 &\t0 &\t1 &\t0\\\\\n    0 &\t1 &\t0 &\t1\\\\\n    0 &\t1 &\t0 &\t-1\\\\\n    1 &\t0 &\t-1& 0\\\\\n  \\end{pmatrix}\n  \\cdot\n  \\begin{pmatrix} 1 \\\\\t0 \\\\\t0 \\\\\t0  \\end{pmatrix}\n  =    \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\\t0 \\\\\t0 \\\\\t1 \\end{pmatrix}\n  \n\\end{aligned}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "position": {
+                "start": {
+                  "line": 113,
+                  "column": 1,
+                  "offset": 4132
+                },
+                "end": {
+                  "line": 158,
+                  "column": 3,
+                  "offset": 5217
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "An diesem Endzustand erkennen wir, dass er sich nicht als Tensorprodukt\neinzelner Qubits schreiben lässt. Genau so ist Verschränkung\ndefiniert",
+                  "position": {
+                    "start": {
+                      "line": 160,
+                      "column": 1,
+                      "offset": 5219
+                    },
+                    "end": {
+                      "line": 162,
+                      "column": 8,
+                      "offset": 5365
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "2",
+                  "label": "2",
+                  "position": {
+                    "start": {
+                      "line": 162,
+                      "column": 8,
+                      "offset": 5365
+                    },
+                    "end": {
+                      "line": 162,
+                      "column": 12,
+                      "offset": 5369
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ":",
+                  "position": {
+                    "start": {
+                      "line": 162,
+                      "column": 12,
+                      "offset": 5369
+                    },
+                    "end": {
+                      "line": 162,
+                      "column": 13,
+                      "offset": 5370
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 160,
+                  "column": 1,
+                  "offset": 5219
+                },
+                "end": {
+                  "line": 162,
+                  "column": 13,
+                  "offset": 5370
+                }
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "Callout",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Definition",
+                          "position": {
+                            "start": {
+                              "line": 165,
+                              "column": 5,
+                              "offset": 5386
+                            },
+                            "end": {
+                              "line": 165,
+                              "column": 15,
+                              "offset": 5396
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 165,
+                          "column": 3,
+                          "offset": 5384
+                        },
+                        "end": {
+                          "line": 165,
+                          "column": 17,
+                          "offset": 5398
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 165,
+                      "column": 3,
+                      "offset": 5384
+                    },
+                    "end": {
+                      "line": 165,
+                      "column": 17,
+                      "offset": 5398
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Sei ",
+                      "position": {
+                        "start": {
+                          "line": 167,
+                          "column": 3,
+                          "offset": 5402
+                        },
+                        "end": {
+                          "line": 167,
+                          "column": 7,
+                          "offset": 5406
+                        }
+                      }
+                    },
+                    {
+                      "type": "inlineMath",
+                      "value": "\\ket{\\phi}",
+                      "data": {
+                        "hName": "code",
+                        "hProperties": {
+                          "className": [
+                            "language-math",
+                            "math-inline"
+                          ]
+                        },
+                        "hChildren": [
+                          {
+                            "type": "text",
+                            "value": "\\ket{\\phi}"
+                          }
+                        ]
+                      },
+                      "position": {
+                        "start": {
+                          "line": 167,
+                          "column": 7,
+                          "offset": 5406
+                        },
+                        "end": {
+                          "line": 167,
+                          "column": 19,
+                          "offset": 5418
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " der Zustand eines Quantenregisters aus ",
+                      "position": {
+                        "start": {
+                          "line": 167,
+                          "column": 19,
+                          "offset": 5418
+                        },
+                        "end": {
+                          "line": 167,
+                          "column": 58,
+                          "offset": 5457
+                        }
+                      }
+                    },
+                    {
+                      "type": "inlineMath",
+                      "value": "n",
+                      "data": {
+                        "hName": "code",
+                        "hProperties": {
+                          "className": [
+                            "language-math",
+                            "math-inline"
+                          ]
+                        },
+                        "hChildren": [
+                          {
+                            "type": "text",
+                            "value": "n"
+                          }
+                        ]
+                      },
+                      "position": {
+                        "start": {
+                          "line": 167,
+                          "column": 58,
+                          "offset": 5457
+                        },
+                        "end": {
+                          "line": 167,
+                          "column": 61,
+                          "offset": 5460
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " Qubits. Der\nZustand ",
+                      "position": {
+                        "start": {
+                          "line": 167,
+                          "column": 61,
+                          "offset": 5460
+                        },
+                        "end": {
+                          "line": 168,
+                          "column": 9,
+                          "offset": 5481
+                        }
+                      }
+                    },
+                    {
+                      "type": "inlineMath",
+                      "value": "\\ket{\\phi}",
+                      "data": {
+                        "hName": "code",
+                        "hProperties": {
+                          "className": [
+                            "language-math",
+                            "math-inline"
+                          ]
+                        },
+                        "hChildren": [
+                          {
+                            "type": "text",
+                            "value": "\\ket{\\phi}"
+                          }
+                        ]
+                      },
+                      "position": {
+                        "start": {
+                          "line": 168,
+                          "column": 9,
+                          "offset": 5481
+                        },
+                        "end": {
+                          "line": 168,
+                          "column": 21,
+                          "offset": 5493
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " heißt unverschränkt, wenn er das Produkt der\nZustände der einzelnen Bits ist:",
+                      "position": {
+                        "start": {
+                          "line": 168,
+                          "column": 21,
+                          "offset": 5493
+                        },
+                        "end": {
+                          "line": 169,
+                          "column": 33,
+                          "offset": 5576
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 167,
+                      "column": 3,
+                      "offset": 5402
+                    },
+                    "end": {
+                      "line": 169,
+                      "column": 33,
+                      "offset": 5576
+                    }
+                  }
+                },
+                {
+                  "type": "math",
+                  "meta": null,
+                  "value": "\\ket{\\phi} = \\ket{\\phi_{n-1}}\\otimes\\ket{\\phi_{n-2}}\\otimes..\\otimes \\ket{\\phi_0}",
+                  "data": {
+                    "hName": "pre",
+                    "hChildren": [
+                      {
+                        "type": "element",
+                        "tagName": "code",
+                        "properties": {
+                          "className": [
+                            "language-math",
+                            "math-display"
+                          ]
+                        },
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "\\ket{\\phi} = \\ket{\\phi_{n-1}}\\otimes\\ket{\\phi_{n-2}}\\otimes..\\otimes \\ket{\\phi_0}"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 171,
+                      "column": 3,
+                      "offset": 5580
+                    },
+                    "end": {
+                      "line": 173,
+                      "column": 5,
+                      "offset": 5671
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Gibt es keine solche Zerlegung, heißt der Zustand verschränkt.",
+                      "position": {
+                        "start": {
+                          "line": 175,
+                          "column": 3,
+                          "offset": 5675
+                        },
+                        "end": {
+                          "line": 175,
+                          "column": 68,
+                          "offset": 5740
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 175,
+                      "column": 3,
+                      "offset": 5675
+                    },
+                    "end": {
+                      "line": 175,
+                      "column": 68,
+                      "offset": 5740
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 164,
+                  "column": 1,
+                  "offset": 5372
+                },
+                "end": {
+                  "line": 176,
+                  "column": 11,
+                  "offset": 5751
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Um einen verschränkten Zustand zu erzeugen, benötigen wir eine unitäre Transformation, die\nsich selbst nicht als Tensorprodukt auf einzelnen Qubits darstellen lässt.\nNeben der Superposition ist die Verschränkung eines der mächtigsten Werkzeuge\ndes Quantencomputings. Physikalisch sind diese Zustände schwer zu erzeugen\nund daher teuer, was insbesondere gilt, wenn sie über große Entfernungen\nerzeugt werden sollen.",
+                  "position": {
+                    "start": {
+                      "line": 178,
+                      "column": 1,
+                      "offset": 5753
+                    },
+                    "end": {
+                      "line": 183,
+                      "column": 30,
+                      "offset": 6138
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 178,
+                  "column": 1,
+                  "offset": 5753
+                },
+                "end": {
+                  "line": 183,
+                  "column": 30,
+                  "offset": 6138
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "1",
+              "label": "1",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Einstein, Albert, Boris Podolsky, and Nathan Rosen. \"Can quantum-mechanical description of physical reality be considered complete?.\" Physical review 47.10 (1935): 777.",
+                          "position": {
+                            "start": {
+                              "line": 185,
+                              "column": 8,
+                              "offset": 6147
+                            },
+                            "end": {
+                              "line": 185,
+                              "column": 176,
+                              "offset": 6315
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 185,
+                          "column": 7,
+                          "offset": 6146
+                        },
+                        "end": {
+                          "line": 185,
+                          "column": 238,
+                          "offset": 6377
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": ".",
+                      "position": {
+                        "start": {
+                          "line": 185,
+                          "column": 238,
+                          "offset": 6377
+                        },
+                        "end": {
+                          "line": 185,
+                          "column": 239,
+                          "offset": 6378
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 185,
+                      "column": 7,
+                      "offset": 6146
+                    },
+                    "end": {
+                      "line": 185,
+                      "column": 239,
+                      "offset": 6378
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 185,
+                  "column": 1,
+                  "offset": 6140
+                },
+                "end": {
+                  "line": 185,
+                  "column": 239,
+                  "offset": 6378
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "2",
+              "label": "2",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://www.scottaaronson.com/qisii.pdf",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Aaronson, Scott. \"Introduction to quantum information science II lecture notes.\" (2022). p.40",
+                          "position": {
+                            "start": {
+                              "line": 187,
+                              "column": 8,
+                              "offset": 6387
+                            },
+                            "end": {
+                              "line": 187,
+                              "column": 101,
+                              "offset": 6480
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 187,
+                          "column": 7,
+                          "offset": 6386
+                        },
+                        "end": {
+                          "line": 187,
+                          "column": 143,
+                          "offset": 6522
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 187,
+                      "column": 7,
+                      "offset": 6386
+                    },
+                    "end": {
+                      "line": 187,
+                      "column": 143,
+                      "offset": 6522
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 187,
+                  "column": 1,
+                  "offset": 6380
+                },
+                "end": {
+                  "line": 187,
+                  "column": 143,
+                  "offset": 6522
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 188,
+              "column": 1,
+              "offset": 6523
+            }
+          }
+        },
+        "props": {}
+      }
+    },
+    "IMA:ImageField": {
+      "image-riac7": {
+        "value": "b2e1e24a-c940-4660-8f09-f781be46bb83",
+        "props": {}
+      }
+    }
+  }
+}

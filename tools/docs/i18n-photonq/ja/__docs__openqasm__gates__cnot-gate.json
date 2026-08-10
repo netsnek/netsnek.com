@@ -1,0 +1,498 @@
+{
+ "oldPath": "/docs/openqasm/gates/cnot-gate",
+ "locale": "ja",
+ "title": "CNOTゲート",
+ "description": "OpenQASM チュートリアルのこの章では、量子ビットに CNOT ゲートを適用する方法について学びます。",
+ "jaenFields": {
+  "IMA:MdxField": {
+   "documentation": {
+    "value": {
+     "type": "root",
+     "children": [
+      {
+       "type": "heading",
+       "depth": 1,
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOTゲート",
+         "position": {
+          "start": {
+           "line": 1,
+           "column": 3,
+           "offset": 2
+          },
+          "end": {
+           "line": 1,
+           "column": 12,
+           "offset": 11
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 1,
+         "column": 1,
+         "offset": 0
+        },
+        "end": {
+         "line": 1,
+         "column": 12,
+         "offset": 11
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "量子コンピューティングは、量子重ね合わせや量子もつれといった量子力学の原理に大きく依存しています。CNOT ゲート(CX ゲートとも呼ばれます)は2つの量子ビットの状態をもつれさせるために使用でき、そのため非常に重要な量子ゲートです。OpenQASM チュートリアルのこの章では、量子ビットに CNOT ゲートを適用する方法について学びます。",
+         "position": {
+          "start": {
+           "line": 3,
+           "column": 1,
+           "offset": 13
+          },
+          "end": {
+           "line": 3,
+           "column": 373,
+           "offset": 385
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 3,
+         "column": 1,
+         "offset": 13
+        },
+        "end": {
+         "line": 3,
+         "column": 373,
+         "offset": 385
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOT(または CX)は、量子コンピューティング分野における基本的な2量子ビットゲートです。OpenQASM では CNOT は組み込みゲートであり、2つの量子ビットに CNOT ゲートを適用するための構文が用意されています。",
+         "position": {
+          "start": {
+           "line": 5,
+           "column": 1,
+           "offset": 387
+          },
+          "end": {
+           "line": 5,
+           "column": 195,
+           "offset": 581
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 5,
+         "column": 1,
+         "offset": 387
+        },
+        "end": {
+         "line": 5,
+         "column": 195,
+         "offset": 581
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 2,
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOTゲート",
+         "position": {
+          "start": {
+           "line": 7,
+           "column": 4,
+           "offset": 586
+          },
+          "end": {
+           "line": 7,
+           "column": 13,
+           "offset": 595
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 7,
+         "column": 1,
+         "offset": 583
+        },
+        "end": {
+         "line": 7,
+         "column": 13,
+         "offset": 595
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "CNOT ゲートは2量子ビットゲートであり、制御量子ビットが状態 |1> にある場合に限り、ターゲット量子ビットに条件付き NOT ゲートを適用します。",
+         "position": {
+          "start": {
+           "line": 9,
+           "column": 1,
+           "offset": 597
+          },
+          "end": {
+           "line": 9,
+           "column": 138,
+           "offset": 734
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 9,
+         "column": 1,
+         "offset": 597
+        },
+        "end": {
+         "line": 9,
+         "column": 138,
+         "offset": 734
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "制御量子ビット qr1[index] とターゲット量子ビット qr2[index] に CNOT ゲートを適用するには、次の構文を使用します。",
+         "position": {
+          "start": {
+           "line": 11,
+           "column": 1,
+           "offset": 736
+          },
+          "end": {
+           "line": 11,
+           "column": 117,
+           "offset": 852
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 11,
+         "column": 1,
+         "offset": 736
+        },
+        "end": {
+         "line": 11,
+         "column": 117,
+         "offset": 852
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": null,
+       "value": "cx qr1[index], qr2[index];",
+       "position": {
+        "start": {
+         "line": 13,
+         "column": 1,
+         "offset": 854
+        },
+        "end": {
+         "line": 15,
+         "column": 4,
+         "offset": 892
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "注意:",
+           "position": {
+            "start": {
+             "line": 17,
+             "column": 3,
+             "offset": 896
+            },
+            "end": {
+             "line": 17,
+             "column": 8,
+             "offset": 901
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 1,
+           "offset": 894
+          },
+          "end": {
+           "line": 17,
+           "column": 10,
+           "offset": 903
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " CNOT は組み込みゲートであるため、cx は予約キーワードです。",
+         "position": {
+          "start": {
+           "line": 17,
+           "column": 10,
+           "offset": 903
+          },
+          "end": {
+           "line": 17,
+           "column": 70,
+           "offset": 963
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 17,
+         "column": 1,
+         "offset": 894
+        },
+        "end": {
+         "line": 17,
+         "column": 70,
+         "offset": 963
+        }
+       }
+      },
+      {
+       "type": "heading",
+       "depth": 3,
+       "children": [
+        {
+         "type": "text",
+         "value": "例",
+         "position": {
+          "start": {
+           "line": 19,
+           "column": 5,
+           "offset": 969
+          },
+          "end": {
+           "line": 19,
+           "column": 12,
+           "offset": 976
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 19,
+         "column": 1,
+         "offset": 965
+        },
+        "end": {
+         "line": 19,
+         "column": 12,
+         "offset": 976
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "以下は、量子レジスタ qubits の最初の量子ビットを制御量子ビット、2番目の量子ビットをターゲット量子ビットとして CNOT ゲートを適用する例です。",
+         "position": {
+          "start": {
+           "line": 21,
+           "column": 1,
+           "offset": 978
+          },
+          "end": {
+           "line": 21,
+           "column": 168,
+           "offset": 1145
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 21,
+         "column": 1,
+         "offset": 978
+        },
+        "end": {
+         "line": 21,
+         "column": 168,
+         "offset": 1145
+        }
+       }
+      },
+      {
+       "type": "code",
+       "lang": "qasm",
+       "meta": "playground",
+       "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\n\n// Define quantum registers\nqreg qubits[2];\n\n// Apply CX gate\ncx qubits[0], qubits[1];",
+       "position": {
+        "start": {
+         "line": 23,
+         "column": 1,
+         "offset": 1147
+        },
+        "end": {
+         "line": 32,
+         "column": 4,
+         "offset": 1293
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "strong",
+         "children": [
+          {
+           "type": "text",
+           "value": "注意:",
+           "position": {
+            "start": {
+             "line": 34,
+             "column": 3,
+             "offset": 1297
+            },
+            "end": {
+             "line": 34,
+             "column": 8,
+             "offset": 1302
+            }
+           }
+          }
+         ],
+         "position": {
+          "start": {
+           "line": 34,
+           "column": 1,
+           "offset": 1295
+          },
+          "end": {
+           "line": 34,
+           "column": 10,
+           "offset": 1304
+          }
+         }
+        },
+        {
+         "type": "text",
+         "value": " 制御量子ビットとターゲット量子ビットは、同じ量子レジスタにあっても、異なる量子レジスタにあっても構いません。",
+         "position": {
+          "start": {
+           "line": 34,
+           "column": 10,
+           "offset": 1304
+          },
+          "end": {
+           "line": 34,
+           "column": 103,
+           "offset": 1397
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 34,
+         "column": 1,
+         "offset": 1295
+        },
+        "end": {
+         "line": 34,
+         "column": 103,
+         "offset": 1397
+        }
+       }
+      },
+      {
+       "type": "paragraph",
+       "children": [
+        {
+         "type": "text",
+         "value": "以下は、上記の例のコードを図で表現したものです。",
+         "position": {
+          "start": {
+           "line": 36,
+           "column": 1,
+           "offset": 1399
+          },
+          "end": {
+           "line": 36,
+           "column": 59,
+           "offset": 1457
+          }
+         }
+        }
+       ],
+       "position": {
+        "start": {
+         "line": 36,
+         "column": 1,
+         "offset": 1399
+        },
+        "end": {
+         "line": 36,
+         "column": 59,
+         "offset": 1457
+        }
+       }
+      }
+     ],
+     "position": {
+      "start": {
+       "line": 1,
+       "column": 1,
+       "offset": 0
+      },
+      "end": {
+       "line": 37,
+       "column": 1,
+       "offset": 1458
+      }
+     }
+    },
+    "props": {}
+   }
+  }
+ }
+}
