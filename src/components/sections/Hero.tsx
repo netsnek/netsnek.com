@@ -16,7 +16,7 @@ import { useIntl } from 'react-intl';
 import { Field, useAuth } from 'jaen';
 import useNavOffset from '../../hooks/use-nav-offset';
 import { Link } from 'gatsby-plugin-jaen';
-import { usePageLocale } from '../../contexts/locale';
+import { useLocalizeHref } from '../../contexts/locale';
 import { withAccentDots } from '../../utils/accent-dots';
 
 // import {useContactModal} from '../services/contact'
@@ -63,7 +63,7 @@ const ScrollArrows: React.FC<ScrollArrowsProps> = ({ isVisible }) => {
 const Hero: FC = () => {
   const navOffset = useNavOffset();
   const intl = useIntl();
-  const { prefix } = usePageLocale();
+  const localizeHref = useLocalizeHref();
 
   const isAuthenticated = useAuth().user !== null;
 
@@ -197,7 +197,7 @@ const Hero: FC = () => {
               borderRadius={'lg'}
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
               onClick={() =>
-                (window.location.href = prefix ? `/${prefix}/docs` : '/docs')
+                (window.location.href = localizeHref('/docs'))
               }
               borderColor={'brand.500'}
               color={'brand.500'}

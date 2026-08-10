@@ -9,6 +9,8 @@ import {
   Stack
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
+import { usePageLocale } from '../../contexts/locale';
+import { stripLocalePrefix } from '../../utils/navigation';
 import { TSearchResult } from '../../utils/search/types';
 import Highlighter from 'react-highlight-words';
 import { Link } from 'gatsby-plugin-jaen';
@@ -33,6 +35,12 @@ export const SearchResultItem: FC<{
   icon,
   isDocs
 }) => {
+  const { prefix } = usePageLocale();
+
+  // Search results of prefixed locales point at /<locale>/docs/..., so the
+  // label checks below run against the canonical (unprefixed) path.
+  const canonicalTo = stripLocalePrefix(item.to ?? '', prefix);
+
   let props: MenuItemProps = {};
 
   if (defaultFocus) {
@@ -132,11 +140,11 @@ export const SearchResultItem: FC<{
         </LinkOverlay>
       </Box>
       <Spacer />
-      {item.to?.startsWith('/docs/') ? (
+      {canonicalTo.startsWith('/docs/') ? (
         <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
           Zum Artikel
         </Text>
-      ) : item.to?.startsWith('/recipes/') ? (
+      ) : canonicalTo.startsWith('/recipes/') ? (
         <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
           Zum Rezept
         </Text>
