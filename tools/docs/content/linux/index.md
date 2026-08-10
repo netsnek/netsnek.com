@@ -16,11 +16,11 @@ Apple-Silicon-MacBooks bieten starke Hardware bei sehr geringem Stromverbrauch. 
 
 ### [Asahi Desktop Setup](/docs/linux/asahi)
 
-Der komplette Desktop-Stack: Wayfire als Wayland-Compositor, XFCE als Desktop-Umgebung in einer Wayland-Session, greetd mit tuigreet als Login, PipeWire für Audio und ein stabiler Bluetooth-A2DP-Betrieb. Dazu die wichtigsten Stolpersteine auf Asahi und ihre Lösungen, etwa die 16K-Speicherseiten des Kernels und ein Workaround für GTK4-Abstürze.
+Der komplette Desktop-Stack: Wayfire als Wayland-Compositor, XFCE als Desktop-Umgebung in einer Wayland-Session, greetd mit tuigreet als Login, PipeWire für Audio und ein stabiler Bluetooth-A2DP-Betrieb. Dazu die wichtigsten Stolpersteine auf Asahi und ihre Lösungen, etwa die 16K-Speicherseiten des Kernels, ein Workaround für GTK4-Abstürze und der Weg zu x86-Software über FEX und muvm.
 
 ### [Netsnek RPM-Repository](/docs/linux/rpm)
 
-Das Repository `rpm.netsnek.com` liefert gepatchte Pakete, die dieses Setup erst möglich machen. Die Seite beschreibt die Einbindung per dnf, die enthaltenen Pakete und was an jedem Paket geändert wurde. Alle Pakete sind für aarch64 gebaut und auf Asahi Linux ausgerichtet.
+Das Repository `rpm.netsnek.com` liefert gepatchte Pakete, die dieses Setup erst möglich machen. Die Seite beschreibt die Einbindung per dnf, die enthaltenen Pakete und was an jedem Paket geändert wurde. Das reicht von gepatchtem wlroots, Wayfire und XFCE-Bausteinen bis zu nativen aarch64-Builds von Telegram, Signal und Winamp. Alle Pakete sind für aarch64 gebaut und auf Asahi Linux ausgerichtet.
 
 ## Zielgruppe
 
