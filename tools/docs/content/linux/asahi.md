@@ -54,7 +54,7 @@ XFCE 4.20 kann als Wayland-Session auf einem externen Compositor laufen. Genau d
 
 **`dbus-update-activation-environment --systemd` muss `WAYLAND_DISPLAY` und `DISPLAY` enthalten.** Ohne diese Weitergabe an die systemd-User-Session schlägt `xdg-desktop-portal-gtk` fehl. Die Folge wären kaputte Datei-Dialoge in Wayland-Anwendungen, etwa beim Speichern in Chromium.
 
-Eine bekannte Grenze: Wayfire unterstützt das Protokoll `ext_workspace_manager_v1` nicht. XFCE sieht deshalb alle Arbeitsflächen als eine einzige. Die Wayfire-Workspaces selbst funktionieren einwandfrei, nur Features wie Wallpaper pro Arbeitsfläche entfallen.
+Ein Wort zum Workspace-Pager: wlroots 0.19 implementiert das Protokoll `ext_workspace_manager_v1` nicht, die native Unterstützung kommt erst mit wlroots 0.20. Mit Stock-Paketen sieht XFCE deshalb nur eine einzige Arbeitsfläche. Dieses Setup schließt die Lücke mit einem gepatchten wlroots 0.19.2, das die ext-workspace-v1-Implementierung als Backport enthält, und Wayfire 0.10.1 mit dem Plugin `wlr-workspaces`, das die Wayfire-Arbeitsflächen über das Protokoll exponiert. Beide Pakete kommen aus dem [Netsnek RPM-Repository](/docs/linux/rpm). Der XFCE-Pager zeigt damit alle Arbeitsflächen im Button-Modus und Klicks im Pager wechseln den Workspace. Das Panel muss dafür mindestens Version 4.20.1 sein, 4.20.0 enthält einen ext-workspace-Bug. Was weiterhin fehlt: Das Protokoll kennt kein Fenster-zu-Workspace-Mapping, Thumbnail-Pager und Wallpaper pro Arbeitsfläche gibt es deshalb nicht.
 
 ## Audio: PipeWire
 
@@ -129,4 +129,4 @@ Apple Silicon unterstützt unter Linux nur s2idle. Hibernate ist wegen einer Ein
 
 ## Gepatchte Pakete
 
-Mehrere Bausteine dieses Setups brauchen Patches, die es so nicht in Fedora gibt. Das Panel muss als Layer-Shell-Fläche laufen, xfdesktop braucht einen Wayland-Monitornamen-Fix, der Lockscreen braucht `ext-session-lock-v1`. Diese Pakete kommen aus dem eigenen Repository. Details stehen unter [Netsnek RPM-Repository](/docs/linux/rpm).
+Mehrere Bausteine dieses Setups brauchen Patches, die es so nicht in Fedora gibt. Das Panel muss als Layer-Shell-Fläche laufen, xfdesktop braucht einen Wayland-Monitornamen-Fix, der Lockscreen braucht `ext-session-lock-v1`, der Workspace-Pager braucht das gepatchte wlroots samt Wayfire-Plugin. Diese Pakete kommen aus dem eigenen Repository. Details stehen unter [Netsnek RPM-Repository](/docs/linux/rpm).
