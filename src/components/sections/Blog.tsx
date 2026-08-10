@@ -129,21 +129,9 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
         })}
       />
 
-      <Flex
-        direction={{ base: 'column', md: 'row' }}
-        align={{ base: 'start', md: 'baseline' }}
-        justify="space-between"
-        gap="2"
-        mb="8"
-      >
-        <Text fontSize="md" color="gray.500" maxW="2xl">
-          {intl.formatMessage({
-            id: 'BlogIntro',
-            defaultMessage:
-              'Was wir gebaut haben, wie es funktioniert und was wir dabei gelernt haben.'
-          })}
-        </Text>
-
+      {/* Nur der Link. Die Sektion traegt ihre Aussage in der Ueberschrift,
+          eine erklaerende Unterzeile darunter waere eine Entschuldigung. */}
+      <Flex justify="flex-end" mb="8">
         <Link
           as={GatsbyLink}
           to={localizeHref('/docs')}

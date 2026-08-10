@@ -183,8 +183,6 @@ export const messagesDe = {
   // catalog only carries its message default (HTML preserved).
   BlogHeading:
     "Geschichten aus unseren Projekten<span style='color:var(--chakra-colors-brand-500)'>.</span>",
-  BlogIntro:
-    'Was wir gebaut haben, wie es funktioniert und was wir dabei gelernt haben.',
   BlogAllLink: 'Alle Themen ansehen',
   BlogReadMore: 'Weiterlesen',
 
@@ -370,7 +368,6 @@ export const messagesEn: MessageCatalog = {
   ServicesCardConsultingImageAlt: "Consulting",
   ServicesCardDevelopmentImageAlt: "Development",
   BlogHeading: "Stories from our projects<span style='color:var(--chakra-colors-brand-500)'>.</span>",
-  BlogIntro: "What we built, how it works and what we learned along the way.",
   BlogAllLink: "Browse all topics",
   BlogReadMore: "Read more",
   AssociatesHeading: "We build your software in Austria.",
@@ -509,7 +506,6 @@ export const messagesSl: MessageCatalog = {
   ServicesCardConsultingImageAlt: "Svetovanje",
   ServicesCardDevelopmentImageAlt: "Razvoj",
   BlogHeading: "Zgodbe iz naših projektov<span style='color:var(--chakra-colors-brand-500)'>.</span>",
-  BlogIntro: "Kaj smo zgradili, kako deluje in kaj smo se ob tem naučili.",
   BlogAllLink: "Oglejte si vse teme",
   BlogReadMore: "Preberite več",
   AssociatesHeading: "Za vas razvijamo v Avstriji.",
@@ -648,7 +644,6 @@ export const messagesIt: MessageCatalog = {
   ServicesCardConsultingImageAlt: "Consulenza",
   ServicesCardDevelopmentImageAlt: "Sviluppo",
   BlogHeading: "Storie dai nostri progetti<span style='color:var(--chakra-colors-brand-500)'>.</span>",
-  BlogIntro: "Che cosa abbiamo costruito, come funziona e che cosa abbiamo imparato.",
   BlogAllLink: "Vedi tutti gli argomenti",
   BlogReadMore: "Continua a leggere",
   AssociatesHeading: "Sviluppiamo per voi in Austria.",
@@ -787,7 +782,6 @@ export const messagesJa: MessageCatalog = {
   ServicesCardConsultingImageAlt: "コンサルティング",
   ServicesCardDevelopmentImageAlt: "開発",
   BlogHeading: "プロジェクトの物語<span style='color:var(--chakra-colors-brand-500)'>。</span>",
-  BlogIntro: "私たちが作ったもの、その仕組み、そしてそこから学んだこと。",
   BlogAllLink: "すべてのトピックを見る",
   BlogReadMore: "続きを読む",
   AssociatesHeading: "お客様のためのソフトウェアを、オーストリアで開発しています。",
