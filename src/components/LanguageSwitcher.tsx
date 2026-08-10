@@ -5,7 +5,8 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  MenuButtonProps
+  MenuButtonProps,
+  Portal
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { navigate } from 'gatsby';
@@ -65,6 +66,9 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
         aria-label={`${LANGUAGE_CONTROL_LABEL}: ${
           LOCALE_LABELS[currentBase] ?? currentBase
         }`}
+        // Brand orange by default so the control reads as a control on both
+        // header rows; a call site can still override it.
+        color="brand.500"
         leftIcon={<TbLanguage boxSize={5} display="block" />}
         rightIcon={<ChevronDownIcon boxSize={4} display="block" />}
         iconSpacing={1.5}
@@ -74,7 +78,11 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
           {currentBase.toUpperCase()}
         </Box>
       </MenuButton>
-      <MenuList color="chakra-body-text">
+      {/* The header rows carry their own stacking context, and an in-place
+          MenuList paints underneath them. A portal lifts the list out to the
+          body, above everything. */}
+      <Portal>
+        <MenuList color="chakra-body-text" zIndex="popover">
         {locales.map(locale => {
           const isCurrent = locale === currentBase;
 
@@ -93,7 +101,8 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
             </MenuItem>
           );
         })}
-      </MenuList>
+        </MenuList>
+      </Portal>
     </Menu>
   );
 };

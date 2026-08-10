@@ -377,7 +377,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   display={{base: 'none', md: 'block'}}>
                   Login
                 </Button> */}
-              <LanguageSwitcher ml={4} color="white" />
+              <LanguageSwitcher ml={4} />
               <IconButton
                 ml={4}
                 icon={
@@ -475,7 +475,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   display={{base: 'none', md: 'block'}}>
                   Login
                 </Button> */}
-              <LanguageSwitcher ml={4} color="white" />
+              <LanguageSwitcher ml={4} />
               <IconButton
                 ml={4}
                 _hover={{
