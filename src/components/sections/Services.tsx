@@ -35,7 +35,7 @@ const Services = () => {
         defaultValue={intl.formatMessage({
           id: 'ServicesHeading',
           defaultMessage:
-            "Wir verwirklichen in Wochen,<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>"
+            "Wir verwirklichen in Wochen,<br/> <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>"
         })}
       />
       <Grid templateColumns={{base: '1fr', lg: '1fr 1fr'}} gap={10}>

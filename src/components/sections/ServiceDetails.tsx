@@ -30,7 +30,7 @@ const Services = () => {
         defaultValue={intl.formatMessage({
           id: 'ServiceDetailsHeading1',
           defaultMessage:
-            "Wir unterstützen<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>Ihr Unternehmen</span><br/>\n  im digitalen Zeitalter<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+            "Wir unterstützen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Unternehmen</span><br/> im digitalen Zeitalter<span style='color:var(--chakra-colors-brand-500)'>.</span>"
         })}
       />
 
@@ -134,7 +134,7 @@ const Services = () => {
         defaultValue={intl.formatMessage({
           id: 'ServiceDetailsHeading2',
           defaultMessage:
-            "Wir lösen<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>Ihr Probleme</span><br/>\n  zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+            "Wir lösen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>"
         })}
       />
     </Box>

@@ -77,7 +77,7 @@ const Contact = () => {
             defaultValue={intl.formatMessage({
               id: 'ContactHeading',
               defaultMessage:
-                "Erzählen Sie uns<br>\n                von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+                "Erzählen Sie uns<br> von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>"
             })}
             fontSize={{ base: '3xl', lg: '4xl' }}
             fontWeight="500"
@@ -90,7 +90,7 @@ const Contact = () => {
             defaultValue={intl.formatMessage({
               id: 'ContactDetails',
               defaultMessage:
-                '<b>E-Mail</b><br>\n              <a href="mailto:office@netsnek.com">office@netsnek.com</a><br>\n              <br>\n              <b>Telefon</b><br>\n              <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br>\n              <br>\n              <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br>\n              Löwengasse 28 / Lokal 2A<br>\n              1030, Wien<br>\n              Österreich'
+                '<b>E-Mail</b><br> <a href="mailto:office@netsnek.com">office@netsnek.com</a><br> <br> <b>Telefon</b><br> <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br> <br> <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br> Löwengasse 28 / Lokal 2A<br> 1030, Wien<br> Österreich'
             })}
             mt={10}
             w="full"

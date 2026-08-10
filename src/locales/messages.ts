@@ -59,9 +59,9 @@ export const messagesDe = {
   // The two headings stay jaen fields; these strings are the message
   // defaults (HTML preserved as used by Field.Text defaultValue).
   ServiceDetailsHeading1:
-    "Wir unterstützen<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>Ihr Unternehmen</span><br/>\n  im digitalen Zeitalter<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+    "Wir unterstützen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Unternehmen</span><br/> im digitalen Zeitalter<span style='color:var(--chakra-colors-brand-500)'>.</span>",
   ServiceDetailsHeading2:
-    "Wir lösen<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>Ihr Probleme</span><br/>\n  zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+    "Wir lösen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>",
   ServiceDetailsItemUxTitle: 'UX-Konzeption',
   ServiceDetailsItemUxText:
     'Durch den Einsatz moderner UX-Methoden gestalten wir benutzerfreundliche und intuitive Oberflächen.',
@@ -126,7 +126,7 @@ export const messagesDe = {
   // (src/components/sections/Services.tsx). The heading stays a jaen field;
   // the catalog only carries its message default (HTML preserved).
   ServicesHeading:
-    "Wir verwirklichen in Wochen,<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>",
+    "Wir verwirklichen in Wochen,<br/> <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>",
   ServicesCardConsultingImageAlt: 'Beratung',
   ServicesCardDevelopmentImageAlt: 'Entwicklung',
 
@@ -139,9 +139,9 @@ export const messagesDe = {
   // contact details stay jaen fields; the catalog carries their defaults
   // with the inline HTML exactly as the fields render it.
   ContactHeading:
-    "Erzählen Sie uns<br>\n                von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+    "Erzählen Sie uns<br> von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>",
   ContactDetails:
-    '<b>E-Mail</b><br>\n              <a href="mailto:office@netsnek.com">office@netsnek.com</a><br>\n              <br>\n              <b>Telefon</b><br>\n              <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br>\n              <br>\n              <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br>\n              Löwengasse 28 / Lokal 2A<br>\n              1030, Wien<br>\n              Österreich',
+    '<b>E-Mail</b><br> <a href="mailto:office@netsnek.com">office@netsnek.com</a><br> <br> <b>Telefon</b><br> <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br> <br> <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br> Löwengasse 28 / Lokal 2A<br> 1030, Wien<br> Österreich',
   ContactSubmitButton: 'Kontaktiere Uns',
   ContactProjectsLink: 'Lassen Sie sich inspirieren',
 
