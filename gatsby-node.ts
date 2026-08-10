@@ -124,7 +124,22 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
         '@chakra-ui/react': path.resolve(
           __dirname,
           'node_modules/@chakra-ui/react'
-        )
+        ),
+        // The jaen packages come in as `link:` deps, so they resolve THEIR
+        // dependencies from the monorepo tree instead of this one. For the
+        // gqty client that means a second, nested copy whose ESM build pulls
+        // gqty's CommonJS files into an ESM context — webpack then parses
+        // `gqty/Utils/hash.js` as a module and the bundle dies on
+        // "exports is not defined" before the app ever renders. Pinning the
+        // whole gqty stack to this repo's own copies (identical versions,
+        // the ones the published package used) keeps a single instance.
+        gqty: path.resolve(__dirname, 'node_modules/gqty'),
+        '@gqty/react': path.resolve(__dirname, 'node_modules/@gqty/react'),
+        'use-sync-external-store': path.resolve(
+          __dirname,
+          'node_modules/use-sync-external-store'
+        ),
+        graphql: path.resolve(__dirname, 'node_modules/graphql')
       }
     }
   });
