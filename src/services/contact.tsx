@@ -79,28 +79,22 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ childr
       invokedOnUrl: meta?.url,
     }
 
-    // "Contact" template on emailwerk.com: recipients come from the stored
-    // envelope (office@netsnek.com), the requester's address goes into
-    // replyTo.
+    // "Contact" template on emailwerk.com. One send, for visitors and logged-in
+    // users alike: the template is flagged isPublic, so this posts anonymously
+    // when there is no CMS session and emailwerk takes the public branch.
+    //
+    // Recipients come from the template's stored envelope (office@netsnek.com)
+    // server-side and cannot be passed from here at all. The requester's own
+    // address goes into replyTo, which is also what the server delivers the
+    // linked "Contact Confirmation" child template to, exactly as mailpress
+    // delivered linked templates. Sending that confirmation explicitly would
+    // deliver it twice, so it is deliberately not sent here.
     const result = await sendTemplateMail('cmsmguuxh0038rb2pgsrpzhur', {
       envelope: {
         replyTo: data.email,
       },
       values,
     })
-
-    if (result.ok) {
-      // "Contact Confirmation" template: mailpress derived the requester's
-      // address through a JS transformer; emailwerk takes it as an explicit
-      // recipient. Best-effort — a failed confirmation must not fail the
-      // inquiry itself.
-      void sendTemplateMail('cmsmgusf60007rb2pyiuzaj54', {
-        envelope: {
-          to: [data.email],
-        },
-        values,
-      })
-    }
 
     if (!result.ok) {
       toast({
