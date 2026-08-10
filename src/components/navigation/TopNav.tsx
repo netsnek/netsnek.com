@@ -20,7 +20,7 @@ import { useLocation } from '@reach/router';
 import { Link } from 'gatsby-plugin-jaen';
 import { FC, useEffect, useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { usePageLocale } from '../../contexts/locale';
+import { useLocalizeHref } from '../../contexts/locale';
 import Logo from '../../gatsby-plugin-jaen/components/Logo';
 import LanguageSwitcher from '../LanguageSwitcher';
 import useWindowSize from '../../hooks/use-current-window-size';
@@ -67,9 +67,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
   const location = useLocation();
   const windowSize = useWindowSize();
   const intl = useIntl();
-  const { prefix } = usePageLocale();
-
-  const localizeHref = (href: string) => (prefix ? `/${prefix}${href}` : href);
+  const localizeHref = useLocalizeHref();
 
   const links: { left: TTopNavLinkData[]; right: TTopNavLinkData[] } = {
     left: [

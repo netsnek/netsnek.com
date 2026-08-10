@@ -18,7 +18,7 @@ import {
 import { FC, useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useContactModal } from '../../services/contact';
-import { usePageLocale } from '../../contexts/locale';
+import { useLocalizeHref } from '../../contexts/locale';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
@@ -44,9 +44,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
   };
 
   const intl = useIntl();
-  const { prefix } = usePageLocale();
-
-  const localizeHref = (href: string) => (prefix ? `/${prefix}${href}` : href);
+  const localizeHref = useLocalizeHref();
 
   const contactModal = useContactModal();
   const handleOnContactClick = () => {
