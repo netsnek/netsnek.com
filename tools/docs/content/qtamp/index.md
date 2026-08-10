@@ -1,6 +1,6 @@
 ---
 title: qtamp
-description: qtamp ist ein Qt-nativer Musikplayer, der originale Winamp-Modern-Skins über die originale Maki-VM ausführt. Er läuft auf Linux, macOS und als WebAssembly-Build im Browser.
+description: qtamp ist ein Qt-nativer Musikplayer für originale Winamp-Skins, klassische wie moderne. Modern Skins laufen über die originale Maki-VM. qtamp läuft auf Linux, macOS und als WebAssembly-Build im Browser.
 path: /docs/qtamp
 ---
 
@@ -16,11 +16,12 @@ Der Name ist ein Wortspiel. "Qt" wie das Framework, "qt" wie cute. qtamp ist ein
 
 Diese Tausenden ausgelieferten Skins sind zugleich die Spezifikation und die Test-Suite. Was falsch rendert, wird offen im [Fidelity-Audit](https://github.com/qtWasabi/qtWasabi/tree/main/okf) von qtWasabi getrackt. Der Showcase auf qtamp.org zeigt nur Skins, die bereits exakt so rendern, wie ihre Autoren sie gebaut haben.
 
-Klassische Winamp-Skins (`.wsz`) unterstützt qtamp derzeit nicht. Ihre Unterstützung ist als späterer qtWasabi-Meilenstein geplant.
+Klassische Winamp-Skins (`.wsz`) spielt qtamp ebenfalls. Sie laufen über den Qt-nativen Classic-Renderer, den qtamp aus seiner winamp-linux-Herkunft mitbringt und weiterpflegt. Liegt keine Modern Skin an, fällt qtamp automatisch auf den Classic-Pfad zurück.
 
 ## Funktionen
 
 - Winamp-Modern-Skins (`.wal`) auf Linux, macOS und im Browser. WinampModernPP, Bento, Big Bento oder eigene Skins laufen über die originale Maki-VM.
+- Klassische Winamp-Skins (`.wsz`) über den Qt-nativen Classic-Renderer, inklusive Equalizer-Skinning.
 - Wiedergabe von FLAC, MP3, OGG und Opus.
 - 10-Band-Equalizer als DSP.
 - Playlists mit einem echten Playlist-Editor, den der Skin selbst rendert.
@@ -46,11 +47,17 @@ Für Skins ohne eigene Presets kann die Engine zusätzlich Farbthemen synthetisi
 - **Browser**: als WebAssembly-Build in Chromium.
 - **Windows**: geplant, aber noch nicht verfügbar. Die Engine ist reines Qt6 und C++ ohne Plattformtricks, der Port ist eine Frage der Build-Infrastruktur.
 
+## Headless und GraphQL
+
+qtWasabi entwickelt sich zu einem Frontend-Framework für Winamp-artige Player, ähnlich wie React zu einem Node-Server. Der Player ist dabei ein eigenständiger Backend-Dienst, die Oberfläche ein Head, der sich verbindet und rendert. Verbraucher sprechen ausschließlich GraphQL mit dem Player, Player implementieren ein schlankes gRPC-Protokoll gegen das Framework. Damit lässt sich qtamp auch headless betreiben: der Player läuft ohne Fenster weiter, und Heads auf dem Desktop, im Browser oder auf einem anderen Rechner verbinden sich mit demselben Zustand. Alle Heads eines Players bleiben dabei in allem synchron, vom Titel über den Equalizer bis zur Playlist.
+
+Die Grundlagen davon sind bereits gelandet: das Frontend spricht intern GraphQL, der WebAssembly-Head nutzt denselben Weg, und die Trennung von Player und Oberfläche ist im Code vollzogen. Der Ausbau zu fernsteuerbaren Playern und Bots läuft.
+
 ## Was qtamp nicht ist
 
 qtamp ist bewusst kein vollausgestatteter Player. Es gibt keine Internetradio-Verzeichnisse, keinen Podcast-Manager und keine Musikshop-Anbindung. Du zeigst qtamp auf deinen Musikordner, und er spielt deine Musik.
 
-qtamp liegt irgendwo zwischen einer dünnen Referenz-Shell und einem Player für den Alltag. Das Engineering-Budget bleibt bei der Skin-Treue. Wer heute einen funktionsvollständigen Winamp-Nachfolger sucht, ist bei WACUP oder Audacious besser aufgehoben. Wer Modern Skins nativ auf Apple Silicon und Asahi Linux laufen lassen will, ist hier richtig.
+qtamp liegt irgendwo zwischen einer dünnen Referenz-Shell und einem Player für den Alltag. Das Engineering-Budget bleibt bei der Skin-Treue. Wer heute einen funktionsvollständigen Winamp-Nachfolger sucht, ist bei WACUP oder Audacious besser aufgehoben. Wer Winamp-Skins nativ auf Apple Silicon und Asahi Linux laufen lassen will, ist hier richtig.
 
 Mit Qmmp und QAmp ist qtamp trotz ähnlicher Namen nicht verwandt. Beides sind eigenständige Projekte, qtamp wurde von Grund auf neu geschrieben.
 
