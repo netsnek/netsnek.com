@@ -36,12 +36,14 @@
     "jaen": "link:../jaen/packages/jaen",
     "jaen-fields-mdx": "link:../jaen/packages/jaen-fields-mdx",
     "prismjs": "^1.29.0",
+    "quantum-circuit": "^0.9.218",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.4",
     "react-highlight-words": "^0.20.0",
     "react-intl": "6.8.9",
     "react-simple-code-editor": "^0.13.1",
+    "snek-query": "^0.0.114",
     "use-debounce": "^10.0.0"
   },
   "resolutions": {

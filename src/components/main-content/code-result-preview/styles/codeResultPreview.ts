@@ -1,4 +1,13 @@
 const smtCodeResultPreviewComponent = {
+  // The component reads components.codeResultPreview.text.color for the
+  // result body. Without this entry Chakra emitted the token path as literal
+  // CSS, which browsers drop, so the text fell back to whatever it inherited.
+  text: {
+    color: {
+      default: 'gray.700',
+      _dark: 'gray.300'
+    }
+  },
   header: {
     bgColor: {
       default: 'gray.100',
