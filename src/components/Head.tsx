@@ -87,31 +87,37 @@ const routeOf = (pathname: string): string => {
  * gatsby's Head API renders outside the site's IntlProvider — the only
  * provider around it is jaen's own CMS one.
  *
- * The component has to stay named `Head`: gatsby-plugin-jaen recognizes the
- * head element by that name and only then wraps it in the site metadata
- * provider jaen's Head requires.
+ * Built by a factory so the exported component keeps an empty `name`, the
+ * way jaen's own `withRedux(...)` Head does. gatsby-plugin-jaen recognizes
+ * the head element by a component name of `Head` or `''` and only then
+ * mounts the site metadata provider jaen's Head requires — and a literal
+ * `const Head = props => …` would lose that name to bundle minification.
  */
-export const Head: React.FC<SiteHeadProps> = props => {
-  const locale = props.pageContext?.locale ?? defaultLocale;
-  const messages = getMessages(locale);
-  const route = routeMetadata[routeOf(props.location?.pathname ?? '/')];
+const withLocalizedMetadata =
+  (Component: React.FC<JaenHeadProps>): React.FC<SiteHeadProps> =>
+  props => {
+    const locale = props.pageContext?.locale ?? defaultLocale;
+    const messages = getMessages(locale);
+    const route = routeMetadata[routeOf(props.location?.pathname ?? '/')];
 
-  const stored = props.data?.jaenPage?.jaenPageMetadata;
+    const stored = props.data?.jaenPage?.jaenPageMetadata;
 
-  const jaenPage = {
-    ...props.data?.jaenPage,
-    jaenPageMetadata: {
-      ...stored,
-      title: stored?.title || (route && messages[route.title]),
-      description:
-        stored?.description ||
-        (route ? messages[route.description] : messages.SiteDescription)
-    }
-  } as JaenHeadProps['data']['jaenPage'];
+    const jaenPage = {
+      ...props.data?.jaenPage,
+      jaenPageMetadata: {
+        ...stored,
+        title: stored?.title || (route && messages[route.title]),
+        description:
+          stored?.description ||
+          (route ? messages[route.description] : messages.SiteDescription)
+      }
+    } as JaenHeadProps['data']['jaenPage'];
 
-  return (
-    <JaenHead {...props} data={{ ...props.data, jaenPage }}>
-      {null}
-    </JaenHead>
-  );
-};
+    return (
+      <Component {...props} data={{ ...props.data, jaenPage }}>
+        {null}
+      </Component>
+    );
+  };
+
+export const Head = withLocalizedMetadata(JaenHead);
