@@ -14,6 +14,7 @@ import {
   } from '@chakra-ui/react'
   import {useCookieConsentContext} from 'jaen'
   import {useEffect, useState} from 'react'
+  import {useIntl} from 'react-intl'
   // import {useCookieConsent} from '@jaenjs/jaen'
   
   export interface GoogleMapsProps extends BoxProps {
@@ -22,7 +23,8 @@ import {
   
   export const GoogleMaps = ({src, ...props}: GoogleMapsProps) => {
     const [isMounted, setIsMounted] = useState(false)
-  
+
+    const intl = useIntl()
     const cc = useCookieConsentContext()
   
     useEffect(() => {
@@ -67,12 +69,22 @@ import {
           textAlign="center">
           <Spinner />
           <AlertTitle mt={4} mb={1} fontSize="lg">
-            Google Maps is nicht verfügbar
+            {intl.formatMessage({
+              id: 'MapsUnavailableTitle',
+              defaultMessage: 'Google Maps ist nicht verfügbar'
+            })}
           </AlertTitle>
           <AlertDescription maxWidth="sm">
-            Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.{' '}
+            {intl.formatMessage({
+              id: 'MapsUnavailableText',
+              defaultMessage:
+                'Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.'
+            })}{' '}
             <Link onClick={handleAccept} variant="link">
-              Analyse Cookies aktivieren
+              {intl.formatMessage({
+                id: 'MapsEnableCookiesAction',
+                defaultMessage: 'Analyse Cookies aktivieren'
+              })}
             </Link>
           </AlertDescription>
         </Alert>

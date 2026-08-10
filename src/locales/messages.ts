@@ -222,7 +222,15 @@ export const messagesDe = {
   PageDescriptionTermsOfService:
     'Die Nutzungsbedingungen für die Websites und Dienste von Netsnek.',
   PageTitleNotFound: 'Seite nicht gefunden | Netsnek',
-  PageDescriptionNotFound: 'Diese Seite existiert nicht.'
+  PageDescriptionNotFound: 'Diese Seite existiert nicht.',
+
+  // Google Maps cookie-consent fallback (src/components/GoogleMaps.tsx),
+  // shown wherever the map is embedded when analytics cookies are
+  // declined. The German title had a typo ("is" for "ist").
+  MapsUnavailableTitle: 'Google Maps ist nicht verfügbar',
+  MapsUnavailableText:
+    'Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.',
+  MapsEnableCookiesAction: 'Analyse Cookies aktivieren'
 } as const;
 
 export type MessageKey = keyof typeof messagesDe;
@@ -346,7 +354,10 @@ export const messagesEn: MessageCatalog = {
   PageTitleTermsOfService: "Terms of service | Netsnek",
   PageDescriptionTermsOfService: "The terms of service for the websites and services of Netsnek.",
   PageTitleNotFound: "Page not found | Netsnek",
-  PageDescriptionNotFound: "This page does not exist."
+  PageDescriptionNotFound: "This page does not exist.",
+  MapsUnavailableTitle: "Google Maps is unavailable",
+  MapsUnavailableText: "Please enable cookies to display Google Maps.",
+  MapsEnableCookiesAction: "Enable analytics cookies"
 };
 
 export const messagesSl: MessageCatalog = {
@@ -462,7 +473,10 @@ export const messagesSl: MessageCatalog = {
   PageTitleTermsOfService: "Pogoji uporabe | Netsnek",
   PageDescriptionTermsOfService: "Pogoji uporabe spletnih mest in storitev Netsnek.",
   PageTitleNotFound: "Stran ni bila najdena | Netsnek",
-  PageDescriptionNotFound: "Ta stran ne obstaja."
+  PageDescriptionNotFound: "Ta stran ne obstaja.",
+  MapsUnavailableTitle: "Google Zemljevidi niso na voljo",
+  MapsUnavailableText: "Za prikaz Google Zemljevidov omogočite piškotke.",
+  MapsEnableCookiesAction: "Omogoči analitične piškotke"
 };
 
 export const messagesIt: MessageCatalog = {
@@ -578,7 +592,10 @@ export const messagesIt: MessageCatalog = {
   PageTitleTermsOfService: "Condizioni d'uso | Netsnek",
   PageDescriptionTermsOfService: "Le condizioni d'uso dei siti web e dei servizi di Netsnek.",
   PageTitleNotFound: "Pagina non trovata | Netsnek",
-  PageDescriptionNotFound: "Questa pagina non esiste."
+  PageDescriptionNotFound: "Questa pagina non esiste.",
+  MapsUnavailableTitle: "Google Maps non è disponibile",
+  MapsUnavailableText: "Attiva i cookie per visualizzare Google Maps.",
+  MapsEnableCookiesAction: "Attiva i cookie di analisi"
 };
 
 export const messagesJa: MessageCatalog = {
@@ -694,7 +711,10 @@ export const messagesJa: MessageCatalog = {
   PageTitleTermsOfService: "利用規約 | Netsnek",
   PageDescriptionTermsOfService: "NetsnekのWebサイトおよびサービスをご利用いただく際の利用規約です。",
   PageTitleNotFound: "ページが見つかりません | Netsnek",
-  PageDescriptionNotFound: "このページは存在しません。"
+  PageDescriptionNotFound: "このページは存在しません。",
+  MapsUnavailableTitle: "Google マップを表示できません",
+  MapsUnavailableText: "Google マップを表示するには Cookie を有効にしてください。",
+  MapsEnableCookiesAction: "分析 Cookie を有効にする"
 };
 
 const catalogs: Record<Locale, MessageCatalog> = {
