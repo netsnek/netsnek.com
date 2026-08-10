@@ -35,6 +35,7 @@ import DocsIndex from '../main-content/docs-index/components/DocsIndex';
 import Filesystem from '../main-content/filesystem/components/Filesystem';
 import IconCard from '../main-content/icon-card/components/IconCard';
 import ImageCard from '../main-content/image-card/components/ImageCard';
+import QASMPlayground from '../main-content/qasm-playground/components/QASMPlayground';
 import JaenImage from '../JaenImage';
 
 interface IMdxEditorProps {
@@ -95,7 +96,8 @@ export const mdxEditorComponents: MdxFieldProps['components'] = {
   ImageCard,
   Callout,
   IconCard,
-  DocsIndex
+  DocsIndex,
+  QASMPlayground
 };
 
 const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash, onMdast }) => {
