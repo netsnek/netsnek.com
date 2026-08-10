@@ -11,6 +11,7 @@ import {
   AspectRatio
 } from '@chakra-ui/react';
 import { Field } from 'jaen';
+import { useIntl } from 'react-intl';
 // import ContactButton from '../ContactButton'
 
 import { HBalloon } from '../../gatsby-plugin-jaen/components/Ballons_Ballons';
@@ -22,6 +23,8 @@ import { WGIcon } from '../../gatsby-plugin-jaen/components/wgstros';
 import { useContactModal } from '../../services/contact';
 
 const Contact = () => {
+  const intl = useIntl();
+
   // Sample list of your links and icons, assuming you will replace these with your actual data
   const links = [
     { href: 'https://ballons-ballons.at', icon: HBalloon },
@@ -71,8 +74,11 @@ const Contact = () => {
         >
           <Field.Text
             name="FooterTitleLine1"
-            defaultValue="Erzählen Sie uns<br>
-                von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+            defaultValue={intl.formatMessage({
+              id: 'ContactHeading',
+              defaultMessage:
+                "Erzählen Sie uns<br>\n                von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+            })}
             fontSize={{ base: '3xl', lg: '4xl' }}
             fontWeight="500"
             w={{ base: 'full', lg: 'fit-content' }}
@@ -81,16 +87,11 @@ const Contact = () => {
           />
           <Field.Text
             name="FooterTextNew"
-            defaultValue='<b>E-Mail</b><br>
-              <a href="mailto:office@netsnek.com">office@netsnek.com</a><br>
-              <br>
-              <b>Telefon</b><br>
-              <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br>
-              <br>
-              <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br>
-              Löwengasse 28 / Lokal 2A<br>
-              1030, Wien<br>
-              Österreich'
+            defaultValue={intl.formatMessage({
+              id: 'ContactDetails',
+              defaultMessage:
+                '<b>E-Mail</b><br>\n              <a href="mailto:office@netsnek.com">office@netsnek.com</a><br>\n              <br>\n              <b>Telefon</b><br>\n              <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br>\n              <br>\n              <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br>\n              Löwengasse 28 / Lokal 2A<br>\n              1030, Wien<br>\n              Österreich'
+            })}
             mt={10}
             w="full"
             maxW={{ base: 'full', lg: '50%' }}
@@ -144,7 +145,10 @@ const Contact = () => {
               size={'lg'}
               mt={10}
             >
-              Kontaktiere Uns
+              {intl.formatMessage({
+                id: 'ContactSubmitButton',
+                defaultMessage: 'Kontaktiere Uns'
+              })}
             </Button>
           </GridItem>
           {links.map((link, index) => (
@@ -174,7 +178,10 @@ const Contact = () => {
             >
               <Field.Text
                 name="FooterLinkAllProjects"
-                defaultValue="Lassen Sie sich inspirieren"
+                defaultValue={intl.formatMessage({
+                  id: 'ContactProjectsLink',
+                  defaultMessage: 'Lassen Sie sich inspirieren'
+                })}
                 fontSize="xl"
                 //fontWeight="500"
               />

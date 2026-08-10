@@ -26,13 +26,31 @@ import Logo from '../../gatsby-plugin-jaen/components/Logo';
 
 const year = new Date().getFullYear();
 
+/** A localizable group heading of the footer link columns. */
+interface FooterGroupTitle {
+  label: string;
+  isTitle: true;
+}
+
+/**
+ * A footer link. `name` is the jaen field name and must stay stable even
+ * when the label is localized, because it keys the stored CMS content.
+ */
+interface FooterLink {
+  name: string;
+  label: string;
+  href: string;
+}
+
+type FooterEntry = FooterGroupTitle | FooterLink;
+
 /**
  * Footer component.
  */
 const Footer: FC = () => {
   const intl = useIntl();
 
-  const links = [
+  const links: FooterEntry[][] = [
     [
       {
         label: intl.formatMessage({
@@ -42,6 +60,7 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
+        name: 'FooterLinkGitHub',
         label: 'GitHub',
         href: 'https://github.com/netsnek/'
       },
@@ -50,19 +69,26 @@ const Footer: FC = () => {
       //   href: 'https://www.linkedin.com/in/kleberbaum/'
       // },
       {
+        name: 'FooterLinkTelegram',
         label: 'Telegram',
         href: 'https://t.me/kleberbaum'
       },
       {
+        name: 'FooterLinkFacebook',
         label: 'Facebook',
         href: 'https://facebook.com/netsnek/'
       },
       {
+        name: 'FooterLinkInstagram',
         label: 'Instagram',
         href: 'https://instagram.com/netsnek/'
       },
       {
-        label: 'Impressum',
+        name: 'FooterLinkImpressum',
+        label: intl.formatMessage({
+          id: 'FooterLinkImprint',
+          defaultMessage: 'Impressum'
+        }),
         href: '/imprint'
       }
     ],
@@ -75,10 +101,12 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
+        name: 'FooterLinkKanbon',
         label: 'Kanbon',
         href: 'https://kanbon.at'
       },
       {
+        name: 'FooterLinkNeurons',
         label: 'Neurons',
         href: 'https://neurons.at'
       }
@@ -92,10 +120,12 @@ const Footer: FC = () => {
         isTitle: true
       },
       {
+        name: 'FooterLinkFlorian H. Kleber',
         label: 'Florian H. Kleber',
         href: 'https://fhkit.at'
       },
       {
+        name: 'FooterLinkNico Schett',
         label: 'Nico Schett',
         href: 'https://schett.net'
       }
@@ -126,7 +156,7 @@ const Footer: FC = () => {
             >
               <Field.Text
                 color="white"
-                name={'FooterLink' + link.label}
+                name={link.name}
                 defaultValue={link.label}
               />
             </Link>
@@ -268,7 +298,11 @@ const Footer: FC = () => {
           <Divider mt={8} opacity={0.2} />
           <Field.Text
             name="FooterBottomText"
-            defaultValue="Copyright © 2024 Netsnek, Florian Herbert Kleber IT & Werbeagentur Nico Schett. All rights reserved."
+            defaultValue={intl.formatMessage({
+              id: 'FooterCopyright',
+              defaultMessage:
+                'Copyright © 2024 Netsnek, Florian Herbert Kleber IT & Werbeagentur Nico Schett. All rights reserved.'
+            })}
             mt={5}
             color="white"
             opacity={0.2}

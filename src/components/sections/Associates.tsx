@@ -6,12 +6,16 @@ import {
   LinkOverlay,
   GridItem,
   Grid,
-  AspectRatio,
-  chakra
+  AspectRatio
 } from '@chakra-ui/react'
 import {Field} from 'jaen'
+import {useIntl} from 'react-intl'
+
+import {withAccentDots} from '../../utils/accent-dots'
 
 const Associates = () => {
+  const intl = useIntl()
+
   // Sample list of your links and icons, assuming you will replace these with your actual data
   const associates = [
     {
@@ -92,7 +96,10 @@ const Associates = () => {
               {/* Assuming you have a way to dynamically select your icon component */}
               <Image
                 src={'/images/austria-a-aussenwirtschaft-austria.png'}
-                alt={'Austria'}
+                alt={intl.formatMessage({
+                  id: 'AssociatesAustriaImageAlt',
+                  defaultMessage: 'Austria'
+                })}
                 w="full"
                 h="full"
                 sx={{
@@ -107,8 +114,12 @@ const Associates = () => {
           {/* Softwareentwicklung in Österreich */}
           {/* Österreichische Qualitätssoftware */}
           {/* Softwareentwicklung in Österreich */}
-          Wir entwickeln für Sie in Österreich
-          <chakra.span color="brand.500">.</chakra.span>
+          {withAccentDots(
+            intl.formatMessage({
+              id: 'AssociatesHeading',
+              defaultMessage: 'Wir entwickeln für Sie in Österreich.'
+            })
+          )}
         </Heading>
       </GridItem>
       {associates.map((associate, index) => (
@@ -157,7 +168,10 @@ const Associates = () => {
             // defaultValue="Werden Sie Teil unseres Netzwerks"
             // I need something that makes clear that these are not customers but partners
             // And that they are Austrian
-            defaultValue="Experten aus unserem Netzwerk"
+            defaultValue={intl.formatMessage({
+              id: 'AssociatesNetworkLink',
+              defaultMessage: 'Experten aus unserem Netzwerk'
+            })}
             fontSize="xl"
             //fontWeight="500"
           />

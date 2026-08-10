@@ -32,8 +32,11 @@ const Services = () => {
         fontWeight="bold"
         textAlign="left"
         name="ContentSectionHeadingServices"
-        defaultValue="Wir verwirklichen in Wochen,<br/>
-  <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>"
+        defaultValue={intl.formatMessage({
+          id: 'ServicesHeading',
+          defaultMessage:
+            "Wir verwirklichen in Wochen,<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>"
+        })}
       />
       <Grid templateColumns={{base: '1fr', lg: '1fr 1fr'}} gap={10}>
         <GridItem colSpan={1}>
@@ -48,7 +51,10 @@ const Services = () => {
             boxShadow="sm">
             <Image
               src="/images/services/beratung.jpg"
-              alt="Beratung"
+              alt={intl.formatMessage({
+                id: 'ServicesCardConsultingImageAlt',
+                defaultMessage: 'Beratung'
+              })}
               h="200px"
               w="full"
               objectFit="cover"
@@ -81,7 +87,10 @@ const Services = () => {
             boxShadow="sm">
             <Image
               src="/images/services/mockup-arneitz.jpg"
-              alt="Entwicklung"
+              alt={intl.formatMessage({
+                id: 'ServicesCardDevelopmentImageAlt',
+                defaultMessage: 'Entwicklung'
+              })}
               h="200px"
               w="full"
               objectFit="cover"

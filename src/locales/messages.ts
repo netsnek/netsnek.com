@@ -2,14 +2,18 @@
  * Localizable chrome strings for netsnek.com.
  *
  * Flat PascalCase keys, one catalog per locale. The German catalog is the
- * source of truth and collects every hardcoded chrome string of the site
+ * source of truth and collects every hardcoded string of the site: chrome
  * (hero, navigation, footer titles, services cards, contact modal, toasts,
- * 404, search, product availability, docs feedback link). Jaen CMS fields
- * keep their field names; for the ServiceDetails/Services headings the
- * catalog only carries the message defaults.
+ * 404, search, product availability, docs feedback link), the defaults of
+ * the jaen CMS fields that fan out per locale and the image alternatives.
  *
- * All five catalogs are complete; the chrome components consume them
- * through react-intl (see gatsby-browser/gatsby-ssr wrapPageElement).
+ * Jaen CMS fields keep their field names; the catalog only carries their
+ * `defaultValue`, so an unedited locale renders in its own language while
+ * every locale stays editable in the CMS.
+ *
+ * The components consume the catalog through react-intl (see
+ * gatsby-browser/gatsby-ssr wrapPageElement). Keys missing from a locale
+ * fall back to the German value.
  */
 
 export const messagesDe = {
@@ -110,7 +114,38 @@ export const messagesDe = {
   ProductNotAvailable: 'Derzeit nicht verfügbar',
 
   // Docs (src/pages/docs.tsx)
-  DocsFeedbackLink: 'Fragen? Geben Sie uns Feedback'
+  DocsFeedbackLink: 'Fragen? Geben Sie uns Feedback',
+
+  // Services heading and image alternatives
+  // (src/components/sections/Services.tsx). The heading stays a jaen field;
+  // the catalog only carries its message default (HTML preserved).
+  ServicesHeading:
+    "Wir verwirklichen in Wochen,<br/>\n  <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>",
+  ServicesCardConsultingImageAlt: 'Beratung',
+  ServicesCardDevelopmentImageAlt: 'Entwicklung',
+
+  // Associates (src/components/sections/Associates.tsx)
+  AssociatesHeading: 'Wir entwickeln für Sie in Österreich.',
+  AssociatesAustriaImageAlt: 'Austria',
+  AssociatesNetworkLink: 'Experten aus unserem Netzwerk',
+
+  // Contact section (src/components/sections/Contact.tsx). Heading and
+  // contact details stay jaen fields; the catalog carries their defaults
+  // with the inline HTML exactly as the fields render it.
+  ContactHeading:
+    "Erzählen Sie uns<br>\n                von Ihrer Idee<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+  ContactDetails:
+    '<b>E-Mail</b><br>\n              <a href="mailto:office@netsnek.com">office@netsnek.com</a><br>\n              <br>\n              <b>Telefon</b><br>\n              <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br>\n              <br>\n              <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br>\n              Löwengasse 28 / Lokal 2A<br>\n              1030, Wien<br>\n              Österreich',
+  ContactSubmitButton: 'Kontaktiere Uns',
+  ContactProjectsLink: 'Lassen Sie sich inspirieren',
+
+  // Footer (src/components/sections/Footer.tsx,
+  // src/components/AppLayout/Footer.tsx)
+  FooterLinkImprint: 'Impressum',
+  FooterCopyright:
+    'Copyright © 2024 Netsnek, Florian Herbert Kleber IT & Werbeagentur Nico Schett. All rights reserved.',
+  AppLayoutFooterCopyright:
+    'Copyright © 2023 Florian H. Kleber, Florian Herbert Kleber IT. All rights reserved.'
 } as const;
 
 export type MessageKey = keyof typeof messagesDe;
@@ -121,7 +156,7 @@ export const locales = ['de', 'en', 'sl', 'it', 'ja'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'de';
 
-export const messagesEn: MessageCatalog = {
+export const messagesEn: PartialMessageCatalog = {
   HeroTitle: "INNOVATIVE. EFFECTIVE.",
   HeroSubtitle: "Professional software development.",
   HeroText: "Your software agency in Austria. We build custom software solutions tailored to your needs.",
@@ -184,7 +219,7 @@ export const messagesEn: MessageCatalog = {
   DocsFeedbackLink: "Questions? Give us feedback"
 };
 
-export const messagesSl: MessageCatalog = {
+export const messagesSl: PartialMessageCatalog = {
   HeroTitle: "INOVATIVNO. UČINKOVITO.",
   HeroSubtitle: "Profesionalen razvoj programske opreme.",
   HeroText: "Vaša agencija za razvoj programske opreme v Avstriji. Pomagamo vam do programskih rešitev po meri.",
@@ -247,7 +282,7 @@ export const messagesSl: MessageCatalog = {
   DocsFeedbackLink: "Vprašanja? Pošljite nam povratne informacije"
 };
 
-export const messagesIt: MessageCatalog = {
+export const messagesIt: PartialMessageCatalog = {
   HeroTitle: "INNOVATIVI. EFFICACI.",
   HeroSubtitle: "Sviluppo software professionale.",
   HeroText: "La vostra agenzia software in Austria. Vi aiutiamo a realizzare soluzioni software su misura.",
@@ -310,7 +345,7 @@ export const messagesIt: MessageCatalog = {
   DocsFeedbackLink: "Domande? Inviateci il vostro feedback"
 };
 
-export const messagesJa: MessageCatalog = {
+export const messagesJa: PartialMessageCatalog = {
   HeroTitle: "革新的に。効果的に。",
   HeroSubtitle: "プロフェッショナルなソフトウェア開発。",
   HeroText: "オーストリアのソフトウェアエージェンシー。お客様に最適なオーダーメイドのソフトウェアソリューションをご提供します。",

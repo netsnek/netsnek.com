@@ -15,6 +15,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
+import { useIntl } from 'react-intl';
 import { Link } from 'gatsby-plugin-jaen';
 import { Field } from 'jaen';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
@@ -29,10 +30,15 @@ const year = new Date().getFullYear();
  * Footer component.
  */
 const Footer: FC = () => {
+  const intl = useIntl();
+
   const links = [
     [
       {
-        label: 'Links',
+        label: intl.formatMessage({
+          id: 'FooterLinksTitle',
+          defaultMessage: 'Links'
+        }),
         isTitle: true
       },
       {
@@ -52,13 +58,19 @@ const Footer: FC = () => {
         href: 'https://www.instagram.com/kleberbaum/'
       },
       {
-        label: 'Impressum',
+        label: intl.formatMessage({
+          id: 'FooterLinkImprint',
+          defaultMessage: 'Impressum'
+        }),
         href: '/impressum'
       }
     ],
     [
       {
-        label: 'Partner',
+        label: intl.formatMessage({
+          id: 'FooterPartnerTitle',
+          defaultMessage: 'Partner'
+        }),
         isTitle: true
       },
       {
@@ -72,7 +84,10 @@ const Footer: FC = () => {
     ],
     [
       {
-        label: 'Gestaltet von',
+        label: intl.formatMessage({
+          id: 'FooterDesignedByTitle',
+          defaultMessage: 'Gestaltet von'
+        }),
         isTitle: true
       },
       {
@@ -254,7 +269,11 @@ const Footer: FC = () => {
           <Divider mt={0} opacity={0.2} border="1px" />
           <Field.Text
             name="FooterBottomText"
-            defaultValue="Copyright © 2023 Florian H. Kleber, Florian Herbert Kleber IT. All rights reserved."
+            defaultValue={intl.formatMessage({
+              id: 'AppLayoutFooterCopyright',
+              defaultMessage:
+                'Copyright © 2023 Florian H. Kleber, Florian Herbert Kleber IT. All rights reserved.'
+            })}
             mt={5}
             color="white"
             opacity={0.2}
