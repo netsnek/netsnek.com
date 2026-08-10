@@ -64,14 +64,14 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
             PREVIEW_TAB,
             intl.formatMessage({
               id: 'HeroShowcasePreview',
-              defaultMessage: 'Ansicht'
+              defaultMessage: 'Prototyp'
             })
           )}
           {pill(
             EDITOR_TAB,
             intl.formatMessage({
               id: 'HeroShowcaseCode',
-              defaultMessage: 'Quelltext'
+              defaultMessage: 'Open Source'
             })
           )}
         </ButtonGroup>

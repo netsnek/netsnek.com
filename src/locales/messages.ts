@@ -19,8 +19,8 @@
  */
 
 export const messagesDe = {
-  HeroShowcasePreview: 'Ansicht',
-  HeroShowcaseCode: 'Quelltext',
+  HeroShowcasePreview: 'Prototyp',
+  HeroShowcaseCode: 'Open Source',
   // Hero (src/components/sections/Hero.tsx)
   HeroTitle: 'INNOVATIV. EFFEKTIV.',
   HeroSubtitle: 'Professionelle Softwareentwicklung.',
@@ -278,8 +278,8 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'de';
 
 export const messagesEn: MessageCatalog = {
-  HeroShowcasePreview: 'Preview',
-  HeroShowcaseCode: 'Source',
+  HeroShowcasePreview: 'Prototype',
+  HeroShowcaseCode: 'Open Source',
   HeroTitle: "INNOVATIVE. EFFECTIVE.",
   HeroSubtitle: "Professional software development.",
   HeroText: "Your software agency in Austria. We build custom software solutions tailored to your needs.",
@@ -417,8 +417,8 @@ export const messagesEn: MessageCatalog = {
 };
 
 export const messagesSl: MessageCatalog = {
-  HeroShowcasePreview: 'Predogled',
-  HeroShowcaseCode: 'Izvorna koda',
+  HeroShowcasePreview: 'Prototip',
+  HeroShowcaseCode: 'Open Source',
   HeroTitle: "INOVATIVNO. UČINKOVITO.",
   HeroSubtitle: "Profesionalen razvoj programske opreme.",
   HeroText: "Vaša agencija za razvoj programske opreme v Avstriji. Pomagamo vam do programskih rešitev po meri.",
@@ -556,8 +556,8 @@ export const messagesSl: MessageCatalog = {
 };
 
 export const messagesIt: MessageCatalog = {
-  HeroShowcasePreview: 'Anteprima',
-  HeroShowcaseCode: 'Codice',
+  HeroShowcasePreview: 'Prototipo',
+  HeroShowcaseCode: 'Open Source',
   HeroTitle: "INNOVATIVI. EFFICACI.",
   HeroSubtitle: "Sviluppo software professionale.",
   HeroText: "La vostra agenzia software in Austria. Vi aiutiamo a realizzare soluzioni software su misura.",
@@ -695,8 +695,8 @@ export const messagesIt: MessageCatalog = {
 };
 
 export const messagesJa: MessageCatalog = {
-  HeroShowcasePreview: 'プレビュー',
-  HeroShowcaseCode: 'ソースコード',
+  HeroShowcasePreview: 'プロトタイプ',
+  HeroShowcaseCode: 'オープンソース',
   HeroTitle: "革新的に。効果的に。",
   HeroSubtitle: "プロフェッショナルなソフトウェア開発。",
   HeroText: "オーストリアのソフトウェアエージェンシー。お客様に最適なオーダーメイドのソフトウェアソリューションをご提供します。",
