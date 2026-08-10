@@ -1,10 +1,14 @@
 import { Box, Container, Flex, Text, VStack } from '@chakra-ui/react';
 import { FaLink } from '@react-icons/all-files/fa/FaLink';
 import React, { FC, useMemo, useState } from 'react';
+import { useLocalizeHref, usePageLocale } from '../../contexts/locale';
 import { useMenuStructureContext } from '../../contexts/menu-structure';
 import { TOCProvider } from '../../contexts/toc';
 import useNavOffset from '../../hooks/use-nav-offset';
-import { createBreadCrumbParts } from '../../utils/navigation';
+import {
+  createBreadCrumbParts,
+  stripLocalePrefix
+} from '../../utils/navigation';
 import { MainBreadcrumbPart } from '../../utils/navigation/types';
 import Links from '../Links';
 import TbUsers from '../icons/tabler/TbUsers';
@@ -36,19 +40,25 @@ interface DocsLayoutProps {
 
 const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
   const { menuStructure } = useMenuStructureContext();
+  const { locale, prefix } = usePageLocale();
+  const localizeHref = useLocalizeHref();
 
   const [isExpanded, setIsExpanded] = useState(true);
+
+  // The incoming path may carry a locale prefix, the canonical path is
+  // what the unprefixed checks below have to run against.
+  const canonicalPath = stripLocalePrefix(path ?? '', prefix);
 
   const breadcrumbParts: MainBreadcrumbPart[] = useMemo(() => {
     return [
       {
         name: 'Artikel',
-        isDisabled: path === '/docs/',
-        href: '/docs'
+        isDisabled: canonicalPath === '/docs/',
+        href: localizeHref('/docs')
       },
       ...createBreadCrumbParts(menuStructure)
     ];
-  }, [menuStructure]);
+  }, [menuStructure, canonicalPath, locale, prefix]);
 
   const memoedChildren = useMemo(() => children, [children]);
 
@@ -81,8 +91,8 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
                   items: [
                     {
                       name: 'Rezepte',
-                      href: '/recipes',
-                      isActive: path?.startsWith('/recipes')
+                      href: localizeHref('/recipes'),
+                      isActive: canonicalPath.startsWith('/recipes')
                     }
                   ]
                 },
@@ -92,7 +102,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
                   items: [
                     {
                       name: 'Hauptseite',
-                      href: '/'
+                      href: localizeHref('/')
                     }
                   ]
                 }

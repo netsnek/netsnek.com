@@ -8,6 +8,7 @@ import {
   getAdjacentPages
 } from '../../utils/navigation';
 import { useCMSManagementContext } from 'jaen';
+import { useLocalizeHref, usePageLocale } from '../../contexts/locale';
 import { TLinkData } from '../types';
 import { TAdjacentPages } from '../../utils/navigation/types';
 import { Link } from 'gatsby-plugin-jaen';
@@ -36,13 +37,22 @@ const MainBottomNav: FC<MainBottomNavProps> = ({}) => {
   const pageTree = manager.tree;
 
   const location = useLocation();
+  const { locale, prefix } = usePageLocale();
+  const localizeHref = useLocalizeHref();
 
   // Memoized adjacent pages object to navigate to previous and next page.
+  // The tree is built locale-aware so the prev/next links stay inside the
+  // current locale's docs subtree.
   const pages: TAdjacentPages = useMemo(() => {
-    const menu = createPageTree(manager, location.pathname).menu;
+    const menu = createPageTree(
+      manager,
+      location.pathname,
+      prefix,
+      localizeHref
+    ).menu;
     const idxArr = buildActiveMenuItemIndexArray(menu);
     return getAdjacentPages(idxArr, menu);
-  }, [pageTree, location.pathname]);
+  }, [pageTree, location.pathname, locale, prefix]);
 
   return (
     <Flex

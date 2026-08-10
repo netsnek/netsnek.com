@@ -5,6 +5,7 @@ import AltTopNav from '../navigation/AltTopNav';
 
 import { useAuth, useCMSManagementContext } from 'jaen';
 import { useLocation } from '@reach/router';
+import { useLocalizeHref, usePageLocale } from '../../contexts/locale';
 import { MenuStructureContext } from '../../contexts/menu-structure';
 import { createPageTree } from '../../utils/navigation';
 import DocsLayout from './DocsLayout';
@@ -27,12 +28,16 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
   const location = useLocation();
   const topNavDisclosure = useDisclosure(); // for the top nav mobile drawer
   const { isAuthenticated } = useAuth();
+  const { locale, prefix } = usePageLocale();
+  const localizeHref = useLocalizeHref();
   const currentUserId = '1';
 
   // This generates the menu structure from the page tree that is used over the whole app by accessing the context.
+  // The locale prefix is stripped for matching and the emitted hrefs are
+  // localized, so the docs menu works on prefixed locales too.
   const menuStructure = useMemo(
-    () => createPageTree(cmsManager, location.pathname),
-    [cmsManager, path]
+    () => createPageTree(cmsManager, location.pathname, prefix, localizeHref),
+    [cmsManager, path, locale, prefix]
   );
 
   const FooterComp = footer ?? Footer;

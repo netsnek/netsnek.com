@@ -8,9 +8,11 @@ import {
 } from '@chakra-ui/react';
 import { FaLink } from '@react-icons/all-files/fa/FaLink';
 import { FC, Fragment, useMemo, useState } from 'react';
+import { useLocalizeHref, usePageLocale } from '../../../contexts/locale';
 import {
   createPageTree,
-  getExpandedMenuItemIndices
+  getExpandedMenuItemIndices,
+  stripLocalePrefix
 } from '../../../utils/navigation';
 import { NavMenuItem, NavMenuSection } from '../../../utils/navigation/types';
 import TbUsers from '../../icons/tabler/TbUsers';
@@ -35,6 +37,13 @@ const PageDirectory: FC<PageDirectoryProps> = ({
   closeMobileDrawer,
   path
 }) => {
+  const { prefix } = usePageLocale();
+  const localizeHref = useLocalizeHref();
+
+  // The incoming path may carry a locale prefix, the canonical path is
+  // what the unprefixed checks below have to run against.
+  const canonicalPath = stripLocalePrefix(path ?? '', prefix);
+
   // Calculate the default expanded indices for the accordion
   const defaultExpandedIdx = useMemo(() => {
     return data.menu ? getExpandedMenuItemIndices(data.menu) : [];
@@ -57,13 +66,13 @@ const PageDirectory: FC<PageDirectoryProps> = ({
     if (!isIncluded) setExpandedIdx([...expandedIdx, idx]);
   };
 
-  if (path === '/') {
+  if (canonicalPath === '/') {
     baseMenuItems.unshift({
       name: 'Navigation',
       items: [
         {
           name: 'Documentation',
-          href: '/docs'
+          href: localizeHref('/docs')
         }
       ]
     });
