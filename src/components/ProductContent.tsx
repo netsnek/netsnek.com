@@ -92,6 +92,8 @@ const SliderItem = connectBlock(
 );
 
 export const ProductContent: FC<IProductContentProps> = () => {
+  const intl = useIntl();
+
   // const navTopOffset = useNavOffset()
 
   // This can be memoized since it doesn't change and switching pages re-renders most of the app anyway.
@@ -117,7 +119,10 @@ export const ProductContent: FC<IProductContentProps> = () => {
                   px: "0",
                 }}
                 name="productImageSection"
-                label="Inhalt"
+                label={intl.formatMessage({
+                  id: 'ProductImageSectionLabel',
+                  defaultMessage: 'Inhalt'
+                })}
                 blocks={[SliderItem]}
               />
             </Box>
@@ -361,6 +366,7 @@ const ProductDetail = (props: {
 function ShareText() {
   const value = typeof window !== "undefined" ? window.location.href : "";
 
+  const intl = useIntl();
   const { hasCopied, onCopy } = useClipboard(value);
 
   return (
@@ -374,10 +380,13 @@ function ShareText() {
     >
       <Icon as={FaShare} mr="2" />
       <Text fontWeight="semibold" onClick={onCopy}>
-        Teilen
+        {intl.formatMessage({ id: 'ProductShare', defaultMessage: 'Teilen' })}
         {hasCopied && (
           <Text ml="2" fontWeight="thin">
-            (Kopiert!)
+            {intl.formatMessage({
+              id: 'ProductShareCopied',
+              defaultMessage: '(Kopiert!)'
+            })}
           </Text>
         )}
       </Text>
@@ -429,6 +438,7 @@ const ImageSlider = (props: {
   featuredMedia: JaenProduct["featuredMedia"];
   media: JaenProduct["media"];
 }) => {
+  const intl = useIntl();
   const media = props.media;
 
   return (
@@ -465,7 +475,13 @@ const ImageSlider = (props: {
                   name={media.image.name}
                   isDisabled
                   defaultValue={media.image.defaultValue}
-                  alt={media.image.altText || "Product Image"}
+                  alt={
+                    media.image.altText ||
+                    intl.formatMessage({
+                      id: 'ProductImageAlt',
+                      defaultMessage: 'Produktbild'
+                    })
+                  }
                   style={{
                     height: "100%",
                     width: "100%",

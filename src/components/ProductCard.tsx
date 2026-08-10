@@ -14,6 +14,8 @@ import {
 import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/react';
 import { v4 as uuidv4 } from 'uuid';
+import { useIntl } from 'react-intl';
+import { NEW_PRODUCT_TAG } from '../utils/products';
 
 // Define the product interface for better type safety
 interface Product {
@@ -232,6 +234,7 @@ function ImageBoxWithTags(
   } & BoxProps
 ) {
   const { image, tags, className, objectFit = 'cover' } = props;
+  const intl = useIntl();
 
   return (
     <Box overflow="hidden" position="relative" className={className} {...props}>
@@ -249,7 +252,10 @@ function ImageBoxWithTags(
           }}
         />
       ) : (
-        'no image'
+        intl.formatMessage({
+          id: 'ProductCardNoImage',
+          defaultMessage: 'Kein Bild'
+        })
       )}
       <Flex position="absolute" top="0" left="0" right="0" p={2}>
         {tags.map((tag, index) => (
@@ -283,6 +289,8 @@ export const ProductCard = ({
   prefixPath,
   isMobile,
 }: ProductCardProps) => {
+  const intl = useIntl();
+
   // Construct the path to the product page
   const prefixPathTrimmed = prefixPath
     ? prefixPath.trim().replace(/\/+$/, '')
@@ -321,16 +329,25 @@ export const ProductCard = ({
   // Determine if the border line should be displayed
   borderline = borderline !== undefined ? borderline : true;
 
-  // Prepare badges for 'Neu' (New) and discount
+  // Prepare badges for the "new" marker and discount
   const coloredBadges: Array<{ name: string; color: string; bg: string }> = [];
 
-  // Check if the product is new (created within the last 7 days) or has 'Neu' tag
+  // Check if the product is new (created within the last 7 days) or carries
+  // the sentinel tag. The tag is matched untranslated; only the badge that
+  // comes out of it is a localized label.
   if (
-    tags.includes('Neu') ||
+    tags.includes(NEW_PRODUCT_TAG) ||
     new Date(product.createdAt).getTime() >
     Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
-    coloredBadges.push({ name: 'Neu', color: 'white', bg: 'brand.500' });
+    coloredBadges.push({
+      name: intl.formatMessage({
+        id: 'ProductCardBadgeNew',
+        defaultMessage: 'Neu'
+      }),
+      color: 'white',
+      bg: 'brand.500',
+    });
   }
 
   // Check for discounts
@@ -429,9 +446,10 @@ export const ProductCard = ({
 
           {/* Text content section */}
           <Box flex="1" mt={isMobile ? '0' : '4'}>
-            {/* Display product tags (other than 'Neu') */}
+            {/* Display product tags (the "new" sentinel is shown as a badge
+                instead, so it never joins the plain tag line) */}
             <Text fontSize="sm" noOfLines={1}>
-              {tags.filter((tag) => tag !== 'Neu').join(', ')}&nbsp;
+              {tags.filter((tag) => tag !== NEW_PRODUCT_TAG).join(', ')}&nbsp;
             </Text>
 
             {/* Product title */}

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useJaenPageIndex, usePageContext, PageProvider } from 'jaen';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { NEW_PRODUCT_TAG } from '../utils/products';
 
 export interface IJaenProduct {
   variants: Array<{
@@ -125,9 +126,11 @@ export const useJaenProducts = (
       .filter(Boolean);
     const isOneOfMostRecent = i < 4;
 
+    // NEW_PRODUCT_TAG is a sentinel the card matches on, never a label; the
+    // badge it produces is rendered from the ProductCardBadgeNew message.
     const tags = [
       ...categoryTags,
-      ...(isRecent || isOneOfMostRecent ? ["Neu"] : [])
+      ...(isRecent || isOneOfMostRecent ? [NEW_PRODUCT_TAG] : [])
     ];
 
     return {
