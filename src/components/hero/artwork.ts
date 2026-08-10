@@ -254,8 +254,12 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
         </mask>
 
         <mask id="mark-button-mask">
-          <rect x="2" y="250" rx="10" ry="10" width="50" height="20" fill="#ffffff" />
-          <rect x="60" y="250" rx="10" ry="10" width="50" height="20" fill="#ffffff" />
+          {/* Erster Button gefuellt, zweiter nur Umriss, genau wie das
+              Buttonpaar der echten Seite. Radius 6 von 20 Einheiten Hoehe
+              entspricht den 12px der Website. */}
+          <rect x="2" y="250" rx="6" ry="6" width="50" height="20" fill="#ffffff" />
+          <rect x="61" y="251" rx="5" ry="5" width="48" height="18"
+                fill="none" stroke="#ffffff" stroke-width="2" />
         </mask>
       </defs>
 

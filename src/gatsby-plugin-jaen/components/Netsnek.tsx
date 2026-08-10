@@ -227,8 +227,21 @@ export const Logo = (props: any) => {
           <text x="0" y="190" fontSize="24" fontWeight="bold" fill="black">{heading2}<tspan fill="white">{dot2}</tspan></text>
         </mask>
         <mask id="button-mask">
-          <rect x="2" y="250" rx="10" ry="10" width="50" height="20" fill="white" />
-          <rect x="60" y="250" rx="10" ry="10" width="50" height="20" fill="white" />
+          {/* Erster Button gefüllt, zweiter nur Umriss, wie das Buttonpaar
+              der Website. Radius 6 auf 20 Einheiten Höhe entspricht den 12px
+              des Themes. */}
+          <rect x="2" y="250" rx="6" ry="6" width="50" height="20" fill="white" />
+          <rect
+            x="61"
+            y="251"
+            rx="5"
+            ry="5"
+            width="48"
+            height="18"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+          />
         </mask>
       </defs>
       <g id="Ebene_1-2">
