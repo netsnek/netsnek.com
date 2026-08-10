@@ -135,6 +135,16 @@ export const messagesDe = {
   ServicesCardConsultingImageAlt: 'Beratung',
   ServicesCardDevelopmentImageAlt: 'Entwicklung',
 
+  // Blog section on the homepage (src/components/sections/Blog.tsx). It
+  // surfaces the sections of /docs; the heading stays a jaen field, the
+  // catalog only carries its message default (HTML preserved).
+  BlogHeading:
+    "Geschichten aus unseren Projekten<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+  BlogIntro:
+    'Was wir gebaut haben, wie es funktioniert und was wir dabei gelernt haben.',
+  BlogAllLink: 'Alle Themen ansehen',
+  BlogReadMore: 'Weiterlesen',
+
   // Associates (src/components/sections/Associates.tsx)
   AssociatesHeading: 'Wir entwickeln für Sie in Österreich.',
   AssociatesAustriaImageAlt: 'Austria',
@@ -263,6 +273,10 @@ export const messagesEn: MessageCatalog = {
   ServicesHeading: "We deliver in weeks,<br/> <span style='color:var(--chakra-colors-brand-500)'>not months.</span>",
   ServicesCardConsultingImageAlt: "Consulting",
   ServicesCardDevelopmentImageAlt: "Development",
+  BlogHeading: "Stories from our projects<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+  BlogIntro: "What we built, how it works and what we learned along the way.",
+  BlogAllLink: "Browse all topics",
+  BlogReadMore: "Read more",
   AssociatesHeading: "We build your software in Austria.",
   AssociatesAustriaImageAlt: "Austria",
   AssociatesNetworkLink: "Experts from our network",
@@ -360,6 +374,10 @@ export const messagesSl: MessageCatalog = {
   ServicesHeading: "Uresničimo v tednih,<br/> <span style='color:var(--chakra-colors-brand-500)'>ne v mesecih.</span>",
   ServicesCardConsultingImageAlt: "Svetovanje",
   ServicesCardDevelopmentImageAlt: "Razvoj",
+  BlogHeading: "Zgodbe iz naših projektov<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+  BlogIntro: "Kaj smo zgradili, kako deluje in kaj smo se ob tem naučili.",
+  BlogAllLink: "Oglejte si vse teme",
+  BlogReadMore: "Preberite več",
   AssociatesHeading: "Za vas razvijamo v Avstriji.",
   AssociatesAustriaImageAlt: "Avstrija",
   AssociatesNetworkLink: "Strokovnjaki iz naše mreže",
@@ -457,6 +475,10 @@ export const messagesIt: MessageCatalog = {
   ServicesHeading: "Realizziamo in settimane,<br/> <span style='color:var(--chakra-colors-brand-500)'>non in mesi.</span>",
   ServicesCardConsultingImageAlt: "Consulenza",
   ServicesCardDevelopmentImageAlt: "Sviluppo",
+  BlogHeading: "Storie dai nostri progetti<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+  BlogIntro: "Che cosa abbiamo costruito, come funziona e che cosa abbiamo imparato.",
+  BlogAllLink: "Vedi tutti gli argomenti",
+  BlogReadMore: "Continua a leggere",
   AssociatesHeading: "Sviluppiamo per voi in Austria.",
   AssociatesAustriaImageAlt: "Austria",
   AssociatesNetworkLink: "Gli esperti della nostra rete",
@@ -554,6 +576,10 @@ export const messagesJa: MessageCatalog = {
   ServicesHeading: "形にするのは数週間、<br/> <span style='color:var(--chakra-colors-brand-500)'>数か月ではありません。</span>",
   ServicesCardConsultingImageAlt: "コンサルティング",
   ServicesCardDevelopmentImageAlt: "開発",
+  BlogHeading: "プロジェクトの物語<span style='color:var(--chakra-colors-brand-500)'>。</span>",
+  BlogIntro: "私たちが作ったもの、その仕組み、そしてそこから学んだこと。",
+  BlogAllLink: "すべてのトピックを見る",
+  BlogReadMore: "続きを読む",
   AssociatesHeading: "お客様のためのソフトウェアを、オーストリアで開発しています。",
   AssociatesAustriaImageAlt: "オーストリア",
   AssociatesNetworkLink: "ネットワークの専門家をご紹介",

@@ -10,6 +10,7 @@ import ServicesDetails from '../components/sections/ServiceDetails';
 import Associates from '../components/sections/Associates';
 import { GoogleMaps } from '../components/GoogleMaps';
 import Contact from '../components/sections/Contact';
+import Blog from '../components/sections/Blog';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -30,6 +31,7 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* <Portfolio /> */}
         {/* <NewsSlider showNewsTitle={true} /> */}
         <ServicesDetails />
+        <Blog />
       </Container>
       <Contact />
       <GoogleMaps
