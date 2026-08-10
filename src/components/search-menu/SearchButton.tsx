@@ -69,7 +69,7 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         size="sm"
         minH="10"
         variant="outline"
-        borderRadius="full"
+        borderRadius="xl"
         filter={{
           base: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))',
           lg: 'none'

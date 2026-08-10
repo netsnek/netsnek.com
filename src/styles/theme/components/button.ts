@@ -3,7 +3,7 @@ import { ComponentStyleConfig } from '@chakra-ui/react';
 const themeButtonComponent: ComponentStyleConfig = {
   variants: {
     solid: {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       //textTransform: 'capitalize',
       bgColor: 'components.button.solid.bgColor',
@@ -17,7 +17,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       }
     },
     outline: {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       textTransform: 'capitalize',
       borderColor: 'components.button.outline.borderColor',
@@ -31,7 +31,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       }
     },
     invisible: {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
@@ -49,7 +49,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       paddingInline: 3
     },
     'ghost': {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
@@ -64,7 +64,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       }
     },
     'ghost-hover': {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
@@ -79,7 +79,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       }
     },
     'ghost-hover-opacity': {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
@@ -90,7 +90,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       }
     },
     'outline-hover-filled': {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
@@ -107,7 +107,7 @@ const themeButtonComponent: ComponentStyleConfig = {
         'background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out'
     },
     'ghost-hover-outline': {
-      borderRadius: 'full',
+      borderRadius: 'xl',
       px: 5,
       textTransform: 'capitalize',
       bgColor: 'transparent',
@@ -135,7 +135,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       borderColor: 'brand.500',
       color: 'brand.500',
       px: 5,
-      borderRadius: 'full',
+      borderRadius: 'xl',
       _hover: {
         bgColor: 'brand.600',
         color: 'white',
@@ -149,7 +149,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       bgColor: 'brand.500',
       color: 'white',
       px: 5,
-      borderRadius: 'full',
+      borderRadius: 'xl',
       _hover: {
         transform: 'scale(1.05)',
         boxShadow: '3x 3px 10px rgba(2, 116, 192, 0.5)'
@@ -162,7 +162,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       bgColor: 'transparent',
       color: 'brand.500',
       px: 5,
-      borderRadius: 'full',
+      borderRadius: 'xl',
       _hover: {
         transform: 'scale(1.1)'
       }
