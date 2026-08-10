@@ -1,30 +1,52 @@
 import {
-  Box,
   Button,
+  HStack,
+  Image,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   MenuButtonProps,
-  Portal
+  Portal,
+  Text
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { navigate } from 'gatsby';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
 import { usePageLocale } from '../contexts/locale';
 import { defaultLocale, locales } from '../locales/messages';
-import TbLanguage from './icons/tabler/TbLanguage';
 
-/** aria-label prefix; the visible control is the language code itself. */
-const LANGUAGE_CONTROL_LABEL = 'Language'
+/** aria-label prefix; the button itself shows a flag, which reads to a
+ *  screen reader as nothing at all. */
+const LANGUAGE_CONTROL_LABEL = 'Language';
 
-const LOCALE_LABELS: Record<string, string> = {
-  de: 'Deutsch',
-  en: 'English',
-  sl: 'Slovenščina',
-  it: 'Italiano',
-  ja: '日本語'
+/**
+ * Flags live in static/images/flags as 4:3 SVGs taken from the MIT-licensed
+ * flag-icons set. The file is named after the LOCALE, not the country, so the
+ * mapping stays in one place: en -> the British flag, ja -> the Japanese one.
+ *
+ * A flag is a country, not a language, so it never appears alone — every entry
+ * is captioned with the language's own name.
+ */
+const flagSrc = (locale: string): string => `/images/flags/${locale}.svg`;
+
+/**
+ * The language's name in that language ("Deutsch", "Slovenščina", "日本語"),
+ * from Intl rather than a hardcoded table, so adding a locale to the site
+ * needs no edit here. Falls back to the bare code if the runtime has no data.
+ */
+const autonym = (locale: string): string => {
+  try {
+    const names = new Intl.DisplayNames([locale], { type: 'language' });
+    const name = names.of(locale);
+
+    if (!name || name === locale) return locale.toUpperCase();
+
+    return name.charAt(0).toLocaleUpperCase(locale) + name.slice(1);
+  } catch {
+    return locale.toUpperCase();
+  }
 };
 
 export interface LanguageSwitcherProps extends MenuButtonProps {}
@@ -40,6 +62,11 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
   const { locale: currentLocale, translations } = usePageLocale();
 
   const currentBase = currentLocale.split(/[-_]/)[0]?.toLowerCase();
+
+  const labels = useMemo(
+    () => Object.fromEntries(locales.map(locale => [locale, autonym(locale)])),
+    []
+  );
 
   const pathForLocale = (locale: string): string => {
     const translation = translations.find(
@@ -60,47 +87,60 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
         variant="ghost-hover"
         size="sm"
         px={2}
-        // The icon alone reads as decoration and gets overlooked next to the
-        // search control, so the button also names the language it is
-        // currently showing.
-        aria-label={`${LANGUAGE_CONTROL_LABEL}: ${
-          LOCALE_LABELS[currentBase] ?? currentBase
-        }`}
+        aria-label={`${LANGUAGE_CONTROL_LABEL}: ${labels[currentBase] ?? currentBase}`}
         // Brand orange by default so the control reads as a control on both
         // header rows; a call site can still override it.
         color="brand.500"
-        leftIcon={<TbLanguage boxSize={5} display="block" />}
         rightIcon={<ChevronDownIcon boxSize={4} display="block" />}
         iconSpacing={1.5}
         {...props}
       >
-        <Box as="span" fontSize="sm" fontWeight="medium" letterSpacing="wide">
-          {currentBase.toUpperCase()}
-        </Box>
+        <Image
+          src={flagSrc(currentBase)}
+          alt=""
+          aria-hidden="true"
+          width="22px"
+          height="16.5px"
+          borderRadius="2px"
+          objectFit="cover"
+          display="block"
+          boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
+        />
       </MenuButton>
       {/* The header rows carry their own stacking context, and an in-place
           MenuList paints underneath them. A portal lifts the list out to the
           body, above everything. */}
       <Portal>
-        <MenuList color="chakra-body-text" zIndex="popover">
-        {locales.map(locale => {
-          const isCurrent = locale === currentBase;
+        <MenuList color="chakra-body-text" zIndex="popover" minW="12rem">
+          {locales.map(locale => {
+            const isCurrent = locale === currentBase;
 
-          return (
-            <MenuItem
-              key={locale}
-              fontWeight={isCurrent ? 'semibold' : 'normal'}
-              onClick={() => {
-                if (!isCurrent) {
-                  void navigate(pathForLocale(locale));
-                }
-              }}
-            >
-              {LOCALE_LABELS[locale] ?? locale}
-              {isCurrent ? ' ✓' : ''}
-            </MenuItem>
-          );
-        })}
+            return (
+              <MenuItem
+                key={locale}
+                fontWeight={isCurrent ? 'semibold' : 'normal'}
+                onClick={() => {
+                  if (!isCurrent) {
+                    void navigate(pathForLocale(locale));
+                  }
+                }}>
+                <HStack spacing={3}>
+                  <Image
+                    src={flagSrc(locale)}
+                    alt=""
+                    aria-hidden="true"
+                    width="22px"
+                    height="16.5px"
+                    borderRadius="2px"
+                    objectFit="cover"
+                    boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
+                  />
+                  <Text>{labels[locale] ?? locale}</Text>
+                  {isCurrent ? <Text aria-hidden="true">✓</Text> : null}
+                </HStack>
+              </MenuItem>
+            );
+          })}
         </MenuList>
       </Portal>
     </Menu>
