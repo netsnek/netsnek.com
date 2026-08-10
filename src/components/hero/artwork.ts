@@ -171,7 +171,9 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
 }
 
 #netsnek-mark .snek {
-  fill: #1a202c;
+  /* Kein fill. Ein gefuellter Kreis ignoriert stroke-dasharray, die
+     Zeichenanimation liefe unsichtbar daran vorbei und die Schlange
+     stuende von der ersten Sekunde an fertig da. */
   stroke: #000000;
   filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.1));
   transform-origin: center;
@@ -185,14 +187,10 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
    Hero sind sie aber ausgeblendet. Wer sie sehen will, loescht
    die display-Zeile. */
 #netsnek-mark .squarel {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: transparent;
   display: none;
 }
 
 #netsnek-mark .arrows {
-  fill: #1a202c;
   display: none;
 }
 
@@ -234,7 +232,7 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
         {/* Die Schlange ist ein dicker Kreisbogen, den diese Maske
              auf die Form der Netsnek-Schlange beschneidet. */}
         <mask id="mark-snek-mask">
-          <path fill="transparent" d="M115.86,344.56c6.1,2.2,9.35,5.73,12.93,8.68,29.63,24.4,63.36,38.86,101.89,39.72,72.77,1.62,136.15-46.28,149.93-117.76,11.6-60.18-8.13-110.08-58.01-145.77-60.09-43-143.55-29.92-188.04,28.61-29.27,38.49-35.75,81.5-20.35,127.42,3.64,10.86,3.8,20.71-3.64,29.86-6.32,7.78-14.72,10.83-24.49,9.49-11.02-1.51-18.46-7.87-22.08-18.33-5.33-15.38-8.86-31.26-9.76-47.48-3.3-59.34,15.71-110.45,59.67-150.7,39.74-36.38,87.24-52.94,141.3-47.5,80.46,8.11,144.15,64.58,159.81,142.92,19.36,96.85-40.61,189.02-136.89,206.98-60.2,11.24-113.35-5.11-154.42-53.03-2.13-2.49-3.83-5.35-5.62-8.12-.72-1.11-1.11-2.43-2.25-5.01h0Z" />
+          <path fill="transparent" d="M 67.96 315.77 C 10.57 175.42 137.60 29.35 285.30 68.14 373.68 90.97 432.59 181.50 415.78 270.48 402.01 355.71 318.60 420.34 232.48 411.24 191.57 407.79 152.52 388.78 125.35 358.75 124.20 357.60 124.61 356.08 125.35 354.93 126.50 354.19 128.06 354.19 128.80 354.93 157.49 380.80 195.39 395.24 232.89 395.61 329.29 397.14 403.53 305.11 379.03 213.06 366.41 162.87 324.72 121.78 273.83 110.75 225.24 99.73 170.89 117.99 138.75 156.78 106.60 194.42 97.80 249.95 117.70 295.20 129.95 328.31 82.88 347.69 67.96 315.77 Z" />
         </mask>
 
         {/* Die Ueberschriften stehen nur in den Masken, gemalt wird
