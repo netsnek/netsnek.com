@@ -201,7 +201,7 @@ export const buildMockup = (artwork: string = ''): string =>
              er je nach System unter die Tastenkappe. */}
         <text x="434" y="97.6" fill="#a0aec0" font-size="6.6"
               font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="400"
-              textLength="40.5" lengthAdjust="spacingAndGlyphs">Finde Rezepte</text>
+              textLength="38" lengthAdjust="spacingAndGlyphs">Docs durchsuchen</text>
 
         {/* Tastenkappe Strg */}
         <rect x="477" y="91" width="17" height="9" rx="1.6" ry="1.6" fill="#edf2f7" />

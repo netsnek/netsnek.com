@@ -139,7 +139,10 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
             </Box>
           ) : (
             <>
-              <Container flex="1" mt="6" maxW="3xl">
+              {/* Luft nach unten, damit der Artikel nicht auf dem Footer
+                  aufsitzt. Die Sidebars daneben tragen nur pb 4, weil sie
+                  ohnehin sticky sind und frueher enden. */}
+              <Container flex="1" mt="6" mb={{ base: 16, lg: 24 }} maxW="3xl">
                 <MainBreadcrumb parts={breadcrumbParts} />
 
                 {memoedChildren}

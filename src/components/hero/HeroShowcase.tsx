@@ -9,11 +9,16 @@ import {
 } from 'react';
 import { Box } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
+import { xml } from '@codemirror/lang-xml';
+import { EditorView } from '@codemirror/view';
 import { UncontrolledMdxField } from 'jaen-fields-mdx';
 import type { MdxFieldProps } from 'jaen-fields-mdx';
 
 import { splitAccentDot } from '../../utils/accent-dots';
 import HeroEditorTabs from './HeroEditorTabs';
+
+/** The source is SVG, so it is highlighted as XML rather than as markdown. */
+const editorExtensions = [xml(), EditorView.lineWrapping];
 import { buildMockup } from './mockup';
 import { buildArtwork } from './artwork';
 
