@@ -43,6 +43,9 @@ Die einzige Ausnahme ist der anonyme Zweig von `sendTemplateMail` für öffentli
 | `sendEmail` | Ad-hoc-Versand ohne Vorlage, Betreff und Inhalt kommen aus dem Aufruf |
 | `sendForSignature` | einen Versand anhalten, bis eine qualifizierte ID-Austria-Signatur vorliegt |
 | `prepareSignatureContent` | die kanonischen Inhalts-Bytes eines Signatur-Versands auflösen, damit sie vorab lokal PGP-signiert werden können |
+| `messageResend` | eine Nachricht aus der Historie erneut einreihen, als möglichst getreue Wiederholung des ursprünglichen Versands |
+| `signatureRequestCancel` | eine noch offene Signatur-Anfrage abbrechen |
+| `signatureRequestRemind` | die Signatur-Benachrichtigung mit einem frischen Link erneut zustellen, der alte Link verliert dabei sofort seine Gültigkeit |
 
 ## sendTemplateMail
 
@@ -83,3 +86,5 @@ QUEUED ─► SENDING ─► SENT | FAILED
 ```
 
 Fehlgeschlagene Zustellversuche werden mit exponentiellem Backoff wiederholt. Konfigurationsfehler schlagen sofort fehl statt sinnlos zu wiederholen. Die Historie hält pro Nachricht die Provider-Message-Id, den Fehlertext und die Anzahl der Versuche fest und ist über `messages` und `message` abfragbar.
+
+Ein Versand mit Signaturpflicht durchläuft davor einen zusätzlichen Zustand. Die Nachricht wird beim Einreihen gerendert, eingefroren und als `AWAITING_SIGNATURE` geparkt. Erst wenn die qualifizierte Signatur vorliegt, geht sie in die normale Queue.
