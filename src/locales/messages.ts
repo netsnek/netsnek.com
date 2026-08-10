@@ -75,7 +75,7 @@ export const messagesDe = {
   ServiceDetailsHeading1:
     "Wir unterstützen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Unternehmen</span><br/> im digitalen Zeitalter<span style='color:var(--chakra-colors-brand-500)'>.</span>",
   ServiceDetailsHeading2:
-    "Wir lösen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>",
+    "Wir lösen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihre Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>",
   ServiceDetailsItemUxTitle: 'UX-Konzeption',
   ServiceDetailsItemUxText:
     'Durch den Einsatz moderner UX-Methoden gestalten wir benutzerfreundliche und intuitive Oberflächen.',

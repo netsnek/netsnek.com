@@ -131,6 +131,23 @@ const Services = () => {
         </Flex>
       </Container>
 
+
+      <Field.Text
+        mt={{ base: '24', sm: '32', lg: '40' }}
+        mb="8"
+        as={Heading}
+        fontSize={{ base: '4xl', lg: '5xl' }}
+        lineHeight={1}
+        fontWeight="bold"
+        textAlign="left"
+        name="SectionHeadingServiceDetails2"
+        defaultValue={intl.formatMessage({
+          id: 'ServiceDetailsHeading2',
+          defaultMessage:
+            "Wir lösen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihre Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+        })}
+      />
+
       <QASMPlayground
         children={`// quantum ripple-carry adder from Cuccaro et al, quant-ph/0410184
   OPENQASM 2.0;
@@ -170,21 +187,6 @@ const Services = () => {
   measure b[2] -> ans[2];
   measure b[3] -> ans[3];
   measure cout[0] -> ans[4];`}
-      />
-      <Field.Text
-        mt={{ base: '24', sm: '32', lg: '40' }}
-        mb="8"
-        as={Heading}
-        fontSize={{ base: '4xl', lg: '5xl' }}
-        lineHeight={1}
-        fontWeight="bold"
-        textAlign="left"
-        name="SectionHeadingServiceDetails2"
-        defaultValue={intl.formatMessage({
-          id: 'ServiceDetailsHeading2',
-          defaultMessage:
-            "Wir lösen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>"
-        })}
       />
     </Box>
   );
