@@ -8,14 +8,38 @@ import {
 } from './types';
 
 /**
+ * Strips the locale prefix from a path so it can be compared against the
+ * canonical (unprefixed) paths the CMS manager emits. Paths that do not
+ * carry the prefix pass through unchanged, so default-locale paths (which
+ * are served unprefixed) are safe to feed in with any prefix value.
+ * @param path  The path to strip, e.g. `/en/docs/foo`
+ * @param localePrefix  The locale prefix without slashes, e.g. `en`
+ * @returns  The canonical path, e.g. `/docs/foo`
+ */
+export function stripLocalePrefix(path: string, localePrefix?: string): string {
+  if (!localePrefix) return path;
+  if (path === `/${localePrefix}` || path === `/${localePrefix}/`) return '/';
+  if (path.startsWith(`/${localePrefix}/`))
+    return path.slice(localePrefix.length + 1);
+  return path;
+}
+
+/**
  * Converts a page tree to a usable menu data structure.
+ * The manager only knows canonical (unprefixed) paths, so the current path
+ * is stripped of its locale prefix before matching and every emitted href
+ * runs through `localizeHref` so the menu links stay in the current locale.
  * @param manager The CMS manager instance
- * @param currentPath  The current path of the page
+ * @param currentPath  The current path of the page (may carry a locale prefix)
+ * @param localePrefix  The locale prefix of the current page, e.g. `en`
+ * @param localizeHref  Maps a canonical path to the current locale's path
  * @returns  The converted menu data structure and an array of indices of expanded items
  */
 export function createPageTree(
   manager: ReturnType<typeof useCMSManagementContext>,
-  currentPath: string
+  currentPath: string,
+  localePrefix: string = '',
+  localizeHref: (href: string) => string = href => href
 ) {
   let expandedItemIdx = 0; // The next index of an possibly expanded item
   const result: TMenuStructure = {
@@ -25,9 +49,12 @@ export function createPageTree(
 
   if (!manager.tree || manager.tree.length === 0) return result;
 
+  currentPath = stripLocalePrefix(currentPath, localePrefix); // Manager paths are canonical (unprefixed)
   if (currentPath.endsWith('/')) currentPath = currentPath.slice(0, -1); // Remove trailing slash
 
-  // Get the page tree of the doc's root
+  // Get the page tree of the doc's root. Manager paths are canonical
+  // (never locale-prefixed), so comparing against the bare /docs is right
+  // for every locale.
   const docsTree = manager.tree[0].children.find(
     p => manager.pagePath(p.id) === '/docs'
   );
@@ -67,7 +94,7 @@ export function createPageTree(
       children.some((child: any) => child.isActive || child.hasActiveChild);
 
     return {
-      href: currentPath === href ? '' : href,
+      href: currentPath === href ? '' : localizeHref(href),
       name: page.label,
       children,
       isActive: currentPath === href,
@@ -137,7 +164,10 @@ export function buildActiveMenuItemIndexArray(
 }
 
 /**
- * Creates the breadcrumb parts for the current page
+ * Creates the breadcrumb parts for the current page.
+ * The hrefs are taken from the menu structure, so they are already
+ * localized when the structure was built by `createPageTree` with a
+ * localize helper.
  * @param data  The menu data structure
  * @param activeIdxArray  The array of indices of the active menu item and its parents
  * @returns  The breadcrumb parts for the current page
@@ -178,7 +208,10 @@ export function createBreadCrumbParts(
 }
 
 /**
- * Gets the names of the pages adjacent to the current page
+ * Gets the names of the pages adjacent to the current page.
+ * The hrefs are taken from the menu structure, so they are already
+ * localized when the structure was built by `createPageTree` with a
+ * localize helper.
  * @param idxArray  The array of indices of the active menu item and its parents
  * @param menu  The menu data structure
  * @returns  The data of the pages adjacent to the current page
