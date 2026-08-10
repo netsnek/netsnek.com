@@ -8,8 +8,7 @@ import {
   Text,
   VStack,
   Image,
-  Container,
-  chakra
+  Container
 } from '@chakra-ui/react';
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
@@ -18,6 +17,7 @@ import { Field, useAuth } from 'jaen';
 import useNavOffset from '../../hooks/use-nav-offset';
 import { Link } from 'gatsby-plugin-jaen';
 import { usePageLocale } from '../../contexts/locale';
+import { withAccentDots } from '../../utils/accent-dots';
 
 // import {useContactModal} from '../services/contact'
 import Netsnek from '../../gatsby-plugin-jaen/components/Netsnek';
@@ -59,22 +59,6 @@ const ScrollArrows: React.FC<ScrollArrowsProps> = ({ isVisible }) => {
     </Box>
   );
 };
-
-/**
- * Renders a localized string with every sentence terminator (`.` or `。`)
- * in the brand color, reproducing the accent-dot styling of the original
- * hardcoded headings across all locales.
- */
-const withAccentDots = (text: string) =>
-  text.split(/([.。])/).map((part, index) =>
-    /^[.。]$/.test(part) ? (
-      <chakra.span key={index} color="brand.500">
-        {part}
-      </chakra.span>
-    ) : (
-      part
-    )
-  );
 
 const Hero: FC = () => {
   const navOffset = useNavOffset();
