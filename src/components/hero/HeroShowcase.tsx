@@ -1,79 +1,144 @@
-import { FC, useCallback, useMemo, useState } from 'react';
-import { AspectRatio, Box, Image, chakra } from '@chakra-ui/react';
+import {
+  createElement,
+  FC,
+  Fragment,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState
+} from 'react';
+import { AspectRatio, Box } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import { UncontrolledMdxField } from 'jaen-fields-mdx';
 import type { MdxFieldProps } from 'jaen-fields-mdx';
 
+import { splitAccentDot } from '../../utils/accent-dots';
 import HeroEditorTabs from './HeroEditorTabs';
+import { buildMockup } from './mockup';
+import { buildArtwork } from './artwork';
+
+/** An element the playground renders as itself. */
+const svgTag = (tag: string) => (props: any) => createElement(tag, props);
+
+/** The text of a rendered subtree. */
+const textOf = (node: ReactNode): string => {
+  if (node === null || node === undefined || typeof node === 'boolean') {
+    return '';
+  }
+
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) return node.map(textOf).join('');
+
+  const children = (node as any)?.props?.children;
+
+  return children === undefined ? '' : textOf(children);
+};
 
 /**
- * The drawing the hero starts with, as MDX.
- *
- * It is deliberately small and readable rather than the full brand mark: a
- * visitor should be able to find the fill colour in the first few seconds and
- * change it. The arrow is the one from the brand pattern.
- */
-const INITIAL_SOURCE = `<svg viewBox="0 0 120 120" width="100%" height="100%">
-  <rect width="120" height="120" rx="12" fill="#0A0A0A" />
-
-  <g fill="#f77f00">
-    <path d="M 62 24 L 59 24 L 62 34 L 32 34 L 35 44 L 82 44 Z" />
-    <path d="M 83 48 L 36 48 L 56 68 L 59 68 L 56 58 L 86 58 Z" />
-  </g>
-
-  <text x="60" y="96" fill="#ffffff" font-size="13"
-        font-family="monospace" text-anchor="middle">
-    netsnek
-  </text>
-</svg>`;
-
-/**
- * SVG elements the playground understands.
+ * Elements the drawing is allowed to use.
  *
  * The mdx field sanitizes against the component map, so anything not listed
  * here is dropped rather than rendered. That is the point: a visitor edits a
  * drawing, and cannot reach past it.
+ *
+ * Everything the visitor writes as a tag is literal JSX, which the field
+ * renders as the element itself rather than through this map, so for those
+ * elements the entry is nothing but the permission to exist. Only the
+ * elements markdown builds on its own, `p` and `pre` below, actually pass
+ * through their component.
  */
-const svgComponents: MdxFieldProps['components'] = {
-  svg: props => <chakra.svg {...props} />,
-  g: props => <g {...props} />,
-  defs: props => <defs {...props} />,
-  mask: props => <mask {...props} />,
-  clipPath: props => <clipPath {...props} />,
-  linearGradient: props => <linearGradient {...props} />,
-  radialGradient: props => <radialGradient {...props} />,
-  stop: props => <stop {...props} />,
-  path: props => <path {...props} />,
-  rect: props => <rect {...props} />,
-  circle: props => <circle {...props} />,
-  ellipse: props => <ellipse {...props} />,
-  line: props => <line {...props} />,
-  polyline: props => <polyline {...props} />,
-  polygon: props => <polygon {...props} />,
-  text: props => <text {...props} />,
-  tspan: props => <tspan {...props} />,
-  use: props => <use {...props} />,
-  title: props => <title {...props} />
-};
+const SVG_TAGS = [
+  // Structure
+  'svg',
+  'g',
+  'defs',
+  'use',
+  'title',
+  // Shapes
+  'path',
+  'rect',
+  'circle',
+  'ellipse',
+  'line',
+  'polyline',
+  'polygon',
+  // Type
+  'text',
+  'tspan',
+  // Paint
+  'linearGradient',
+  'radialGradient',
+  'stop',
+  // Cutting things out
+  'clipPath',
+  'mask',
+  // The drop shadow of the tablet
+  'filter',
+  'feGaussianBlur',
+  'feOffset',
+  'feFlood',
+  'feComposite',
+  'feMerge',
+  'feMergeNode',
+  // The Apple Pencil, the one bitmap left in the drawing
+  'image',
+  // The animation of the mark travels with it, inside the drawing
+  'style'
+];
 
-export interface HeroShowcaseProps {
-  /** Styles handed to the artwork, so the caller keeps control of it. */
-  logoSx?: Record<string, any>;
-}
+const svgComponents: MdxFieldProps['components'] = {
+  ...Object.fromEntries(SVG_TAGS.map(tag => [tag, svgTag(tag)])),
+
+  // A drawing has no paragraphs. Markdown still makes them out of anything
+  // that sits between two tags, and an unknown element inside an `<svg>`
+  // swallows everything below it, so they are unwrapped again.
+  p: (props: any) => createElement(Fragment, {}, props.children),
+
+  // The CSS of the mark sits in a fenced code block inside its `<style>`,
+  // because MDX reads a bare `{` as the start of an expression and a fence
+  // is the one place where braces, comments and indentation survive
+  // untouched. A stylesheet only counts its own text though, so the fence is
+  // handed on as the string it was.
+  pre: (props: any) => textOf(props.children)
+};
 
 /**
  * The hero artwork as a playground.
  *
- * The tablet holds a drawing that the visitor can open and edit, and the
- * result redraws while they type. Two pills switch between the drawing and
- * its source, and the editor is outlined green while the source parses.
+ * Tablet and mark are one SVG document, and that document is what the
+ * visitor can open and edit: the frame, the browser bar, the address, and
+ * the animation of the brand mark down to its keyframes. The result redraws
+ * while they type. Two pills switch between the drawing and its source, and
+ * the editor is outlined green while the source parses.
  *
  * Edits live in this component only. Nothing is written back to the CMS, so
  * the page is a sandbox: reloading brings the original drawing back.
  */
-export const HeroShowcase: FC<HeroShowcaseProps> = () => {
+export const HeroShowcase: FC = () => {
   const intl = useIntl();
-  const [value, setValue] = useState<string>(INITIAL_SOURCE);
+
+  // The two headings the mark draws are copy, not artwork. Their accent dot
+  // is painted through a mask of its own, so the terminator is split off the
+  // localized string, exactly as the standalone mark does it.
+  const [heading1, dot1] = splitAccentDot(
+    intl.formatMessage({
+      id: 'LogoHeadingIdea',
+      defaultMessage: 'Ihre Idee.'
+    })
+  );
+  const [heading2, dot2] = splitAccentDot(
+    intl.formatMessage({
+      id: 'LogoHeadingKnowHow',
+      defaultMessage: 'Unser Know-How.'
+    })
+  );
+
+  const [value, setValue] = useState<string>(() =>
+    buildMockup(buildArtwork({ heading1, dot1, heading2, dot2 }))
+  );
 
   const onUpdateValue = useCallback((_mdast: any, next: string) => {
     setValue(next);
@@ -85,33 +150,14 @@ export const HeroShowcase: FC<HeroShowcaseProps> = () => {
 
   return (
     <Box position="relative">
-      <AspectRatio ratio={4 / 3} w="full" h="auto">
-        <Box position="relative" w="full" h="full">
-          <Image
-            src="/images/iPad.png"
-            alt={intl.formatMessage({
-              id: 'HeroIpadImageAlt',
-              defaultMessage: 'iPad image'
-            })}
-            objectFit="contain"
-            position="absolute"
-            inset={0}
-            w="full"
-            h="full"
-            pointerEvents="none"
-          />
-
-          {/* The screen area of the tablet frame. The frame is a photo, so
-              these insets are measured against it rather than derived. */}
-          <Box
-            position="absolute"
-            top="9%"
-            bottom="9%"
-            left="12%"
-            right="12%"
-            overflow="hidden"
-            borderRadius="sm"
-          >
+      {/* The drawing is 700 by 560, and it brings its own frame, so it fills
+          the box instead of being inset into a photo of a tablet. */}
+      <AspectRatio ratio={700 / 560} w="full" h="auto">
+        <Box position="relative" w="full" h="full" overflow="hidden">
+          {/* AspectRatio centres its child rather than stretching it, so the
+              playground is pinned to the box instead of shrinking to the
+              width of its own pills. */}
+          <Box position="absolute" inset={0}>
             <UncontrolledMdxField
               components={components}
               value={value}
