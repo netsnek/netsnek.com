@@ -8,7 +8,7 @@
  *  - re-roots the harvested PhotonQ pages under /docs/photonq (English,
  *    mdast untouched)
  *  - adds the authored German section pages (emailwerk, qtamp, linux,
- *    linuxtage, interns, ledart)
+ *    security, linuxtage, interns, ledart)
  *
  * The output is deterministic: page ids are UUIDv5 of the page path and no
  * entry carries createdAt/modifiedAt timestamps (gatsby-source-jaen fills
@@ -151,6 +151,7 @@ const SECTION_ORDER = [
   '/docs/emailwerk',
   '/docs/qtamp',
   '/docs/linux',
+  '/docs/security',
   '/docs/linuxtage',
   '/docs/interns',
   '/docs/ledart'
