@@ -5,15 +5,17 @@
  * source of truth and collects every hardcoded string of the site: chrome
  * (hero, navigation, footer titles, services cards, contact modal, toasts,
  * 404, search, product availability, docs feedback link), the defaults of
- * the jaen CMS fields that fan out per locale and the image alternatives.
+ * the jaen CMS fields that fan out per locale, the image alternatives and
+ * the per-page metadata defaults.
  *
  * Jaen CMS fields keep their field names; the catalog only carries their
  * `defaultValue`, so an unedited locale renders in its own language while
  * every locale stays editable in the CMS.
  *
  * The components consume the catalog through react-intl (see
- * gatsby-browser/gatsby-ssr wrapPageElement). Keys missing from a locale
- * fall back to the German value.
+ * gatsby-browser/gatsby-ssr wrapPageElement); src/components/Head.tsx reads
+ * it directly because gatsby's Head API renders outside the page providers.
+ * Keys missing from a locale fall back to the German value.
  */
 
 export const messagesDe = {
@@ -149,7 +151,33 @@ export const messagesDe = {
   FooterCopyright:
     'Copyright © 2024 Netsnek, Florian Herbert Kleber IT & Werbeagentur Nico Schett. All rights reserved.',
   AppLayoutFooterCopyright:
-    'Copyright © 2023 Florian H. Kleber, Florian Herbert Kleber IT. All rights reserved.'
+    'Copyright © 2023 Florian H. Kleber, Florian Herbert Kleber IT. All rights reserved.',
+
+  // Page metadata (src/components/Head.tsx). Defaults only: a title or
+  // description edited in the CMS still wins. SiteDescription replaces the
+  // single German sentence the CMS site metadata serves to every locale.
+  SiteDescription:
+    'Erzählen Sie uns von Ihrer Idee oder besuchen Sie uns in unserem Büro in Wien. Wir entwickeln für Sie in Österreich und verhelfen Ihnen zu maßgeschneiderten Softwarelösungen. Webentwicklung von professionellen Web Apps, SaaS und Ecommerce Lösungen.',
+  PageTitleHome: 'Netsnek | Softwareentwicklung aus Österreich',
+  PageDescriptionHome:
+    'Erzählen Sie uns von Ihrer Idee oder besuchen Sie uns in unserem Büro in Wien. Wir entwickeln für Sie in Österreich und verhelfen Ihnen zu maßgeschneiderten Softwarelösungen. Webentwicklung von professionellen Web Apps, SaaS und Ecommerce Lösungen.',
+  PageTitleDocs: 'Dokumentation | Netsnek',
+  PageDescriptionDocs:
+    'Anleitungen, Referenzen und Hintergrundwissen zu den Produkten und Frameworks von Netsnek.',
+  PageTitleProducts: 'Produkte | Netsnek',
+  PageDescriptionProducts:
+    'Unsere Produkte und Lösungen für Web, SaaS und Ecommerce.',
+  PageTitleImprint: 'Impressum | Netsnek',
+  PageDescriptionImprint:
+    'Impressum und Offenlegung von Netsnek e.U. in Wien, Österreich.',
+  PageTitlePrivacyPolicy: 'Datenschutzerklärung | Netsnek',
+  PageDescriptionPrivacyPolicy:
+    'Wie Netsnek personenbezogene Daten verarbeitet, speichert und schützt.',
+  PageTitleTermsOfService: 'Nutzungsbedingungen | Netsnek',
+  PageDescriptionTermsOfService:
+    'Die Nutzungsbedingungen für die Websites und Dienste von Netsnek.',
+  PageTitleNotFound: 'Seite nicht gefunden | Netsnek',
+  PageDescriptionNotFound: 'Diese Seite existiert nicht.'
 } as const;
 
 export type MessageKey = keyof typeof messagesDe;

@@ -17,7 +17,7 @@ const DocPage: React.FC<PageProps> = props => {
 
 export default DocPage;
 
-export { Head } from 'jaen';
+export {Head} from '../components/Head';
 
 export const pageConfig: PageConfig = {
   label: 'DocPage',

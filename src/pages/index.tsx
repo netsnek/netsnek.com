@@ -64,4 +64,4 @@ export const query = graphql`
   }
 `;
 
-export { Head } from 'jaen';
+export {Head} from '../components/Head';

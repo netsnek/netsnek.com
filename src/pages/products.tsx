@@ -9,7 +9,7 @@ const ProductPage: React.FC<PageProps> = props => {
 
 export default ProductPage;
 
-export { Head } from 'jaen';
+export {Head} from '../components/Head';
 
 export const pageConfig: PageConfig = {
   label: 'ProductPage',
