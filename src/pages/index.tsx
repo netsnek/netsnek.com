@@ -11,6 +11,7 @@ import Associates from '../components/sections/Associates';
 import { GoogleMaps } from '../components/GoogleMaps';
 import Contact from '../components/sections/Contact';
 import Blog from '../components/sections/Blog';
+import Open from '../components/sections/Open';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -33,6 +34,9 @@ const IndexPage: React.FC<PageProps> = () => {
         <ServicesDetails />
         <Blog />
       </Container>
+      {/* Nach den Projektgeschichten die Haltung, dann erst der Kontakt: der
+          Abschnitt ist voll breit und steht deshalb ausserhalb des Containers. */}
+      <Open />
       <Contact />
       <GoogleMaps
         objectFit="cover"
