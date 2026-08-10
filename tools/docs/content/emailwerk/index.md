@@ -16,7 +16,7 @@ emailwerk ist die dritte Hauptversion von mailpress und wird von denselben beide
 
 1. **mailpress v1** (2023) entstand auf snek-functions, dem Vorgänger von Pylon. Fest kodierte HTML-Vorlagen, ein externer Mailer-Microservice und die ersten Ideen, die bis heute überlebt haben, etwa `verifyReplyTo` und verknüpfte Vorlagen.
 2. **mailpress v2** (2024 bis 2025, [`getcronit/mailpress`](https://github.com/getcronit/mailpress)) war ein Rewrite auf Pylon v2 mit Prisma und Postgres, Zitadel-Mandantenfähigkeit, Twig-Vorlagen und einer separaten Gatsby-Admin-Oberfläche.
-3. **emailwerk v3** ist der Rewrite auf Pylon v3. Die Admin-Oberfläche zieht in den Dienst selbst ein. Dazu kommen eine Versandhistorie, eine echte Queue und austauschbare Auth- und Provider-Schnittstellen. Alle bekannten Fehler aus v2 sind behoben.
+3. **emailwerk v3** ist der Rewrite auf Pylon v3. Die Admin-Oberfläche zieht in den Dienst selbst ein. Dazu kommen eine Versandhistorie, eine echte Queue und austauschbare Auth- und Provider-Schnittstellen. Bekannte Fehler aus v2 sind behoben, darunter der unsichere JavaScript-Transformer auf `eval()`-Basis und ein Fehler, der Zugangsdaten offenlegen konnte.
 
 ## Funktionen
 
@@ -29,6 +29,8 @@ emailwerk ist die dritte Hauptversion von mailpress und wird von denselben beide
 - **Verschlüsselte Zugangsdaten.** SMTP-Passwörter und API-Keys liegen AES-256-GCM-verschlüsselt in einem eigenen Datenmodell, das über GraphQL strukturell nicht erreichbar ist.
 - **Austauschbare Authentifizierung.** Ein schmaler `AuthAdapter` mit den Rollen `emailwerk:admin` und `emailwerk:send`. HTTP Basic und ein offener Dev-Modus sind enthalten, eigene Adapter sind eine Datei.
 - **Qualifizierte Signaturen.** Ein Versand kann angehalten werden, bis eine qualifizierte elektronische Signatur über ID Austria vorliegt. Zusätzlich gibt es eine PGP-Signaturebene über den exakten Inhalt.
+- **Zitadel-Anbindung.** emailwerk kann als HTTP-Notification-Provider einer Zitadel-Instanz dienen und deren OTP-, Passwort-Reset- und Init-Mails zustellen.
+
 ## Architektur
 
 Ein Node-Prozess, eine Postgres-Datenbank. Pylon v3 reflektiert das GraphQL-Schema aus TypeScript, `usePages()` rendert die React-Admin-Oberfläche serverseitig und pg-boss betreibt die Versand-Queue in derselben Datenbank.
