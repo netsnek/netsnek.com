@@ -70,22 +70,37 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ childr
   }
 
   const onSubmit = async (data: ContactFormValues): Promise<void> => {
-    const result = await sendTemplateMail(
-      '5b8c57b7-acc4-4ab2-9268-aba3f2f5d4de', // replace with your actual template ID
-      {
+    const values = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone || '',
+      message: data.message,
+      invokedOnUrl: meta?.url,
+    }
+
+    // "Contact" template on emailwerk.com: recipients come from the stored
+    // envelope (office@netsnek.com), the requester's address goes into
+    // replyTo.
+    const result = await sendTemplateMail('cmsmguuxh0038rb2pgsrpzhur', {
+      envelope: {
+        replyTo: data.email,
+      },
+      values,
+    })
+
+    if (result.ok) {
+      // "Contact Confirmation" template: mailpress derived the requester's
+      // address through a JS transformer; emailwerk takes it as an explicit
+      // recipient. Best-effort — a failed confirmation must not fail the
+      // inquiry itself.
+      void sendTemplateMail('cmsmgusf60007rb2pyiuzaj54', {
         envelope: {
-          replyTo: data.email,
+          to: [data.email],
         },
-        values: {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          phone: data.phone || '',
-          message: data.message,
-          invokedOnUrl: meta?.url,
-        },
-      }
-    )
+        values,
+      })
+    }
 
     if (!result.ok) {
       toast({
