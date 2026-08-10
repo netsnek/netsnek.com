@@ -59997,7 +59997,7 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "Sommerpraktikum 2026",
+                        "value": "Sommerpraktikum 2026: Mario Taurok",
                         "position": {
                           "start": {
                             "line": 6,
@@ -60006,8 +60006,8 @@
                           },
                           "end": {
                             "line": 6,
-                            "column": 24,
-                            "offset": 299
+                            "column": 38,
+                            "offset": 313
                           }
                         }
                       }
@@ -60020,8 +60020,8 @@
                       },
                       "end": {
                         "line": 6,
-                        "column": 24,
-                        "offset": 299
+                        "column": 38,
+                        "offset": 313
                       }
                     }
                   },
@@ -60030,17 +60030,68 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "Im Sommer 2026 absolvierte ein Schüler ein einwöchiges Praktikum bei Netsnek e.U. Sein Hauptprojekt war eine eigenständig entwickelte Remote-Management-API auf Basis von Node.js und GraphQL, über die sich Serverdienste programmatisch verwalten und fernsteuern lassen.",
+                        "value": "Im Juni 2026 absolvierte ",
                         "position": {
                           "start": {
                             "line": 8,
                             "column": 1,
-                            "offset": 301
+                            "offset": 315
                           },
                           "end": {
                             "line": 8,
-                            "column": 268,
-                            "offset": 568
+                            "column": 26,
+                            "offset": 340
+                          }
+                        }
+                      },
+                      {
+                        "type": "link",
+                        "title": null,
+                        "url": "https://taurok.com/",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Mario Taurok",
+                            "position": {
+                              "start": {
+                                "line": 8,
+                                "column": 27,
+                                "offset": 341
+                              },
+                              "end": {
+                                "line": 8,
+                                "column": 39,
+                                "offset": 353
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 8,
+                            "column": 26,
+                            "offset": 340
+                          },
+                          "end": {
+                            "line": 8,
+                            "column": 61,
+                            "offset": 375
+                          }
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "value": " ein einwöchiges Sommerpraktikum bei Netsnek e.U. Sein Hauptprojekt war eine eigenständig entwickelte Remote-Management-API auf Basis von Node.js und GraphQL, über die sich Serverdienste programmatisch verwalten und fernsteuern lassen.",
+                        "position": {
+                          "start": {
+                            "line": 8,
+                            "column": 61,
+                            "offset": 375
+                          },
+                          "end": {
+                            "line": 8,
+                            "column": 296,
+                            "offset": 610
                           }
                         }
                       }
@@ -60049,12 +60100,12 @@
                       "start": {
                         "line": 8,
                         "column": 1,
-                        "offset": 301
+                        "offset": 315
                       },
                       "end": {
                         "line": 8,
-                        "column": 268,
-                        "offset": 568
+                        "column": 296,
+                        "offset": 610
                       }
                     }
                   },
@@ -60063,17 +60114,17 @@
                     "children": [
                       {
                         "type": "text",
-                        "value": "Daneben arbeitete er in der Webentwicklung mit HTML, CSS und JavaScript mit und sammelte Praxis in der Linux-Serveradministration. Er richtete Dienste mit systemd ein, arbeitete mit OpenSSL und RCON und automatisierte die Datensicherung über ein selbst geschriebenes Bash-Skript. Er arbeitete dabei schon mit minimalen Anweisungen selbständig und lieferte durchwegs sehr gute Arbeit.",
+                        "value": "Daneben arbeitete er in der Webentwicklung mit HTML, CSS und JavaScript mit und sammelte Praxis in der Linux-Serveradministration. Er richtete Dienste mit systemd ein, arbeitete mit OpenSSL und RCON und automatisierte die Datensicherung über ein selbst geschriebenes Bash-Skript. Mario arbeitete dabei schon mit minimalen Anweisungen selbständig und lieferte durchwegs sehr gute Arbeit.",
                         "position": {
                           "start": {
                             "line": 10,
                             "column": 1,
-                            "offset": 570
+                            "offset": 612
                           },
                           "end": {
                             "line": 10,
-                            "column": 384,
-                            "offset": 953
+                            "column": 387,
+                            "offset": 998
                           }
                         }
                       }
@@ -60082,12 +60133,12 @@
                       "start": {
                         "line": 10,
                         "column": 1,
-                        "offset": 570
+                        "offset": 612
                       },
                       "end": {
                         "line": 10,
-                        "column": 384,
-                        "offset": 953
+                        "column": 387,
+                        "offset": 998
                       }
                     }
                   },
@@ -60101,12 +60152,12 @@
                           "start": {
                             "line": 12,
                             "column": 1,
-                            "offset": 955
+                            "offset": 1000
                           },
                           "end": {
                             "line": 12,
                             "column": 235,
-                            "offset": 1189
+                            "offset": 1234
                           }
                         }
                       }
@@ -60115,12 +60166,12 @@
                       "start": {
                         "line": 12,
                         "column": 1,
-                        "offset": 955
+                        "offset": 1000
                       },
                       "end": {
                         "line": 12,
                         "column": 235,
-                        "offset": 1189
+                        "offset": 1234
                       }
                     }
                   },
@@ -60134,12 +60185,12 @@
                           "start": {
                             "line": 14,
                             "column": 1,
-                            "offset": 1191
+                            "offset": 1236
                           },
                           "end": {
                             "line": 14,
                             "column": 92,
-                            "offset": 1282
+                            "offset": 1327
                           }
                         }
                       }
@@ -60148,12 +60199,12 @@
                       "start": {
                         "line": 14,
                         "column": 1,
-                        "offset": 1191
+                        "offset": 1236
                       },
                       "end": {
                         "line": 14,
                         "column": 92,
-                        "offset": 1282
+                        "offset": 1327
                       }
                     }
                   }
@@ -60167,7 +60218,7 @@
                   "end": {
                     "line": 15,
                     "column": 1,
-                    "offset": 1283
+                    "offset": 1328
                   }
                 }
               },
