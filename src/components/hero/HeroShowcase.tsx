@@ -156,18 +156,11 @@ export const HeroShowcase: FC = () => {
     // viewBox, so giving it a width is enough and the height follows. A ratio
     // box with overflow hidden cropped exactly what it must not: the device's
     // bottom edge and its shadow.
-    <Box
-      position="relative"
-      sx={{
-        '#hero-artwork svg': {
-          width: '100%',
-          height: 'auto',
-          display: 'block',
-          // The shadow reaches past the device, so it must not be clipped.
-          overflow: 'visible'
-        }
-      }}
-    >
+    // The drawing is sized inside the tabs template, on the panel that
+    // holds it. Sizing every svg under this element instead would also
+    // catch the little arrows between the switches, which is exactly what
+    // happened once.
+    <Box position="relative">
       <Box id="hero-artwork">
         <UncontrolledMdxField
           components={components}

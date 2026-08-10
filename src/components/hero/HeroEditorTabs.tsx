@@ -159,6 +159,15 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
             : 'none'
         }
         sx={{
+          // The drawing fills the panel and keeps its own proportions. This
+          // is scoped to the panel on purpose: the same rule on the whole
+          // hero would also resize the arrows between the switches.
+          '& svg': {
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            overflow: 'visible'
+          },
           // CodeMirror only scrolls inside itself when it has a DEFINITE
           // height. A percentage is not one: it resolves against the mdx
           // field's own wrappers, which are auto, so the editor grew to its
