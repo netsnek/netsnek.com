@@ -373,7 +373,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               <Button
                 ml={4}
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
+                borderRadius="full"
                 onClick={handleOnContactClick}
                 fontSize="sm"
                 fontWeight="semibold"
@@ -388,7 +388,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               {/* <Button
                   ml={4}
                   filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                  borderRadius={'lg'}
+                  borderRadius="full"
                   onClick={handleOnContactClick}
                   fontSize="sm"
                   fontWeight="semibold"
@@ -412,7 +412,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   />
                 }
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
+                borderRadius="full"
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -463,7 +463,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 _hover={{
                   bg: 'brand.500'
                 }}
-                borderRadius={'lg'}
+                borderRadius="full"
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 //variant="ghost"
                 onClick={handleOnContactClick}
@@ -483,7 +483,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   _hover={{
                     bg: 'brand.500'
                   }}
-                  borderRadius={'lg'}
+                  borderRadius="full"
                   filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                   //variant="ghost"
                   onClick={handleOnContactClick}
@@ -513,7 +513,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   />
                 }
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-                borderRadius={'lg'}
+                borderRadius="full"
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}

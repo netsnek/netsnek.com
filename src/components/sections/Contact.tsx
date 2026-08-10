@@ -118,7 +118,7 @@ const Contact = () => {
             {/* <ImportantArrow pos="absolute" top="-150%" right="-10%" h="300%" /> */}
             <Button
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-              borderRadius="lg"
+              borderRadius="full"
               onClick={handleOnContactClick}
               fontSize="sm"
               fontWeight="semibold"

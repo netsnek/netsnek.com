@@ -135,7 +135,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       borderColor: 'brand.500',
       color: 'brand.500',
       px: 5,
-      borderRadius: 'lg',
+      borderRadius: 'full',
       _hover: {
         bgColor: 'brand.600',
         color: 'white',
@@ -149,7 +149,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       bgColor: 'brand.500',
       color: 'white',
       px: 5,
-      borderRadius: 'lg',
+      borderRadius: 'full',
       _hover: {
         transform: 'scale(1.05)',
         boxShadow: '3x 3px 10px rgba(2, 116, 192, 0.5)'
@@ -162,7 +162,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       bgColor: 'transparent',
       color: 'brand.500',
       px: 5,
-      borderRadius: 'lg',
+      borderRadius: 'full',
       _hover: {
         transform: 'scale(1.1)'
       }

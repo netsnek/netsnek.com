@@ -147,7 +147,7 @@ const Hero: FC = () => {
           <HStack spacing={4} mt={4}>
             <Button
               variant="solid"
-              borderRadius={'lg'}
+              borderRadius="full"
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
               onClick={onContactClick}
             >
@@ -159,7 +159,7 @@ const Hero: FC = () => {
             <Button
               variant="outline"
               bg={'white'}
-              borderRadius={'lg'}
+              borderRadius="full"
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
               onClick={() =>
                 (window.location.href = localizeHref('/docs'))
