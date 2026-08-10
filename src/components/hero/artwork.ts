@@ -50,10 +50,14 @@ const escapeMdx = (text: string): string => text.replace(/([\\{}<>])/g, '\\$1');
 /**
  * The mark, ready to be dropped into the tablet's artwork slot.
  *
- * The nested viewport is placed inside the white page of the mockup: 536
- * units wide at x 75, y 27.5, which puts the drawn ink between y 85 and y 507
- * of the tablet, just inside the page (71.5 to 520.55) and centred on the
- * screen.
+ * The nested viewport is placed inside the white page of the mockup: 504
+ * units wide at x 90.5, y 62, which puts the drawn ink between y 116 and
+ * y 513 of the tablet, centred on the screen.
+ *
+ * The mark used to be 536 wide and started at y 85. That is where the page
+ * header sits now (y 83 to 108.4), so the mark moved down and shrank by six
+ * percent to keep its margin to the header and to the bottom of the page
+ * (71.5 to 520.55) about equal, roughly seven and a half units each.
  */
 export const buildArtwork = (labels: ArtworkLabels): string => {
   const heading1 = escapeMdx(labels.heading1);
@@ -65,10 +69,12 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
     {/* ============================================================
          DIE ANIMIERTE MARKE
          Eigener Ausschnitt (viewBox 0 0 475 475) auf der weissen
-         Seite. x, y und die Kantenlaenge bestimmen, wo die Marke
-         sitzt, alles darin rechnet weiter in 475er Einheiten.
+         Seite, unterhalb der Kopfzeile. x, y und die Kantenlaenge
+         bestimmen, wo die Marke sitzt, alles darin rechnet weiter
+         in 475er Einheiten. Gezeichnet wird zwischen den Einheiten
+         51 und 425, auf der Seite also zwischen y 116 und y 513.
          ============================================================ */}
-    <svg id="netsnek-mark" x="75" y="27.5" width="536" height="536"
+    <svg id="netsnek-mark" x="90.5" y="62" width="504" height="504"
          viewBox="0 0 475 475">
 
       <style>
@@ -125,6 +131,12 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
 #netsnek-mark .heart {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
+}
+
+#mark-button-outline {
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+  animation: mark-draw 1s ease 14s forwards;
 }
 
 #netsnek-mark .rect {
@@ -254,12 +266,10 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
         </mask>
 
         <mask id="mark-button-mask">
-          {/* Erster Button gefuellt, zweiter nur Umriss, genau wie das
-              Buttonpaar der echten Seite. Radius 6 von 20 Einheiten Hoehe
-              entspricht den 12px der Website. */}
+          {/* Nur der gefuellte Button. Der zweite wird nicht durch diese
+              Maske aufgedeckt, sondern zeichnet sich selbst, wie Rechteck,
+              Kreise und Herz darueber. */}
           <rect x="2" y="250" rx="6" ry="6" width="50" height="20" fill="#ffffff" />
-          <rect x="61" y="251" rx="5" ry="5" width="48" height="18"
-                fill="none" stroke="#ffffff" stroke-width="2" />
         </mask>
       </defs>
 
@@ -313,6 +323,12 @@ export const buildArtwork = (labels: ArtworkLabels): string => {
             opacity="0.2" stroke-width="8" stroke-linecap="round" />
       <line id="mark-skeleton2" x1="4" y1="230" x2="196" y2="230" stroke="#000000"
             opacity="0.2" stroke-width="8" stroke-linecap="round" />
+
+      {/* Der zweite Button, als Umriss gezeichnet wie die Formen im Herz.
+          Er laeuft eine Sekunde nach dem gefuellten los. */}
+      <rect id="mark-button-outline" x="61" y="251" rx="5" ry="5"
+            width="48" height="18" fill="none" stroke="#f77f00"
+            stroke-width="2" />
 
       <g mask="url(#mark-button-mask)">
         <rect id="mark-button" x="-47.5" y="270.75" width="475" height="237.5"

@@ -116,6 +116,12 @@ export const Logo = (props: any) => {
         stroke-dashoffset: 1000;
       }
 
+      #button-outline {
+        stroke-dasharray: 130;
+        stroke-dashoffset: 130;
+        animation: draw 1s ease 14s forwards;
+      }
+
       .rect {
         animation: draw 2s ease forwards, /* Drawing animation */
                    erase 1s ease 6s forwards; /* Remove drawing */
@@ -227,21 +233,9 @@ export const Logo = (props: any) => {
           <text x="0" y="190" fontSize="24" fontWeight="bold" fill="black">{heading2}<tspan fill="white">{dot2}</tspan></text>
         </mask>
         <mask id="button-mask">
-          {/* Erster Button gefüllt, zweiter nur Umriss, wie das Buttonpaar
-              der Website. Radius 6 auf 20 Einheiten Höhe entspricht den 12px
-              des Themes. */}
+          {/* Nur der gefüllte Button. Der zweite zeichnet sich selbst,
+              wie Rechteck, Kreise und Herz. */}
           <rect x="2" y="250" rx="6" ry="6" width="50" height="20" fill="white" />
-          <rect
-            x="61"
-            y="251"
-            rx="5"
-            ry="5"
-            width="48"
-            height="18"
-            fill="none"
-            stroke="white"
-            strokeWidth="2"
-          />
         </mask>
       </defs>
       <g id="Ebene_1-2">
@@ -393,7 +387,22 @@ export const Logo = (props: any) => {
           strokeLinecap="round"
           strokeWidth="8px"
         />
-        <g mask="url(#button-mask)">
+        {/* Der zweite Button als gezeichneter Umriss, eine Sekunde nach dem
+          gefüllten. */}
+      <rect
+        id="button-outline"
+        x="61"
+        y="251"
+        rx="5"
+        ry="5"
+        width="48"
+        height="18"
+        fill="none"
+        stroke="#f77f00"
+        strokeWidth="2"
+      />
+
+      <g mask="url(#button-mask)">
           <rect
             id="button"
             x="-10%"

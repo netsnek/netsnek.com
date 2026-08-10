@@ -83,8 +83,6 @@ const SVG_TAGS = [
   'feComposite',
   'feMerge',
   'feMergeNode',
-  // The Apple Pencil, the one bitmap left in the drawing
-  'image',
   // The animation of the mark travels with it, inside the drawing
   'style'
 ];

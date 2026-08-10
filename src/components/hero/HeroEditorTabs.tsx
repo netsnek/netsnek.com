@@ -45,10 +45,20 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
     <Button
       size="xs"
       px={4}
-      borderRadius="full"
+      borderRadius="xl"
       fontWeight="semibold"
-      variant={tab === value ? 'solid' : 'ghost'}
-      color={tab === value ? 'white' : 'gray.500'}
+      // The same pair the site uses everywhere: the active one filled, the
+      // other an outline in brand colour.
+      variant={tab === value ? 'solid' : 'outline'}
+      color={tab === value ? 'white' : 'brand.500'}
+      borderColor={tab === value ? 'transparent' : 'brand.500'}
+      borderWidth={2}
+      bg={tab === value ? undefined : 'white'}
+      _hover={
+        tab === value
+          ? undefined
+          : { borderColor: 'brand.600', color: 'brand.600' }
+      }
       aria-pressed={tab === value}
       onClick={() => setTab(value)}
     >
@@ -59,14 +69,9 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
   return (
     <Box position="relative">
       <Box display="flex" justifyContent="center" mb={3}>
-        <ButtonGroup
-          size="xs"
-          spacing={1}
-          p={1}
-          borderRadius="full"
-          bg="blackAlpha.50"
-          w="fit-content"
-        >
+        {/* Kein Rahmen um die beiden mehr: sie sind jetzt ein Buttonpaar
+            wie ueberall sonst, kein Segment-Schalter in einer Schiene. */}
+        <ButtonGroup size="xs" spacing={3} w="fit-content">
           {pill(
             PREVIEW_TAB,
             intl.formatMessage({
