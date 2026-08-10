@@ -19,6 +19,8 @@
  */
 
 export const messagesDe = {
+  HeroShowcasePreview: 'Ansicht',
+  HeroShowcaseCode: 'Quelltext',
   // Hero (src/components/sections/Hero.tsx)
   HeroTitle: 'INNOVATIV. EFFEKTIV.',
   HeroSubtitle: 'Professionelle Softwareentwicklung.',
@@ -241,7 +243,17 @@ export const messagesDe = {
   MapsUnavailableTitle: 'Google Maps ist nicht verfügbar',
   MapsUnavailableText:
     'Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.',
-  MapsEnableCookiesAction: 'Analyse Cookies aktivieren'
+  MapsEnableCookiesAction: 'Analyse Cookies aktivieren',
+
+  // Docs body components (src/components/main-content/). The heading
+  // anchor label repeats on every heading of every MDX page, so it takes
+  // the heading text as a {title} placeholder.
+  HeadingAnchorLabel: 'Link zu {title}',
+  DocsIndexUntitledPage: 'Seite lesen',
+  CodeResultNotRunYet: 'Noch nicht ausgeführt',
+  CodePlaygroundPreviewHeader: 'Code-Vorschau',
+  CodePlaygroundEditorHeader: 'Bearbeitbarer Code',
+  CodePlaygroundPlaceholderCode: 'Das ist eine Code-Spielwiese'
 } as const;
 
 export type MessageKey = keyof typeof messagesDe;
@@ -253,6 +265,8 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'de';
 
 export const messagesEn: MessageCatalog = {
+  HeroShowcasePreview: 'Preview',
+  HeroShowcaseCode: 'Source',
   HeroTitle: "INNOVATIVE. EFFECTIVE.",
   HeroSubtitle: "Professional software development.",
   HeroText: "Your software agency in Austria. We build custom software solutions tailored to your needs.",
@@ -374,10 +388,18 @@ export const messagesEn: MessageCatalog = {
   PageDescriptionNotFound: "This page does not exist.",
   MapsUnavailableTitle: "Google Maps is unavailable",
   MapsUnavailableText: "Please enable cookies to display Google Maps.",
-  MapsEnableCookiesAction: "Enable analytics cookies"
+  MapsEnableCookiesAction: "Enable analytics cookies",
+  HeadingAnchorLabel: "Link to {title}",
+  DocsIndexUntitledPage: "Read page",
+  CodeResultNotRunYet: "Not run yet",
+  CodePlaygroundPreviewHeader: "Code preview",
+  CodePlaygroundEditorHeader: "Editable code",
+  CodePlaygroundPlaceholderCode: "This is a code playground"
 };
 
 export const messagesSl: MessageCatalog = {
+  HeroShowcasePreview: 'Predogled',
+  HeroShowcaseCode: 'Izvorna koda',
   HeroTitle: "INOVATIVNO. UČINKOVITO.",
   HeroSubtitle: "Profesionalen razvoj programske opreme.",
   HeroText: "Vaša agencija za razvoj programske opreme v Avstriji. Pomagamo vam do programskih rešitev po meri.",
@@ -499,10 +521,18 @@ export const messagesSl: MessageCatalog = {
   PageDescriptionNotFound: "Ta stran ne obstaja.",
   MapsUnavailableTitle: "Google Zemljevidi niso na voljo",
   MapsUnavailableText: "Za prikaz Google Zemljevidov omogočite piškotke.",
-  MapsEnableCookiesAction: "Omogoči analitične piškotke"
+  MapsEnableCookiesAction: "Omogoči analitične piškotke",
+  HeadingAnchorLabel: "Povezava do {title}",
+  DocsIndexUntitledPage: "Preberi stran",
+  CodeResultNotRunYet: "Še ni zagnano",
+  CodePlaygroundPreviewHeader: "Predogled kode",
+  CodePlaygroundEditorHeader: "Koda za urejanje",
+  CodePlaygroundPlaceholderCode: "To je igrišče za kodo"
 };
 
 export const messagesIt: MessageCatalog = {
+  HeroShowcasePreview: 'Anteprima',
+  HeroShowcaseCode: 'Codice',
   HeroTitle: "INNOVATIVI. EFFICACI.",
   HeroSubtitle: "Sviluppo software professionale.",
   HeroText: "La vostra agenzia software in Austria. Vi aiutiamo a realizzare soluzioni software su misura.",
@@ -624,10 +654,18 @@ export const messagesIt: MessageCatalog = {
   PageDescriptionNotFound: "Questa pagina non esiste.",
   MapsUnavailableTitle: "Google Maps non è disponibile",
   MapsUnavailableText: "Attiva i cookie per visualizzare Google Maps.",
-  MapsEnableCookiesAction: "Attiva i cookie di analisi"
+  MapsEnableCookiesAction: "Attiva i cookie di analisi",
+  HeadingAnchorLabel: "Link a {title}",
+  DocsIndexUntitledPage: "Leggi la pagina",
+  CodeResultNotRunYet: "Non ancora eseguito",
+  CodePlaygroundPreviewHeader: "Anteprima del codice",
+  CodePlaygroundEditorHeader: "Codice modificabile",
+  CodePlaygroundPlaceholderCode: "Questo è un playground di codice"
 };
 
 export const messagesJa: MessageCatalog = {
+  HeroShowcasePreview: 'プレビュー',
+  HeroShowcaseCode: 'ソースコード',
   HeroTitle: "革新的に。効果的に。",
   HeroSubtitle: "プロフェッショナルなソフトウェア開発。",
   HeroText: "オーストリアのソフトウェアエージェンシー。お客様に最適なオーダーメイドのソフトウェアソリューションをご提供します。",
@@ -749,7 +787,13 @@ export const messagesJa: MessageCatalog = {
   PageDescriptionNotFound: "このページは存在しません。",
   MapsUnavailableTitle: "Google マップを表示できません",
   MapsUnavailableText: "Google マップを表示するには Cookie を有効にしてください。",
-  MapsEnableCookiesAction: "分析 Cookie を有効にする"
+  MapsEnableCookiesAction: "分析 Cookie を有効にする",
+  HeadingAnchorLabel: "{title} へのリンク",
+  DocsIndexUntitledPage: "ページを読む",
+  CodeResultNotRunYet: "まだ実行していません",
+  CodePlaygroundPreviewHeader: "コードプレビュー",
+  CodePlaygroundEditorHeader: "編集可能なコード",
+  CodePlaygroundPlaceholderCode: "これはコードプレイグラウンドです"
 };
 
 const catalogs: Record<Locale, MessageCatalog> = {

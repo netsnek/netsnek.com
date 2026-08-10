@@ -20,7 +20,7 @@ import { useLocalizeHref } from '../../contexts/locale';
 import { withAccentDots } from '../../utils/accent-dots';
 
 // import {useContactModal} from '../services/contact'
-import Netsnek from '../../gatsby-plugin-jaen/components/Netsnek';
+import HeroShowcase from '../hero/HeroShowcase';
 import useScrollPosition from '../../hooks/use-scroll-position';
 import { FadeIn } from '../FadeIn';
 import { useContactModal } from '../../services/contact';
@@ -99,44 +99,20 @@ const Hero: FC = () => {
         pt={`calc(${navOffset})`}
       >
         <Box as={FadeIn} position="relative" gridArea="image">
-          <AspectRatio ratio={4 / 3} w="full" h="auto">
-            <Box position="relative" w="full" h="full">
-              <Image
-                src="/images/iPad.png"
-                alt={intl.formatMessage({
-                  id: 'HeroIpadImageAlt',
-                  defaultMessage: 'iPad image'
-                })}
-                objectFit="contain"
-                position="absolute"
-                top="0"
-                right="0"
-                bottom="0"
-                left="0"
-                w="full"
-                h="full"
-              />
-              <Netsnek
-                position="absolute"
-                mt="7%"
-                p="5%"
-                w="full"
-                h="full"
-                sx={{
-                  '.squarel': {
-                    display: 'none'
-                  },
-                  '.snek': {
-                    stroke: 'black',
-                    filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
-                  },
-                  '.arrows': {
-                    display: 'none'
-                  }
-                }}
-              />
-            </Box>
-          </AspectRatio>
+          <HeroShowcase
+            logoSx={{
+              '.squarel': {
+                display: 'none'
+              },
+              '.snek': {
+                stroke: 'black',
+                filter: 'drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))'
+              },
+              '.arrows': {
+                display: 'none'
+              }
+            }}
+          />
         </Box>
         <VStack as={FadeIn} spacing={4} align="left" gridArea="content">
           <Box>
