@@ -37,8 +37,10 @@ const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
   return (
     <chakra.svg
       viewBox="0 0 56 46"
-      w="14px"
-      h="12px"
+      // Deutlich kleiner als die Knoepfe daneben: ein Zeichen zwischen
+      // ihnen, kein dritter Knopf.
+      w="9px"
+      h="7.5px"
       flexShrink={0}
       aria-hidden="true"
       display="block"
@@ -47,13 +49,13 @@ const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
         d={ARROW_UP}
         fill={upFilled ? 'var(--chakra-colors-brand-500)' : 'none'}
         stroke="var(--chakra-colors-brand-500)"
-        strokeWidth={upFilled ? 0 : 3}
+        strokeWidth={upFilled ? 0 : 4}
       />
       <path
         d={ARROW_DOWN}
         fill={upFilled ? 'none' : 'var(--chakra-colors-brand-500)'}
         stroke="var(--chakra-colors-brand-500)"
-        strokeWidth={upFilled ? 3 : 0}
+        strokeWidth={upFilled ? 4 : 0}
       />
     </chakra.svg>
   );
@@ -114,7 +116,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
       <Box display="flex" justifyContent="center" mb={3}>
         {/* Kein Rahmen um die beiden mehr: sie sind jetzt ein Buttonpaar
             wie ueberall sonst, kein Segment-Schalter in einer Schiene. */}
-        <ButtonGroup size="xs" spacing={3} w="fit-content" alignItems="center">
+        <ButtonGroup size="xs" spacing={2} w="fit-content" alignItems="center">
           {pill(
             PREVIEW_TAB,
             intl.formatMessage({
