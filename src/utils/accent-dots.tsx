@@ -16,3 +16,15 @@ export const withAccentDots = (text: string): React.ReactNode[] =>
       part
     )
   );
+
+/**
+ * Splits a localized heading into its body and its trailing sentence
+ * terminator, for the places that cannot wrap the dot in an element of its
+ * own — the SVG logo paints body and dot through two separate masks. A
+ * string without a terminator yields an empty dot.
+ */
+export const splitAccentDot = (text: string): [string, string] => {
+  const match = /^([\s\S]*)([.。])$/.exec(text);
+
+  return match ? [match[1]!, match[2]!] : [text, ''];
+};

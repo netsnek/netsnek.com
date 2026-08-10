@@ -1,7 +1,28 @@
 import React from 'react';
 import { Box, chakra } from '@chakra-ui/react';
+import { useIntl } from 'react-intl';
+
+import { splitAccentDot } from '../../utils/accent-dots';
 
 export const Logo = (props: any) => {
+  const intl = useIntl();
+
+  // The two headings the animation draws are copy, not artwork: they come
+  // from the message catalog and their accent dot is painted by a mask of
+  // its own, so the terminator is split off the localized string.
+  const [heading1, dot1] = splitAccentDot(
+    intl.formatMessage({
+      id: 'LogoHeadingIdea',
+      defaultMessage: 'Ihre Idee.'
+    })
+  );
+  const [heading2, dot2] = splitAccentDot(
+    intl.formatMessage({
+      id: 'LogoHeadingKnowHow',
+      defaultMessage: 'Unser Know-How.'
+    })
+  );
+
   return (
     <chakra.svg
       xmlns="http://www.w3.org/2000/svg"
@@ -194,16 +215,16 @@ export const Logo = (props: any) => {
           />
         </mask>
         <mask id="heading1-mask">
-          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="white">Ihre Idee</text>
+          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="white">{heading1}</text>
         </mask>
         <mask id="heading2-mask">
-          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="white">Unser Know-How</text>
+          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="white">{heading2}</text>
         </mask>
         <mask className="dots-mask" id="dot1-mask">
-          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="black">Ihre Idee<tspan fill="white">.</tspan></text>
+          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="black">{heading1}<tspan fill="white">{dot1}</tspan></text>
         </mask>
         <mask className="dots-mask" id="dot2-mask">
-          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="black">Unser Know-How<tspan fill="white">.</tspan></text>
+          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="black">{heading2}<tspan fill="white">{dot2}</tspan></text>
         </mask>
         <mask id="button-mask">
           <rect x="2" y="250" rx="10" ry="10" width="50" height="20" fill="white" />

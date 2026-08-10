@@ -28,6 +28,11 @@ export const messagesDe = {
   HeroButtonProjects: 'Projekte ansehen',
   HeroIpadImageAlt: 'iPad image',
 
+  // Animated logo headings (src/gatsby-plugin-jaen/components/Netsnek.tsx).
+  // The trailing accent dot is painted by a mask of its own.
+  LogoHeadingIdea: 'Ihre Idee.',
+  LogoHeadingKnowHow: 'Unser Know-How.',
+
   // TopNav (src/components/navigation/TopNav.tsx)
   NavHome: 'Home',
   NavDocs: 'Dokumentation',
@@ -195,6 +200,8 @@ export const messagesEn: MessageCatalog = {
   HeroButtonContact: "Contact",
   HeroButtonProjects: "View projects",
   HeroIpadImageAlt: "iPad image",
+  LogoHeadingIdea: "Your idea.",
+  LogoHeadingKnowHow: "Our know-how.",
   NavHome: "Home",
   NavDocs: "Documentation",
   NavSignIn: "Sign in",
@@ -290,6 +297,8 @@ export const messagesSl: MessageCatalog = {
   HeroButtonContact: "Kontakt",
   HeroButtonProjects: "Oglejte si projekte",
   HeroIpadImageAlt: "Slika iPada",
+  LogoHeadingIdea: "Vaša ideja.",
+  LogoHeadingKnowHow: "Naše znanje.",
   NavHome: "Domov",
   NavDocs: "Dokumentacija",
   NavSignIn: "Prijava",
@@ -385,6 +394,8 @@ export const messagesIt: MessageCatalog = {
   HeroButtonContact: "Contatti",
   HeroButtonProjects: "Scopri i progetti",
   HeroIpadImageAlt: "Immagine iPad",
+  LogoHeadingIdea: "La vostra idea.",
+  LogoHeadingKnowHow: "Il nostro know-how.",
   NavHome: "Home",
   NavDocs: "Documentazione",
   NavSignIn: "Accedi",
@@ -480,6 +491,8 @@ export const messagesJa: MessageCatalog = {
   HeroButtonContact: "お問い合わせ",
   HeroButtonProjects: "プロジェクトを見る",
   HeroIpadImageAlt: "iPadの画像",
+  LogoHeadingIdea: "あなたのアイデア。",
+  LogoHeadingKnowHow: "私たちのノウハウ。",
   NavHome: "ホーム",
   NavDocs: "ドキュメント",
   NavSignIn: "ログイン",
