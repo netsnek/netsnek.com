@@ -7,7 +7,7 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 import { FaLink } from '@react-icons/all-files/fa/FaLink';
-import { FC, Fragment, useMemo, useState } from 'react';
+import { FC, Fragment, useEffect, useMemo, useState } from 'react';
 import { useLocalizeHref, usePageLocale } from '../../../contexts/locale';
 import {
   createPageTree,
@@ -44,13 +44,21 @@ const PageDirectory: FC<PageDirectoryProps> = ({
   // what the unprefixed checks below have to run against.
   const canonicalPath = stripLocalePrefix(path ?? '', prefix);
 
-  // Calculate the default expanded indices for the accordion
+  // Calculate the default expanded indices for the accordion. The numbering
+  // must match the render below, so the isMobile flag goes in too.
   const defaultExpandedIdx = useMemo(() => {
-    return data.menu ? getExpandedMenuItemIndices(data.menu) : [];
-  }, [data.activeIdx]);
+    return data.menu ? getExpandedMenuItemIndices(data.menu, isMobile) : [];
+  }, [data.menu, isMobile]);
 
   // Keep track of the items that have been expanded by the user
   const [expandedIdx, setExpandedIdx] = useState<number[]>(defaultExpandedIdx);
+
+  // On navigation the active path changes but this component may stay
+  // mounted, so the initial state never recomputes. Merge the new defaults
+  // in instead of replacing, so nothing the user opened snaps shut.
+  useEffect(() => {
+    setExpandedIdx(prev => Array.from(new Set([...prev, ...defaultExpandedIdx])));
+  }, [defaultExpandedIdx]);
   const { isAuthenticated, signinRedirect } = useAuth();
   const isSmallScreen = useBreakpointValue(
     { base: true, md: false },

@@ -321,52 +321,47 @@ export function getAdjacentPages(
 }
 
 /**
- * Gets the indices of the expanded menu items
+ * Gets the accordion indices that must be expanded so the active menu item
+ * is visible.
+ *
+ * The numbering MUST mirror how the items render (generateMenuItem in
+ * page-directory): Chakra's Accordion numbers every AccordionItem in DOM
+ * order, nested ones included, and only items that render as an accordion
+ * (they have expandable children) consume an index. Leaves and section
+ * headers consume nothing. The previous implementation only advanced the
+ * counter while descending the active path, so any sibling accordion before
+ * the active one shifted every following index and the wrong item (or none)
+ * expanded after navigating.
  * @param menu  The menu data structure
+ * @param isMobile  Must match the render-side flag: on mobile, section
+ * children count as expandable too.
  * @returns  The indices of the expanded menu items
  */
-export function getExpandedMenuItemIndices(menu: NavMenuSection[]): number[] {
+export function getExpandedMenuItemIndices(
+  menu: NavMenuSection[],
+  isMobile = false
+): number[] {
   const expandedIdx: number[] = [];
+  let idx = 0;
 
-  let idx = -1; // We start at -1 because the first item is always a section
-  /**
-   * Recursively gets the indices of the expanded menu items by traversing the menu data structure
-   * @param menuItem  The menu item to check
-   * @returns  Whether the menu item is the active one
-   */
-  const getExpandedMenuItem = (menuItem: NavMenuItem): boolean => {
-    const isActive = menuItem.isActive;
-    if (
-      menuItem.hasActiveChild ||
-      (isActive && menuItem.children && menuItem.children.length > 0)
-    ) {
-      // We only push the index if the item is active or has an active child since chakra indices ignore non-expandalbe items
-      // debugger;s
-      expandedIdx.push(idx);
-      if (isActive) return true;
-    }
-    if (!menuItem.children || !menuItem.children.length) return false;
-    idx++;
-    for (const child of menuItem.children) {
-      // We must check all other children too since some of them could be expandable
-      if (getExpandedMenuItem(child)) return true;
-    }
-    return false;
+  const walk = (item: NavMenuItem): void => {
+    const hasChildren =
+      !!item.children &&
+      item.children.length > 0 &&
+      (isMobile || item.children.some(child => !child.isSection));
+
+    if (!hasChildren) return;
+
+    const myIdx = idx++;
+    if (item.isActive || item.hasActiveChild) expandedIdx.push(myIdx);
+    // Every expandable descendant consumes an index even inside a collapsed
+    // panel (Chakra keeps panel content mounted), so always recurse.
+    for (const child of item.children!) walk(child);
   };
 
-  for (let i = 0; i < menu.length; i++) {
-    // We box the section in an MenuItem object so we can feed the recursive function with it
-    const boxedSection: NavMenuItem = {
-      href: '',
-      name: menu[i].name ?? '',
-      children: menu[i].items,
-      hasActiveChild: menu[i].items.some(item => item.hasActiveChild)
-    };
-    const isActiveItemFound = getExpandedMenuItem(boxedSection);
-    if (isActiveItemFound) break; // We stop the loop if the active item is found
+  for (const section of menu) {
+    for (const item of section.items) walk(item);
   }
 
-  // Remove the first item in case the active item is the child of a section
-  if (expandedIdx[0] < 0) expandedIdx.shift();
   return expandedIdx;
 }
