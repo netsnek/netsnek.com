@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Menu,
   MenuButton,
@@ -6,12 +7,16 @@ import {
   MenuList,
   MenuButtonProps
 } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import { navigate } from 'gatsby';
 import { FC } from 'react';
 
 import { usePageLocale } from '../contexts/locale';
 import { defaultLocale, locales } from '../locales/messages';
 import TbLanguage from './icons/tabler/TbLanguage';
+
+/** aria-label prefix; the visible control is the language code itself. */
+const LANGUAGE_CONTROL_LABEL = 'Language'
 
 const LOCALE_LABELS: Record<string, string> = {
   de: 'Deutsch',
@@ -54,10 +59,20 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
         variant="ghost-hover"
         size="sm"
         px={2}
-        aria-label="Language"
+        // The icon alone reads as decoration and gets overlooked next to the
+        // search control, so the button also names the language it is
+        // currently showing.
+        aria-label={`${LANGUAGE_CONTROL_LABEL}: ${
+          LOCALE_LABELS[currentBase] ?? currentBase
+        }`}
+        leftIcon={<TbLanguage boxSize={5} display="block" />}
+        rightIcon={<ChevronDownIcon boxSize={4} display="block" />}
+        iconSpacing={1.5}
         {...props}
       >
-        <TbLanguage boxSize={5} display="block" />
+        <Box as="span" fontSize="sm" fontWeight="medium" letterSpacing="wide">
+          {currentBase.toUpperCase()}
+        </Box>
       </MenuButton>
       <MenuList color="chakra-body-text">
         {locales.map(locale => {
