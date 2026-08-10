@@ -6,7 +6,9 @@ path: /docs/qtamp/install
 
 # qtamp installieren
 
-Der schnellste Weg ist der offizielle Installer. Ein Befehl funktioniert auf Linux und macOS:
+Zum reinen Anhören muss nichts installiert werden. Auf [qtamp.org](https://qtamp.org) läuft der echte Player als WebAssembly-Build direkt im Browser, in Chromium-basierten Browsern.
+
+Für die Installation ist der schnellste Weg der offizielle Installer. Ein Befehl funktioniert auf Linux und macOS:
 
 ```sh
 curl https://qtamp.sh | sh
@@ -30,10 +32,14 @@ curl https://qtamp.sh | sh
 
 Der Installer macht dabei Folgendes:
 
-1. Installiert Qt6 und die Build-Werkzeuge über den nativen Paketmanager (`dnf`, `apt`, `pacman` oder `zypper`). Für diesen Schritt fragt er nach `sudo`.
-2. Klont qtamp samt der qtWasabi-Engine.
+1. Installiert Qt6 (Base, Multimedia, Declarative) und die Build-Werkzeuge (CMake, Ninja, git, p7zip) über den nativen Paketmanager (`dnf`, `apt`, `pacman` oder `zypper`). Nur dieser Schritt und die Installation am Ende fragen nach `sudo`.
+2. Klont qtamp samt der qtWasabi-Engine nach `~/.cache/qtamp-build`.
 3. Holt die Wasabi-Quellen vom archive.org-Mirror.
-4. Baut qtamp und installiert nach `/usr/local`.
+4. Baut mit CMake und Ninja und installiert nach `/usr/local`.
+
+Danach startet `qtamp` den Player. Skins zum Ausprobieren liegen als MIT-lizenzierte Showcase-Forks unter [github.com/qtamp](https://github.com/qtamp).
+
+Ein erneuter Lauf verwendet das vorhandene Checkout unter `~/.cache/qtamp-build` wieder und aktualisiert es. Auf Distributionen ohne einen der vier Paketmanager bricht der Installer mit einem Hinweis ab. Dann die genannten Pakete von Hand installieren und das Skript erneut ausführen.
 
 ## macOS
 
@@ -43,7 +49,7 @@ Auf Apple Silicon läuft qtamp nativ. Derselbe Befehl gilt:
 curl https://qtamp.sh | sh
 ```
 
-Der Installer erkennt macOS und übergibt an den macOS-Installer. Dieser baut mit der Homebrew-Toolchain und legt ein `.app`-Bundle in `/Applications` ab.
+Der Installer erkennt macOS und übergibt an den macOS-Installer. Dieser provisioniert bei Bedarf die Xcode Command Line Tools und Homebrew (CMake, Ninja, Qt6), klont die Repos, holt die Wasabi-Quellen vom archive.org-Mirror und bündelt mit `macdeployqt` eine eigenständige `qtamp.app`. Sie landet in `/Applications` und startet wie jede andere App über Spotlight.
 
 ## Browser (WebAssembly)
 
@@ -79,7 +85,7 @@ Der Installer akzeptiert Umgebungsvariablen:
 
 ## Windows
 
-Windows-Unterstützung ist geplant, aber noch nicht verfügbar.
+Windows-Unterstützung ist geplant, aber noch nicht verfügbar. Die Engine ist reines Qt6 und C++ ohne Plattformtricks, der Port ist eine Frage der Build-Infrastruktur. Der Fokus liegt zuerst auf der Skin-Treue.
 
 ## Probleme
 
