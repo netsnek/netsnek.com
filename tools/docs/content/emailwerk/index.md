@@ -22,16 +22,13 @@ emailwerk ist die dritte Hauptversion von mailpress und wird von denselben beide
 
 - **Vorlagen mit typisierten Variablen.** Liquid als Standard oder Twig für volle Kompatibilität mit mailpress-v2-Vorlagen. Auch Betreff, Empfänger und Reply-To sind Vorlagen-Strings. Details unter [Vorlagen](/docs/emailwerk/templates).
 - **Vorlagen-Verkettung.** Ein Versand kann Folge-Mails auslösen, etwa eine Anfrage an das Team plus eine Bestätigung an die Kundin. Ein Zyklus-Schutz verhindert Endlosschleifen.
-- **Multi-Provider-Versand.** Eine `EmailBackend`-Schnittstelle, fünf Transporte: SMTP, Gmail, Microsoft Graph, selbst gehostetes Haraka und Resend.
+- **Multi-Provider-Versand.** Eine `EmailBackend`-Schnittstelle, sechs Transporte: SMTP, Gmail, ein integrierter MTA, Haraka eingebettet oder als Inject-Endpunkt und Resend. Absender-Zugangsdaten werden vor dem Speichern live verifiziert.
 - **Öffentliche Kontaktformulare ohne offenes Relay.** Eine als `isPublic` markierte Vorlage darf anonym versendet werden. Die Empfänger bestimmt dabei immer die Vorlage, nie der Aufrufer. Details unter [Kontaktformular](/docs/emailwerk/kontaktformular).
 - **Versandhistorie.** Jede Nachricht bekommt einen Statusdatensatz (`QUEUED`, `SENDING`, `SENT` oder `FAILED`) mit Provider-Message-Id, Fehlertext und Versuchszähler.
 - **Queue, Retry und Zeitplanung.** pg-boss läuft in derselben Postgres-Datenbank. Transaktionales Einreihen, exponentieller Backoff und geplante Sendezeitpunkte, ohne Redis.
 - **Verschlüsselte Zugangsdaten.** SMTP-Passwörter und API-Keys liegen AES-256-GCM-verschlüsselt in einem eigenen Datenmodell, das über GraphQL strukturell nicht erreichbar ist.
 - **Austauschbare Authentifizierung.** Ein schmaler `AuthAdapter` mit den Rollen `emailwerk:admin` und `emailwerk:send`. HTTP Basic und ein offener Dev-Modus sind enthalten, eigene Adapter sind eine Datei.
 - **Qualifizierte Signaturen.** Ein Versand kann angehalten werden, bis eine qualifizierte elektronische Signatur über ID Austria vorliegt. Zusätzlich gibt es eine PGP-Signaturebene über den exakten Inhalt.
-
-Nicht jede Funktion ist bereits fertig portiert. Der Stand pro Transport steht in der Tabelle unten.
-
 ## Architektur
 
 Ein Node-Prozess, eine Postgres-Datenbank. Pylon v3 reflektiert das GraphQL-Schema aus TypeScript, `usePages()` rendert die React-Admin-Oberfläche serverseitig und pg-boss betreibt die Versand-Queue in derselben Datenbank.
@@ -43,20 +40,23 @@ API-Client ──► /graphql ────┤
         Render ─► Message-Datensatz ─► Queue (pg-boss)
                             ▼
                       EmailBackend
-        ┌──────┬───────┬─────────┬────────┬────────┐
-        │ SMTP │ Gmail │ MSGraph │ Haraka │ Resend │
-        └──────┴───────┴─────────┴────────┴────────┘
+        ┌──────┬───────┬─────┬────────┬────────┐
+        │ SMTP │ Gmail │ MTA │ Haraka │ Resend │
+        └──────┴───────┴─────┴────────┴────────┘
 ```
 
 ## Transporte
 
-| Transport | Stand | Hinweis |
-|---|---|---|
-| SMTP | geplant für v3.0 | nodemailer, TLS-Zertifikatsprüfung standardmäßig aktiv |
-| Haraka inject | portiert | JSON-Inject-Endpunkt für selbst gehostete MTAs |
-| Resend | portiert | HTTP-API |
-| Gmail | geplant für v3.0 | Raw-MIME über die Gmail-REST-API |
-| Microsoft Graph | geplant für v3.0 | `sendMail` JSON-API |
+Alle Transporte implementieren dieselbe `EmailBackend`-Schnittstelle. Welcher Transport eine Nachricht zustellt, bestimmt der am Absender hinterlegte Typ.
+
+| Transport | Beschreibung |
+|---|---|
+| SMTP | nodemailer über einen konfigurierten SMTP-Server. Die TLS-Zertifikatsprüfung ist standardmäßig aktiv und lässt sich nur pro Absender ausdrücklich lockern. |
+| Gmail | Raw-MIME über die Gmail-REST-API. Die Anbindung läuft über einen OAuth-Connect-Flow mit automatischem Token-Refresh, die im Postfach hinterlegte Gmail-Signatur wird übernommen. |
+| Integrierter MTA | emailwerk stellt selbst zu: MX-Auflösung, SMTP auf Port 25 mit opportunistischem STARTTLS und DKIM-Signierung, alles im selben Prozess. |
+| Haraka eingebettet | Der Haraka-Mailserver läuft als Outbound-Engine im selben Prozess. Die Nachricht wird vor der Übergabe DKIM-signiert, Haraka übernimmt Zustellung, Warteschlange und Bounce-Behandlung. |
+| Haraka-Inject | JSON-Einlieferung an einen entfernt gehosteten Haraka-Endpunkt. Ohne konfigurierten Endpunkt fällt dieser Weg automatisch auf den integrierten MTA zurück. |
+| Resend | Die HTTP-API von Resend, ohne eigene Mail-Infrastruktur nutzbar. Dient als Standard und als Fallback. |
 
 ## emailwerk im Einsatz
 
