@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Box, Button, ButtonGroup } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, chakra } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import type { TabsProps } from 'jaen-fields-mdx';
 
@@ -19,6 +19,46 @@ const EDITOR_TAB = 1;
  * behaviour, so typing a broken tag leaves the artwork standing instead of
  * blanking the hero.
  */
+/** The two arrows of the mark, split out of the brand file's double arrow. */
+const ARROW_UP = 'M 30.99 1 L 28 1 L 31 11 L 1 11 L 4 21 L 50.99 21 Z';
+const ARROW_DOWN = 'M 52 25 L 5.01 25 L 25.01 45 L 28 45 L 25 35 L 55 35 Z';
+
+/**
+ * The pair of arrows that sits between the two switches.
+ *
+ * The upper arrow points right, at the second view, the lower one points
+ * left, at the first. The one pointing at the view you are looking at is
+ * filled, the other is drawn as an outline, so the pair reads as a marker of
+ * where you are rather than as decoration.
+ */
+const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
+  const upFilled = activeTab === EDITOR_TAB;
+
+  return (
+    <chakra.svg
+      viewBox="0 0 56 46"
+      w="14px"
+      h="12px"
+      flexShrink={0}
+      aria-hidden="true"
+      display="block"
+    >
+      <path
+        d={ARROW_UP}
+        fill={upFilled ? 'var(--chakra-colors-brand-500)' : 'none'}
+        stroke="var(--chakra-colors-brand-500)"
+        strokeWidth={upFilled ? 0 : 3}
+      />
+      <path
+        d={ARROW_DOWN}
+        fill={upFilled ? 'none' : 'var(--chakra-colors-brand-500)'}
+        stroke="var(--chakra-colors-brand-500)"
+        strokeWidth={upFilled ? 3 : 0}
+      />
+    </chakra.svg>
+  );
+};
+
 export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
   const intl = useIntl();
   const [tab, setTab] = useState(selectedTab ?? PREVIEW_TAB);
@@ -74,7 +114,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
       <Box display="flex" justifyContent="center" mb={3}>
         {/* Kein Rahmen um die beiden mehr: sie sind jetzt ein Buttonpaar
             wie ueberall sonst, kein Segment-Schalter in einer Schiene. */}
-        <ButtonGroup size="xs" spacing={3} w="fit-content">
+        <ButtonGroup size="xs" spacing={3} w="fit-content" alignItems="center">
           {pill(
             PREVIEW_TAB,
             intl.formatMessage({
@@ -82,6 +122,8 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
               defaultMessage: 'Prototyp'
             })
           )}
+          <ViewArrows activeTab={tab} />
+
           {pill(
             EDITOR_TAB,
             intl.formatMessage({
