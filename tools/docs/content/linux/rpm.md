@@ -33,13 +33,37 @@ Die Pakete tragen ihre originalen Upstream-Namen, also zum Beispiel `swappy` sta
 
 | Paket | Version | Warum gepatcht |
 |---|---|---|
+| wlroots | 0.19.2 | Backport von ext-workspace-v1 |
+| wayfire | 0.10.1 | Patch-Stack samt wlr-workspaces-Plugin |
+| wayfire-plugins-extra | 0.10.0 | Zusatz-Plugins cube-gears und dither |
 | xfce4-panel | 4.20.6 | Layer-Shell-Support für Wayland |
 | xfdesktop | 4.20.1 | Wayland-Build plus Monitornamen-Fix |
 | swappy | 1.5.1 | Server-Side-Decorations statt CSD |
 | swaylock-effects | 1.7.0 | ext-session-lock-v1-Support |
+| kitty | 0.43.1 | Python-3.14-Fix plus Notification-Crashfix |
+| mugshot | 0.4.3 | Nicht in Fedora paketiert |
 | telegram-desktop | 6.6.0 | Nativer aarch64-Build |
 | signal-desktop | 8.1.0 | Nativer aarch64-Build |
-| mugshot | 0.4.3 | Nicht in Fedora paketiert |
+| youtube-music | 3.11.0 | aarch64-Build mit wiederhergestellten Plugins |
+| winamp | 0.5.0 | Nativer aarch64-Qt6-Port |
+| cursor | 2.6.19 | Inoffizieller ARM64-Build |
+
+### wlroots
+
+Rebuild des Fedora-Pakets 0.19.2 mit einem Backport der `ext-workspace-v1`-Protokoll-Implementierung aus wlroots 0.20. Der Patch fügt nur neue Dateien und zwei Build-Zeilen hinzu, bestehender Code bleibt unverändert. Er ist die Grundlage dafür, dass Workspace-Pager wie das XFCE-Panel die Arbeitsflächen des Compositors sehen. Sobald wlroots 0.20 in Fedora landet, wird das Paket obsolet.
+
+### wayfire
+
+Rebuild von Wayfire 0.10.1 mit einem Patch-Stack:
+
+- Crashfix für Layer-Shell-Fenster, die nach dem Ausblenden wieder eingeblendet werden, nötig etwa für kittys Dropdown-Terminal.
+- Das Plugin `wlr-workspaces` exponiert die Wayfire-Arbeitsflächen über `ext-workspace-v1`. Der XFCE-Pager zeigt damit alle Workspaces im Button-Modus und Klicks im Pager wechseln die Arbeitsfläche. Benötigt das gepatchte wlroots und xfce4-panel ab Version 4.20.1.
+- 10-Bit-Farbtiefe: `depth = 10` im `[output]`-Block der wayfire.ini funktioniert damit wirklich und reduziert Gradient-Banding.
+- Zwei Cube-Erweiterungen: Aktivierung des Desktop-Würfels per Modifier plus Vier-Finger-Swipe und eine Render-Schnittstelle für Inner-Cube-Plugins.
+
+### wayfire-plugins-extra
+
+Rebuild mit zwei zusätzlichen Plugins: `cube-gears` zeichnet Zahnräder in den Desktop-Würfel, `dither` reduziert per Ordered-Dithering sichtbares Farbverlaufs-Banding auf dem internen Display.
 
 ### xfce4-panel
 
@@ -57,6 +81,10 @@ Der Screenshot-Editor nutzt upstream eine GtkHeaderBar als Client-Side-Decoratio
 
 Build des jirutka-Forks in Version 1.7.0. Dieser Fork unterstützt das Protokoll `ext-session-lock-v1` und liefert Effekte wie Blur, Uhr und Fade-in für den Lockscreen.
 
+### kitty
+
+Rebuild des Fedora-Pakets mit zwei Fixes: einem Upstream-Patch für Python 3.14 und einem eigenen Fix für einen Out-of-bounds-Read im dbus-Notification-Code, der kitty bei Desktop-Benachrichtigungen crashen ließ. Die Subpakete `kitty-kitten`, `kitty-terminfo` und `kitty-shell-integration` sind ebenfalls enthalten.
+
 ### telegram-desktop
 
 Nativ für aarch64 kompilierter Telegram-Client auf Basis des Nicegram-Forks. Offizielle Binärpakete für diese Architektur fehlen, daher der eigene Build inklusive WebRTC-Stack.
@@ -68,6 +96,18 @@ Nativer aarch64-Build aus dem offiziellen Signal-Desktop-Quellcode, den es sonst
 ### mugshot
 
 Unverändertes Upstream-Paket von bluesabre/mugshot, das in Fedora nicht paketiert ist. Es liefert den Profilbild-Dialog, den der Profil-Button im Whisker-Menü von XFCE benötigt.
+
+### youtube-music
+
+aarch64-Build des Pear-Desktop-Forks von YouTube Music (Upstream [pear-devs/pear-desktop](https://github.com/pear-devs/pear-desktop)). Gegenüber Upstream sind das Adblocker-Plugin und das No-Google-Login-Plugin wiederhergestellt, die beide dort entfernt wurden, und die Google-Consent-Seite rendert im Dark Mode.
+
+### winamp
+
+Nativer aarch64-Qt6-Port von Winamp Classic auf Basis von [lord3nd3r/winamp-linux](https://github.com/lord3nd3r/winamp-linux), das Upstream nur für x86_64 ausliefert. Enthält die klassische Oberfläche mit Classic-Skin-Support, Equalizer, Playlist, Media Library, MPRIS2 für die Medientasten und MilkDrop-Visualisierung über libprojectM. Eigene Patches: Fenster-Ziehen unter Wayland über `QWindow::startSystemMove()`, ein Richtungs-Fix für die EQ-Slider und eine freigeschaltete, als experimentell gekennzeichnete Modern-Skin-Engine. Lizenzhinweis: Winamp steht unter der Winamp Collaborative License, die private Nutzung erlaubt, die Weitergabe modifizierter Versionen laut Lizenztext aber untersagt.
+
+### cursor
+
+Inoffizieller nativer ARM64-Build des Cursor-Editors, der die Cursor-JavaScript-Ressourcen auf VS Code für ARM64 aufsetzt. Cursor liefert offiziell kein Binary für Linux-aarch64. Enthalten ist zusätzlich cursor-web, das die Desktop-Workbench im Browser lädt.
 
 ## Repodata
 
