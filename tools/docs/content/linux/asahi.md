@@ -44,6 +44,8 @@ Wayfire wird über `~/.config/wayfire.ini` konfiguriert. Die wichtigsten Entsche
 - Virtuelle Arbeitsflächen in einer 4x1-Reihe (`vwidth = 4`, `vheight = 1`), erreichbar per Tastatur und Gesten.
 - Plugins wie expo (Workspace-Übersicht), grid, cube und wobbly für den klassischen Compositing-Komfort.
 
+Wer es zeigen will, aktiviert den Desktop-Würfel: die 4x1-Arbeitsflächen liegen dann auf den Seiten eines drehbaren Würfels. In diesem Setup öffnet ihn Super plus Klick oder ein Vier-Finger-Swipe. Beides kommt aus einem eigenen Patch, den das gepatchte Wayfire von [rpm.netsnek.com](/docs/linux/rpm) mitbringt. Das Plugin `cube-gears` aus wayfire-plugins-extra zeichnet als Anspielung auf glxgears rotierende Zahnräder ins Innere des Würfels. Auf dem Apple-GPU-Stack läuft das alles flüssig.
+
 Screenshots laufen über grim und slurp, die Bearbeitung über swappy. Als Launcher dient wofi, als Terminal kitty.
 
 ## XFCE als Wayland-Session
