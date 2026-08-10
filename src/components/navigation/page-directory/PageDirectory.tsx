@@ -112,6 +112,11 @@ const PageDirectory: FC<PageDirectoryProps> = ({
       opacity={isExpanded ? 1 : 0}
       w={isExpanded ? '100%' : 'max-content'}
       allowMultiple
+      // No height animation: panels can be toggled while the nav is hidden
+      // (closed mobile drawer, collapsed left nav) and framer-motion then
+      // measures the open height as 0, leaving an "expanded" item with an
+      // invisible panel. Plain show/hide cannot get stuck.
+      reduceMotion
       css={{
         // Remove border from last accordion item
         '& .chakra-accordion__item:last-child': {
