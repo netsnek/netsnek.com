@@ -10,6 +10,8 @@ Ein öffentliches Kontaktformular hat keinen Login. mailpress v2 löste das, ind
 
 emailwerk stellt die Fähigkeit wieder her und schließt das Loch. Es gibt keinen zweiten Endpunkt und keine REST-Route. Dieselbe GraphQL-Operation `sendTemplateMail` auf demselben `/graphql` verhält sich unterschiedlich, je nachdem ob die Anfrage mit einem Principal ankommt oder ohne.
 
+Genau über diesen Weg läuft auch das Kontaktformular von netsnek.com selbst. Die Anfrage geht über eine öffentliche Vorlage an das Team und eine verknüpfte Bestätigung an die Person, die geschrieben hat.
+
 | Aufrufer | Verhalten |
 |---|---|
 | Principal mit `emailwerk:admin` oder `emailwerk:send` | unverändert, volle Umschlag-Kontrolle |
