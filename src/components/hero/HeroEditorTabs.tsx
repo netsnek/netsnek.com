@@ -34,18 +34,12 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
     else setWasValid(false);
   }, [isBroken]);
 
-  // The outline follows the content instead of leading it. Both used to hang
-  // off the same value, but the outline animates while swapping the tab takes
-  // a moment, so on the way out the frame was already gone while the editor
-  // was still standing. This state settles one paint later, which puts them
-  // back in the right order.
-  const [outlinedTab, setOutlinedTab] = useState(tab);
-
-  useEffect(() => {
-    setOutlinedTab(tab);
-  }, [tab]);
-
-  const isEditorOutlined = outlinedTab === EDITOR_TAB;
+  // The outline appears and disappears with the editor, in the same frame.
+  // It used to animate, which made it lag behind the switch in one direction
+  // and run ahead of it in the other, so there is no transition on it at all.
+  // The green to red change while typing does not need one either: wasValid
+  // above already latches, so it cannot flicker between keystrokes.
+  const isEditorOutlined = tab === EDITOR_TAB;
 
   const pill = (value: number, label: string) => (
     <Button
@@ -98,7 +92,6 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
         // itself instead of being cut off by whatever sits above it.
         overflow={tab === EDITOR_TAB ? 'hidden' : 'visible'}
         borderWidth={2}
-        transition="border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out"
         borderColor={
           isEditorOutlined
             ? wasValid
