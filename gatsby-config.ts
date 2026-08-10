@@ -55,7 +55,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-jaen-emailwerk`,
       options: {
-        url: 'https://emailwerk.netsnek.com/graphql'
+        url: 'https://emailwerk.com/graphql'
       }
     },
     //`gatsby-jaen-lens`
