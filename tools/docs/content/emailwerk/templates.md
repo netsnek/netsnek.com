@@ -52,6 +52,10 @@ Der klassische Anwendungsfall ist ein Kontaktformular. Die Anfrage geht an das T
 
 Eine Vorlage kann `verifyReplyTo` setzen. Dann schlägt der Versand fehl, wenn die verifizierte E-Mail-Adresse des angemeldeten Aufrufers nicht mit der Reply-To-Adresse des Umschlags übereinstimmt. Das verhindert, dass jemand im Namen einer fremden Adresse antwortbare Mails verschickt. Für den anonymen Versand ist eine solche Vorlage gesperrt, weil ein anonymer Aufrufer keine verifizierte Identität hat.
 
+## requiresSignature
+
+Eine Vorlage kann `requiresSignature` setzen. Jeder Versand dieser Vorlage wird dann beim Einreihen gerendert, eingefroren und im Status `AWAITING_SIGNATURE` angehalten, bis die Absenderin den Inhalt mit einer qualifizierten elektronischen Signatur über ID Austria signiert hat. Zugestellt wird erst danach, mit dem signierten PDF als Anhang. Auch diese Vorlagen sind für den anonymen Versand gesperrt, weil eine qualifizierte Signatur zu einer identifizierten Person gehört.
+
 ## Vorschau
 
 Die Mutation `templatePreview` rendert Inhalt und Testwerte über die echte Engine auf dem Server, ohne etwas zu versenden. Die Vorschau in der Admin-Oberfläche entspricht damit dem tatsächlichen Versand und nicht nur einer clientseitigen Annäherung.
