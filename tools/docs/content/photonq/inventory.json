@@ -1,0 +1,146 @@
+[
+  {
+    "oldPath": "/docs",
+    "newPath": "/docs/photonq",
+    "title": "Documentation",
+    "words": 23
+  },
+  {
+    "oldPath": "/docs/measurement-based-quantum-computing",
+    "newPath": "/docs/photonq/measurement-based-quantum-computing",
+    "title": "Measurement Based Quantum Computing",
+    "words": 386
+  },
+  {
+    "oldPath": "/docs/measurement-based-quantum-computing/graph-states",
+    "newPath": "/docs/photonq/measurement-based-quantum-computing/graph-states",
+    "title": "Graph States",
+    "words": 270
+  },
+  {
+    "oldPath": "/docs/measurement-based-quantum-computing/one-way-computation",
+    "newPath": "/docs/photonq/measurement-based-quantum-computing/one-way-computation",
+    "title": "One Way Computation",
+    "words": 429
+  },
+  {
+    "oldPath": "/docs/openqasm",
+    "newPath": "/docs/photonq/openqasm",
+    "title": "Learn about OpenQASM",
+    "words": 133
+  },
+  {
+    "oldPath": "/docs/openqasm/classical-registers",
+    "newPath": "/docs/photonq/openqasm/classical-registers",
+    "title": "Classical Registers",
+    "words": 285
+  },
+  {
+    "oldPath": "/docs/openqasm/comments",
+    "newPath": "/docs/photonq/openqasm/comments",
+    "title": "Comments",
+    "words": 206
+  },
+  {
+    "oldPath": "/docs/openqasm/gates",
+    "newPath": "/docs/photonq/openqasm/gates",
+    "title": "Gates",
+    "words": 243
+  },
+  {
+    "oldPath": "/docs/openqasm/gates/cnot-gate",
+    "newPath": "/docs/photonq/openqasm/gates/cnot-gate",
+    "title": "CNOT Gate",
+    "words": 218
+  },
+  {
+    "oldPath": "/docs/openqasm/gates/u-gate",
+    "newPath": "/docs/photonq/openqasm/gates/u-gate",
+    "title": "U Gate",
+    "words": 390
+  },
+  {
+    "oldPath": "/docs/openqasm/include",
+    "newPath": "/docs/photonq/openqasm/include",
+    "title": "Include",
+    "words": 217
+  },
+  {
+    "oldPath": "/docs/openqasm/introduction",
+    "newPath": "/docs/photonq/openqasm/introduction",
+    "title": "Introduction",
+    "words": 420
+  },
+  {
+    "oldPath": "/docs/openqasm/measure",
+    "newPath": "/docs/photonq/openqasm/measure",
+    "title": "Measure",
+    "words": 292
+  },
+  {
+    "oldPath": "/docs/openqasm/registers",
+    "newPath": "/docs/photonq/openqasm/registers",
+    "title": "Registers",
+    "words": 335
+  },
+  {
+    "oldPath": "/docs/openqasm/reset",
+    "newPath": "/docs/photonq/openqasm/reset",
+    "title": "Reset",
+    "words": 310
+  },
+  {
+    "oldPath": "/docs/openqasm/syntax",
+    "newPath": "/docs/photonq/openqasm/syntax",
+    "title": "Syntax",
+    "words": 332
+  },
+  {
+    "oldPath": "/docs/openqasm/version-string",
+    "newPath": "/docs/photonq/openqasm/version-string",
+    "title": "Version String",
+    "words": 289
+  },
+  {
+    "oldPath": "/docs/quantum-computing-and-quantum-information",
+    "newPath": "/docs/photonq/quantum-computing-and-quantum-information",
+    "title": "Quantum Computing and Quantum Information",
+    "words": 116
+  },
+  {
+    "oldPath": "/docs/quantum-computing-and-quantum-information/mulit-qubit-gates",
+    "newPath": "/docs/photonq/quantum-computing-and-quantum-information/mulit-qubit-gates",
+    "title": "Mulit-Qubit Gates",
+    "words": 1699
+  },
+  {
+    "oldPath": "/docs/quantum-computing-and-quantum-information/quantum-gates",
+    "newPath": "/docs/photonq/quantum-computing-and-quantum-information/quantum-gates",
+    "title": "The Quantum Gates",
+    "words": 1262
+  },
+  {
+    "oldPath": "/docs/quantum-computing-and-quantum-information/qubit-measurements",
+    "newPath": "/docs/photonq/quantum-computing-and-quantum-information/qubit-measurements",
+    "title": "QuBit Measurements",
+    "words": 1440
+  },
+  {
+    "oldPath": "/docs/quantum-computing-and-quantum-information/simple-quantum-algorithms",
+    "newPath": "/docs/photonq/quantum-computing-and-quantum-information/simple-quantum-algorithms",
+    "title": "Simple Quantum Algorithms",
+    "words": 938
+  },
+  {
+    "oldPath": "/docs/quantum-computing-and-quantum-information/the-quantum-bit",
+    "newPath": "/docs/photonq/quantum-computing-and-quantum-information/the-quantum-bit",
+    "title": "The Quantum  Bit",
+    "words": 452
+  },
+  {
+    "oldPath": "/docs/quantum-computing-with-linear-optics",
+    "newPath": "/docs/photonq/quantum-computing-with-linear-optics",
+    "title": "Linear Optics Quantum Computing",
+    "words": 1624
+  }
+]

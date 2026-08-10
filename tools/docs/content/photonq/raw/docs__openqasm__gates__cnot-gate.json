@@ -1,0 +1,540 @@
+{
+  "id": "JaenPage b7299548-a5e2-4671-9f7e-a358e8006d8c",
+  "createdAt": "2023-12-13T16:49:16.264Z",
+  "modifiedAt": "2024-10-30T10:54:40.595Z",
+  "buildPath": "/docs/openqasm/gates/cnot-gate/",
+  "slug": "cnot-gate",
+  "template": "JaenTemplate DocPage",
+  "excludedFromIndex": false,
+  "jaenPageMetadata": {
+    "title": "CNOT Gate",
+    "image": null,
+    "description": "In this chapter of the OpenQASM Tutorial, you will be learning about how to apply CNOT Gate on Qubits.",
+    "blogPost": null
+  },
+  "pageConfig": {
+    "label": "DocPage",
+    "childTemplates": [
+      "JaenTemplate DocPage"
+    ],
+    "withoutJaenFrameStickyHeader": true
+  },
+  "jaenFields": {
+    "IMA:MdxField": {
+      "documentation": {
+        "value": {
+          "type": "root",
+          "children": [
+            {
+              "type": "heading",
+              "depth": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "CNOT Gate",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 3,
+                      "offset": 2
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 12,
+                      "offset": 11
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 12,
+                  "offset": 11
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Quantum Computing relies heavily on principles of Quantum Mechanics such as Quantum Superposition and Quantum Entanglement. CNOT Gate (or sometimes also known as CX Gate) is can be used for entangling the state of 2 Qubits, which makes it a very important Quantum Gate. In this chapter of the OpenQASM Tutorial, you will be learning about how to apply CNOT Gate on Qubits.",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1,
+                      "offset": 13
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 373,
+                      "offset": 385
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 13
+                },
+                "end": {
+                  "line": 3,
+                  "column": 373,
+                  "offset": 385
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "CNOT(or CX) is a fundamental two-Qubit gate in the field of Quantum Computing. In OpenQASM, CNOT is a built-in gate and therefore OpenQASM provides the syntax to apply a CNOT Gate on two Qubits.",
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 1,
+                      "offset": 387
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 195,
+                      "offset": 581
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 1,
+                  "offset": 387
+                },
+                "end": {
+                  "line": 5,
+                  "column": 195,
+                  "offset": 581
+                }
+              }
+            },
+            {
+              "type": "heading",
+              "depth": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "CNOT Gate",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 4,
+                      "offset": 586
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 13,
+                      "offset": 595
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 1,
+                  "offset": 583
+                },
+                "end": {
+                  "line": 7,
+                  "column": 13,
+                  "offset": 595
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The CNOT Gate is a two-Qubit gate which applies a conditional NOT Gate on a target Qubit if and only if the control Qubit is in state |1>",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 1,
+                      "offset": 597
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 138,
+                      "offset": 734
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 1,
+                  "offset": 597
+                },
+                "end": {
+                  "line": 9,
+                  "column": 138,
+                  "offset": 734
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The following syntax is used for applying the CNOT Gate with control Qubit qr1[index] and target Qubit qr2[index]–",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 1,
+                      "offset": 736
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 117,
+                      "offset": 852
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 1,
+                  "offset": 736
+                },
+                "end": {
+                  "line": 11,
+                  "column": 117,
+                  "offset": 852
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": "qasm",
+              "meta": null,
+              "value": "cx qr1[index], qr2[index];",
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 1,
+                  "offset": 854
+                },
+                "end": {
+                  "line": 15,
+                  "column": 4,
+                  "offset": 892
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Note:",
+                      "position": {
+                        "start": {
+                          "line": 17,
+                          "column": 3,
+                          "offset": 896
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 8,
+                          "offset": 901
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 1,
+                      "offset": 894
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 10,
+                      "offset": 903
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " CNOT is a built-in gate therefore cx is a reserved keyword.",
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 10,
+                      "offset": 903
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 70,
+                      "offset": 963
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 1,
+                  "offset": 894
+                },
+                "end": {
+                  "line": 17,
+                  "column": 70,
+                  "offset": 963
+                }
+              }
+            },
+            {
+              "type": "heading",
+              "depth": 3,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Example",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 5,
+                      "offset": 969
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 12,
+                      "offset": 976
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 1,
+                  "offset": 965
+                },
+                "end": {
+                  "line": 19,
+                  "column": 12,
+                  "offset": 976
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Below is an example of applying the CNOT Gate with control Qubit as first Qubit of Quantum Register qubits and target qubit as second Qubit of Quantum Register qubits–",
+                  "position": {
+                    "start": {
+                      "line": 21,
+                      "column": 1,
+                      "offset": 978
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 168,
+                      "offset": 1145
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 21,
+                  "column": 1,
+                  "offset": 978
+                },
+                "end": {
+                  "line": 21,
+                  "column": 168,
+                  "offset": 1145
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": "qasm",
+              "meta": "playground",
+              "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\n\n// Define quantum registers\nqreg qubits[2];\n\n// Apply CX gate\ncx qubits[0], qubits[1];",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 1,
+                  "offset": 1147
+                },
+                "end": {
+                  "line": 32,
+                  "column": 4,
+                  "offset": 1293
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Note:",
+                      "position": {
+                        "start": {
+                          "line": 34,
+                          "column": 3,
+                          "offset": 1297
+                        },
+                        "end": {
+                          "line": 34,
+                          "column": 8,
+                          "offset": 1302
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 34,
+                      "column": 1,
+                      "offset": 1295
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 10,
+                      "offset": 1304
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " The control and target Qubits can both be in the same as well as different Quantum Register.",
+                  "position": {
+                    "start": {
+                      "line": 34,
+                      "column": 10,
+                      "offset": 1304
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 103,
+                      "offset": 1397
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 34,
+                  "column": 1,
+                  "offset": 1295
+                },
+                "end": {
+                  "line": 34,
+                  "column": 103,
+                  "offset": 1397
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Below is a representation of the code in the above example",
+                  "position": {
+                    "start": {
+                      "line": 36,
+                      "column": 1,
+                      "offset": 1399
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 59,
+                      "offset": 1457
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 36,
+                  "column": 1,
+                  "offset": 1399
+                },
+                "end": {
+                  "line": 36,
+                  "column": 59,
+                  "offset": 1457
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 37,
+              "column": 1,
+              "offset": 1458
+            }
+          }
+        },
+        "props": {}
+      }
+    }
+  },
+  "parentPage": {
+    "id": "JaenPage 35e95590-abe4-4ba4-9959-cda6ac147341",
+    "createdAt": "2023-12-13T16:32:12.767Z",
+    "modifiedAt": "2024-10-30T10:54:40.593Z",
+    "buildPath": "/docs/openqasm/gates/",
+    "slug": "gates",
+    "template": "JaenTemplate DocPage",
+    "excludedFromIndex": false,
+    "jaenPageMetadata": {
+      "title": "Gates",
+      "image": null,
+      "description": "In this chapter of the OpenQASM Tutorial, you will be learning in brief about the Quantum Gates in OpenQASM. In subsequent chapters of this OpenQASM tutorial, you will be learning in depth about using these Quantum Gates in OpenQASM.",
+      "blogPost": null
+    },
+    "pageConfig": {
+      "label": "DocPage",
+      "childTemplates": [
+        "JaenTemplate DocPage"
+      ],
+      "withoutJaenFrameStickyHeader": true
+    }
+  },
+  "childPages": [],
+  "childPagesOrder": [],
+  "mediaNodes": [],
+  "sections": []
+}

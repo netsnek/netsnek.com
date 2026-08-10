@@ -1,0 +1,1893 @@
+{
+  "id": "JaenPage 35e95590-abe4-4ba4-9959-cda6ac147341",
+  "createdAt": "2023-12-13T16:32:12.767Z",
+  "modifiedAt": "2024-10-30T10:54:40.593Z",
+  "buildPath": "/docs/openqasm/gates/",
+  "slug": "gates",
+  "template": "JaenTemplate DocPage",
+  "excludedFromIndex": false,
+  "jaenPageMetadata": {
+    "title": "Gates",
+    "image": null,
+    "description": "In this chapter of the OpenQASM Tutorial, you will be learning in brief about the Quantum Gates in OpenQASM. In subsequent chapters of this OpenQASM tutorial, you will be learning in depth about using these Quantum Gates in OpenQASM.",
+    "blogPost": null
+  },
+  "pageConfig": {
+    "label": "DocPage",
+    "childTemplates": [
+      "JaenTemplate DocPage"
+    ],
+    "withoutJaenFrameStickyHeader": true
+  },
+  "jaenFields": {
+    "IMA:MdxField": {
+      "documentation": {
+        "value": {
+          "type": "root",
+          "children": [
+            {
+              "type": "heading",
+              "depth": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Gates",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 3,
+                      "offset": 2
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 8,
+                      "offset": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 8,
+                  "offset": 7
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "In Classical Computing, classical gates are used to perform operations on one or many bits. Similarly in Quantum Computing, Quantum Gates are used to perform a reversible operation on one or many Qubits. OpenQASM provides a few in-built Quantum Gates. In this chapter of the OpenQASM Tutorial, you will be learning in brief about the Quantum Gates in OpenQASM. In subsequent chapters of this OpenQASM tutorial, you will be learning in depth about using these Quantum Gates in OpenQASM.",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1,
+                      "offset": 9
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 486,
+                      "offset": 494
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 9
+                },
+                "end": {
+                  "line": 3,
+                  "column": 486,
+                  "offset": 494
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "There are various standard Quantum Gates in the field of Quantum Computing which are used for creating Quantum Algorithms. However, not all of these Quantum Gates are fundamental Quantum Gates. Fundamental Quantum Gates are Quantum Gates which can be used to create other Quantum Gates.",
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 1,
+                      "offset": 496
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 287,
+                      "offset": 782
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 1,
+                  "offset": 496
+                },
+                "end": {
+                  "line": 5,
+                  "column": 287,
+                  "offset": 782
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "OpenQASM provides the following two in-built Quantum Gates-",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 1,
+                      "offset": 784
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 60,
+                      "offset": 843
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 1,
+                  "offset": 784
+                },
+                "end": {
+                  "line": 7,
+                  "column": 60,
+                  "offset": 843
+                }
+              }
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "start": null,
+              "spread": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "spread": false,
+                  "checked": null,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "U Gate",
+                          "position": {
+                            "start": {
+                              "line": 9,
+                              "column": 3,
+                              "offset": 847
+                            },
+                            "end": {
+                              "line": 9,
+                              "column": 9,
+                              "offset": 853
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 9,
+                          "column": 3,
+                          "offset": 847
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 9,
+                          "offset": 853
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 1,
+                      "offset": 845
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 9,
+                      "offset": 853
+                    }
+                  }
+                },
+                {
+                  "type": "listItem",
+                  "spread": false,
+                  "checked": null,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "CX Gate",
+                          "position": {
+                            "start": {
+                              "line": 10,
+                              "column": 3,
+                              "offset": 856
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 10,
+                              "offset": 863
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 10,
+                          "column": 3,
+                          "offset": 856
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 10,
+                          "offset": 863
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 10,
+                      "column": 1,
+                      "offset": 854
+                    },
+                    "end": {
+                      "line": 10,
+                      "column": 10,
+                      "offset": 863
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 1,
+                  "offset": 845
+                },
+                "end": {
+                  "line": 10,
+                  "column": 10,
+                  "offset": 863
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The U Gate is a Quantum Gate that can be used to change the state of a Qubit. The CX Gate is a Quantum Gate that is used to entangle the states of two Qubits. Both of these Quantum Gates are fundamental Quantum Gates. By using the U Gate and CX Gate, you can create any other Quantum Gates.",
+                  "position": {
+                    "start": {
+                      "line": 12,
+                      "column": 1,
+                      "offset": 865
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 291,
+                      "offset": 1155
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 12,
+                  "column": 1,
+                  "offset": 865
+                },
+                "end": {
+                  "line": 12,
+                  "column": 291,
+                  "offset": 1155
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "In fact, a standard OpenQASM 2 library qelib1.inc",
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 1,
+                      "offset": 1157
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 50,
+                      "offset": 1206
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "1",
+                  "label": "1",
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 50,
+                      "offset": 1206
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 54,
+                      "offset": 1210
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " uses the U and CX fundamental Quantum Gates for creating the most commonly used and some less commonly used Quantum Gates.",
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 54,
+                      "offset": 1210
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 177,
+                      "offset": 1333
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 14,
+                  "column": 1,
+                  "offset": 1157
+                },
+                "end": {
+                  "line": 14,
+                  "column": 177,
+                  "offset": 1333
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "In the subsequent chapters, you will be learning in detail about the U Gate and CX Gate.",
+                  "position": {
+                    "start": {
+                      "line": 16,
+                      "column": 1,
+                      "offset": 1335
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 89,
+                      "offset": 1423
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 16,
+                  "column": 1,
+                  "offset": 1335
+                },
+                "end": {
+                  "line": 16,
+                  "column": 89,
+                  "offset": 1423
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "1",
+              "label": "1",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://deeplearninguniversity.com/openqasm2-0/openqasm-qelib1-inc/",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "https://deeplearninguniversity.com/openqasm2-0/openqasm-qelib1-inc/",
+                          "position": {
+                            "start": {
+                              "line": 18,
+                              "column": 8,
+                              "offset": 1432
+                            },
+                            "end": {
+                              "line": 18,
+                              "column": 75,
+                              "offset": 1499
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 18,
+                          "column": 7,
+                          "offset": 1431
+                        },
+                        "end": {
+                          "line": 18,
+                          "column": 145,
+                          "offset": 1569
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 18,
+                      "column": 7,
+                      "offset": 1431
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 145,
+                      "offset": 1569
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 18,
+                  "column": 1,
+                  "offset": 1425
+                },
+                "end": {
+                  "line": 18,
+                  "column": 145,
+                  "offset": 1569
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 19,
+              "column": 1,
+              "offset": 1570
+            }
+          }
+        },
+        "props": {}
+      }
+    }
+  },
+  "parentPage": {
+    "id": "JaenPage 969775d8-b434-4e14-85ab-d27b385cb90c",
+    "createdAt": "2023-12-13T14:40:09.960Z",
+    "modifiedAt": "2024-10-30T10:54:40.576Z",
+    "buildPath": "/docs/openqasm/",
+    "slug": "openqasm",
+    "template": "JaenTemplate DocPage",
+    "excludedFromIndex": false,
+    "jaenPageMetadata": {
+      "title": "Learn about OpenQASM",
+      "image": "https://osg.snek.at/storage/BQACAgQAAxkDAAIspGV5wiGbVZjFUZiX6eXeTw0nQvfkAALWGAACajbRU-guhpppjAlNLwQ",
+      "description": "OpenQASM refers to the extended language we now describe, specifically OpenQASM Version 3.0. The human-readable form of OpenQASM is a simple, case-sensitive textual language. Statements are separated by semicolons and whitespace is ignored.",
+      "blogPost": null
+    },
+    "pageConfig": {
+      "label": "DocPage",
+      "childTemplates": [
+        "JaenTemplate DocPage"
+      ],
+      "withoutJaenFrameStickyHeader": true
+    }
+  },
+  "childPages": [
+    {
+      "id": "JaenPage 608112c2-9a21-49de-94eb-d5e8e75dc21e",
+      "createdAt": "2023-12-13T16:33:00.416Z",
+      "modifiedAt": "2024-10-30T10:54:40.594Z",
+      "buildPath": "/docs/openqasm/gates/u-gate/",
+      "slug": "u-gate",
+      "template": "JaenTemplate DocPage",
+      "excludedFromIndex": false,
+      "jaenPageMetadata": {
+        "title": "U Gate",
+        "image": null,
+        "description": "In this chapter of the OpenQASM Tutorial, you will be learning about how to apply U Gate on a Qubit.",
+        "blogPost": null
+      },
+      "pageConfig": {
+        "label": "DocPage",
+        "childTemplates": [
+          "JaenTemplate DocPage"
+        ],
+        "withoutJaenFrameStickyHeader": true
+      },
+      "jaenFields": {
+        "IMA:MdxField": {
+          "documentation": {
+            "value": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "heading",
+                  "depth": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "U Gate",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 3,
+                          "offset": 2
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 9,
+                          "offset": 8
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 9,
+                      "offset": 8
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "In Quantum Computing, U Gate is the most important and the most fundamental single Qubit Quantum gate. All single Qubit unitary Quantum gates can be considered as a special case of the U Gate. In this chapter of the OpenQASM Tutorial, you will be learning about how to apply U Gate on a Qubit.",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 1,
+                          "offset": 10
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 294,
+                          "offset": 303
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1,
+                      "offset": 10
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 294,
+                      "offset": 303
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "In OpenQASM, U Gate is a built-in gate and therefore OpenQASM provides the syntax to apply U Gate on a Qubit. A U Gate has 3 parameters- θ, φ, and λ.",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 1,
+                          "offset": 305
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 150,
+                          "offset": 454
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 1,
+                      "offset": 305
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 150,
+                      "offset": 454
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "A U Gate with parameters θ, φ, and λ can be considered as equivalent to the following operations- RZ(φ) RY(θ) RZ(λ)",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 1,
+                          "offset": 456
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 116,
+                          "offset": 571
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 1,
+                      "offset": 456
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 116,
+                      "offset": 571
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "where RZ(x) is rotation about the Z-axis on bloch sphere by x radians and RY(x) is rotation about the Y-axis on the bloch sphere by x radians.",
+                      "position": {
+                        "start": {
+                          "line": 9,
+                          "column": 1,
+                          "offset": 573
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 143,
+                          "offset": 715
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 1,
+                      "offset": 573
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 143,
+                      "offset": 715
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The U Gate with parameters θ, φ, and λ can be represented by the following matrix-",
+                      "position": {
+                        "start": {
+                          "line": 11,
+                          "column": 1,
+                          "offset": 717
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 83,
+                          "offset": 799
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 1,
+                      "offset": 717
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 83,
+                      "offset": 799
+                    }
+                  }
+                },
+                {
+                  "type": "mdxJsxFlowElement",
+                  "name": "center",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "math",
+                      "meta": null,
+                      "value": "U(\\theta,\\phi,\\lambda) = \\begin{pmatrix}\n\\cos(\\theta/2) & -e^{-i\\lambda} \\sin(\\theta/2)\\\\\ne^{i\\phi} \\sin(\\theta/2) & e^{i(\\theta+\\delta)} \\cos(\\theta/2)\n\\end{pmatrix}",
+                      "data": {
+                        "hName": "pre",
+                        "hChildren": [
+                          {
+                            "type": "element",
+                            "tagName": "code",
+                            "properties": {
+                              "className": [
+                                "language-math",
+                                "math-display"
+                              ]
+                            },
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "U(\\theta,\\phi,\\lambda) = \\begin{pmatrix}\n\\cos(\\theta/2) & -e^{-i\\lambda} \\sin(\\theta/2)\\\\\ne^{i\\phi} \\sin(\\theta/2) & e^{i(\\theta+\\delta)} \\cos(\\theta/2)\n\\end{pmatrix}"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "position": {
+                        "start": {
+                          "line": 13,
+                          "column": 1,
+                          "offset": 809
+                        },
+                        "end": {
+                          "line": 18,
+                          "column": 3,
+                          "offset": 981
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 12,
+                      "column": 1,
+                      "offset": 800
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 10,
+                      "offset": 991
+                    }
+                  },
+                  "data": {
+                    "_mdxExplicitJsx": true
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "For example, H Gate is a special case of U Gate when the value of θ = π/2, φ = 0 , λ = π.",
+                      "position": {
+                        "start": {
+                          "line": 21,
+                          "column": 1,
+                          "offset": 993
+                        },
+                        "end": {
+                          "line": 21,
+                          "column": 90,
+                          "offset": 1082
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 21,
+                      "column": 1,
+                      "offset": 993
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 90,
+                      "offset": 1082
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The value of parameters θ, φ, and λ can range between 0(included) and 4π(excluded).",
+                      "position": {
+                        "start": {
+                          "line": 23,
+                          "column": 1,
+                          "offset": 1084
+                        },
+                        "end": {
+                          "line": 23,
+                          "column": 84,
+                          "offset": 1167
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 1,
+                      "offset": 1084
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 84,
+                      "offset": 1167
+                    }
+                  }
+                },
+                {
+                  "type": "heading",
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "U Gate",
+                      "position": {
+                        "start": {
+                          "line": 25,
+                          "column": 4,
+                          "offset": 1172
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 10,
+                          "offset": 1178
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 1,
+                      "offset": 1169
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 10,
+                      "offset": 1178
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The U Gate can be applied on any Qubit.",
+                      "position": {
+                        "start": {
+                          "line": 27,
+                          "column": 1,
+                          "offset": 1180
+                        },
+                        "end": {
+                          "line": 27,
+                          "column": 40,
+                          "offset": 1219
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 27,
+                      "column": 1,
+                      "offset": 1180
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 40,
+                      "offset": 1219
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The following syntax is used for applying the U Gate with parameters theta, phi, lambda on Qubit quantum_register[index]–",
+                      "position": {
+                        "start": {
+                          "line": 29,
+                          "column": 1,
+                          "offset": 1221
+                        },
+                        "end": {
+                          "line": 29,
+                          "column": 124,
+                          "offset": 1344
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 29,
+                      "column": 1,
+                      "offset": 1221
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 124,
+                      "offset": 1344
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "U(theta, phi, lambda) quantum_register[index];\n",
+                      "position": {
+                        "start": {
+                          "line": 31,
+                          "column": 1,
+                          "offset": 1346
+                        },
+                        "end": {
+                          "line": 32,
+                          "column": 1,
+                          "offset": 1395
+                        }
+                      }
+                    },
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Note:",
+                          "position": {
+                            "start": {
+                              "line": 32,
+                              "column": 3,
+                              "offset": 1397
+                            },
+                            "end": {
+                              "line": 32,
+                              "column": 8,
+                              "offset": 1402
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 32,
+                          "column": 1,
+                          "offset": 1395
+                        },
+                        "end": {
+                          "line": 32,
+                          "column": 10,
+                          "offset": 1404
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " U is a built-in gate therefore u is a reserved keyword.",
+                      "position": {
+                        "start": {
+                          "line": 32,
+                          "column": 10,
+                          "offset": 1404
+                        },
+                        "end": {
+                          "line": 32,
+                          "column": 66,
+                          "offset": 1460
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 31,
+                      "column": 1,
+                      "offset": 1346
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 66,
+                      "offset": 1460
+                    }
+                  }
+                },
+                {
+                  "type": "heading",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Example",
+                      "position": {
+                        "start": {
+                          "line": 34,
+                          "column": 5,
+                          "offset": 1466
+                        },
+                        "end": {
+                          "line": 34,
+                          "column": 12,
+                          "offset": 1473
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 34,
+                      "column": 1,
+                      "offset": 1462
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 12,
+                      "offset": 1473
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Below is an example of applying the U Gate on first Qubit of Quantum Register qubits with parameters θ = π/2, φ = 0 , λ = π. Applying U Gate with these parameters is the equivalent of applying H Gate on the Qubit.",
+                      "position": {
+                        "start": {
+                          "line": 36,
+                          "column": 1,
+                          "offset": 1475
+                        },
+                        "end": {
+                          "line": 36,
+                          "column": 214,
+                          "offset": 1688
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 36,
+                      "column": 1,
+                      "offset": 1475
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 214,
+                      "offset": 1688
+                    }
+                  }
+                },
+                {
+                  "type": "code",
+                  "lang": "qasm",
+                  "meta": "playground",
+                  "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\n\n// Define quantum registers\nqreg qubits[1];\n\n// Applying H gate on the first Qubit of Quantum Register\nu(pi/2, 0, pi) qubits[0];",
+                  "position": {
+                    "start": {
+                      "line": 38,
+                      "column": 1,
+                      "offset": 1690
+                    },
+                    "end": {
+                      "line": 47,
+                      "column": 4,
+                      "offset": 1878
+                    }
+                  }
+                },
+                {
+                  "type": "heading",
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "U Gate on Quantum Registers",
+                      "position": {
+                        "start": {
+                          "line": 49,
+                          "column": 4,
+                          "offset": 1883
+                        },
+                        "end": {
+                          "line": 49,
+                          "column": 31,
+                          "offset": 1910
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 49,
+                      "column": 1,
+                      "offset": 1880
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 31,
+                      "offset": 1910
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "It is also possible to apply U Gate with a particular set of parameters on all Qubits of a Quantum Register at once.",
+                      "position": {
+                        "start": {
+                          "line": 51,
+                          "column": 1,
+                          "offset": 1912
+                        },
+                        "end": {
+                          "line": 51,
+                          "column": 117,
+                          "offset": 2028
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 51,
+                      "column": 1,
+                      "offset": 1912
+                    },
+                    "end": {
+                      "line": 51,
+                      "column": 117,
+                      "offset": 2028
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The following syntax is used for applying the U Gate with parameters theta, phi, lambda on all Qubits of a Quantum Register quantum_register at once.",
+                      "position": {
+                        "start": {
+                          "line": 53,
+                          "column": 1,
+                          "offset": 2030
+                        },
+                        "end": {
+                          "line": 53,
+                          "column": 151,
+                          "offset": 2180
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 53,
+                      "column": 1,
+                      "offset": 2030
+                    },
+                    "end": {
+                      "line": 53,
+                      "column": 151,
+                      "offset": 2180
+                    }
+                  }
+                },
+                {
+                  "type": "code",
+                  "lang": "qasm",
+                  "meta": null,
+                  "value": "u(theta, phi, lambda) quantum_register;",
+                  "position": {
+                    "start": {
+                      "line": 55,
+                      "column": 1,
+                      "offset": 2182
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 4,
+                      "offset": 2233
+                    }
+                  }
+                },
+                {
+                  "type": "heading",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Example",
+                      "position": {
+                        "start": {
+                          "line": 59,
+                          "column": 5,
+                          "offset": 2239
+                        },
+                        "end": {
+                          "line": 59,
+                          "column": 12,
+                          "offset": 2246
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 59,
+                      "column": 1,
+                      "offset": 2235
+                    },
+                    "end": {
+                      "line": 59,
+                      "column": 12,
+                      "offset": 2246
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Below is an example of applying the U Gate on all the Qubits of Quantum Register qubits with parameters θ = π/2, φ = 0 , λ = π. Effectively, we are applying H Gate on all Qubits of the Quantum Register qubits.",
+                      "position": {
+                        "start": {
+                          "line": 61,
+                          "column": 1,
+                          "offset": 2248
+                        },
+                        "end": {
+                          "line": 61,
+                          "column": 210,
+                          "offset": 2457
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 61,
+                      "column": 1,
+                      "offset": 2248
+                    },
+                    "end": {
+                      "line": 61,
+                      "column": 210,
+                      "offset": 2457
+                    }
+                  }
+                },
+                {
+                  "type": "code",
+                  "lang": "qasm",
+                  "meta": null,
+                  "value": "// Applying H gate on all Qubits of the Quantum Register\nu(pi/2, 0, pi) qubits;",
+                  "position": {
+                    "start": {
+                      "line": 63,
+                      "column": 1,
+                      "offset": 2459
+                    },
+                    "end": {
+                      "line": 66,
+                      "column": 4,
+                      "offset": 2550
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 67,
+                  "column": 1,
+                  "offset": 2551
+                }
+              }
+            },
+            "props": {}
+          }
+        }
+      },
+      "mediaNodes": []
+    },
+    {
+      "id": "JaenPage b7299548-a5e2-4671-9f7e-a358e8006d8c",
+      "createdAt": "2023-12-13T16:49:16.264Z",
+      "modifiedAt": "2024-10-30T10:54:40.595Z",
+      "buildPath": "/docs/openqasm/gates/cnot-gate/",
+      "slug": "cnot-gate",
+      "template": "JaenTemplate DocPage",
+      "excludedFromIndex": false,
+      "jaenPageMetadata": {
+        "title": "CNOT Gate",
+        "image": null,
+        "description": "In this chapter of the OpenQASM Tutorial, you will be learning about how to apply CNOT Gate on Qubits.",
+        "blogPost": null
+      },
+      "pageConfig": {
+        "label": "DocPage",
+        "childTemplates": [
+          "JaenTemplate DocPage"
+        ],
+        "withoutJaenFrameStickyHeader": true
+      },
+      "jaenFields": {
+        "IMA:MdxField": {
+          "documentation": {
+            "value": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "heading",
+                  "depth": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "CNOT Gate",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 3,
+                          "offset": 2
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 12,
+                          "offset": 11
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1,
+                      "offset": 0
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 12,
+                      "offset": 11
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Quantum Computing relies heavily on principles of Quantum Mechanics such as Quantum Superposition and Quantum Entanglement. CNOT Gate (or sometimes also known as CX Gate) is can be used for entangling the state of 2 Qubits, which makes it a very important Quantum Gate. In this chapter of the OpenQASM Tutorial, you will be learning about how to apply CNOT Gate on Qubits.",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 1,
+                          "offset": 13
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 373,
+                          "offset": 385
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1,
+                      "offset": 13
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 373,
+                      "offset": 385
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "CNOT(or CX) is a fundamental two-Qubit gate in the field of Quantum Computing. In OpenQASM, CNOT is a built-in gate and therefore OpenQASM provides the syntax to apply a CNOT Gate on two Qubits.",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 1,
+                          "offset": 387
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 195,
+                          "offset": 581
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 1,
+                      "offset": 387
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 195,
+                      "offset": 581
+                    }
+                  }
+                },
+                {
+                  "type": "heading",
+                  "depth": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "CNOT Gate",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 4,
+                          "offset": 586
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 13,
+                          "offset": 595
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 1,
+                      "offset": 583
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 13,
+                      "offset": 595
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The CNOT Gate is a two-Qubit gate which applies a conditional NOT Gate on a target Qubit if and only if the control Qubit is in state |1>",
+                      "position": {
+                        "start": {
+                          "line": 9,
+                          "column": 1,
+                          "offset": 597
+                        },
+                        "end": {
+                          "line": 9,
+                          "column": 138,
+                          "offset": 734
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 1,
+                      "offset": 597
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 138,
+                      "offset": 734
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The following syntax is used for applying the CNOT Gate with control Qubit qr1[index] and target Qubit qr2[index]–",
+                      "position": {
+                        "start": {
+                          "line": 11,
+                          "column": 1,
+                          "offset": 736
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 117,
+                          "offset": 852
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 1,
+                      "offset": 736
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 117,
+                      "offset": 852
+                    }
+                  }
+                },
+                {
+                  "type": "code",
+                  "lang": "qasm",
+                  "meta": null,
+                  "value": "cx qr1[index], qr2[index];",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 1,
+                      "offset": 854
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 4,
+                      "offset": 892
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Note:",
+                          "position": {
+                            "start": {
+                              "line": 17,
+                              "column": 3,
+                              "offset": 896
+                            },
+                            "end": {
+                              "line": 17,
+                              "column": 8,
+                              "offset": 901
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 17,
+                          "column": 1,
+                          "offset": 894
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 10,
+                          "offset": 903
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " CNOT is a built-in gate therefore cx is a reserved keyword.",
+                      "position": {
+                        "start": {
+                          "line": 17,
+                          "column": 10,
+                          "offset": 903
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 70,
+                          "offset": 963
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 1,
+                      "offset": 894
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 70,
+                      "offset": 963
+                    }
+                  }
+                },
+                {
+                  "type": "heading",
+                  "depth": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Example",
+                      "position": {
+                        "start": {
+                          "line": 19,
+                          "column": 5,
+                          "offset": 969
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 12,
+                          "offset": 976
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 1,
+                      "offset": 965
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 12,
+                      "offset": 976
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Below is an example of applying the CNOT Gate with control Qubit as first Qubit of Quantum Register qubits and target qubit as second Qubit of Quantum Register qubits–",
+                      "position": {
+                        "start": {
+                          "line": 21,
+                          "column": 1,
+                          "offset": 978
+                        },
+                        "end": {
+                          "line": 21,
+                          "column": 168,
+                          "offset": 1145
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 21,
+                      "column": 1,
+                      "offset": 978
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 168,
+                      "offset": 1145
+                    }
+                  }
+                },
+                {
+                  "type": "code",
+                  "lang": "qasm",
+                  "meta": "playground",
+                  "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\n\n// Define quantum registers\nqreg qubits[2];\n\n// Apply CX gate\ncx qubits[0], qubits[1];",
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 1,
+                      "offset": 1147
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 4,
+                      "offset": 1293
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Note:",
+                          "position": {
+                            "start": {
+                              "line": 34,
+                              "column": 3,
+                              "offset": 1297
+                            },
+                            "end": {
+                              "line": 34,
+                              "column": 8,
+                              "offset": 1302
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 34,
+                          "column": 1,
+                          "offset": 1295
+                        },
+                        "end": {
+                          "line": 34,
+                          "column": 10,
+                          "offset": 1304
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "value": " The control and target Qubits can both be in the same as well as different Quantum Register.",
+                      "position": {
+                        "start": {
+                          "line": 34,
+                          "column": 10,
+                          "offset": 1304
+                        },
+                        "end": {
+                          "line": 34,
+                          "column": 103,
+                          "offset": 1397
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 34,
+                      "column": 1,
+                      "offset": 1295
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 103,
+                      "offset": 1397
+                    }
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Below is a representation of the code in the above example",
+                      "position": {
+                        "start": {
+                          "line": 36,
+                          "column": 1,
+                          "offset": 1399
+                        },
+                        "end": {
+                          "line": 36,
+                          "column": 59,
+                          "offset": 1457
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 36,
+                      "column": 1,
+                      "offset": 1399
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 59,
+                      "offset": 1457
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 37,
+                  "column": 1,
+                  "offset": 1458
+                }
+              }
+            },
+            "props": {}
+          }
+        }
+      },
+      "mediaNodes": []
+    }
+  ],
+  "childPagesOrder": [
+    "JaenPage 608112c2-9a21-49de-94eb-d5e8e75dc21e",
+    "JaenPage b7299548-a5e2-4671-9f7e-a358e8006d8c"
+  ],
+  "mediaNodes": [],
+  "sections": []
+}

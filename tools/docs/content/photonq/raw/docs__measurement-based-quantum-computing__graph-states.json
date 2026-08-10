@@ -1,0 +1,1293 @@
+{
+  "id": "JaenPage 9da84380-ec28-475d-b6e0-c702e47b45e8",
+  "createdAt": "2024-04-15T15:56:12.623Z",
+  "modifiedAt": "2024-10-30T10:54:40.652Z",
+  "buildPath": "/docs/measurement-based-quantum-computing/graph-states/",
+  "slug": "graph-states",
+  "template": "JaenTemplate DocPage",
+  "excludedFromIndex": false,
+  "jaenPageMetadata": {
+    "title": "Graph States",
+    "image": null,
+    "description": "Concise introduction to graph states and their usage in MBQC\n",
+    "blogPost": null
+  },
+  "pageConfig": {
+    "label": "DocPage",
+    "childTemplates": [
+      "JaenTemplate DocPage"
+    ],
+    "withoutJaenFrameStickyHeader": true
+  },
+  "jaenFields": {
+    "IMA:MdxField": {
+      "documentation": {
+        "value": {
+          "type": "root",
+          "children": [
+            {
+              "type": "heading",
+              "depth": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Graph States",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 3,
+                      "offset": 2
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 15,
+                      "offset": 14
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 15,
+                  "offset": 14
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "An especially useful class of quantum states is ",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1,
+                      "offset": 16
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 49,
+                      "offset": 64
+                    }
+                  }
+                },
+                {
+                  "type": "emphasis",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "graph states",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 50,
+                          "offset": 65
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 62,
+                          "offset": 77
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 49,
+                      "offset": 64
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 63,
+                      "offset": 78
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " ",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 63,
+                      "offset": 78
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 64,
+                      "offset": 79
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "|G\\rangle",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "|G\\rangle"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 64,
+                      "offset": 79
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 75,
+                      "offset": 90
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " which, as the name suggests, are associated with a graph ",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 75,
+                      "offset": 90
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 133,
+                      "offset": 148
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "G = (V, E)",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "G = (V, E)"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 133,
+                      "offset": 148
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 145,
+                      "offset": 160
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ", where the vertices ",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 145,
+                      "offset": 160
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 166,
+                      "offset": 181
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "v \\in V",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "v \\in V"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 166,
+                      "offset": 181
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 175,
+                      "offset": 190
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "  represent qubits initialised into the",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 175,
+                      "offset": 190
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 214,
+                      "offset": 229
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 16
+                },
+                "end": {
+                  "line": 3,
+                  "column": 214,
+                  "offset": 229
+                }
+              }
+            },
+            {
+              "type": "math",
+              "meta": null,
+              "value": "|+\\rangle = \\frac{1}{\\sqrt{2}} (|0\\rangle + |1\\rangle)",
+              "data": {
+                "hName": "pre",
+                "hChildren": [
+                  {
+                    "type": "element",
+                    "tagName": "code",
+                    "properties": {
+                      "className": [
+                        "language-math",
+                        "math-display"
+                      ]
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "|+\\rangle = \\frac{1}{\\sqrt{2}} (|0\\rangle + |1\\rangle)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 1,
+                  "offset": 231
+                },
+                "end": {
+                  "line": 7,
+                  "column": 3,
+                  "offset": 291
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "state, state, and edges  ",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 1,
+                      "offset": 293
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 26,
+                      "offset": 318
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "e \\in E",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "e \\in E"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 26,
+                      "offset": 318
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 35,
+                      "offset": 327
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " represent the application of controlled-phase ",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 35,
+                      "offset": 327
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 82,
+                      "offset": 374
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "(CZ)",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "(CZ)"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 82,
+                      "offset": 374
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 88,
+                      "offset": 380
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " gates between respective vertices. A graph state can therefore be expressed as,",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 88,
+                      "offset": 380
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 168,
+                      "offset": 460
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 1,
+                  "offset": 293
+                },
+                "end": {
+                  "line": 9,
+                  "column": 168,
+                  "offset": 460
+                }
+              }
+            },
+            {
+              "type": "math",
+              "meta": null,
+              "value": "|G\\rangle = \\left[ \\prod_{e \\in E} CZ_e \\right] |+\\rangle^{\\otimes |V|} \\ .",
+              "data": {
+                "hName": "pre",
+                "hChildren": [
+                  {
+                    "type": "element",
+                    "tagName": "code",
+                    "properties": {
+                      "className": [
+                        "language-math",
+                        "math-display"
+                      ]
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "|G\\rangle = \\left[ \\prod_{e \\in E} CZ_e \\right] |+\\rangle^{\\otimes |V|} \\ ."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 1,
+                  "offset": 462
+                },
+                "end": {
+                  "line": 13,
+                  "column": 3,
+                  "offset": 543
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Since ",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 1,
+                      "offset": 545
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 7,
+                      "offset": 551
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "CZ",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "CZ"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 7,
+                      "offset": 551
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 11,
+                      "offset": 555
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " gates are diagonal and therefore commute with one another, the order in which they are applied is irrelevant, meaning there is great flexibility in the preparation of graph states and room for parallelisation in the application of the required CZ gates.",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 11,
+                      "offset": 555
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 265,
+                      "offset": 809
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 1,
+                  "offset": 545
+                },
+                "end": {
+                  "line": 15,
+                  "column": 265,
+                  "offset": 809
+                }
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "br",
+              "attributes": [],
+              "children": [],
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 1,
+                  "offset": 811
+                },
+                "end": {
+                  "line": 17,
+                  "column": 7,
+                  "offset": 817
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "An alternative mathematical way of describing a graph state relies on the ",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 1,
+                      "offset": 819
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 75,
+                      "offset": 893
+                    }
+                  }
+                },
+                {
+                  "type": "emphasis",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "stabiliser",
+                      "position": {
+                        "start": {
+                          "line": 19,
+                          "column": 76,
+                          "offset": 894
+                        },
+                        "end": {
+                          "line": 19,
+                          "column": 86,
+                          "offset": 904
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 75,
+                      "offset": 893
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 87,
+                      "offset": 905
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " formalism. For every vertex ",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 87,
+                      "offset": 905
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 116,
+                      "offset": 934
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "v \\in V",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "v \\in V"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 116,
+                      "offset": 934
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 125,
+                      "offset": 943
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " a stabiliser ",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 125,
+                      "offset": 943
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 139,
+                      "offset": 957
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "S_v",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "S_v"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 139,
+                      "offset": 957
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 144,
+                      "offset": 962
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " is defined as",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 144,
+                      "offset": 962
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 158,
+                      "offset": 976
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 1,
+                  "offset": 819
+                },
+                "end": {
+                  "line": 19,
+                  "column": 158,
+                  "offset": 976
+                }
+              }
+            },
+            {
+              "type": "math",
+              "meta": null,
+              "value": "S_v = \\sigma_x^v \\ {\\bigotimes}_{a \\in N_v} \\ \\sigma_z^a",
+              "data": {
+                "hName": "pre",
+                "hChildren": [
+                  {
+                    "type": "element",
+                    "tagName": "code",
+                    "properties": {
+                      "className": [
+                        "language-math",
+                        "math-display"
+                      ]
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "S_v = \\sigma_x^v \\ {\\bigotimes}_{a \\in N_v} \\ \\sigma_z^a"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "position": {
+                "start": {
+                  "line": 21,
+                  "column": 1,
+                  "offset": 978
+                },
+                "end": {
+                  "line": 23,
+                  "column": 3,
+                  "offset": 1040
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "where ",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 1,
+                      "offset": 1042
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 7,
+                      "offset": 1048
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "N_v",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "N_v"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 7,
+                      "offset": 1048
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 12,
+                      "offset": 1053
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " are all the vertices in the neighborhood of vertex ",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 12,
+                      "offset": 1053
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 64,
+                      "offset": 1105
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "a",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "a"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 64,
+                      "offset": 1105
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 67,
+                      "offset": 1108
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ". The graph state is uniquely defined as the eigenstate of all the ",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 67,
+                      "offset": 1108
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 134,
+                      "offset": 1175
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "S_v",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "S_v"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 134,
+                      "offset": 1175
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 139,
+                      "offset": 1180
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " stabilizers with eigenvalue ",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 139,
+                      "offset": 1180
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 168,
+                      "offset": 1209
+                    }
+                  }
+                },
+                {
+                  "type": "inlineMath",
+                  "value": "+1",
+                  "data": {
+                    "hName": "code",
+                    "hProperties": {
+                      "className": [
+                        "language-math",
+                        "math-inline"
+                      ]
+                    },
+                    "hChildren": [
+                      {
+                        "type": "text",
+                        "value": "+1"
+                      }
+                    ]
+                  },
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 168,
+                      "offset": 1209
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 172,
+                      "offset": 1213
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ".\nWhen the topology of the graph is a 2D lattice, the state is also said to be a ",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 172,
+                      "offset": 1213
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 80,
+                      "offset": 1294
+                    }
+                  }
+                },
+                {
+                  "type": "emphasis",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "cluster state",
+                      "position": {
+                        "start": {
+                          "line": 26,
+                          "column": 81,
+                          "offset": 1295
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 94,
+                          "offset": 1308
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 26,
+                      "column": 80,
+                      "offset": 1294
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 95,
+                      "offset": 1309
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ".",
+                  "position": {
+                    "start": {
+                      "line": 26,
+                      "column": 95,
+                      "offset": 1309
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 96,
+                      "offset": 1310
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 25,
+                  "column": 1,
+                  "offset": 1042
+                },
+                "end": {
+                  "line": 26,
+                  "column": 96,
+                  "offset": 1310
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "On PhotonQ, you can generate graph states from 'classical' quantum circuits.",
+                  "position": {
+                    "start": {
+                      "line": 28,
+                      "column": 1,
+                      "offset": 1312
+                    },
+                    "end": {
+                      "line": 28,
+                      "column": 77,
+                      "offset": 1388
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 28,
+                  "column": 1,
+                  "offset": 1312
+                },
+                "end": {
+                  "line": 28,
+                  "column": 77,
+                  "offset": 1388
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "For example the linear cluster of 5 qubits, or a GHZ state of 4 qubits (see below)",
+                  "position": {
+                    "start": {
+                      "line": 30,
+                      "column": 1,
+                      "offset": 1390
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 83,
+                      "offset": 1472
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 30,
+                  "column": 1,
+                  "offset": 1390
+                },
+                "end": {
+                  "line": 30,
+                  "column": 83,
+                  "offset": 1472
+                }
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "QASMPlayground",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[5];\nh q;\ncz q[0],q[1];\ncz q[1],q[2];\ncz q[2],q[3];\ncz q[3],q[4];",
+                      "position": {
+                        "start": {
+                          "line": 32,
+                          "column": 1,
+                          "offset": 1490
+                        },
+                        "end": {
+                          "line": 39,
+                          "column": 14,
+                          "offset": 1597
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 32,
+                      "column": 1,
+                      "offset": 1490
+                    },
+                    "end": {
+                      "line": 39,
+                      "column": 14,
+                      "offset": 1597
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 31,
+                  "column": 1,
+                  "offset": 1473
+                },
+                "end": {
+                  "line": 40,
+                  "column": 18,
+                  "offset": 1615
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            },
+            {
+              "type": "mdxJsxFlowElement",
+              "name": "QASMPlayground",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[4];\nh q;\ncz q[0],q[1];\ncz q[0],q[2];\ncz q[0],q[3];",
+                      "position": {
+                        "start": {
+                          "line": 43,
+                          "column": 1,
+                          "offset": 1634
+                        },
+                        "end": {
+                          "line": 49,
+                          "column": 14,
+                          "offset": 1727
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 43,
+                      "column": 1,
+                      "offset": 1634
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 14,
+                      "offset": 1727
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 42,
+                  "column": 1,
+                  "offset": 1617
+                },
+                "end": {
+                  "line": 50,
+                  "column": 18,
+                  "offset": 1745
+                }
+              },
+              "data": {
+                "_mdxExplicitJsx": true
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 51,
+              "column": 1,
+              "offset": 1746
+            }
+          }
+        },
+        "props": {}
+      }
+    }
+  },
+  "parentPage": {
+    "id": "JaenPage 23ceeff3-dd19-43b7-9c65-1c774c391b9d",
+    "createdAt": "2024-04-15T09:20:14.101Z",
+    "modifiedAt": "2024-10-30T10:54:40.597Z",
+    "buildPath": "/docs/measurement-based-quantum-computing/",
+    "slug": "measurement-based-quantum-computing",
+    "template": "JaenTemplate DocPage",
+    "excludedFromIndex": false,
+    "jaenPageMetadata": {
+      "title": "Measurement Based Quantum Computing",
+      "image": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewADKWYg71I-ek1oFIEgY6R3Gz3w92n6AALAEQACeXUJUf6Qr8oQ2IosLwQ",
+      "description": "Overview of the Measurement Based Quantum Computing (MBQC) scheme.",
+      "blogPost": null
+    },
+    "pageConfig": {
+      "label": "DocPage",
+      "childTemplates": [
+        "JaenTemplate DocPage"
+      ],
+      "withoutJaenFrameStickyHeader": true
+    }
+  },
+  "childPages": [],
+  "childPagesOrder": [],
+  "mediaNodes": [],
+  "sections": []
+}

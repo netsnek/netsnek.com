@@ -1,0 +1,1151 @@
+{
+  "id": "JaenPage 891e4d03-31ad-43cd-924a-3e8e394e7739",
+  "createdAt": "2023-12-13T16:12:35.062Z",
+  "modifiedAt": "2024-10-30T10:54:40.589Z",
+  "buildPath": "/docs/openqasm/classical-registers/",
+  "slug": "classical-registers",
+  "template": "JaenTemplate DocPage",
+  "excludedFromIndex": false,
+  "jaenPageMetadata": {
+    "title": "Classical Registers",
+    "image": null,
+    "description": "In this chapter of the OpenQASM Tutorial, you will be learning about declaring and indexing Classical Registers in the OpenQASM programming language.",
+    "blogPost": null
+  },
+  "pageConfig": {
+    "label": "DocPage",
+    "childTemplates": [
+      "JaenTemplate DocPage"
+    ],
+    "withoutJaenFrameStickyHeader": true
+  },
+  "jaenFields": {
+    "IMA:MdxField": {
+      "documentation": {
+        "value": {
+          "type": "root",
+          "children": [
+            {
+              "type": "heading",
+              "depth": 1,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Classical Registers in OpenQASM",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 3,
+                      "offset": 2
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 34,
+                      "offset": 33
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 34,
+                  "offset": 33
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Just as qubits are the building blocks of quantum computing, classical bits are the foundation of classical computing. OpenQASM provides the capability to group bits into ",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1,
+                      "offset": 35
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 172,
+                      "offset": 206
+                    }
+                  }
+                },
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "classical registers",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 174,
+                          "offset": 208
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 193,
+                          "offset": 227
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 172,
+                      "offset": 206
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 195,
+                      "offset": 229
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ", which is particularly useful when you are working with measurements from quantum operations. This chapter will teach you how to create and work with classical registers in OpenQASM.",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 195,
+                      "offset": 229
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 378,
+                      "offset": 412
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 35
+                },
+                "end": {
+                  "line": 3,
+                  "column": 378,
+                  "offset": 412
+                }
+              }
+            },
+            {
+              "type": "heading",
+              "depth": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Understanding Classical Registers",
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 4,
+                      "offset": 417
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 37,
+                      "offset": 450
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 1,
+                  "offset": 414
+                },
+                "end": {
+                  "line": 5,
+                  "column": 37,
+                  "offset": 450
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "A classical register is akin to an array in classical programming, but it is designed to hold bits, which represent the binary states 0 or 1.",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 1,
+                      "offset": 452
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 142,
+                      "offset": 593
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 1,
+                  "offset": 452
+                },
+                "end": {
+                  "line": 7,
+                  "column": 142,
+                  "offset": 593
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "In OpenQASM, a classical register is declared with the ",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 1,
+                      "offset": 595
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 56,
+                      "offset": 650
+                    }
+                  }
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "creg",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 56,
+                      "offset": 650
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 62,
+                      "offset": 656
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " keyword, an identifier, and the number of bits as the size:",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 62,
+                      "offset": 656
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 122,
+                      "offset": 716
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 1,
+                  "offset": 595
+                },
+                "end": {
+                  "line": 9,
+                  "column": 122,
+                  "offset": 716
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": "qasm",
+              "meta": null,
+              "value": "creg <identifier>[<size>];",
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 1,
+                  "offset": 718
+                },
+                "end": {
+                  "line": 13,
+                  "column": 4,
+                  "offset": 756
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "The identifier should comply with OpenQASM's naming standards, and the size must be a positive integer.",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 1,
+                      "offset": 758
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 104,
+                      "offset": 861
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 1,
+                  "offset": 758
+                },
+                "end": {
+                  "line": 15,
+                  "column": 104,
+                  "offset": 861
+                }
+              }
+            },
+            {
+              "type": "heading",
+              "depth": 3,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Experiment: Creating and Utilizing a Classical Register",
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 5,
+                      "offset": 867
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 60,
+                      "offset": 922
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 1,
+                  "offset": 863
+                },
+                "end": {
+                  "line": 17,
+                  "column": 60,
+                  "offset": 922
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Let's explore an experiment where we create a classical register to record the outcome of quantum measurements",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 1,
+                      "offset": 924
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 111,
+                      "offset": 1034
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "1",
+                  "label": "1",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 111,
+                      "offset": 1034
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 115,
+                      "offset": 1038
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "2",
+                  "label": "2",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 115,
+                      "offset": 1038
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 119,
+                      "offset": 1042
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "3",
+                  "label": "3",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 119,
+                      "offset": 1042
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 123,
+                      "offset": 1046
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "4",
+                  "label": "4",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 123,
+                      "offset": 1046
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 127,
+                      "offset": 1050
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "5",
+                  "label": "5",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 127,
+                      "offset": 1050
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 131,
+                      "offset": 1054
+                    }
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "6",
+                  "label": "6",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 131,
+                      "offset": 1054
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 135,
+                      "offset": 1058
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ":",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 135,
+                      "offset": 1058
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 136,
+                      "offset": 1059
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 1,
+                  "offset": 924
+                },
+                "end": {
+                  "line": 19,
+                  "column": 136,
+                  "offset": 1059
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": "qasm",
+              "meta": "playground",
+              "value": "OPENQASM 2.0;                 // Specify OpenQASM version [^1]\ninclude \"qelib1.inc\";         // Include the standard quantum library [^2]\n\n// Quantum register with a single qubit and classical register with two bits\nqreg qubit[1];                // Single-qubit quantum register [^4]\ncreg bits[2];                 // Two-bit classical register [^3]\n\n// Prepare qubit in a superposition state\nh qubit[0];                   // Apply Hadamard gate to the qubit [^5]\n\n// Measure the qubit and store the result in the first bit of classical register\nmeasure qubit[0] -> bits[0];  // Measurement operation [^6]\n\n// The second bit remains in its initial state (0)",
+              "position": {
+                "start": {
+                  "line": 21,
+                  "column": 1,
+                  "offset": 1061
+                },
+                "end": {
+                  "line": 36,
+                  "column": 4,
+                  "offset": 1740
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "In this combined experiment, a quantum register holds a single qubit that we prepare in a superposition state using a Hadamard gate. We then measure the qubit's state and store the measurement result in the first bit of our two-bit classical register. The second bit of the register is unmodified and showcases the ability to store multiple measurement outcomes or to utilize extra bits for other classical computations.",
+                  "position": {
+                    "start": {
+                      "line": 38,
+                      "column": 1,
+                      "offset": 1742
+                    },
+                    "end": {
+                      "line": 38,
+                      "column": 421,
+                      "offset": 2162
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 38,
+                  "column": 1,
+                  "offset": 1742
+                },
+                "end": {
+                  "line": 38,
+                  "column": 421,
+                  "offset": 2162
+                }
+              }
+            },
+            {
+              "type": "heading",
+              "depth": 3,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Single-Bit Classical Registers",
+                  "position": {
+                    "start": {
+                      "line": 40,
+                      "column": 5,
+                      "offset": 2168
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 35,
+                      "offset": 2198
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 40,
+                  "column": 1,
+                  "offset": 2164
+                },
+                "end": {
+                  "line": 40,
+                  "column": 35,
+                  "offset": 2198
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "While OpenQASM doesn't allow the declaration of isolated classical bits, you can declare a one-bit register for scenarios needing only one bit:",
+                  "position": {
+                    "start": {
+                      "line": 42,
+                      "column": 1,
+                      "offset": 2200
+                    },
+                    "end": {
+                      "line": 42,
+                      "column": 144,
+                      "offset": 2343
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 42,
+                  "column": 1,
+                  "offset": 2200
+                },
+                "end": {
+                  "line": 42,
+                  "column": 144,
+                  "offset": 2343
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": "qasm",
+              "meta": null,
+              "value": "// One-bit classical register declaration\ncreg flag[1]; // Single-bit register named 'flag' [^3]",
+              "position": {
+                "start": {
+                  "line": 44,
+                  "column": 1,
+                  "offset": 2345
+                },
+                "end": {
+                  "line": 47,
+                  "column": 4,
+                  "offset": 2453
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "In summary, classical registers in OpenQASM are indispensable for obtaining and preserving the results of quantum measurements, enabling the further processing needed in quantum algorithms.",
+                  "position": {
+                    "start": {
+                      "line": 49,
+                      "column": 1,
+                      "offset": 2455
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 190,
+                      "offset": 2644
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 49,
+                  "column": 1,
+                  "offset": 2455
+                },
+                "end": {
+                  "line": 49,
+                  "column": 190,
+                  "offset": 2644
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "1",
+              "label": "1",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://photonq.org/docs/openqasm/version-string/",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Version String Documentation",
+                          "position": {
+                            "start": {
+                              "line": 51,
+                              "column": 8,
+                              "offset": 2653
+                            },
+                            "end": {
+                              "line": 51,
+                              "column": 36,
+                              "offset": 2681
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 51,
+                          "column": 7,
+                          "offset": 2652
+                        },
+                        "end": {
+                          "line": 51,
+                          "column": 88,
+                          "offset": 2733
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 51,
+                      "column": 7,
+                      "offset": 2652
+                    },
+                    "end": {
+                      "line": 51,
+                      "column": 88,
+                      "offset": 2733
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 51,
+                  "column": 1,
+                  "offset": 2646
+                },
+                "end": {
+                  "line": 51,
+                  "column": 88,
+                  "offset": 2733
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "2",
+              "label": "2",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://photonq.org/docs/openqasm/include/",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Include Documentation",
+                          "position": {
+                            "start": {
+                              "line": 53,
+                              "column": 8,
+                              "offset": 2742
+                            },
+                            "end": {
+                              "line": 53,
+                              "column": 29,
+                              "offset": 2763
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 53,
+                          "column": 7,
+                          "offset": 2741
+                        },
+                        "end": {
+                          "line": 53,
+                          "column": 74,
+                          "offset": 2808
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 53,
+                      "column": 7,
+                      "offset": 2741
+                    },
+                    "end": {
+                      "line": 53,
+                      "column": 74,
+                      "offset": 2808
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 53,
+                  "column": 1,
+                  "offset": 2735
+                },
+                "end": {
+                  "line": 53,
+                  "column": 74,
+                  "offset": 2808
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "3",
+              "label": "3",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://photonq.org/docs/openqasm/registers/",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Classical Registers Documentation",
+                          "position": {
+                            "start": {
+                              "line": 55,
+                              "column": 8,
+                              "offset": 2817
+                            },
+                            "end": {
+                              "line": 55,
+                              "column": 41,
+                              "offset": 2850
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 55,
+                          "column": 7,
+                          "offset": 2816
+                        },
+                        "end": {
+                          "line": 55,
+                          "column": 88,
+                          "offset": 2897
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 55,
+                      "column": 7,
+                      "offset": 2816
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 88,
+                      "offset": 2897
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 55,
+                  "column": 1,
+                  "offset": 2810
+                },
+                "end": {
+                  "line": 55,
+                  "column": 88,
+                  "offset": 2897
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "4",
+              "label": "4",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://photonq.org/docs/openqasm/registers/",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Quantum Registers Documentation",
+                          "position": {
+                            "start": {
+                              "line": 57,
+                              "column": 8,
+                              "offset": 2906
+                            },
+                            "end": {
+                              "line": 57,
+                              "column": 39,
+                              "offset": 2937
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 57,
+                          "column": 7,
+                          "offset": 2905
+                        },
+                        "end": {
+                          "line": 57,
+                          "column": 86,
+                          "offset": 2984
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 57,
+                      "column": 7,
+                      "offset": 2905
+                    },
+                    "end": {
+                      "line": 57,
+                      "column": 86,
+                      "offset": 2984
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 57,
+                  "column": 1,
+                  "offset": 2899
+                },
+                "end": {
+                  "line": 57,
+                  "column": 86,
+                  "offset": 2984
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "5",
+              "label": "5",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://photonq.org/docs/openqasm/gates/hadamard/",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Hadamard Gate Documentation",
+                          "position": {
+                            "start": {
+                              "line": 59,
+                              "column": 8,
+                              "offset": 2993
+                            },
+                            "end": {
+                              "line": 59,
+                              "column": 35,
+                              "offset": 3020
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 59,
+                          "column": 7,
+                          "offset": 2992
+                        },
+                        "end": {
+                          "line": 59,
+                          "column": 87,
+                          "offset": 3072
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 59,
+                      "column": 7,
+                      "offset": 2992
+                    },
+                    "end": {
+                      "line": 59,
+                      "column": 87,
+                      "offset": 3072
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 59,
+                  "column": 1,
+                  "offset": 2986
+                },
+                "end": {
+                  "line": 59,
+                  "column": 87,
+                  "offset": 3072
+                }
+              }
+            },
+            {
+              "type": "footnoteDefinition",
+              "identifier": "6",
+              "label": "6",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "link",
+                      "title": null,
+                      "url": "https://photonq.org/docs/openqasm/gates/measure/",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Measurement Documentation",
+                          "position": {
+                            "start": {
+                              "line": 61,
+                              "column": 8,
+                              "offset": 3081
+                            },
+                            "end": {
+                              "line": 61,
+                              "column": 33,
+                              "offset": 3106
+                            }
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 61,
+                          "column": 7,
+                          "offset": 3080
+                        },
+                        "end": {
+                          "line": 61,
+                          "column": 84,
+                          "offset": 3157
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 61,
+                      "column": 7,
+                      "offset": 3080
+                    },
+                    "end": {
+                      "line": 61,
+                      "column": 84,
+                      "offset": 3157
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 61,
+                  "column": 1,
+                  "offset": 3074
+                },
+                "end": {
+                  "line": 61,
+                  "column": 84,
+                  "offset": 3157
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 62,
+              "column": 1,
+              "offset": 3158
+            }
+          }
+        },
+        "props": {}
+      }
+    }
+  },
+  "parentPage": {
+    "id": "JaenPage 969775d8-b434-4e14-85ab-d27b385cb90c",
+    "createdAt": "2023-12-13T14:40:09.960Z",
+    "modifiedAt": "2024-10-30T10:54:40.576Z",
+    "buildPath": "/docs/openqasm/",
+    "slug": "openqasm",
+    "template": "JaenTemplate DocPage",
+    "excludedFromIndex": false,
+    "jaenPageMetadata": {
+      "title": "Learn about OpenQASM",
+      "image": "https://osg.snek.at/storage/BQACAgQAAxkDAAIspGV5wiGbVZjFUZiX6eXeTw0nQvfkAALWGAACajbRU-guhpppjAlNLwQ",
+      "description": "OpenQASM refers to the extended language we now describe, specifically OpenQASM Version 3.0. The human-readable form of OpenQASM is a simple, case-sensitive textual language. Statements are separated by semicolons and whitespace is ignored.",
+      "blogPost": null
+    },
+    "pageConfig": {
+      "label": "DocPage",
+      "childTemplates": [
+        "JaenTemplate DocPage"
+      ],
+      "withoutJaenFrameStickyHeader": true
+    }
+  },
+  "childPages": [],
+  "childPagesOrder": [],
+  "mediaNodes": [],
+  "sections": []
+}
