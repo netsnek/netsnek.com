@@ -1,54 +1,44 @@
 import {
     Alert,
     AlertDescription,
-    AlertIcon,
     AlertTitle,
     Box,
     BoxProps,
     Center,
-    Heading,
     Link,
     Spinner,
-    Text,
     chakra
   } from '@chakra-ui/react'
-  import {useCookieConsentContext} from 'jaen'
+  import {useCookieConsentCategory, useCookieConsentContext} from 'jaen'
   import {useEffect, useState} from 'react'
   import {useIntl} from 'react-intl'
-  // import {useCookieConsent} from '@jaenjs/jaen'
-  
+
   export interface GoogleMapsProps extends BoxProps {
     src: string
   }
-  
+
   export const GoogleMaps = ({src, ...props}: GoogleMapsProps) => {
     const [isMounted, setIsMounted] = useState(false)
 
     const intl = useIntl()
     const cc = useCookieConsentContext()
-  
+
+    // Reads the category and re-reads it on every consent change, so
+    // accepting through the global banner mounts the map right away. The
+    // plugin instance itself never changes identity, an effect keyed on it
+    // would only ever run once.
+    const mapsEnabled = useCookieConsentCategory('analytics')
+
     useEffect(() => {
       setIsMounted(true)
     }, [])
-  
+
+    // The map's own accept button. It only writes the consent; the state
+    // comes back through the same event as the banner's.
     const handleAccept = () => {
-      if (!cc) throw new Error('CookieConsentContext is not initialized')
-  
-      cc.accept('analytics')
-  
-      setMapsEnabled(true)
+      cc?.accept('analytics')
     }
-  
-    const [mapsEnabled, setMapsEnabled] = useState(false)
-  
-    useEffect(() => {
-      if (cc) {
-        const analyticsEnabled = cc.allowedCategory('analytics')
-  
-        setMapsEnabled(analyticsEnabled)
-      }
-    }, [cc])
-  
+
     if (!isMounted) {
       return (
         <Center boxSize="full" bg="gray.200">
@@ -56,8 +46,8 @@ import {
         </Center>
       )
     }
-  
-    if (mapsEnabled === false) {
+
+    if (!mapsEnabled) {
       return (
         <Alert
           h="full"
@@ -90,7 +80,7 @@ import {
         </Alert>
       )
     }
-  
+
     return (
       <Box {...props} bg="gray.200" overflow={"hidden"}>
         <chakra.iframe
