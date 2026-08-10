@@ -87,15 +87,19 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
 
   return (
     <Menu placement="bottom-end" isLazy>
+      {/* Same size, padding, radius and colour as the search control and the
+          contact button beside it, so the header reads as one row of
+          controls rather than three different ones. */}
       <MenuButton
         as={Button}
-        variant="ghost-hover"
+        variant="solid"
         size="sm"
-        px={2}
+        minH="10"
+        px={3}
+        borderRadius="xl"
+        filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+        color="white"
         aria-label={`${controlLabel}: ${labels[currentBase] ?? currentBase}`}
-        // Brand orange by default so the control reads as a control on both
-        // header rows; a call site can still override it.
-        color="brand.500"
         rightIcon={<ChevronDownIcon boxSize={4} display="block" />}
         iconSpacing={1.5}
         {...props}
