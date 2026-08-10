@@ -107,17 +107,29 @@ Das interne Display läuft mit `scale = 2.0` in Wayfire. Die Notch des MacBook P
 
 ### 16K-Speicherseiten
 
-Der Asahi-Kernel verwendet 16K-Pages statt der üblichen 4K. Die meiste Software ist darauf vorbereitet, aber Programme mit fest einkompilierten 4K-Annahmen stürzen ab. Ein Beispiel aus der Praxis ist Minecraft: Der LWJGL-eigene Allocator crasht auf 16K-Systemen. Der Fix ist das JVM-Flag `-Dorg.lwjgl.system.allocator=system` in Kombination mit Java 21. Ähnliche Symptome bei anderer Software sind fast immer ein Hinweis auf ein 16K-Problem.
+Der Asahi-Kernel verwendet 16K-Pages statt der üblichen 4K. Die meiste Software ist darauf vorbereitet, aber Programme mit fest einkompilierten 4K-Annahmen stürzen ab. Der häufigste Täter ist ein gebündeltes jemalloc, erkennbar an der Meldung `<jemalloc>: Unsupported system page size`. Drei Fälle aus der Praxis:
+
+- **Minecraft**: Das von LWJGL mitgelieferte jemalloc crasht garantiert beim Start. Der Fix ist das JVM-Flag `-Dorg.lwjgl.system.allocator=system`, damit nutzt LWJGL den glibc-Allocator. Für aktuelle Modloader zusätzlich Java 21 als Instanz-Java pinnen.
+- **Widevine**: Das ARM64-CDM muss für 16K-Pages gepatcht werden. Asahis `widevine-installer` erledigt das automatisch beim Installieren.
+- **FEX-emu**: Der x86-Emulator stirbt auf 16K-Kernels am selben jemalloc-Problem. Deshalb läuft x86-Software hier in einer microVM, siehe unten.
+
+Ähnliche Symptome bei anderer Software sind fast immer ein Hinweis auf ein 16K-Problem.
 
 ### GTK4 stürzt im Vulkan-Renderer ab
 
-GTK4-Anwendungen crashen auf Asahi mit SIGSEGV, wenn sie den Vulkan-Renderer verwenden. Der Workaround gilt für alle GTK4-Apps:
+GTK4-Anwendungen verschwinden auf Asahi kommentarlos mit SIGSEGV, ohne brauchbaren Traceback. Die Ursache: Neuere GTK4-Versionen wählen den Vulkan-Renderer, sobald ein Vulkan-Treiber installiert ist. Der Asahi-Vulkan-Treiber Honeykrisp trägt diesen Pfad noch nicht zuverlässig. Der Workaround erzwingt den GL-Renderer und gilt für alle GTK4-Apps:
 
 ```bash
 GSK_RENDERER=gl <app>
 ```
 
-Wer das dauerhaft will, setzt die Variable in der `~/.config/xfce4/xinitrc`, damit sie die gesamte Session erbt.
+Wer das dauerhaft will, setzt die Variable in der `~/.config/xfce4/xinitrc`, damit sie die gesamte Session erbt. Für Flatpaks gilt sie pro App:
+
+```bash
+flatpak override --user --env=GSK_RENDERER=gl <app-id>
+```
+
+Zur Gegenprobe startet man die App mit `GSK_DEBUG=renderer`, im Log muss `Using renderer 'GskGLRenderer'` stehen. Macht auch der GL-Renderer Probleme, ist `GSK_RENDERER=cairo` der reine Software-Weg, immer stabil, aber langsamer.
 
 ### Signal Desktop braucht --no-sandbox
 
@@ -126,6 +138,23 @@ Signal Desktop benötigt auf ARM64-Fedora das Flag `--no-sandbox`, sonst startet
 ### Suspend ist s2idle
 
 Apple Silicon unterstützt unter Linux nur s2idle. Hibernate ist wegen einer Einschränkung der GPU-Firmware nicht möglich.
+
+### USB-1.1-Geräte an den USB-C-Ports
+
+Auf Asahi-Kernels vor 6.19 enumerieren Full-Speed-Geräte wie ältere Adapter oder Mikrocontroller-Boards oft nicht, im Kernel-Log stehen dann Meldungen wie `device descriptor read/64, error -71`. Der Fehler liegt im USB2-PHY-Handling und ist seit Linux 6.19 behoben. Wichtig: Den Treiber `dwc3-apple` niemals im laufenden Betrieb unbinden, um die PHY zu resetten. Das verklemmt den Controller und beide USB-Buses sind bis zum Reboot weg.
+
+## x86-Software mit FEX und muvm
+
+Manche Software gibt es nicht als ARM64-Linux-Build. Auf Asahi läuft sie trotzdem, mit FEX-emu als x86_64-Emulator. Weil FEX selbst am 16K-Kernel scheitert, steckt die Emulation in muvm, einer leichtgewichtigen microVM mit 4K-Page-Guest. Die nötigen Pakete heißen `fex-emu`, `muvm` und `fex-emu-rootfs-fedora`. Ein binfmt-Eintrag im Guest routet x86-Binaries automatisch durch FEX.
+
+Ein paar Eigenheiten sind wichtig:
+
+- Der Guest sieht X11, keinen Wayland-Socket. muvm setzt `DISPLAY` auf eine X11-Bridge zum Host-Xwayland. Chromium- und CEF-Apps brauchen deshalb `--ozone-platform=x11`, Qt-Apps `QT_QPA_PLATFORM=xcb`.
+- Audio funktioniert ohne Zutun, muvm reicht PipeWire und Pulse in den Guest durch.
+- Das HOME-Verzeichnis wird per virtiofs geteilt. Fehlende x86-Bibliotheken lassen sich mit `dnf download --forcearch=x86_64 <paket>` holen, unter HOME entpacken und per `LD_LIBRARY_PATH` einbinden.
+- Chromium- und CEF-Apps brauchen `--no-sandbox`, weil ihre Sandbox unter FEX nicht initialisiert. Für Qt WebEngine gilt analog `QTWEBENGINE_DISABLE_SANDBOX=1`.
+- GPU-Beschleunigung im Guest braucht das Paket `mesa-fex-emu-overlay-x86_64` und das virglrenderer-Build aus dem Asahi-COPR. Achtung: Das Fedora-eigene virglrenderer kann das COPR-Paket bei Updates still ersetzen, danach ist die GPU-Beschleunigung im Guest weg. Ein `dnf versionlock add virglrenderer` verhindert das.
+- Startet muvm ohne erkennbaren Grund nicht mehr, liegen oft verwaiste Dateien (`krun`, `muvm.lock`) eines abgestürzten früheren Laufs im XDG-Runtime-Verzeichnis. Löschen, sobald kein muvm-Prozess mehr läuft.
 
 ## Gepatchte Pakete
 
