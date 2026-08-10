@@ -103,7 +103,10 @@ const Hero: FC = () => {
             <Box position="relative" w="full" h="full">
               <Image
                 src="/images/iPad.png"
-                alt="iPad image"
+                alt={intl.formatMessage({
+                  id: 'HeroIpadImageAlt',
+                  defaultMessage: 'iPad image'
+                })}
                 objectFit="contain"
                 position="absolute"
                 top="0"

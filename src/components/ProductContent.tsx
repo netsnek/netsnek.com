@@ -245,7 +245,10 @@ const ProductDetail = (props: {
           fontWeight="bold"
           textAlign="left"
           name="ProductName"
-          defaultValue="Produkt Name"
+          defaultValue={intl.formatMessage({
+            id: 'ProductNameDefault',
+            defaultMessage: 'Produkt Name'
+          })}
         />
 
         {/* <Text color="gray.600">
@@ -272,7 +275,10 @@ const ProductDetail = (props: {
       <Field.Text name="productDescription" />
       {/* <MdxEditor /> */}
       <Text fontSize="sm">
-        Artikelnummer:{" "}
+        {intl.formatMessage({
+          id: 'ProductArticleNumberLabel',
+          defaultMessage: 'Artikelnummer:'
+        })}{" "}
         <Text as="span" color="gray.600">
           000000000000
         </Text>
@@ -334,7 +340,10 @@ const ProductDetail = (props: {
               onClick={addProductToBasket}
               leftIcon={<FaShoppingBasket />}
             >
-              In den Warenkorb
+              {intl.formatMessage({
+                id: 'ProductAddToCart',
+                defaultMessage: 'In den Warenkorb'
+              })}
             </Button>
           </HStack>
         </Stack>

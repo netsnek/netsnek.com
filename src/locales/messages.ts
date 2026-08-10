@@ -24,6 +24,7 @@ export const messagesDe = {
     'Ihre Softwareagentur in Österreich. Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen.',
   HeroButtonContact: 'Kontakt',
   HeroButtonProjects: 'Projekte ansehen',
+  HeroIpadImageAlt: 'iPad image',
 
   // TopNav (src/components/navigation/TopNav.tsx)
   NavHome: 'Home',
@@ -112,6 +113,9 @@ export const messagesDe = {
   // Products (src/components/ProductContent.tsx)
   ProductAvailable: 'Verfügbar',
   ProductNotAvailable: 'Derzeit nicht verfügbar',
+  ProductNameDefault: 'Produkt Name',
+  ProductArticleNumberLabel: 'Artikelnummer:',
+  ProductAddToCart: 'In den Warenkorb',
 
   // Docs (src/pages/docs.tsx)
   DocsFeedbackLink: 'Fragen? Geben Sie uns Feedback',
