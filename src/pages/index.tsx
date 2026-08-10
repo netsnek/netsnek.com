@@ -34,10 +34,10 @@ const IndexPage: React.FC<PageProps> = () => {
         <ServicesDetails />
         <Blog />
       </Container>
-      {/* Nach den Projektgeschichten die Haltung, dann erst der Kontakt: der
-          Abschnitt ist voll breit und steht deshalb ausserhalb des Containers. */}
-      <Open />
+      {/* Erst der Kontakt, dann die Haltung als Abschluss der Seite. Beide
+          sind voll breit und stehen deshalb ausserhalb des Containers. */}
       <Contact />
+      <Open />
       <GoogleMaps
         objectFit="cover"
         h="full"

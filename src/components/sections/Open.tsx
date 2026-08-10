@@ -83,7 +83,11 @@ const Open: FC = () => {
       borderY="1px solid"
       borderColor="whiteAlpha.200"
       py={{ base: '16', lg: '24' }}
-      my={{ base: '24', sm: '32', lg: '40' }}
+      // Oben Luft zum Kontakt, unten keine: die Karte schliesst direkt an,
+      // sonst steht ein weisser Streifen zwischen zwei dunklen Flaechen.
+      mt={{ base: '24', sm: '32', lg: '40' }}
+      mb="0"
+      borderBottom="none"
     >
       {/* Viele Spalten und viele Zeilen: der Vorhang wird per slice auf die
           Flaeche skaliert, ein kleines Raster liefe sonst als Riesenschrift. */}
