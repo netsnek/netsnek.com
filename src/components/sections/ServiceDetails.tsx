@@ -40,7 +40,14 @@ const Services = () => {
           align="center"
           justify="end"
         >
-          <Box flex="1" textAlign="center" pr={{ lg: '12' }}>
+          {/* Only the lg row layout has a column for the image. Below that
+              the 31rem fixed-size artwork paints over the text column. */}
+          <Box
+            flex="1"
+            textAlign="center"
+            pr={{ lg: '12' }}
+            display={{ base: 'none', lg: 'block' }}
+          >
             {/* Please replace `servicesSvg` with the source of your image or adjust as needed */}
             <StylizedImage
               sx={{
