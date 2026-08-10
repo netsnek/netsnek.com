@@ -6,7 +6,7 @@ path: /docs/emailwerk
 
 # emailwerk
 
-emailwerk ist ein Open-Source-Dienst für Transaktionsmails. Sie definieren E-Mail-Vorlagen mit typisierten Variablen, verbinden ein oder mehrere Absender-Postfächer und versenden über eine rollengeschützte GraphQL-API oder direkt aus der eingebauten Admin-Oberfläche. Jeder Versand landet in einer abfragbaren Historie. Wiederholungen und Zeitplanung übernimmt eine Job-Queue in Postgres.
+emailwerk ist ein Dienst von Netsnek e.U. für Transaktionsmails. Sie definieren E-Mail-Vorlagen mit typisierten Variablen, verbinden ein oder mehrere Absender-Postfächer und versenden über eine rollengeschützte GraphQL-API oder direkt aus der eingebauten Admin-Oberfläche. Jeder Versand landet in einer abfragbaren Historie. Wiederholungen und Zeitplanung übernimmt eine Job-Queue in Postgres.
 
 emailwerk ist auf [Pylon](https://pylon.cronit.io) v3 gebaut. Das GraphQL-Schema wird direkt aus TypeScript reflektiert. Die Admin-Oberfläche rendert der Dienst selbst, als React-Server-Side-Rendering im selben Prozess wie die API. Es gibt kein separates Frontend-Deployment, kein zweites Repository und kein CORS.
 
@@ -58,23 +58,12 @@ API-Client ──► /graphql ────┤
 | Gmail | geplant für v3.0 | Raw-MIME über die Gmail-REST-API |
 | Microsoft Graph | geplant für v3.0 | `sendMail` JSON-API |
 
-## Schnellstart
+## emailwerk im Einsatz
 
-```bash
-git clone https://github.com/netsnek/emailwerk
-cd emailwerk
-cp .env.example .env          # mindestens EMAILWERK_SECRET setzen (64 Hex-Zeichen)
-docker compose up             # startet emailwerk und Postgres
-```
-
-Danach ist die Admin-Oberfläche unter `http://localhost:3000` erreichbar und die API unter `http://localhost:3000/graphql`. Erste Schritte: unter Einstellungen einen Absender verbinden, unter Vorlagen eine Vorlage anlegen, unter Senden eine Testmail schicken und den Eintrag unter Verlauf beobachten.
+emailwerk wird von Netsnek e.U. entwickelt und betrieben. Der Dienst läuft als ein einzelner Node-Prozess mit einer Postgres-Datenbank und versendet unter anderem die Mails hinter dem Kontaktformular von netsnek.com. Wer emailwerk für ein eigenes Projekt einsetzen möchte, erreicht uns über die auf [netsnek.com](https://netsnek.com) angegebenen Kontaktwege.
 
 ## Weiterlesen
 
 - [Vorlagen](/docs/emailwerk/templates). Typisierte Variablen, Engines, Umschlag-Templating und Verkettung.
 - [Kontaktformular](/docs/emailwerk/kontaktformular). Anonymer Versand über `sendTemplateMail` für Website-Formulare.
 - [GraphQL-API](/docs/emailwerk/api). Überblick über Queries, Mutations und Rollen.
-
-## Lizenz
-
-emailwerk steht unter der EUPL-1.2 (European Union Public Licence) und führt damit die Lizenz von mailpress v2 fort. Copyright 2023 bis 2026 cronit KG und Netsnek e.U., Florian Kleber und Nico Schett.
