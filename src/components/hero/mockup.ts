@@ -185,7 +185,7 @@ export const buildMockup = (artwork: string = ''): string =>
            Platzhalter und zwei Tastenkappen.
            ------------------------------------------------------------ */}
       <g id="header-search">
-        <rect x="414.5" y="87.5" width="101.5" height="16" rx="8" ry="8"
+        <rect x="414.5" y="87.5" width="101.5" height="16" rx="4.8" ry="4.8"
               fill="#ffffff" stroke="#f89d6f" stroke-width="1" />
 
         {/* Lupe: Kreis mit Griff nach rechts unten */}
@@ -222,8 +222,9 @@ export const buildMockup = (artwork: string = ''): string =>
            beide y 87 bis 104, also voll gerundet (rx = halbe Hoehe).
            ------------------------------------------------------------ */}
       <g id="header-actions" fill="#f77f00">
-        <rect x="523" y="87" width="44" height="17" rx="8.5" ry="8.5" />
-        <rect x="573" y="87" width="33" height="17" rx="8.5" ry="8.5" />
+        <rect x="523" y="87" width="44" height="17" rx="5.1" ry="5.1" />
+        <rect x="573" y="87" width="33" height="17" rx="5.1" ry="5.1"
+              fill="none" stroke="#f77f00" stroke-width="1.4" />
 
         {/* Auch die Beschriftungen stehen auf ihrer gemessenen Breite,
              29 und 18 Einheiten. Die fette Systemschrift faellt sonst
@@ -232,7 +233,7 @@ export const buildMockup = (artwork: string = ''): string =>
            text-anchor="middle">
           <text x="545" y="97.7" font-size="5.9"
                 textLength="29" lengthAdjust="spacingAndGlyphs">Contact Us</text>
-          <text x="589.5" y="97.7" font-size="6.1"
+          <text x="589.5" y="97.7" font-size="6.1" fill="#f77f00"
                 textLength="18" lengthAdjust="spacingAndGlyphs">Sign In</text>
         </g>
       </g>

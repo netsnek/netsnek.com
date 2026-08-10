@@ -45,7 +45,10 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
     <Button
       size="xs"
       px={4}
-      borderRadius="xl"
+      // Not xl. These sit at 24px against the site's 40px buttons, and an
+      // identical radius there is half the height, which is why they still
+      // read as pills. lg keeps the same proportion the rest has.
+      borderRadius="lg"
       fontWeight="semibold"
       // The same pair the site uses everywhere: the active one filled, the
       // other an outline in brand colour.
