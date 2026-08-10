@@ -253,7 +253,20 @@ export const messagesDe = {
   CodeResultNotRunYet: 'Noch nicht ausgeführt',
   CodePlaygroundPreviewHeader: 'Code-Vorschau',
   CodePlaygroundEditorHeader: 'Bearbeitbarer Code',
-  CodePlaygroundPlaceholderCode: 'Das ist eine Code-Spielwiese'
+  CodePlaygroundPlaceholderCode: 'Das ist eine Code-Spielwiese',
+
+  // Shared controls: colour-mode menu (src/components/ThemeChooser.tsx),
+  // the inline editable control (src/components/TextControl.tsx) and the
+  // language switcher (src/components/LanguageSwitcher.tsx). The switcher
+  // captions are autonyms and stay untranslated by design; only its
+  // accessible name is a message.
+  ThemeLight: 'Hell',
+  ThemeDark: 'Dunkel',
+  ThemeSystem: 'System',
+  EditableSubmitAriaLabel: 'Speichern',
+  EditableCancelAriaLabel: 'Abbrechen',
+  EditableEditAriaLabel: 'Bearbeiten',
+  LanguageSwitcherLabel: 'Sprache'
 } as const;
 
 export type MessageKey = keyof typeof messagesDe;
@@ -394,7 +407,14 @@ export const messagesEn: MessageCatalog = {
   CodeResultNotRunYet: "Not run yet",
   CodePlaygroundPreviewHeader: "Code preview",
   CodePlaygroundEditorHeader: "Editable code",
-  CodePlaygroundPlaceholderCode: "This is a code playground"
+  CodePlaygroundPlaceholderCode: "This is a code playground",
+  ThemeLight: "Light",
+  ThemeDark: "Dark",
+  ThemeSystem: "System",
+  EditableSubmitAriaLabel: "Save",
+  EditableCancelAriaLabel: "Cancel",
+  EditableEditAriaLabel: "Edit",
+  LanguageSwitcherLabel: "Language"
 };
 
 export const messagesSl: MessageCatalog = {
@@ -527,7 +547,14 @@ export const messagesSl: MessageCatalog = {
   CodeResultNotRunYet: "Še ni zagnano",
   CodePlaygroundPreviewHeader: "Predogled kode",
   CodePlaygroundEditorHeader: "Koda za urejanje",
-  CodePlaygroundPlaceholderCode: "To je igrišče za kodo"
+  CodePlaygroundPlaceholderCode: "To je igrišče za kodo",
+  ThemeLight: "Svetla",
+  ThemeDark: "Temna",
+  ThemeSystem: "Sistemska",
+  EditableSubmitAriaLabel: "Shrani",
+  EditableCancelAriaLabel: "Prekliči",
+  EditableEditAriaLabel: "Uredi",
+  LanguageSwitcherLabel: "Jezik"
 };
 
 export const messagesIt: MessageCatalog = {
@@ -660,7 +687,14 @@ export const messagesIt: MessageCatalog = {
   CodeResultNotRunYet: "Non ancora eseguito",
   CodePlaygroundPreviewHeader: "Anteprima del codice",
   CodePlaygroundEditorHeader: "Codice modificabile",
-  CodePlaygroundPlaceholderCode: "Questo è un playground di codice"
+  CodePlaygroundPlaceholderCode: "Questo è un playground di codice",
+  ThemeLight: "Chiaro",
+  ThemeDark: "Scuro",
+  ThemeSystem: "Sistema",
+  EditableSubmitAriaLabel: "Salva",
+  EditableCancelAriaLabel: "Annulla",
+  EditableEditAriaLabel: "Modifica",
+  LanguageSwitcherLabel: "Lingua"
 };
 
 export const messagesJa: MessageCatalog = {
@@ -793,7 +827,14 @@ export const messagesJa: MessageCatalog = {
   CodeResultNotRunYet: "まだ実行していません",
   CodePlaygroundPreviewHeader: "コードプレビュー",
   CodePlaygroundEditorHeader: "編集可能なコード",
-  CodePlaygroundPlaceholderCode: "これはコードプレイグラウンドです"
+  CodePlaygroundPlaceholderCode: "これはコードプレイグラウンドです",
+  ThemeLight: "ライト",
+  ThemeDark: "ダーク",
+  ThemeSystem: "システム",
+  EditableSubmitAriaLabel: "保存",
+  EditableCancelAriaLabel: "キャンセル",
+  EditableEditAriaLabel: "編集",
+  LanguageSwitcherLabel: "言語"
 };
 
 const catalogs: Record<Locale, MessageCatalog> = {

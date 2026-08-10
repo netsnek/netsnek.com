@@ -15,6 +15,7 @@ import {
   useColorMode
 } from '@chakra-ui/react';
 import { FC, ReactNode, memo } from 'react';
+import { useIntl } from 'react-intl';
 
 interface IThemeChooserProps {
   menuProps?: Partial<MenuProps>;
@@ -76,7 +77,16 @@ const ThemeChooser: FC<IThemeChooserProps> = ({
   );
 };
 
-const colorModes = ['Light', 'Dark', 'System'];
+/**
+ * The selected-state check compares against the chakra color mode, so the
+ * mode has to be a stable id and cannot be derived from the (translated)
+ * caption any more. Label and id are therefore separate.
+ */
+const colorModes = [
+  { id: 'light', messageId: 'ThemeLight', defaultMessage: 'Hell' },
+  { id: 'dark', messageId: 'ThemeDark', defaultMessage: 'Dunkel' },
+  { id: 'system', messageId: 'ThemeSystem', defaultMessage: 'System' }
+] as const;
 //TODO: Fix system color mode toggle (doesnt work - doesnt stay in sync with system)
 /**
  * Memoized color mode menu items.
@@ -86,11 +96,12 @@ const MemoizedColorModeMenuItems = memo<{
   toggleColorMode: () => void;
 }>(
   ({ currentColorMode, toggleColorMode }) => {
+    const intl = useIntl();
+
     return (
       <>
         {colorModes.map((mode, i) => {
-          const isCurrentColorMode =
-            currentColorMode === mode.toLocaleLowerCase();
+          const isCurrentColorMode = currentColorMode === mode.id;
           return (
             <MenuItem
               key={i}
@@ -98,7 +109,10 @@ const MemoizedColorModeMenuItems = memo<{
               disabled={isCurrentColorMode}
               onClick={!isCurrentColorMode ? toggleColorMode : undefined}
             >
-              {mode}
+              {intl.formatMessage({
+                id: mode.messageId,
+                defaultMessage: mode.defaultMessage
+              })}
               {isCurrentColorMode && (
                 <CheckIcon
                   position="absolute"

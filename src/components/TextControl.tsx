@@ -14,6 +14,7 @@ import {
   useEditableControls
 } from '@chakra-ui/react';
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
+import { useIntl } from 'react-intl';
 
 export const TextControl: React.FC<{
   text?: string;
@@ -23,6 +24,7 @@ export const TextControl: React.FC<{
 }> = props => {
   /* Here's a custom control */
   function EditableControls() {
+    const intl = useIntl();
     const {
       isEditing,
       getSubmitButtonProps,
@@ -35,13 +37,20 @@ export const TextControl: React.FC<{
         <IconButton
           icon={<CheckIcon />}
           {...getSubmitButtonProps()}
-          aria-label="Edit"
+          // This button confirms the edit; it was mislabelled "Edit".
+          aria-label={intl.formatMessage({
+            id: 'EditableSubmitAriaLabel',
+            defaultMessage: 'Speichern'
+          })}
         />
         <IconButton
           variant="outline"
           icon={<CloseIcon />}
           {...getCancelButtonProps()}
-          aria-label="Close"
+          aria-label={intl.formatMessage({
+            id: 'EditableCancelAriaLabel',
+            defaultMessage: 'Abbrechen'
+          })}
         />
       </ButtonGroup>
     ) : (
@@ -51,7 +60,10 @@ export const TextControl: React.FC<{
           size="sm"
           icon={<EditIcon />}
           {...getEditButtonProps()}
-          aria-label="Edit"
+          aria-label={intl.formatMessage({
+            id: 'EditableEditAriaLabel',
+            defaultMessage: 'Bearbeiten'
+          })}
         />
       </Flex>
     );

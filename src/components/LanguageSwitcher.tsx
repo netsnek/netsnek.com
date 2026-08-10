@@ -13,13 +13,10 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { navigate } from 'gatsby';
 import { FC, useMemo } from 'react';
+import { useIntl } from 'react-intl';
 
 import { usePageLocale } from '../contexts/locale';
 import { defaultLocale, locales } from '../locales/messages';
-
-/** aria-label prefix; the button itself shows a flag, which reads to a
- *  screen reader as nothing at all. */
-const LANGUAGE_CONTROL_LABEL = 'Language';
 
 /**
  * Flags live in static/images/flags as 4:3 SVGs taken from the MIT-licensed
@@ -60,6 +57,14 @@ export interface LanguageSwitcherProps extends MenuButtonProps {}
  */
 const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
   const { locale: currentLocale, translations } = usePageLocale();
+  const intl = useIntl();
+
+  // aria-label prefix; the button itself shows a flag, which reads to a
+  // screen reader as nothing at all.
+  const controlLabel = intl.formatMessage({
+    id: 'LanguageSwitcherLabel',
+    defaultMessage: 'Sprache'
+  });
 
   const currentBase = currentLocale.split(/[-_]/)[0]?.toLowerCase();
 
@@ -87,7 +92,7 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
         variant="ghost-hover"
         size="sm"
         px={2}
-        aria-label={`${LANGUAGE_CONTROL_LABEL}: ${labels[currentBase] ?? currentBase}`}
+        aria-label={`${controlLabel}: ${labels[currentBase] ?? currentBase}`}
         // Brand orange by default so the control reads as a control on both
         // header rows; a call site can still override it.
         color="brand.500"
