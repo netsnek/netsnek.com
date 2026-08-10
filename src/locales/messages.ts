@@ -47,6 +47,13 @@ export const messagesDe = {
   AltNavFollowUs: 'Folge uns auf',
   AltNavRequestNow: 'Jetzt anfragen',
 
+  // Office block of the fullscreen nav overlay
+  // (src/components/navigation/AltTopNav.tsx). The street line stays
+  // hardcoded: a postal address is not translated.
+  AltNavOfficeHeading: 'Im Herzen von Wien',
+  AltNavOfficeHeadquarters: 'Hauptquartier',
+  AltNavOfficeCityCountry: '1030 Wien, Österreich',
+
   // Footer link-group titles (src/components/sections/Footer.tsx)
   FooterLinksTitle: 'Links',
   FooterPartnerTitle: 'Partner',
@@ -245,6 +252,9 @@ export const messagesEn: MessageCatalog = {
   AltNavBlog: "Blog",
   AltNavFollowUs: "Follow us on",
   AltNavRequestNow: "Get in touch",
+  AltNavOfficeHeading: "In the heart of Vienna",
+  AltNavOfficeHeadquarters: "Headquarters",
+  AltNavOfficeCityCountry: "1030 Vienna, Austria",
   FooterLinksTitle: "Links",
   FooterPartnerTitle: "Partners",
   FooterDesignedByTitle: "Designed by",
@@ -358,6 +368,9 @@ export const messagesSl: MessageCatalog = {
   AltNavBlog: "Blog",
   AltNavFollowUs: "Sledite nam na",
   AltNavRequestNow: "Pošljite povpraševanje",
+  AltNavOfficeHeading: "V srcu Dunaja",
+  AltNavOfficeHeadquarters: "Sedež podjetja",
+  AltNavOfficeCityCountry: "1030 Dunaj, Avstrija",
   FooterLinksTitle: "Povezave",
   FooterPartnerTitle: "Partnerji",
   FooterDesignedByTitle: "Oblikovanje",
@@ -471,6 +484,9 @@ export const messagesIt: MessageCatalog = {
   AltNavBlog: "Blog",
   AltNavFollowUs: "Seguici su",
   AltNavRequestNow: "Richiedi ora",
+  AltNavOfficeHeading: "Nel cuore di Vienna",
+  AltNavOfficeHeadquarters: "Sede centrale",
+  AltNavOfficeCityCountry: "1030 Vienna, Austria",
   FooterLinksTitle: "Link",
   FooterPartnerTitle: "Partner",
   FooterDesignedByTitle: "Progettato da",
@@ -584,6 +600,9 @@ export const messagesJa: MessageCatalog = {
   AltNavBlog: "ブログ",
   AltNavFollowUs: "フォローはこちら",
   AltNavRequestNow: "今すぐお問い合わせ",
+  AltNavOfficeHeading: "ウィーンの中心で",
+  AltNavOfficeHeadquarters: "本社",
+  AltNavOfficeCityCountry: "オーストリア ウィーン 1030",
   FooterLinksTitle: "リンク",
   FooterPartnerTitle: "パートナー",
   FooterDesignedByTitle: "デザイン制作",

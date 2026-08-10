@@ -249,16 +249,27 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
           >
             {/* Office information here */}
             <Text color="white" fontWeight="bold" fontSize="lg" pb="4">
-              Im Herzen von Wien
+              {intl.formatMessage({
+                id: 'AltNavOfficeHeading',
+                defaultMessage: 'Im Herzen von Wien'
+              })}
             </Text>
             <Text color="white" fontSize="md">
-              Hauptquartier
+              {intl.formatMessage({
+                id: 'AltNavOfficeHeadquarters',
+                defaultMessage: 'Hauptquartier'
+              })}
             </Text>
+            {/* The street line is a postal address and stays verbatim in
+                every locale; only the city and country line is translated. */}
             <Text color="gray.400" fontSize="md">
               Löwengasse 14 / Lokal 2
             </Text>
             <Text color="gray.400" fontSize="md">
-              1030 Wien, Österreich
+              {intl.formatMessage({
+                id: 'AltNavOfficeCityCountry',
+                defaultMessage: '1030 Wien, Österreich'
+              })}
             </Text>
           </Box>
           <Box
