@@ -20,6 +20,15 @@ Photos taken from `photonq.org` / the PhotonQ media library and from
 | `baeckerherz.jpg` | baeckerherz | `https://www.baeckerherz.at/og-image.jpg` (the client's own Open Graph image) | Bäckerherz. Client's own marketing image, used for the client's own section. |
 | `docs.jpg` | /docs landing | `src/assets/images/hero_img.webp` (this repository) | Netsnek e.U. own asset (site hero image). |
 
+## Assets outside this directory
+
+Artwork that does not belong to the docs previews but comes from the same sources is
+recorded here as well, so the whole site has one place to look up rights.
+
+| File | Where it is used | Source | Rights note |
+| --- | --- | --- | --- |
+| `static/images/carinthian-tux.svg` | Open-source section on the homepage (`src/components/sections/Open.tsx`) | `https://carinthianlinuxday.at/` (`tux-mit-wappen-kaernten.v1.svg`) | Logo of the **Verein Carinthian Linuxday**, `carinthianlinuxday.at`. Used with permission of the association. The vector is unchanged in content; only the page canvas was cropped to the drawing so the file scales without empty margins. |
+
 ## What each image shows
 
 - **photonq.jpg** — Photograph of a photonic laboratory bench: fibre couplers, orange mounts,
@@ -33,6 +42,9 @@ Photos taken from `photonq.org` / the PhotonQ media library and from
 - **baeckerherz.jpg** — Bäckerherz marketing image: a basket of fresh bread and rolls with the
   claim "Wir liefern täglich frisches Frühstück direkt an deine Haustür!".
 - **docs.jpg** — The netsnek platform UI shown on a laptop and a tablet.
+- **carinthian-tux.svg** — Tux, the Linux mascot, sitting and holding the Carinthian coat of
+  arms (three black lions on gold beside the red-white-red bar). 83 paths, viewBox in
+  millimetres, no raster data embedded.
 
 ## Sections deliberately left without an image
 
