@@ -1,209 +1,126 @@
-import { FC, useLayoutEffect, useRef, useState } from 'react';
-import {
-  AspectRatio,
-  Box,
-  Button,
-  ButtonGroup,
-  Image,
-  chakra
-} from '@chakra-ui/react';
+import { FC, useCallback, useMemo, useState } from 'react';
+import { AspectRatio, Box, Image, chakra } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
+import { UncontrolledMdxField } from 'jaen-fields-mdx';
+import type { MdxFieldProps } from 'jaen-fields-mdx';
 
-import Netsnek from '../../gatsby-plugin-jaen/components/Netsnek';
-
-type ShowcaseView = 'preview' | 'code';
-
-/**
- * Attributes that say nothing about the drawing and only add noise to the
- * source view: emotion's generated classes and React's own bookkeeping.
- * The semantic class names the logo animates on (snek, arrows, heart) are
- * kept, since those are the interesting part.
- */
-const GENERATED_CLASS = /^css-[a-z0-9]+$/;
+import HeroEditorTabs from './HeroEditorTabs';
 
 /**
- * Serialize a live SVG node into readable source.
+ * The drawing the hero starts with, as MDX.
  *
- * The markup is taken from the DOM rather than from a checked-in copy, so the
- * code pane always shows the drawing that is actually on screen, including
- * whatever the theme resolved. Emotion's generated class names are dropped,
- * every element goes on its own line, and nesting is indented.
+ * It is deliberately small and readable rather than the full brand mark: a
+ * visitor should be able to find the fill colour in the first few seconds and
+ * change it. The arrow is the one from the brand pattern.
  */
-function serializeSvg(node: SVGSVGElement): string {
-  const clone = node.cloneNode(true) as SVGSVGElement;
+const INITIAL_SOURCE = `<svg viewBox="0 0 120 120" width="100%" height="100%">
+  <rect width="120" height="120" rx="12" fill="#0A0A0A" />
 
-  clone.querySelectorAll('[class]').forEach(element => {
-    const kept = Array.from(element.classList).filter(
-      name => !GENERATED_CLASS.test(name)
-    );
+  <g fill="#f77f00">
+    <path d="M 62 24 L 59 24 L 62 34 L 32 34 L 35 44 L 82 44 Z" />
+    <path d="M 83 48 L 36 48 L 56 68 L 59 68 L 56 58 L 86 58 Z" />
+  </g>
 
-    if (kept.length > 0) {
-      element.setAttribute('class', kept.join(' '));
-    } else {
-      element.removeAttribute('class');
-    }
-  });
+  <text x="60" y="96" fill="#ffffff" font-size="13"
+        font-family="monospace" text-anchor="middle">
+    netsnek
+  </text>
+</svg>`;
 
-  const markup = new XMLSerializer().serializeToString(clone);
-
-  let depth = 0;
-
-  return markup
-    .replace(/></g, '>\n<')
-    .split('\n')
-    .map(line => {
-      if (line.startsWith('</')) depth = Math.max(0, depth - 1);
-
-      const indented = '  '.repeat(depth) + line;
-
-      const opens =
-        line.startsWith('<') &&
-        !line.startsWith('</') &&
-        !line.endsWith('/>') &&
-        !line.includes('</');
-
-      if (opens) depth += 1;
-
-      return indented;
-    })
-    .join('\n');
-}
+/**
+ * SVG elements the playground understands.
+ *
+ * The mdx field sanitizes against the component map, so anything not listed
+ * here is dropped rather than rendered. That is the point: a visitor edits a
+ * drawing, and cannot reach past it.
+ */
+const svgComponents: MdxFieldProps['components'] = {
+  svg: props => <chakra.svg {...props} />,
+  g: props => <g {...props} />,
+  defs: props => <defs {...props} />,
+  mask: props => <mask {...props} />,
+  clipPath: props => <clipPath {...props} />,
+  linearGradient: props => <linearGradient {...props} />,
+  radialGradient: props => <radialGradient {...props} />,
+  stop: props => <stop {...props} />,
+  path: props => <path {...props} />,
+  rect: props => <rect {...props} />,
+  circle: props => <circle {...props} />,
+  ellipse: props => <ellipse {...props} />,
+  line: props => <line {...props} />,
+  polyline: props => <polyline {...props} />,
+  polygon: props => <polygon {...props} />,
+  text: props => <text {...props} />,
+  tspan: props => <tspan {...props} />,
+  use: props => <use {...props} />,
+  title: props => <title {...props} />
+};
 
 export interface HeroShowcaseProps {
-  /** Styles handed to the logo, so the caller keeps control of the artwork. */
+  /** Styles handed to the artwork, so the caller keeps control of it. */
   logoSx?: Record<string, any>;
 }
 
 /**
- * The hero artwork with a switch between the rendered logo and its source.
+ * The hero artwork as a playground.
  *
- * The preview is the tablet with the animated mark on its screen. The code
- * view shows the very same drawing as markup, which is both an honest look
- * behind the artwork and a small statement about what this shop does.
+ * The tablet holds a drawing that the visitor can open and edit, and the
+ * result redraws while they type. Two pills switch between the drawing and
+ * its source, and the editor is outlined green while the source parses.
+ *
+ * Edits live in this component only. Nothing is written back to the CMS, so
+ * the page is a sandbox: reloading brings the original drawing back.
  */
-export const HeroShowcase: FC<HeroShowcaseProps> = ({ logoSx }) => {
+export const HeroShowcase: FC<HeroShowcaseProps> = () => {
   const intl = useIntl();
-  const [view, setView] = useState<ShowcaseView>('preview');
-  const [source, setSource] = useState('');
-  const logoRef = useRef<HTMLDivElement>(null);
+  const [value, setValue] = useState<string>(INITIAL_SOURCE);
 
-  // Read the markup once the logo is in the DOM. Layout effect rather than
-  // effect so the code pane never paints empty on the first switch.
-  useLayoutEffect(() => {
-    const svg = logoRef.current?.querySelector('svg');
-
-    if (svg) setSource(serializeSvg(svg as SVGSVGElement));
+  const onUpdateValue = useCallback((_mdast: any, next: string) => {
+    setValue(next);
   }, []);
 
-  const pill = (value: ShowcaseView, label: string) => (
-    <Button
-      size="xs"
-      px={4}
-      borderRadius="full"
-      fontWeight="semibold"
-      variant={view === value ? 'solid' : 'ghost'}
-      color={view === value ? 'white' : 'gray.500'}
-      aria-pressed={view === value}
-      onClick={() => setView(value)}
-    >
-      {label}
-    </Button>
-  );
+  // The field remounts when its components object changes identity, which
+  // would drop the caret on every keystroke.
+  const components = useMemo(() => svgComponents, []);
 
   return (
     <Box position="relative">
-      <ButtonGroup
-        size="xs"
-        spacing={1}
-        mb={3}
-        p={1}
-        borderRadius="full"
-        bg="blackAlpha.50"
-        w="fit-content"
-        mx="auto"
-      >
-        {pill(
-          'preview',
-          intl.formatMessage({
-            id: 'HeroShowcasePreview',
-            defaultMessage: 'Ansicht'
-          })
-        )}
-        {pill(
-          'code',
-          intl.formatMessage({
-            id: 'HeroShowcaseCode',
-            defaultMessage: 'Quelltext'
-          })
-        )}
-      </ButtonGroup>
-
       <AspectRatio ratio={4 / 3} w="full" h="auto">
         <Box position="relative" w="full" h="full">
-          {/* The logo stays mounted in both views. Unmounting it would
-              restart its animation on every switch, and the code view reads
-              its markup from this node. */}
-          <Box
-            ref={logoRef}
+          <Image
+            src="/images/iPad.png"
+            alt={intl.formatMessage({
+              id: 'HeroIpadImageAlt',
+              defaultMessage: 'iPad image'
+            })}
+            objectFit="contain"
             position="absolute"
             inset={0}
-            visibility={view === 'preview' ? 'visible' : 'hidden'}
+            w="full"
+            h="full"
+            pointerEvents="none"
+          />
+
+          {/* The screen area of the tablet frame. The frame is a photo, so
+              these insets are measured against it rather than derived. */}
+          <Box
+            position="absolute"
+            top="9%"
+            bottom="9%"
+            left="12%"
+            right="12%"
+            overflow="hidden"
+            borderRadius="sm"
           >
-            <Image
-              src="/images/iPad.png"
-              alt={intl.formatMessage({
-                id: 'HeroIpadImageAlt',
-                defaultMessage: 'iPad image'
-              })}
-              objectFit="contain"
-              position="absolute"
-              inset={0}
-              w="full"
-              h="full"
-            />
-            <Netsnek
-              position="absolute"
-              mt="7%"
-              p="5%"
-              w="full"
-              h="full"
-              sx={logoSx}
+            <UncontrolledMdxField
+              components={components}
+              value={value}
+              isEditing
+              onUpdateValue={onUpdateValue}
+              onMdast={() => {}}
+              tabsTemplate={HeroEditorTabs}
             />
           </Box>
-
-          {view === 'code' && (
-            <Box
-              position="absolute"
-              inset={0}
-              borderRadius="xl"
-              bg="gray.900"
-              color="gray.300"
-              overflow="hidden"
-              boxShadow="lg"
-            >
-              <chakra.pre
-                h="full"
-                overflow="auto"
-                m={0}
-                p={4}
-                fontFamily="mono"
-                fontSize={{ base: '2xs', md: 'xs' }}
-                lineHeight="1.6"
-                whiteSpace="pre"
-                sx={{
-                  // The mark is a wide drawing, so the pane scrolls in both
-                  // directions rather than wrapping attributes mid-line.
-                  '&::-webkit-scrollbar': { width: '8px', height: '8px' },
-                  '&::-webkit-scrollbar-thumb': {
-                    background: 'whiteAlpha.300',
-                    borderRadius: 'full'
-                  }
-                }}
-              >
-                {source}
-              </chakra.pre>
-            </Box>
-          )}
         </Box>
       </AspectRatio>
     </Box>

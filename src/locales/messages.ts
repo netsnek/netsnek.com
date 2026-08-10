@@ -19,6 +19,8 @@
  */
 
 export const messagesDe = {
+  HeroShowcaseValid: 'gültig',
+  HeroShowcaseInvalid: 'Syntaxfehler',
   HeroShowcasePreview: 'Ansicht',
   HeroShowcaseCode: 'Quelltext',
   // Hero (src/components/sections/Hero.tsx)
@@ -278,6 +280,8 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'de';
 
 export const messagesEn: MessageCatalog = {
+  HeroShowcaseValid: 'valid',
+  HeroShowcaseInvalid: 'Syntax error',
   HeroShowcasePreview: 'Preview',
   HeroShowcaseCode: 'Source',
   HeroTitle: "INNOVATIVE. EFFECTIVE.",
@@ -418,6 +422,8 @@ export const messagesEn: MessageCatalog = {
 };
 
 export const messagesSl: MessageCatalog = {
+  HeroShowcaseValid: 'veljavno',
+  HeroShowcaseInvalid: 'Napaka v sintaksi',
   HeroShowcasePreview: 'Predogled',
   HeroShowcaseCode: 'Izvorna koda',
   HeroTitle: "INOVATIVNO. UČINKOVITO.",
@@ -558,6 +564,8 @@ export const messagesSl: MessageCatalog = {
 };
 
 export const messagesIt: MessageCatalog = {
+  HeroShowcaseValid: 'valido',
+  HeroShowcaseInvalid: 'Errore di sintassi',
   HeroShowcasePreview: 'Anteprima',
   HeroShowcaseCode: 'Codice',
   HeroTitle: "INNOVATIVI. EFFICACI.",
@@ -698,6 +706,8 @@ export const messagesIt: MessageCatalog = {
 };
 
 export const messagesJa: MessageCatalog = {
+  HeroShowcaseValid: '有効',
+  HeroShowcaseInvalid: '構文エラー',
   HeroShowcasePreview: 'プレビュー',
   HeroShowcaseCode: 'ソースコード',
   HeroTitle: "革新的に。効果的に。",
