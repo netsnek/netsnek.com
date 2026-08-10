@@ -62,12 +62,16 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
           minW="210px"
           h="max(100%, 100vh)"
           minH="100vh">
-            {isLandingPage && <ArrowPattern
+            {/* The brand backdrop belongs on every page, not just the
+                landing one. Subpages get a shorter band so it stays a
+                backdrop behind the header area and never sits under a long
+                article. */}
+            <ArrowPattern
               position="absolute"
               insetX="0"
-              top="-14" // In Chakra UI the values are in base 4 pixels, '-14' here might not directly translate. Adjust accordingly.
+              top="-14"
               zIndex={-10}
-              h="1000px" // It's preferable to use responsive units or percentages depending on your design.
+              h={isLandingPage ? '1000px' : '520px'}
               w="full"
               bgColor="white"
               fill="rgba(149, 156, 177, 0.1)"
@@ -80,7 +84,7 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
               }}
               yOffset={-96}
               interactive
-            />}
+            />
           {!isAuthenticated && path !== "/" && <AltTopNav path={path} />}
           {!isAuthenticated && path === "/" && <AltTopNav path={path} />}
           {childrenElmnt}
