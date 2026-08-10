@@ -36,8 +36,9 @@ export function stripLocalePrefix(path: string, localePrefix?: string): string {
  * @param sectionLabel  Display name of the docs section the tree hangs
  * under. This is a plain util, not a component, so it cannot reach
  * react-intl itself; the calling component resolves the message and threads
- * it in the same way as `localizeHref`. The German default keeps the
- * previous behaviour for any call site that does not localize yet.
+ * it in the same way as `localizeHref`. Required on purpose: a default would
+ * be an untranslated literal that silently ships whenever a new call site
+ * forgets to localize.
  * @returns  The converted menu data structure and an array of indices of expanded items
  */
 export function createPageTree(
@@ -45,7 +46,7 @@ export function createPageTree(
   currentPath: string,
   localePrefix: string = '',
   localizeHref: (href: string) => string = href => href,
-  sectionLabel: string = 'Blog Artikel'
+  sectionLabel: string
 ) {
   let expandedItemIdx = 0; // The next index of an possibly expanded item
   const result: TMenuStructure = {
