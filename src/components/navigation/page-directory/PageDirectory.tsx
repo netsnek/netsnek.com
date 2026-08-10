@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { FaLink } from '@react-icons/all-files/fa/FaLink';
 import { FC, Fragment, useEffect, useMemo, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { useLocalizeHref, usePageLocale } from '../../../contexts/locale';
 import {
   createPageTree,
@@ -17,6 +18,10 @@ import {
 import { NavMenuItem, NavMenuSection } from '../../../utils/navigation/types';
 import TbUsers from '../../icons/tabler/TbUsers';
 import { generateMenuItem } from './utils/pageDirectory';
+
+/** Stable id of the section the two branches below share. It is never
+ *  rendered, so it survives the translation of the section's label. */
+const NAVIGATION_SECTION_ID = 'navigation';
 
 interface PageDirectoryProps {
   data: ReturnType<typeof createPageTree>;
@@ -39,6 +44,7 @@ const PageDirectory: FC<PageDirectoryProps> = ({
 }) => {
   const { prefix } = usePageLocale();
   const localizeHref = useLocalizeHref();
+  const intl = useIntl();
 
   // The incoming path may carry a locale prefix, the canonical path is
   // what the unprefixed checks below have to run against.
@@ -83,12 +89,21 @@ const PageDirectory: FC<PageDirectoryProps> = ({
     if (!isIncluded) setExpandedIdx([...expandedIdx, idx]);
   };
 
+  const navigationSectionName = intl.formatMessage({
+    id: 'PageDirectorySectionNavigation',
+    defaultMessage: 'Navigation'
+  });
+
   if (canonicalPath === '/') {
     baseMenuItems.unshift({
-      name: 'Navigation',
+      id: NAVIGATION_SECTION_ID,
+      name: navigationSectionName,
       items: [
         {
-          name: 'Documentation',
+          name: intl.formatMessage({
+            id: 'NavDocs',
+            defaultMessage: 'Dokumentation'
+          }),
           href: localizeHref('/docs')
         }
       ]
@@ -97,16 +112,23 @@ const PageDirectory: FC<PageDirectoryProps> = ({
 
   if (isSmallScreen && !isAuthenticated) {
     const item = {
-      name: 'Sign In',
+      name: intl.formatMessage({
+        id: 'NavSignIn',
+        defaultMessage: 'Anmelden'
+      }),
       onClick: signinRedirect
     };
-    const section = baseMenuItems.find(bmi => bmi.name === 'Navigation');
+    // Match on the stable id, never on the (now translated) label.
+    const section = baseMenuItems.find(
+      bmi => bmi.id === NAVIGATION_SECTION_ID
+    );
 
     if (section) {
       section.items.unshift(item);
     } else {
       baseMenuItems.unshift({
-        name: 'Navigation',
+        id: NAVIGATION_SECTION_ID,
+        name: navigationSectionName,
         items: [item]
       });
     }

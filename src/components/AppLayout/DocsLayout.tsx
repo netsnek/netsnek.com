@@ -1,6 +1,7 @@
 import { Box, Container, Flex, Text, VStack } from '@chakra-ui/react';
 import { FaLink } from '@react-icons/all-files/fa/FaLink';
 import React, { FC, useMemo, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { useLocalizeHref, usePageLocale } from '../../contexts/locale';
 import { useMenuStructureContext } from '../../contexts/menu-structure';
 import { TOCProvider } from '../../contexts/toc';
@@ -42,6 +43,7 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
   const { menuStructure } = useMenuStructureContext();
   const { locale, prefix } = usePageLocale();
   const localizeHref = useLocalizeHref();
+  const intl = useIntl();
 
   const [isExpanded, setIsExpanded] = useState(true);
 
@@ -52,13 +54,16 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
   const breadcrumbParts: MainBreadcrumbPart[] = useMemo(() => {
     return [
       {
-        name: 'Artikel',
+        name: intl.formatMessage({
+          id: 'DocsBreadcrumbArticles',
+          defaultMessage: 'Artikel'
+        }),
         isDisabled: canonicalPath === '/docs/',
         href: localizeHref('/docs')
       },
       ...createBreadCrumbParts(menuStructure)
     ];
-  }, [menuStructure, canonicalPath, locale, prefix]);
+  }, [menuStructure, canonicalPath, locale, prefix, intl]);
 
   const memoedChildren = useMemo(() => children, [children]);
 
@@ -86,22 +91,34 @@ const DocsLayout: FC<DocsLayoutProps> = ({ children, path, isCommunity }) => {
               path={path}
               baseMenuItems={[
                 {
-                  name: 'Rezept Etnwicklung',
+                  name: intl.formatMessage({
+                    id: 'DocsMenuSectionRecipes',
+                    defaultMessage: 'Rezept Entwicklung'
+                  }),
                   icon: <TbBooks />,
                   items: [
                     {
-                      name: 'Rezepte',
+                      name: intl.formatMessage({
+                        id: 'DocsMenuRecipes',
+                        defaultMessage: 'Rezepte'
+                      }),
                       href: localizeHref('/recipes'),
                       isActive: canonicalPath.startsWith('/recipes')
                     }
                   ]
                 },
                 {
-                  name: 'Mehr',
+                  name: intl.formatMessage({
+                    id: 'DocsMenuSectionMore',
+                    defaultMessage: 'Mehr'
+                  }),
                   icon: <FaLink />,
                   items: [
                     {
-                      name: 'Hauptseite',
+                      name: intl.formatMessage({
+                        id: 'DocsMenuHome',
+                        defaultMessage: 'Hauptseite'
+                      }),
                       href: localizeHref('/')
                     }
                   ]

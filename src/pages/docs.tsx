@@ -25,7 +25,10 @@ const DocsPage: React.FC<PageProps> = () => {
       href: '/contact'
     },
     {
-      name: 'Edit this page on Jaen',
+      name: intl.formatMessage({
+        id: 'DocsEditPageLink',
+        defaultMessage: 'Diese Seite in Jaen bearbeiten'
+      }),
       href: '/cms/pages'
     }
   ];

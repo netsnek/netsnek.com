@@ -1,5 +1,6 @@
 import { Box, Flex, useDisclosure } from '@chakra-ui/react';
 import React, { FC, ReactNode, useMemo } from 'react';
+import { useIntl } from 'react-intl';
 import TopNav from '../navigation/TopNav';
 import AltTopNav from '../navigation/AltTopNav';
 
@@ -30,7 +31,15 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
   const { isAuthenticated } = useAuth();
   const { locale, prefix } = usePageLocale();
   const localizeHref = useLocalizeHref();
+  const intl = useIntl();
   const currentUserId = '1';
+
+  // createPageTree is a plain util and cannot use react-intl, so the docs
+  // section label is resolved here and threaded in like localizeHref.
+  const docsSectionLabel = intl.formatMessage({
+    id: 'DocsMenuSectionArticles',
+    defaultMessage: 'Blog Artikel'
+  });
 
   // This generates the menu structure from the page tree that is used over the whole app by accessing the context.
   // The locale prefix is stripped for matching and the emitted hrefs are
@@ -40,8 +49,15 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
   const isLandingPage = stripLocalePrefix(path ?? '', prefix).replace(/\/+$/, '') === '';
 
   const menuStructure = useMemo(
-    () => createPageTree(cmsManager, location.pathname, prefix, localizeHref),
-    [cmsManager, path, locale, prefix]
+    () =>
+      createPageTree(
+        cmsManager,
+        location.pathname,
+        prefix,
+        localizeHref,
+        docsSectionLabel
+      ),
+    [cmsManager, path, locale, prefix, docsSectionLabel]
   );
 
   const FooterComp = footer ?? Footer;

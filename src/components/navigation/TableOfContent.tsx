@@ -1,5 +1,6 @@
 import { Divider, HStack, Heading, Stack, VStack } from '@chakra-ui/react';
 import { FC } from 'react';
+import { useIntl } from 'react-intl';
 import useTocNavigation from '../../hooks/use-toc-navigation';
 
 import { MdastRoot } from 'jaen-fields-mdx/dist/MdxField/components/types';
@@ -18,6 +19,7 @@ const TableOfContent: FC<ITableOfContentProps> = ({
   mdxFieldName,
   fieldContent
 }) => {
+  const intl = useIntl();
   const toc = useTOCContext();
 
   // const data = useTocNavigation(
@@ -32,7 +34,10 @@ const TableOfContent: FC<ITableOfContentProps> = ({
   return (
     <Stack spacing="4">
       <Heading as="h3" size="md">
-        Table of Contents
+        {intl.formatMessage({
+          id: 'TocHeading',
+          defaultMessage: 'Inhaltsverzeichnis'
+        })}
       </Heading>
 
       <HStack spacing="4">

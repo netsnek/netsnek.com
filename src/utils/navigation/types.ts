@@ -13,6 +13,12 @@ export type NavMenuItem = {
 };
 
 export type NavMenuSection = {
+  /**
+   * Stable, non-visible identifier. `name` is a translated display label and
+   * therefore useless for lookups, so code that has to find a section again
+   * (PageDirectory merging its navigation entries) matches on this instead.
+   */
+  id?: string;
   name?: string;
   items: NavMenuItem[];
   styling?: BoxProps;

@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Flex, Spacer, Text } from '@chakra-ui/react';
 import { FC, useMemo } from 'react';
+import { useIntl } from 'react-intl';
 import { useLocation } from '@reach/router';
 import {
   createPageTree,
@@ -39,6 +40,15 @@ const MainBottomNav: FC<MainBottomNavProps> = ({}) => {
   const location = useLocation();
   const { locale, prefix } = usePageLocale();
   const localizeHref = useLocalizeHref();
+  const intl = useIntl();
+
+  // createPageTree is a plain util and cannot use react-intl, so the docs
+  // section label is resolved here and threaded in like localizeHref. It
+  // ends up as the boxed section name inside getAdjacentPages.
+  const docsSectionLabel = intl.formatMessage({
+    id: 'DocsMenuSectionArticles',
+    defaultMessage: 'Blog Artikel'
+  });
 
   // Memoized adjacent pages object to navigate to previous and next page.
   // The tree is built locale-aware so the prev/next links stay inside the
@@ -48,11 +58,12 @@ const MainBottomNav: FC<MainBottomNavProps> = ({}) => {
       manager,
       location.pathname,
       prefix,
-      localizeHref
+      localizeHref,
+      docsSectionLabel
     ).menu;
     const idxArr = buildActiveMenuItemIndexArray(menu);
     return getAdjacentPages(idxArr, menu);
-  }, [pageTree, location.pathname, locale, prefix]);
+  }, [pageTree, location.pathname, locale, prefix, docsSectionLabel]);
 
   return (
     <Flex

@@ -33,13 +33,19 @@ export function stripLocalePrefix(path: string, localePrefix?: string): string {
  * @param currentPath  The current path of the page (may carry a locale prefix)
  * @param localePrefix  The locale prefix of the current page, e.g. `en`
  * @param localizeHref  Maps a canonical path to the current locale's path
+ * @param sectionLabel  Display name of the docs section the tree hangs
+ * under. This is a plain util, not a component, so it cannot reach
+ * react-intl itself; the calling component resolves the message and threads
+ * it in the same way as `localizeHref`. The German default keeps the
+ * previous behaviour for any call site that does not localize yet.
  * @returns  The converted menu data structure and an array of indices of expanded items
  */
 export function createPageTree(
   manager: ReturnType<typeof useCMSManagementContext>,
   currentPath: string,
   localePrefix: string = '',
-  localizeHref: (href: string) => string = href => href
+  localizeHref: (href: string) => string = href => href,
+  sectionLabel: string = 'Blog Artikel'
 ) {
   let expandedItemIdx = 0; // The next index of an possibly expanded item
   const result: TMenuStructure = {
@@ -104,7 +110,7 @@ export function createPageTree(
 
   const menuData: NavMenuSection[] = [
     {
-      name: 'Blog Artikel',
+      name: sectionLabel,
       items: docsTree.children
         .filter((child: any) => !child.deleted)
         .map(({ id }: any) => buildMenuItem(id))
