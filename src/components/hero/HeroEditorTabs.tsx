@@ -34,6 +34,19 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
     else setWasValid(false);
   }, [isBroken]);
 
+  // The outline follows the content instead of leading it. Both used to hang
+  // off the same value, but the outline animates while swapping the tab takes
+  // a moment, so on the way out the frame was already gone while the editor
+  // was still standing. This state settles one paint later, which puts them
+  // back in the right order.
+  const [outlinedTab, setOutlinedTab] = useState(tab);
+
+  useEffect(() => {
+    setOutlinedTab(tab);
+  }, [tab]);
+
+  const isEditorOutlined = outlinedTab === EDITOR_TAB;
+
   const pill = (value: number, label: string) => (
     <Button
       size="xs"
@@ -87,14 +100,14 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
         borderWidth={2}
         transition="border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out"
         borderColor={
-          tab === EDITOR_TAB
+          isEditorOutlined
             ? wasValid
               ? 'green.400'
               : 'red.400'
             : 'transparent'
         }
         boxShadow={
-          tab === EDITOR_TAB
+          isEditorOutlined
             ? wasValid
               ? '0 0 0 4px rgba(72, 187, 120, 0.15)'
               : '0 0 0 4px rgba(245, 101, 101, 0.15)'
