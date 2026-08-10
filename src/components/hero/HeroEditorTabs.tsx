@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Box, Button, ButtonGroup, HStack, Text } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import type { TabsProps } from 'jaen-fields-mdx';
 
@@ -51,7 +51,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
 
   return (
     <Box position="relative">
-      <HStack justify="center" mb={3} spacing={3}>
+      <Box display="flex" justifyContent="center" mb={3}>
         <ButtonGroup
           size="xs"
           spacing={1}
@@ -75,29 +75,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
             })
           )}
         </ButtonGroup>
-
-        {tab === EDITOR_TAB && (
-          <HStack spacing={2} aria-live="polite">
-            <Box
-              boxSize={2}
-              borderRadius="full"
-              bg={wasValid ? 'green.400' : 'red.400'}
-              transition="background-color 0.2s ease-in-out"
-            />
-            <Text fontSize="xs" color={wasValid ? 'green.600' : 'red.500'}>
-              {wasValid
-                ? intl.formatMessage({
-                    id: 'HeroShowcaseValid',
-                    defaultMessage: 'gültig'
-                  })
-                : intl.formatMessage({
-                    id: 'HeroShowcaseInvalid',
-                    defaultMessage: 'Syntaxfehler'
-                  })}
-            </Text>
-          </HStack>
-        )}
-      </HStack>
+      </Box>
 
       <Box
         borderRadius="xl"
@@ -106,7 +84,6 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
         // because that is the only thing that makes CodeMirror scroll inside
         // itself instead of being cut off by whatever sits above it.
         overflow={tab === EDITOR_TAB ? 'hidden' : 'visible'}
-        h={tab === EDITOR_TAB ? { base: '320px', md: '420px' } : 'auto'}
         borderWidth={2}
         transition="border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out"
         borderColor={
@@ -124,15 +101,16 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
             : 'none'
         }
         sx={{
-          // CodeMirror only scrolls inside itself when it has a definite
-          // height. A fixed one taller than this box meant the editor never
-          // overflowed its own scroller, so the surplus was simply clipped by
-          // the parent and unreachable. Filling the box makes the scroller do
-          // its job.
-          '.cm-editor': { height: '100%', maxHeight: '100%' },
+          // CodeMirror only scrolls inside itself when it has a DEFINITE
+          // height. A percentage is not one: it resolves against the mdx
+          // field's own wrappers, which are auto, so the editor grew to its
+          // content, never overflowed its scroller, and the surplus was
+          // simply clipped by the box around it. An explicit height is the
+          // one thing that works here, and the box takes its size from it.
+          '.cm-editor': { height: { base: '320px', md: '420px' } },
           '.cm-scroller': {
             fontSize: '12px',
-            overflow: 'auto',
+            overflow: 'auto !important',
             // Keep the wheel inside the editor instead of scrolling the page
             // on once the source is at its end.
             overscrollBehavior: 'contain'
