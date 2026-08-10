@@ -1,11 +1,11 @@
 import {
   AspectRatio,
   Box,
+  Button,
   Flex,
   Grid,
   Heading,
   Image,
-  Link,
   LinkBox,
   LinkOverlay,
   Text
@@ -129,23 +129,6 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
         })}
       />
 
-      {/* Nur der Link. Die Sektion traegt ihre Aussage in der Ueberschrift,
-          eine erklaerende Unterzeile darunter waere eine Entschuldigung. */}
-      <Flex justify="flex-end" mb="8">
-        <Link
-          as={GatsbyLink}
-          to={localizeHref('/docs')}
-          fontSize="md"
-          fontWeight="semibold"
-          color="brand.500"
-          whiteSpace="nowrap"
-        >
-          {intl.formatMessage({
-            id: 'BlogAllLink',
-            defaultMessage: 'Alle Themen ansehen'
-          })}
-        </Link>
-      </Flex>
 
       <Grid
         templateColumns={{
@@ -159,6 +142,22 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
           <BlogCard key={section.id} section={section} />
         ))}
       </Grid>
+
+      {/* Der Weg zu allen Themen gehoert unter die Karten, nicht ueber sie:
+          erst sieht man, worum es geht, dann kann man weiterlesen. */}
+      <Flex justify="center" mt="10">
+        <Button
+          as={GatsbyLink}
+          to={localizeHref('/docs')}
+          variant="solid"
+          filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+        >
+          {intl.formatMessage({
+            id: 'BlogAllLink',
+            defaultMessage: 'Alle Themen ansehen'
+          })}
+        </Button>
+      </Flex>
     </Box>
   );
 };
