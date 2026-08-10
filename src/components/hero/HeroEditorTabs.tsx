@@ -50,14 +50,8 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
   );
 
   return (
-    <Box
-      position="relative"
-      h="full"
-      display="flex"
-      flexDirection="column"
-      minH={0}
-    >
-      <HStack justify="center" mb={3} spacing={3} flexShrink={0}>
+    <Box position="relative">
+      <HStack justify="center" mb={3} spacing={3}>
         <ButtonGroup
           size="xs"
           spacing={1}
@@ -107,9 +101,12 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
 
       <Box
         borderRadius="xl"
-        overflow="hidden"
-        flex="1"
-        minH={0}
+        // The preview must not be clipped, the drawing's shadow reaches past
+        // the device. The editor on the other hand needs a definite height,
+        // because that is the only thing that makes CodeMirror scroll inside
+        // itself instead of being cut off by whatever sits above it.
+        overflow={tab === EDITOR_TAB ? 'hidden' : 'visible'}
+        h={tab === EDITOR_TAB ? { base: '320px', md: '420px' } : 'auto'}
         borderWidth={2}
         transition="border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out"
         borderColor={

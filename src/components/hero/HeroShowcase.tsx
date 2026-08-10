@@ -7,7 +7,7 @@ import {
   useMemo,
   useState
 } from 'react';
-import { AspectRatio, Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import { UncontrolledMdxField } from 'jaen-fields-mdx';
 import type { MdxFieldProps } from 'jaen-fields-mdx';
@@ -149,26 +149,32 @@ export const HeroShowcase: FC = () => {
   const components = useMemo(() => svgComponents, []);
 
   return (
-    <Box position="relative">
-      {/* The drawing is 700 by 560, and it brings its own frame, so it fills
-          the box instead of being inset into a photo of a tablet. */}
-      <AspectRatio ratio={700 / 560} w="full" h="auto">
-        <Box position="relative" w="full" h="full" overflow="hidden">
-          {/* AspectRatio centres its child rather than stretching it, so the
-              playground is pinned to the box instead of shrinking to the
-              width of its own pills. */}
-          <Box position="absolute" inset={0}>
-            <UncontrolledMdxField
-              components={components}
-              value={value}
-              isEditing
-              onUpdateValue={onUpdateValue}
-              onMdast={() => {}}
-              tabsTemplate={HeroEditorTabs}
-            />
-          </Box>
-        </Box>
-      </AspectRatio>
+    // No fixed aspect box around the drawing. The svg carries its own
+    // viewBox, so giving it a width is enough and the height follows. A ratio
+    // box with overflow hidden cropped exactly what it must not: the device's
+    // bottom edge and its shadow.
+    <Box
+      position="relative"
+      sx={{
+        '#hero-artwork svg': {
+          width: '100%',
+          height: 'auto',
+          display: 'block',
+          // The shadow reaches past the device, so it must not be clipped.
+          overflow: 'visible'
+        }
+      }}
+    >
+      <Box id="hero-artwork">
+        <UncontrolledMdxField
+          components={components}
+          value={value}
+          isEditing
+          onUpdateValue={onUpdateValue}
+          onMdast={() => {}}
+          tabsTemplate={HeroEditorTabs}
+        />
+      </Box>
     </Box>
   );
 };
