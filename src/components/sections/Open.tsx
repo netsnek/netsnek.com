@@ -80,14 +80,16 @@ const Open: FC = () => {
       position="relative"
       overflow="hidden"
       bg={PANEL_BG}
-      borderY="1px solid"
-      borderColor="whiteAlpha.200"
+      // Die abgerundete Oberkante mit der Markenlinie sass frueher am
+      // Footer. Sie gehoert an den Anfang der dunklen Flaeche, denn hier
+      // wechselt die Seite von hell nach dunkel. Alles darunter, Karte und
+      // Footer, laeuft ohne Naht weiter.
+      borderTop="1px solid"
+      borderTopRadius="2xl"
+      borderColor="brand.500"
       py={{ base: '16', lg: '24' }}
-      // Oben Luft zum Kontakt, unten keine: die Karte schliesst direkt an,
-      // sonst steht ein weisser Streifen zwischen zwei dunklen Flaechen.
       mt={{ base: '24', sm: '32', lg: '40' }}
       mb="0"
-      borderBottom="none"
     >
       {/* Viele Spalten und viele Zeilen: der Vorhang wird per slice auf die
           Flaeche skaliert, ein kleines Raster liefe sonst als Riesenschrift. */}

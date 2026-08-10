@@ -169,9 +169,10 @@ const Footer: FC = () => {
   return (
     <>
       <Box
-        borderTopRadius="2xl"
-        borderTop="1px solid"
-        borderColor={useColorModeValue('brand.500', 'brand.200')}
+        // Gerade Kante ohne Rundung: der Footer schliesst direkt an die
+        // dunkle Open-Source-Flaeche an, eine abgerundete Oberkante mit
+        // Linie haette dazwischen eine Naht gezogen.
+        bgGradient="none"
         pb={20}
         position="relative"
         //mt="-25px"
