@@ -239,11 +239,14 @@ export const buildMockup = (artwork: string = ''): string =>
       </g>
 
       {/* ------------------------------------------------------------
-           Menueknopf: oranger Kreis mit drei weissen Balken,
-           Mittelpunkt 620.5 / 95.5, Durchmesser 17.
+           Menueknopf: oranges Quadrat mit drei weissen Balken, 17 x 17
+           bei 620.5 / 95.5. Der Radius folgt wie bei den anderen Knoepfen
+           drei Zehnteln der Hoehe, ein Kreis waere der einzige runde
+           Knopf der Seite geblieben.
            ------------------------------------------------------------ */}
       <g id="header-menu">
-        <circle cx="620.5" cy="95.5" r="8.5" fill="#f77f00" />
+        <rect x="612" y="87" width="17" height="17" rx="5.1" ry="5.1"
+              fill="#f77f00" />
         <g fill="#ffffff">
           <rect x="616.3" y="92.4" width="8.6" height="1.3" rx="0.65" ry="0.65" />
           <rect x="616.3" y="94.95" width="8.6" height="1.3" rx="0.65" ry="0.65" />

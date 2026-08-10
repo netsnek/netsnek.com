@@ -42,7 +42,7 @@ const IndexPage: React.FC<PageProps> = () => {
         objectFit="cover"
         h="full"
         w="100%"
-        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d995.97587950944!2d16.392940417133016!3d48.20781426146578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDjCsDEyJzI3LjUiTiAxNsKwMjMnMzUuOCJF!5e0!3m2!1sen!2sat!4v1711776420986!5m2!1sen!2sat"
+        src="https://www.google.com/maps?q=L%C3%B6wengasse%2014%2C%201030%20Wien%2C%20%C3%96sterreich&output=embed"
       />
     </>
   );

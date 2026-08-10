@@ -90,7 +90,7 @@ const Contact = () => {
             defaultValue={intl.formatMessage({
               id: 'ContactDetails',
               defaultMessage:
-                '<b>E-Mail</b><br> <a href="mailto:office@netsnek.com">office@netsnek.com</a><br> <br> <b>Telefon</b><br> <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br> <br> <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br> Löwengasse 28 / Lokal 2A<br> 1030, Wien<br> Österreich'
+                '<b>E-Mail</b><br> <a href="mailto:office@netsnek.com">office@netsnek.com</a><br> <br> <b>Telefon</b><br> <a href="tel:+43 650 834 88 11">+43 650 834 88 11</a><br> <br> <span style="font-weight: 700;">Oder besuchen Sie uns?</span><br> Löwengasse 14 / Lokal 2<br> 1030, Wien<br> Österreich'
             })}
             mt={10}
             w="full"
