@@ -7,10 +7,10 @@ import { useAuth, useCMSManagementContext } from 'jaen';
 import { useLocation } from '@reach/router';
 import { useLocalizeHref, usePageLocale } from '../../contexts/locale';
 import { MenuStructureContext } from '../../contexts/menu-structure';
-import { createPageTree } from '../../utils/navigation';
+import { createPageTree, stripLocalePrefix } from '../../utils/navigation';
 import DocsLayout from './DocsLayout';
 import Footer from './Footer';
-import { GridPattern } from '../GridPattern';
+import { ArrowPattern } from '../ArrowPattern';
 
 interface AppLayoutProps {
   children?: React.ReactNode;
@@ -35,6 +35,10 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
   // This generates the menu structure from the page tree that is used over the whole app by accessing the context.
   // The locale prefix is stripped for matching and the emitted hrefs are
   // localized, so the docs menu works on prefixed locales too.
+  // The hero backdrop belongs on every locale's landing page, not only on
+  // the unprefixed German one.
+  const isLandingPage = stripLocalePrefix(path ?? '', prefix).replace(/\/+$/, '') === '';
+
   const menuStructure = useMemo(
     () => createPageTree(cmsManager, location.pathname, prefix, localizeHref),
     [cmsManager, path, locale, prefix]
@@ -58,7 +62,7 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
           minW="210px"
           h="max(100%, 100vh)"
           minH="100vh">
-            {path === "/" && <GridPattern
+            {isLandingPage && <ArrowPattern
               position="absolute"
               insetX="0"
               top="-14" // In Chakra UI the values are in base 4 pixels, '-14' here might not directly translate. Adjust accordingly.
