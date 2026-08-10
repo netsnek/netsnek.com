@@ -45,7 +45,6 @@ Die Pakete tragen ihre originalen Upstream-Namen, also zum Beispiel `swappy` sta
 | telegram-desktop | 6.6.0 | Nativer aarch64-Build |
 | signal-desktop | 8.1.0 | Nativer aarch64-Build |
 | youtube-music | 3.11.0 | aarch64-Build mit wiederhergestellten Plugins |
-| winamp | 0.5.0 | Nativer aarch64-Qt6-Port |
 | cursor | 2.6.19 | Inoffizieller ARM64-Build |
 
 ### wlroots
@@ -100,10 +99,6 @@ Unverändertes Upstream-Paket von bluesabre/mugshot, das in Fedora nicht paketie
 ### youtube-music
 
 aarch64-Build des Pear-Desktop-Forks von YouTube Music (Upstream [pear-devs/pear-desktop](https://github.com/pear-devs/pear-desktop)). Gegenüber Upstream sind das Adblocker-Plugin und das No-Google-Login-Plugin wiederhergestellt, die beide dort entfernt wurden, und die Google-Consent-Seite rendert im Dark Mode.
-
-### winamp
-
-Nativer aarch64-Qt6-Port von Winamp Classic auf Basis von [lord3nd3r/winamp-linux](https://github.com/lord3nd3r/winamp-linux), das Upstream nur für x86_64 ausliefert. Enthält die klassische Oberfläche mit Classic-Skin-Support, Equalizer, Playlist, Media Library, MPRIS2 für die Medientasten und MilkDrop-Visualisierung über libprojectM. Eigene Patches: Fenster-Ziehen unter Wayland über `QWindow::startSystemMove()`, ein Richtungs-Fix für die EQ-Slider und eine freigeschaltete, als experimentell gekennzeichnete Modern-Skin-Engine. Lizenzhinweis: Winamp steht unter der Winamp Collaborative License, die private Nutzung erlaubt, die Weitergabe modifizierter Versionen laut Lizenztext aber untersagt.
 
 ### cursor
 
