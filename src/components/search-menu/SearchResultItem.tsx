@@ -9,6 +9,7 @@ import {
   Stack
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
+import { useIntl } from 'react-intl';
 import { usePageLocale } from '../../contexts/locale';
 import { stripLocalePrefix } from '../../utils/navigation';
 import { TSearchResult } from '../../utils/search/types';
@@ -36,6 +37,7 @@ export const SearchResultItem: FC<{
   isDocs
 }) => {
   const { prefix } = usePageLocale();
+  const intl = useIntl();
 
   // Search results of prefixed locales point at /<locale>/docs/..., so the
   // label checks below run against the canonical (unprefixed) path.
@@ -140,19 +142,22 @@ export const SearchResultItem: FC<{
         </LinkOverlay>
       </Box>
       <Spacer />
-      {canonicalTo.startsWith('/docs/') ? (
-        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
-          Zum Artikel
-        </Text>
-      ) : canonicalTo.startsWith('/recipes/') ? (
-        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
-          Zum Rezept
-        </Text>
-      ) : (
-        <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
-          Zur Seite
-        </Text>
-      )}
+      <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
+        {canonicalTo.startsWith('/docs/')
+          ? intl.formatMessage({
+              id: 'SearchResultGotoArticle',
+              defaultMessage: 'Zum Artikel'
+            })
+          : canonicalTo.startsWith('/recipes/')
+          ? intl.formatMessage({
+              id: 'SearchResultGotoRecipe',
+              defaultMessage: 'Zum Rezept'
+            })
+          : intl.formatMessage({
+              id: 'SearchResultGotoPage',
+              defaultMessage: 'Zur Seite'
+            })}
+      </Text>
     </LinkBox>
   );
 };

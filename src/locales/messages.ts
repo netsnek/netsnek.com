@@ -117,6 +117,13 @@ export const messagesDe = {
   SearchModalPlaceholder: 'Suche',
   SearchButtonLabel: 'Suche',
 
+  // Trailing hint of a search result row
+  // (src/components/search-menu/SearchResultItem.tsx). The branch is
+  // picked from the result's canonical path.
+  SearchResultGotoArticle: 'Zum Artikel',
+  SearchResultGotoRecipe: 'Zum Rezept',
+  SearchResultGotoPage: 'Zur Seite',
+
   // Products (src/components/ProductContent.tsx)
   ProductAvailable: 'Verfügbar',
   ProductNotAvailable: 'Derzeit nicht verfügbar',
@@ -280,6 +287,9 @@ export const messagesEn: MessageCatalog = {
   SearchInputPlaceholder: "Search",
   SearchModalPlaceholder: "Search",
   SearchButtonLabel: "Search",
+  SearchResultGotoArticle: "Go to article",
+  SearchResultGotoRecipe: "Go to recipe",
+  SearchResultGotoPage: "Go to page",
   ProductAvailable: "Available",
   ProductNotAvailable: "Currently unavailable",
   ProductNameDefault: "Product name",
@@ -390,6 +400,9 @@ export const messagesSl: MessageCatalog = {
   SearchInputPlaceholder: "Iskanje",
   SearchModalPlaceholder: "Iskanje",
   SearchButtonLabel: "Iskanje",
+  SearchResultGotoArticle: "Na članek",
+  SearchResultGotoRecipe: "Na recept",
+  SearchResultGotoPage: "Na stran",
   ProductAvailable: "Na voljo",
   ProductNotAvailable: "Trenutno ni na voljo",
   ProductNameDefault: "Ime izdelka",
@@ -500,6 +513,9 @@ export const messagesIt: MessageCatalog = {
   SearchInputPlaceholder: "Cerca",
   SearchModalPlaceholder: "Cerca",
   SearchButtonLabel: "Cerca",
+  SearchResultGotoArticle: "Vai all'articolo",
+  SearchResultGotoRecipe: "Vai alla ricetta",
+  SearchResultGotoPage: "Vai alla pagina",
   ProductAvailable: "Disponibile",
   ProductNotAvailable: "Al momento non disponibile",
   ProductNameDefault: "Nome prodotto",
@@ -610,6 +626,9 @@ export const messagesJa: MessageCatalog = {
   SearchInputPlaceholder: "検索",
   SearchModalPlaceholder: "検索",
   SearchButtonLabel: "検索",
+  SearchResultGotoArticle: "記事へ",
+  SearchResultGotoRecipe: "レシピへ",
+  SearchResultGotoPage: "ページへ",
   ProductAvailable: "提供中",
   ProductNotAvailable: "現在ご利用いただけません",
   ProductNameDefault: "商品名",
