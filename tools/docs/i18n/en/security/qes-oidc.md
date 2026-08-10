@@ -1,45 +1,35 @@
 ---
 title: QES-OIDC
-description: Qualified electronic signatures via ID Austria as a standards-compliant OpenID Connect login on the Cloudflare edge.
+description: Why I built a login out of the qualified signature with ID Austria and what a membership declaration has to do with it.
 path: /docs/security/qes-oidc
 ---
 
 # QES-OIDC
 
-A qualified electronic signature (QES) via ID Austria is the strongest digital proof of identity available in Austria. QES-OIDC packages this proof as an ordinary OpenID Connect login. Whoever logs in signs a short, human-readable login text in the familiar flow of the trust service provider A-Trust. The service verifies the signature and issues a standards-compliant ID token from it.
+It all started with an association sign-up. For an association project I wanted membership to require a membership declaration that is qualified-signed and countersigned. No scanned signature, no checkbox in a form. A real qualified electronic signature via ID Austria, the strongest proof of digital identity that exists in Austria.
 
-What makes this special: it requires no service provider registration, no contract and no register access. The user brings her own ID Austria, and the service verifies a signature. The identity, meaning first name, last name and a person-bound serial number, comes directly from the signature certificate.
+While building it, something surprised me. I need no contract for it, no service provider registration and no register access. Whoever signs up brings their own ID Austria along, and all I have to do is verify a signature. First name, last name and a person-bound serial number are right there in the signing certificate.
 
-## How a login works
+So I packaged this proof as the thing every application understands anyway: an OpenID Connect login.
 
-1. The application redirects via an OIDC authorization request, authorization code with PKCE.
-2. The service starts a signature ceremony at A-Trust. The user authenticates on A-Trust's original pages, for example with phone number, password and a second factor.
-3. What gets signed is a short German text with the application name, the time and a one-time login code. The code binds each signature to exactly one login.
-4. A-Trust delivers the signature server-side to a single-use pickup address. Repeated deliveries go nowhere.
-5. The service verifies the signature and then serves the normal OIDC flow with code, token, discovery, JWKS, userinfo and RP-initiated logout.
+## What it feels like
 
-## Verification without leaps of faith
+From the application's point of view, QES-OIDC is a perfectly ordinary OIDC provider. From the person's point of view, it goes like this. They are redirected, sign in on the familiar pages of A-Trust and sign a short German text. It contains the name of the application, the point in time and a one-time login code that binds the signature to this one specific login. The service verifies the signature and issues a standard token from it.
 
-Signature verification fails on any doubt. What gets checked are the signature itself, the hash over the exact login text and the signature's time window. The certificate chain is validated against a hard-pinned set of A-Trust certificates. The certificate must be marked as qualified, non-qualified certificates are rejected. The revocation status is queried live via OCSP at the issuer. A revoked certificate always fails.
+I deliberately built the verification to be suspicious. At every doubt it fails, and a certificate that is not qualified or has been revoked does not get through.
 
-## A stable subject without invented data
+One decision I stand by: there is no silent session. Every sign-in is a fresh signing ceremony. That is less convenient than a cookie, but that is exactly the point. Whoever is logged in has just signed.
 
-The OIDC subject is derived as a hash over the person-bound serial number from the certificate and thus stays stable across logins. The service invents no data. In particular, there is no email claim, because the certificate contains no email address. Applications that need their own linking rules get the raw serial numbers as dedicated claims. Because the issuer does not contractually guarantee the stability of the serial number, applications should additionally offer a way to re-link an account.
+And the service invents nothing. There is no email claim, for example, because the certificate simply contains no email address. The stable user identifier is derived from the serial number in the certificate and therefore stays the same across logins.
 
-## Running on the edge
+## The signup ceremony
 
-The service runs as a Cloudflare Worker. Ceremonies, auth requests, codes and tokens live in a Durable Object store with atomic one-time retrieval. Each key can be redeemed exactly once, which prevents replays at the storage level. There is deliberately no persistent SSO session. Every login is a fresh signature ceremony, and there is no silent re-login.
+And then the ceremony that started it all. Whoever wants to join signs a registration PDF with a qualified signature. The operator countersigns, delivered as a signature-required mail via [emailwerk](/docs/emailwerk). The reply mail contains an activation link, and only the confirmed click on it creates the account. Existing accounts are never automatically linked to a signature in the process, because at that moment the email address given is still unconfirmed.
 
-## Federation
+## Where it runs
 
-Any standards-compliant OIDC application can connect to the service directly via discovery. Alternatively, it sits as an external identity provider behind a broker like Zitadel. There, the qualified signature then appears as another login option alongside password and passkey.
+The service runs as a Cloudflare Worker at the edge. Every code and every token in it can be redeemed exactly once, a second attempt runs into nothing. Any standards-compliant OIDC application can dock onto it directly. Alternatively, the service hangs behind a broker like Zitadel as an external identity provider and shows up there as another login option next to password and passkey.
 
-## Signature-confirmed registration
+The test suite verifies against real qualified signatures, among other things, and several security reviews have led to targeted hardening.
 
-An optional registration ceremony builds on the login building block. The candidate signs a server-generated registration PDF with a qualified signature. The operator countersigns, delivered as a signature-required mail via [emailwerk](/docs/emailwerk). The reply mail contains an activation link with an authorization JWT signed by the service. Only the confirmed click on this link provisions the account, idempotently and within a tight time window. Existing accounts are deliberately never linked to a signature automatically, because the provided email address is unconfirmed. This flow was developed for an association project where only those whose membership declaration is qualified-signed and countersigned can join.
-
-## Quality
-
-The service is safeguarded by an extensive automated test suite, including checks against real qualified signatures and live status queries at the issuer. Several security reviews led to targeted hardening, for example against PKCE downgrade, against logout CSRF and for the freshness of OCSP responses.
-
-The source code is open: [github.com/kleberbaum/qes-oidc](https://github.com/kleberbaum/qes-oidc).
+The code is open: [github.com/kleberbaum/qes-oidc](https://github.com/kleberbaum/qes-oidc).

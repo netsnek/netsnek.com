@@ -1,23 +1,15 @@
 ---
 title: Security
-description: Security tools by Netsnek e.U. around hardware keys and qualified electronic signatures.
+description: Two stories about digital identity. A YubiKey with a paper backup and a login that is a qualified signature.
 path: /docs/security
 ---
 
 # Security
 
-Netsnek e.U. develops security tools around two questions. How does a hardware key become recoverable without the private key ever having to leave the machine? And how can a qualified electronic signature be built into familiar workflows like login and email? This section documents the approaches behind both answers.
+Behind this section are two projects that occupied me for a long time. Both circle around the same question. How do I build a digital identity that truly belongs to me and that can take a hit?
 
-## What this documentation covers
+[YubiKey PIV Restore](/docs/security/piv) is about the fear of loss. A hardware key is wonderfully secure and precisely for that reason final. I tell how I gave it a backup on paper and why, in the end, a single public key serves as a TON wallet, as a card key and as an OpenPGP primary key.
 
-### [YubiKey PIV Restore](/docs/security/piv)
+[QES-OIDC](/docs/security/qes-oidc) is about the login. Instead of typing a password, you sign a short text with ID Austria, and the qualified signature turns into a perfectly ordinary OpenID Connect login. It all started with an association sign-up where you only become a member if you really sign.
 
-A tool that deterministically derives the keys of a YubiKey from a wallet recovery phrase. The same Ed25519 public key serves as a TON wallet, as the PIV signature key on the card, and as the OpenPGP primary key. Losing or breaking the card therefore no longer means losing the identity. Alongside it, an age plugin that binds encrypted files to the physical card.
-
-### [QES-OIDC](/docs/security/qes-oidc)
-
-A bridge between qualified electronic signatures and OpenID Connect. Whoever logs in signs a short login text with ID Austria. The service verifies the signature cryptographically and turns it into a standards-compliant OIDC login. Built on top of that, there is a signature-confirmed registration with countersigning.
-
-## How the two work together
-
-The two building blocks complement each other in the mail service [emailwerk](/docs/emailwerk). There, a send can be held back until a qualified electronic signature via ID Austria is in place. In addition, a PGP layer signs the exact content with the key from the YubiKey. The qualified signature proves the sender's identity, the hardware signature the unaltered content.
+The two meet in the mail service [emailwerk](/docs/emailwerk). A mail can wait there until a qualified signature is in place, and the key from the YubiKey signs the exact content along with it. One signature proves who is sending. The other proves that nobody changed anything along the way.
