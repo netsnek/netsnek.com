@@ -1,6 +1,7 @@
 import { useCMSManagementContext, useJaenPageIndex } from 'jaen';
 import { ListItem, OrderedList, SimpleGrid, Text } from '@chakra-ui/react';
 import { Link } from 'gatsby-plugin-jaen';
+import { useIntl } from 'react-intl';
 
 import ImageCard from '../../image-card/components/ImageCard';
 
@@ -10,6 +11,14 @@ const DocsIndex: React.FC<{
   const index = useJaenPageIndex({});
 
   const manager = useCMSManagementContext();
+  const intl = useIntl();
+
+  // Fallback title for a child page the CMS has no metadata title for.
+  // Both variants below render the same label.
+  const untitledLabel = intl.formatMessage({
+    id: 'DocsIndexUntitledPage',
+    defaultMessage: 'Seite lesen'
+  });
 
   const prioritiesIds = [
     'JaenPage 15c1e248-83da-4642-adb5-dff5414fe330',
@@ -41,7 +50,7 @@ const DocsIndex: React.FC<{
         {pages.map((child, index) => (
           <ListItem key={index} mb="2">
             <Link to={manager.pagePath(child.id)} mb="2">
-              {child.jaenPageMetadata?.title || 'Read Page'}
+              {child.jaenPageMetadata?.title || untitledLabel}
             </Link>{' '}
             <Text fontSize="sm" color="gray.600">
               {child.jaenPageMetadata?.description || ''}
@@ -60,7 +69,7 @@ const DocsIndex: React.FC<{
             key={index}
             id={child.id}
             link={{
-              name: `${child.jaenPageMetadata?.title || 'Read Page'}`,
+              name: `${child.jaenPageMetadata?.title || untitledLabel}`,
               href: manager.pagePath(child.id)
             }}
             image={{

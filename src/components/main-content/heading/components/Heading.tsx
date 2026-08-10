@@ -6,6 +6,7 @@ import {
   ThemeTypings
 } from '@chakra-ui/react';
 import React, { Dispatch, FC, ReactNode, SetStateAction } from 'react';
+import { useIntl } from 'react-intl';
 import { IMainContentComponentBaseProps } from '../../types/mainContent';
 import { Link } from 'gatsby-plugin-jaen';
 import FaHashtag from '../../../icons/fontawesome/FaHashtag';
@@ -27,6 +28,21 @@ const variantLinkFontSizes = {
   h4: '16',
   h5: '14',
   h6: '12'
+};
+
+/**
+ * Flattens a heading's children to plain text for the anchor's aria-label.
+ * A heading may contain markup (inline code, a link), and interpolating the
+ * ReactNode straight into the label used to yield "[object Object]".
+ */
+const nodeToText = (node: ReactNode): string => {
+  if (node === null || node === undefined || typeof node === 'boolean')
+    return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(nodeToText).join('');
+  if (React.isValidElement(node))
+    return nodeToText((node.props as { children?: ReactNode }).children);
+  return '';
 };
 
 export interface IHeadingProps
@@ -57,6 +73,8 @@ const Heading: FC<IHeadingProps> = ({
   children,
   ...compProps
 }) => {
+  const intl = useIntl();
+
   let props: ChakraHeadingProps = {};
   if (variant === 'h2') {
     props = {
@@ -95,7 +113,13 @@ const Heading: FC<IHeadingProps> = ({
       {!noAnchor && id && (
         <Link
           to={`#${id}`}
-          aria-label={`Link to ${children}`}
+          aria-label={intl.formatMessage(
+            {
+              id: 'HeadingAnchorLabel',
+              defaultMessage: 'Link zu {title}'
+            },
+            { title: nodeToText(children) || id }
+          )}
           position="relative"
           ml={1}
           opacity={activeLink ? 1 : 0}

@@ -13,6 +13,7 @@ import {
   UnorderedList
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
+import { useIntl } from 'react-intl';
 
 interface ICodeResultPreviewProps {
   errors?: string[];
@@ -36,6 +37,8 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
   headerTextRight,
   isExecuting
 }) => {
+  const intl = useIntl();
+
   let baseProps = {};
 
   if (isStandalone) baseProps = { mt: 8 };
@@ -146,7 +149,10 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
                   fontSize="sm"
                   color="components.codeResultPreview.noResult.text.color"
                 >
-                  Not run yet
+                  {intl.formatMessage({
+                    id: 'CodeResultNotRunYet',
+                    defaultMessage: 'Noch nicht ausgeführt'
+                  })}
                 </Text>
               </Center>
             )}

@@ -1,5 +1,6 @@
 import { Box, Button } from '@chakra-ui/react';
 import { FC, ReactNode, useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import CodeSnippet, {
   ICodeSnippetProps
 } from '../../code-snippet/components/CodeSnippet';
@@ -7,8 +8,8 @@ import CodeResultPreview from '../../code-result-preview/components/CodeResultPr
 import ReactDOM from 'react-dom/server';
 
 interface ICodePlaygroundProps {
-  children: string;
-  codeEditorProps: Exclude<ICodeSnippetProps, 'children'>;
+  children?: string;
+  codeEditorProps?: Exclude<ICodeSnippetProps, 'children'>;
   onCodeChange?: (code: string) => void;
   toolbar?: ReactNode;
 }
@@ -22,7 +23,27 @@ const CodePlayground: FC<ICodePlaygroundProps> = ({
   toolbar,
   onCodeChange
 }) => {
-  const [code, setCode] = useState<string>(children);
+  const intl = useIntl();
+
+  // The defaults used to live in defaultProps, which cannot reach
+  // react-intl. They are resolved here instead, keeping the previous
+  // semantics: codeEditorProps is replaced wholesale, never merged.
+  const editorProps: Exclude<ICodeSnippetProps, 'children'> =
+    codeEditorProps ?? {
+      headerText: intl.formatMessage({
+        id: 'CodePlaygroundEditorHeader',
+        defaultMessage: 'Bearbeitbarer Code'
+      }),
+      language: 'javascript'
+    };
+
+  const [code, setCode] = useState<string>(
+    children ??
+      intl.formatMessage({
+        id: 'CodePlaygroundPlaceholderCode',
+        defaultMessage: 'Das ist eine Code-Spielwiese'
+      })
+  );
 
   useEffect(() => {
     if (onCodeChange) onCodeChange(code);
@@ -40,7 +61,7 @@ const CodePlayground: FC<ICodePlaygroundProps> = ({
       >
         <CodeSnippet
           children={code}
-          {...codeEditorProps}
+          {...editorProps}
           containerProps={{
             border: 'none',
             borderBottomRadius: 'none'
@@ -53,20 +74,15 @@ const CodePlayground: FC<ICodePlaygroundProps> = ({
       </Box>
       <CodeResultPreview
         isStandalone
-        headerText="Code Preview"
+        headerText={intl.formatMessage({
+          id: 'CodePlaygroundPreviewHeader',
+          defaultMessage: 'Code-Vorschau'
+        })}
         // isExecuting={isExecuting}
         // result={result}
       />
     </>
   );
-};
-
-CodePlayground.defaultProps = {
-  children: 'This is a code playground',
-  codeEditorProps: {
-    headerText: 'Editable Code',
-    language: 'javascript'
-  }
 };
 
 export default CodePlayground;
