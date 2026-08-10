@@ -41,7 +41,7 @@ Wayfire wird über `~/.config/wayfire.ini` konfiguriert. Die wichtigsten Entsche
 
 - `preferred_decoration_mode = server` sorgt für Server-Side-Decorations an allen Fenstern. Alle Apps bekommen einheitliche Titelleisten vom Compositor.
 - `scale = 2.0` für HiDPI auf dem Retina-Display.
-- Virtuelle Arbeitsflächen im 2x2-Raster, erreichbar per Tastatur und 3-Finger-Gesten.
+- Virtuelle Arbeitsflächen in einer 4x1-Reihe (`vwidth = 4`, `vheight = 1`), erreichbar per Tastatur und Gesten.
 - Plugins wie expo (Workspace-Übersicht), grid, cube und wobbly für den klassischen Compositing-Komfort.
 
 Screenshots laufen über grim und slurp, die Bearbeitung über swappy. Als Launcher dient wofi, als Terminal kitty.
