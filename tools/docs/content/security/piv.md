@@ -34,8 +34,8 @@ Nebenbei fällt derselbe Public Key auch als OpenSSH-Zeile ab und kann direkt in
 
 Ein verwandter, eigenständiger Baustein ist ein age-Plugin, das Dateien an den PIV-Signaturschlüssel der Karte bindet. Ed25519 kann nicht entschlüsseln, deshalb nutzt das Plugin eine andere Eigenschaft. Die Karte signiert einen festen Kontext-Text, und weil Ed25519-Signaturen deterministisch sind, ist diese Signatur ein wiederholbares Geheimnis. Daraus wird per HKDF ein symmetrischer Schlüssel abgeleitet, der den Dateischlüssel der age-Datei umschließt. Entschlüsseln erfordert die physische Karte, die PIN und je nach Policy eine Berührung.
 
-Die Determinismus-Annahme ist tragend und wurde auf echter Hardware verifiziert. Ein eingebauter Selbsttest prüft sie auf jeder Karte nach, bevor man dem Plugin vertraut.
+Die Determinismus-Annahme ist tragend und wurde auf echter Hardware verifiziert. Ein eingebauter Selbsttest prüft sie auf jeder Karte nach, bevor man dem Plugin vertraut. Der Quellcode ist offen: [github.com/kleberbaum/age-plugin-piv25519](https://github.com/kleberbaum/age-plugin-piv25519).
 
 ## Status
 
-Das Werkzeug piv-restore ist derzeit nicht öffentlich verfügbar. Diese Seite dokumentiert den Ansatz und den Funktionsumfang.
+Das Werkzeug piv-restore ist derzeit nicht öffentlich verfügbar. Diese Seite dokumentiert den Ansatz und den Funktionsumfang. Das age-Plugin ist bereits offen auf GitHub.

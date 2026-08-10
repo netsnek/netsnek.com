@@ -41,3 +41,5 @@ Auf dem Login-Baustein setzt eine optionale Registrierungs-Zeremonie auf. Die Ka
 ## Qualität
 
 Der Dienst wird durch eine umfangreiche automatisierte Testsuite abgesichert, darunter Prüfungen gegen echte qualifizierte Signaturen und Live-Statusabfragen beim Aussteller. Mehrere Sicherheits-Reviews führten zu gezielten Härtungen, etwa gegen PKCE-Downgrade, gegen Logout-CSRF und für die Frische von OCSP-Antworten.
+
+Der Quellcode ist offen: [github.com/kleberbaum/qes-oidc](https://github.com/kleberbaum/qes-oidc).
