@@ -450,34 +450,32 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               </LinkOverlay>
             </LinkBox>
             <Flex alignItems="center" flex="1" justifyContent="flex-end">
+              {/* Solid white with black content, like every other control in
+                  this bar. It used to stay transparent with a white outline
+                  from lg upwards, which is what made its keycap unreadable:
+                  the cap is styled for a light surface and was sitting on the
+                  black panel. On white it needs nothing said about it. */}
               <SearchMenu
-                borderColor={'white'}
                 boxSizing={'border-box'}
                 borderWidth={{ base: 0, lg: 2 }}
-                bg={{ base: 'white', lg: 'transparent' }}
-                color={{ base: 'black', lg: 'gray.400' }}
-                // The keycap carries its own colours, picked for the white
-                // header it normally sits on, and this panel is black. Left
-                // alone the slash is a dark glyph in a dark box, which is to
-                // say invisible. It only shows from lg, so this is the one
-                // breakpoint that needs saying.
-                sx={{
-                  kbd: {
-                    color: 'white',
-                    bgColor: 'whiteAlpha.200',
-                    borderColor: 'whiteAlpha.400'
-                  }
-                }}
+                borderColor="white"
+                bgColor="white"
+                color="black"
                 _hover={{
-                  borderColor: 'brand.500',
-                  bg: { base: 'brand.500', lg: 'transparent' }
+                  bgColor: 'brand.400',
+                  color: 'white',
+                  borderColor: 'brand.400'
+                }}
+                _active={{
+                  bgColor: 'brand.300',
+                  color: 'white',
+                  borderColor: 'brand.300'
                 }}
               />
               <Button
                 ml={4}
-                _hover={{
-                  bg: 'brand.500'
-                }}
+                _hover={{ bg: 'brand.400', color: 'white' }}
+                _active={{ bg: 'brand.300', color: 'white' }}
                 borderRadius="xl"
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 //variant="ghost"
@@ -521,9 +519,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               />
               <IconButton
                 ml={4}
-                _hover={{
-                  bg: 'brand.500'
-                }}
+                _hover={{ bg: 'brand.400' }}
+                _active={{ bg: 'brand.300' }}
                 icon={
                   <HamburgerMenuIcon
                     // handleClick={toggleMobileMenu}
