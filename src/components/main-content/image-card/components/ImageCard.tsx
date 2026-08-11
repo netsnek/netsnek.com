@@ -1,4 +1,4 @@
-import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '../../../../components/icons/chakra';
 import { Box, Card, CardProps, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { FC } from 'react';
 import { IMainContentComponentBaseProps } from '../../types/mainContent';

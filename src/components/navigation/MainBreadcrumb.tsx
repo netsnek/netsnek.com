@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon } from '../../components/icons/chakra';
 import {
   Breadcrumb,
   BreadcrumbItem,

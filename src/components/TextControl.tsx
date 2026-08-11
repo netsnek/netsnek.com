@@ -13,7 +13,7 @@ import {
   Textarea,
   useEditableControls
 } from '@chakra-ui/react';
-import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons';
+import { CheckIcon, CloseIcon, EditIcon } from '../components/icons/chakra';
 import { useIntl } from 'react-intl';
 
 export const TextControl: React.FC<{

@@ -17,7 +17,7 @@ import {
   StyleProps,
   Text
 } from '@chakra-ui/react';
-import { EditIcon } from '@chakra-ui/icons';
+import { EditIcon } from '../../components/icons/chakra';
 import { useMediaModal } from 'jaen';
 
 const InjectImage: React.FC<{

@@ -1,4 +1,4 @@
-import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '../../../../components/icons/chakra';
 import {
   AccordionButton,
   AccordionButtonProps,

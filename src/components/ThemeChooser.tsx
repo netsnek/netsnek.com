@@ -1,4 +1,4 @@
-import { CheckIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { CheckIcon, MoonIcon, SunIcon } from '../components/icons/chakra';
 import {
   Button,
   ButtonProps,

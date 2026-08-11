@@ -19,7 +19,7 @@ import {
   Portal,
   Text
 } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { ChevronDownIcon } from '../components/icons/chakra';
 import { navigate } from 'gatsby';
 import { FC, useMemo } from 'react';
 import { useIntl } from 'react-intl';

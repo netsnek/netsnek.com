@@ -2,7 +2,7 @@ import { withRedux } from 'jaen';
 import { Button, ButtonProps, Kbd, chakra } from '@chakra-ui/react';
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
-import { SearchIcon } from '@chakra-ui/icons';
+import { SearchIcon } from '../../components/icons/chakra';
 
 interface ISearchButtonProps extends ButtonProps {
   openModal: () => void;

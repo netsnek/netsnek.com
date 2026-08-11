@@ -17,7 +17,6 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.8.1",
     "@codemirror/lang-xml": "^6.1.0",
     "@codemirror/language": "^6.10.0",
