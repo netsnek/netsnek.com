@@ -30,7 +30,6 @@
     "framer-motion": "^10.16.1",
     "gatsby": "^5.11.0",
     "gatsby-jaen-emailwerk": "link:../jaen/packages/gatsby-jaen-emailwerk",
-    "gatsby-jaen-lens": "1.2.0",
     "gatsby-plugin-cloudflare-pages": "^1.0.3",
     "gatsby-plugin-jaen": "link:../jaen/packages/gatsby-plugin-jaen",
     "gatsby-source-jaen": "link:../jaen/packages/gatsby-source-jaen",

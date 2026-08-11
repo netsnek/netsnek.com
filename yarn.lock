@@ -3734,17 +3734,6 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-primitive" "1.0.3"
 
-"@radix-ui/react-avatar@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-avatar/-/react-avatar-1.0.4.tgz#de9a5349d9e3de7bbe990334c4d2011acbbb9623"
-  integrity sha512-kVK2K7ZD3wwj3qhle0ElXhOjbezIgyl2hVvgwfIdexL3rN6zJmy5AqqIf+D31lxVppdzV8CjAfZ6PklkmInZLw==
-  dependencies:
-    "@babel/runtime" "^7.13.10"
-    "@radix-ui/react-context" "1.0.1"
-    "@radix-ui/react-primitive" "1.0.3"
-    "@radix-ui/react-use-callback-ref" "1.0.1"
-    "@radix-ui/react-use-layout-effect" "1.0.1"
-
 "@radix-ui/react-checkbox@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-checkbox/-/react-checkbox-1.0.4.tgz#98f22c38d5010dd6df4c5744cac74087e3275f4b"
@@ -3919,14 +3908,6 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-slot" "1.0.2"
-
-"@radix-ui/react-separator@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-separator/-/react-separator-1.0.3.tgz#be5a931a543d5726336b112f465f58585c04c8aa"
-  integrity sha512-itYmTy/kokS21aiV5+Z56MZB54KrhPgn6eHDKkFeOLR34HMN2s8PaN47qZZAGnvupcjxHaFZnW4pQEh0BvvVuw==
-  dependencies:
-    "@babel/runtime" "^7.13.10"
-    "@radix-ui/react-primitive" "1.0.3"
 
 "@radix-ui/react-slot@1.0.2", "@radix-ui/react-slot@^1.0.2":
   version "1.0.2"
@@ -8785,17 +8766,6 @@ gatsby-graphiql-explorer@^3.13.1:
 "gatsby-jaen-emailwerk@link:../jaen/packages/gatsby-jaen-emailwerk":
   version "0.0.0"
   uid ""
-
-gatsby-jaen-lens@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-jaen-lens/-/gatsby-jaen-lens-1.2.0.tgz#6b71b0d3c5205d084fee666ecdf098a3454c65b6"
-  integrity sha512-7S/UPyCPslm3AljmMHQ0EWinDhtPfMHe+lXpEivMpMpyWiYX+o/RcjNo/JXzWAANgO5i0n1gB6EZaBQ7jyQ2Zw==
-  dependencies:
-    react-hook-form "^7.46.1"
-    react-icons "^4.11.0"
-    snek-query "^0.0.83"
-    use-debounce "^9.0.4"
-    zxcvbn "^4.4.2"
 
 gatsby-legacy-polyfills@^3.13.1:
   version "3.13.1"
@@ -14210,11 +14180,6 @@ react-hook-form@^7.51.5:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.51.5.tgz#4afbfb819312db9fea23e8237a3a0d097e128b43"
   integrity sha512-J2ILT5gWx1XUIJRETiA7M19iXHlG74+6O3KApzvqB/w8S5NQR7AbU8HVZrMALdmDgWpRPYiZJl0zx8Z4L2mP6Q==
 
-react-icons@^4.11.0:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.12.0.tgz#54806159a966961bfd5cdb26e492f4dafd6a8d78"
-  integrity sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==
-
 react-intl@6.8.9:
   version "6.8.9"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-6.8.9.tgz#ef36b2a19a0eb97afbeaeab9679273fcbf2ea261"
@@ -15341,19 +15306,6 @@ snek-query@^0.0.114:
   version "0.0.114"
   resolved "https://registry.yarnpkg.com/snek-query/-/snek-query-0.0.114.tgz#83f2afd9c58f6905850ae3f720a5125d01091baa"
   integrity sha512-Jh5nQNszdekKgmj6KJ9d2OUV+up5HAmLyGMy3OC0ydDYovQSVxyG2y/BpLs1ut+6N8vPHJthiK5I1PFf4J0AzA==
-  dependencies:
-    commander "^9.4.1"
-    graphql "^16.6.0"
-    lodash.clonedeep "^4.5.0"
-    pino "^8.8.0"
-    pino-pretty "^9.1.1"
-    rxjs "^7.8.0"
-    typescript "^4.9.4"
-
-snek-query@^0.0.83:
-  version "0.0.83"
-  resolved "https://registry.yarnpkg.com/snek-query/-/snek-query-0.0.83.tgz#57fcadb2f63a0c26f1ac05de666ba0e05e841b6a"
-  integrity sha512-fbbwMZ7XUxvmBpIGDQ13lNQGvShs1TgveRDrlKWY5JSbOTKEu+AJUv09mcNb5sgm+na7bMEmcTEky6IfvOfdEg==
   dependencies:
     commander "^9.4.1"
     graphql "^16.6.0"
@@ -17177,8 +17129,3 @@ zwitch@^2.0.0, zwitch@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-2.0.4.tgz#c827d4b0acb76fc3e685a4c6ec2902d51070e9d7"
   integrity sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==
-
-zxcvbn@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/zxcvbn/-/zxcvbn-4.4.2.tgz#28ec17cf09743edcab056ddd8b1b06262cc73c30"
-  integrity sha512-Bq0B+ixT/DMyG8kgX2xWcI5jUvCwqrMxSFam7m0lAf78nf04hv6lNCsyLYdyYTrCVMqNDY/206K7eExYCeSyUQ==
