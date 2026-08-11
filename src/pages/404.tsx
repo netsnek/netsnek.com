@@ -10,11 +10,18 @@ const Page = (props: PageProps) => {
 
   return (
     <Box textAlign="center" py={10} px={6}>
+      {/* v3 reads bgGradient as the direction alone and takes the stops from
+          gradientFrom/Via/To. v2's `linear(...)` string still type-checks here,
+          because the prop accepts any string, but it reaches the browser as an
+          unparseable background-image and is dropped, so both gradients on this
+          page had gone invisible. */}
       <Heading
         display="inline-block"
         as="h2"
         size="2xl"
-        bgGradient="linear(to-r, brand.400, brand.600)"
+        bgGradient="to-r"
+        gradientFrom="brand.400"
+        gradientTo="brand.600"
         backgroundClip="text"
       >
         {/* <chakra.svg
@@ -41,7 +48,10 @@ const Page = (props: PageProps) => {
       </Text>
 
       <Button
-        bgGradient="linear(to-r, brand.400, brand.500, brand.600)"
+        bgGradient="to-r"
+        gradientFrom="brand.400"
+        gradientVia="brand.500"
+        gradientTo="brand.600"
         color="white"
         variant="solid"
         asChild

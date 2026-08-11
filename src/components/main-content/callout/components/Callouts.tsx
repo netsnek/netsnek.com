@@ -1,4 +1,4 @@
-import { Alert, Box } from '@chakra-ui/react';
+import { Alert, AlertRootProps, Box } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 
 interface ICalloutProps {
@@ -13,7 +13,15 @@ interface ICalloutProps {
  */
 const Callout: FC<ICalloutProps> = ({ type = 'default', icon, children }) => {
   return (
-    <Alert.Root variant={type} borderRadius="lg" p={4} mt={8}>
+    // The four names live in the site's alert slot recipe, but nothing runs
+    // `chakra typegen` here, so Alert.Root's variant prop still advertises the
+    // built-in union. Same cast the jaen packages use for their own variants.
+    <Alert.Root
+      variant={type as AlertRootProps['variant']}
+      borderRadius="lg"
+      p={4}
+      mt={8}
+    >
       <Alert.Indicator />
       <Box
         css={{

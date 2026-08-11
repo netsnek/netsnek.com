@@ -1,7 +1,6 @@
 import {
   Input,
   InputGroup,
-  InputLeftElement,
   Spinner,
   VStack,
   Dialog,
@@ -84,10 +83,16 @@ const SearchModal: FC<ISearchModalProps> = ({
             borderRadius="lg"
           >
             <Dialog.Body px={4} overflow="hidden" color="shared.text.default">
-              <InputGroup size="sm">
-                <InputLeftElement pointerEvents="none">
-                  {isLoading ? <Spinner boxSize="3" /> : <TbSearch />}
-                </InputLeftElement>
+              {/* InputGroup renders the start element itself and already
+                  gives it pointerEvents="none", which is what the v2
+                  InputLeftElement spelled out by hand. The group's own
+                  size="sm" is gone with it: v3 has no size context to hand
+                  down, and the Input below already carries the size. */}
+              <InputGroup
+                startElement={
+                  isLoading ? <Spinner boxSize="3" /> : <TbSearch />
+                }
+              >
                 <Input
                   ref={inputRef}
                   placeholder={intl.formatMessage({
@@ -96,7 +101,10 @@ const SearchModal: FC<ISearchModalProps> = ({
                   })}
                   size="sm"
                   borderRadius="lg"
-                  onValueChange={e => {
+                  // Back to onChange: the codemod renamed it to the
+                  // onValueChange of v3's composed inputs, which the plain
+                  // Input does not have, so nothing was listening.
+                  onChange={e => {
                     setSearchQuery(e.target.value);
                   }}
                   defaultValue={defaultQuery}

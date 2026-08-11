@@ -38,7 +38,10 @@ const Layout: React.FC<LayoutProps> = ({ children, pageProps }) => {
 
   return (
     <CMSManagement>
-      <ContactModalProvider location={{ pathname: path, search: '' }}>
+      {/* The provider takes its location from @reach/router itself and has
+          never declared, destructured or read a `location` prop, so dropping
+          the one v2 passed here changes nothing but the type. */}
+      <ContactModalProvider>
         <AppLayout footer={Footer} isDocs={isDocs} path={path}>
           {children}
         </AppLayout>

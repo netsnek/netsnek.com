@@ -42,7 +42,9 @@ import { toV3SemanticTokens } from './semanticTokens/to-v3';
  * full of garbage. Miss `flat.se.green` or `gray.550` and about fifteen tokens
  * die without a word.
  */
-const toTokenScale = (value: unknown): unknown =>
+type TokenTree = { value: string } | { [key: string]: TokenTree };
+
+const toTokenScale = (value: unknown): TokenTree =>
   typeof value === 'string'
     ? { value }
     : Object.fromEntries(
@@ -69,8 +71,12 @@ export const siteConfig = defineConfig({
       '2xl': '1536px'
     },
     tokens: {
-      colors: toTokenScale(themeColors) as Record<string, unknown>,
-      fonts: toTokenScale(themeFonts) as Record<string, unknown>,
+      // The two helpers produce the shape v3 wants but cannot prove it to
+      // TypeScript: Recursive<TokenSchema> is a conditional type over the
+      // literal keys of the input, and both trees are built at runtime from
+      // plain objects. The runtime shape is asserted by tests/08-theme.
+      colors: toTokenScale(themeColors) as never,
+      fonts: toTokenScale(themeFonts) as never,
       sizes: {
         /**
          * v3 dropped the `container.*` namespace. ServiceDetails.tsx:38 sets
@@ -87,10 +93,7 @@ export const siteConfig = defineConfig({
       }
     },
     semanticTokens: {
-      colors: toV3SemanticTokens(themeSemanticTokens.colors) as Record<
-        string,
-        unknown
-      >
+      colors: toV3SemanticTokens(themeSemanticTokens.colors) as never
     },
     recipes: {
       button: buttonRecipe,

@@ -3,6 +3,7 @@ import {
   Accordion,
   Box,
   HStack,
+  StackProps,
   Text,
   useBreakpointValue
 } from '@chakra-ui/react';
@@ -75,9 +76,13 @@ const PageDirectory: FC<PageDirectoryProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultExpandedKey]);
   const { isAuthenticated, signinRedirect } = useAuth();
+  // v2 was handed the string 'false', which is not a breakpoint name, so no
+  // fallback ever matched and the pre-hydration value came back undefined. v3
+  // types the option and resolves an unmatched name to the widest breakpoint in
+  // the map, so 'md' is what reproduces that same falsy first render.
   const isSmallScreen = useBreakpointValue(
     { base: true, md: false },
-    { fallback: 'false' }
+    { fallback: 'md' }
   );
 
   const updateExpandedIdx = (idx: number, mode: 'toggle' | 'set') => {
@@ -147,10 +152,16 @@ const PageDirectory: FC<PageDirectoryProps> = ({
           borderBottomWidth: 0
         }
       }}
-      variant="leftNav"
+      // leftNav comes from the site's accordion slot recipe. v3 only types the
+      // variants Chakra itself ships until `chakra typegen` writes the custom
+      // ones into node_modules, which no build step here does.
+      variant={'leftNav' as any}
       transition="opacity 0.2s ease-in-out, width 0.2s ease-in-out"
       mb={isMobile ? 12 : undefined}
-      value={expandedIdx}
+      // v2 drove the accordion by numeric `index`. v3 drives it by item value,
+      // so the same numbering is carried across as strings and every item
+      // stringifies the index it was handed in generateMenuItem.
+      value={expandedIdx.map(String)}
     >
       {[...data.menu, ...baseMenuItems].map((section, i) => (
         <Fragment key={i}>
@@ -162,7 +173,11 @@ const PageDirectory: FC<PageDirectoryProps> = ({
               mt={i === 0 ? 0 : 9}
               fontSize="sm"
               fontWeight="bold"
-              {...section.styling}
+              // NavMenuSection.styling is a BoxProps, where `direction` is the
+              // CSS writing direction; Stack narrows the same name to a flex
+              // direction. No section supplies either, so the assertion only
+              // bridges the two spellings of one prop name.
+              {...(section.styling as StackProps)}
               color="components.pageDirectory.section.title.color"
               opacity={1}
             >

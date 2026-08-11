@@ -43,7 +43,11 @@ export const SearchResultItem: FC<{
   // label checks below run against the canonical (unprefixed) path.
   const canonicalTo = stripLocalePrefix(item.to ?? '', prefix);
 
-  let props: MenuItemProps = {};
+  // Nothing spreads `props` onto the markup below, so the defaultFocus
+  // background never reached the DOM in v2 either. Left dead rather than
+  // wired up, because wiring it up would change how the list looks. The
+  // Omit is what keeps the empty literal legal: v3 made `value` required.
+  let props: Omit<MenuItemProps, 'value'> = {};
 
   if (defaultFocus) {
     props = {

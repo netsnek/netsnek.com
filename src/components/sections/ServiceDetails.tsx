@@ -50,8 +50,12 @@ const Services = () => {
             display={{ base: 'none', lg: 'block' }}
           >
             {/* Please replace `servicesSvg` with the source of your image or adjust as needed */}
+            {/* StylizedImage is untyped and spreads onto a Chakra Image, so
+                the codemod never saw this one. v3 has no sx, and an unknown
+                prop is passed straight to the DOM, which would have dropped
+                the hue rotation. */}
             <StylizedImage
-              sx={{
+              css={{
                 filter:
                   'hue-rotate(180deg) saturate(1.3) brightness(1.1) contrast(0.9)'
               }}

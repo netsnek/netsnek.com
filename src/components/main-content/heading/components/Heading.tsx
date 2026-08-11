@@ -1,9 +1,7 @@
 import {
   Heading as ChakraHeading,
   HeadingProps as ChakraHeadingProps,
-  HeadingProps,
-  ResponsiveValue,
-  ThemeTypings
+  HeadingProps
 } from '@chakra-ui/react';
 import React, { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { useIntl } from 'react-intl';

@@ -97,7 +97,16 @@ const QASMPlayground: FC<IQASMPlaygroundProps> = ({ children }) => {
           </Box>
         </Box>
       )}
-      <Alert.Root variant="info" borderRadius="lg" p={4} mt={code ? 4 : 0}>
+      <Alert.Root
+        // `info` is one of the four kinds the site's own alert recipe defines.
+        // v3 derives the variant union from generated recipe types, which this
+        // site does not produce, so the built-in union is all the checker sees
+        // and the theme's value has to be cast past it.
+        variant={'info' as never}
+        borderRadius="lg"
+        p={4}
+        mt={code ? 4 : 0}
+      >
         <Alert.Indicator />
         <Text mt="0 !important">
           Der interaktive QASM-Playground ist auf PhotonQ verfügbar.{' '}

@@ -3,7 +3,7 @@ import {
   Heading,
   HStack,
   Box,
-  Divider,
+  Separator,
   Icon,
   VStack,
   Stack,
@@ -102,7 +102,7 @@ export const SearchResultSection: FC<{
         />
       )}
       {/* <SearchResultSectionTitle title={section.title} idx={idx} icon={icon} /> */}
-      {/* <Divider /> */}
+      {/* <Separator /> */}
       <List.Root as="ul" listStyleType="none" ml={isDocs ? 4 : 0}>
         <List.Item>
           {section.results.map((result, i) => (

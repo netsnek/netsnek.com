@@ -1,6 +1,7 @@
 import { ArrowForwardIcon } from '../../../../components/icons/chakra';
 import {
-  AccordionButtonProps,
+  Accordion,
+  AccordionItemTriggerProps,
   Box,
   Center,
   CenterProps,
@@ -50,7 +51,7 @@ export const generateMenuItem = (
     <ArrowForwardIcon transform={`rotate(-45deg)`} ml={2} />
   );
 
-  const styleProps: CenterProps & AccordionButtonProps & LinkProps = {
+  const styleProps: CenterProps & AccordionItemTriggerProps & LinkProps = {
     _hover: { opacity: 1 }
   };
   if (item.isActive)
@@ -89,10 +90,14 @@ export const generateMenuItem = (
       <Accordion.Item
         ref={accordionItemRef}
         key={item.href + item.name}
-        value={item.href + item.name}
+        // v2 kept href+name as the item's DOM id and expanded items by their
+        // numeric position. v3 expands by value, so the value has to carry that
+        // same position, which is what PageDirectory holds in its state.
+        value={String(expandedIdx)}
         css={{
-          // Remove padding from last accordion item
-          '& .chakra-accordion__panel': {
+          // Remove padding from last accordion item. v3 moved the panel's
+          // padding from the panel itself onto the body slot inside it.
+          '& .chakra-accordion__itemBody': {
             paddingBottom: 0
           }
         }}
@@ -100,93 +105,93 @@ export const generateMenuItem = (
         // This is a hack to remove the bottom border from the last accordion item
         borderBottomWidth="0 !important"
       >
-        {({ isExpanded }) => (
-          <>
-            <Link
-              to={item.href}
-              onClick={(e: MouseEvent<HTMLAnchorElement>) => {
-                const target = e.target as HTMLElement;
-                // The whole chevron box toggles, not just the glyph. Testing
-                // for an SVG element made the padding around the icon
-                // navigate instead of toggling, so hitting the same visual
-                // arrow did two different things depending on the pixel.
-                const hasClickedOnArrow = Boolean(
-                  target.closest?.('[data-nav-toggle]')
-                );
+        <Link
+          to={item.href}
+          onClick={(e: MouseEvent<HTMLAnchorElement>) => {
+            const target = e.target as HTMLElement;
+            // The whole chevron box toggles, not just the glyph. Testing
+            // for an SVG element made the padding around the icon
+            // navigate instead of toggling, so hitting the same visual
+            // arrow did two different things depending on the pixel.
+            const hasClickedOnArrow = Boolean(
+              target.closest?.('[data-nav-toggle]')
+            );
 
-                // The chevron only ever folds. It sits inside the link, and
-                // its wrapper is a span, which linkClickHandler treats as a
-                // navigation target, so the default has to be stopped here.
-                if (hasClickedOnArrow) {
-                  e.preventDefault();
-                  updateExpandedIdx(expandedIdx, 'toggle');
-                  return;
-                }
+            // The chevron only ever folds. It sits inside the link, and
+            // its wrapper is a span, which linkClickHandler treats as a
+            // navigation target, so the default has to be stopped here.
+            if (hasClickedOnArrow) {
+              e.preventDefault();
+              updateExpandedIdx(expandedIdx, 'toggle');
+              return;
+            }
 
-                // Everything else navigates to the section and unfolds it.
-                updateExpandedIdx(expandedIdx, 'set');
-                linkClickHandler(e);
-                closeMobileDrawer?.();
+            // Everything else navigates to the section and unfolds it.
+            updateExpandedIdx(expandedIdx, 'set');
+            linkClickHandler(e);
+            closeMobileDrawer?.();
+          }}
+        >
+          <Accordion.ItemTrigger
+            {...(item.isActive ? activeMenuItemProps : inactiveMenuItemProps)}
+            {...styleProps}
+            borderRadius="md"
+            py={1.5}
+            backgroundColor={
+              item.isActive ? semanticPath + 'bgColor' : undefined
+            }
+          >
+            <Box as="span" flex="1" wordBreak="break-all">
+              {item.name}
+              {item.isExternal && externalLinkIcon}
+            </Box>
+            <Center
+              {...styleProps}
+              as="span"
+              data-nav-toggle="true"
+              borderRadius="sm"
+              transition="background-color 0.2s ease-in-out"
+              backgroundColor="transparent"
+              _hover={{
+                bgColor: semanticPath + 'button.icon.hoverContainerBgColor'
               }}
             >
-              <Accordion.ItemTrigger
-                {...(item.isActive
-                  ? activeMenuItemProps
-                  : inactiveMenuItemProps)}
-                {...styleProps}
-                borderRadius="md"
-                py={1.5}
-                backgroundColor={
-                  item.isActive ? semanticPath + 'bgColor' : undefined
-                }
-              >
-                <Box as="span" flex="1" wordBreak="break-all">
-                  {item.name}
-                  {item.isExternal && externalLinkIcon}
-                </Box>
-                <Center
-                  {...styleProps}
-                  as="span"
-                  data-nav-toggle="true"
-                  borderRadius="sm"
-                  transition="background-color 0.2s ease-in-out"
-                  backgroundColor="transparent"
-                  _hover={{
-                    bgColor: semanticPath + 'button.icon.hoverContainerBgColor'
-                  }}
-                >
-                  <Accordion.ItemIndicator
-                    className="prv-link"
-                    opacity="inherit"
-                    // Driven by the item's own accordion state, so the arrow
-                    // can never disagree with the panel below it.
-                    transform={`rotate(${isExpanded ? 0 : -90}deg)`}
-                    transition="transform 0.2s ease-in-out"
-                  />
-                </Center>
-              </Accordion.ItemTrigger>
-            </Link>
-            <Accordion.ItemContent position="relative">
-              <Accordion.ItemBody>
-                <Box
-                  _before={{
-                    content: '""',
-                    display: 'block',
-                    position: 'absolute',
-                    top: 2,
-                    borderRadius: 'full',
-                    left: '10px',
-                    width: '1px',
-                    height: 'calc(100% - 0.5rem)',
-                    backgroundColor: 'leftNav.accordion.panel.borderLeftColor'
-                  }}
-                >
-                  {children?.map(child => child.item)}
-                </Box>
-              </Accordion.ItemBody>
-            </Accordion.ItemContent>
-          </>
-        )}
+              <Accordion.ItemIndicator
+                className="prv-link"
+                opacity="inherit"
+                // Driven by the item's own accordion state, so the arrow can
+                // never disagree with the panel below it. v2 read that state
+                // from the item's render prop, v3 exposes it as data-state.
+                transform="rotate(-90deg)"
+                // v3's base recipe turns the open indicator with the CSS
+                // `rotate` property, which composes with `transform` rather
+                // than replacing it, so it has to be pinned back to zero for
+                // the arrow to land where v2 put it.
+                _open={{ transform: 'rotate(0deg)', rotate: '0deg' }}
+                transition="transform 0.2s ease-in-out"
+              />
+            </Center>
+          </Accordion.ItemTrigger>
+        </Link>
+        <Accordion.ItemContent position="relative">
+          <Accordion.ItemBody>
+            <Box
+              _before={{
+                content: '""',
+                display: 'block',
+                position: 'absolute',
+                top: 2,
+                borderRadius: 'full',
+                left: '10px',
+                width: '1px',
+                height: 'calc(100% - 0.5rem)',
+                backgroundColor: 'leftNav.accordion.panel.borderLeftColor'
+              }}
+            >
+              {children?.map(child => child.item)}
+            </Box>
+          </Accordion.ItemBody>
+        </Accordion.ItemContent>
       </Accordion.Item>
     );
   } else {

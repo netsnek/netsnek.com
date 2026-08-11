@@ -1,5 +1,6 @@
 import {
   Link,
+  LinkProps,
   Image,
   Heading,
   LinkBox,
@@ -194,7 +195,10 @@ const Associates = () => {
             visitor on /en/ lands back on the German page. */}
         <Link
           href={localizeHref('/docs')}
-          variant="hover-theme"
+          // `hover-theme` is one of the site's own link variants and resolves
+          // at runtime; the props type only lists Chakra's built-in names
+          // until the recipe types are generated, hence the cast.
+          variant={'hover-theme' as LinkProps['variant']}
           //textDecor={"underline"}
           opacity={0.7}
           textAlign="center"

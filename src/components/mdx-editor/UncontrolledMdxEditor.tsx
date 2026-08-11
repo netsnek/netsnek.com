@@ -13,8 +13,8 @@ import {
   Icon,
   Image,
   ImageProps,
+  JsxStyleProps,
   Stack,
-  StyleProps,
   Text
 } from '@chakra-ui/react';
 import { EditIcon } from '../../components/icons/chakra';
@@ -27,7 +27,7 @@ const InjectImage: React.FC<{
   fit: boolean;
   objectFit?: CSSProperties['objectFit'];
   height?: ImageProps['height'];
-  borderRadius?: StyleProps['borderRadius'];
+  borderRadius?: JsxStyleProps['borderRadius'];
 }> = ({
   id,
   src,

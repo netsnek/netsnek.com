@@ -1,5 +1,13 @@
 import { PageConfig } from 'jaen';
-import { Box, Container, Flex, Stack, Text, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Container,
+  Flex,
+  LinkProps,
+  Stack,
+  Text,
+  VStack
+} from '@chakra-ui/react';
 import { PageProps, graphql } from 'gatsby';
 import * as React from 'react';
 import { useIntl } from 'react-intl';
@@ -68,7 +76,11 @@ const DocsPage: React.FC<PageProps> = () => {
                 <Links
                   links={links}
                   props={{
-                    variant: 'right-bottom-nav',
+                    // Same story as DocsLayout.tsx: styles/theme/recipes.ts
+                    // dropped this link variant as unused, so until it is put
+                    // back these links lose its 0.7 opacity fade. Kept as a
+                    // string so both call sites go green again together.
+                    variant: 'right-bottom-nav' as LinkProps['variant'],
                     w: '100%',
                     display: 'block'
                   }}

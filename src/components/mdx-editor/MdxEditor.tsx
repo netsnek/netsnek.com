@@ -3,12 +3,7 @@ import {
   ButtonGroup,
   Stack,
   Table,
-  Tbody,
-  Td,
   Text,
-  Th,
-  Thead,
-  Tr,
   List
 } from '@chakra-ui/react';
 import { FC } from 'react';
@@ -58,7 +53,11 @@ export const mdxEditorComponents: MdxFieldProps['components'] = {
   table: (props: any) => (
     <Table.Root
       id={props.id}
-      variant="striped"
+      // v3 turns striped from a variant VALUE into a boolean of its own, so it
+      // now stacks on the default line variant instead of replacing it. The
+      // site has no table recipe, so the stripe is v3's bg.muted where v2's
+      // was tinted by the colour scheme; restoring that tint is theme work.
+      striped
       w="fit-content"
       children={props.children}
     />
@@ -129,12 +128,15 @@ const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash, onMdast }) => {
             {isEditing ? 'Stop Editing' : 'Edit'}
           </Button>
 
+          {/* jaen's Link widens its props to anything, so leftIcon type-checks
+              here and then reaches a v3 Button that has no such prop and drops
+              the icon on the floor. As a child it renders again. */}
           <Link
-            leftIcon={<SettingsIcon />}
             variant="outline"
             as={Button}
             to={`/cms/pages/#${btoa(jaenPage.id)}`}
           >
+            <SettingsIcon />
             Page Settings
           </Link>
         </ButtonGroup>

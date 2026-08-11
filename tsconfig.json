@@ -9,7 +9,22 @@
       "@codemirror/view": ["./node_modules/@codemirror/view"],
       "@codemirror/language": ["./node_modules/@codemirror/language"],
       "@lezer/common": ["./node_modules/@lezer/common"],
-      "@lezer/highlight": ["./node_modules/@lezer/highlight"]
+      "@lezer/highlight": ["./node_modules/@lezer/highlight"],
+
+      /* jaen ships its types from ./dist/index.d.ts, which only exists after
+         microbundle has run, so a fresh checkout cannot resolve `from 'jaen'`
+         at all and every consumer collapses into implicit any. The second
+         entry is the fallback TypeScript takes when dist is absent, the way
+         the sibling gatsby-plugin-jaen already points "types" at its own src.
+         Order matters: reading the built package keeps jaen's internals under
+         skipLibCheck, where they belong, since this project is stricter than
+         jaen's own tsconfig and would otherwise report its source against
+         rules it was never written to. Runtime is unaffected, Gatsby's webpack
+         does not read these paths. */
+      "jaen": [
+        "../jaen/packages/jaen/dist/index.d.ts",
+        "../jaen/packages/jaen/src/index.ts"
+      ]
     },
 
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
@@ -64,7 +79,11 @@
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
     // "outDir": "./",                                   /* Specify an output folder for all emitted files. */
     // "removeComments": true,                           /* Disable emitting comments. */
-    // "noEmit": true,                                   /* Disable emitting files from a compilation. */
+    /* Nothing here is ever compiled by tsc, Gatsby owns the build. Without
+       this, a `tsc -p .` that forgets --noEmit drops a .js next to every
+       source, and webpack resolves .js before .tsx, so the emitted copy is
+       what ships. 238 such files were removed from this checkout. */
+    "noEmit": true,
     // "importHelpers": true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */
     // "importsNotUsedAsValues": "remove",               /* Specify emit/checking behavior for imports that are only used for types */
     // "downlevelIteration": true,                       /* Emit more compliant, but verbose and less performant JavaScript for iteration. */

@@ -4,6 +4,7 @@ import {
   Flex,
   VStack,
   Link,
+  LinkProps,
   LinkBox,
   LinkOverlay,
   GridItem,
@@ -186,7 +187,10 @@ const Contact = () => {
                 a visitor on /ja/ lands back on the German page. */}
             <Link
               href={localizeHref('/docs')}
-              variant="hover-theme"
+              // `hover-theme` is one of the site's own link variants and
+              // resolves at runtime; the props type only lists Chakra's
+              // built-in names until the recipe types are generated.
+              variant={'hover-theme' as LinkProps['variant']}
               //textDecor={"underline"}
               opacity={0.7}
             >

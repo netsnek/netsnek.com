@@ -1,11 +1,3 @@
-/*
- MIGRATION NOTE: The following Chakra UI hooks have been removed.
- Please replace them with the suggested alternatives:
-
-//   - useClipboard: Use react-use: useCopyToClipboard
-
- See: https://chakra-ui.com/docs/get-started/migration#hooks
-*/
 import { useIntl } from 'react-intl';
 import { FC } from 'react';
 import {
@@ -16,19 +8,15 @@ import {
   Heading,
   HStack,
   Icon,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
   NumberInput,
-  NumberInputField,
-  NumberInputStepper,
   Stack,
   Text,
+  useClipboard,
   VStack,
   Wrap,
   WrapItem,
   StackSeparator
 } from '@chakra-ui/react';
-import { Tooltip } from '@/components/ui/tooltip';
 import React from 'react';
 
 import { FaShare } from '@react-icons/all-files/fa/FaShare';
@@ -78,7 +66,6 @@ const SliderItem = connectBlock(
     return (
       <Box display={'flex'} justifyContent="center">
         <Box
-          name="image"
           m="0"
           h="200px"
           w="full"
@@ -88,7 +75,10 @@ const SliderItem = connectBlock(
           isolation="isolate"
           asChild
         >
-          <Field.Image />
+          {/* v2's `as={Field.Image}` took the field's own name alongside the
+              style props. asChild makes the field a real child, so the name
+              goes with it. */}
+          <Field.Image name="image" />
         </Box>
       </Box>
     );
@@ -114,9 +104,15 @@ export const ProductContent: FC<IProductContentProps> = () => {
           <Stack direction={{ base: 'column', lg: 'row' }} gap="14" w="100%">
             <Box pos="relative" w="100%">
               <Field.Section
-                as={Stack}
+                // jaen types `as` as ComponentType<HTMLAttributes<HTMLElement>>,
+                // which a v3 Chakra component no longer satisfies: StackProps
+                // redefines color, height and width away from the HTML ones.
+                // The field only ever spreads props onto it, so the cast is
+                // safe; the declaration is jaen's to widen to ElementType, the
+                // way its own TextField already does.
+                as={Stack as React.ComponentType<React.HTMLAttributes<HTMLElement>>}
                 props={{
-                  spacing: 4,
+                  gap: 4,
                   my: '8',
                   py: '0',
                   bg: 'white',
@@ -327,8 +323,8 @@ const ProductDetail = (props: {
               defaultValue={String(minQuantity)}
               min={minQuantity}
               value={String(quantity)}
-              onValueChange={valueString => {
-                setQuantity(parseInt(valueString));
+              onValueChange={details => {
+                setQuantity(parseInt(details.value));
               }}
             >
               <NumberInput.Input />
@@ -371,13 +367,15 @@ function ShareText() {
   const value = typeof window !== 'undefined' ? window.location.href : '';
 
   const intl = useIntl();
-  const { hasCopied, onCopy } = useClipboard(value);
+  // v3's hook defaults the copied window to 3s where v2's was 1.5s, and the
+  // "(Kopiert!)" note hangs off it.
+  const { copied, copy } = useClipboard({ value, timeout: 1500 });
 
   return (
     <Center
-      color={hasCopied ? 'red.500' : undefined}
+      color={copied ? 'red.500' : undefined}
       _hover={{
-        color: hasCopied ? 'red.400' : 'red.300'
+        color: copied ? 'red.400' : 'red.300'
       }}
       verticalAlign="center"
       cursor="pointer"
@@ -385,9 +383,9 @@ function ShareText() {
       <Icon mr="2" asChild>
         <FaShare />
       </Icon>
-      <Text fontWeight="semibold" onClick={onCopy}>
+      <Text fontWeight="semibold" onClick={copy}>
         {intl.formatMessage({ id: 'ProductShare', defaultMessage: 'Teilen' })}
-        {hasCopied && (
+        {copied && (
           <Text ml="2" fontWeight="thin">
             {intl.formatMessage({
               id: 'ProductShareCopied',
@@ -479,7 +477,9 @@ const ImageSlider = (props: {
                   //sizes={image.gatsbyImageData.images.fallback?.sizes}
                   //srcSet={image.gatsbyImageData.images.fallback?.srcSet}
                   name={media.image.name}
-                  disabled
+                  // jaen's own prop, not Chakra's: JaenFieldProps still spells
+                  // it isDisabled, so the codemod's rename went too far.
+                  isDisabled
                   defaultValue={media.image.defaultValue}
                   alt={
                     media.image.altText ||

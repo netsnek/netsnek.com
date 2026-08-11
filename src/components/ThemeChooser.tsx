@@ -1,20 +1,18 @@
-import { DarkMode, LightMode, useColorMode } from 'jaen';
+import { ColorMode, DarkMode, LightMode, useColorMode } from 'jaen';
 import { CheckIcon, MoonIcon, SunIcon } from '../components/icons/chakra';
 import {
   Button,
   ButtonProps,
-  ColorMode,
   Icon,
   IconProps,
   Menu,
-  MenuProps,
-  Portal
+  MenuRootProps
 } from '@chakra-ui/react';
 import { FC, ReactNode, memo } from 'react';
 import { useIntl } from 'react-intl';
 
 interface IThemeChooserProps {
-  menuProps?: Partial<MenuProps>;
+  menuProps?: Partial<MenuRootProps>;
   buttonProps?: Partial<ButtonProps>;
   buttonIconProps?: IconProps;
   buttonContent?: ReactNode;
@@ -36,17 +34,18 @@ const ThemeChooser: FC<IThemeChooserProps> = ({
   const isLightColorMode = colorMode === 'light';
 
   const menuList = (() => {
+    // No portal, as in v2. DarkMode and LightMode are DOM elements in v3, and
+    // a portal would drop the list outside the one wrapping it here, which is
+    // the whole of forceMenuColorMode.
     const list = (
-      <Portal>
-        <Menu.Positioner>
-          <Menu.Content>
-            <MemoizedColorModeMenuItems
-              currentColorMode={colorMode}
-              toggleColorMode={toggleColorMode}
-            />
-          </Menu.Content>
-        </Menu.Positioner>
-      </Portal>
+      <Menu.Positioner>
+        <Menu.Content>
+          <MemoizedColorModeMenuItems
+            currentColorMode={colorMode}
+            toggleColorMode={toggleColorMode}
+          />
+        </Menu.Content>
+      </Menu.Positioner>
     );
     if (!forceMenuColorMode) {
       return list;
@@ -72,7 +71,11 @@ const ThemeChooser: FC<IThemeChooserProps> = ({
         <Button
           size="sm"
           flexGrow={1}
-          variant="ghost-hover"
+          // ghost-hover is one of the site's own button variants
+          // (styles/theme/recipes.ts). The prop only admits v3's built-in names
+          // because the site does not run `chakra typegen`, so the recipe's own
+          // names have to be asserted through.
+          variant={'ghost-hover' as ButtonProps['variant']}
           textAlign="left"
           color="shared.text.default"
           {...buttonProps}

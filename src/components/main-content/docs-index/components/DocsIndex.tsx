@@ -62,7 +62,7 @@ const DocsIndex: React.FC<{
   }
 
   return (
-    <SimpleGrid columns={{ base: 1, sm: 2 }} gap="4" gap="4">
+    <SimpleGrid columns={{ base: 1, sm: 2 }} gap="4">
       {pages.map((child, index) => {
         return (
           <ImageCard

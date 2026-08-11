@@ -130,7 +130,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (windowSize.width >= 768 && isOpen) closeDrawer();
+    if (windowSize.width >= 768 && open) closeDrawer();
   }, [windowSize.width]);
 
   const openDrawer = () => {
@@ -283,7 +283,11 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
               <HStack gap={4}>
                 <Box display={{ base: 'none', md: 'initial' }}>{search}</Box>
                 <Button
-                  variant="ghost-hover"
+                  // ghost-hover comes from the site's own button recipe. v3
+                  // derives the variant union from generated recipe types,
+                  // which this site does not produce, so the theme's value has
+                  // to be cast past the built-in union.
+                  variant={'ghost-hover' as never}
                   size="sm"
                   display={{ base: 'initial', md: 'none' }}
                   onClick={toggleMobileMenu}
@@ -329,7 +333,9 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
           {children}
         </VStack>
       </Center>
-      <MobileNavDrawer isOpen={isOpen} onOpen={onOpen} onClose={closeDrawer} />
+      {/* MobileNavDrawer's own prop keeps the v2 spelling; only useDisclosure
+          renamed its field. */}
+      <MobileNavDrawer isOpen={open} onOpen={onOpen} onClose={closeDrawer} />
     </>
   );
 };

@@ -26,16 +26,16 @@ export const TextControl: React.FC<{
   function EditableControls() {
     const intl = useIntl();
     const {
-      isEditing,
-      getSubmitButtonProps,
-      getCancelButtonProps,
-      getEditButtonProps
+      editing,
+      getSubmitTriggerProps,
+      getCancelTriggerProps,
+      getEditTriggerProps
     } = useEditableContext();
 
-    return isEditing ? (
+    return editing ? (
       <ButtonGroup justifyContent="center" size="sm">
         <IconButton
-          {...getSubmitButtonProps()}
+          {...getSubmitTriggerProps()}
           // This button confirms the edit; it was mislabelled "Edit".
           aria-label={intl.formatMessage({
             id: 'EditableSubmitAriaLabel',
@@ -46,7 +46,7 @@ export const TextControl: React.FC<{
         </IconButton>
         <IconButton
           variant="outline"
-          {...getCancelButtonProps()}
+          {...getCancelTriggerProps()}
           aria-label={intl.formatMessage({
             id: 'EditableCancelAriaLabel',
             defaultMessage: 'Abbrechen'
@@ -60,7 +60,7 @@ export const TextControl: React.FC<{
         <IconButton
           variant="ghost"
           size="sm"
-          {...getEditButtonProps()}
+          {...getEditTriggerProps()}
           aria-label={intl.formatMessage({
             id: 'EditableEditAriaLabel',
             defaultMessage: 'Bearbeiten'
@@ -77,8 +77,12 @@ export const TextControl: React.FC<{
       key={props.text}
       as={HStack}
       textAlign={'left'}
+      // v2's isPreviewFocusable. With editing off the preview took no focus
+      // and could not open the editor, which is what 'none' is: zag drops the
+      // preview's tabIndex for every mode but 'focus'.
+      activationMode={props.editable ? 'focus' : 'none'}
       defaultValue={props.text}
-      onValueCommit={props.onSubmit}
+      onValueCommit={details => props.onSubmit(details.value)}
       fontSize={props.type === 'heading' ? '2xl' : 'xl'}
       fontWeight={props.type === 'heading' ? 'bold' : '400'}
     >

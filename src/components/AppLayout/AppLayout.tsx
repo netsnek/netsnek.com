@@ -88,10 +88,11 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
             w="full"
             bgColor="white"
             fill="rgba(149, 156, 177, 0.1)"
-            // Stroke and mask-image are not directly supported through Chakra props. Consider inline styles or additional CSS.
-            sx={{
-              // This demonstrates how to apply more complex styles not directly available as Chakra props:
-              stroke: 'rgba(149, 156, 177, 0.1)', // example variable, adjust as necessary
+            // ArrowPattern passes its rest props to a chakra.svg, and v3 has
+            // no sx: the object would have gone to the DOM as an attribute and
+            // taken the outline and the fade with it.
+            css={{
+              stroke: 'rgba(149, 156, 177, 0.1)',
               maskImage:
                 'linear-gradient(to bottom left, white 40%, transparent 50%)'
             }}

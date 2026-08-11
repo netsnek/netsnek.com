@@ -1,5 +1,11 @@
 import { ArrowForwardIcon } from '../../../../components/icons/chakra';
-import { Box, Card, CardProps, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import {
+  Box,
+  Card,
+  CardRootProps,
+  LinkBox,
+  LinkOverlay
+} from '@chakra-ui/react';
 import { FC } from 'react';
 import { IMainContentComponentBaseProps } from '../../types/mainContent';
 import { TImageData } from '../types/imageCard';
@@ -12,7 +18,7 @@ interface IImageCardProps extends IMainContentComponentBaseProps {
   id: string;
   image: TImageData;
   link: TLinkData;
-  size?: CardProps['maxW'];
+  size?: CardRootProps['maxW'];
 }
 
 /**

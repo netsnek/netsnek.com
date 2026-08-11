@@ -49,7 +49,10 @@ const BlogCard: FC<{ section: DocsSection }> = ({ section }) => {
         {section.image ? (
           <Image src={section.image} alt={section.title} />
         ) : (
-          <Box bgGradient="linear(to-br, brand.400, brand.600)">
+          // Direction on bgGradient, stops on gradientFrom/To. v2's
+          // `linear(...)` string is still assignable and still silently
+          // unparseable, which left this placeholder tile flat white.
+          <Box bgGradient="to-br" gradientFrom="brand.400" gradientTo="brand.600">
             <Text
               fontSize="4xl"
               fontWeight="bold"

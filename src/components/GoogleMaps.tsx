@@ -69,7 +69,12 @@ export const GoogleMaps = ({ src, ...props }: GoogleMapsProps) => {
             defaultMessage:
               'Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.'
           })}{' '}
-          <Link onClick={handleAccept} variant="link">
+          {/* variant="link" named a Button variant, not a Link one, so v2
+              matched nothing and drew the bare link. v3's default `plain` is
+              that same look here: brand has no `fg` token, so the colour it
+              sets is an unresolvable var and the text keeps inheriting from
+              the description, and the hover underline is v2's baseStyle. */}
+          <Link onClick={handleAccept}>
             {intl.formatMessage({
               id: 'MapsEnableCookiesAction',
               defaultMessage: 'Analyse Cookies aktivieren'

@@ -1,10 +1,10 @@
 import {
   Alert,
   Box,
-  ButtonSpinner,
   Center,
   Flex,
   HStack,
+  Spinner,
   Stack,
   Text,
   List
@@ -73,10 +73,28 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
       <Box p={3}>
         {isExecuting ? (
           <Center my={5}>
-            <ButtonSpinner
+            {/*
+              v3 has no ButtonSpinner. Inlined is exactly what v2's rendered for
+              these props: a flex box carrying boxSize and colour, around a 1em
+              Spinner picking that colour up through currentColor.
+
+              position="absolute" is v2's too — ButtonSpinner only went relative
+              when handed a `label`, which a bare call never does, so this
+              spinner has never actually sat inside the Center. Ported as-is;
+              centring it is a visual change and belongs in its own commit.
+            */}
+            <Box
+              display="flex"
+              alignItems="center"
+              position="absolute"
+              marginStart={0}
+              fontSize="1em"
+              lineHeight="normal"
               boxSize="20px"
               color="components.codeResultPreview.loadingSpinner.color"
-            />
+            >
+              <Spinner color="currentColor" width="1em" height="1em" />
+            </Box>
           </Center>
         ) : (
           <Stack>

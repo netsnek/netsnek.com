@@ -114,7 +114,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     })}
                   </Heading>
 
-                  <Text size="b2015">
+                  {/*
+                    `size="b2015"` stood here and is dropped, not translated:
+                    neither the site's v2 Text theme nor Chakra's own defined
+                    any Text sizes, so it resolved to nothing and the paragraph
+                    has always rendered at the inherited size.
+                  */}
+                  <Text>
                     {intl.formatMessage({
                       id: 'ContactModalIntro',
                       defaultMessage:

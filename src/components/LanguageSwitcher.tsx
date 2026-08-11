@@ -1,12 +1,12 @@
 import {
   Button,
+  ButtonProps,
   HStack,
   Image,
   Menu,
   VStack,
   useBreakpointValue,
   useDisclosure,
-  MenuButtonProps,
   Portal,
   Text,
   Dialog
@@ -49,7 +49,12 @@ const autonym = (locale: string): string => {
   }
 };
 
-export interface LanguageSwitcherProps extends MenuButtonProps {}
+/**
+ * v2 typed this off MenuButton, which the trigger was (`as={Button}`). v3 has
+ * no MenuButton and the trigger is the Button itself, so the props the callers
+ * pass through are Button's.
+ */
+export interface LanguageSwitcherProps extends ButtonProps {}
 
 /**
  * Lists the five site locales and navigates to the current page in the
@@ -177,7 +182,7 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
       <>
         {trigger(onOpen)}
         <Dialog.Root
-          open={isOpen}
+          open={open}
           size="xs"
           placement="center"
           onOpenChange={e => {
@@ -243,7 +248,10 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
           filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
           color="white"
           aria-label={`${controlLabel}: ${labels[currentBase] ?? currentBase}`}
-          iconSpacing={1.5}
+          // v2 spaced the chevron with iconSpacing on the rightIcon wrapper.
+          // The icon is a plain child now, so the same 1.5 has to come from
+          // the flex gap, which size="sm" would otherwise set to 2.
+          gap={1.5}
           {...props}
         >
           <Image
@@ -266,7 +274,9 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
       <Portal>
         <Portal>
           <Menu.Positioner>
-            <Menu.Content>
+            {/* v2's MenuList also set color and zIndex; v3's menu recipe
+                already carries both, but not the width. */}
+            <Menu.Content minW="12rem">
               {locales.map(locale => (
                 <Menu.Item
                   key={locale}

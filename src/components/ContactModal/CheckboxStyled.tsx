@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxProps } from '@chakra-ui/react';
+import { Checkbox, CheckboxRootProps } from '@chakra-ui/react';
 import { forwardRef } from 'react';
 
 const bgColor = '#EDEDF0';
@@ -16,7 +16,10 @@ const defaultClasses = ({ radius = '1px', controlRadius = '1px' }) => {
       px: '12px',
       borderRadius: radius
     },
-    "span[class*='checkbox__control']:not([data-disabled])": {
+    // The tag qualifier is gone because v3 renders Checkbox.Control as a div
+    // where v2 rendered a span. Left as `span[...]` these rules would simply
+    // stop matching and the control would lose its brand border and its ring.
+    "[class*='checkbox__control']:not([data-disabled])": {
       borderColor: controlColor,
       borderRadius: controlRadius,
       _checked: {
@@ -42,7 +45,7 @@ const defaultClasses = ({ radius = '1px', controlRadius = '1px' }) => {
       }
     },
     _hover: {
-      "span[class*='checkbox__control']:not([data-disabled])": {
+      "[class*='checkbox__control']:not([data-disabled])": {
         _after: {
           width: '40px',
           height: '40px',
@@ -54,12 +57,15 @@ const defaultClasses = ({ radius = '1px', controlRadius = '1px' }) => {
   };
 };
 
-export interface CheckboxStyledProps extends CheckboxProps {
+export interface CheckboxStyledProps extends CheckboxRootProps {
   roundedFull?: boolean;
 }
 
 export const CheckboxStyled = forwardRef<HTMLInputElement, CheckboxStyledProps>(
-  ({ children, spacing = '1rem', rounded, roundedFull, ...props }, ref) => {
+  // `rounded` is a border-radius style prop being read as a boolean flag and
+  // swallowed rather than forwarded. That is how v2 had it, and the only
+  // caller passes `roundedFull`, so it is left alone.
+  ({ children, gap = '1rem', rounded, roundedFull, ...props }, ref) => {
     let classes = defaultClasses({});
 
     if (roundedFull) {
@@ -71,8 +77,10 @@ export const CheckboxStyled = forwardRef<HTMLInputElement, CheckboxStyledProps>(
     }
 
     return (
-      <Checkbox.Root gap={spacing} sx={classes} {...props} ref={ref}>
-        <Checkbox.HiddenInput />
+      // The ref lands on the hidden input, which is where v2's Checkbox
+      // forwarded it and what react-hook-form's Controller expects to find.
+      <Checkbox.Root gap={gap} css={classes} {...props}>
+        <Checkbox.HiddenInput ref={ref} />
         <Checkbox.Control>
           <Checkbox.Indicator />
         </Checkbox.Control>

@@ -91,8 +91,10 @@ export const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({
   to
 }) => {
   return (
-    <LinkBox align={'center'} mt={8} direction={'column'} asChild>
-      <Flex>
+    // v2's `as={Flex}` let LinkBox take Flex's shorthands. Under asChild the
+    // Flex is a real child component again, so they belong to it.
+    <LinkBox asChild>
+      <Flex align={'center'} mt={8} direction={'column'}>
         <Avatar.Root mb={2}>
           <Avatar.Fallback />
           <Avatar.Image src={src} />

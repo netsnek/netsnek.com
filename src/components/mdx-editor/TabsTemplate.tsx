@@ -1,16 +1,5 @@
 import { AddIcon } from '../../components/icons/chakra';
-import {
-  Box,
-  Button,
-  Menu,
-  Spacer,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Portal
-} from '@chakra-ui/react';
+import { Box, Button, Menu, Spacer, Tabs, Portal } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 interface ComponentInfoProps {
@@ -63,27 +52,33 @@ const TabsTemplate: React.FC<TabsProps> = props => {
 
   return (
     <Box position="relative">
+      {/* v3 addresses tabs by string value where v2 addressed them by index.
+          The index is what this component's props, state and the editor that
+          mounts it all speak, so the position is stringified at the boundary
+          and nothing outside this file has to learn the new spelling. */}
       <Tabs.Root
-        value={selectedTab}
-        onValueChange={handleTabChange}
+        value={String(selectedTab)}
+        onValueChange={({ value }) => handleTabChange(Number(value))}
         pos="relative"
         size="sm"
       >
         <Tabs.List pos="sticky" top="0" zIndex="1">
           {props.tabs.map((tab, i) => (
-            <Tab key={i}>{tab.label}</Tab>
+            <Tabs.Trigger key={i} value={String(i)}>
+              {tab.label}
+            </Tabs.Trigger>
           ))}
           <Spacer />
           <ComponentInfo items={props.componentsInfo || []} />
         </Tabs.List>
 
-        <TabPanels>
+        <Tabs.ContentGroup>
           {props.tabs.map((tab, i) => (
-            <TabPanel key={i} p="0">
+            <Tabs.Content key={i} value={String(i)} p="0">
               {tab.content}
-            </TabPanel>
+            </Tabs.Content>
           ))}
-        </TabPanels>
+        </Tabs.ContentGroup>
       </Tabs.Root>
     </Box>
   );

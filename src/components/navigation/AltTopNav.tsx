@@ -14,7 +14,6 @@ import {
   LinkOverlay,
   LinkBox
 } from '@chakra-ui/react';
-import { Tooltip } from '@/components/ui/tooltip';
 import { FC, useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useContactModal } from '../../services/contact';
@@ -102,8 +101,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
       as={isLandingPage ? FadeIn : undefined}
       pos="relative"
       overflow="hidden"
-      height={isOpen ? 'calc(100vh + 15px)' : { base: '12vh', md: '15vh' }}
-      minH={isOpen ? '600px' : '100px'}
+      height={open ? 'calc(100vh + 15px)' : { base: '12vh', md: '15vh' }}
+      minH={open ? '600px' : '100px'}
       transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
       borderBottomRadius={'2xl'}
     >
@@ -112,8 +111,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
         bg="#0A0A0A"
         color="white"
         transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1), min-height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
-        height={isOpen ? 'max(600px, calc(100vh + 15px))' : '0'}
-        minH={isOpen ? 'fit-content' : '0'}
+        height={open ? 'max(600px, calc(100vh + 15px))' : '0'}
+        minH={open ? 'fit-content' : '0'}
         width="100%"
         overflow="hidden"
       >
@@ -422,7 +421,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 borderRadius="xl"
                 //variant="ghost"
                 fontWeight={'bold'}
-                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                aria-label={open ? 'Close menu' : 'Open menu'}
                 onClick={toggleMobileMenu}
               >
                 <HamburgerMenuIcon
@@ -446,7 +445,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
         top="0"
         left="0"
         transition="height 0.2s cubic-bezier(0.68, 0, 0.27, 1)"
-        h={isOpen ? 'max(600px, 100vh)' : '0'} // Adjust according to your AltTopNav's initial height
+        h={open ? 'max(600px, 100vh)' : '0'} // Adjust according to your AltTopNav's initial height
         w="100%"
         overflow="hidden"
       >
@@ -540,7 +539,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 borderRadius="xl"
                 //variant="ghost"
                 fontWeight={'bold'}
-                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                aria-label={open ? 'Close menu' : 'Open menu'}
                 onClick={toggleMobileMenu}
                 bg={'white'}
                 color={'black'}
