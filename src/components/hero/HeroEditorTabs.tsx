@@ -32,15 +32,18 @@ const ARROW_DOWN = 'M 52 25 L 5.01 25 L 25.01 45 L 28 45 L 25 35 L 55 35 Z';
  * where you are rather than as decoration.
  */
 const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
-  const upFilled = activeTab === EDITOR_TAB;
+  // Filled points where you have to click to change the view, not where you
+  // already are. The upper arrow points right at the source, the lower one
+  // left at the prototype, so the filled one is always the invitation.
+  const upFilled = activeTab === PREVIEW_TAB;
 
   return (
     <chakra.svg
       viewBox="0 0 56 46"
-      // Deutlich kleiner als die Knoepfe daneben: ein Zeichen zwischen
-      // ihnen, kein dritter Knopf.
-      w="9px"
-      h="7.5px"
+      // Kleiner als die Knoepfe daneben, aber gross genug, dass die
+      // Richtung auf einen Blick lesbar ist.
+      w="13px"
+      h="11px"
       flexShrink={0}
       aria-hidden="true"
       display="block"
