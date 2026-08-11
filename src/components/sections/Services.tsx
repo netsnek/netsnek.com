@@ -1,5 +1,4 @@
 import {
-  Image,
   Box,
   Container,
   Heading,
@@ -49,30 +48,43 @@ const Services = () => {
             border="1px"
             borderColor="#f9f9f9"
             boxShadow="sm">
-            <Image
-              src="/images/services/beratung.jpg"
-              alt={intl.formatMessage({
-                id: 'ServicesCardConsultingImageAlt',
-                defaultMessage: 'Beratung'
-              })}
-              h="200px"
-              w="full"
-              objectFit="cover"
-              borderRadius="md"
-            />
-            <Text mt={4} fontSize="xl" fontWeight="bold">
-              {intl.formatMessage({
+            {/* Field.Image always fills the box it is given, so the frame
+                carries the height and the rounded corners that used to sit
+                on the picture itself. */}
+            <Box h="200px" w="full" borderRadius="md" overflow="hidden">
+              <Field.Image
+                name="ServicesCardConsultingImage"
+                defaultValue="/images/services/beratung.jpg"
+                alt={intl.formatMessage({
+                  id: 'ServicesCardConsultingImageAlt',
+                  defaultMessage: 'Beratung'
+                })}
+                objectFit="cover"
+              />
+            </Box>
+            <Field.Text
+              mt={4}
+              as={Text}
+              fontSize="xl"
+              fontWeight="bold"
+              name="ServicesCardConsultingTitle"
+              defaultValue={intl.formatMessage({
                 id: 'ServicesCardConsultingTitle',
                 defaultMessage: 'Beratung'
               })}
-            </Text>
-            <Text mt={2} fontSize="md" color="gray.500">
-              {intl.formatMessage({
+            />
+            <Field.Text
+              mt={2}
+              as={Text}
+              fontSize="md"
+              color="gray.500"
+              name="ServicesCardConsultingText"
+              defaultValue={intl.formatMessage({
                 id: 'ServicesCardConsultingText',
                 defaultMessage:
                   'Wir beraten Sie in allen Fragen rund um die Digitalisierung.'
               })}
-            </Text>
+            />
           </Box>
         </GridItem>
         <GridItem colSpan={1}>
@@ -85,30 +97,40 @@ const Services = () => {
             border="1px"
             borderColor="#f9f9f9"
             boxShadow="sm">
-            <Image
-              src="/images/services/mockup-arneitz.jpg"
-              alt={intl.formatMessage({
-                id: 'ServicesCardDevelopmentImageAlt',
-                defaultMessage: 'Entwicklung'
-              })}
-              h="200px"
-              w="full"
-              objectFit="cover"
-              borderRadius="md"
-            />
-            <Text mt={4} fontSize="xl" fontWeight="bold">
-              {intl.formatMessage({
+            <Box h="200px" w="full" borderRadius="md" overflow="hidden">
+              <Field.Image
+                name="ServicesCardDevelopmentImage"
+                defaultValue="/images/services/mockup-arneitz.jpg"
+                alt={intl.formatMessage({
+                  id: 'ServicesCardDevelopmentImageAlt',
+                  defaultMessage: 'Entwicklung'
+                })}
+                objectFit="cover"
+              />
+            </Box>
+            <Field.Text
+              mt={4}
+              as={Text}
+              fontSize="xl"
+              fontWeight="bold"
+              name="ServicesCardDevelopmentTitle"
+              defaultValue={intl.formatMessage({
                 id: 'ServicesCardDevelopmentTitle',
                 defaultMessage: 'Entwicklung'
               })}
-            </Text>
-            <Text mt={2} fontSize="md" color="gray.500">
-              {intl.formatMessage({
+            />
+            <Field.Text
+              mt={2}
+              as={Text}
+              fontSize="md"
+              color="gray.500"
+              name="ServicesCardDevelopmentText"
+              defaultValue={intl.formatMessage({
                 id: 'ServicesCardDevelopmentText',
                 defaultMessage:
                   'Wir entwickeln individuelle Softwarelösungen für Ihr Unternehmen.'
               })}
-            </Text>
+            />
           </Box>
         </GridItem>
       </Grid>

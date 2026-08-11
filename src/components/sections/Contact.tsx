@@ -14,6 +14,7 @@ import { Field } from 'jaen';
 import { useIntl } from 'react-intl';
 // import ContactButton from '../ContactButton'
 
+import { useLocalizeHref } from '../../contexts/locale';
 import { HBalloon } from '../../gatsby-plugin-jaen/components/Ballons_Ballons';
 import { AGTIcon } from '../../gatsby-plugin-jaen/components/agtguntrade';
 import { LibaIcon } from '../../gatsby-plugin-jaen/components/liba';
@@ -24,6 +25,7 @@ import { useContactModal } from '../../services/contact';
 
 const Contact = () => {
   const intl = useIntl();
+  const localizeHref = useLocalizeHref();
 
   // Sample list of your links and icons, assuming you will replace these with your actual data
   const links = [
@@ -145,10 +147,15 @@ const Contact = () => {
               size={'lg'}
               mt={10}
             >
-              {intl.formatMessage({
-                id: 'ContactSubmitButton',
-                defaultMessage: 'Kontaktiere Uns'
-              })}
+              {/* The label carries no styling of its own so it keeps
+                  inheriting the typography of the button around it. */}
+              <Field.Text
+                name="ContactSubmitButton"
+                defaultValue={intl.formatMessage({
+                  id: 'ContactSubmitButton',
+                  defaultMessage: 'Kontaktiere Uns'
+                })}
+              />
             </Button>
           </GridItem>
           {links.map((link, index) => (
@@ -170,8 +177,11 @@ const Contact = () => {
           ))}
           {/* Den Wrapper um den Link mit GridItem oder einer ähnlichen Komponente und setze colSpan auf 3 */}
           <GridItem display="flex" colSpan={3} justifyContent={'flex-end'}>
+            {/* There is no /projects page, the invitation to browse leads to
+                the docs. The href has to run through localizeHref, otherwise
+                a visitor on /ja/ lands back on the German page. */}
             <Link
-              href="/projects"
+              href={localizeHref('/docs')}
               variant="hover-theme"
               //textDecor={"underline"}
               opacity={0.7}

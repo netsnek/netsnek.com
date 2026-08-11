@@ -6,7 +6,6 @@ import {
   Grid,
   GridItem,
   Heading,
-  Image,
   Stack,
   Text
 } from '@chakra-ui/react';
@@ -23,6 +22,13 @@ const PANEL_BG = '#0A0A0A';
 
 interface Pillar {
   id: string;
+  /**
+   * The names of the two fields the owner edits. They key the stored content
+   * and belong to the entry, not to its place in the array, so the numbering
+   * survives a reordering of the pillars and must never be changed.
+   */
+  titleName: string;
+  textName: string;
   titleId: string;
   titleDefault: string;
   textId: string;
@@ -32,10 +38,15 @@ interface Pillar {
 /**
  * The three things we actually give back, in the order they cost us the most:
  * the code, the writing, the evenings spent at the Linuxtag.
+ *
+ * The catalog carries the wording of every locale, the fields carry what the
+ * owner writes on top of it, one value per locale page.
  */
 const PILLARS: Pillar[] = [
   {
     id: 'source',
+    titleName: 'OpenPillar1Title',
+    textName: 'OpenPillar1Text',
     titleId: 'OpenSourceTitle',
     titleDefault: 'Offener Code',
     textId: 'OpenSourceText',
@@ -44,6 +55,8 @@ const PILLARS: Pillar[] = [
   },
   {
     id: 'knowledge',
+    titleName: 'OpenPillar2Title',
+    textName: 'OpenPillar2Text',
     titleId: 'OpenKnowledgeTitle',
     titleDefault: 'Offenes Wissen',
     textId: 'OpenKnowledgeText',
@@ -52,6 +65,8 @@ const PILLARS: Pillar[] = [
   },
   {
     id: 'community',
+    titleName: 'OpenPillar3Title',
+    textName: 'OpenPillar3Text',
     titleId: 'OpenCommunityTitle',
     titleDefault: 'Community vor Ort',
     textId: 'OpenCommunityText',
@@ -147,19 +162,31 @@ const Open: FC = () => {
                 background="radial-gradient(closest-side, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 52%, rgba(10,10,10,0) 78%)"
               />
 
-              <Image
-                src="/images/carinthian-tux.svg"
-                alt={intl.formatMessage({
-                  id: 'OpenTuxImageAlt',
-                  defaultMessage:
-                    'Tux mit dem Kärntner Wappen, das Logo des Carinthian Linuxday'
-                })}
+              {/* Field.Image puts its own box with hidden overflow around the
+                  picture, so the glow has to sit on a box outside of it. On
+                  the picture itself the drop shadow would be cut off at the
+                  edge of the penguin. That outer box carries the size too:
+                  the field only knows how to fill what it is given. */}
+              <Box
                 position="relative"
                 w={{ base: '180px', md: '220px', lg: '260px' }}
-                h="auto"
                 maxW="full"
                 filter="drop-shadow(0 0 26px rgba(247, 127, 0, 0.35))"
-              />
+              >
+                <Field.Image
+                  name="OpenTuxImage"
+                  defaultValue="/images/carinthian-tux.svg"
+                  alt={intl.formatMessage({
+                    id: 'OpenTuxImageAlt',
+                    defaultMessage:
+                      'Tux mit dem Kärntner Wappen, das Logo des Carinthian Linuxday'
+                  })}
+                  // The field stretches its picture over the full box in both
+                  // directions. An automatic height keeps the ratio, and the
+                  // block display drops the line box under an inline image.
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+              </Box>
             </Flex>
           </GridItem>
 
@@ -192,18 +219,28 @@ const Open: FC = () => {
                   boxShadow="0 8px 24px rgba(0, 0, 0, 0.45)"
                   p={{ base: 5, lg: 6 }}
                 >
-                  <Text fontSize="xl" fontWeight="bold" color="white">
-                    {intl.formatMessage({
+                  <Field.Text
+                    as={Text}
+                    fontSize="xl"
+                    fontWeight="bold"
+                    color="white"
+                    name={pillar.titleName}
+                    defaultValue={intl.formatMessage({
                       id: pillar.titleId,
                       defaultMessage: pillar.titleDefault
                     })}
-                  </Text>
-                  <Text mt="2" fontSize="md" color="whiteAlpha.800">
-                    {intl.formatMessage({
+                  />
+                  <Field.Text
+                    mt="2"
+                    as={Text}
+                    fontSize="md"
+                    color="whiteAlpha.800"
+                    name={pillar.textName}
+                    defaultValue={intl.formatMessage({
                       id: pillar.textId,
                       defaultMessage: pillar.textDefault
                     })}
-                  </Text>
+                  />
                 </Box>
               ))}
             </Stack>
@@ -215,10 +252,15 @@ const Open: FC = () => {
                 variant="solid"
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.35))"
               >
-                {intl.formatMessage({
-                  id: 'OpenDocsLink',
-                  defaultMessage: 'Zur Dokumentation'
-                })}
+                {/* The label carries no styling of its own so it keeps
+                    inheriting the typography of the button around it. */}
+                <Field.Text
+                  name="OpenDocsLink"
+                  defaultValue={intl.formatMessage({
+                    id: 'OpenDocsLink',
+                    defaultMessage: 'Zur Dokumentation'
+                  })}
+                />
               </Button>
             </Flex>
           </GridItem>

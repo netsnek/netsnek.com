@@ -17,7 +17,7 @@ import { Field, useAuth } from 'jaen';
 import useNavOffset from '../../hooks/use-nav-offset';
 import { Link } from 'gatsby-plugin-jaen';
 import { useLocalizeHref } from '../../contexts/locale';
-import { withAccentDots } from '../../utils/accent-dots';
+import { withAccentDotsHtml } from '../../utils/accent-dots';
 
 // import {useContactModal} from '../services/contact'
 import HeroShowcase from '../hero/HeroShowcase';
@@ -70,12 +70,12 @@ const Hero: FC = () => {
   //const {ref, scrollTop} = useScrollSync(500)
   const scrollPos = useScrollPosition();
 
-  const contactModal = useContactModal()
+  const contactModal = useContactModal();
 
   const onContactClick = () => {
     contactModal.onOpen({
       meta: {}
-    })
+    });
   };
 
   return (
@@ -105,45 +105,53 @@ const Hero: FC = () => {
         </Box>
         <VStack as={FadeIn} spacing={4} align="left" gridArea="content">
           <Box>
-            <Heading
-              as="h3"
+            {/* asAs, because a field guesses h2 for anything wrapped in a
+                Heading and this line sits above the headline, not on it. */}
+            <Field.Text
+              as={Heading}
+              asAs="h3"
               size={{ base: 'sm', lg: 'md' }}
               style={{ animationDelay: '300ms' }}
               fontWeight="500"
               textTransform="uppercase"
               lineHeight="1.5em"
               letterSpacing="4.2px"
-            >
-              {withAccentDots(
+              name="HeroEyebrow"
+              defaultValue={withAccentDotsHtml(
                 intl.formatMessage({
                   id: 'HeroTitle',
                   defaultMessage: 'INNOVATIV. EFFEKTIV.'
                 })
               )}
-            </Heading>
+            />
           </Box>
           <Box>
-            <Heading
-              as="h2"
+            <Field.Text
+              as={Heading}
+              asAs="h2"
               size={{ base: 'xl', lg: '2xl' }}
               fontWeight="900"
               lineHeight="1.1em"
-            >
-              {withAccentDots(
+              name="HeroHeading"
+              defaultValue={withAccentDotsHtml(
                 intl.formatMessage({
                   id: 'HeroSubtitle',
                   defaultMessage: 'Professionelle Softwareentwicklung.'
                 })
               )}
-            </Heading>
+            />
           </Box>
-          <Text fontSize={'lg'} opacity={0.5}>
-            {intl.formatMessage({
+          <Field.Text
+            as={Text}
+            fontSize="lg"
+            opacity={0.5}
+            name="HeroLeadText"
+            defaultValue={intl.formatMessage({
               id: 'HeroText',
               defaultMessage:
                 'Ihre Softwareagentur in Österreich. Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen.'
             })}
-          </Text>
+          />
           <HStack spacing={4} mt={4}>
             <Button
               variant="solid"
@@ -151,28 +159,39 @@ const Hero: FC = () => {
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
               onClick={onContactClick}
             >
-              {intl.formatMessage({
-                id: 'HeroButtonContact',
-                defaultMessage: 'Kontakt'
-              })}
+              {/* A button may only hold phrasing content, so the label
+                  renders as a span instead of the paragraph a text field
+                  defaults to. */}
+              <Field.Text
+                as={Text}
+                asAs="span"
+                name="HeroButtonContact"
+                defaultValue={intl.formatMessage({
+                  id: 'HeroButtonContact',
+                  defaultMessage: 'Kontakt'
+                })}
+              />
             </Button>
             <Button
               variant="outline"
               bg={'white'}
               borderRadius="xl"
               filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-              onClick={() =>
-                (window.location.href = localizeHref('/docs'))
-              }
+              onClick={() => (window.location.href = localizeHref('/docs'))}
               borderColor={'brand.500'}
               color={'brand.500'}
               borderWidth={2}
               _hover={{ borderColor: 'brand.400', color: 'brand.400' }}
             >
-              {intl.formatMessage({
-                id: 'HeroButtonProjects',
-                defaultMessage: 'Projekte ansehen'
-              })}
+              <Field.Text
+                as={Text}
+                asAs="span"
+                name="HeroButtonProjects"
+                defaultValue={intl.formatMessage({
+                  id: 'HeroButtonProjects',
+                  defaultMessage: 'Projekte ansehen'
+                })}
+              />
             </Button>
           </HStack>
         </VStack>

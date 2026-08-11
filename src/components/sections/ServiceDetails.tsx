@@ -67,65 +67,92 @@ const Services = () => {
             pl={{ lg: '4' }}
           >
             {/* For each ListItem you can create a custom component or structure here */}
+            {/* Field.Text derives the tag of a Heading wrapper on its own, so
+                the item titles keep the size md Heading styling but cannot
+                carry an as="h4" of their own. */}
             <Box mb="6">
-              <Heading as="h4" size="md">
-                {intl.formatMessage({
+              <Field.Text
+                as={Heading}
+                size="md"
+                name="ServiceDetailsItemUxTitle"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemUxTitle',
                   defaultMessage: 'UX-Konzeption'
                 })}
-              </Heading>
-              <Text mt="2">
-                {intl.formatMessage({
+              />
+              <Field.Text
+                mt="2"
+                as={Text}
+                name="ServiceDetailsItemUxText"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemUxText',
                   defaultMessage:
                     'Durch den Einsatz moderner UX-Methoden gestalten wir benutzerfreundliche und intuitive Oberflächen.'
                 })}
-              </Text>
+              />
             </Box>
             <Box mb="6">
-              <Heading as="h4" size="md">
-                {intl.formatMessage({
+              <Field.Text
+                as={Heading}
+                size="md"
+                name="ServiceDetailsItemWebTitle"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemWebTitle',
                   defaultMessage: 'Web development'
                 })}
-              </Heading>
-              <Text mt="2">
-                {intl.formatMessage({
+              />
+              <Field.Text
+                mt="2"
+                as={Text}
+                name="ServiceDetailsItemWebText"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemWebText',
                   defaultMessage:
                     'Wir kreieren moderne Websites und Webanwendungen, die exakt auf Ihre individuellen Bedürfnisse zugeschnitten sind.'
                 })}
-              </Text>
+              />
             </Box>
             <Box mb="6">
-              <Heading as="h4" size="md">
-                {intl.formatMessage({
+              <Field.Text
+                as={Heading}
+                size="md"
+                name="ServiceDetailsItemBackendTitle"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemBackendTitle',
                   defaultMessage: 'Backend development'
                 })}
-              </Heading>
-              <Text mt="2">
-                {intl.formatMessage({
+              />
+              <Field.Text
+                mt="2"
+                as={Text}
+                name="ServiceDetailsItemBackendText"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemBackendText',
                   defaultMessage:
                     'Unsere maßgeschneiderten Backend-Lösungen werden speziell auf Ihre Anforderungen abgestimmt und basieren auf dem Framework Pylon.'
                 })}
-              </Text>
+              />
             </Box>
             <Box mb="6">
-              <Heading as="h4" size="md">
-                {intl.formatMessage({
+              <Field.Text
+                as={Heading}
+                size="md"
+                name="ServiceDetailsItemCmsTitle"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemCmsTitle',
                   defaultMessage: 'Content management'
                 })}
-              </Heading>
-              <Text mt="2">
-                {intl.formatMessage({
+              />
+              <Field.Text
+                mt="2"
+                as={Text}
+                name="ServiceDetailsItemCmsText"
+                defaultValue={intl.formatMessage({
                   id: 'ServiceDetailsItemCmsText',
                   defaultMessage:
                     'Mit Jaen als Content-Management-System ermöglichen wir es Ihnen, Ihre Website eigenständig zu verwalten.'
                 })}
-              </Text>
+              />
             </Box>
           </Box>
         </Flex>

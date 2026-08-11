@@ -11,10 +11,27 @@ import {
 import {Field} from 'jaen'
 import {useIntl} from 'react-intl'
 
-import {withAccentDots} from '../../utils/accent-dots'
+import {useLocalizeHref} from '../../contexts/locale'
+import {splitAccentDot} from '../../utils/accent-dots'
 
 const Associates = () => {
   const intl = useIntl()
+  const localizeHref = useLocalizeHref()
+
+  // The heading is rich text now, so the accent dot has to be markup instead
+  // of the element withAccentDots builds around a plain string. The
+  // terminator is taken from the translated sentence rather than written out
+  // here, because Japanese closes on 。 and not on a period.
+  const [headingText, headingDot] = splitAccentDot(
+    intl.formatMessage({
+      id: 'AssociatesHeading',
+      defaultMessage: 'Wir entwickeln für Sie in Österreich.'
+    })
+  )
+
+  const headingValue = headingDot
+    ? `${headingText}<span style='color:var(--chakra-colors-brand-500)'>${headingDot}</span>`
+    : headingText
 
   // Sample list of your links and icons, assuming you will replace these with your actual data
   const associates = [
@@ -93,34 +110,37 @@ const Associates = () => {
             href={'https://www.wko.at/oe/aussenwirtschaft'}
             isExternal>
             <AspectRatio ratio={4 / 3}>
-              {/* Assuming you have a way to dynamically select your icon component */}
-              <Image
-                src={'/images/austria-a-aussenwirtschaft-austria.png'}
+              {/* Field.Image only forwards the props of its own image
+                  contract, so the size travels through autoScale, which fills
+                  the box the same way w="full" h="full" did. The contain fit
+                  no longer needs !important either: the picture sits one box
+                  below AspectRatio now, and the cover rule of AspectRatio
+                  reaches direct children only. */}
+              <Field.Image
+                name="AssociatesAustriaImage"
+                defaultValue="/images/austria-a-aussenwirtschaft-austria.png"
                 alt={intl.formatMessage({
                   id: 'AssociatesAustriaImageAlt',
                   defaultMessage: 'Austria'
                 })}
-                w="full"
-                h="full"
-                sx={{
-                  objectFit: 'contain !important'
-                }}
+                objectFit="contain"
               />
             </AspectRatio>
           </LinkOverlay>
         </LinkBox>
-        <Heading as="h2" size="xl" mt={4} textAlign="center" fontWeight="500">
-          {/* Software in Österreich */}
-          {/* Softwareentwicklung in Österreich */}
-          {/* Österreichische Qualitätssoftware */}
-          {/* Softwareentwicklung in Österreich */}
-          {withAccentDots(
-            intl.formatMessage({
-              id: 'AssociatesHeading',
-              defaultMessage: 'Wir entwickeln für Sie in Österreich.'
-            })
-          )}
-        </Heading>
+        {/* Software in Österreich */}
+        {/* Softwareentwicklung in Österreich */}
+        {/* Österreichische Qualitätssoftware */}
+        {/* Softwareentwicklung in Österreich */}
+        <Field.Text
+          as={Heading}
+          size="xl"
+          mt={4}
+          textAlign="center"
+          fontWeight="500"
+          name="AssociatesHeading"
+          defaultValue={headingValue}
+        />
       </GridItem>
       {associates.map((associate, index) => (
         <LinkBox
@@ -151,8 +171,11 @@ const Associates = () => {
       ))}
       {/* Den Wrapper um den Link mit GridItem oder einer ähnlichen Komponente und setze colSpan auf 3 */}
       <GridItem display="flex" colSpan={{base: 2, sm: 3, md: 6}} justifyContent="center">
+        {/* There is no /projects page, the invitation to browse leads to the
+            docs. The href has to run through localizeHref, otherwise a
+            visitor on /en/ lands back on the German page. */}
         <Link
-          href="/projects"
+          href={localizeHref('/docs')}
           variant="hover-theme"
           //textDecor={"underline"}
           opacity={0.7}

@@ -76,18 +76,22 @@ const BlogCard: FC<{ section: DocsSection }> = ({ section }) => {
           </Text>
         )}
 
-        <Text
+        {/* The cards come from the docs tree, not from a Jaen section, so
+            every card carries the same field name on purpose. The owner
+            edits the wording once and it applies to the whole grid. */}
+        <Field.Text
           mt="auto"
           pt="4"
+          as={Text}
           fontSize="sm"
           fontWeight="semibold"
           color="brand.500"
-        >
-          {intl.formatMessage({
+          name="BlogReadMore"
+          defaultValue={intl.formatMessage({
             id: 'BlogReadMore',
             defaultMessage: 'Weiterlesen'
           })}
-        </Text>
+        />
       </Flex>
     </LinkBox>
   );
@@ -129,7 +133,6 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
         })}
       />
 
-
       <Grid
         templateColumns={{
           base: '1fr',
@@ -152,10 +155,15 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
           variant="solid"
           filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
         >
-          {intl.formatMessage({
-            id: 'BlogAllLink',
-            defaultMessage: 'Alle Themen ansehen'
-          })}
+          {/* The label carries no styling of its own so it keeps inheriting
+              the typography of the button around it. */}
+          <Field.Text
+            name="BlogAllLink"
+            defaultValue={intl.formatMessage({
+              id: 'BlogAllLink',
+              defaultMessage: 'Alle Themen ansehen'
+            })}
+          />
         </Button>
       </Flex>
     </Box>
