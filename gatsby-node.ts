@@ -125,6 +125,10 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
           __dirname,
           'node_modules/@chakra-ui/react'
         ),
+        // Chakra v3 has no colour mode of its own; next-themes provides it, and
+        // it does so through React context. Two copies would mean two providers,
+        // so the toggle would flip one subtree and leave the other behind.
+        'next-themes': path.resolve(__dirname, 'node_modules/next-themes'),
         // The jaen packages come in as `link:` deps, so they resolve THEIR
         // dependencies from the monorepo tree instead of this one. For the
         // gqty client that means a second, nested copy whose ESM build pulls
