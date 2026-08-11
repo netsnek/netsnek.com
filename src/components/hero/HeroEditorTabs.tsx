@@ -40,10 +40,10 @@ const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
   return (
     <chakra.svg
       viewBox="0 0 56 46"
-      // Kleiner als die Knoepfe daneben, aber gross genug, dass die
-      // Richtung auf einen Blick lesbar ist.
-      w="13px"
-      h="11px"
+      // Beide Pfeile zusammen stehen so hoch wie die Knoepfe daneben, eine
+      // Spur darunter. Die Breite folgt dem viewBox-Verhaeltnis 56 zu 46.
+      w="27px"
+      h="22px"
       flexShrink={0}
       aria-hidden="true"
       display="block"
@@ -52,13 +52,13 @@ const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
         d={ARROW_UP}
         fill={upFilled ? 'var(--chakra-colors-brand-500)' : 'none'}
         stroke="var(--chakra-colors-brand-500)"
-        strokeWidth={upFilled ? 0 : 4}
+        strokeWidth={upFilled ? 0 : 3}
       />
       <path
         d={ARROW_DOWN}
         fill={upFilled ? 'none' : 'var(--chakra-colors-brand-500)'}
         stroke="var(--chakra-colors-brand-500)"
-        strokeWidth={upFilled ? 4 : 0}
+        strokeWidth={upFilled ? 3 : 0}
       />
     </chakra.svg>
   );
