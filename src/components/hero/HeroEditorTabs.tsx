@@ -1,7 +1,54 @@
-import { FC, useEffect, useId, useState } from 'react';
+import {
+  Component,
+  FC,
+  ReactNode,
+  useEffect,
+  useId,
+  useRef,
+  useState
+} from 'react';
 import { Box, Button, ButtonGroup, chakra } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import type { TabsProps } from 'jaen-fields-mdx';
+
+/**
+ * The hero must survive whatever the visitor types.
+ *
+ * The mdx field holds on to its last good render by itself, so a document
+ * that stops parsing leaves the drawing standing. That covers the compile
+ * step. It does not cover the render step: a document can parse perfectly and
+ * still throw while React builds it, from an attribute React refuses or an
+ * element used in a way its component cannot handle. Nothing catches that on
+ * the way up, and an uncaught render error unmounts the whole page. On the
+ * home page of the site that is the worst possible outcome for a sandbox
+ * nobody was even asked to use.
+ *
+ * So the panel gets a boundary of its own, and it falls back to the drawing
+ * as it last stood rather than to an apology.
+ */
+class PreviewGuard extends Component<
+  {resetKey: unknown; fallback: () => ReactNode; children: ReactNode},
+  {hasFailed: boolean}
+> {
+  state = {hasFailed: false};
+
+  static getDerivedStateFromError() {
+    return {hasFailed: true};
+  }
+
+  componentDidUpdate(previous: {resetKey: unknown}) {
+    // Without this the boundary latches: the first throw would freeze the
+    // preview for good and every later keystroke, including the one that
+    // fixes the document, would render nothing.
+    if (this.state.hasFailed && previous.resetKey !== this.props.resetKey) {
+      this.setState({hasFailed: false});
+    }
+  }
+
+  render() {
+    return this.state.hasFailed ? this.props.fallback() : this.props.children;
+  }
+}
 
 /** Tab order as the mdx field builds it: preview first, editor second. */
 const PREVIEW_TAB = 0;
@@ -108,6 +155,29 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
   // above already latches, so it cannot flicker between keystrokes.
   const isEditorOutlined = tab === EDITOR_TAB;
 
+  // The drawing as it last stood, kept as the markup the browser produced for
+  // it. Re-rendering the last good SOURCE would mean a second mdx field and a
+  // second parse for something that is already sitting in the DOM; this is the
+  // drawing itself, to the pixel. The markup is our own output, built in this
+  // browser from what this visitor typed, and it never leaves the tab.
+  const panelRef = useRef<HTMLDivElement>(null);
+  const lastGoodDrawing = useRef('');
+
+  useEffect(() => {
+    if (tab !== PREVIEW_TAB || isBroken) return;
+
+    // Only a panel that actually holds a drawing counts. Deleting the whole
+    // document compiles perfectly well, so without this the empty result would
+    // be filed as the last good version and take the real one with it.
+    if (!panelRef.current?.querySelector('svg')) return;
+
+    lastGoodDrawing.current = panelRef.current.innerHTML;
+  });
+
+  const lastDrawing = () => (
+    <Box dangerouslySetInnerHTML={{__html: lastGoodDrawing.current}} />
+  );
+
   const pill = (value: number, label: string) => (
     <Button
       size="xs"
@@ -162,6 +232,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
       </Box>
 
       <Box
+        ref={panelRef}
         borderRadius="xl"
         // The preview must not be clipped, the drawing's shadow reaches past
         // the device. The editor on the other hand needs a definite height,
@@ -209,7 +280,33 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
           }
         }}
       >
-        {tabs[tab]?.content}
+        {tab === PREVIEW_TAB ? (
+          // Compiled is not the same as rendered, and the two failures need
+          // different answers.
+          //
+          // A document that does not COMPILE never produces an element, so
+          // nothing throws and no boundary fires: the field would simply put
+          // its error messages where the drawing was. That case is caught
+          // here, before the field is asked for anything.
+          //
+          // A document that compiles and then throws while React builds it,
+          // which a plain `style="fill:#f77f00"` is enough to do, gets no
+          // warning at all. That one needs the boundary.
+          //
+          // Both land on the same picture: the drawing as it last stood.
+          isBroken ? (
+            lastDrawing()
+          ) : (
+            // resetKey is the parse, not the keystroke. `stats` is memoized
+            // per document, so it changes exactly when there is something new
+            // to try and stays put through unrelated re-renders.
+            <PreviewGuard resetKey={stats} fallback={lastDrawing}>
+              {tabs[tab]?.content}
+            </PreviewGuard>
+          )
+        ) : (
+          tabs[tab]?.content
+        )}
       </Box>
     </Box>
   );
