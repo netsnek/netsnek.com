@@ -8,10 +8,9 @@ import {
   Heading,
   Stack,
   Text,
-  VStack,
-  useColorModeValue
+  VStack
 } from '@chakra-ui/react'
-import {Field, usePageContext} from 'jaen'
+import {Field, useColorModeValue, usePageContext} from 'jaen'
 import {Link} from 'gatsby'
 import {FC} from 'react'
 import {ProductCard} from '../../ProductCard'

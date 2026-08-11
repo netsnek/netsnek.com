@@ -1,3 +1,4 @@
+import { useColorModeValue } from 'jaen';
 import {
   Text,
   Box,
@@ -12,7 +13,6 @@ import {
   Button,
   LinkOverlay,
   LinkBox,
-  useColorModeValue,
   Tooltip
 } from '@chakra-ui/react';
 import { FC, useState, useEffect } from 'react';
@@ -245,7 +245,10 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             borderRight={{ base: '1px', md: '0px' }}
             borderLeft="0"
             borderStyle="solid"
-            borderColor={{ base: 'transparent', md: useColorModeValue('gray.900', 'gray.600') }}
+            borderColor={{
+              base: 'transparent',
+              md: useColorModeValue('gray.900', 'gray.600')
+            }}
           >
             {/* Office information here */}
             <Text color="white" fontWeight="bold" fontSize="lg" pb="4">

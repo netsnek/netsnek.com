@@ -1,3 +1,4 @@
+import { useColorModeValue } from 'jaen';
 import {
   FocusLock,
   Input,
@@ -6,7 +7,6 @@ import {
   InputRightElement,
   InputRightElementProps,
   Kbd,
-  useColorModeValue,
   useMenuButton,
   useMenuContext
 } from '@chakra-ui/react';

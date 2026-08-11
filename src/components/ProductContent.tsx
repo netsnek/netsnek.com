@@ -18,17 +18,20 @@ import {
   Text,
   Tooltip,
   useClipboard,
-  useColorModeValue,
   VStack,
   Wrap,
-  WrapItem,
+  WrapItem
 } from "@chakra-ui/react";
 import React from "react";
 
 import { FaShare } from "@react-icons/all-files/fa/FaShare";
 import { FaShoppingBasket } from "@react-icons/all-files/fa/FaShoppingBasket";
 // import {useBasket} from '../../../services/basket'
-import { connectBlock, Field } from 'jaen';
+import {
+  Field,
+  connectBlock,
+  useColorModeValue
+} from 'jaen';
 import MdxEditor from "./mdx-editor/MdxEditor";
 
 // import {PhotoProvider} from 'jaen'

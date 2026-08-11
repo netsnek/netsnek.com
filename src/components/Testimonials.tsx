@@ -1,4 +1,5 @@
-'use client';
+import { useColorModeValue } from 'jaen';
+('use client');
 
 import {
   Box,
@@ -8,7 +9,6 @@ import {
   Stack,
   Container,
   Avatar,
-  useColorModeValue,
   LinkBox,
   LinkOverlay
 } from '@chakra-ui/react';

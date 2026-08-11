@@ -1,18 +1,16 @@
+import { DarkMode, LightMode, useColorMode } from 'jaen';
 import { CheckIcon, MoonIcon, SunIcon } from '../components/icons/chakra';
 import {
   Button,
   ButtonProps,
   ColorMode,
-  DarkMode,
   Icon,
   IconProps,
-  LightMode,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
-  MenuProps,
-  useColorMode
+  MenuProps
 } from '@chakra-ui/react';
 import { FC, ReactNode, memo } from 'react';
 import { useIntl } from 'react-intl';

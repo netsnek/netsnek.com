@@ -7,10 +7,9 @@ import {
   Heading,
   Stack,
   Text,
-  VStack,
-  useColorModeValue
+  VStack
 } from '@chakra-ui/react'
-import {Field, useContentManagement} from 'jaen'
+import {Field, useColorModeValue, useContentManagement} from 'jaen'
 import {Link} from 'gatsby'
 import {FC} from 'react'
 import Slider from 'react-slick'

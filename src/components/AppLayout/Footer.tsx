@@ -11,13 +11,12 @@ import {
   LinkOverlay,
   Spacer,
   Text,
-  VStack,
-  useColorModeValue
+  VStack
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
 import { Link } from 'gatsby-plugin-jaen';
-import { Field } from 'jaen';
+import { Field, useColorModeValue } from 'jaen';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram';
@@ -99,9 +98,9 @@ const Footer: FC = () => {
         href: 'https://schett.net'
       }
     ]
-  ]
+  ];
 
-  const linkElmnts: ReactNode[] = []
+  const linkElmnts: ReactNode[] = [];
 
   links.forEach((linkGroup, i) => {
     linkElmnts.push(
@@ -133,8 +132,8 @@ const Footer: FC = () => {
       //     )
       //   })}
       // </VStack>
-    )
-  })
+    );
+  });
 
   return (
     <>
@@ -146,18 +145,19 @@ const Footer: FC = () => {
         pb={20}
         position="relative"
         //mt="-25px"
-        px={{base: 5, lg: 0}}
+        px={{ base: 5, lg: 0 }}
         overflowX="hidden"
         bgColor="#0A0A0A"
-        zIndex={0}>
+        zIndex={0}
+      >
         <Container maxW="7xl" h="100%">
-          <Flex mt={20} color="white" wrap={{base: 'wrap', sm: 'nowrap'}}>
+          <Flex mt={20} color="white" wrap={{ base: 'wrap', sm: 'nowrap' }}>
             <Box>
               <Flex alignItems={'center'}>
                 <Logo h="100px" />
               </Flex>
             </Box>
-            <Spacer minW={{base: '5rem', lg: '25%'}} />
+            <Spacer minW={{ base: '5rem', lg: '25%' }} />
             {/* <HStack
               alignItems="start"
               spacing={{base: 5, sm: 20}}
@@ -221,15 +221,20 @@ const Footer: FC = () => {
             mb={4}
             as={LinkBox}
             spacing="4"
-            flexWrap={'wrap'}>
+            flexWrap={'wrap'}
+          >
             <LinkBox
               mr="4"
               display="flex"
               transition="color 0.2s"
               _hover={{
                 color: 'brand.500'
-              }}>
-              <LinkOverlay href="https://www.facebook.com/profile.php?id=61552973278627" isExternal>
+              }}
+            >
+              <LinkOverlay
+                href="https://www.facebook.com/profile.php?id=61552973278627"
+                isExternal
+              >
                 <Icon as={FaFacebook} boxSize="5" />
               </LinkOverlay>
             </LinkBox>
@@ -239,7 +244,8 @@ const Footer: FC = () => {
               transition="color 0.2s"
               _hover={{
                 color: 'brand.500'
-              }}>
+              }}
+            >
               <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
                 <Icon as={FaInstagram} boxSize="5" />
               </LinkOverlay>
@@ -287,7 +293,7 @@ const Footer: FC = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 export default Footer;

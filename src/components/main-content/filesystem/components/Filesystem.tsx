@@ -1,10 +1,5 @@
-import {
-  Box,
-  BoxProps,
-  Tooltip,
-  TooltipProps,
-  useColorModeValue
-} from '@chakra-ui/react';
+import { useColorModeValue } from 'jaen';
+import { Box, BoxProps, Tooltip, TooltipProps } from '@chakra-ui/react';
 import { FC, useState } from 'react';
 
 import BsFileEarmark from '../../../icons/bootstrap/BsFileEarmark';
