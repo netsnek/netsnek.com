@@ -31,6 +31,98 @@ export interface ContactModalDrawerProps {
   children: React.ReactNode
 }
 
+/**
+ * The inline style the confirmation template gives its links.
+ *
+ * Email clients drop stylesheets, so it has to ride along on every anchor.
+ * It lives here once because the sentence around the links is translated and
+ * the word order moves with the language.
+ */
+const MAIL_LINK_STYLE =
+  '-webkit-text-size-adjust:none;-ms-text-size-adjust:none;' +
+  'mso-line-height-rule:exactly;text-decoration:underline;' +
+  'color:#5c68e2;font-size:14px;'
+
+const mailLink = (href: string, label: string) =>
+  `<a href="${href}" target="_new" style="${MAIL_LINK_STYLE}">${label}</a>`
+
+/**
+ * The confirmation mail, in the language the visitor filled the form in.
+ *
+ * emailwerk delivers the confirmation as a linked child of the contact
+ * template and renders it server-side from the SAME values the contact send
+ * carried, so the only way the sender's language reaches that mail is to send
+ * the text with it. Each `t_` key matches a placeholder in the template, and
+ * every placeholder there keeps the German original as its own fallback: an
+ * older build that sends none of this still produces a correct German mail.
+ */
+const confirmationText = (intl: ReturnType<typeof useIntl>) => ({
+  locale: intl.locale,
+  t_subject: intl.formatMessage({
+    id: 'MailConfirmSubject',
+    defaultMessage: 'Ihre Anfrage auf netsnek.com',
+  }),
+  t_title: intl.formatMessage({
+    id: 'MailConfirmTitle',
+    defaultMessage: 'Ihre Anfrage',
+  }),
+  t_heading: intl.formatMessage({
+    id: 'MailConfirmHeading',
+    defaultMessage: 'Kontaktanfrage',
+  }),
+  t_thanks: intl.formatMessage({
+    id: 'MailConfirmThanks',
+    defaultMessage:
+      'Vielen Dank für deine Kontaktanfrage. Ich melde mich so schnell wie möglich bei dir.',
+  }),
+  t_labelName: intl.formatMessage({
+    id: 'MailConfirmLabelName',
+    defaultMessage: 'Name:',
+  }),
+  t_labelEmail: intl.formatMessage({
+    id: 'MailConfirmLabelEmail',
+    defaultMessage: 'E-Mail:',
+  }),
+  t_labelPhone: intl.formatMessage({
+    id: 'MailConfirmLabelPhone',
+    defaultMessage: 'Telefonnummer:',
+  }),
+  t_labelMessage: intl.formatMessage({
+    id: 'MailConfirmLabelMessage',
+    defaultMessage: 'Nachricht:',
+  }),
+  // The only string that carries markup. The template renders it raw, so the
+  // two links are built here rather than left as bare text.
+  t_questions: intl.formatMessage(
+    {
+      id: 'MailConfirmQuestions',
+      defaultMessage:
+        'Hast du noch Fragen? Dann schick mir gerne eine E-Mail an {mail} oder rufe mich unter {phone} an.',
+    },
+    {
+      mail: mailLink('mailto:office@netsnek.com', 'office@netsnek.com'),
+      phone: mailLink('tel:+436508248811', '+43 650 824 88 11'),
+    },
+  ),
+  t_rights: intl.formatMessage(
+    {
+      id: 'MailConfirmRights',
+      defaultMessage: 'Alle Rechte vorbehalten. © {year} Netsnek',
+    },
+    // The year belongs inside the string, not around it: English and Japanese
+    // both put the symbol first, and only the string knows its own order.
+    { year: String(new Date().getFullYear()) },
+  ),
+  t_website: intl.formatMessage({
+    id: 'MailConfirmWebsite',
+    defaultMessage: 'Webseite',
+  }),
+  t_imprint: intl.formatMessage({
+    id: 'MailConfirmImprint',
+    defaultMessage: 'Impressum',
+  }),
+})
+
 export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ children }) => {
   // Use the current location from @reach/router.
   const location = useLocation()
@@ -77,6 +169,7 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({ childr
       phone: data.phone || '',
       message: data.message,
       invokedOnUrl: meta?.url,
+      ...confirmationText(intl),
     }
 
     // "Contact" template on emailwerk.com. One send, for visitors and logged-in

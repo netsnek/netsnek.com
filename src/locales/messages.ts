@@ -116,6 +116,34 @@ export const messagesDe = {
   ContactToastSuccessDescription:
     'Ihre Nachricht wurde erfolgreich versendet.',
 
+  // The confirmation mail the sender receives (src/services/contact.tsx).
+  //
+  // These do not render on the site. They travel to emailwerk as send values
+  // and are rendered there into the "Contact Confirmation" template, which is
+  // a linked child of the contact template and goes out server-side. The
+  // template carries the German text of every one of these as its own
+  // fallback, so it stays correct on its own; what these add is the sender's
+  // own language.
+  //
+  // Deliberately only this mail. The notification to the office stays German,
+  // whatever language the enquiry arrived in.
+  MailConfirmSubject: 'Ihre Anfrage auf netsnek.com',
+  MailConfirmTitle: 'Ihre Anfrage',
+  MailConfirmHeading: 'Kontaktanfrage',
+  MailConfirmThanks:
+    'Vielen Dank für deine Kontaktanfrage. Ich melde mich so schnell wie möglich bei dir.',
+  MailConfirmLabelName: 'Name:',
+  MailConfirmLabelEmail: 'E-Mail:',
+  MailConfirmLabelPhone: 'Telefonnummer:',
+  MailConfirmLabelMessage: 'Nachricht:',
+  // {mail} and {phone} become links. Their position may move freely, which is
+  // the whole reason the sentence is one string rather than three fragments.
+  MailConfirmQuestions:
+    'Hast du noch Fragen? Dann schick mir gerne eine E-Mail an {mail} oder rufe mich unter {phone} an.',
+  MailConfirmRights: 'Alle Rechte vorbehalten. © {year} Netsnek',
+  MailConfirmWebsite: 'Webseite',
+  MailConfirmImprint: 'Impressum',
+
   // 404 (src/pages/404.tsx)
   NotFoundTitle: 'Seite nicht gefunden',
   NotFoundText: 'Diese Seite existiert nicht.',
@@ -352,6 +380,18 @@ export const messagesEn: MessageCatalog = {
   ContactToastErrorDescription: "An error has occurred.",
   ContactToastSuccessTitle: "Success",
   ContactToastSuccessDescription: "Your message has been sent successfully.",
+  MailConfirmSubject: "Your enquiry via netsnek.com",
+  MailConfirmTitle: "Your enquiry",
+  MailConfirmHeading: "Enquiry received",
+  MailConfirmThanks: "Thanks for getting in touch. I'll get back to you as soon as I can.",
+  MailConfirmLabelName: "Name:",
+  MailConfirmLabelEmail: "Email:",
+  MailConfirmLabelPhone: "Phone:",
+  MailConfirmLabelMessage: "Message:",
+  MailConfirmQuestions: "Any other questions? Just email me at {mail} or give me a call on {phone}.",
+  MailConfirmRights: "© {year} Netsnek. All rights reserved.",
+  MailConfirmWebsite: "Website",
+  MailConfirmImprint: "Legal notice",
   NotFoundTitle: "Page not found",
   NotFoundText: "This page does not exist.",
   NotFoundBackHome: "Back to homepage",
@@ -499,6 +539,18 @@ export const messagesSl: MessageCatalog = {
   ContactToastErrorDescription: "Prišlo je do napake.",
   ContactToastSuccessTitle: "Uspešno",
   ContactToastSuccessDescription: "Vaše sporočilo je bilo uspešno poslano.",
+  MailConfirmSubject: "Tvoje povpraševanje na netsnek.com",
+  MailConfirmTitle: "Tvoje povpraševanje",
+  MailConfirmHeading: "Povpraševanje",
+  MailConfirmThanks: "Najlepša hvala za tvoje povpraševanje. Javil se ti bom čim prej.",
+  MailConfirmLabelName: "Ime in priimek:",
+  MailConfirmLabelEmail: "E-pošta:",
+  MailConfirmLabelPhone: "Telefonska številka:",
+  MailConfirmLabelMessage: "Sporočilo:",
+  MailConfirmQuestions: "Imaš še kakšno vprašanje? Kar mi piši na {mail} ali me pokliči na {phone}.",
+  MailConfirmRights: "Vse pravice pridržane. © {year} Netsnek",
+  MailConfirmWebsite: "Spletna stran",
+  MailConfirmImprint: "Impresum",
   NotFoundTitle: "Stran ni bila najdena",
   NotFoundText: "Ta stran ne obstaja.",
   NotFoundBackHome: "Nazaj na domačo stran",
@@ -646,6 +698,18 @@ export const messagesIt: MessageCatalog = {
   ContactToastErrorDescription: "Si è verificato un errore.",
   ContactToastSuccessTitle: "Successo",
   ContactToastSuccessDescription: "Il vostro messaggio è stato inviato correttamente.",
+  MailConfirmSubject: "La tua richiesta su netsnek.com",
+  MailConfirmTitle: "La tua richiesta",
+  MailConfirmHeading: "Richiesta di contatto",
+  MailConfirmThanks: "Grazie per avermi contattato. Ti rispondo appena possibile.",
+  MailConfirmLabelName: "Nome e cognome:",
+  MailConfirmLabelEmail: "E-mail:",
+  MailConfirmLabelPhone: "Telefono:",
+  MailConfirmLabelMessage: "Messaggio:",
+  MailConfirmQuestions: "Hai altre domande? Scrivimi pure a {mail} o chiamami al {phone}.",
+  MailConfirmRights: "Tutti i diritti riservati. © {year} Netsnek",
+  MailConfirmWebsite: "Sito web",
+  MailConfirmImprint: "Note legali",
   NotFoundTitle: "Pagina non trovata",
   NotFoundText: "Questa pagina non esiste.",
   NotFoundBackHome: "Torna alla homepage",
@@ -793,6 +857,18 @@ export const messagesJa: MessageCatalog = {
   ContactToastErrorDescription: "エラーが発生しました。",
   ContactToastSuccessTitle: "送信完了",
   ContactToastSuccessDescription: "メッセージが正常に送信されました。",
+  MailConfirmSubject: "netsnek.com へのお問い合わせを受け付けました",
+  MailConfirmTitle: "お問い合わせ",
+  MailConfirmHeading: "お問い合わせを受け付けました",
+  MailConfirmThanks: "お問い合わせいただき、ありがとうございます。できるだけ早くご連絡いたします。",
+  MailConfirmLabelName: "お名前：",
+  MailConfirmLabelEmail: "メールアドレス：",
+  MailConfirmLabelPhone: "電話番号：",
+  MailConfirmLabelMessage: "お問い合わせ内容：",
+  MailConfirmQuestions: "ご不明な点があれば、お気軽に {mail} までメールをお送りいただくか、{phone} までお電話ください。",
+  MailConfirmRights: "© {year} Netsnek All Rights Reserved.",
+  MailConfirmWebsite: "ウェブサイト",
+  MailConfirmImprint: "運営者情報",
   NotFoundTitle: "ページが見つかりません",
   NotFoundText: "このページは存在しません。",
   NotFoundBackHome: "トップページへ戻る",
