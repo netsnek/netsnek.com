@@ -172,14 +172,14 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
         borderColor={
           isEditorOutlined
             ? wasValid
-              ? 'green.400'
+              ? 'brand.500'
               : 'red.400'
             : 'transparent'
         }
         boxShadow={
           isEditorOutlined
             ? wasValid
-              ? '0 0 0 4px rgba(72, 187, 120, 0.15)'
+              ? '0 0 0 4px rgba(247, 127, 0, 0.15)'
               : '0 0 0 4px rgba(245, 101, 101, 0.15)'
             : 'none'
         }
