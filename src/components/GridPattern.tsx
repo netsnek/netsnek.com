@@ -1,6 +1,6 @@
-import { useEffect, useId, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
-import { chakra } from '@chakra-ui/react'
+import { useEffect, useId, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { chakra } from '@chakra-ui/react';
 
 function Block({ x, y, ...props }) {
   return (
@@ -9,76 +9,77 @@ function Block({ x, y, ...props }) {
       d="M45.119 4.5a11.5 11.5 0 0 0-11.277 9.245l-25.6 128C6.82 148.861 12.262 155.5 19.52 155.5h63.366a11.5 11.5 0 0 0 11.277-9.245l25.6-128c1.423-7.116-4.02-13.755-11.277-13.755H45.119Z"
       {...props}
     />
-  )
+  );
 }
 
 export function GridPattern({ yOffset = 0, interactive = false, ...props }) {
-  let id = useId()
-  let ref = useRef()
-  let currentBlock = useRef()
-  let counter = useRef(0)
-  let [hoveredBlocks, setHoveredBlocks] = useState([])
+  // Use React.useId instead (available in React 18+)
+  let id = useId();
+  let ref = useRef();
+  let currentBlock = useRef();
+  let counter = useRef(0);
+  let [hoveredBlocks, setHoveredBlocks] = useState([]);
   let staticBlocks = [
     [1, 1],
     [2, 2],
     [4, 3],
     [6, 2],
     [7, 4],
-    [5, 5],
-  ]
+    [5, 5]
+  ];
 
   useEffect(() => {
     if (!interactive) {
-      return
+      return;
     }
 
     function onMouseMove(event) {
       if (!ref.current) {
-        return
+        return;
       }
 
-      let rect = ref.current.getBoundingClientRect()
-      let x = event.clientX - rect.left
-      let y = event.clientY - rect.top
+      let rect = ref.current.getBoundingClientRect();
+      let x = event.clientX - rect.left;
+      let y = event.clientY - rect.top;
       if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
-        return
+        return;
       }
 
-      x = x - rect.width / 2 - 32
-      y = y - yOffset
-      x += Math.tan(32 / 160) * y
-      x = Math.floor(x / 96)
-      y = Math.floor(y / 160)
+      x = x - rect.width / 2 - 32;
+      y = y - yOffset;
+      x += Math.tan(32 / 160) * y;
+      x = Math.floor(x / 96);
+      y = Math.floor(y / 160);
 
       if (currentBlock.current?.[0] === x && currentBlock.current?.[1] === y) {
-        return
+        return;
       }
 
-      currentBlock.current = [x, y]
+      currentBlock.current = [x, y];
 
-      setHoveredBlocks((blocks) => {
-        let key = counter.current++
+      setHoveredBlocks(blocks => {
+        let key = counter.current++;
         return [...blocks, [x, y, key]].filter(
-          (block) => !(block[0] === x && block[1] === y && block[2] !== key)
-        )
-      })
+          block => !(block[0] === x && block[1] === y && block[2] !== key)
+        );
+      });
     }
 
-    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mousemove', onMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove)
-    }
-  }, [yOffset, interactive])
+      window.removeEventListener('mousemove', onMouseMove);
+    };
+  }, [yOffset, interactive]);
 
   return (
     <chakra.svg ref={ref} aria-hidden="true" {...props}>
       <rect width="100%" height="100%" fill={`url(#${id})`} strokeWidth="0" />
       <chakra.svg x="50%" y={yOffset} strokeWidth="0" overflow="visible">
-        {staticBlocks.map((block) => (
+        {staticBlocks.map(block => (
           <Block key={`${block}`} x={block[0]} y={block[1]} />
         ))}
-        {hoveredBlocks.map((block) => (
+        {hoveredBlocks.map(block => (
           <Block
             key={block[2]}
             x={block[0]}
@@ -86,9 +87,7 @@ export function GridPattern({ yOffset = 0, interactive = false, ...props }) {
             animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: 1, times: [0, 0, 1] }}
             onAnimationComplete={() => {
-              setHoveredBlocks((blocks) =>
-                blocks.filter((b) => b[2] !== block[2])
-              )
+              setHoveredBlocks(blocks => blocks.filter(b => b[2] !== block[2]));
             }}
           />
         ))}
@@ -107,5 +106,5 @@ export function GridPattern({ yOffset = 0, interactive = false, ...props }) {
         </pattern>
       </defs>
     </chakra.svg>
-  )
+  );
 }

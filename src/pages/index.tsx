@@ -70,4 +70,4 @@ export const query = graphql`
   }
 `;
 
-export {Head} from '../components/Head';
+export { Head } from '../components/Head';

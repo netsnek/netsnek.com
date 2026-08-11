@@ -1,12 +1,5 @@
 import { ExternalLinkIcon } from '../../../../components/icons/chakra';
-import {
-  Alert,
-  AlertIcon,
-  Box,
-  Link,
-  Stack,
-  Text
-} from '@chakra-ui/react';
+import { Alert, Box, Link, Stack, Text } from '@chakra-ui/react';
 import { useLocation } from '@reach/router';
 import { FC, isValidElement, ReactNode } from 'react';
 
@@ -104,16 +97,21 @@ const QASMPlayground: FC<IQASMPlaygroundProps> = ({ children }) => {
           </Box>
         </Box>
       )}
-      <Alert variant="info" borderRadius="lg" p={4} mt={code ? 4 : 0}>
-        <AlertIcon />
+      <Alert.Root variant="info" borderRadius="lg" p={4} mt={code ? 4 : 0}>
+        <Alert.Indicator />
         <Text mt="0 !important">
           Der interaktive QASM-Playground ist auf PhotonQ verfügbar.{' '}
-          <Link href={href} isExternal fontWeight="semibold">
+          <Link
+            href={href}
+            fontWeight="semibold"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Diesen Abschnitt auf PhotonQ öffnen{' '}
             <ExternalLinkIcon mb="3px" boxSize="0.85em" />
           </Link>
         </Text>
-      </Alert>
+      </Alert.Root>
     </Box>
   );
 };

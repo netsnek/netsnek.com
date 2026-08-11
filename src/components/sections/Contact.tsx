@@ -167,7 +167,11 @@ const Contact = () => {
               transition="color 0.2s"
               _hover={{ color: 'brand.500' }}
             >
-              <LinkOverlay href={link.href} isExternal>
+              <LinkOverlay
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <AspectRatio ratio={4 / 3}>
                   {/* Assuming you have a way to dynamically select your icon component */}
                   <link.icon w="full" h="full" />

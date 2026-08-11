@@ -1,4 +1,4 @@
-import { Divider, HStack, Heading, Stack, VStack } from '@chakra-ui/react';
+import { HStack, Heading, Stack, VStack, Separator } from '@chakra-ui/react';
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
 import useTocNavigation from '../../hooks/use-toc-navigation';
@@ -32,7 +32,7 @@ const TableOfContent: FC<ITableOfContentProps> = ({
   if (data.length === 0) return null;
 
   return (
-    <Stack spacing="4">
+    <Stack gap="4">
       <Heading as="h3" size="md">
         {intl.formatMessage({
           id: 'TocHeading',
@@ -40,9 +40,9 @@ const TableOfContent: FC<ITableOfContentProps> = ({
         })}
       </Heading>
 
-      <HStack spacing="4">
-        <Divider orientation="vertical" alignSelf="stretch" h="auto" />
-        <VStack spacing={2} fontSize="sm">
+      <HStack gap="4">
+        <Separator orientation="vertical" alignSelf="stretch" h="auto" />
+        <VStack gap={2} fontSize="sm">
           {data.map(item => {
             const isActive = false; //TODO: implement active state
             return (

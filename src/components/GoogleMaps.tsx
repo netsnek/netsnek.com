@@ -1,94 +1,88 @@
 import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-    Box,
-    BoxProps,
-    Center,
-    Link,
-    Spinner,
-    chakra
-  } from '@chakra-ui/react'
-  import {useCookieConsentCategory, useCookieConsentContext} from 'jaen'
-  import {useEffect, useState} from 'react'
-  import {useIntl} from 'react-intl'
+  Alert,
+  Box,
+  BoxProps,
+  Center,
+  Link,
+  Spinner,
+  chakra
+} from '@chakra-ui/react';
+import { useCookieConsentCategory, useCookieConsentContext } from 'jaen';
+import { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 
-  export interface GoogleMapsProps extends BoxProps {
-    src: string
-  }
+export interface GoogleMapsProps extends BoxProps {
+  src: string;
+}
 
-  export const GoogleMaps = ({src, ...props}: GoogleMapsProps) => {
-    const [isMounted, setIsMounted] = useState(false)
+export const GoogleMaps = ({ src, ...props }: GoogleMapsProps) => {
+  const [isMounted, setIsMounted] = useState(false);
 
-    const intl = useIntl()
-    const cc = useCookieConsentContext()
+  const intl = useIntl();
+  const cc = useCookieConsentContext();
 
-    // Reads the category and re-reads it on every consent change, so
-    // accepting through the global banner mounts the map right away. The
-    // plugin instance itself never changes identity, an effect keyed on it
-    // would only ever run once.
-    const mapsEnabled = useCookieConsentCategory('analytics')
+  // Reads the category and re-reads it on every consent change, so
+  // accepting through the global banner mounts the map right away. The
+  // plugin instance itself never changes identity, an effect keyed on it
+  // would only ever run once.
+  const mapsEnabled = useCookieConsentCategory('analytics');
 
-    useEffect(() => {
-      setIsMounted(true)
-    }, [])
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-    // The map's own accept button. It only writes the consent; the state
-    // comes back through the same event as the banner's.
-    const handleAccept = () => {
-      cc?.accept('analytics')
-    }
+  // The map's own accept button. It only writes the consent; the state
+  // comes back through the same event as the banner's.
+  const handleAccept = () => {
+    cc?.accept('analytics');
+  };
 
-    if (!isMounted) {
-      return (
-        <Center boxSize="full" bg="gray.200">
-          <Spinner />
-        </Center>
-      )
-    }
-
-    if (!mapsEnabled) {
-      return (
-        <Alert
-          h="full"
-          status="warning"
-          variant="subtle"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center">
-          <Spinner />
-          <AlertTitle mt={4} mb={1} fontSize="lg">
-            {intl.formatMessage({
-              id: 'MapsUnavailableTitle',
-              defaultMessage: 'Google Maps ist nicht verfügbar'
-            })}
-          </AlertTitle>
-          <AlertDescription maxWidth="sm">
-            {intl.formatMessage({
-              id: 'MapsUnavailableText',
-              defaultMessage:
-                'Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.'
-            })}{' '}
-            <Link onClick={handleAccept} variant="link">
-              {intl.formatMessage({
-                id: 'MapsEnableCookiesAction',
-                defaultMessage: 'Analyse Cookies aktivieren'
-              })}
-            </Link>
-          </AlertDescription>
-        </Alert>
-      )
-    }
-
+  if (!isMounted) {
     return (
-      <Box {...props} bg="gray.200" overflow={"hidden"}>
-        <chakra.iframe
-          src={src}
-          w="calc(100% + 4px)"
-          h="600"
-          m="-2px"
-        />
-      </Box>
-    )
+      <Center boxSize="full" bg="gray.200">
+        <Spinner />
+      </Center>
+    );
   }
+
+  if (!mapsEnabled) {
+    return (
+      <Alert.Root
+        h="full"
+        status="warning"
+        variant="subtle"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+      >
+        <Spinner />
+        <Alert.Title mt={4} mb={1} fontSize="lg">
+          {intl.formatMessage({
+            id: 'MapsUnavailableTitle',
+            defaultMessage: 'Google Maps ist nicht verfügbar'
+          })}
+        </Alert.Title>
+        <Alert.Description maxWidth="sm">
+          {intl.formatMessage({
+            id: 'MapsUnavailableText',
+            defaultMessage:
+              'Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.'
+          })}{' '}
+          <Link onClick={handleAccept} variant="link">
+            {intl.formatMessage({
+              id: 'MapsEnableCookiesAction',
+              defaultMessage: 'Analyse Cookies aktivieren'
+            })}
+          </Link>
+        </Alert.Description>
+      </Alert.Root>
+    );
+  }
+
+  return (
+    <Box {...props} bg="gray.200" overflow={'hidden'}>
+      <chakra.iframe src={src} w="calc(100% + 4px)" h="600" m="-2px" />
+    </Box>
+  );
+};

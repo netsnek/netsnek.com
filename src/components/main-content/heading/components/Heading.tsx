@@ -46,8 +46,7 @@ const nodeToText = (node: ReactNode): string => {
 };
 
 export interface IHeadingProps
-  extends IMainContentComponentBaseProps,
-    HeadingProps {
+  extends IMainContentComponentBaseProps, HeadingProps {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   id?: string;
   noAnchor?: boolean;

@@ -8,21 +8,21 @@ import {
   Stack,
   Text,
   VStack
-} from '@chakra-ui/react'
-import {Field, useColorModeValue, useContentManagement} from 'jaen'
-import {Link} from 'gatsby'
-import {FC} from 'react'
-import Slider from 'react-slick'
-import {JaenPageIndexType} from '../../../shared/types/news'
-import {ProductCard} from '../../ProductCard'
-import { IJaenProduct } from '../../../hooks/use-products'
+} from '@chakra-ui/react';
+import { Field, useColorModeValue, useContentManagement } from 'jaen';
+import { Link } from 'gatsby';
+import { FC } from 'react';
+import Slider from 'react-slick';
+import { JaenPageIndexType } from '../../../shared/types/news';
+import { ProductCard } from '../../ProductCard';
+import { IJaenProduct } from '../../../hooks/use-products';
 
 interface IPortfolioSliderProps extends GridProps {
-  index: JaenPageIndexType
+  index: JaenPageIndexType;
 }
 
-const PortfolioSlider: FC<IPortfolioSliderProps> = ({index, ...props}) => {
-  const slidesToShow = 1
+const PortfolioSlider: FC<IPortfolioSliderProps> = ({ index, ...props }) => {
+  const slidesToShow = 1;
 
   var settings = {
     dots: true,
@@ -31,13 +31,13 @@ const PortfolioSlider: FC<IPortfolioSliderProps> = ({index, ...props}) => {
     slidesToShow,
     slidesToScroll: 1,
     arrows: false
-  }
+  };
 
-  const {isEditing} = useContentManagement()
+  const { isEditing } = useContentManagement();
 
   return (
     <Box {...props}>
-      <Slider {...settings} className="news_slider">
+      <Slider.Root {...settings} className="news_slider">
         {index.childPages.map((page, i) => {
           return index.withJaenPage(
             page.id,
@@ -86,10 +86,10 @@ const PortfolioSlider: FC<IPortfolioSliderProps> = ({index, ...props}) => {
                 }}
               />
             </Box>
-          )
+          );
         })}
-      </Slider>
+      </Slider.Root>
     </Box>
-  )
-}
-export default PortfolioSlider
+  );
+};
+export default PortfolioSlider;

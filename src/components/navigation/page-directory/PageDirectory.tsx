@@ -119,9 +119,7 @@ const PageDirectory: FC<PageDirectoryProps> = ({
       onClick: signinRedirect
     };
     // Match on the stable id, never on the (now translated) label.
-    const section = baseMenuItems.find(
-      bmi => bmi.id === NAVIGATION_SECTION_ID
-    );
+    const section = baseMenuItems.find(bmi => bmi.id === NAVIGATION_SECTION_ID);
 
     if (section) {
       section.items.unshift(item);
@@ -137,17 +135,12 @@ const PageDirectory: FC<PageDirectoryProps> = ({
   let menuRootExpandedIdx = 0;
 
   return (
-    <Accordion
+    <Accordion.Root
       id="left-nav-accordion"
       visibility={isExpanded ? 'visible' : 'hidden'}
       opacity={isExpanded ? 1 : 0}
       w={isExpanded ? '100%' : 'max-content'}
-      allowMultiple
-      // No height animation: panels can be toggled while the nav is hidden
-      // (closed mobile drawer, collapsed left nav) and framer-motion then
-      // measures the open height as 0, leaving an "expanded" item with an
-      // invisible panel. Plain show/hide cannot get stuck.
-      reduceMotion
+      multiple
       css={{
         // Remove border from last accordion item
         '& .chakra-accordion__item:last-child': {
@@ -157,14 +150,14 @@ const PageDirectory: FC<PageDirectoryProps> = ({
       variant="leftNav"
       transition="opacity 0.2s ease-in-out, width 0.2s ease-in-out"
       mb={isMobile ? 12 : undefined}
-      index={expandedIdx}
+      value={expandedIdx}
     >
       {[...data.menu, ...baseMenuItems].map((section, i) => (
         <Fragment key={i}>
           {section.name && (
             <HStack
               key={0}
-              spacing={2}
+              gap={2}
               ml={4}
               mt={i === 0 ? 0 : 9}
               fontSize="sm"
@@ -192,7 +185,7 @@ const PageDirectory: FC<PageDirectoryProps> = ({
           </Box>
         </Fragment>
       ))}
-    </Accordion>
+    </Accordion.Root>
   );
 };
 

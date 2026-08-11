@@ -1,5 +1,6 @@
 import { useColorModeValue } from 'jaen';
-import { Box, BoxProps, Tooltip, TooltipProps } from '@chakra-ui/react';
+import { Box, BoxProps, TooltipProps } from '@chakra-ui/react';
+import { Tooltip } from '@/components/ui/tooltip';
 import { FC, useState } from 'react';
 
 import BsFileEarmark from '../../../icons/bootstrap/BsFileEarmark';
@@ -134,8 +135,7 @@ const FilesystemItem: FC<IFilesystemItemProps> = ({
       >
         {tooltipText && tooltipText.length ? (
           <Tooltip
-            {...tooltipProps}
-            label={tooltipText}
+            content={tooltipText}
             bgColor={`${tooltipBgColor} !important`}
             borderRadius="md"
             openDelay={500}

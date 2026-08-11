@@ -16,8 +16,7 @@ import { FC, useMemo } from 'react';
 // Half width katakana are the glyphs the film uses, and unlike the full width
 // forms they sit in a single cell of the grid. Digits break up the run so the
 // curtain does not read as one uniform texture.
-const GLYPHS =
-  'ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ0123456789'.split('');
+const GLYPHS = 'ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍ0123456789'.split('');
 
 /** Column pitch and line height in user units. */
 const CELL = 16;
@@ -175,21 +174,20 @@ const MatrixRain: FC<MatrixRainProps> = ({
       overflow="hidden"
       pointerEvents="none"
       userSelect="none"
-      sx={{
+      css={{
         [`@keyframes ${animationName}`]: {
           '0%': { transform: `translateY(${layout.fromY}px)` },
           '100%': { transform: `translateY(${layout.toY}px)` }
         },
-        '.matrix-rain-strand': {
+
+        '& .matrix-rain-strand': {
           animationName,
           animationTimingFunction: 'linear',
           animationIterationCount: 'infinite',
           willChange: 'transform'
         },
-        // Without motion the strands stay where their transform attribute
-        // parks them, which is a still frame of the same curtain rather than
-        // an empty box.
-        '@media (prefers-reduced-motion: reduce)': {
+
+        '& @media (prefers-reduced-motion: reduce)': {
           '.matrix-rain-strand': { animation: 'none' }
         }
       }}

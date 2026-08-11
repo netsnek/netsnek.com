@@ -1,12 +1,12 @@
-import {PageConfig} from 'jaen'
-import {chakra, Box, Heading, Text, Button} from '@chakra-ui/react'
-import {graphql, Link, PageProps} from 'gatsby'
-import {useIntl} from 'react-intl'
+import { PageConfig } from 'jaen';
+import { chakra, Box, Heading, Text, Button } from '@chakra-ui/react';
+import { graphql, Link, PageProps } from 'gatsby';
+import { useIntl } from 'react-intl';
 
 // import HBalloon from '../common/assets/hballoon.inline.svg'
 
 const Page = (props: PageProps) => {
-  const intl = useIntl()
+  const intl = useIntl();
 
   return (
     <Box textAlign="center" py={10} px={6}>
@@ -15,7 +15,8 @@ const Page = (props: PageProps) => {
         as="h2"
         size="2xl"
         bgGradient="linear(to-r, brand.400, brand.600)"
-        backgroundClip="text">
+        backgroundClip="text"
+      >
         {/* <chakra.svg
           as={HBalloon}
           mt="14"
@@ -40,31 +41,33 @@ const Page = (props: PageProps) => {
       </Text>
 
       <Button
-        as={Link}
-        to="/"
         bgGradient="linear(to-r, brand.400, brand.500, brand.600)"
         color="white"
-        variant="solid">
-        {intl.formatMessage({
-          id: 'NotFoundBackHome',
-          defaultMessage: 'Zurück zur Startseite'
-        })}
+        variant="solid"
+        asChild
+      >
+        <Link to="/">
+          {intl.formatMessage({
+            id: 'NotFoundBackHome',
+            defaultMessage: 'Zurück zur Startseite'
+          })}
+        </Link>
       </Button>
     </Box>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
 
 export const pageConfig: PageConfig = {
   label: 'Oops! Page not found',
   childTemplates: []
-}
+};
 
 export const query = graphql`
   query ($jaenPageId: String!) {
     ...JaenPageQuery
   }
-`
+`;
 
-export {Head} from '../components/Head'
+export { Head } from '../components/Head';

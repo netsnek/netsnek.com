@@ -1,11 +1,11 @@
-import {Checkbox, CheckboxProps} from '@chakra-ui/react'
-import {forwardRef} from 'react'
+import { Checkbox, CheckboxProps } from '@chakra-ui/react';
+import { forwardRef } from 'react';
 
-const bgColor = '#EDEDF0'
-const controlColor = 'brand.500'
-const focusColor = '#B4BBE2'
+const bgColor = '#EDEDF0';
+const controlColor = 'brand.500';
+const focusColor = '#B4BBE2';
 
-const defaultClasses = ({radius = '1px', controlRadius = '1px'}) => {
+const defaultClasses = ({ radius = '1px', controlRadius = '1px' }) => {
   return {
     h: '40px',
     px: '12px',
@@ -51,29 +51,33 @@ const defaultClasses = ({radius = '1px', controlRadius = '1px'}) => {
         }
       }
     }
-  }
-}
+  };
+};
 
 export interface CheckboxStyledProps extends CheckboxProps {
-  roundedFull?: boolean
+  roundedFull?: boolean;
 }
 
 export const CheckboxStyled = forwardRef<HTMLInputElement, CheckboxStyledProps>(
-  ({children, spacing = '1rem', rounded, roundedFull, ...props}, ref) => {
-    let classes = defaultClasses({})
+  ({ children, spacing = '1rem', rounded, roundedFull, ...props }, ref) => {
+    let classes = defaultClasses({});
 
     if (roundedFull) {
-      classes = defaultClasses({radius: '99px', controlRadius: '99px'})
+      classes = defaultClasses({ radius: '99px', controlRadius: '99px' });
     }
 
     if (rounded) {
-      classes = defaultClasses({radius: '8px', controlRadius: '2px'})
+      classes = defaultClasses({ radius: '8px', controlRadius: '2px' });
     }
 
     return (
-      <Checkbox spacing={spacing} sx={classes} {...props} ref={ref}>
-        {children}
-      </Checkbox>
-    )
+      <Checkbox.Root gap={spacing} sx={classes} {...props} ref={ref}>
+        <Checkbox.HiddenInput />
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Label>{children}</Checkbox.Label>
+      </Checkbox.Root>
+    );
   }
-)
+);

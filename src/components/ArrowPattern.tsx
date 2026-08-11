@@ -89,6 +89,7 @@ export function ArrowPattern({
   size = 112,
   ...props
 }: ArrowPatternProps) {
+  // Use React.useId instead (available in React 18+)
   const id = useId();
   const ref = useRef<SVGSVGElement>(null);
   const currentCell = useRef<[number, number] | null>(null);

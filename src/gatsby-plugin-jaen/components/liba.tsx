@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import {Box, chakra} from '@chakra-ui/react'
+import { Box, chakra } from '@chakra-ui/react';
 
 export const Logo = (props: any) => {
   return (
@@ -9,19 +9,21 @@ export const Logo = (props: any) => {
       width="full"
       height="full"
       viewBox="0 0 475 475"
-      sx={{
-        '.squarel': {
+      css={{
+        '& .squarel': {
           fillRule: 'evenodd',
           clipRule: 'evenodd',
           fill: 'none'
         },
-        '.k': {
+
+        '& .k': {
           stroke: '#bae0e2',
-          strokeWidth: "15px",
+          strokeWidth: '15px'
           //strokeDasharray: "5"
         }
       }}
-      {...props}>
+      {...props}
+    >
       <g id="Ebene_1-2">
         <g id="layer1">
           <path
@@ -79,27 +81,28 @@ export const Logo = (props: any) => {
         />
       </g>
     </chakra.svg>
-  )
-}
+  );
+};
 
 export const LibaIcon: React.FC<HTMLChakraProps<'svg'>> = props => {
-    return (
-      <chakra.svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="full"
-        height="full"
-        viewBox="0 0 475 475"
-        sx={{
-          '.squarel': {
-            fillRule: 'evenodd',
-            clipRule: 'evenodd',
-            fill: '#000000'
-          },
-        }}
-        {...props}>
-        <g id="Ebene_1-2">
+  return (
+    <chakra.svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="full"
+      height="full"
+      viewBox="0 0 475 475"
+      css={{
+        '& .squarel': {
+          fillRule: 'evenodd',
+          clipRule: 'evenodd',
+          fill: '#000000'
+        }
+      }}
+      {...props}
+    >
+      <g id="Ebene_1-2">
         <path
-          fill='currentColor'
+          fill="currentColor"
           d="M 201.10,160.44
           C 199.43,171.25 194.66,181.29 191.21,191.61
             191.21,191.61 171.70,248.01 171.70,248.01
@@ -145,9 +148,9 @@ export const LibaIcon: React.FC<HTMLChakraProps<'svg'>> = props => {
             300.56,252.47 253.06,252.47 253.06,252.47
             253.06,252.47 253.06,329.65 253.06,329.65 Z"
         />
-        </g>
-      </chakra.svg>
-    )
-  }
+      </g>
+    </chakra.svg>
+  );
+};
 
-export default Logo
+export default Logo;

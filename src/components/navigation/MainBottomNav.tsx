@@ -1,4 +1,7 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '../../components/icons/chakra';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon
+} from '../../components/icons/chakra';
 import { Flex, Spacer, Text } from '@chakra-ui/react';
 import { FC, useMemo } from 'react';
 import { useIntl } from 'react-intl';

@@ -22,8 +22,7 @@ export interface IMainContentComponent {
 }
 
 export interface IHeadingComponent
-  extends IMainContentComponent,
-    IHeadingProps {
+  extends IMainContentComponent, IHeadingProps {
   type: MainContentType.Heading;
 }
 
@@ -36,14 +35,12 @@ export interface IListComponent extends IMainContentComponent, IListProps {
 }
 
 export interface IFilesystemComponent
-  extends IMainContentComponent,
-    IFileSystemProps {
+  extends IMainContentComponent, IFileSystemProps {
   type: MainContentType.Filesystem;
 }
 
 export interface ICodeSnippetComponent
-  extends IMainContentComponent,
-    ICodeSnippetProps {
+  extends IMainContentComponent, ICodeSnippetProps {
   type: MainContentType.CodeSnippet;
 }
 

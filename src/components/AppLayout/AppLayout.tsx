@@ -46,7 +46,8 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
   // localized, so the docs menu works on prefixed locales too.
   // The hero backdrop belongs on every locale's landing page, not only on
   // the unprefixed German one.
-  const isLandingPage = stripLocalePrefix(path ?? '', prefix).replace(/\/+$/, '') === '';
+  const isLandingPage =
+    stripLocalePrefix(path ?? '', prefix).replace(/\/+$/, '') === '';
 
   const menuStructure = useMemo(
     () =>
@@ -73,36 +74,32 @@ const AppLayout: FC<AppLayoutProps> = ({ children, isDocs, path, footer }) => {
   return (
     <>
       <MenuStructureContext.Provider value={{ menuStructure }}>
-      <Box
-          as="main"
-          minW="210px"
-          h="max(100%, 100vh)"
-          minH="100vh">
-            {/* The brand backdrop belongs on every page, not just the
+        <Box as="main" minW="210px" h="max(100%, 100vh)" minH="100vh">
+          {/* The brand backdrop belongs on every page, not just the
                 landing one. Subpages get a shorter band so it stays a
                 backdrop behind the header area and never sits under a long
                 article. */}
-            <ArrowPattern
-              position="absolute"
-              insetX="0"
-              top="-14"
-              zIndex={-10}
-              h={isLandingPage ? '1000px' : '520px'}
-              w="full"
-              bgColor="white"
-              fill="rgba(149, 156, 177, 0.1)"
-              // Stroke and mask-image are not directly supported through Chakra props. Consider inline styles or additional CSS.
-              sx={{
-                // This demonstrates how to apply more complex styles not directly available as Chakra props:
-                stroke: "rgba(149, 156, 177, 0.1)", // example variable, adjust as necessary
-                maskImage:
-                  "linear-gradient(to bottom left, white 40%, transparent 50%)",
-              }}
-              yOffset={-96}
-              interactive
-            />
-          {!isAuthenticated && path !== "/" && <AltTopNav path={path} />}
-          {!isAuthenticated && path === "/" && <AltTopNav path={path} />}
+          <ArrowPattern
+            position="absolute"
+            insetX="0"
+            top="-14"
+            zIndex={-10}
+            h={isLandingPage ? '1000px' : '520px'}
+            w="full"
+            bgColor="white"
+            fill="rgba(149, 156, 177, 0.1)"
+            // Stroke and mask-image are not directly supported through Chakra props. Consider inline styles or additional CSS.
+            sx={{
+              // This demonstrates how to apply more complex styles not directly available as Chakra props:
+              stroke: 'rgba(149, 156, 177, 0.1)', // example variable, adjust as necessary
+              maskImage:
+                'linear-gradient(to bottom left, white 40%, transparent 50%)'
+            }}
+            yOffset={-96}
+            interactive
+          />
+          {!isAuthenticated && path !== '/' && <AltTopNav path={path} />}
+          {!isAuthenticated && path === '/' && <AltTopNav path={path} />}
           {childrenElmnt}
         </Box>
       </MenuStructureContext.Provider>

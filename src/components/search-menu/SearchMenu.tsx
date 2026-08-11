@@ -1,13 +1,13 @@
 import {
   Center,
-  Divider,
   ChakraProvider,
   VStack,
   useDisclosure,
   Text,
   Box,
   BoxProps,
-  ButtonProps
+  ButtonProps,
+  Separator
 } from '@chakra-ui/react';
 import {
   FC,
@@ -256,7 +256,7 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
     return data.map((chapter, cidx) => {
       return (
         <Fragment key={cidx}>
-          {cidx > 0 && <Divider />}
+          {cidx > 0 && <Separator />}
           <SearchResultSectionTitle
             title={chapter.title}
             idx={itemIdx * -1}
@@ -268,7 +268,7 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
             icon={chapter.icon}
           />
           <VStack
-            spacing={1}
+            gap={1}
             w="full"
             textAlign="left"
             _last={{
@@ -318,7 +318,7 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
       <SearchButton openModal={onOpen} navigate={handleNavigate} {...props} />
       <SearchModal
         defaultQuery={searchQuery}
-        isOpen={modalDisclosure.isOpen}
+        isOpen={modalDisclosure.open}
         onClose={modalDisclosure.onClose}
         isLoading={search.isLoading}
         searchResultItems={results}

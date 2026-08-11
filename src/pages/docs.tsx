@@ -42,7 +42,7 @@ const DocsPage: React.FC<PageProps> = () => {
 
   return (
     <>
-      <Stack spacing={{ base: 0, xl: 12 }} direction="row">
+      <Stack gap={{ base: 0, xl: 12 }} direction="row">
         <Box w="full" overflow="hidden">
           <MdxEditor />
           <MainBottomNav />
@@ -112,4 +112,4 @@ export const query = graphql`
   }
 `;
 
-export {Head} from '../components/Head';
+export { Head } from '../components/Head';

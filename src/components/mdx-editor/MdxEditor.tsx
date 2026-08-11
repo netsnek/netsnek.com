@@ -1,8 +1,6 @@
 import {
   Button,
   ButtonGroup,
-  ListItem,
-  OrderedList,
   Stack,
   Table,
   Tbody,
@@ -11,7 +9,7 @@ import {
   Th,
   Thead,
   Tr,
-  UnorderedList
+  List
 } from '@chakra-ui/react';
 import { FC } from 'react';
 
@@ -48,28 +46,32 @@ export const mdxEditorComponents: MdxFieldProps['components'] = {
   p: props => <Text id={props.id} children={props.children} />,
   // LIST
   ul: (props: any) => (
-    <UnorderedList id={props.id} children={props.children}></UnorderedList>
+    <List.Root as="ul" id={props.id} children={props.children}></List.Root>
   ),
   ol: (props: any) => (
-    <OrderedList id={props.id} children={props.children}></OrderedList>
+    <List.Root as="ol" id={props.id} children={props.children}></List.Root>
   ),
   li: (props: any) => (
-    <ListItem id={props.id} children={props.children}></ListItem>
+    <List.Item id={props.id} children={props.children}></List.Item>
   ),
   // TABLE
   table: (props: any) => (
-    <Table
+    <Table.Root
       id={props.id}
       variant="striped"
       w="fit-content"
       children={props.children}
     />
   ),
-  thead: (props: any) => <Thead id={props.id} children={props.children} />,
-  tbody: (props: any) => <Tbody id={props.id} children={props.children} />,
-  tr: (props: any) => <Tr id={props.id} children={props.children} />,
-  th: (props: any) => <Th id={props.id} children={props.children} />,
-  td: (props: any) => <Td id={props.id} children={props.children} />,
+  thead: (props: any) => (
+    <Table.Header id={props.id} children={props.children} />
+  ),
+  tbody: (props: any) => <Table.Body id={props.id} children={props.children} />,
+  tr: (props: any) => <Table.Row id={props.id} children={props.children} />,
+  th: (props: any) => (
+    <Table.ColumnHeader id={props.id} children={props.children} />
+  ),
+  td: (props: any) => <Table.Cell id={props.id} children={props.children} />,
   // MISC
   code: ({
     className,
@@ -109,9 +111,9 @@ const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash, onMdast }) => {
 
   return (
     <Stack
-      spacing={4}
-      sx={{
-        '.cm-editor': {
+      gap={4}
+      css={{
+        '& .cm-editor': {
           height: '60dvh'
         }
       }}
@@ -119,11 +121,11 @@ const MdxEditor: FC<IMdxEditorProps> = ({ hideHeadingHash, onMdast }) => {
       {canEdit && isLoading === false && (
         <ButtonGroup>
           <Button
-            leftIcon={<EditIcon />}
             variant="outline"
-            colorScheme={isEditing ? 'red' : undefined}
+            colorPalette={isEditing ? 'red' : undefined}
             onClick={() => toggleIsEditing()}
           >
+            <EditIcon />
             {isEditing ? 'Stop Editing' : 'Edit'}
           </Button>
 

@@ -91,14 +91,21 @@ export const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({
   to
 }) => {
   return (
-    <LinkBox as={Flex} align={'center'} mt={8} direction={'column'}>
-      <Avatar src={src} mb={2} />
-      <Stack spacing={-1} align={'center'}>
-        <Text fontWeight={600}>{name}</Text>
-        <LinkOverlay as={Link} fontSize={'sm'} to={to} isExternal>
-          {title}
-        </LinkOverlay>
-      </Stack>
+    <LinkBox align={'center'} mt={8} direction={'column'} asChild>
+      <Flex>
+        <Avatar.Root mb={2}>
+          <Avatar.Fallback />
+          <Avatar.Image src={src} />
+        </Avatar.Root>
+        <Stack gap={-1} align={'center'}>
+          <Text fontWeight={600}>{name}</Text>
+          <LinkOverlay fontSize={'sm'} asChild>
+            <Link to={to} target="_blank" rel="noopener noreferrer">
+              {title}
+            </Link>
+          </LinkOverlay>
+        </Stack>
+      </Flex>
     </LinkBox>
   );
 };

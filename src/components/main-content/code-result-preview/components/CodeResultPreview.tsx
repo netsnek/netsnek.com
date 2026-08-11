@@ -1,16 +1,13 @@
 import {
   Alert,
-  AlertDescription,
-  AlertIcon,
   Box,
   ButtonSpinner,
   Center,
   Flex,
   HStack,
-  ListItem,
   Stack,
   Text,
-  UnorderedList
+  List
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
@@ -84,61 +81,61 @@ const CodeResultPreview: FC<ICodeResultPreviewProps> = ({
         ) : (
           <Stack>
             {errors && errors.length > 0 && (
-              <Alert status="error" my={2}>
-                <AlertIcon />
-                <AlertDescription overflowX="auto">
-                  <UnorderedList>
+              <Alert.Root status="error" my={2}>
+                <Alert.Indicator />
+                <Alert.Description overflowX="auto">
+                  <List.Root as="ul">
                     {errors.map((error, index) => (
-                      <ListItem key={index} fontSize="sm">
+                      <List.Item key={index} fontSize="sm">
                         {error}
-                      </ListItem>
+                      </List.Item>
                     ))}
-                  </UnorderedList>
-                </AlertDescription>
-              </Alert>
+                  </List.Root>
+                </Alert.Description>
+              </Alert.Root>
             )}
             {warnings && warnings.length > 0 && (
-              <Alert status="warning" my={2}>
-                <AlertIcon />
-                <AlertDescription overflowX="auto">
-                  <UnorderedList>
+              <Alert.Root status="warning" my={2}>
+                <Alert.Indicator />
+                <Alert.Description overflowX="auto">
+                  <List.Root as="ul">
                     {warnings.map((warning, index) => (
-                      <ListItem key={index} fontSize="sm">
+                      <List.Item key={index} fontSize="sm">
                         {warning}
-                      </ListItem>
+                      </List.Item>
                     ))}
-                  </UnorderedList>
-                </AlertDescription>
-              </Alert>
+                  </List.Root>
+                </Alert.Description>
+              </Alert.Root>
             )}
             {infos && infos.length > 0 && (
-              <Alert status="info" my={2}>
-                <AlertIcon />
-                <AlertDescription overflowX="auto">
-                  <UnorderedList>
+              <Alert.Root status="info" my={2}>
+                <Alert.Indicator />
+                <Alert.Description overflowX="auto">
+                  <List.Root as="ul">
                     {infos.map((info, index) => (
-                      <ListItem key={index} fontSize="sm">
+                      <List.Item key={index} fontSize="sm">
                         {info}
-                      </ListItem>
+                      </List.Item>
                     ))}
-                  </UnorderedList>
-                </AlertDescription>
-              </Alert>
+                  </List.Root>
+                </Alert.Description>
+              </Alert.Root>
             )}
 
             {infos && infos.length > 0 && (
-              <Alert status="info" my={2}>
-                <AlertIcon />
-                <AlertDescription overflowX="auto">
-                  <UnorderedList>
+              <Alert.Root status="info" my={2}>
+                <Alert.Indicator />
+                <Alert.Description overflowX="auto">
+                  <List.Root as="ul">
                     {infos.map((info, index) => (
-                      <ListItem key={index} fontSize="sm">
+                      <List.Item key={index} fontSize="sm">
                         {info}
-                      </ListItem>
+                      </List.Item>
                     ))}
-                  </UnorderedList>
-                </AlertDescription>
-              </Alert>
+                  </List.Root>
+                </Alert.Description>
+              </Alert.Root>
             )}
 
             {result ? (

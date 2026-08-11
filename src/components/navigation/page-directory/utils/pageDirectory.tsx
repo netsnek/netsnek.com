@@ -1,10 +1,6 @@
 import { ArrowForwardIcon } from '../../../../components/icons/chakra';
 import {
-  AccordionButton,
   AccordionButtonProps,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Box,
   Center,
   CenterProps,
@@ -90,10 +86,10 @@ export const generateMenuItem = (
       item.isActive ? '' : 'in'
     }activeItem.`;
     resultObj.item = (
-      <AccordionItem
+      <Accordion.Item
         ref={accordionItemRef}
         key={item.href + item.name}
-        id={item.href + item.name}
+        value={item.href + item.name}
         css={{
           // Remove padding from last accordion item
           '& .chakra-accordion__panel': {
@@ -133,7 +129,7 @@ export const generateMenuItem = (
                 closeMobileDrawer?.();
               }}
             >
-              <AccordionButton
+              <Accordion.ItemTrigger
                 {...(item.isActive
                   ? activeMenuItemProps
                   : inactiveMenuItemProps)}
@@ -159,7 +155,7 @@ export const generateMenuItem = (
                     bgColor: semanticPath + 'button.icon.hoverContainerBgColor'
                   }}
                 >
-                  <AccordionIcon
+                  <Accordion.ItemIndicator
                     className="prv-link"
                     opacity="inherit"
                     // Driven by the item's own accordion state, so the arrow
@@ -168,28 +164,30 @@ export const generateMenuItem = (
                     transition="transform 0.2s ease-in-out"
                   />
                 </Center>
-              </AccordionButton>
+              </Accordion.ItemTrigger>
             </Link>
-            <AccordionPanel position="relative">
-              <Box
-                _before={{
-                  content: '""',
-                  display: 'block',
-                  position: 'absolute',
-                  top: 2,
-                  borderRadius: 'full',
-                  left: '10px',
-                  width: '1px',
-                  height: 'calc(100% - 0.5rem)',
-                  backgroundColor: 'leftNav.accordion.panel.borderLeftColor'
-                }}
-              >
-                {children?.map(child => child.item)}
-              </Box>
-            </AccordionPanel>
+            <Accordion.ItemContent position="relative">
+              <Accordion.ItemBody>
+                <Box
+                  _before={{
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 2,
+                    borderRadius: 'full',
+                    left: '10px',
+                    width: '1px',
+                    height: 'calc(100% - 0.5rem)',
+                    backgroundColor: 'leftNav.accordion.panel.borderLeftColor'
+                  }}
+                >
+                  {children?.map(child => child.item)}
+                </Box>
+              </Accordion.ItemBody>
+            </Accordion.ItemContent>
           </>
         )}
-      </AccordionItem>
+      </Accordion.Item>
     );
   } else {
     resultObj.item = (

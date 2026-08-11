@@ -1,5 +1,13 @@
+/*
+ MIGRATION NOTE: The following Chakra UI hooks have been removed.
+ Please replace them with the suggested alternatives:
+
+//   - useClipboard: Use react-use: useCopyToClipboard
+
+ See: https://chakra-ui.com/docs/get-started/migration#hooks
+*/
 import { useIntl } from 'react-intl';
-import { FC } from "react";
+import { FC } from 'react';
 import {
   Box,
   Button,
@@ -14,31 +22,26 @@ import {
   NumberInputField,
   NumberInputStepper,
   Stack,
-  StackDivider,
   Text,
-  Tooltip,
-  useClipboard,
   VStack,
   Wrap,
-  WrapItem
-} from "@chakra-ui/react";
-import React from "react";
+  WrapItem,
+  StackSeparator
+} from '@chakra-ui/react';
+import { Tooltip } from '@/components/ui/tooltip';
+import React from 'react';
 
-import { FaShare } from "@react-icons/all-files/fa/FaShare";
-import { FaShoppingBasket } from "@react-icons/all-files/fa/FaShoppingBasket";
+import { FaShare } from '@react-icons/all-files/fa/FaShare';
+import { FaShoppingBasket } from '@react-icons/all-files/fa/FaShoppingBasket';
 // import {useBasket} from '../../../services/basket'
-import {
-  Field,
-  connectBlock,
-  useColorModeValue
-} from 'jaen';
-import MdxEditor from "./mdx-editor/MdxEditor";
+import { Field, connectBlock, useColorModeValue } from 'jaen';
+import MdxEditor from './mdx-editor/MdxEditor';
 
 // import {PhotoProvider} from 'jaen'
 
 const useBasket = () => {
   return {
-    addProduct: () => {},
+    addProduct: () => {}
   };
 };
 
@@ -73,9 +76,8 @@ export interface IProductContentProps {}
 const SliderItem = connectBlock(
   () => {
     return (
-      <Box display={"flex"} justifyContent="center">
+      <Box display={'flex'} justifyContent="center">
         <Box
-          as={Field.Image}
           name="image"
           m="0"
           h="200px"
@@ -84,13 +86,16 @@ const SliderItem = connectBlock(
           borderRadius="xl"
           overflow="hidden"
           isolation="isolate"
-        />
+          asChild
+        >
+          <Field.Image />
+        </Box>
       </Box>
     );
   },
   {
-    name: "SliderItem",
-    label: "SliderItem",
+    name: 'SliderItem',
+    label: 'SliderItem'
   }
 );
 
@@ -104,22 +109,18 @@ export const ProductContent: FC<IProductContentProps> = () => {
 
   return (
     <>
-      <VStack mb={8} spacing={12} w="100%">
-        <Flex direction={{ base: "column", lg: "row" }} w="100%">
-          <Stack
-            direction={{ base: "column", lg: "row" }}
-            spacing="14"
-            w="100%"
-          >
+      <VStack mb={8} gap={12} w="100%">
+        <Flex direction={{ base: 'column', lg: 'row' }} w="100%">
+          <Stack direction={{ base: 'column', lg: 'row' }} gap="14" w="100%">
             <Box pos="relative" w="100%">
               <Field.Section
                 as={Stack}
                 props={{
                   spacing: 4,
-                  my: "8",
-                  py: "0",
-                  bg: "white",
-                  px: "0",
+                  my: '8',
+                  py: '0',
+                  bg: 'white',
+                  px: '0'
                 }}
                 name="productImageSection"
                 label={intl.formatMessage({
@@ -130,12 +131,12 @@ export const ProductContent: FC<IProductContentProps> = () => {
               />
             </Box>
             <Stack
-              spacing="8"
+              gap="8"
               w="100%"
-              position={{ base: "relative", lg: "sticky" }}
+              position={{ base: 'relative', lg: 'sticky' }}
               top={{
-                base: "0",
-                lg: 44,
+                base: '0',
+                lg: 44
               }}
               px={{ base: 0, md: 4 }}
               m={{ base: 0, md: 1 }}
@@ -244,11 +245,11 @@ const ProductDetail = (props: {
   //   props.product.variants[0].availableForSale
 
   return (
-    <VStack align="left" spacing="4" divider={<StackDivider />}>
+    <VStack align="left" gap="4" separator={<StackSeparator />}>
       <Stack>
         <Field.Text
           as={Heading}
-          fontSize={{ base: "3xl", lg: "4xl" }}
+          fontSize={{ base: '3xl', lg: '4xl' }}
           lineHeight={1}
           fontWeight="bold"
           textAlign="left"
@@ -286,14 +287,14 @@ const ProductDetail = (props: {
         {intl.formatMessage({
           id: 'ProductArticleNumberLabel',
           defaultMessage: 'Artikelnummer:'
-        })}{" "}
+        })}{' '}
         <Text as="span" color="gray.600">
           000000000000
         </Text>
       </Text>
 
       <Stack>
-        <Stack spacing="4" mt="4">
+        <Stack gap="4" mt="4">
           <HStack>
             {/* <Price prices={prices} /> */}
             100,00 €
@@ -319,35 +320,35 @@ const ProductDetail = (props: {
           )}
 
           <HStack>
-            <NumberInput
+            <NumberInput.Root
               size="lg"
               maxW={24}
               step={stepperStep}
-              defaultValue={minQuantity}
+              defaultValue={String(minQuantity)}
               min={minQuantity}
-              value={quantity}
-              onChange={(valueString) => {
+              value={String(quantity)}
+              onValueChange={valueString => {
                 setQuantity(parseInt(valueString));
               }}
             >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
+              <NumberInput.Input />
+              <NumberInput.Control>
+                <NumberInput.IncrementTrigger />
+                <NumberInput.DecrementTrigger />
+              </NumberInput.Control>
+            </NumberInput.Root>
             <Button
               // display={{
               //   base: 'none',
               //   md: 'flex'
               // }}
               size="lg"
-              isDisabled={!availableForSale}
+              disabled={!availableForSale}
               fontWeight="semibold"
               textTransform="uppercase"
               onClick={addProductToBasket}
-              leftIcon={<FaShoppingBasket />}
             >
+              <FaShoppingBasket />
               {intl.formatMessage({
                 id: 'ProductAddToCart',
                 defaultMessage: 'In den Warenkorb'
@@ -367,21 +368,23 @@ const ProductDetail = (props: {
 };
 
 function ShareText() {
-  const value = typeof window !== "undefined" ? window.location.href : "";
+  const value = typeof window !== 'undefined' ? window.location.href : '';
 
   const intl = useIntl();
   const { hasCopied, onCopy } = useClipboard(value);
 
   return (
     <Center
-      color={hasCopied ? "red.500" : undefined}
+      color={hasCopied ? 'red.500' : undefined}
       _hover={{
-        color: hasCopied ? "red.400" : "red.300",
+        color: hasCopied ? 'red.400' : 'red.300'
       }}
       verticalAlign="center"
       cursor="pointer"
     >
-      <Icon as={FaShare} mr="2" />
+      <Icon mr="2" asChild>
+        <FaShare />
+      </Icon>
       <Text fontWeight="semibold" onClick={onCopy}>
         {intl.formatMessage({ id: 'ProductShare', defaultMessage: 'Teilen' })}
         {hasCopied && (
@@ -438,8 +441,8 @@ function ShareText() {
 // }
 
 const ImageSlider = (props: {
-  featuredMedia: JaenProduct["featuredMedia"];
-  media: JaenProduct["media"];
+  featuredMedia: JaenProduct['featuredMedia'];
+  media: JaenProduct['media'];
 }) => {
   const intl = useIntl();
   const media = props.media;
@@ -448,7 +451,7 @@ const ImageSlider = (props: {
     <VStack>
       <Wrap
         overflow="hidden"
-        bg={"white"}
+        bg={'white'}
         border="1px"
         borderColor="gray.100"
         justify="center"
@@ -476,7 +479,7 @@ const ImageSlider = (props: {
                   //sizes={image.gatsbyImageData.images.fallback?.sizes}
                   //srcSet={image.gatsbyImageData.images.fallback?.srcSet}
                   name={media.image.name}
-                  isDisabled
+                  disabled
                   defaultValue={media.image.defaultValue}
                   alt={
                     media.image.altText ||
@@ -486,10 +489,10 @@ const ImageSlider = (props: {
                     })
                   }
                   style={{
-                    height: "100%",
-                    width: "100%",
-                    objectFit: "contain",
-                    objectPosition: "center",
+                    height: '100%',
+                    width: '100%',
+                    objectFit: 'contain',
+                    objectPosition: 'center'
                   }}
                 />
               )}

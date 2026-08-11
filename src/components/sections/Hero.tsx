@@ -81,7 +81,6 @@ const Hero: FC = () => {
   return (
     <Box as="header">
       <Grid
-        as={Container}
         maxW="6xl"
         h={{ base: 'max-content', md: `calc(100vh - ${navOffset} - 200px)` }}
         minH="700px"
@@ -97,109 +96,116 @@ const Hero: FC = () => {
         overflow="hidden"
         //p={{ base: 5, lg: 0 }}
         pt={`calc(${navOffset})`}
+        asChild
       >
-        <Box as={FadeIn} position="relative" gridArea="image">
-          {/* Tablet and mark are one editable drawing now, and the styles
-              the hero used to hand down are rules inside it. */}
-          <HeroShowcase />
-        </Box>
-        <VStack as={FadeIn} spacing={4} align="left" gridArea="content">
-          <Box>
-            {/* asAs, because a field guesses h2 for anything wrapped in a
-                Heading and this line sits above the headline, not on it. */}
-            <Field.Text
-              as={Heading}
-              asAs="h3"
-              size={{ base: 'sm', lg: 'md' }}
-              style={{ animationDelay: '300ms' }}
-              fontWeight="500"
-              textTransform="uppercase"
-              lineHeight="1.5em"
-              letterSpacing="4.2px"
-              name="HeroEyebrow"
-              defaultValue={withAccentDotsHtml(
-                intl.formatMessage({
-                  id: 'HeroTitle',
-                  defaultMessage: 'INNOVATIV. EFFEKTIV.'
-                })
-              )}
-            />
+        <Container>
+          <Box position="relative" gridArea="image" asChild>
+            <FadeIn>
+              {/* Tablet and mark are one editable drawing now, and the styles
+                  the hero used to hand down are rules inside it. */}
+              <HeroShowcase />
+            </FadeIn>
           </Box>
-          <Box>
-            <Field.Text
-              as={Heading}
-              asAs="h2"
-              size={{ base: 'xl', lg: '2xl' }}
-              fontWeight="900"
-              lineHeight="1.1em"
-              name="HeroHeading"
-              defaultValue={withAccentDotsHtml(
-                intl.formatMessage({
-                  id: 'HeroSubtitle',
-                  defaultMessage: 'Professionelle Softwareentwicklung.'
-                })
-              )}
-            />
-          </Box>
-          <Field.Text
-            as={Text}
-            fontSize="lg"
-            opacity={0.5}
-            name="HeroLeadText"
-            defaultValue={intl.formatMessage({
-              id: 'HeroText',
-              defaultMessage:
-                'Ihre Softwareagentur in Österreich. Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen.'
-            })}
-          />
-          <HStack spacing={4} mt={4}>
-            <Button
-              variant="solid"
-              borderRadius="xl"
-              filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-              onClick={onContactClick}
-            >
-              {/* A button may only hold phrasing content, so the label
-                  renders as a span instead of the paragraph a text field
-                  defaults to. */}
+          <VStack gap={4} align="left" gridArea="content" asChild>
+            <FadeIn>
+              <Box>
+                {/* asAs, because a field guesses h2 for anything wrapped in a
+                    Heading and this line sits above the headline, not on it. */}
+                <Field.Text
+                  as={Heading}
+                  asAs="h3"
+                  size={{ base: 'sm', lg: 'md' }}
+                  style={{ animationDelay: '300ms' }}
+                  fontWeight="500"
+                  textTransform="uppercase"
+                  lineHeight="1.5em"
+                  letterSpacing="4.2px"
+                  name="HeroEyebrow"
+                  defaultValue={withAccentDotsHtml(
+                    intl.formatMessage({
+                      id: 'HeroTitle',
+                      defaultMessage: 'INNOVATIV. EFFEKTIV.'
+                    })
+                  )}
+                />
+              </Box>
+              <Box>
+                <Field.Text
+                  as={Heading}
+                  asAs="h2"
+                  size={{ base: 'xl', lg: '2xl' }}
+                  fontWeight="900"
+                  lineHeight="1.1em"
+                  name="HeroHeading"
+                  defaultValue={withAccentDotsHtml(
+                    intl.formatMessage({
+                      id: 'HeroSubtitle',
+                      defaultMessage: 'Professionelle Softwareentwicklung.'
+                    })
+                  )}
+                />
+              </Box>
               <Field.Text
                 as={Text}
-                asAs="span"
-                name="HeroButtonContact"
+                fontSize="lg"
+                opacity={0.5}
+                name="HeroLeadText"
                 defaultValue={intl.formatMessage({
-                  id: 'HeroButtonContact',
-                  defaultMessage: 'Kontakt'
+                  id: 'HeroText',
+                  defaultMessage:
+                    'Ihre Softwareagentur in Österreich. Wir verhelfen Ihnen zu maßgeschneiderten Softwarelösungen.'
                 })}
               />
-            </Button>
-            <Button
-              variant="outline"
-              bg={'white'}
-              borderRadius="xl"
-              filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-              onClick={() => (window.location.href = localizeHref('/docs'))}
-              borderColor={'brand.500'}
-              color={'brand.500'}
-              borderWidth={2}
-              _hover={{ borderColor: 'brand.400', color: 'brand.400' }}
-            >
-              <Field.Text
-                as={Text}
-                asAs="span"
-                name="HeroButtonProjects"
-                defaultValue={intl.formatMessage({
-                  id: 'HeroButtonProjects',
-                  defaultMessage: 'Projekte ansehen'
-                })}
-              />
-            </Button>
-          </HStack>
-        </VStack>
-        <Box gridArea="customer">
-          {/* <Text>Customer Testimonials or Data</Text> */}
-          <ScrollArrows isVisible={scrollPos < 100} />
-          {/* Any additional content for the customer area goes here */}
-        </Box>
+              <HStack gap={4} mt={4}>
+                <Button
+                  variant="solid"
+                  borderRadius="xl"
+                  filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                  onClick={onContactClick}
+                >
+                  {/* A button may only hold phrasing content, so the label
+                      renders as a span instead of the paragraph a text field
+                      defaults to. */}
+                  <Field.Text
+                    as={Text}
+                    asAs="span"
+                    name="HeroButtonContact"
+                    defaultValue={intl.formatMessage({
+                      id: 'HeroButtonContact',
+                      defaultMessage: 'Kontakt'
+                    })}
+                  />
+                </Button>
+                <Button
+                  variant="outline"
+                  bg={'white'}
+                  borderRadius="xl"
+                  filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+                  onClick={() => (window.location.href = localizeHref('/docs'))}
+                  borderColor={'brand.500'}
+                  color={'brand.500'}
+                  borderWidth={2}
+                  _hover={{ borderColor: 'brand.400', color: 'brand.400' }}
+                >
+                  <Field.Text
+                    as={Text}
+                    asAs="span"
+                    name="HeroButtonProjects"
+                    defaultValue={intl.formatMessage({
+                      id: 'HeroButtonProjects',
+                      defaultMessage: 'Projekte ansehen'
+                    })}
+                  />
+                </Button>
+              </HStack>
+            </FadeIn>
+          </VStack>
+          <Box gridArea="customer">
+            {/* <Text>Customer Testimonials or Data</Text> */}
+            <ScrollArrows isVisible={scrollPos < 100} />
+            {/* Any additional content for the customer area goes here */}
+          </Box>
+        </Container>
       </Grid>
     </Box>
   );

@@ -38,7 +38,7 @@ const ImageCard: FC<IImageCardProps> = ({
 
   return (
     <LinkBox>
-      <Card
+      <Card.Root
         {...baseProps}
         maxW={size}
         bgColor="components.imageCard.bgColor"
@@ -83,7 +83,7 @@ const ImageCard: FC<IImageCardProps> = ({
             />
           </Link>
         </Box>
-      </Card>
+      </Card.Root>
     </LinkBox>
   );
 };

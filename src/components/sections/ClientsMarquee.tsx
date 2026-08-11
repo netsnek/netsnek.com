@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from 'react';
 import {
   Box,
   BoxProps,
@@ -6,14 +6,14 @@ import {
   LinkBox,
   LinkOverlay,
   useBreakpointValue
-} from '@chakra-ui/react'
-import Marquee from 'react-fast-marquee'
+} from '@chakra-ui/react';
+import Marquee from 'react-fast-marquee';
 
 // Defining type for a single client
 interface Client {
-  href: string
-  name: string
-  logo: string
+  href: string;
+  name: string;
+  logo: string;
 }
 
 const clients: Client[] = [
@@ -47,16 +47,16 @@ const clients: Client[] = [
     name: 'City Pension',
     logo: '/images/clients/citypension.png'
   }
-]
+];
 // Defining type for the component props
 interface ClientsMarqueeProps extends BoxProps {
   // clients: Client[];
 }
 
-const ClientsMarquee: FC<ClientsMarqueeProps> = ({...props}) => {
+const ClientsMarquee: FC<ClientsMarqueeProps> = ({ ...props }) => {
   // Defaulting to a 16:9 aspect ratio
   // For TypeScript, setting explicit return types on hooks is not typically necessary due to its inference
-  const boxSize = useBreakpointValue({base: '230px', md: '260px'})
+  const boxSize = useBreakpointValue({ base: '230px', md: '260px' });
 
   return (
     <Box as="section" {...props}>
@@ -72,8 +72,13 @@ const ClientsMarquee: FC<ClientsMarqueeProps> = ({...props}) => {
               height={boxSize}
               p="2"
               mx="16"
-              overflow="hidden">
-              <LinkOverlay href={client.href} isExternal>
+              overflow="hidden"
+            >
+              <LinkOverlay
+                href={client.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Image
                   src={client.logo}
                   alt={client.name}
@@ -86,7 +91,7 @@ const ClientsMarquee: FC<ClientsMarqueeProps> = ({...props}) => {
         </Box>
       </Marquee>
     </Box>
-  )
-}
+  );
+};
 
-export default ClientsMarquee
+export default ClientsMarquee;

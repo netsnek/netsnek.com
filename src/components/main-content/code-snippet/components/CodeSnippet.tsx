@@ -136,8 +136,8 @@ const CodeSnippet: FC<ICodeSnippetProps> = ({
         borderRadius="md"
         w="full"
         transition="box-shadow 0.2s cubic-bezier(0.000, 0.735, 0.580, 1.000)"
-        __css={{
-          '& textarea:focus': {
+        css={{
+          '& & textarea:focus': {
             outline: 'none'
           }
         }}

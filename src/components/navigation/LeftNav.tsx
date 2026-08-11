@@ -24,7 +24,7 @@ const LeftNav: FC<ILeftNavProps> = ({
 
   return (
     <Stack
-      spacing="4"
+      gap="4"
       position="sticky"
       top={`calc(20px + ${navTopOffset})`}
       flex="1"

@@ -5,13 +5,13 @@ import { graphql, navigate } from 'gatsby';
 import * as React from 'react';
 
 const PrivacyPolicyPage: React.FC<PageProps> = () => {
-    return (
-      <Box as="main">
-        <Field.Editor name="privacy-policy" />
-      </Box>
-    );
-  };
-  
+  return (
+    <Box as="main">
+      <Field.Editor name="privacy-policy" />
+    </Box>
+  );
+};
+
 export default PrivacyPolicyPage;
 
 export const pageConfig: PageConfig = {
@@ -25,4 +25,4 @@ export const query = graphql`
   }
 `;
 
-export {Head} from '../components/Head';
+export { Head } from '../components/Head';

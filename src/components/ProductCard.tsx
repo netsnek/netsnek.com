@@ -373,8 +373,6 @@ export const ProductCard = ({
 
   return (
     <VStack
-      as={GatsbyLink}
-      to={path}
       display={'block'}
       css={cardStyle(borderline, bwidth, bcolor, left)}
       boxSize={'full'}
@@ -383,169 +381,172 @@ export const ProductCard = ({
         base: 'center',
         md: 'left'
       }}
+      asChild
     >
-      <Box
-        className="pcard"
-        position="relative"
-        cursor="pointer"
-        bg="primary"
-        px={{ base: '1', md: '2', lg: '3' }}
-        py="5"
-        minH={'full'}
-        borderRadius="2xl"
-      >
-        {/* Adjust layout based on screen size */}
-        <Flex direction={isMobile ? 'row' : 'column'} align="stretch">
-          {/* Image section */}
-          <Box
-            position="relative"
-            flex={isMobile ? '0 0 40%' : '1'}
-            mr={isMobile ? '4' : '0'}
-          >
-            <AspectRatio ratio={isMobile ? 4 / 3 : 10 / 9}>
-              <Skeleton isLoaded={!loading}>
-                {/* Radio input for the featured image */}
-                <input
-                  type="radio"
-                  className="radioimg"
-                  name={'imgbox-' + cardId}
-                  id={'imgbox-' + cardId + '-featured'}
-                  ref={el => (radioRef.current[0] = el)}
-                  readOnly
-                  defaultChecked
-                />
-                <ImageBoxWithTags
-                  image={product.featuredMedia?.image}
-                  tags={coloredBadges}
-                  className="main"
-                  objectFit="cover" // Featured image uses 'cover'
-                />
-                {/* Radio inputs for preview images */}
-                {previewMedia.map((media, index) => (
-                  <React.Fragment key={index}>
-                    <input
-                      type="radio"
-                      className="radioimg"
-                      name={'imgbox-' + cardId}
-                      id={'imgbox-' + cardId + '-media-' + index}
-                      ref={el => (radioRef.current[index + 1] = el)}
-                      readOnly
-                    />
-                    <ImageBoxWithTags
-                      image={media.image}
-                      tags={[]}
-                      className="preview"
-                      objectFit="contain" // Preview images use 'contain'
-                    />
-                  </React.Fragment>
-                ))}
-              </Skeleton>
-            </AspectRatio>
-          </Box>
-
-          {/* Text content section */}
-          <Box flex="1" mt={isMobile ? '0' : '4'}>
-            {/* Display product tags (the "new" sentinel is shown as a badge
-                instead, so it never joins the plain tag line) */}
-            <Text fontSize="sm" noOfLines={1}>
-              {tags.filter(tag => tag !== NEW_PRODUCT_TAG).join(', ')}&nbsp;
-            </Text>
-
-            {/* Product title */}
-            <Text fontSize={'2xl'} fontWeight="bold">
-              {product.title}
-            </Text>
-
-            {/* Product description */}
-            <Text fontSize="md" noOfLines={2}>
-              {product.description}
-            </Text>
-
-            {/* Product price */}
-            {priceFormatted && (
-              <Text fontSize="lg" fontWeight="semibold" color="agt.red">
-                {priceFormatted}
-              </Text>
-            )}
-          </Box>
-        </Flex>
-
-        {/* Spacer and borderline for hover effects */}
-        <Spacer
-          position="absolute"
-          className="bspacer"
-          w="0"
-          h="90%"
-          top="5%"
-          borderLeft="1px"
-          borderColor="#f9f9f9"
-          transform="scale(0.97)"
-        />
+      <GatsbyLink to={path}>
         <Box
-          className="borderline"
+          className="pcard"
+          position="relative"
           cursor="pointer"
-          bg="white"
+          bg="primary"
           px={{ base: '1', md: '2', lg: '3' }}
           py="5"
+          minH={'full'}
           borderRadius="2xl"
-          border="1px"
-          borderColor="#f9f9f9"
-          boxShadow="sm"
         >
-          {/* Image preview line.
-
-              The padding reads a raw custom property because it has to subtract
-              from a scale value. v3 renamed the space namespace to spacing; the
-              old --chakra-space-5 would still parse, resolve to nothing, and
-              leave the calc invalid, so the padding would vanish without a
-              word. */}
-          <VStack
-            className="imgline"
-            position="absolute"
-            opacity="0"
-            boxSize={'full'}
-            py="calc(var(--chakra-spacing-5) - 2px)"
-            px="1"
-          >
-            {previewMedia.slice(0, 3).map((media, index) => (
-              <label
-                htmlFor={'imgbox-' + cardId + '-media-' + index}
-                key={index}
-              >
-                <Box
-                  transform="scale(0.97)"
-                  borderBottom="1px"
-                  borderColor="#f9f9f9"
-                  _hover={{ borderColor: 'agt.red' }}
-                  onMouseOver={() => {
-                    if (radioRef.current[index + 1]) {
-                      radioRef.current[index + 1]!.checked = true;
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    if (radioRef.current[0]) {
-                      radioRef.current[0]!.checked = true;
-                    }
-                  }}
-                >
-                  <Image
-                    onDragStart={e => e.preventDefault()}
-                    draggable="false"
-                    src={media.image.src}
-                    alt={media.image.altText || '-'}
-                    style={{
-                      height: 'auto',
-                      width: '100%',
-                      objectFit: 'contain', // Preview images use 'contain'
-                      objectPosition: 'center'
-                    }}
+          {/* Adjust layout based on screen size */}
+          <Flex direction={isMobile ? 'row' : 'column'} align="stretch">
+            {/* Image section */}
+            <Box
+              position="relative"
+              flex={isMobile ? '0 0 40%' : '1'}
+              mr={isMobile ? '4' : '0'}
+            >
+              <AspectRatio ratio={isMobile ? 4 / 3 : 10 / 9}>
+                <Skeleton loading={!!loading}>
+                  {/* Radio input for the featured image */}
+                  <input
+                    type="radio"
+                    className="radioimg"
+                    name={'imgbox-' + cardId}
+                    id={'imgbox-' + cardId + '-featured'}
+                    ref={el => (radioRef.current[0] = el)}
+                    readOnly
+                    defaultChecked
                   />
-                </Box>
-              </label>
-            ))}
-          </VStack>
+                  <ImageBoxWithTags
+                    image={product.featuredMedia?.image}
+                    tags={coloredBadges}
+                    className="main"
+                    objectFit="cover" // Featured image uses 'cover'
+                  />
+                  {/* Radio inputs for preview images */}
+                  {previewMedia.map((media, index) => (
+                    <React.Fragment key={index}>
+                      <input
+                        type="radio"
+                        className="radioimg"
+                        name={'imgbox-' + cardId}
+                        id={'imgbox-' + cardId + '-media-' + index}
+                        ref={el => (radioRef.current[index + 1] = el)}
+                        readOnly
+                      />
+                      <ImageBoxWithTags
+                        image={media.image}
+                        tags={[]}
+                        className="preview"
+                        objectFit="contain" // Preview images use 'contain'
+                      />
+                    </React.Fragment>
+                  ))}
+                </Skeleton>
+              </AspectRatio>
+            </Box>
+
+            {/* Text content section */}
+            <Box flex="1" mt={isMobile ? '0' : '4'}>
+              {/* Display product tags (the "new" sentinel is shown as a badge
+                    instead, so it never joins the plain tag line) */}
+              <Text fontSize="sm" lineClamp={1}>
+                {tags.filter(tag => tag !== NEW_PRODUCT_TAG).join(', ')}&nbsp;
+              </Text>
+
+              {/* Product title */}
+              <Text fontSize={'2xl'} fontWeight="bold">
+                {product.title}
+              </Text>
+
+              {/* Product description */}
+              <Text fontSize="md" lineClamp={2}>
+                {product.description}
+              </Text>
+
+              {/* Product price */}
+              {priceFormatted && (
+                <Text fontSize="lg" fontWeight="semibold" color="agt.red">
+                  {priceFormatted}
+                </Text>
+              )}
+            </Box>
+          </Flex>
+
+          {/* Spacer and borderline for hover effects */}
+          <Spacer
+            position="absolute"
+            className="bspacer"
+            w="0"
+            h="90%"
+            top="5%"
+            borderLeft="1px"
+            borderColor="#f9f9f9"
+            transform="scale(0.97)"
+          />
+          <Box
+            className="borderline"
+            cursor="pointer"
+            bg="white"
+            px={{ base: '1', md: '2', lg: '3' }}
+            py="5"
+            borderRadius="2xl"
+            border="1px"
+            borderColor="#f9f9f9"
+            boxShadow="sm"
+          >
+            {/* Image preview line.
+
+                  The padding reads a raw custom property because it has to subtract
+                  from a scale value. v3 renamed the space namespace to spacing; the
+                  old --chakra-space-5 would still parse, resolve to nothing, and
+                  leave the calc invalid, so the padding would vanish without a
+                  word. */}
+            <VStack
+              className="imgline"
+              position="absolute"
+              opacity="0"
+              boxSize={'full'}
+              py="calc(var(--chakra-spacing-5) - 2px)"
+              px="1"
+            >
+              {previewMedia.slice(0, 3).map((media, index) => (
+                <label
+                  htmlFor={'imgbox-' + cardId + '-media-' + index}
+                  key={index}
+                >
+                  <Box
+                    transform="scale(0.97)"
+                    borderBottom="1px"
+                    borderColor="#f9f9f9"
+                    _hover={{ borderColor: 'agt.red' }}
+                    onMouseOver={() => {
+                      if (radioRef.current[index + 1]) {
+                        radioRef.current[index + 1]!.checked = true;
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      if (radioRef.current[0]) {
+                        radioRef.current[0]!.checked = true;
+                      }
+                    }}
+                  >
+                    <Image
+                      onDragStart={e => e.preventDefault()}
+                      draggable="false"
+                      src={media.image.src}
+                      alt={media.image.altText || '-'}
+                      style={{
+                        height: 'auto',
+                        width: '100%',
+                        objectFit: 'contain', // Preview images use 'contain'
+                        objectPosition: 'center'
+                      }}
+                    />
+                  </Box>
+                </label>
+              ))}
+            </VStack>
+          </Box>
         </Box>
-      </Box>
+      </GatsbyLink>
     </VStack>
   );
 };

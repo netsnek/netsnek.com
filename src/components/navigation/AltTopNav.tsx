@@ -12,9 +12,9 @@ import {
   Spacer,
   Button,
   LinkOverlay,
-  LinkBox,
-  Tooltip
+  LinkBox
 } from '@chakra-ui/react';
+import { Tooltip } from '@/components/ui/tooltip';
 import { FC, useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useContactModal } from '../../services/contact';
@@ -60,7 +60,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
     });
   };
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
   const [hamburgerClass, setHamburgerClass] = useState('');
 
   const openDrawer = () => {
@@ -294,7 +294,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 defaultMessage: 'Folge uns auf'
               })}
             </Text>
-            <HStack spacing="8">
+            <HStack gap="8">
               <LinkBox
                 mr="4"
                 display="flex"
@@ -303,7 +303,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://facebook.com/netsnek" isExternal>
+                <LinkOverlay
+                  href="https://facebook.com/netsnek"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Icon as={FaFacebook} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -315,7 +319,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://instagram.com/netsnek" isExternal>
+                <LinkOverlay
+                  href="https://instagram.com/netsnek"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Icon as={FaInstagram} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -327,7 +335,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://twitter.com/netsnek_com" isExternal>
+                <LinkOverlay
+                  href="https://twitter.com/netsnek_com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Icon as={FaTwitter} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -339,7 +351,11 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   color: 'brand.500'
                 }}
               >
-                <LinkOverlay href="https://github.com/netsnek" isExternal>
+                <LinkOverlay
+                  href="https://github.com/netsnek"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Icon as={FaGithub} boxSize="6" />
                 </LinkOverlay>
               </LinkBox>
@@ -402,25 +418,24 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
               <LanguageSwitcher ml={4} />
               <IconButton
                 ml={4}
-                icon={
-                  <HamburgerMenuIcon
-                    handleClick={toggleMobileMenu}
-                    wrapperProps={{ className: hamburgerClass }}
-                    iconProps={{
-                      // ...hamburgerIconProps,
-                      //boxSize: '6',
-                      //boxSize: '100%',
-                      backgroundColor: 'white'
-                    }}
-                  />
-                }
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 borderRadius="xl"
                 //variant="ghost"
                 fontWeight={'bold'}
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 onClick={toggleMobileMenu}
-              />
+              >
+                <HamburgerMenuIcon
+                  handleClick={toggleMobileMenu}
+                  wrapperProps={{ className: hamburgerClass }}
+                  iconProps={{
+                    // ...hamburgerIconProps,
+                    //boxSize: '6',
+                    //boxSize: '100%',
+                    backgroundColor: 'white'
+                  }}
+                />
+              </IconButton>
             </Flex>
           </HStack>
         </Container>
@@ -521,18 +536,6 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 ml={4}
                 _hover={{ bg: 'brand.400' }}
                 _active={{ bg: 'brand.300' }}
-                icon={
-                  <HamburgerMenuIcon
-                    // handleClick={toggleMobileMenu}
-                    wrapperProps={{ className: hamburgerClass }}
-                    iconProps={{
-                      // ...hamburgerIconProps,
-                      //boxSize: '6',
-                      //boxSize: '100%',
-                      backgroundColor: 'black'
-                    }}
-                  />
-                }
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
                 borderRadius="xl"
                 //variant="ghost"
@@ -541,7 +544,18 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 onClick={toggleMobileMenu}
                 bg={'white'}
                 color={'black'}
-              />
+              >
+                <HamburgerMenuIcon
+                  // handleClick={toggleMobileMenu}
+                  wrapperProps={{ className: hamburgerClass }}
+                  iconProps={{
+                    // ...hamburgerIconProps,
+                    //boxSize: '6',
+                    //boxSize: '100%',
+                    backgroundColor: 'black'
+                  }}
+                />
+              </IconButton>
             </Flex>
           </HStack>
         </Container>

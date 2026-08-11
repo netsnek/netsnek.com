@@ -5,28 +5,29 @@ import {
   Text,
   GridItem,
   Grid
-} from '@chakra-ui/react'
-import { Field } from 'jaen'
-import { useIntl } from 'react-intl'
+} from '@chakra-ui/react';
+import { Field } from 'jaen';
+import { useIntl } from 'react-intl';
 
 const Services = () => {
-  const intl = useIntl()
+  const intl = useIntl();
 
   return (
     <Container
       as="section"
       maxW="6xl"
       borderRadius="2xl"
-      mb={{base: '0', lg: '16'}}
+      mb={{ base: '0', lg: '16' }}
       position="relative"
-      overflow={{base: 'hidden', lg: 'visible'}}
-      px={{base: 5, lg: 0}}
-      zIndex={0}>
+      overflow={{ base: 'hidden', lg: 'visible' }}
+      px={{ base: 5, lg: 0 }}
+      zIndex={0}
+    >
       <Field.Text
-        mt={{base: '20 !important', md: '0'}}
+        mt={{ base: '20 !important', md: '0' }}
         mb="8"
         as={Heading}
-        fontSize={{base: '4xl', lg: '5xl'}}
+        fontSize={{ base: '4xl', lg: '5xl' }}
         lineHeight={1}
         fontWeight="bold"
         textAlign="left"
@@ -37,7 +38,7 @@ const Services = () => {
             "Wir verwirklichen in Wochen,<br/> <span style='color:var(--chakra-colors-brand-500)'>nicht Monaten.</span>"
         })}
       />
-      <Grid templateColumns={{base: '1fr', lg: '1fr 1fr'}} gap={10}>
+      <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={10}>
         <GridItem colSpan={1}>
           <Box
             bg="white"
@@ -47,7 +48,8 @@ const Services = () => {
             w="full"
             border="1px"
             borderColor="#f9f9f9"
-            boxShadow="sm">
+            boxShadow="sm"
+          >
             {/* Field.Image always fills the box it is given, so the frame
                 carries the height and the rounded corners that used to sit
                 on the picture itself. */}
@@ -96,7 +98,8 @@ const Services = () => {
             w="full"
             border="1px"
             borderColor="#f9f9f9"
-            boxShadow="sm">
+            boxShadow="sm"
+          >
             <Box h="200px" w="full" borderRadius="md" overflow="hidden">
               <Field.Image
                 name="ServicesCardDevelopmentImage"
@@ -135,7 +138,7 @@ const Services = () => {
         </GridItem>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

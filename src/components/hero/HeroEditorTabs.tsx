@@ -27,21 +27,21 @@ import type { TabsProps } from 'jaen-fields-mdx';
  * as it last stood rather than to an apology.
  */
 class PreviewGuard extends Component<
-  {resetKey: unknown; fallback: () => ReactNode; children: ReactNode},
-  {hasFailed: boolean}
+  { resetKey: unknown; fallback: () => ReactNode; children: ReactNode },
+  { hasFailed: boolean }
 > {
-  state = {hasFailed: false};
+  state = { hasFailed: false };
 
   static getDerivedStateFromError() {
-    return {hasFailed: true};
+    return { hasFailed: true };
   }
 
-  componentDidUpdate(previous: {resetKey: unknown}) {
+  componentDidUpdate(previous: { resetKey: unknown }) {
     // Without this the boundary latches: the first throw would freeze the
     // preview for good and every later keystroke, including the one that
     // fixes the document, would render nothing.
     if (this.state.hasFailed && previous.resetKey !== this.props.resetKey) {
-      this.setState({hasFailed: false});
+      this.setState({ hasFailed: false });
     }
   }
 
@@ -79,6 +79,7 @@ const ARROW_DOWN = 'M 52 25 L 5.01 25 L 25.01 45 L 28 45 L 25 35 L 55 35 Z';
  * where you are rather than as decoration.
  */
 const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
+  // Use React.useId instead (available in React 18+)
   const id = useId();
   // Filled points where you have to click to change the view, not where you
   // already are. The upper arrow points right at the source, the lower one
@@ -175,7 +176,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
   });
 
   const lastDrawing = () => (
-    <Box dangerouslySetInnerHTML={{__html: lastGoodDrawing.current}} />
+    <Box dangerouslySetInnerHTML={{ __html: lastGoodDrawing.current }} />
   );
 
   const pill = (value: number, label: string) => (
@@ -211,7 +212,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
       <Box display="flex" justifyContent="center" mb={3}>
         {/* Kein Rahmen um die beiden mehr: sie sind jetzt ein Buttonpaar
             wie ueberall sonst, kein Segment-Schalter in einer Schiene. */}
-        <ButtonGroup size="xs" spacing={2} w="fit-content" alignItems="center">
+        <ButtonGroup size="xs" gap={2} w="fit-content" alignItems="center">
           {pill(
             PREVIEW_TAB,
             intl.formatMessage({
@@ -254,24 +255,17 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
               : '0 0 0 4px rgba(245, 101, 101, 0.15)'
             : 'none'
         }
-        sx={{
-          // The drawing fills the panel and keeps its own proportions. This
-          // is scoped to the panel on purpose: the same rule on the whole
-          // hero would also resize the arrows between the switches.
-          '& svg': {
+        css={{
+          '& & svg': {
             width: '100%',
             height: 'auto',
             display: 'block',
             overflow: 'visible'
           },
-          // CodeMirror only scrolls inside itself when it has a DEFINITE
-          // height. A percentage is not one: it resolves against the mdx
-          // field's own wrappers, which are auto, so the editor grew to its
-          // content, never overflowed its scroller, and the surplus was
-          // simply clipped by the box around it. An explicit height is the
-          // one thing that works here, and the box takes its size from it.
-          '.cm-editor': { height: { base: '320px', md: '420px' } },
-          '.cm-scroller': {
+
+          '& .cm-editor': { height: { base: '320px', md: '420px' } },
+
+          '& .cm-scroller': {
             fontSize: '12px',
             overflow: 'auto !important',
             // Keep the wheel inside the editor instead of scrolling the page

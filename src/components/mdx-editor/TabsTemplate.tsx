@@ -1,29 +1,27 @@
-import {AddIcon} from '../../components/icons/chakra';
+import { AddIcon } from '../../components/icons/chakra';
 import {
   Box,
   Button,
   Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Spacer,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
-  Tabs
-} from '@chakra-ui/react'
-import React, {useState} from 'react'
+  Tabs,
+  Portal
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
 
 interface ComponentInfoProps {
   items: Array<{
-    label: string
-    onClick: () => void
-  }>
+    label: string;
+    onClick: () => void;
+  }>;
 }
 
-export const ComponentInfo: React.FC<ComponentInfoProps> = ({items}) => (
-  <Menu>
+export const ComponentInfo: React.FC<ComponentInfoProps> = ({ items }) => (
+  <Menu.Root>
     {/* <MenuButton
       as={Button}
       leftIcon={<AddIcon />}
@@ -33,46 +31,51 @@ export const ComponentInfo: React.FC<ComponentInfoProps> = ({items}) => (
       Components
     </MenuButton> */}
 
-    <MenuList>
-      {items.map(item => (
-        <MenuItem key={item.label} onClick={item.onClick}>
-          {item.label}
-        </MenuItem>
-      ))}
-    </MenuList>
-  </Menu>
-)
+    <Portal>
+      <Menu.Positioner>
+        <Menu.Content>
+          {items.map(item => (
+            <Menu.Item key={item.label} onSelect={item.onClick} value="item-0">
+              {item.label}
+            </Menu.Item>
+          ))}
+        </Menu.Content>
+      </Menu.Positioner>
+    </Portal>
+  </Menu.Root>
+);
 
 export interface TabsProps {
   tabs: Array<{
-    label: React.ReactNode
-    content: React.ReactNode
-  }>
-  selectedTab: number
-  componentsInfo?: ComponentInfoProps['items']
+    label: React.ReactNode;
+    content: React.ReactNode;
+  }>;
+  selectedTab: number;
+  componentsInfo?: ComponentInfoProps['items'];
 }
 
 const TabsTemplate: React.FC<TabsProps> = props => {
-  const [selectedTab, setSelectedTab] = useState(props.selectedTab)
+  const [selectedTab, setSelectedTab] = useState(props.selectedTab);
 
   const handleTabChange = (index: number) => {
-    setSelectedTab(index)
-  }
+    setSelectedTab(index);
+  };
 
   return (
     <Box position="relative">
-      <Tabs
-        index={selectedTab}
-        onChange={handleTabChange}
+      <Tabs.Root
+        value={selectedTab}
+        onValueChange={handleTabChange}
         pos="relative"
-        size="sm">
-        <TabList pos="sticky" top="0" zIndex="1">
+        size="sm"
+      >
+        <Tabs.List pos="sticky" top="0" zIndex="1">
           {props.tabs.map((tab, i) => (
             <Tab key={i}>{tab.label}</Tab>
           ))}
           <Spacer />
           <ComponentInfo items={props.componentsInfo || []} />
-        </TabList>
+        </Tabs.List>
 
         <TabPanels>
           {props.tabs.map((tab, i) => (
@@ -81,9 +84,9 @@ const TabsTemplate: React.FC<TabsProps> = props => {
             </TabPanel>
           ))}
         </TabPanels>
-      </Tabs>
+      </Tabs.Root>
     </Box>
-  )
-}
+  );
+};
 
-export default TabsTemplate
+export default TabsTemplate;

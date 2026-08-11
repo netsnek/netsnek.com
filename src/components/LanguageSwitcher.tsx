@@ -3,21 +3,13 @@ import {
   HStack,
   Image,
   Menu,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   VStack,
   useBreakpointValue,
   useDisclosure,
-  MenuButton,
-  MenuItem,
-  MenuList,
   MenuButtonProps,
   Portal,
-  Text
+  Text,
+  Dialog
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '../components/icons/chakra';
 import { navigate } from 'gatsby';
@@ -96,7 +88,7 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
     return locale === defaultLocale ? '/' : `/${locale}/`;
   };
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
 
   /**
    * The trigger. On a phone it opens a dialog, so it carries no chevron:
@@ -145,7 +137,7 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
     const isCurrent = locale === currentBase;
 
     return (
-      <HStack spacing={3} w="full">
+      <HStack gap={3} w="full">
         <Image
           src={flagSrc(locale)}
           alt=""
@@ -184,81 +176,111 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
     return (
       <>
         {trigger(onOpen)}
-        <Modal isOpen={isOpen} onClose={onClose} size="xs" isCentered>
-          <ModalOverlay />
-          <ModalContent mx={4} borderRadius="xl">
-            <ModalHeader fontSize="md">{controlLabel}</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody pb={6}>
-              <VStack spacing={1} align="stretch">
-                {locales.map(locale => (
-                  <Button
-                    key={locale}
-                    variant="ghost"
-                    justifyContent="flex-start"
-                    h="12"
-                    borderRadius="lg"
-                    fontWeight={locale === currentBase ? 'semibold' : 'normal'}
-                    onClick={() => {
-                      onClose();
-                      go(locale);
-                    }}
-                  >
-                    {row(locale)}
-                  </Button>
-                ))}
-              </VStack>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+        <Dialog.Root
+          open={isOpen}
+          size="xs"
+          placement="center"
+          onOpenChange={e => {
+            if (!e.open) {
+              onClose();
+            }
+          }}
+        >
+          <Portal>
+            <Dialog.Backdrop />
+            <Dialog.Positioner>
+              <Dialog.Content mx={4} borderRadius="xl">
+                <Dialog.Header fontSize="md">{controlLabel}</Dialog.Header>
+                <Dialog.CloseTrigger />
+                <Dialog.Body pb={6}>
+                  <VStack gap={1} align="stretch">
+                    {locales.map(locale => (
+                      <Button
+                        key={locale}
+                        variant="ghost"
+                        justifyContent="flex-start"
+                        h="12"
+                        borderRadius="lg"
+                        fontWeight={
+                          locale === currentBase ? 'semibold' : 'normal'
+                        }
+                        onClick={() => {
+                          onClose();
+                          go(locale);
+                        }}
+                      >
+                        {row(locale)}
+                      </Button>
+                    ))}
+                  </VStack>
+                </Dialog.Body>
+              </Dialog.Content>
+            </Dialog.Positioner>
+          </Portal>
+        </Dialog.Root>
       </>
     );
   }
 
   return (
-    <Menu placement="bottom-end" isLazy>
+    <Menu.Root
+      lazyMount
+      unmountOnExit
+      positioning={{
+        placement: 'bottom-end'
+      }}
+    >
       {/* Same size, padding, radius and colour as the search control and the
           contact button beside it, so the header reads as one row of
           controls rather than three different ones. */}
-      <MenuButton
-        as={Button}
-        variant="solid"
-        size="sm"
-        minH="10"
-        px={3}
-        borderRadius="xl"
-        filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
-        color="white"
-        aria-label={`${controlLabel}: ${labels[currentBase] ?? currentBase}`}
-        rightIcon={<ChevronDownIcon boxSize={4} display="block" />}
-        iconSpacing={1.5}
-        {...props}
-      >
-        <Image
-          src={flagSrc(currentBase)}
-          alt=""
-          aria-hidden="true"
-          width="22px"
-          height="16.5px"
-          borderRadius="2px"
-          objectFit="cover"
-          display="block"
-          boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
-        />
-      </MenuButton>
+      <Menu.Trigger asChild>
+        <Button
+          variant="solid"
+          size="sm"
+          minH="10"
+          px={3}
+          borderRadius="xl"
+          filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+          color="white"
+          aria-label={`${controlLabel}: ${labels[currentBase] ?? currentBase}`}
+          iconSpacing={1.5}
+          {...props}
+        >
+          <Image
+            src={flagSrc(currentBase)}
+            alt=""
+            aria-hidden="true"
+            width="22px"
+            height="16.5px"
+            borderRadius="2px"
+            objectFit="cover"
+            display="block"
+            boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
+          />
+          <ChevronDownIcon boxSize={4} display="block" />
+        </Button>
+      </Menu.Trigger>
       {/* The header rows carry their own stacking context, and an in-place
           MenuList paints underneath them. A portal lifts the list out to the
           body, above everything. */}
       <Portal>
-        <MenuList color="chakra-body-text" zIndex="popover" minW="12rem">
-          {locales.map(locale => (
-            <MenuItem key={locale} onClick={() => go(locale)}>
-              {row(locale)}
-            </MenuItem>
-          ))}
-        </MenuList>
+        <Portal>
+          <Menu.Positioner>
+            <Menu.Content>
+              {locales.map(locale => (
+                <Menu.Item
+                  key={locale}
+                  onSelect={() => go(locale)}
+                  value="item-0"
+                >
+                  {row(locale)}
+                </Menu.Item>
+              ))}
+            </Menu.Content>
+          </Menu.Positioner>
+        </Portal>
       </Portal>
-    </Menu>
+    </Menu.Root>
   );
 };
 

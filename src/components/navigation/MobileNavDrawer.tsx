@@ -1,4 +1,4 @@
-import { Box, Collapse, Flex, HStack, Spacer } from '@chakra-ui/react';
+import { Box, Collapsible, Flex, HStack, Spacer } from '@chakra-ui/react';
 import { Global } from '@emotion/react';
 import { useLocation } from '@reach/router';
 import { FC } from 'react';
@@ -38,32 +38,34 @@ const MobileNavDrawer: FC<MobileNavDrawerProps> = ({
         }}
       />
       <Box position="fixed" top={`calc(64px)`} left={0} zIndex={3}>
-        <Collapse in={isOpen} animateOpacity>
-          <Flex
-            direction="column"
-            w="100vw"
-            h={`calc(100vh - ${navOffset})`}
-            bg="shared.body.bgColor"
-            pt={9}
-            px={9}
-            overflowY="scroll"
-          >
-            <HStack alignItems="center" spacing={2}>
-              <SearchMenu />
-              <LanguageSwitcher />
-            </HStack>
-            <Box mt={5}>
-              <PageDirectory
-                isMobile
-                closeMobileDrawer={onClose}
-                data={menuStructure}
-                path={pathname}
-              />
-            </Box>
-            <Spacer />
-            <NavbarControls isMobile />
-          </Flex>
-        </Collapse>
+        <Collapsible.Root open={isOpen}>
+          <Collapsible.Content>
+            <Flex
+              direction="column"
+              w="100vw"
+              h={`calc(100vh - ${navOffset})`}
+              bg="shared.body.bgColor"
+              pt={9}
+              px={9}
+              overflowY="scroll"
+            >
+              <HStack alignItems="center" gap={2}>
+                <SearchMenu />
+                <LanguageSwitcher />
+              </HStack>
+              <Box mt={5}>
+                <PageDirectory
+                  isMobile
+                  closeMobileDrawer={onClose}
+                  data={menuStructure}
+                  path={pathname}
+                />
+              </Box>
+              <Spacer />
+              <NavbarControls isMobile />
+            </Flex>
+          </Collapsible.Content>
+        </Collapsible.Root>
       </Box>
     </>
   );

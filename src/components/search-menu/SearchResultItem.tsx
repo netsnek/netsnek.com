@@ -63,8 +63,6 @@ export const SearchResultItem: FC<{
 
   return (
     <LinkBox
-      as={Flex}
-      key={id}
       id={`sd-search-ri-${id}`}
       _hover={{
         bgColor: 'features.search.section.item._hover.bgColor',
@@ -84,80 +82,87 @@ export const SearchResultItem: FC<{
         bgColor: 'features.search.section.item._hover.bgColor',
         color: 'features.search.section.item._hover.color'
       })}
+      asChild
     >
-      <Box
-        display="flex"
-        alignItems="center"
-        __css={{
-          '& svg': {
-            stroke: 'features.search.section.item.icon.color',
-            verticalAlign: 'middle'
-          }
-        }}
-        w={isDocs ? 'calc(95% - 20px)' : 'calc(95%)'}
-      >
-        {icon}
-        <LinkOverlay
-          as={Link}
-          to={item.to}
-          ml={2}
-          _focus={{
-            outline: 'none'
+      <Flex key={id}>
+        <Box
+          display="flex"
+          alignItems="center"
+          css={{
+            '& & svg': {
+              stroke: 'features.search.section.item.icon.color',
+              verticalAlign: 'middle'
+            }
           }}
-          textOverflow="ellipsis"
-          overflow="hidden"
-          whiteSpace="nowrap"
+          w={isDocs ? 'calc(95% - 20px)' : 'calc(95%)'}
         >
-          {isDocs ? (
-            <Stack spacing="0.5">
-              <Text
-                fontSize="sm"
-                color="features.search.section.item.title.color"
-                fontWeight="bold"
-              >
-                <Highlighter
-                  searchWords={queryTokens}
-                  autoEscape
-                  textToHighlight={item.title}
-                  highlightTag={highlightTag}
-                />
-              </Text>
-              {item.description && (
-                <Text
-                  fontSize="sm"
-                  color="features.search.section.item.description.color"
-                >
-                  <Highlighter
-                    searchWords={queryTokens}
-                    autoEscape
-                    textToHighlight={item.description}
-                    highlightTag={highlightTag}
-                  />
-                </Text>
+          {icon}
+          <LinkOverlay
+            ml={2}
+            _focus={{
+              outline: 'none'
+            }}
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+            asChild
+          >
+            <Link to={item.to}>
+              {isDocs ? (
+                <Stack gap="0.5">
+                  <Text
+                    fontSize="sm"
+                    color="features.search.section.item.title.color"
+                    fontWeight="bold"
+                  >
+                    <Highlighter
+                      searchWords={queryTokens}
+                      autoEscape
+                      textToHighlight={item.title}
+                      highlightTag={highlightTag}
+                    />
+                  </Text>
+                  {item.description && (
+                    <Text
+                      fontSize="sm"
+                      color="features.search.section.item.description.color"
+                    >
+                      <Highlighter
+                        searchWords={queryTokens}
+                        autoEscape
+                        textToHighlight={item.description}
+                        highlightTag={highlightTag}
+                      />
+                    </Text>
+                  )}
+                </Stack>
+              ) : (
+                item.title || item.description
               )}
-            </Stack>
-          ) : (
-            item.title || item.description
-          )}
-        </LinkOverlay>
-      </Box>
-      <Spacer />
-      <Text whiteSpace="nowrap" color="features.search.section.item.goto.color">
-        {canonicalTo.startsWith('/docs/')
-          ? intl.formatMessage({
-              id: 'SearchResultGotoArticle',
-              defaultMessage: 'Zum Artikel'
-            })
-          : canonicalTo.startsWith('/recipes/')
-          ? intl.formatMessage({
-              id: 'SearchResultGotoRecipe',
-              defaultMessage: 'Zum Rezept'
-            })
-          : intl.formatMessage({
-              id: 'SearchResultGotoPage',
-              defaultMessage: 'Zur Seite'
-            })}
-      </Text>
+            </Link>
+          </LinkOverlay>
+        </Box>
+        <Spacer />
+        <Text
+          whiteSpace="nowrap"
+          color="features.search.section.item.goto.color"
+        >
+          {canonicalTo.startsWith('/docs/')
+            ? intl.formatMessage({
+                id: 'SearchResultGotoArticle',
+                defaultMessage: 'Zum Artikel'
+              })
+            : canonicalTo.startsWith('/recipes/')
+              ? intl.formatMessage({
+                  id: 'SearchResultGotoRecipe',
+                  defaultMessage: 'Zum Rezept'
+                })
+              : intl.formatMessage({
+                  id: 'SearchResultGotoPage',
+                  defaultMessage: 'Zur Seite'
+                })}
+        </Text>
+      </Flex>
     </LinkBox>
   );
 };

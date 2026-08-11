@@ -1,6 +1,5 @@
 import {
   Alert,
-  AlertIcon,
   Box,
   BoxProps,
   Button,
@@ -112,7 +111,7 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
   const parentRef = useRef<HTMLDivElement>(null);
 
   const element = (
-    <Card
+    <Card.Root
       my="4"
       py={4}
       p={{ base: 0, sm: 4 }}
@@ -126,10 +125,10 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
         <DiagramPreview isStandalone headerText="Diagram">
           <Box ref={diagram}></Box>
           {diagramError && (
-            <Alert status="warning">
-              <AlertIcon />
+            <Alert.Root status="warning">
+              <Alert.Indicator />
               {diagramError}
-            </Alert>
+            </Alert.Root>
           )}
         </DiagramPreview>
 
@@ -151,7 +150,7 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
                         transform: 'scale(1.05)'
                       }}
                       transition="transform 0.2s cubic-bezier(0.000, 0.735, 0.580, 1.000)"
-                      isLoading={translator.isLoading}
+                      loading={translator.isLoading}
                       onClick={translator.run}
                     >
                       Translate
@@ -166,7 +165,7 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
                         transform: 'scale(1.05)'
                       }}
                       transition="transform 0.2s cubic-bezier(0.000, 0.735, 0.580, 1.000)"
-                      isLoading={simulator.isLoading}
+                      loading={simulator.isLoading}
                       onClick={simulator.run}
                     >
                       Simulate
@@ -190,7 +189,7 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
             infos={translator.result?.infos}
             result={
               translator.result ? (
-                <Stack spacing="4">
+                <Stack gap="4">
                   {translator.result.data.map((translation, index) => (
                     <Stack key={index}>
                       {translation ? (
@@ -243,7 +242,7 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
             infos={simulator.result?.infos}
             result={
               simulator.result ? (
-                <Stack spacing="4">
+                <Stack gap="4">
                   {simulator.result.data.map((simulation, index) => (
                     <Stack key={index}>
                       {simulation ? (
@@ -286,7 +285,7 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
           />
         )}
       </Stack>
-    </Card>
+    </Card.Root>
   );
 
   return element;

@@ -207,7 +207,7 @@ const Open: FC = () => {
               })}
             />
 
-            <Stack spacing={{ base: 4, lg: 5 }}>
+            <Stack gap={{ base: 4, lg: 5 }}>
               {PILLARS.map(pillar => (
                 <Box
                   key={pillar.id}
@@ -247,20 +247,21 @@ const Open: FC = () => {
 
             <Flex justify={{ base: 'center', lg: 'flex-start' }} mt="10">
               <Button
-                as={GatsbyLink}
-                to={localizeHref('/docs')}
                 variant="solid"
                 filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.35))"
+                asChild
               >
-                {/* The label carries no styling of its own so it keeps
-                    inheriting the typography of the button around it. */}
-                <Field.Text
-                  name="OpenDocsLink"
-                  defaultValue={intl.formatMessage({
-                    id: 'OpenDocsLink',
-                    defaultMessage: 'Zur Dokumentation'
-                  })}
-                />
+                <GatsbyLink to={localizeHref('/docs')}>
+                  {/* The label carries no styling of its own so it keeps
+                      inheriting the typography of the button around it. */}
+                  <Field.Text
+                    name="OpenDocsLink"
+                    defaultValue={intl.formatMessage({
+                      id: 'OpenDocsLink',
+                      defaultMessage: 'Zur Dokumentation'
+                    })}
+                  />
+                </GatsbyLink>
               </Button>
             </Flex>
           </GridItem>

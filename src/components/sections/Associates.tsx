@@ -7,16 +7,16 @@ import {
   GridItem,
   Grid,
   AspectRatio
-} from '@chakra-ui/react'
-import {Field} from 'jaen'
-import {useIntl} from 'react-intl'
+} from '@chakra-ui/react';
+import { Field } from 'jaen';
+import { useIntl } from 'react-intl';
 
-import {useLocalizeHref} from '../../contexts/locale'
-import {splitAccentDot} from '../../utils/accent-dots'
+import { useLocalizeHref } from '../../contexts/locale';
+import { splitAccentDot } from '../../utils/accent-dots';
 
 const Associates = () => {
-  const intl = useIntl()
-  const localizeHref = useLocalizeHref()
+  const intl = useIntl();
+  const localizeHref = useLocalizeHref();
 
   // The heading is rich text now, so the accent dot has to be markup instead
   // of the element withAccentDots builds around a plain string. The
@@ -27,11 +27,11 @@ const Associates = () => {
       id: 'AssociatesHeading',
       defaultMessage: 'Wir entwickeln für Sie in Österreich.'
     })
-  )
+  );
 
   const headingValue = headingDot
     ? `${headingText}<span style='color:var(--chakra-colors-brand-500)'>${headingDot}</span>`
-    : headingText
+    : headingText;
 
   // Sample list of your links and icons, assuming you will replace these with your actual data
   const associates = [
@@ -70,7 +70,7 @@ const Associates = () => {
       name: 'Werbeagentur Christian Aichner',
       logo: '/images/associates/aichner.svg'
     }
-  ]
+  ];
 
   return (
     <Grid
@@ -80,35 +80,44 @@ const Associates = () => {
       bgColor="#0A0A0A"
       borderTop="1px solid"
       borderColor="brand.500"
-      templateColumns={{base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(6, 1fr)'}}
-      gap={{base: 4, sm: 8}}
+      templateColumns={{
+        base: 'repeat(2, 1fr)',
+        sm: 'repeat(3, 1fr)',
+        md: 'repeat(6, 1fr)'
+      }}
+      gap={{ base: 4, sm: 8 }}
       mt={{ base: '24', sm: '32', lg: '40' }}
       p="16"
       w="full"
       maxW="full"
       color="white"
-      alignItems={'center'}>
+      alignItems={'center'}
+    >
       <GridItem
         mb={4}
         pos="relative"
         display="flex"
-        colSpan={{base: 2, sm: 3, md: 6}}
+        colSpan={{ base: 2, sm: 3, md: 6 }}
         flexDir={'column'}
         justifyContent={'center'}
-        alignItems={'center'}>
+        alignItems={'center'}
+      >
         {/* <ImportantArrow pos="absolute" top="-150%" right="-10%" h="300%" /> */}
         <LinkBox
-          w={{base: "70%", sm: "50%", md: "25%"}}
+          w={{ base: '70%', sm: '50%', md: '25%' }}
           h="auto"
           bg="white"
           p={2}
           borderRadius="2xl"
           overflow="hidden"
           transition="bg 0.2s"
-          _hover={{bg: 'brand.500'}}>
+          _hover={{ bg: 'brand.500' }}
+        >
           <LinkOverlay
             href={'https://www.wko.at/oe/aussenwirtschaft'}
-            isExternal>
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <AspectRatio ratio={4 / 3}>
               {/* Field.Image only forwards the props of its own image
                   contract, so the size travels through autoScale, which fills
@@ -152,8 +161,13 @@ const Associates = () => {
           borderRadius="2xl"
           overflow="hidden"
           transition="bg 0.2s"
-          _hover={{bg: 'brand.500'}}>
-          <LinkOverlay href={associate.href} isExternal>
+          _hover={{ bg: 'brand.500' }}
+        >
+          <LinkOverlay
+            href={associate.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <AspectRatio ratio={4 / 3}>
               {/* Assuming you have a way to dynamically select your icon component */}
               <Image
@@ -161,7 +175,7 @@ const Associates = () => {
                 alt={associate.name}
                 w="full"
                 h="full"
-                sx={{
+                css={{
                   objectFit: 'contain !important'
                 }}
               />
@@ -170,7 +184,11 @@ const Associates = () => {
         </LinkBox>
       ))}
       {/* Den Wrapper um den Link mit GridItem oder einer ähnlichen Komponente und setze colSpan auf 3 */}
-      <GridItem display="flex" colSpan={{base: 2, sm: 3, md: 6}} justifyContent="center">
+      <GridItem
+        display="flex"
+        colSpan={{ base: 2, sm: 3, md: 6 }}
+        justifyContent="center"
+      >
         {/* There is no /projects page, the invitation to browse leads to the
             docs. The href has to run through localizeHref, otherwise a
             visitor on /en/ lands back on the German page. */}
@@ -179,7 +197,8 @@ const Associates = () => {
           variant="hover-theme"
           //textDecor={"underline"}
           opacity={0.7}
-          textAlign="center">
+          textAlign="center"
+        >
           {/* <Field.Text
                 name="FooterLinkAllCustomers"
                 defaultValue="Sie sind in guter Gesellschaft"
@@ -201,7 +220,7 @@ const Associates = () => {
         </Link>
       </GridItem>
     </Grid>
-  )
-}
+  );
+};
 
-export default Associates
+export default Associates;

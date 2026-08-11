@@ -65,13 +65,13 @@ const BlogCard: FC<{ section: DocsSection }> = ({ section }) => {
 
       <Flex direction="column" flex="1" p={6}>
         <Heading as="h3" fontSize="xl" fontWeight="bold">
-          <LinkOverlay as={GatsbyLink} to={section.href}>
-            {section.title}
+          <LinkOverlay asChild>
+            <GatsbyLink to={section.href}>{section.title}</GatsbyLink>
           </LinkOverlay>
         </Heading>
 
         {section.description && (
-          <Text mt="2" fontSize="md" color="gray.500" noOfLines={3}>
+          <Text mt="2" fontSize="md" color="gray.500" lineClamp={3}>
             {section.description}
           </Text>
         )}
@@ -150,20 +150,21 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
           erst sieht man, worum es geht, dann kann man weiterlesen. */}
       <Flex justify="center" mt="10">
         <Button
-          as={GatsbyLink}
-          to={localizeHref('/docs')}
           variant="solid"
           filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+          asChild
         >
-          {/* The label carries no styling of its own so it keeps inheriting
-              the typography of the button around it. */}
-          <Field.Text
-            name="BlogAllLink"
-            defaultValue={intl.formatMessage({
-              id: 'BlogAllLink',
-              defaultMessage: 'Alle Themen ansehen'
-            })}
-          />
+          <GatsbyLink to={localizeHref('/docs')}>
+            {/* The label carries no styling of its own so it keeps inheriting
+                the typography of the button around it. */}
+            <Field.Text
+              name="BlogAllLink"
+              defaultValue={intl.formatMessage({
+                id: 'BlogAllLink',
+                defaultMessage: 'Alle Themen ansehen'
+              })}
+            />
+          </GatsbyLink>
         </Button>
       </Flex>
     </Box>

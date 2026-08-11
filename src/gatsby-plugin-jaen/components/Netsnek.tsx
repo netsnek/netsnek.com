@@ -29,18 +29,20 @@ export const Logo = (props: any) => {
       width="full"
       height="full"
       viewBox="0 0 475 475"
-      sx={{
-        '.squarel': {
+      css={{
+        '& .squarel': {
           fillRule: 'evenodd',
           clipRule: 'evenodd',
-          fill: 'transparent',
+          fill: 'transparent'
         },
-        '.snek': {
-          fill: 'currentColor',
+
+        '& .snek': {
+          fill: 'currentColor'
         },
-        '.arrows': {
-          fill: 'currentColor',
-        },
+
+        '& .arrows': {
+          fill: 'currentColor'
+        }
       }}
       {...props}
     >
@@ -221,21 +223,39 @@ export const Logo = (props: any) => {
           />
         </mask>
         <mask id="heading1-mask">
-          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="white">{heading1}</text>
+          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="white">
+            {heading1}
+          </text>
         </mask>
         <mask id="heading2-mask">
-          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="white">{heading2}</text>
+          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="white">
+            {heading2}
+          </text>
         </mask>
         <mask className="dots-mask" id="dot1-mask">
-          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="black">{heading1}<tspan fill="white">{dot1}</tspan></text>
+          <text x="0" y="160" fontSize="32" fontWeight="bold" fill="black">
+            {heading1}
+            <tspan fill="white">{dot1}</tspan>
+          </text>
         </mask>
         <mask className="dots-mask" id="dot2-mask">
-          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="black">{heading2}<tspan fill="white">{dot2}</tspan></text>
+          <text x="0" y="190" fontSize="24" fontWeight="bold" fill="black">
+            {heading2}
+            <tspan fill="white">{dot2}</tspan>
+          </text>
         </mask>
         <mask id="button-mask">
           {/* Nur der gefüllte Button. Der zweite zeichnet sich selbst,
               wie Rechteck, Kreise und Herz. */}
-          <rect x="2" y="250" rx="6" ry="6" width="50" height="20" fill="white" />
+          <rect
+            x="2"
+            y="250"
+            rx="6"
+            ry="6"
+            width="50"
+            height="20"
+            fill="white"
+          />
         </mask>
       </defs>
       <g id="Ebene_1-2">
@@ -327,7 +347,7 @@ export const Logo = (props: any) => {
           />
         </g>
         <g mask="url(#heading2-mask)">
-        <rect
+          <rect
             id="heading2"
             x="-10%"
             y="41%"
@@ -389,20 +409,20 @@ export const Logo = (props: any) => {
         />
         {/* Der zweite Button als gezeichneter Umriss, eine Sekunde nach dem
           gefüllten. */}
-      <rect
-        id="button-outline"
-        x="61"
-        y="251"
-        rx="5"
-        ry="5"
-        width="48"
-        height="18"
-        fill="none"
-        stroke="#f77f00"
-        strokeWidth="2"
-      />
+        <rect
+          id="button-outline"
+          x="61"
+          y="251"
+          rx="5"
+          ry="5"
+          width="48"
+          height="18"
+          fill="none"
+          stroke="#f77f00"
+          strokeWidth="2"
+        />
 
-      <g mask="url(#button-mask)">
+        <g mask="url(#button-mask)">
           <rect
             id="button"
             x="-10%"

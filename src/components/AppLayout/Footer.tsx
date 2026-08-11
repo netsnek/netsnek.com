@@ -2,7 +2,6 @@ import {
   Box,
   Center,
   Container,
-  Divider,
   Flex,
   HStack,
   Icon,
@@ -11,7 +10,8 @@ import {
   LinkOverlay,
   Spacer,
   Text,
-  VStack
+  VStack,
+  Separator
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 import { useIntl } from 'react-intl';
@@ -219,61 +219,72 @@ const Footer: FC = () => {
             color={'white'}
             mt={20}
             mb={4}
-            as={LinkBox}
-            spacing="4"
+            gap="4"
             flexWrap={'wrap'}
+            asChild
           >
-            <LinkBox
-              mr="4"
-              display="flex"
-              transition="color 0.2s"
-              _hover={{
-                color: 'brand.500'
-              }}
-            >
-              <LinkOverlay
-                href="https://www.facebook.com/profile.php?id=61552973278627"
-                isExternal
+            <LinkBox>
+              <LinkBox
+                mr="4"
+                display="flex"
+                transition="color 0.2s"
+                _hover={{
+                  color: 'brand.500'
+                }}
               >
-                <Icon as={FaFacebook} boxSize="5" />
-              </LinkOverlay>
+                <LinkOverlay
+                  href="https://www.facebook.com/profile.php?id=61552973278627"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon boxSize="5" asChild>
+                    <FaFacebook />
+                  </Icon>
+                </LinkOverlay>
+              </LinkBox>
+              <LinkBox
+                mr="4"
+                display="flex"
+                transition="color 0.2s"
+                _hover={{
+                  color: 'brand.500'
+                }}
+              >
+                <LinkOverlay
+                  href="https://instagram.com/barbara.mauz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon boxSize="5" asChild>
+                    <FaInstagram />
+                  </Icon>
+                </LinkOverlay>
+              </LinkBox>
+              {/* <LinkBox
+                mr="4"
+                display="flex"
+                transition="color 0.2s"
+                _hover={{
+                  color: 'brand.500'
+                }}>
+                <LinkOverlay href="https://twitter.com" isExternal>
+                  <Icon as={FaTwitter} boxSize="5" />
+                </LinkOverlay>
+              </LinkBox>
+              <LinkBox
+                mr="4"
+                display="flex"
+                transition="color 0.2s"
+                _hover={{
+                  color: 'brand.500'
+                }}>
+                <LinkOverlay href="https://github.com" isExternal>
+                  <Icon as={FaGithub} boxSize="5" />
+                </LinkOverlay>
+              </LinkBox> */}
             </LinkBox>
-            <LinkBox
-              mr="4"
-              display="flex"
-              transition="color 0.2s"
-              _hover={{
-                color: 'brand.500'
-              }}
-            >
-              <LinkOverlay href="https://instagram.com/barbara.mauz" isExternal>
-                <Icon as={FaInstagram} boxSize="5" />
-              </LinkOverlay>
-            </LinkBox>
-            {/* <LinkBox
-              mr="4"
-              display="flex"
-              transition="color 0.2s"
-              _hover={{
-                color: 'brand.500'
-              }}>
-              <LinkOverlay href="https://twitter.com" isExternal>
-                <Icon as={FaTwitter} boxSize="5" />
-              </LinkOverlay>
-            </LinkBox>
-            <LinkBox
-              mr="4"
-              display="flex"
-              transition="color 0.2s"
-              _hover={{
-                color: 'brand.500'
-              }}>
-              <LinkOverlay href="https://github.com" isExternal>
-                <Icon as={FaGithub} boxSize="5" />
-              </LinkOverlay>
-            </LinkBox> */}
           </HStack>
-          <Divider mt={0} opacity={0.2} border="1px" />
+          <Separator mt={0} opacity={0.2} border="1px" />
           <Field.Text
             name="FooterBottomText"
             defaultValue={intl.formatMessage({

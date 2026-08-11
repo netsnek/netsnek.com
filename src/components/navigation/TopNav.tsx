@@ -59,7 +59,7 @@ interface ITopNavProps {
 const TopNav: FC<ITopNavProps> = ({ path, children }) => {
   const [hamburgerClass, setHamburgerClass] = useState('');
   const { signinRedirect } = useAuth();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { open, onOpen, onClose } = useDisclosure();
 
   const location = useLocation();
   const windowSize = useWindowSize();
@@ -165,7 +165,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
       const heroHeightPx = heroHeight.getBoundingClientRect().height;
       const newColorMode =
         chakraColorMode === 'dark' ||
-        (scrollPos < heroHeightPx && !topNavDisclosure.isOpen)
+        (scrollPos < heroHeightPx && !topNavDisclosure.open)
           ? 'dark'
           : 'light';
 
@@ -175,7 +175,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
     } else {
       setColorMode('light');
     }
-  }, [path, scrollPos, topNavDisclosure.isOpen, chakraColorMode]);
+  }, [path, scrollPos, topNavDisclosure.open, chakraColorMode]);
 
   let linkProps: TTopNavLinkProps = { transition: 'opacity 0.2s ease-in-out' };
 
@@ -201,7 +201,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
   } else {
     wrapperProps = {
       ...wrapperProps,
-      bgColor: topNavDisclosure.isOpen ? 'white' : 'rgba(255, 255, 255, 0.7)',
+      bgColor: topNavDisclosure.open ? 'white' : 'rgba(255, 255, 255, 0.7)',
       color: 'black'
     };
     linkProps = {
@@ -244,7 +244,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
         {...wrapperProps}
         transition="top 0.2s ease-in-out"
       >
-        <VStack w="full" spacing={0}>
+        <VStack w="full" gap={0}>
           <Flex w="full" maxW="7xl">
             <Link
               h="60px"
@@ -258,7 +258,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
               <Logo forceColorMode={path === '/' ? colorMode : undefined} />
             </Link>
             <HStack
-              spacing={4}
+              gap={4}
               ml={5}
               display={{
                 base: 'none',
@@ -280,7 +280,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
             </HStack>
             <Spacer />
             <Center>
-              <HStack spacing={4}>
+              <HStack gap={4}>
                 <Box display={{ base: 'none', md: 'initial' }}>{search}</Box>
                 <Button
                   variant="ghost-hover"
@@ -306,7 +306,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
             </Center>
             <Center>
               <HStack
-                spacing={4}
+                gap={4}
                 ml={4}
                 display={{
                   base: 'none',
