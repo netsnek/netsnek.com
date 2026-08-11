@@ -11,14 +11,44 @@ import { Box } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import { xml } from '@codemirror/lang-xml';
 import { EditorView } from '@codemirror/view';
+import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
+import { tags } from '@lezer/highlight';
 import { UncontrolledMdxField } from 'jaen-fields-mdx';
 import type { MdxFieldProps } from 'jaen-fields-mdx';
 
 import { splitAccentDot } from '../../utils/accent-dots';
 import HeroEditorTabs from './HeroEditorTabs';
 
+/**
+ * Colours for the source view.
+ *
+ * The editor ships no highlight style of its own: the fallback that comes
+ * with the basic setup is tuned for a light background and loses against the
+ * dark theme, which is why every token rendered in the same grey no matter
+ * which language was configured. These are picked against #282c34 and lean on
+ * the brand orange for the parts that carry meaning in a drawing, the tags and
+ * the values.
+ */
+const highlight = HighlightStyle.define([
+  { tag: tags.tagName, color: '#f77f00', fontWeight: '600' },
+  { tag: tags.attributeName, color: '#9cdcfe' },
+  { tag: tags.attributeValue, color: '#c3e88d' },
+  { tag: tags.string, color: '#c3e88d' },
+  { tag: tags.number, color: '#f78c6c' },
+  { tag: tags.comment, color: '#6b7a8f', fontStyle: 'italic' },
+  { tag: tags.angleBracket, color: '#7f8c9b' },
+  { tag: tags.definitionOperator, color: '#7f8c9b' },
+  { tag: tags.processingInstruction, color: '#6b7a8f' },
+  { tag: tags.keyword, color: '#c792ea' },
+  { tag: tags.propertyName, color: '#9cdcfe' }
+]);
+
 /** The source is SVG, so it is highlighted as XML rather than as markdown. */
-const editorExtensions = [xml(), EditorView.lineWrapping];
+const editorExtensions = [
+  xml(),
+  syntaxHighlighting(highlight),
+  EditorView.lineWrapping
+];
 import { buildMockup } from './mockup';
 import { buildArtwork } from './artwork';
 
