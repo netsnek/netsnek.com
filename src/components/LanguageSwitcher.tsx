@@ -96,7 +96,11 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  /** The trigger, identical in both layouts. */
+  /**
+   * The trigger. On a phone it opens a dialog, so it carries no chevron:
+   * that arrow promises a list unfolding right below the button, which is
+   * not what happens there.
+   */
   const trigger = (onClick?: () => void) => (
     <Button
       variant="solid"
@@ -107,8 +111,6 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
       filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
       color="white"
       aria-label={`${controlLabel}: ${labels[currentBase] ?? currentBase}`}
-      rightIcon={<ChevronDownIcon boxSize={4} display="block" />}
-      iconSpacing={1.5}
       onClick={onClick}
       {...props}
     >
