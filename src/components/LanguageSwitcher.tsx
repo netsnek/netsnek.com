@@ -30,7 +30,9 @@ import { defaultLocale, locales } from '../locales/messages';
 /**
  * Flags live in static/images/flags as 4:3 SVGs taken from the MIT-licensed
  * flag-icons set. The file is named after the LOCALE, not the country, so the
- * mapping stays in one place: en -> the British flag, ja -> the Japanese one.
+ * mapping stays in one place: en -> the British flag, ja -> the Japanese one,
+ * and de -> the Austrian one, because this is an Austrian company writing
+ * Austrian German and the German flag was claiming otherwise.
  *
  * A flag is a country, not a language, so it never appears alone — every entry
  * is captioned with the language's own name.
