@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useId, useState } from 'react';
 import { Box, Button, ButtonGroup, chakra } from '@chakra-ui/react';
 import { useIntl } from 'react-intl';
 import type { TabsProps } from 'jaen-fields-mdx';
@@ -32,10 +32,34 @@ const ARROW_DOWN = 'M 52 25 L 5.01 25 L 25.01 45 L 28 45 L 25 35 L 55 35 Z';
  * where you are rather than as decoration.
  */
 const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
+  const id = useId();
   // Filled points where you have to click to change the view, not where you
   // already are. The upper arrow points right at the source, the lower one
   // left at the prototype, so the filled one is always the invitation.
   const upFilled = activeTab === PREVIEW_TAB;
+
+  /**
+   * One arrow, filled or hollow, at exactly the same size either way.
+   *
+   * A stroke sits centred on its path, so half of it lies outside the shape
+   * and the hollow arrow would stand larger than the filled one. Drawing the
+   * stroke at twice the width and clipping it to its own outline leaves only
+   * the inner half, which puts the line inside the silhouette instead of
+   * around it. Both arrows then occupy the identical area.
+   */
+  const arrow = (d: string, filled: boolean, key: string) =>
+    filled ? (
+      <path key={key} d={d} fill="var(--chakra-colors-brand-500)" />
+    ) : (
+      <path
+        key={key}
+        d={d}
+        fill="none"
+        stroke="var(--chakra-colors-brand-500)"
+        strokeWidth={6}
+        clipPath={`url(#${id}-${key})`}
+      />
+    );
 
   return (
     <chakra.svg
@@ -48,18 +72,16 @@ const ViewArrows: FC<{ activeTab: number }> = ({ activeTab }) => {
       aria-hidden="true"
       display="block"
     >
-      <path
-        d={ARROW_UP}
-        fill={upFilled ? 'var(--chakra-colors-brand-500)' : 'none'}
-        stroke="var(--chakra-colors-brand-500)"
-        strokeWidth={upFilled ? 0 : 3}
-      />
-      <path
-        d={ARROW_DOWN}
-        fill={upFilled ? 'none' : 'var(--chakra-colors-brand-500)'}
-        stroke="var(--chakra-colors-brand-500)"
-        strokeWidth={upFilled ? 3 : 0}
-      />
+      <defs>
+        <clipPath id={`${id}-up`}>
+          <path d={ARROW_UP} />
+        </clipPath>
+        <clipPath id={`${id}-down`}>
+          <path d={ARROW_DOWN} />
+        </clipPath>
+      </defs>
+      {arrow(ARROW_UP, upFilled, 'up')}
+      {arrow(ARROW_DOWN, !upFilled, 'down')}
     </chakra.svg>
   );
 };
