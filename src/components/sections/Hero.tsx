@@ -167,7 +167,7 @@ const Hero: FC = () => {
               borderColor={'brand.500'}
               color={'brand.500'}
               borderWidth={2}
-              _hover={{ borderColor: 'brand.600', color: 'brand.600' }}
+              _hover={{ borderColor: 'brand.400', color: 'brand.400' }}
             >
               {intl.formatMessage({
                 id: 'HeroButtonProjects',

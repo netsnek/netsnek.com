@@ -9,9 +9,11 @@ const smtButtonComponent = {
       _dark: 'brand.500'
     },
     hover: {
+      // Heller, nicht dunkler: ein Knopf, der beim Beruehren aufleuchtet,
+      // wirkt wie eine Reaktion, einer der nachdunkelt wie ein Widerstand.
       bgColor: {
-        default: 'brand.600',
-        _dark: 'brand.400'
+        default: 'brand.400',
+        _dark: 'brand.300'
       }
     }
   },

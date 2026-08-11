@@ -14,6 +14,13 @@ const themeButtonComponent: ComponentStyleConfig = {
       _focus: {
         bgColor: 'components.button.solid.hover.bgColor',
         opacity: 1
+      },
+      // Der gedrueckte Zustand war bisher gar nicht gesetzt, deshalb griff
+      // Chakras Standard und der Knopf wurde beim Klick dunkler. Er wird
+      // jetzt noch eine Stufe heller als beim Beruehren.
+      _active: {
+        bgColor: 'brand.300',
+        opacity: 1
       }
     },
     outline: {
@@ -137,7 +144,7 @@ const themeButtonComponent: ComponentStyleConfig = {
       px: 5,
       borderRadius: 'xl',
       _hover: {
-        bgColor: 'brand.600',
+        bgColor: 'brand.400',
         color: 'white',
         transform: 'scale(1.05)'
       },

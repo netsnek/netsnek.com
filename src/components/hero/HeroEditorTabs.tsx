@@ -127,7 +127,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
       _hover={
         tab === value
           ? undefined
-          : { borderColor: 'brand.600', color: 'brand.600' }
+          : { borderColor: 'brand.400', color: 'brand.400' }
       }
       aria-pressed={tab === value}
       onClick={() => setTab(value)}

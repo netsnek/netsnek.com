@@ -366,8 +366,8 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 borderWidth={{ base: 0, lg: 2 }}
                 color={{ base: 'white', lg: 'gray.400' }}
                 _hover={{
-                  borderColor: 'brand.600',
-                  bg: { base: 'brand.600', lg: 'transparent' }
+                  borderColor: 'brand.400',
+                  bg: { base: 'brand.400', lg: 'transparent' }
                 }}
               />
               <Button
@@ -494,7 +494,16 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   display={{base: 'none', md: 'block'}}>
                   Login
                 </Button> */}
-              <LanguageSwitcher ml={4} />
+              {/* Im geoeffneten Menue schiebt sich wie bei den Nachbarn eine weisse
+                  Fassung darueber, sonst bliebe der Sprachwaehler als einziges
+                  oranges Element auf der dunklen Flaeche stehen. */}
+              <LanguageSwitcher
+                ml={4}
+                bg="white"
+                color="black"
+                _hover={{ bg: 'brand.400', color: 'white' }}
+                _active={{ bg: 'brand.300', color: 'white' }}
+              />
               <IconButton
                 ml={4}
                 _hover={{
