@@ -106,7 +106,12 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
       variant="solid"
       size="sm"
       minH="10"
-      px={3}
+      // On a phone every control in the bar is the same 40px square, the
+      // search and the hamburger included, so this one matches instead of
+      // being the odd wide one. From lg it takes its natural width again.
+      w={{ base: 10, lg: 'auto' }}
+      minW={{ base: 10, lg: 'auto' }}
+      px={{ base: 0, lg: 3 }}
       borderRadius="xl"
       filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
       color="white"
@@ -114,12 +119,17 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
       onClick={onClick}
       {...props}
     >
+      {/* A flex child shrinks by default, which squeezed the flag out of
+          its 4:3 shape in the narrow button. Fixing the basis and forbidding
+          the shrink keeps the proportions. */}
       <Image
         src={flagSrc(currentBase)}
         alt=""
         aria-hidden="true"
-        width="22px"
-        height="16.5px"
+        w="22px"
+        h="16.5px"
+        minW="22px"
+        flexShrink={0}
         borderRadius="2px"
         objectFit="cover"
         display="block"
@@ -138,8 +148,10 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
           src={flagSrc(locale)}
           alt=""
           aria-hidden="true"
-          width="22px"
-          height="16.5px"
+          w="22px"
+          h="16.5px"
+          minW="22px"
+          flexShrink={0}
           borderRadius="2px"
           objectFit="cover"
           boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
