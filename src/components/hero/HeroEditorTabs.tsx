@@ -12,7 +12,7 @@ const EDITOR_TAB = 1;
  *
  * The mdx field hands its tabs to whatever template it is given, so this
  * replaces the field's default Chakra tab bar with two pills, and uses the
- * validity the field already computes to outline the editor: green while the
+ * validity the field already computes to outline the editor: brand while the
  * source parses, red while it does not.
  *
  * The preview keeps the last drawing that parsed, which is the field's own
@@ -104,7 +104,7 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
   // The outline appears and disappears with the editor, in the same frame.
   // It used to animate, which made it lag behind the switch in one direction
   // and run ahead of it in the other, so there is no transition on it at all.
-  // The green to red change while typing does not need one either: wasValid
+  // The brand to red change while typing does not need one either: wasValid
   // above already latches, so it cannot flicker between keystrokes.
   const isEditorOutlined = tab === EDITOR_TAB;
 

@@ -3,6 +3,15 @@ import {
   HStack,
   Image,
   Menu,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  VStack,
+  useBreakpointValue,
+  useDisclosure,
   MenuButton,
   MenuItem,
   MenuList,
@@ -85,6 +94,111 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
     return locale === defaultLocale ? '/' : `/${locale}/`;
   };
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  /** The trigger, identical in both layouts. */
+  const trigger = (onClick?: () => void) => (
+    <Button
+      variant="solid"
+      size="sm"
+      minH="10"
+      px={3}
+      borderRadius="xl"
+      filter="drop-shadow(1px 2px 2px rgb(0 0 0 / 0.1))"
+      color="white"
+      aria-label={`${controlLabel}: ${labels[currentBase] ?? currentBase}`}
+      rightIcon={<ChevronDownIcon boxSize={4} display="block" />}
+      iconSpacing={1.5}
+      onClick={onClick}
+      {...props}
+    >
+      <Image
+        src={flagSrc(currentBase)}
+        alt=""
+        aria-hidden="true"
+        width="22px"
+        height="16.5px"
+        borderRadius="2px"
+        objectFit="cover"
+        display="block"
+        boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
+      />
+    </Button>
+  );
+
+  /** One language, as a row. Shared by the menu and the dialog. */
+  const row = (locale: string) => {
+    const isCurrent = locale === currentBase;
+
+    return (
+      <HStack spacing={3} w="full">
+        <Image
+          src={flagSrc(locale)}
+          alt=""
+          aria-hidden="true"
+          width="22px"
+          height="16.5px"
+          borderRadius="2px"
+          objectFit="cover"
+          boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
+        />
+        <Text flex="1" textAlign="left">
+          {labels[locale] ?? locale}
+        </Text>
+        {isCurrent ? <Text aria-hidden="true">✓</Text> : null}
+      </HStack>
+    );
+  };
+
+  const go = (locale: string) => {
+    if (locale !== currentBase) void navigate(pathForLocale(locale));
+  };
+
+  // On a phone a dropdown opens as a small list pinned to a button in a
+  // crowded header. A dialog gives the choice the whole screen, which is
+  // what picking a language deserves on the device where it is hardest to
+  // hit a target. The breakpoint is read with a fallback so server and
+  // client agree on the first paint.
+  const isMobile = useBreakpointValue(
+    { base: true, lg: false },
+    { fallback: 'lg' }
+  );
+
+  if (isMobile) {
+    return (
+      <>
+        {trigger(onOpen)}
+        <Modal isOpen={isOpen} onClose={onClose} size="xs" isCentered>
+          <ModalOverlay />
+          <ModalContent mx={4} borderRadius="xl">
+            <ModalHeader fontSize="md">{controlLabel}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+              <VStack spacing={1} align="stretch">
+                {locales.map(locale => (
+                  <Button
+                    key={locale}
+                    variant="ghost"
+                    justifyContent="flex-start"
+                    h="12"
+                    borderRadius="lg"
+                    fontWeight={locale === currentBase ? 'semibold' : 'normal'}
+                    onClick={() => {
+                      onClose();
+                      go(locale);
+                    }}
+                  >
+                    {row(locale)}
+                  </Button>
+                ))}
+              </VStack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  }
+
   return (
     <Menu placement="bottom-end" isLazy>
       {/* Same size, padding, radius and colour as the search control and the
@@ -121,35 +235,11 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
           body, above everything. */}
       <Portal>
         <MenuList color="chakra-body-text" zIndex="popover" minW="12rem">
-          {locales.map(locale => {
-            const isCurrent = locale === currentBase;
-
-            return (
-              <MenuItem
-                key={locale}
-                fontWeight={isCurrent ? 'semibold' : 'normal'}
-                onClick={() => {
-                  if (!isCurrent) {
-                    void navigate(pathForLocale(locale));
-                  }
-                }}>
-                <HStack spacing={3}>
-                  <Image
-                    src={flagSrc(locale)}
-                    alt=""
-                    aria-hidden="true"
-                    width="22px"
-                    height="16.5px"
-                    borderRadius="2px"
-                    objectFit="cover"
-                    boxShadow="0 0 0 1px rgba(0,0,0,0.12)"
-                  />
-                  <Text>{labels[locale] ?? locale}</Text>
-                  {isCurrent ? <Text aria-hidden="true">✓</Text> : null}
-                </HStack>
-              </MenuItem>
-            );
-          })}
+          {locales.map(locale => (
+            <MenuItem key={locale} onClick={() => go(locale)}>
+              {row(locale)}
+            </MenuItem>
+          ))}
         </MenuList>
       </Portal>
     </Menu>
