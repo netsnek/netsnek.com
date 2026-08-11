@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useIntl } from 'react-intl';
 import useTocNavigation from '../../hooks/use-toc-navigation';
 
-import { MdastRoot } from 'jaen-fields-mdx/dist/MdxField/components/types';
+import { MdastRoot } from 'jaen-fields-mdx';
 import { Link } from 'gatsby-plugin-jaen';
 import { useTOCContext } from '../../contexts/toc';
 
