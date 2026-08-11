@@ -9,7 +9,7 @@ import {
   Skeleton,
   Spacer,
   Text,
-  VStack,
+  VStack
 } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
 import { css } from '@emotion/react';
@@ -240,7 +240,7 @@ function ImageBoxWithTags(
     <Box overflow="hidden" position="relative" className={className} {...props}>
       {image ? (
         <Image
-          onDragStart={(e) => e.preventDefault()}
+          onDragStart={e => e.preventDefault()}
           draggable="false"
           src={image.src}
           alt={image.altText || '-'}
@@ -248,7 +248,7 @@ function ImageBoxWithTags(
             height: '100%',
             width: '100%',
             objectFit: objectFit,
-            objectPosition: 'center',
+            objectPosition: 'center'
           }}
         />
       ) : (
@@ -287,7 +287,7 @@ export const ProductCard = ({
   bwidth,
   bcolor,
   prefixPath,
-  isMobile,
+  isMobile
 }: ProductCardProps) => {
   const intl = useIntl();
 
@@ -337,8 +337,7 @@ export const ProductCard = ({
   // comes out of it is a localized label.
   if (
     tags.includes(NEW_PRODUCT_TAG) ||
-    new Date(product.createdAt).getTime() >
-    Date.now() - 7 * 24 * 60 * 60 * 1000
+    new Date(product.createdAt).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
     coloredBadges.push({
       name: intl.formatMessage({
@@ -346,7 +345,7 @@ export const ProductCard = ({
         defaultMessage: 'Neu'
       }),
       color: 'white',
-      bg: 'brand.500',
+      bg: 'brand.500'
     });
   }
 
@@ -355,7 +354,7 @@ export const ProductCard = ({
     coloredBadges.push({
       name: product.discount,
       color: 'white',
-      bg: 'agt.red',
+      bg: 'agt.red'
     });
   }
 
@@ -382,7 +381,7 @@ export const ProductCard = ({
       cursor="pointer"
       textAlign={{
         base: 'center',
-        md: 'left',
+        md: 'left'
       }}
     >
       <Box
@@ -411,7 +410,7 @@ export const ProductCard = ({
                   className="radioimg"
                   name={'imgbox-' + cardId}
                   id={'imgbox-' + cardId + '-featured'}
-                  ref={(el) => (radioRef.current[0] = el)}
+                  ref={el => (radioRef.current[0] = el)}
                   readOnly
                   defaultChecked
                 />
@@ -429,7 +428,7 @@ export const ProductCard = ({
                       className="radioimg"
                       name={'imgbox-' + cardId}
                       id={'imgbox-' + cardId + '-media-' + index}
-                      ref={(el) => (radioRef.current[index + 1] = el)}
+                      ref={el => (radioRef.current[index + 1] = el)}
                       readOnly
                     />
                     <ImageBoxWithTags
@@ -449,7 +448,7 @@ export const ProductCard = ({
             {/* Display product tags (the "new" sentinel is shown as a badge
                 instead, so it never joins the plain tag line) */}
             <Text fontSize="sm" noOfLines={1}>
-              {tags.filter((tag) => tag !== NEW_PRODUCT_TAG).join(', ')}&nbsp;
+              {tags.filter(tag => tag !== NEW_PRODUCT_TAG).join(', ')}&nbsp;
             </Text>
 
             {/* Product title */}
@@ -493,13 +492,19 @@ export const ProductCard = ({
           borderColor="#f9f9f9"
           boxShadow="sm"
         >
-          {/* Image preview line */}
+          {/* Image preview line.
+
+              The padding reads a raw custom property because it has to subtract
+              from a scale value. v3 renamed the space namespace to spacing; the
+              old --chakra-space-5 would still parse, resolve to nothing, and
+              leave the calc invalid, so the padding would vanish without a
+              word. */}
           <VStack
             className="imgline"
             position="absolute"
             opacity="0"
             boxSize={'full'}
-            py="calc(var(--chakra-space-5) - 2px)"
+            py="calc(var(--chakra-spacing-5) - 2px)"
             px="1"
           >
             {previewMedia.slice(0, 3).map((media, index) => (
@@ -524,7 +529,7 @@ export const ProductCard = ({
                   }}
                 >
                   <Image
-                    onDragStart={(e) => e.preventDefault()}
+                    onDragStart={e => e.preventDefault()}
                     draggable="false"
                     src={media.image.src}
                     alt={media.image.altText || '-'}
@@ -532,7 +537,7 @@ export const ProductCard = ({
                       height: 'auto',
                       width: '100%',
                       objectFit: 'contain', // Preview images use 'contain'
-                      objectPosition: 'center',
+                      objectPosition: 'center'
                     }}
                   />
                 </Box>

@@ -1,7 +1,7 @@
 import {
   Center,
   Divider,
-  ThemeProvider,
+  ChakraProvider,
   VStack,
   useDisclosure,
   Text,
@@ -19,7 +19,7 @@ import {
   useState
 } from 'react';
 import useSearch from '../../hooks/use-search';
-import theme from '../../styles/theme/theme';
+import { chromeSystem } from '../../styles/theme/system';
 import {
   SearchResultSection,
   SearchResultSectionTitle
@@ -287,7 +287,8 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
                   key={sidx}
                   defaultHighlight={itemIdx === 0}
                   icon={chapter.icon}
-                  isDocs={ true
+                  isDocs={
+                    true
                     // temporary fix
                     // !!section.to?.startsWith('/docs/') ||
                     // !!section.results[0]?.to?.startsWith('/docs/')
@@ -306,7 +307,14 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
   }, [data, navigateIdx]);
 
   return (
-    <ThemeProvider theme={theme}>
+    /**
+     * chromeSystem, not system. SearchMenu is mounted through the Toolbar
+     * shadow inside jaen's frame, so it also renders on CMS routes. v2 gave it
+     * a bare ThemeProvider, which re-provided variables and nothing else; in v3
+     * a provider is also the global-style emitter, so the full system here
+     * would push the site's html and body rules onto every CMS route.
+     */
+    <ChakraProvider value={chromeSystem}>
       <SearchButton openModal={onOpen} navigate={handleNavigate} {...props} />
       <SearchModal
         defaultQuery={searchQuery}
@@ -318,7 +326,7 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
         handleNavigate={handleNavigate}
         openActiveItem={handleOpenActiveItem}
       />
-    </ThemeProvider>
+    </ChakraProvider>
   );
 };
 
