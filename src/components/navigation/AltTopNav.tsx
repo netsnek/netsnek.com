@@ -456,6 +456,18 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                 borderWidth={{ base: 0, lg: 2 }}
                 bg={{ base: 'white', lg: 'transparent' }}
                 color={{ base: 'black', lg: 'gray.400' }}
+                // The keycap carries its own colours, picked for the white
+                // header it normally sits on, and this panel is black. Left
+                // alone the slash is a dark glyph in a dark box, which is to
+                // say invisible. It only shows from lg, so this is the one
+                // breakpoint that needs saying.
+                sx={{
+                  kbd: {
+                    color: 'white',
+                    bgColor: 'whiteAlpha.200',
+                    borderColor: 'whiteAlpha.400'
+                  }
+                }}
                 _hover={{
                   borderColor: 'brand.500',
                   bg: { base: 'brand.500', lg: 'transparent' }
