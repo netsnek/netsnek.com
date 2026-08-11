@@ -139,7 +139,31 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
           __dirname,
           'node_modules/use-sync-external-store'
         ),
-        graphql: path.resolve(__dirname, 'node_modules/graphql')
+        graphql: path.resolve(__dirname, 'node_modules/graphql'),
+
+        // The same story as gqty above, and it silently cost the hero its
+        // syntax highlighting. The source editor is instantiated inside the
+        // linked jaen package, so it resolved CodeMirror from the jaen tree
+        // while the hero built its language extension from this one: two
+        // physical copies of @codemirror/language, 6.10.2 against 6.12.4.
+        // CodeMirror compares languages and extensions by FACET IDENTITY, and
+        // a facet from one copy is simply not the facet the other copy reads,
+        // so the extension was handed over and quietly ignored. Everything
+        // rendered in the default grey and no error was raised anywhere.
+        //
+        // These five carry the identities that matter: the facets and state
+        // fields, the decorations, the language and its highlight style, the
+        // node types of a parsed tree, and the tags a highlight style is keyed
+        // on. One copy each, for the whole bundle.
+        ...Object.fromEntries(
+          [
+            '@codemirror/state',
+            '@codemirror/view',
+            '@codemirror/language',
+            '@lezer/common',
+            '@lezer/highlight'
+          ].map(name => [name, path.resolve(__dirname, 'node_modules', name)])
+        )
       }
     }
   });

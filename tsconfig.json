@@ -1,5 +1,17 @@
 {
   "compilerOptions": {
+    /* One copy each of the CodeMirror packages whose identity matters, matching
+       the webpack aliases in gatsby-node.ts. The linked jaen packages carry
+       their own installs, and without this the checker compares a Language from
+       one copy against a LanguageSupport from the other. */
+    "paths": {
+      "@codemirror/state": ["./node_modules/@codemirror/state"],
+      "@codemirror/view": ["./node_modules/@codemirror/view"],
+      "@codemirror/language": ["./node_modules/@codemirror/language"],
+      "@lezer/common": ["./node_modules/@lezer/common"],
+      "@lezer/highlight": ["./node_modules/@lezer/highlight"]
+    },
+
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Projects */
