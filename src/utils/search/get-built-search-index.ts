@@ -1,30 +1,59 @@
 import { LocalizedSearchIndex } from '../../hooks/use-search/types.js';
 
 /**
+ * The single request for /search-index.json, shared by every caller.
+ *
+ * useDocsSearch used to cache the parsed index in a `useRef`, and a ref is
+ * per hook instance. SearchMenu renders more than once per page (AltTopNav
+ * mounts it twice, once for the collapsed bar and once for the open panel),
+ * so every mount ran its own `useEffect`, saw its own empty ref and pulled
+ * its own 153 KB copy. Two mounts, two downloads of a byte-identical file.
+ *
+ * A module-level promise fixes both halves of that: it is shared across
+ * mounts, and because it is stored before it settles, a second caller that
+ * arrives while the first request is still in flight awaits the same
+ * response instead of starting a competing one.
+ */
+let indexPromise: Promise<LocalizedSearchIndex> | null = null;
+
+const fetchBuiltSearchIndex = async (): Promise<LocalizedSearchIndex> => {
+  const res = await fetch('/search-index.json', {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to retrieve the built search index data.');
+  }
+
+  return (await res.json()) as LocalizedSearchIndex;
+};
+
+/**
  * Retrieves the built search index from a JSON file. The file contains one
  * sub-index per site locale (`{de: {...}, en: {...}, ...}`).
+ *
+ * Fetched at most once per document. Every later call resolves from the
+ * cached promise.
  * @returns {Promise<LocalizedSearchIndex>} A promise that resolves to the built search index data.
- * @throws {Error} If the retrieval of search data fails.
  */
 export async function getBuiltSearchIndex(): Promise<LocalizedSearchIndex> {
-  try {
-    const res = await fetch('/search-index.json', {
-      headers: {
-        'Content-Type': 'application/json'
-      }
+  if (!indexPromise) {
+    indexPromise = fetchBuiltSearchIndex().catch(err => {
+      // A failed attempt must not stay cached, or one flaky response would
+      // leave search empty for the rest of the session. Callers already
+      // waiting on this promise still get the empty index they got before.
+      indexPromise = null;
+
+      console.error(
+        'Error occurred while retrieving the built search index:',
+        err
+      );
+
+      return {};
     });
-
-    if (!res.ok) {
-      throw new Error('Failed to retrieve the built search index data.');
-    }
-
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    console.error(
-      'Error occurred while retrieving the built search index:',
-      err
-    );
-    return {};
   }
+
+  return indexPromise;
 }

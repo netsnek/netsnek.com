@@ -51,7 +51,15 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
 
   const [query] = useDebounce(searchQuery, 500);
 
-  const search = useSearch(query);
+  /**
+   * Gated on the modal being open. Nothing on the page renders a search
+   * result before the user opens search: SearchButton draws a label and a
+   * keycap, and SearchModal only paints `searchResultItems` inside a
+   * Dialog.Root that is closed. So /search-index.json, 153 KB, has no
+   * business being on the initial page load at all. Once it has been
+   * fetched the index stays in the hook's state, so re-opening is instant.
+   */
+  const search = useSearch(query, modalDisclosure.open);
 
   const location = useLocation();
 

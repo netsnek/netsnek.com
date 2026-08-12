@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { buildSearchIndex } from '../../utils/search/build-search-index';
 import { getBuiltSearchIndex } from '../../utils/search/get-built-search-index';
 import { mergeSearchIndex } from '../../utils/search/merge-search-index';
-import { LocalizedSearchIndex, SearchIndex } from './types';
+import { SearchIndex } from './types';
 import { useDynamicPaths } from 'jaen';
 import { useJaenPagePaths } from 'gatsby-plugin-jaen';
 import { useAppSelector } from 'jaen';
@@ -28,11 +28,15 @@ export interface UseSearchResult {
 
 /**
  * Custom hook for searching content within a Jaen website.
+ * @param query The current search query.
+ * @param enabled Whether the index may be loaded. Nothing renders search
+ *   results before the modal is opened, so the 153 KB index is left
+ *   unfetched until then. Once loaded it stays loaded, so re-opening the
+ *   modal costs nothing.
  * @returns The search index and loading status.
  */
-const useDocsSearch = (query?: string): UseSearchResult => {
+const useDocsSearch = (query?: string, enabled = true): UseSearchResult => {
   const [searchIndex, setSearchIndex] = useState<SearchIndex | null>(null);
-  const builtSearchIndexRef = useRef<LocalizedSearchIndex | null>(null); // Ref to cache the localized builtSearchIndex
 
   const { locale } = usePageLocale();
   const localeKey = locale.split(/[-_]/)[0]?.toLowerCase() || 'de';
@@ -51,16 +55,11 @@ const useDocsSearch = (query?: string): UseSearchResult => {
      * the active locale by their path prefix, so results stay in-language.
      */
     const loadSearchIndex = async () => {
-      if (!builtSearchIndexRef.current) {
-        const builtSearchIndex = await getBuiltSearchIndex();
+      // getBuiltSearchIndex holds a module-level promise, so this is one
+      // request per document no matter how many SearchMenus are mounted.
+      const builtSearchIndex = await getBuiltSearchIndex();
 
-        if (builtSearchIndex) {
-          builtSearchIndexRef.current = builtSearchIndex; // Cache the builtSearchIndex
-        }
-      }
-
-      const localeSearchIndex: SearchIndex =
-        builtSearchIndexRef.current?.[localeKey] || {};
+      const localeSearchIndex: SearchIndex = builtSearchIndex[localeKey] || {};
 
       const pageValuesWithId = Object.entries(pages).map(([pageId, value]) => {
         const dynamicPagePath = Object.entries(dynamicPaths).find(
@@ -97,8 +96,10 @@ const useDocsSearch = (query?: string): UseSearchResult => {
       setSearchIndex(merged);
     };
 
+    if (!enabled) return;
+
     void loadSearchIndex();
-  }, [pages, dynamicPaths, localeKey]);
+  }, [enabled, pages, dynamicPaths, localeKey]);
 
   const [searchResults, setSearchResults] = useState<TSearchResultSection[]>(
     []
@@ -111,8 +112,16 @@ const useDocsSearch = (query?: string): UseSearchResult => {
       setIsLoading(true);
 
       if (!searchIndex) {
+        // Either nothing has been requested yet (search still closed) or the
+        // index is in flight. The modal is the only consumer and it shows a
+        // spinner while loading, so staying "loading" here is what keeps the
+        // first open from flashing an empty result list.
         setSearchResults([]);
-      } else if (!query) {
+
+        return;
+      }
+
+      if (!query) {
         // Set default search results
         setSearchResults(
           getDefaultSearchDocs(searchIndex, docsRootForLocale(localeKey))

@@ -108,6 +108,23 @@ export const onCreatePage: GatsbyNode['onCreatePage'] = ({ page, actions }) => {
  * The jaen packages are consumed via yarn `link:` from the local monorepo.
  * Their own node_modules would otherwise pull in a second copy of react,
  * emotion and chakra — alias the singletons to the site's copies.
+ *
+ * Everything here is resolution and nothing is splitChunks, which is worth
+ * saying because splitChunks is the reflex answer to a "duplicated
+ * JavaScript" report and it would not have saved a byte of this one.
+ * splitChunks moves modules between chunks. Every duplicate Lighthouse
+ * listed is two DIFFERENT modules that happen to be the same library:
+ * jaen's @lezer/javascript against this tree's @lezer/javascript, acorn.mjs
+ * against acorn.js. Co-locating those in one chunk ships both of them in
+ * one file instead of two. Only resolution collapses them into one module.
+ *
+ * Overriding it would also have been expensive: gatsby's build-javascript
+ * config (node_modules/gatsby/dist/utils/webpack.config.js) turns webpack's
+ * `default` and `defaultVendors` groups off and carries its own `framework`,
+ * `lib`, `commons`, `shared` and `styles` groups, with `framework` matching
+ * through a function that deliberately excludes react-dom/server. A
+ * cacheGroup added on top competes with those on priority and quietly
+ * re-cuts the whole graph.
  */
 export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
   actions
@@ -145,6 +162,25 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
         ),
         graphql: path.resolve(__dirname, 'node_modules/graphql'),
 
+        // acorn is not two copies, it is two FORMATS of the same copy, and
+        // that is enough to ship it twice. Its exports map offers
+        // dist/acorn.mjs under `import` and dist/acorn.js under `require`,
+        // and the MDX runtime reaches it from both sides:
+        // micromark-extension-mdxjs is `"type": "module"` and does
+        // `import {Parser} from 'acorn'`, acorn-jsx is CommonJS and does
+        // `require('acorn')`. Two resolved files, two modules, and since
+        // each is over gatsby's 160 KB `lib` threshold each got its own
+        // chunk (591534a6 and 5bc6f6bb in the last build), ~112 KB apiece
+        // for the same parser.
+        //
+        // The exact-match alias collapses both requests onto the ESM build.
+        // That direction and not the other: webpack lets CommonJS `require`
+        // an ES module and hands back the namespace object, so acorn-jsx
+        // still finds Parser, tokTypes, TokContext and the rest as named
+        // exports, whereas named imports out of the UMD build into a strict
+        // ESM module are the case that does not hold.
+        acorn$: path.resolve(__dirname, 'node_modules/acorn/dist/acorn.mjs'),
+
         // The same story as gqty above, and it silently cost the hero its
         // syntax highlighting. The source editor is instantiated inside the
         // linked jaen package, so it resolved CodeMirror from the jaen tree
@@ -159,13 +195,31 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
         // fields, the decorations, the language and its highlight style, the
         // node types of a parsed tree, and the tags a highlight style is keyed
         // on. One copy each, for the whole bundle.
+        //
+        // The grammars below joined them for the payload rather than the
+        // correctness half of the same argument. @lezer/common and
+        // @lezer/highlight were pinned, the grammars sitting on top of them
+        // were not, so the parser tables were still resolved twice: the page
+        // chunk built @lezer/javascript and @lezer/lr out of this tree while
+        // jaen's editor built them out of ../jaen/node_modules, and both
+        // chunks load on the landing page. Lighthouse counted 30 KB of
+        // @lezer/javascript and 10 KB of @lezer/lr for it. Pinning the whole
+        // family to this tree also keeps the set self-consistent, which
+        // matters more than any single version: a grammar and the LR runtime
+        // that reads its tables have to come from the same place.
         ...Object.fromEntries(
           [
             '@codemirror/state',
             '@codemirror/view',
             '@codemirror/language',
             '@lezer/common',
-            '@lezer/highlight'
+            '@lezer/highlight',
+            '@lezer/lr',
+            '@lezer/javascript',
+            '@lezer/css',
+            '@lezer/html',
+            '@lezer/markdown',
+            '@lezer/xml'
           ].map(name => [name, path.resolve(__dirname, 'node_modules', name)])
         )
       }

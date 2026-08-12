@@ -10,6 +10,12 @@
       "@codemirror/language": ["./node_modules/@codemirror/language"],
       "@lezer/common": ["./node_modules/@lezer/common"],
       "@lezer/highlight": ["./node_modules/@lezer/highlight"],
+      "@lezer/lr": ["./node_modules/@lezer/lr"],
+      "@lezer/javascript": ["./node_modules/@lezer/javascript"],
+      "@lezer/css": ["./node_modules/@lezer/css"],
+      "@lezer/html": ["./node_modules/@lezer/html"],
+      "@lezer/markdown": ["./node_modules/@lezer/markdown"],
+      "@lezer/xml": ["./node_modules/@lezer/xml"],
 
       /* jaen ships its types from ./dist/index.d.ts, which only exists after
          microbundle has run, so a fresh checkout cannot resolve `from 'jaen'`
