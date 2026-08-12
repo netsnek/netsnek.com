@@ -239,21 +239,47 @@ export const buttonRecipe = defineRecipe({
       xs: { textStyle: '', h: '6', minW: '6', fontSize: 'xs', px: '2', gap: 0, lineHeight: 1.2 }
     },
     variant: {
+      /**
+       * Every background below is spelled `bg`, not `bgColor`, and that is the
+       * whole reason this variant behaves.
+       *
+       * v2 wrote `bgColor` here and emitted declarations in source order:
+       * the variant's `background-color` first, a call site's `bg` prop after
+       * it, and the later shorthand won. v3's engine does not preserve that
+       * order. It sorts the final declarations by property, shorthands before
+       * longhands, so that a longhand can refine a shorthand — which means a
+       * recipe's `background-color` is emitted AFTER a call site's
+       * `background` and quietly beats it. A `bg` prop can therefore never
+       * override a `bgColor` recipe in v3, whatever the call site says.
+       *
+       * That is what turned the opened top nav orange: AltTopNav's second bar
+       * sets `bg="white"` on the contact button, the language switcher and the
+       * close button, all three landed on `background`, and this variant's
+       * `background-color: brand.500` was sorted in behind them. Only the
+       * search control came out white, because it happens to spell its
+       * override `bgColor` and so collided with this key instead of losing to
+       * it.
+       *
+       * v3's own button recipe uses `bg` for exactly this reason. Matching it
+       * also collapses the two rival declarations into one: `bg` here lands on
+       * the same key as the default recipe's `bg: colorPalette.solid` and
+       * replaces it, instead of the pair sitting in the rule together.
+       */
       solid: {
         borderRadius: 'xl',
         px: 5,
-        bgColor: 'components.button.solid.bgColor',
+        bg: 'components.button.solid.bgColor',
         _hover: {
-          bgColor: 'components.button.solid.hover.bgColor',
+          bg: 'components.button.solid.hover.bgColor',
           opacity: 1
         },
         _focus: {
-          bgColor: 'components.button.solid.hover.bgColor',
+          bg: 'components.button.solid.hover.bgColor',
           opacity: 1
         },
         // The pressed state was never set, so Chakra's default applied and the
         // button darkened on click. It now goes one step lighter than hover.
-        _active: { bgColor: 'brand.300', opacity: 1 }
+        _active: { bg: 'brand.300', opacity: 1 }
       },
       outline: {
         borderRadius: 'xl',
@@ -268,7 +294,7 @@ export const buttonRecipe = defineRecipe({
           opacity: 1
         },
         _focus: {
-          bgColor: 'components.button.outline.hover.borderColor',
+          bg: 'components.button.outline.hover.borderColor',
           opacity: 1
         }
       },
@@ -280,9 +306,11 @@ export const buttonRecipe = defineRecipe({
   }
 });
 
+// `bg` rather than `bgColor` for the reason spelled out on the solid variant
+// above: a longhand here cannot be overridden by a `bg` prop at the call site.
 function ghostButton() {
   const hover = {
-    bgColor: 'components.button.ghost.hover.bgColor',
+    bg: 'components.button.ghost.hover.bgColor',
     opacity: 1
   };
 
@@ -290,7 +318,7 @@ function ghostButton() {
     borderRadius: 'xl',
     px: 5,
     textTransform: 'capitalize',
-    bgColor: 'transparent',
+    bg: 'transparent',
     opacity: 0.7,
     _hover: hover,
     _focus: hover

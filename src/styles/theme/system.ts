@@ -167,7 +167,17 @@ export const siteConfig = defineConfig({
       // TypeScript: Recursive<TokenSchema> is a conditional type over the
       // literal keys of the input, and both trees are built at runtime from
       // plain objects. The runtime shape is asserted by tests/08-theme.
-      colors: toTokenScale(themeColors) as never,
+      /**
+       * v2's `black`, pinned, then the site's own scales on top.
+       *
+       * @chakra-ui/theme's `black` was `#000000`; v3's is `#09090B`. Neither
+       * tree's colors.ts declares the token, so every one of the site's
+       * seventeen `black` call sites silently moved three per cent off the
+       * value v2 painted — including all four controls of the opened top nav,
+       * which ask for `color="black"` on a white face. `white` is `#FFFFFF` in
+       * both and is left to the default.
+       */
+      colors: { black: { value: '#000000' }, ...toTokenScale(themeColors) } as never,
       fonts: { ...v2Fonts, ...toTokenScale(themeFonts) } as never,
       /**
        * v2's `borders` scale, pinned.
@@ -248,6 +258,31 @@ export const system = createSystem(
   defineConfig({
     preflight: false,
     globalCss: {
+      /**
+       * v2's reset, written out, because v3's is not a drop-in replacement.
+       *
+       * jaen's provider used to apply its reset to the whole document and now
+       * scopes it to the CMS frame, which is correct: a CMS has no business
+       * restyling the site around it. That leaves the site to supply its own,
+       * and the honest one to supply is the one v2 actually had.
+       *
+       * The difference is one declaration and it is not cosmetic. v3's
+       * preflight adds `font: inherit` to the universal rule. SVG presentation
+       * attributes are author-origin with zero specificity, so they lose to any
+       * CSS declaration at all: every inline SVG that sizes its text with
+       * `font-size="7.8"` had that overridden by the inherited 16px. On the
+       * home page the hero illustration's mock browser turned into overlapping
+       * text at four times the intended size.
+       *
+       * @chakra-ui/css-reset's own rule, verbatim.
+       */
+      '*, *::before, *::after': {
+        borderWidth: '0',
+        borderStyle: 'solid',
+        boxSizing: 'border-box',
+        wordWrap: 'break-word'
+      },
+
       /**
        * The replacement for `withDefaultColorScheme({colorScheme: 'brand'})`,
        * which v3 dropped with no equivalent.

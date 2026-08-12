@@ -87,7 +87,10 @@ export const GoogleMaps = ({ src, ...props }: GoogleMapsProps) => {
 
   return (
     <Box {...props} bg="gray.200" overflow={'hidden'}>
-      <chakra.iframe src={src} w="calc(100% + 4px)" h="600" m="-2px" />
+      {/* 600px, spelled out. v2 appended the unit to any bare number that was
+          not a scale key; v3 passes it through, and `height: 600` is invalid,
+          so the iframe collapsed to the height of its own content. */}
+      <chakra.iframe src={src} w="calc(100% + 4px)" h="600px" m="-2px" />
     </Box>
   );
 };
