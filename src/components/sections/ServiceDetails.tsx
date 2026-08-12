@@ -12,6 +12,7 @@ import { StylizedImage } from '../StylizedImage';
 import servicesSvg from '../../assets/images/services.svg';
 import { Field } from 'jaen';
 import { QASMPlayground } from '../main-content/qasm-playground/components/qasm-playground';
+import { HOME_CIRCUIT } from './home-circuit';
 import { useIntl } from 'react-intl';
 
 const Services = () => {
@@ -179,6 +180,9 @@ const Services = () => {
       />
 
       <QASMPlayground
+        // The picture ships with the page, so the 1.9 MB engine only loads if a
+        // visitor edits the circuit. See home-circuit.ts.
+        initialDiagram={HOME_CIRCUIT}
         children={`// quantum ripple-carry adder from Cuccaro et al, quant-ph/0410184
   OPENQASM 2.0;
   include "qelib1.inc";

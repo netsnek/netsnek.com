@@ -11,8 +11,38 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
-const QuantumCircuit = require('quantum-circuit/dist/quantum-circuit.min.js');
-const circuit = new QuantumCircuit();
+/**
+ * quantum-circuit is loaded when someone changes the circuit, and not before.
+ *
+ * It is 1.9 MB of source, the largest single package in the site's bundle, and
+ * a `require` at module scope put it into the chunk graph of every page that
+ * imports this file. One of those is `sections/ServiceDetails`, which the home
+ * page renders, so every visitor downloaded and parsed a full quantum circuit
+ * simulator.
+ *
+ * What that simulator did on the home page was redraw a constant. The QASM
+ * there is a literal in the source and nobody can change it without a deploy,
+ * so the picture is drawn once at authoring time and passed in through
+ * `initialDiagram`. The engine is only needed once the code in the editor
+ * stops matching the code the picture was drawn from.
+ *
+ * A caller that passes no `initialDiagram` keeps the old behaviour: the engine
+ * loads and draws, just on approach rather than on page load.
+ */
+let circuitPromise: Promise<any> | null = null;
+
+const loadCircuit = async () => {
+  if (!circuitPromise) {
+    circuitPromise = import(
+      /* webpackChunkName: "quantum-circuit" */
+      'quantum-circuit/dist/quantum-circuit.min.js'
+    ).then(m => {
+      const Ctor = (m as any).default || m;
+      return new Ctor();
+    });
+  }
+  return circuitPromise;
+};
 
 import CodeResultPreview from '../../code-result-preview/components/CodeResultPreview';
 import CodeSnippet from '../../code-snippet/components/CodeSnippet';
@@ -38,6 +68,14 @@ export interface QASMPlaygroundProps {
   withoutSimulate?: boolean;
   withoutTranslate?: boolean;
   children?: string;
+  /**
+   * A drawing of `source`, made at authoring time.
+   *
+   * Supplying it keeps the 1.9 MB engine out of the page for as long as the
+   * code on screen still matches `source`. Leaving it out is the old
+   * behaviour: the engine loads and draws.
+   */
+  initialDiagram?: {source: string; svg: string};
 }
 
 const defaultQASMCode = `
@@ -52,7 +90,8 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
   wrapWithPre = true,
   withoutSimulate = false,
   withoutTranslate = false,
-  children = defaultQASMCode
+  children = defaultQASMCode,
+  initialDiagram
 }) => {
   const cardProps: BoxProps = {
     bgColor: 'pq.sections.features.card.bgColor',
@@ -81,7 +120,29 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
 
   const [diagramError, setDiagramError] = useState<string>();
 
+  // The engine, once it has been fetched. Null while the pregenerated picture
+  // still matches the code on screen.
+  const [circuit, setCircuit] = useState<any>(null);
+
+  /**
+   * True while the drawing that came with the page is still the right one.
+   *
+   * Whitespace is normalised on both sides because the literal is indented
+   * inside JSX and the editor gives it back as the user typed it.
+   */
+  const norm = (s: string) => s.replace(/\s+/g, ' ').trim();
+  const drawnAhead =
+    !!initialDiagram && norm(initialDiagram.source) === norm(qasmCode);
+
   useEffect(() => {
+    if (circuit || drawnAhead) return;
+
+    loadCircuit().then(setCircuit).catch(console.error);
+  }, [circuit, drawnAhead]);
+
+  useEffect(() => {
+    if (!circuit) return;
+
     try {
       circuit.importQASM(qasmCode);
 
@@ -103,7 +164,7 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
 
       console.error(e);
     }
-  }, [qasmCode]);
+  }, [qasmCode, circuit]);
 
   const simulator = useQasmExecutor({ code: qasmCode, type: 'simulation' });
   const translator = useQasmExecutor({ code: qasmCode, type: 'translation' });
@@ -123,7 +184,15 @@ export const QASMPlayground: React.FC<QASMPlaygroundProps> = ({
     >
       <Stack w="full">
         <DiagramPreview isStandalone headerText="Diagram">
-          <Box ref={diagram}></Box>
+          <Box
+            ref={diagram}
+            // Server rendered, so the circuit is in the HTML instead of being
+            // painted in after hydration. React leaves it alone; the effect
+            // only overwrites it once the engine has drawn something newer.
+            dangerouslySetInnerHTML={
+              initialDiagram ? {__html: initialDiagram.svg} : undefined
+            }
+          />
           {diagramError && (
             <Alert.Root status="warning">
               <Alert.Indicator />
