@@ -59,7 +59,26 @@ const ClientsMarquee: FC<ClientsMarqueeProps> = ({ ...props }) => {
   const boxSize = useBreakpointValue({ base: '230px', md: '260px' });
 
   return (
-    <Box as="section" {...props}>
+    <Box
+      as="section"
+      /**
+       * The height is reserved in CSS, not left to the marquee.
+       *
+       * react-fast-marquee renders nothing until it has mounted, so the
+       * section is empty in the statically generated HTML and grows to 230px
+       * at hydration, pushing everything below it down. Measured at 412px that
+       * is a 0.24 layout shift, the whole of the page's CLS.
+       *
+       * It never showed in v2 because the hero above it stayed at opacity 0
+       * until hydration finished, and a shift of invisible area does not
+       * count. Making the hero paint early exposed a shift that was always
+       * there.
+       *
+       * The values are `boxSize` below, which cannot be used here: it comes
+       * from useBreakpointValue and is undefined during the build.
+       */
+      minH={{base: '230px', md: '260px'}}
+      {...props}>
       <Marquee gradient={false} speed={60}>
         <Box display="flex" gridGap="32px">
           {clients.map((client, index) => (

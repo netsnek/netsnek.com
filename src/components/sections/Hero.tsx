@@ -22,7 +22,6 @@ import { withAccentDotsHtml } from '../../utils/accent-dots';
 // import {useContactModal} from '../services/contact'
 import HeroShowcase from '../hero/HeroShowcase';
 import useScrollPosition from '../../hooks/use-scroll-position';
-import { FadeIn } from '../FadeIn';
 import { useContactModal } from '../../services/contact';
 
 interface ScrollArrowsProps {
@@ -100,14 +99,14 @@ const Hero: FC = () => {
       >
         <Container>
           <Box position="relative" gridArea="image" asChild>
-            <FadeIn immediate>
+            <Box>
               {/* Tablet and mark are one editable drawing now, and the styles
                   the hero used to hand down are rules inside it. */}
               <HeroShowcase />
-            </FadeIn>
+            </Box>
           </Box>
           <VStack gap={4} align="left" gridArea="content" asChild>
-            <FadeIn immediate>
+            <Box>
               <Box>
                 {/* asAs, because a field guesses h2 for anything wrapped in a
                     Heading and this line sits above the headline, not on it.
@@ -213,7 +212,7 @@ const Hero: FC = () => {
                   />
                 </Button>
               </HStack>
-            </FadeIn>
+            </Box>
           </VStack>
           <Box gridArea="customer">
             {/* <Text>Customer Testimonials or Data</Text> */}
