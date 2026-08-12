@@ -141,7 +141,11 @@ const Contact = () => {
                 h: '500px',
                 maxW: '325px',
                 w: '100vw',
-                bgImage: '/images/importantarrow.svg',
+                // url(), spelled out. v2 wrapped a bare path for you; v3 passes
+                // it through, and `background-image: /images/x.svg` is invalid,
+                // so the parser drops the declaration and the hand-drawn circle
+                // around the button disappears without a trace in tsc or build.
+                bgImage: 'url(/images/importantarrow.svg)',
                 bgSize: '100%,contain',
                 bgRepeat: 'no-repeat'
               }}
