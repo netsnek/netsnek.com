@@ -31,7 +31,6 @@ import HamburgerMenuIcon, {
   THamburgerMenuIconStylerProps
 } from '../AltHamburgerMenuIcon';
 import SearchMenu from '../search-menu';
-import { FadeIn } from '../FadeIn';
 
 interface IAltTopNavProps {
   path: string;
@@ -98,7 +97,6 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
       // of the first impression. On a subpage the reader arrived to read
       // something, and a header that animates in every time is noise, so
       // there it just renders.
-      as={isLandingPage ? FadeIn : undefined}
       pos="relative"
       overflow="hidden"
       height={open ? 'calc(100vh + 15px)' : { base: '12vh', md: '15vh' }}
