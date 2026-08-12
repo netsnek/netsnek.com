@@ -88,7 +88,9 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             <Kbd
               borderBottomWidth={1}
               background="transparent"
-              borderRadius={4}
+              // 4px, not 4. See SearchButton: the radii scale has no numeric
+              // keys, so the bare number reaches the browser as invalid CSS.
+              borderRadius="4px"
               py={0.5}
               {...styleProps?.kbd}
             >

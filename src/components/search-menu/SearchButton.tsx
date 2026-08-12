@@ -106,7 +106,9 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         <Kbd
           display={{ base: 'none', lg: 'inline-block' }}
           borderBottomWidth={1}
-          borderRadius={4}
+          // 4px, not 4. The radii scale has no numeric keys, so v2 appended
+          // the unit and v3 emits `border-radius: 4`, which the parser drops.
+          borderRadius="4px"
           py={0.5}
           mr={2}
           //bgColor={'transparent'}
