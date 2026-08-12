@@ -23,8 +23,8 @@ const Services = () => {
         mt={{ base: '24', sm: '32', lg: '40' }}
         mb="8"
         as={Heading}
-        fontSize={{ base: '4xl', lg: '5xl' }}
-        lineHeight={1}
+        // See `siteHeadingSizes` in styles/theme/recipes.
+        size="section"
         fontWeight="bold"
         textAlign="left"
         name="SectionHeadingServiceDetails1"
@@ -166,8 +166,8 @@ const Services = () => {
         mt={{ base: '24', sm: '32', lg: '40' }}
         mb="8"
         as={Heading}
-        fontSize={{ base: '4xl', lg: '5xl' }}
-        lineHeight={1}
+        // See `siteHeadingSizes` in styles/theme/recipes.
+        size="section"
         fontWeight="bold"
         textAlign="left"
         name="SectionHeadingServiceDetails2"

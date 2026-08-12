@@ -195,8 +195,8 @@ const Open: FC = () => {
               mb={{ base: '8', lg: '10' }}
               as={Heading}
               color="white"
-              fontSize={{ base: '4xl', lg: '5xl' }}
-              lineHeight={1}
+              // See `siteHeadingSizes` in styles/theme/recipes.
+              size="section"
               fontWeight="bold"
               textAlign="left"
               name="SectionHeadingOpen"

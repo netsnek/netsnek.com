@@ -110,7 +110,17 @@ const Hero: FC = () => {
             <FadeIn>
               <Box>
                 {/* asAs, because a field guesses h2 for anything wrapped in a
-                    Heading and this line sits above the headline, not on it. */}
+                    Heading and this line sits above the headline, not on it.
+
+                    There is no lineHeight prop, and its absence is deliberate.
+                    v2 carried `lineHeight="1.5em"` here and it never reached
+                    the page: a responsive `size` puts the lg half inside an
+                    `@media (min-width: 62rem)` block, and a media rule outranks
+                    an unconditional prop, so v2 rendered sizes sm and md's own
+                    1.2 at every width — 19.2px of leading below 992px and 24px
+                    above. In v3 those two sizes are flat, nothing shadows the
+                    prop below 992px, and the eyebrow was leading 24px there.
+                    The contract is v2's pixels, so the dead prop goes. */}
                 <Field.Text
                   as={Heading}
                   asAs="h3"
@@ -118,7 +128,6 @@ const Hero: FC = () => {
                   style={{ animationDelay: '300ms' }}
                   fontWeight="500"
                   textTransform="uppercase"
-                  lineHeight="1.5em"
                   letterSpacing="4.2px"
                   name="HeroEyebrow"
                   defaultValue={withAccentDotsHtml(
@@ -130,12 +139,18 @@ const Hero: FC = () => {
                 />
               </Box>
               <Box>
+                {/* Same story as the eyebrow: v2's `lineHeight="1.1em"` was
+                    already dead here. Sizes xl and 2xl are both responsive, so
+                    their leading arrived as `@media` entries at 768px and
+                    above and the prop only ever owned the base band. v2
+                    therefore rendered 39.9, 43.2 and 48 at 500, 800 and 1280.
+                    v3 emitted the same two media entries, so 800 and 1280 were
+                    right and only the base band showed the prop, at 33px. */}
                 <Field.Text
                   as={Heading}
                   asAs="h2"
                   size={{ base: 'xl', lg: '2xl' }}
                   fontWeight="900"
-                  lineHeight="1.1em"
                   name="HeroHeading"
                   defaultValue={withAccentDotsHtml(
                     intl.formatMessage({

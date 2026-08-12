@@ -31,6 +31,7 @@ import {
   headingRecipe,
   kbdRecipe,
   linkRecipe,
+  listSlotRecipe,
   menuSlotRecipe,
   separatorRecipe,
   skeletonRecipe,
@@ -222,6 +223,7 @@ export const siteConfig = defineConfig({
       accordion: accordionSlotRecipe,
       alert: alertSlotRecipe,
       breadcrumb: breadcrumbSlotRecipe,
+      list: listSlotRecipe,
       menu: menuSlotRecipe,
       tooltip: tooltipSlotRecipe
     }

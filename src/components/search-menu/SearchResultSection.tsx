@@ -29,7 +29,11 @@ export const SearchResultSectionTitle: FC<
   const heading = (
     <Heading
       key={-1}
-      fontSize="12px"
+      // size, not fontSize: see `siteHeadingSizes` in styles/theme/recipes.
+      // It stays ahead of the `{...props}` spread, and a caller's fontSize now
+      // wins at every width instead of only below 768px, because the selected
+      // size emits no media rule for font-size.
+      size="menu-group"
       {...(!icon && {
         mb: 2,
         mt: idx === 0 ? 2 : 5

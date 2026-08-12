@@ -245,8 +245,8 @@ const ProductDetail = (props: {
       <Stack>
         <Field.Text
           as={Heading}
-          fontSize={{ base: '3xl', lg: '4xl' }}
-          lineHeight={1}
+          // See `siteHeadingSizes` in styles/theme/recipes.
+          size="product"
           fontWeight="bold"
           textAlign="left"
           name="ProductName"

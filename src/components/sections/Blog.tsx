@@ -67,7 +67,10 @@ const BlogCard: FC<{ section: DocsSection }> = ({ section }) => {
       </AspectRatio>
 
       <Flex direction="column" flex="1" p={6}>
-        <Heading as="h3" fontSize="xl" fontWeight="bold">
+        {/* size, not fontSize: see `siteHeadingSizes` in styles/theme/recipes.
+            These six card titles were the loudest instance of the bug, 36px
+            where v2 had 20. */}
+        <Heading as="h3" size="card" fontWeight="bold">
           <LinkOverlay asChild>
             <GatsbyLink to={section.href}>{section.title}</GatsbyLink>
           </LinkOverlay>
@@ -124,8 +127,8 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
       <Field.Text
         mb="4"
         as={Heading}
-        fontSize={{ base: '4xl', lg: '5xl' }}
-        lineHeight={1}
+        // See `siteHeadingSizes` in styles/theme/recipes.
+        size="section"
         fontWeight="bold"
         textAlign="left"
         name="SectionHeadingBlog"

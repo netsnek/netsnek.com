@@ -61,7 +61,10 @@ export const TestimonialHeading = (props: Props) => {
   const { children } = props;
 
   return (
-    <Heading as={'h3'} fontSize={'xl'}>
+    // size, not fontSize: see `siteHeadingSizes` in styles/theme/recipes.
+    // Nothing imports Testimonials today, so this one is corrected on the
+    // strength of the call site rather than a measurement.
+    <Heading as={'h3'} size="card">
       {children}
     </Heading>
   );

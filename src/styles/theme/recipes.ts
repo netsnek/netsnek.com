@@ -94,6 +94,55 @@ const docsHeadingSizes = Object.fromEntries(
   )
 );
 
+/**
+ * The four sizes the site's own (non-docs) headings select.
+ *
+ * Same story as `docsHeadingSizes` above, same remedy, different call sites.
+ * Each of these was a `fontSize` STYLE PROP in v2 that worked there and stops
+ * working in v3, because `defaultVariants.size` is `xl` and `cva()` turns its
+ * `fontSize: ['3xl', null, '4xl']` into an `@media screen and (min-width:
+ * 48rem)` key BEFORE the style props merge. A prop only ever overwrites the
+ * unconditional entry, so from 768px up the recipe wins it straight back. The
+ * damage was measured against the untouched v2 build at three widths and is
+ * recorded per size below.
+ *
+ * `section`  The five big section headlines: Services, both in ServiceDetails,
+ *            Blog and Open. v2 rendered 36px/36 up to 992px and 48px/48 above.
+ *            v3 kept the sizes (the prop's own `lg` media rule outranks the
+ *            recipe's `md` one) but lost the line-height at both md and lg,
+ *            leaving 43.2 and 57.6 where v2 had 36 and 48. Flat `lineHeight: 1`
+ *            emits no media entry at all, which is what puts it back.
+ *
+ * `product`  ProductContent's product name. v2: 30px/30 up to 992px, 36px/36
+ *            above. v3 read 36px/43.2 from 768px up, because 4xl is what the
+ *            recipe's md entry supplies and 1.2 came with it.
+ *
+ * `card`     The six project cards on the home page, and TestimonialHeading,
+ *            which nothing renders today but carries the identical call site.
+ *            v2: 20px throughout, leading 1.33 below 768px and 1.2 above — the
+ *            default size's own pair, because v2's prop replaced only the
+ *            fontSize. v3 rendered 36px/43.2 from 768px up. The worst of them.
+ *
+ * `menu-group`  SearchResultSectionTitle, the group label inside the search
+ *            overlay. v2: 12px throughout with the same 1.33/1.2 pair. v3
+ *            rendered 36px/43.2 from 768px up, a twelve-pixel label at
+ *            thirty-six. Reachable with the `/` key on any page.
+ *
+ * The two responsive pairs are responsive on purpose. A flat size is only
+ * correct where v2's value was flat, and `section` and `product` genuinely
+ * changed at the site's pinned lg (992px) in v2, so the recipe carries the pair
+ * rather than the call site fighting for it. Inside a variant that is safe:
+ * variants are merged as raw style objects before the single `css()` call, so
+ * the whole `fontSize` here replaces the default size's, media entries and all,
+ * instead of colliding with them.
+ */
+const siteHeadingSizes = {
+  section: { fontSize: { base: '4xl', lg: '5xl' }, lineHeight: 1 },
+  product: { fontSize: { base: '3xl', lg: '4xl' }, lineHeight: 1 },
+  card: { fontSize: 'xl', lineHeight: [1.33, null, 1.2] },
+  'menu-group': { fontSize: '12px', lineHeight: [1.33, null, 1.2] }
+};
+
 export const headingRecipe = defineRecipe({
   base: { fontFamily: 'heading', fontWeight: 'bold' },
   variants: {
@@ -106,7 +155,8 @@ export const headingRecipe = defineRecipe({
       md: { fontSize: 'xl', lineHeight: 1.2 },
       sm: { fontSize: 'md', lineHeight: 1.2 },
       xs: { fontSize: 'sm', lineHeight: 1.2 },
-      ...docsHeadingSizes
+      ...docsHeadingSizes,
+      ...siteHeadingSizes
     }
   }
 });
@@ -311,6 +361,36 @@ export const skeletonRecipe = defineRecipe({
 });
 
 /**
+ * v2's UnorderedList and OrderedList, as a recipe.
+ *
+ * Those two components are gone in v3 and the site's MDX renderer now reaches
+ * for `<List.Root as="ul">` instead. That is the right replacement for the
+ * markup, but it is not the same component: v2's UnorderedList was
+ * `<List as="ul" styleType="initial" marginStart="1em">` and OrderedList was
+ * the same with `decimal`, so the indent was part of the component, not part of
+ * the call site. Every bulleted list in the docs lost 16px of indent when the
+ * component did, most visibly on /docs, where the whole list column shifts left
+ * and the text rewraps.
+ *
+ * `display` is the second half. A plain <ul> is a block box and v2 left it
+ * alone; v3's root is `display: flex` with `flexDirection: column`. It happens
+ * to look similar because the list items are full width, but it is not the same
+ * box, and the flex container's `gap: var(--list-gap)` is only harmless here
+ * because no variant in this system defines that variable.
+ *
+ * A flat `marginInlineStart` rather than one scoped to `&:is(ul, ol)`, so that
+ * a call site can still override it with a prop. DocsIndex does exactly that
+ * with `marginInlineStart="2em"`, in both trees, and a scoped selector would
+ * outrank it.
+ */
+export const listSlotRecipe = defineSlotRecipe({
+  slots: ['root', 'item', 'indicator'],
+  base: {
+    root: { display: 'block', marginInlineStart: '1em' }
+  }
+});
+
+/**
  * v2's Kbd base, in the four places v3's differs. Measured on the `/` badge in
  * the search button, which is the only Kbd the site renders.
  *
@@ -466,10 +546,20 @@ export const alertSlotRecipe = defineSlotRecipe({
  * is the 579px nav that measured 600. A unitless value here restores the
  * recomputation, so a future fontSize change keeps its own leading.
  *
- * `itemIndicator`'s colour is v2's too: v3 paints the chevron `fg.subtle` where
- * v2's AccordionIcon inherited. Its size and glyph are not set here, because
- * PageDirectory now hands the indicator v2's own chevron as a child with an
- * explicit boxSize, which is the only way to get v2's path rather than v3's.
+ * `itemIndicator` needs two things v2 got for free.
+ *
+ * Its colour: v3 paints the chevron `fg.subtle` where v2's AccordionIcon
+ * inherited. Its size and glyph are not set here, because PageDirectory hands
+ * the indicator v2's own chevron as a child with an explicit boxSize, which is
+ * the only way to get v2's path rather than v3's.
+ *
+ * `display: flex` is what makes the arrow land on v2's pixel. v2 put the
+ * `rotate(-90deg)` straight on a 17.5px square <svg>, so the rotation was about
+ * the glyph's own centre. v3 wraps the icon in a block-level indicator whose
+ * height is the 21px line box, and PageDirectory turns THAT, so a 17.5x21
+ * rectangle spins and lands the glyph three quarters of a pixel off. A flex
+ * box shrink-wraps the icon, the wrapper is square again, and the two
+ * rotations agree.
  *
  * `paddingBottom` is deliberately not restored on itemBody. v2's panel base had
  * `pb: 5`, but PageDirectory forces the slot to 0 on every item, in both trees,
@@ -497,9 +587,34 @@ export const accordionSlotRecipe = defineSlotRecipe({
           px: 4,
           gap: 0
         },
-        itemContent: { paddingTop: 0, paddingRight: 0, fontSize: 'sm' },
+        itemContent: {
+          paddingTop: 0,
+          paddingRight: 0,
+          fontSize: 'sm',
+          /**
+           * v2's `reduceMotion`, and the 4px it was quietly worth.
+           *
+           * PageDirectory passed `reduceMotion` to v2's Accordion on purpose,
+           * with a comment: a panel toggled while the nav is hidden measures an
+           * open height of 0 and gets stuck expanded but invisible. v3 has no
+           * such prop and drives the collapse from the recipe instead, so the
+           * guard is reinstated here by taking the animation away.
+           *
+           * `overflow` is the half that shows up in a screenshot. v3 pairs the
+           * animation with `overflow: hidden`, which makes itemContent a block
+           * formatting context, and a BFC traps the margins of the items inside
+           * it. Every nested entry carries `my={1}`, so the first one's 4px and
+           * the last one's 4px stopped collapsing out of the panel the way they
+           * did through v2's `overflow: visible` one, and each expanded section
+           * pushed the rest of the nav 4px down. With no animation left to
+           * clip, visible is both correct and free.
+           */
+          overflow: 'visible',
+          _open: { animationName: 'none' },
+          _closed: { animationName: 'none' }
+        },
         itemBody: { paddingTop: 0, paddingRight: 0, paddingLeft: 4 },
-        itemIndicator: { color: 'inherit' }
+        itemIndicator: { color: 'inherit', display: 'flex' }
       }
     }
   }

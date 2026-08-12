@@ -27,8 +27,10 @@ const Services = () => {
         mt={{ base: '20 !important', md: '0' }}
         mb="8"
         as={Heading}
-        fontSize={{ base: '4xl', lg: '5xl' }}
-        lineHeight={1}
+        // A recipe size, not fontSize + lineHeight props. The pair is v2's
+        // exactly; see `siteHeadingSizes` in styles/theme/recipes for why it
+        // has to live in the recipe to survive v3's merge order.
+        size="section"
         fontWeight="bold"
         textAlign="left"
         name="ContentSectionHeadingServices"
