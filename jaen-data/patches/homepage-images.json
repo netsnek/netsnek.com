@@ -1,0 +1,339 @@
+{
+  "message": "Serve the homepage service and associate images from the media library",
+  "createdAt": "2026-08-12T19:48:14.871Z",
+  "data": {
+    "pages": [
+      {
+        "id": "JaenPage /cms/media/",
+        "jaenFields": {
+          "IMA:MEDIA_NODES": {
+            "media_nodes": {
+              "value": {
+                "d675a3d1-edba-4036-b46c-efe0f0986253": {
+                  "id": "d675a3d1-edba-4036-b46c-efe0f0986253",
+                  "fileUniqueId": "AgADHCIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "beratung.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD1qfM229KqOkFyY0u3xlRrHhHUFygACHCIAAvOK6VPWxgj2LbgTwy8E",
+                  "width": 1600,
+                  "height": 1015,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPWp8zbb0qo6QXJjS7fGVGseEdQXKAAIcIgAC84rpU9bGCPYtuBPDAQAHbQADLwQ"
+                  }
+                },
+                "c9aaee73-b558-4ff1-95f1-e6807f08693e": {
+                  "id": "c9aaee73-b558-4ff1-95f1-e6807f08693e",
+                  "fileUniqueId": "AgADHCIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "beratung.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD1qfM229KqOkFyY0u3xlRrHhHUFygACHCIAAvOK6VPWxgj2LbgTwy8E",
+                  "width": 1600,
+                  "height": 1015,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /en/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPWp8zbb0qo6QXJjS7fGVGseEdQXKAAIcIgAC84rpU9bGCPYtuBPDAQAHbQADLwQ"
+                  }
+                },
+                "8609b95a-5e9a-4c1d-97e3-e35baea79dd5": {
+                  "id": "8609b95a-5e9a-4c1d-97e3-e35baea79dd5",
+                  "fileUniqueId": "AgADHCIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "beratung.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD1qfM229KqOkFyY0u3xlRrHhHUFygACHCIAAvOK6VPWxgj2LbgTwy8E",
+                  "width": 1600,
+                  "height": 1015,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /it/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPWp8zbb0qo6QXJjS7fGVGseEdQXKAAIcIgAC84rpU9bGCPYtuBPDAQAHbQADLwQ"
+                  }
+                },
+                "c61dc7eb-f7e4-4bba-bd60-955eebf89479": {
+                  "id": "c61dc7eb-f7e4-4bba-bd60-955eebf89479",
+                  "fileUniqueId": "AgADHCIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "beratung.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD1qfM229KqOkFyY0u3xlRrHhHUFygACHCIAAvOK6VPWxgj2LbgTwy8E",
+                  "width": 1600,
+                  "height": 1015,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /ja/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPWp8zbb0qo6QXJjS7fGVGseEdQXKAAIcIgAC84rpU9bGCPYtuBPDAQAHbQADLwQ"
+                  }
+                },
+                "cf466716-1646-4f8a-8098-5c5f96d9fe21": {
+                  "id": "cf466716-1646-4f8a-8098-5c5f96d9fe21",
+                  "fileUniqueId": "AgADHCIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "beratung.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD1qfM229KqOkFyY0u3xlRrHhHUFygACHCIAAvOK6VPWxgj2LbgTwy8E",
+                  "width": 1600,
+                  "height": 1015,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /sl/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPWp8zbb0qo6QXJjS7fGVGseEdQXKAAIcIgAC84rpU9bGCPYtuBPDAQAHbQADLwQ"
+                  }
+                },
+                "bfec979a-db8b-4346-b226-4a4e5e675470": {
+                  "id": "bfec979a-db8b-4346-b226-4a4e5e675470",
+                  "fileUniqueId": "AgADHSIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "mockup-arneitz.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD5qfM2-g1KyM3mWnyc7o5t0n2TtoQACHSIAAvOK6VPISua1UASXGS8E",
+                  "width": 1600,
+                  "height": 1067,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPmp8zb6DUrIzeZafJzujm3SfZO2hAAIdIgAC84rpU8hK5rVQBJcZAQAHbQADLwQ"
+                  }
+                },
+                "f1b4f023-b404-4bc3-8984-ae7bb23161a6": {
+                  "id": "f1b4f023-b404-4bc3-8984-ae7bb23161a6",
+                  "fileUniqueId": "AgADHSIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "mockup-arneitz.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD5qfM2-g1KyM3mWnyc7o5t0n2TtoQACHSIAAvOK6VPISua1UASXGS8E",
+                  "width": 1600,
+                  "height": 1067,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /en/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPmp8zb6DUrIzeZafJzujm3SfZO2hAAIdIgAC84rpU8hK5rVQBJcZAQAHbQADLwQ"
+                  }
+                },
+                "81225a3e-2f80-4b85-870b-19e319ef3800": {
+                  "id": "81225a3e-2f80-4b85-870b-19e319ef3800",
+                  "fileUniqueId": "AgADHSIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "mockup-arneitz.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD5qfM2-g1KyM3mWnyc7o5t0n2TtoQACHSIAAvOK6VPISua1UASXGS8E",
+                  "width": 1600,
+                  "height": 1067,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /it/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPmp8zb6DUrIzeZafJzujm3SfZO2hAAIdIgAC84rpU8hK5rVQBJcZAQAHbQADLwQ"
+                  }
+                },
+                "68fe0d2a-0810-4b5b-979b-5ba533bae9fc": {
+                  "id": "68fe0d2a-0810-4b5b-979b-5ba533bae9fc",
+                  "fileUniqueId": "AgADHSIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "mockup-arneitz.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD5qfM2-g1KyM3mWnyc7o5t0n2TtoQACHSIAAvOK6VPISua1UASXGS8E",
+                  "width": 1600,
+                  "height": 1067,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /ja/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPmp8zb6DUrIzeZafJzujm3SfZO2hAAIdIgAC84rpU8hK5rVQBJcZAQAHbQADLwQ"
+                  }
+                },
+                "77264dcb-9c09-4b88-b500-2f3612e90957": {
+                  "id": "77264dcb-9c09-4b88-b500-2f3612e90957",
+                  "fileUniqueId": "AgADHSIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "mockup-arneitz.jpg",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD5qfM2-g1KyM3mWnyc7o5t0n2TtoQACHSIAAvOK6VPISua1UASXGS8E",
+                  "width": 1600,
+                  "height": 1067,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /sl/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEPmp8zb6DUrIzeZafJzujm3SfZO2hAAIdIgAC84rpU8hK5rVQBJcZAQAHbQADLwQ"
+                  }
+                },
+                "932aaa35-7b6f-4755-8406-ec553c2527a1": {
+                  "id": "932aaa35-7b6f-4755-8406-ec553c2527a1",
+                  "fileUniqueId": "AgADHiIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "austria-a-aussenwirtschaft-austria.png",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD9qfM2_2fKjZWk1tsTPmv4EzgZf-QACHiIAAvOK6VPE1K629AialS8E",
+                  "width": 1922,
+                  "height": 1250,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEP2p8zb_Z8qNlaTW2xM-a_gTOBl_5AAIeIgAC84rpU8TUrrb0CJqVAQAHbQADLwQ"
+                  }
+                },
+                "cb5d3369-a4bc-49e4-b3f5-4c37d475f08a": {
+                  "id": "cb5d3369-a4bc-49e4-b3f5-4c37d475f08a",
+                  "fileUniqueId": "AgADHiIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "austria-a-aussenwirtschaft-austria.png",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD9qfM2_2fKjZWk1tsTPmv4EzgZf-QACHiIAAvOK6VPE1K629AialS8E",
+                  "width": 1922,
+                  "height": 1250,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /en/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEP2p8zb_Z8qNlaTW2xM-a_gTOBl_5AAIeIgAC84rpU8TUrrb0CJqVAQAHbQADLwQ"
+                  }
+                },
+                "9443219f-c834-4c67-b5db-00fb20bd3d7c": {
+                  "id": "9443219f-c834-4c67-b5db-00fb20bd3d7c",
+                  "fileUniqueId": "AgADHiIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "austria-a-aussenwirtschaft-austria.png",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD9qfM2_2fKjZWk1tsTPmv4EzgZf-QACHiIAAvOK6VPE1K629AialS8E",
+                  "width": 1922,
+                  "height": 1250,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /it/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEP2p8zb_Z8qNlaTW2xM-a_gTOBl_5AAIeIgAC84rpU8TUrrb0CJqVAQAHbQADLwQ"
+                  }
+                },
+                "20ce1ca2-b25d-407e-bb08-62f8e58c36c3": {
+                  "id": "20ce1ca2-b25d-407e-bb08-62f8e58c36c3",
+                  "fileUniqueId": "AgADHiIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "austria-a-aussenwirtschaft-austria.png",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD9qfM2_2fKjZWk1tsTPmv4EzgZf-QACHiIAAvOK6VPE1K629AialS8E",
+                  "width": 1922,
+                  "height": 1250,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /ja/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEP2p8zb_Z8qNlaTW2xM-a_gTOBl_5AAIeIgAC84rpU8TUrrb0CJqVAQAHbQADLwQ"
+                  }
+                },
+                "ed1d9baa-3e9f-4210-b1a5-ca919980129e": {
+                  "id": "ed1d9baa-3e9f-4210-b1a5-ca919980129e",
+                  "fileUniqueId": "AgADHiIAAvOK6VM",
+                  "createdAt": "2026-08-12T19:48:14.871Z",
+                  "modifiedAt": "2026-08-12T19:48:14.871Z",
+                  "description": "austria-a-aussenwirtschaft-austria.png",
+                  "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBD9qfM2_2fKjZWk1tsTPmv4EzgZf-QACHiIAAvOK6VPE1K629AialS8E",
+                  "width": 1922,
+                  "height": 1250,
+                  "revisions": [],
+                  "jaenPageId": "JaenPage /sl/",
+                  "preview": {
+                    "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEP2p8zb_Z8qNlaTW2xM-a_gTOBl_5AAIeIgAC84rpU8TUrrb0CJqVAQAHbQADLwQ"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "JaenPage /",
+        "jaenFields": {
+          "IMA:ImageField": {
+            "ServicesCardConsultingImage": {
+              "value": "d675a3d1-edba-4036-b46c-efe0f0986253",
+              "props": {}
+            },
+            "ServicesCardDevelopmentImage": {
+              "value": "bfec979a-db8b-4346-b226-4a4e5e675470",
+              "props": {}
+            },
+            "AssociatesAustriaImage": {
+              "value": "932aaa35-7b6f-4755-8406-ec553c2527a1",
+              "props": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "JaenPage /en/",
+        "jaenFields": {
+          "IMA:ImageField": {
+            "ServicesCardConsultingImage": {
+              "value": "c9aaee73-b558-4ff1-95f1-e6807f08693e",
+              "props": {}
+            },
+            "ServicesCardDevelopmentImage": {
+              "value": "f1b4f023-b404-4bc3-8984-ae7bb23161a6",
+              "props": {}
+            },
+            "AssociatesAustriaImage": {
+              "value": "cb5d3369-a4bc-49e4-b3f5-4c37d475f08a",
+              "props": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "JaenPage /it/",
+        "jaenFields": {
+          "IMA:ImageField": {
+            "ServicesCardConsultingImage": {
+              "value": "8609b95a-5e9a-4c1d-97e3-e35baea79dd5",
+              "props": {}
+            },
+            "ServicesCardDevelopmentImage": {
+              "value": "81225a3e-2f80-4b85-870b-19e319ef3800",
+              "props": {}
+            },
+            "AssociatesAustriaImage": {
+              "value": "9443219f-c834-4c67-b5db-00fb20bd3d7c",
+              "props": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "JaenPage /ja/",
+        "jaenFields": {
+          "IMA:ImageField": {
+            "ServicesCardConsultingImage": {
+              "value": "c61dc7eb-f7e4-4bba-bd60-955eebf89479",
+              "props": {}
+            },
+            "ServicesCardDevelopmentImage": {
+              "value": "68fe0d2a-0810-4b5b-979b-5ba533bae9fc",
+              "props": {}
+            },
+            "AssociatesAustriaImage": {
+              "value": "20ce1ca2-b25d-407e-bb08-62f8e58c36c3",
+              "props": {}
+            }
+          }
+        }
+      },
+      {
+        "id": "JaenPage /sl/",
+        "jaenFields": {
+          "IMA:ImageField": {
+            "ServicesCardConsultingImage": {
+              "value": "cf466716-1646-4f8a-8098-5c5f96d9fe21",
+              "props": {}
+            },
+            "ServicesCardDevelopmentImage": {
+              "value": "77264dcb-9c09-4b88-b500-2f3612e90957",
+              "props": {}
+            },
+            "AssociatesAustriaImage": {
+              "value": "ed1d9baa-3e9f-4210-b1a5-ca919980129e",
+              "props": {}
+            }
+          }
+        }
+      }
+    ]
+  }
+}
