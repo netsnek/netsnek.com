@@ -65,7 +65,7 @@ function Arrow({
   const y = HALF * (i - j) * scale;
 
   return (
-    <chakra.path
+    <path
       transform={`translate(${x} ${y}) scale(${scale})`}
       d={ARROW_PATH}
       {...props}
@@ -185,7 +185,7 @@ export function ArrowPattern({
             // The flash is a theme keyframe now, and the DOM event that ends
             // it is what retires the arrow. framer's onAnimationComplete and
             // the browser's animationend fire at the same moment.
-            animation="brand-flash 1s linear forwards"
+            style={{animation: 'brand-flash 1s linear forwards'}}
             onAnimationEnd={() => {
               setLitArrows(arrows => arrows.filter(a => a[2] !== key));
             }}
