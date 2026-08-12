@@ -183,6 +183,17 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
     <Button
       size="xs"
       px={4}
+      // 32px, not the 24px the xs size brings, and this is the one place the
+      // migration deliberately does NOT reproduce v2.
+      //
+      // v2 put 12px text with 16px of side padding into a 24px box, which is
+      // generous across and tight down, and the 8px radius then reads as a
+      // rounded rectangle rather than a pill. The first v3 attempt landed on
+      // 32px by accident, through v3's own xs entry, and that proportion is
+      // the one worth keeping. The taller line box comes with it, otherwise
+      // the label sits in a 14.4px strip inside a 32px button.
+      h="8"
+      lineHeight="1rem"
       // Not xl. These sit at 24px against the site's 40px buttons, and an
       // identical radius there is half the height, which is why they still
       // read as pills. lg keeps the same proportion the rest has.
