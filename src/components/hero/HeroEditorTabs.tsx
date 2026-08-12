@@ -256,7 +256,15 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
             : 'none'
         }
         css={{
-          '& & svg': {
+          // The drawing fills the panel and keeps its own proportions. This
+          // is scoped to the panel on purpose: the same rule on the whole
+          // hero would also resize the arrows between the switches.
+          //
+          // One ampersand, not two. Emotion expands every `&` to this
+          // element's own class, so `& & svg` compiled to
+          // `.css-x .css-x svg`, which nothing on the page can match, and the
+          // drawing rendered at its intrinsic size.
+          '& svg': {
             width: '100%',
             height: 'auto',
             display: 'block',

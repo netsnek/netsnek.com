@@ -187,8 +187,17 @@ const MatrixRain: FC<MatrixRainProps> = ({
           willChange: 'transform'
         },
 
-        '& @media (prefers-reduced-motion: reduce)': {
-          '.matrix-rain-strand': { animation: 'none' }
+        // Without motion the strands stay where their transform attribute
+        // parks them, which is a still frame of the same curtain rather than
+        // an empty box.
+        //
+        // The at-rule has to be the OUTER key. Spelled '& @media (…)' the css
+        // engine no longer recognised it as an at-rule (only a leading `&` or
+        // `@` marks a selector, and this key starts with `& @`), sorted the
+        // whole thing under the `animation` property and emitted
+        // `animation: {"& @media …": …}` — no media query, no opt-out.
+        '@media (prefers-reduced-motion: reduce)': {
+          '& .matrix-rain-strand': { animation: 'none' }
         }
       }}
     >

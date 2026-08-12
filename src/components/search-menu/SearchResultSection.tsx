@@ -47,7 +47,9 @@ export const SearchResultSectionTitle: FC<
         mb={2}
         mt={idx === 0 ? 2 : 5}
         css={{
-          '& & svg': {
+          // One ampersand: emotion expands each `&` to this element's own
+          // class, so `& & svg` was `.css-x .css-x svg` and never matched.
+          '& svg': {
             stroke: props.color ?? 'components.menu.groupTitle.color'
           }
         }}

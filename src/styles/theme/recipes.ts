@@ -23,7 +23,9 @@
 import { defineRecipe, defineSlotRecipe } from '@chakra-ui/react';
 
 /**
- * The one recipe the site did not have and now needs.
+ * One of two recipes the site did not have and now needs. The other is
+ * `containerRecipe` below. Both restore a v2 built-in default that the site
+ * never overrode and therefore never wrote down.
  *
  * v2 mapped `<Heading size="md">` to fontSize xl (1.25rem). v3 maps it to
  * textStyle md, which is 1rem. Four headings pass size="md" — ProductContent,
@@ -45,6 +47,40 @@ export const headingRecipe = defineRecipe({
       xs: { fontSize: 'sm', lineHeight: 1.2 }
     }
   }
+});
+
+/**
+ * The other recipe the site never had, and the one that moved every page.
+ *
+ * v2's stock Container was `{w: '100%', mx: 'auto', maxW: 'prose', px: '4'}`:
+ * a flat 16px gutter at every width. v3's is
+ * `px: {base: '4', md: '6', lg: '8'}`, so the gutter grows to 24px at md and
+ * to 32px at the site's pinned lg (992px). The site registered no Container
+ * styleConfig in v2, which is why nothing in the diff mentions `px`: the
+ * default moved underneath thirteen untouched call sites.
+ *
+ * Measured on /docs/interns at 1280px. DocsLayout nests two Containers, the
+ * maxW="8xl" frame and the maxW="3xl" article, so the article pays the 16px
+ * twice: it starts at 32 + 256 (aside) + 32 = 320 where v2 had
+ * 16 + 256 + 16 = 288, and its content box is 640 wide where v2 had 704. That
+ * is the narrower column and the 2 to 8 percent extra page height. Both
+ * footers and the top nav moved inward by the single 16px.
+ *
+ * The second half of the damage is worse and is not about the value at all.
+ * `cva()` serialises a recipe's base BEFORE the style props are merged in, so
+ * the responsive entries arrive as `@media` keys that a prop can no longer
+ * reach: a prop only ever overwrites the unconditional entry. With v3's
+ * responsive default in place, Contact's `px={0}` still rendered 24px at md
+ * and 32px at lg, and Services' `px={{base: 5, lg: 0}}` rendered 32px at lg
+ * instead of none. Restoring the scalar removes the `@media` keys, and prop
+ * overrides behave the way they did in v2 again.
+ *
+ * maxW and `position: relative` stay at v3's values. Every <Container> in the
+ * site passes an explicit maxW, Hero's included, which takes maxW="6xl" from
+ * the Grid it is the asChild of, so the base is never read.
+ */
+export const containerRecipe = defineRecipe({
+  base: { px: '4' }
 });
 
 export const buttonRecipe = defineRecipe({

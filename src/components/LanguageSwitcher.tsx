@@ -16,6 +16,8 @@ import { navigate } from 'gatsby';
 import { FC, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
+import { DialogCloseButton } from './DialogCloseButton';
+
 import { usePageLocale } from '../contexts/locale';
 import { defaultLocale, locales } from '../locales/messages';
 
@@ -194,9 +196,17 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
           <Portal>
             <Dialog.Backdrop />
             <Dialog.Positioner>
-              <Dialog.Content mx={4} borderRadius="xl">
+              {/*
+                v3's dialog size names each sit one step further up the sizes
+                scale than v2's modal ones (xs -> sizes.sm here, where v2's xs
+                was sizes.xs), so `size="xs"` alone would widen this sheet from
+                20rem to 24rem. maxW pins v2's width back on top of the recipe.
+              */}
+              <Dialog.Content mx={4} maxW="xs" borderRadius="xl">
                 <Dialog.Header fontSize="md">{controlLabel}</Dialog.Header>
-                <Dialog.CloseTrigger />
+                {/* Was a childless <Dialog.CloseTrigger/>, which draws no X
+                    at all. See DialogCloseButton. */}
+                <DialogCloseButton />
                 <Dialog.Body pb={6}>
                   <VStack gap={1} align="stretch">
                     {locales.map(locale => (
@@ -277,11 +287,18 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = props => {
             {/* v2's MenuList also set color and zIndex; v3's menu recipe
                 already carries both, but not the width. */}
             <Menu.Content minW="12rem">
+              {/*
+                The value is the item's identity in v3, not decoration: zag
+                builds the DOM id as `${menuId}/${value}` and resolves both the
+                click listener and onSelect with getElementById. The codemod's
+                literal "item-0" gave all five rows one id, so row one ran
+                go() for every locale and rows two to five were inert.
+              */}
               {locales.map(locale => (
                 <Menu.Item
                   key={locale}
                   onSelect={() => go(locale)}
-                  value="item-0"
+                  value={locale}
                 >
                   {row(locale)}
                 </Menu.Item>

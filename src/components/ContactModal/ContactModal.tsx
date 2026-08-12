@@ -14,6 +14,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { Controller, useForm } from 'react-hook-form';
 import { CheckboxStyled } from './CheckboxStyled';
+import { DialogCloseButton } from '../DialogCloseButton';
 
 export interface ContactFormValues {
   firstName: string;
@@ -73,7 +74,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   return (
     <Dialog.Root
       open={isOpen}
-      size="xl"
+      // v2 was `size="2xl"`, and the dialog size names all shifted one step up
+      // the sizes scale in v3: the recipe maps xs->sizes.sm, sm->md, md->lg,
+      // lg->2xl, xl->4xl. v2's 2xl was maxW 42rem; the codemod's `xl` is
+      // sizes.4xl = 56rem, 224px wider. `lg` is the size that resolves to the
+      // same 42rem v2 painted.
+      size="lg"
       preventScroll={false}
       onOpenChange={e => {
         if (!e.open) {
@@ -91,7 +97,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 void handleSubmit(onSubmit)(event);
               }}
             >
-              <Dialog.CloseTrigger />
+              {/* Was a childless <Dialog.CloseTrigger/>, which draws no X at
+                  all. See DialogCloseButton for what v2 painted here. */}
+              <DialogCloseButton />
               <Dialog.Body
                 p={{
                   base: 4,

@@ -137,7 +137,10 @@ const CodeSnippet: FC<ICodeSnippetProps> = ({
         w="full"
         transition="box-shadow 0.2s cubic-bezier(0.000, 0.735, 0.580, 1.000)"
         css={{
-          '& & textarea:focus': {
+          // One ampersand: emotion expands each `&` to this element's own
+          // class, so `& & textarea:focus` was `.css-x .css-x textarea:focus`
+          // and never matched, leaving the editor's focus outline showing.
+          '& textarea:focus': {
             outline: 'none'
           }
         }}

@@ -23,8 +23,17 @@ export const ComponentInfo: React.FC<ComponentInfoProps> = ({ items }) => (
     <Portal>
       <Menu.Positioner>
         <Menu.Content>
+          {/* The value is the item's DOM id in v3 (zag composes
+              `${menuId}/${value}` and resolves the select listener with
+              getElementById), so the codemod's literal "item-0" gave every
+              entry the same id and only the first one could be picked. The
+              label is already the React key and is unique per menu. */}
           {items.map(item => (
-            <Menu.Item key={item.label} onSelect={item.onClick} value="item-0">
+            <Menu.Item
+              key={item.label}
+              onSelect={item.onClick}
+              value={item.label}
+            >
               {item.label}
             </Menu.Item>
           ))}

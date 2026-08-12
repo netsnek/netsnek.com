@@ -93,7 +93,9 @@ export const SearchResultItem: FC<{
           display="flex"
           alignItems="center"
           css={{
-            '& & svg': {
+            // One ampersand: emotion expands each `&` to this element's own
+            // class, so `& & svg` was `.css-x .css-x svg` and never matched.
+            '& svg': {
               stroke: 'features.search.section.item.icon.color',
               verticalAlign: 'middle'
             }

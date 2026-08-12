@@ -120,7 +120,12 @@ const StepperItem: FC<IStepperItemProps> = ({
           borderRadius="full"
           fontSize="16px"
           border="3px solid"
-          borderColor="chakra-body-bg"
+          // v2 built-in, gone in v3. `chakra-body-bg` was
+          // {_light: white, _dark: gray.800}, and `shared.body.bgColor` is the
+          // same pair — semanticTokens/shared.ts says so in as many words. The
+          // ring punches the icon out of the connector line drawn above, so
+          // losing it to currentColor inverted the cut-out.
+          borderColor="shared.body.bgColor"
           color="components.stepper.item.icon.color"
           asChild
         >

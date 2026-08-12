@@ -102,7 +102,16 @@ const colorModes = [
   { id: 'dark', messageId: 'ThemeDark', defaultMessage: 'Dunkel' },
   { id: 'system', messageId: 'ThemeSystem', defaultMessage: 'System' }
 ] as const;
-//TODO: Fix system color mode toggle (doesnt work - doesnt stay in sync with system)
+// TODO: the System row still cannot be chosen. All three rows call
+// toggleColorMode, which only ever writes 'light' or 'dark', and the check is
+// against currentColorMode, which is the RESOLVED mode ('light' | 'dark') — so
+// System never selects system and never shows the tick. That is v2's behaviour
+// verbatim and is left alone here on purpose, this pass being a like-for-like
+// v3 migration. The original reason recorded for it no longer holds: once
+// 'system' IS set, next-themes keeps it in sync with the OS through a
+// matchMedia listener. Fixing it needs onSelect={() => setColorMode(mode.id)}
+// plus the preference (next-themes' `theme`) rather than the resolved mode to
+// compare against, which the jaen seam does not hand out yet.
 /**
  * Memoized color mode menu items.
  */
@@ -123,7 +132,14 @@ const MemoizedColorModeMenuItems = memo<{
               position="relative"
               disabled={isCurrentColorMode}
               onSelect={!isCurrentColorMode ? toggleColorMode : undefined}
-              value="item-0"
+              // The codemod stamped the literal "item-0" on all three. In v3
+              // the value IS the item's DOM id (zag builds `${menuId}/${value}`
+              // and resolves both the select listener and the highlight by
+              // getElementById), so three identical values collapse the rows
+              // onto one node: all three paint data-highlighted together and
+              // only the first one's handler ever fires. mode.id is already the
+              // stable, untranslated key this list is keyed on.
+              value={mode.id}
             >
               {intl.formatMessage({
                 id: mode.messageId,
