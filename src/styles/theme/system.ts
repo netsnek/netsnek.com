@@ -153,6 +153,25 @@ export const siteConfig = defineConfig({
   // Comes back out once the Tailwind bundle is gone.
   disableLayers: true,
   theme: {
+    /**
+     * The one-shot flash the two brand patterns play under the pointer.
+     *
+     * It replaces `animate={{opacity: [0, 1, 0]}}` with
+     * `transition={{duration: 1, times: [0, 0, 1]}}` from framer-motion, which
+     * is a value list whose second and third stops share t=0: the arrow is
+     * fully lit at the first frame and fades to nothing across the second. As
+     * a keyframe pair that is simply 1 to 0 over one second.
+     *
+     * Declared once here rather than twice in the components, because
+     * ArrowPattern and GridPattern play the identical animation and framer was
+     * the only thing they still needed a 367 KB dependency for.
+     */
+    keyframes: {
+      'brand-flash': {
+        from: {opacity: 1},
+        to: {opacity: 0}
+      }
+    },
     // v3 moved lg from 62em (992px) to 1024px. Pinned, or every responsive
     // array in the site shifts at a width nobody chose.
     breakpoints: {

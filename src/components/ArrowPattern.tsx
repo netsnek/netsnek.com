@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { chakra } from '@chakra-ui/react';
 
 /**
@@ -66,7 +65,7 @@ function Arrow({
   const y = HALF * (i - j) * scale;
 
   return (
-    <motion.path
+    <chakra.path
       transform={`translate(${x} ${y}) scale(${scale})`}
       d={ARROW_PATH}
       {...props}
@@ -183,9 +182,11 @@ export function ArrowPattern({
             i={i}
             j={j}
             size={size}
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 1, times: [0, 0, 1] }}
-            onAnimationComplete={() => {
+            // The flash is a theme keyframe now, and the DOM event that ends
+            // it is what retires the arrow. framer's onAnimationComplete and
+            // the browser's animationend fire at the same moment.
+            animation="brand-flash 1s linear forwards"
+            onAnimationEnd={() => {
               setLitArrows(arrows => arrows.filter(a => a[2] !== key));
             }}
           />
