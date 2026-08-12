@@ -167,6 +167,23 @@ export const siteConfig = defineConfig({
      * the only thing they still needed a 367 KB dependency for.
      */
     keyframes: {
+      /**
+       * The hero's entry, as a CSS animation rather than a JS-gated one.
+       *
+       * FadeIn normally waits for an IntersectionObserver, which cannot run
+       * before hydration. Above the fold that is fatal: an element at opacity 0
+       * is not an LCP candidate, so the largest text on the page only became
+       * eligible once the whole bundle had executed. Measured at 412px with a
+       * 4x CPU throttle, the hero sat at opacity 0 for more than 16 seconds,
+       * in v2 exactly as in v3, and LCP landed at 23.7 s.
+       *
+       * Declared here it is part of the server-rendered stylesheet, so it
+       * starts when the CSS is parsed. Same 500ms, same 24px rise.
+       */
+      'fade-rise': {
+        from: {opacity: 0, transform: 'translateY(24px)'},
+        to: {opacity: 1, transform: 'none'}
+      },
       'brand-flash': {
         from: {opacity: 1},
         to: {opacity: 0}

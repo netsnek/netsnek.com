@@ -40,15 +40,27 @@ const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export const FadeIn = forwardRef<HTMLDivElement, any>(function FadeIn(
-  {className, style, children, ...props},
+  {className, style, children, immediate, ...props},
   ref
 ) {
   const own = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
+
+  /**
+   * `immediate` is for anything above the fold.
+   *
+   * The observer cannot fire before hydration, and until it does the element
+   * sits at opacity 0, which disqualifies it as an LCP candidate. For content
+   * that is on screen at load there is nothing to observe anyway: it is
+   * already in view. A plain CSS animation plays from the moment the
+   * stylesheet is parsed and needs no JavaScript at all.
+   */
   const stagger = useContext(StaggerContext);
   const index = useRef<number>(0);
 
   useEffect(() => {
+    if (immediate) return;
+
     const el = own.current;
     if (!el) return;
 
@@ -78,9 +90,25 @@ export const FadeIn = forwardRef<HTMLDivElement, any>(function FadeIn(
     return () => {
       io.disconnect();
     };
-  }, [stagger]);
+  }, [stagger, immediate]);
 
   const travel = prefersReducedMotion() ? '0' : '24px';
+
+  if (immediate) {
+    return (
+      <div
+        {...props}
+        ref={node => {
+          own.current = node;
+          if (typeof ref === 'function') ref(node);
+          else if (ref) (ref as any).current = node;
+        }}
+        className={className}
+        style={{animation: 'fade-rise 500ms ease both', ...style}}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div

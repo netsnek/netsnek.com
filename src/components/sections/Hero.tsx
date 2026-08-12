@@ -100,14 +100,14 @@ const Hero: FC = () => {
       >
         <Container>
           <Box position="relative" gridArea="image" asChild>
-            <FadeIn>
+            <FadeIn immediate>
               {/* Tablet and mark are one editable drawing now, and the styles
                   the hero used to hand down are rules inside it. */}
               <HeroShowcase />
             </FadeIn>
           </Box>
           <VStack gap={4} align="left" gridArea="content" asChild>
-            <FadeIn>
+            <FadeIn immediate>
               <Box>
                 {/* asAs, because a field guesses h2 for anything wrapped in a
                     Heading and this line sits above the headline, not on it.
