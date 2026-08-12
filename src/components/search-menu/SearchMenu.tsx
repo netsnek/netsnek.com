@@ -1,6 +1,5 @@
 import {
   Center,
-  ChakraProvider,
   VStack,
   useDisclosure,
   Text,
@@ -19,7 +18,6 @@ import {
   useState
 } from 'react';
 import useSearch from '../../hooks/use-search';
-import { chromeSystem } from '../../styles/theme/system';
 import {
   SearchResultSection,
   SearchResultSectionTitle
@@ -308,13 +306,22 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
 
   return (
     /**
-     * chromeSystem, not system. SearchMenu is mounted through the Toolbar
-     * shadow inside jaen's frame, so it also renders on CMS routes. v2 gave it
-     * a bare ThemeProvider, which re-provided variables and nothing else; in v3
-     * a provider is also the global-style emitter, so the full system here
-     * would push the site's html and body rules onto every CMS route.
+     * No provider of its own. It used to carry `chromeSystem` so that the CMS
+     * routes, where Layout mounts no site system, would still resolve the
+     * site's tokens.
+     *
+     * The cost of putting it here was that SearchMenu renders in four places
+     * (TopNav, AltTopNav twice, MobileNavDrawer) and each mount emitted the
+     * complete token block again. On the home page that was two identical
+     * 66.4 KB blocks on top of the 68.0 KB the site system already emits, for
+     * variables that were byte for byte the same. In v3 a provider is also the
+     * global-style emitter, so every extra provider is another full copy.
+     *
+     * Those three call sites all sit inside Layout's site provider already.
+     * Only the CMS path needs its own, so the provider moved to the Toolbar
+     * shadow, which is the only mount that renders inside jaen's frame.
      */
-    <ChakraProvider value={chromeSystem}>
+    <>
       <SearchButton openModal={onOpen} navigate={handleNavigate} {...props} />
       <SearchModal
         defaultQuery={searchQuery}
@@ -326,7 +333,7 @@ const SearchMenu: FC<SearchMenuProps> = ({ ...props }) => {
         handleNavigate={handleNavigate}
         openActiveItem={handleOpenActiveItem}
       />
-    </ChakraProvider>
+    </>
   );
 };
 
