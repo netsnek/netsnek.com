@@ -271,7 +271,20 @@ export const HeroEditorTabs: FC<TabsProps> = ({ tabs, selectedTab, stats }) => {
             overflow: 'visible'
           },
 
-          '& .cm-editor': { height: { base: '320px', md: '420px' } },
+          // The breakpoint sits OUTSIDE the selector, not inside it.
+          //
+          // v2 accepted `{'.cm-editor': {height: {base, md}}}` because emotion
+          // resolved the responsive object wherever it found it. v3's `css`
+          // prop treats an object under a nested selector as another nesting
+          // level, so `height` became part of the selector and the rule came
+          // out as `.css-x .cm-editor height {}` — well-formed enough to be
+          // parsed and dropped, which is why the editor grew to the height of
+          // its own content and lost its scrollbar.
+          '& .cm-editor': { height: '320px' },
+          '@media (min-width: 48em)': {
+            '& .cm-editor': { height: '420px' }
+          },
+
 
           '& .cm-scroller': {
             fontSize: '12px',
