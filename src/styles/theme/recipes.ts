@@ -213,9 +213,13 @@ export const containerRecipe = defineRecipe({
  *               v2's `md` was 16px, so every button that does not name a size
  *               shrank. The scale below is v2's own, from
  *               @chakra-ui/theme components/button.js.
- * `gap`         v2 had none and spaced button icons with margins, which the
- *               call sites still set. v3 adds `gap` on top of those margins,
- *               so icon buttons gained a second, doubled gutter.
+ * `gap`         v2 declared none on the button and spaced icons with the
+ *               `chakra-button__icon` span's own `margin-inline-end: 0.5rem`.
+ *               The codemod turned every `leftIcon`/`rightIcon` into a plain
+ *               child, so that span is gone and the margin with it. `0` left
+ *               the cart button on /products/ reading "IN DEN WARENKORB" with
+ *               the trolley glued to the T. 8px is what v2 actually rendered,
+ *               measured on that button, so 8px is what goes here.
  *
  * `h`, `minW` and `px` are v2's too: v3 moved xs from 6 to 8, sm from 8 to 9
  * and lg from 12 to 11, and shifted their paddings with them.
@@ -233,10 +237,10 @@ export const buttonRecipe = defineRecipe({
      * lets both values through. Verified against system.cva for every size.
      */
     size: {
-      lg: { textStyle: '', h: '12', minW: '12', fontSize: 'lg', px: '6', gap: 0, lineHeight: 1.2 },
-      md: { textStyle: '', h: '10', minW: '10', fontSize: 'md', px: '4', gap: 0, lineHeight: 1.2 },
-      sm: { textStyle: '', h: '8', minW: '8', fontSize: 'sm', px: '3', gap: 0, lineHeight: 1.2 },
-      xs: { textStyle: '', h: '6', minW: '6', fontSize: 'xs', px: '2', gap: 0, lineHeight: 1.2 }
+      lg: { textStyle: '', h: '12', minW: '12', fontSize: 'lg', px: '6', gap: 2, lineHeight: 1.2 },
+      md: { textStyle: '', h: '10', minW: '10', fontSize: 'md', px: '4', gap: 2, lineHeight: 1.2 },
+      sm: { textStyle: '', h: '8', minW: '8', fontSize: 'sm', px: '3', gap: 2, lineHeight: 1.2 },
+      xs: { textStyle: '', h: '6', minW: '6', fontSize: 'xs', px: '2', gap: 2, lineHeight: 1.2 }
     },
     variant: {
       /**
