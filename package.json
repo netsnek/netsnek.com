@@ -30,6 +30,7 @@
     "gatsby": "^5.11.0",
     "gatsby-jaen-emailwerk": "link:../jaen/packages/gatsby-jaen-emailwerk",
     "gatsby-plugin-cloudflare-pages": "^1.0.3",
+    "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-jaen": "link:../jaen/packages/gatsby-plugin-jaen",
     "gatsby-source-jaen": "link:../jaen/packages/gatsby-source-jaen",
     "github-slugger": "^2.0.0",

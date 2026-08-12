@@ -9,6 +9,37 @@ import {
 import { Field } from 'jaen';
 import { useIntl } from 'react-intl';
 
+/**
+ * What the two card pictures actually occupy, derived from the containers
+ * rather than from the eye.
+ *
+ * index.tsx wraps this section in `<Container maxW="5xl">`, whose recipe pads
+ * `4` (16px) a side, so its content box is `min(100vw, 1024px) - 32px`. The
+ * `<Container maxW="6xl">` below pads `5` (20px) at base and nothing from lg
+ * (992px) up, and never reaches its own 72rem. The grid is one column at base
+ * and two from lg with a gap of `10` (40px), and each card pads `6` (24px a
+ * side). So the picture box is
+ *
+ *   base        100vw - 32 - 40 - 48            =  100vw - 120px
+ *   lg ≥992px   (992 - 32 - 40) / 2 - 48        =  412px
+ *   ≥1024px     the container stops growing:       428px
+ *
+ * against the `sizes="100vw"` that jaen's page fragment declares, because it
+ * asks for `gatsbyImageData(layout: FULL_WIDTH)`.
+ *
+ * Be clear about what this does and does not buy. The srcset that fragment
+ * produces starts at 750w — FULL_WIDTH's breakpoints are 750, 1080, 1366,
+ * 1920, capped at the source width — so on the 412px / 1.75x profile
+ * PageSpeed emulates, the browser already picks the smallest candidate there
+ * is and this changes nothing for that run. It does stop a 1x desktop from
+ * fetching the 1600w variant for a 428px box, and a 2x phone from fetching
+ * 1080w for a 292px one. Closing the rest needs a candidate below 750w, i.e.
+ * breakpoints that only jaen's fragment or gatsby-plugin-sharp's `defaults`
+ * can supply.
+ */
+const SERVICE_CARD_IMAGE_SIZES =
+  '(min-width: 992px) 428px, calc(100vw - 120px)';
+
 const Services = () => {
   const intl = useIntl();
 
@@ -64,6 +95,7 @@ const Services = () => {
                   defaultMessage: 'Beratung'
                 })}
                 objectFit="cover"
+                sizes={SERVICE_CARD_IMAGE_SIZES}
               />
             </Box>
             <Field.Text
@@ -111,6 +143,7 @@ const Services = () => {
                   defaultMessage: 'Entwicklung'
                 })}
                 objectFit="cover"
+                sizes={SERVICE_CARD_IMAGE_SIZES}
               />
             </Box>
             <Field.Text

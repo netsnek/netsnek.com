@@ -166,10 +166,23 @@ const Open: FC = () => {
                   picture, so the glow has to sit on a box outside of it. On
                   the picture itself the drop shadow would be cut off at the
                   edge of the penguin. That outer box carries the size too:
-                  the field only knows how to fill what it is given. */}
+                  the field only knows how to fill what it is given.
+
+                  It carries the height as well, through aspectRatio.
+                  `OpenTuxImage` has no media node, so the field renders its
+                  fallback branch: a bare `<img src="/images/carinthian-tux.svg">`
+                  with no width and no height attribute, which is what
+                  PageSpeed reports under "Image elements do not have explicit
+                  width and height". The media library is no answer here — the
+                  file is an SVG, sharp does not process one, and it would come
+                  back out of the CMS as the same undimensioned `<img>`. The
+                  bytes are not the problem either, only the missing box.
+                  `187.50363 / 226.96191` is the viewBox of the file, so the
+                  reserved height matches what the picture paints. */}
               <Box
                 position="relative"
                 w={{ base: '180px', md: '220px', lg: '260px' }}
+                aspectRatio="187.50363 / 226.96191"
                 maxW="full"
                 filter="drop-shadow(0 0 26px rgba(247, 127, 0, 0.35))"
               >
