@@ -84,3 +84,4 @@ https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACAx5opLMW0YOQiFFZ3wiHKS4M7TfEowAC
 https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACAx9opMfxu6NmKE64UYBciAv22DIVJgACihoAAg7DKFF_5DCS87yYHy8E
 patches/docs-restructure.json
 patches/homepage-images.json
+patches/docs-card-images.json

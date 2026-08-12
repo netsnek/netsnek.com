@@ -199,15 +199,122 @@ find public -name '*.html' -exec grep -l -- "/images/services/beratung.jpg" {} +
 That must be zero. The path still appears in the JS bundles, which is correct,
 that is the `defaultValue` literal compiled into the component.
 
+## Page metadata images are optimised too, since 2026-08-12
+
+The pitfall below used to end with "fixing those needs a code change". That
+change has been made, in jaen. `jaenPageMetadata` now carries the picture in
+two shapes at once and one component renders whichever it finds.
+
+### The shape
+
+```json
+"jaenPageMetadata": {
+  "image": "https://netsnek.com/images/docs/photonq.jpg",
+  "imageId": "d822d6ed-cbf1-5182-a041-089aad4c366a"
+}
+```
+
+- `image` is the address, and stays a `String` forever. Every page published
+  before this change carries only this, the ~80 patches in `patches.txt`
+  cannot be rewritten, and it is what `jaen`'s `Head` puts into `og:image`,
+  `twitter:image`, `<meta name="image">` and the schema.org JSON. Do not
+  replace it, do not turn it into an object.
+- `imageId` is a media library id. The build resolves it to
+  `jaenPageMetadata.imageFile.childImageSharp.gatsbyImageData` through the
+  `jaenMetadataImage` field extension in
+  `../jaen/packages/gatsby-source-jaen/src/create-schema-customization/jaen-page.ts`.
+- A page with **no** `imageId` whose `image` happens to be a media library url
+  is resolved by url instead. That is not politeness, it is recovery: picking
+  an image in Page Settings used to store nothing but the url. Measured here,
+  20 built pages got the optimised path from that alone, with no data change.
+
+### Rendering it
+
+Never branch on the shape yourself. `jaen` exports two things:
+
+- `<PageMetadataImage metadata={...} alt={...} sizes={...} />` renders a
+  `GatsbyImage` when the picture came from the media library and the same
+  plain `<Image>` as before when it did not.
+- `resolvePageMetadataImage(metadata)` is the pure selector behind it,
+  returning `{gatsbyImageData?, src?}`. Use it when you need a plain url, or
+  merely to ask "is there a picture at all" — `src/hooks/use-docs-pages.tsx`
+  uses it for exactly that, so a section without any image still falls back to
+  the lettered plate.
+
+`src/components/sections/Blog.tsx` is the worked example.
+
+**Pass `sizes`.** The shared fragment asks for `layout: CONSTRAINED, width:
+800`, which declares `(min-width: 800px) 800px, 100vw`. The homepage cards are
+about 320 px wide, so `Blog.tsx` passes
+`sizes="(min-width: 1024px) 320px, (min-width: 480px) 50vw, 100vw"` and the
+browser picks the 400w candidate instead of the 800w one. Measured on
+photonq.jpg: 400w AVIF is 20 831 B against 47 806 B for 800w.
+
+### Adding a metadata image to a page
+
+Steps 3 and 4 of the `Field.Image` procedure above are unchanged: upload to
+`https://osg.snek.at/storage`, then write the media node under
+`JaenPage /cms/media/`. Two things differ:
+
+- **One media node per file is enough.** A metadata image is resolved globally
+  by media id, so it does not need the one-node-per-localized-page treatment
+  `Field.Image` needs (that one only ever reads `jaenPage.mediaNodes` of the
+  page it renders on). Five files backed all thirty localized docs sections
+  here. `jaenPageId` can be left out entirely; the media library still lists
+  the node, only its per-page filter does not find it. Leaving it out also
+  keeps the node out of every `mediaNodes` array in `page-data`.
+- **Set `imageId` and leave `image` alone.** The old address stays the social
+  preview url. Overwriting it would change what Facebook and X fetch for no
+  reason at all.
+
+`jaen-data/patches/docs-card-images.json` is the worked example: five media
+nodes and thirty two-line page entries.
+
+### What it cost
+
+`public/page-data/index/page-data.json` grew from 4 109 325 to 4 752 427 bytes,
++643 102 raw and +65 148 gzipped, because `imageFile` sits in the shared
+`JaenPageDataStructure` fragment and the homepage query pulls
+`allJaenPage { nodes { ...JaenPageData children { ...JaenPageData } } }`, i.e.
+every page's full data several times over. Against that, the six cards (five
+distinct files) stopped downloading 571 230 bytes of original JPEG and now
+fetch 44 332 bytes of AVIF on a 1x screen or 103 537 on a 2x one, i.e. 92 or
+82 percent less, of already-compressed bytes. Net clearly positive, but the
+JSON figure is the reason not to widen that fragment further without
+measuring. The duplication is netsnek.com's query, not jaen's fragment.
+
 ## Pitfalls hit while doing this
 
 **Not every static image sits behind a `Field.Image`.** The docs preview images
 on the homepage card grid (`/images/docs/photonq.jpg` and friends) come from
-`jaenPageMetadata.image`, a plain string on the page metadata, rendered by
-`src/components/sections/Blog.tsx` as `<Image src={section.image}>`. That is not
-a jaen field, it has no media id, and putting the file in the media library does
-nothing for it. Fixing those needs a code change in `Blog.tsx`, not a CMS
-change. Check what the markup actually is before assuming the CMS can fix it.
+`jaenPageMetadata.image`, a plain string on the page metadata, which
+`src/components/sections/Blog.tsx` used to render as
+`<Image src={section.image}>`. That is not a jaen field, it has no media id,
+and putting the file in the media library did nothing for it — until the
+metadata grew `imageId`, see the section above. Check what the markup actually
+is before assuming the CMS can fix it.
+
+**A backtick inside a GraphQL comment ends the template literal.** The
+fragments live in a `graphql\`...\`` tag, so a comment mentioning a prop in
+backticks turns into `ERROR #85911 GRAPHQL.EXTRACTION: There was a problem
+parsing <file>`, which says nothing about backticks and points at the whole
+file. Every fragment in it silently disappears and every query that used one
+fails with "The fragment X does not exist".
+
+**Changing a linked jaen plugin deletes the whole gatsby cache.** The first
+build after touching `../jaen/packages/gatsby-source-jaen` prints "as a
+precaution, we're deleting your site's cache" and wipes `.cache` *and*
+`public`. Back up anything in `public/` you wanted to compare against before
+building, and expect that build to re-download every media file.
+
+**A media File node can outlive its download.** On the cold build that
+followed, six media files were present as `File` nodes but missing from
+`.cache/caches/gatsby-source-filesystem/`, and sharp brought the entire build
+down with `ENOENT`. The `jaenMetadataImage` resolver now checks
+`fs.existsSync` and returns null instead, so a missing media file degrades to
+the unoptimised address rather than failing the build. The same cold build also
+hit a one-off `Failed to write ... into public/static/...` from
+gatsby-plugin-sharp; a plain re-run fixed both.
 
 **Localized pages are separate CMS pages.** `JaenPage /en/` had no jaen fields
 at all before this change, the whole English homepage came from `react-intl`

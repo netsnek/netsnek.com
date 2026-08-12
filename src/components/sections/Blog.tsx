@@ -5,13 +5,12 @@ import {
   Flex,
   Grid,
   Heading,
-  Image,
   LinkBox,
   LinkOverlay,
   Text
 } from '@chakra-ui/react';
 import { Link as GatsbyLink } from 'gatsby';
-import { Field } from 'jaen';
+import { Field, PageMetadataImage } from 'jaen';
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
 
@@ -47,7 +46,25 @@ const BlogCard: FC<{ section: DocsSection }> = ({ section }) => {
     >
       <AspectRatio ratio={16 / 9}>
         {section.image ? (
-          <Image src={section.image} alt={section.title} />
+          // Both metadata shapes render through one component. A section
+          // whose CMS page carries a media id gets a GatsbyImage with AVIF
+          // and WebP sources and a srcset; one that still carries only an
+          // address gets the same plain <img> as before. On this grid both
+          // happen at once: the six cards are backed by five media library
+          // images, while /docs still lists sections that never got one.
+          //
+          // The srcset is worth nothing without a truthful `sizes`. The grid
+          // is 3 columns from lg, 2 from sm, 1 below, inside a maxW="5xl"
+          // container, so a card is about 320px wide on a desktop and the
+          // fragment's CONSTRAINED default of "(min-width: 800px) 800px"
+          // would have the browser fetch more than twice the pixels it needs.
+          <PageMetadataImage
+            metadata={section.image}
+            alt={section.title}
+            objectFit="cover"
+            style={{ height: '100%', width: '100%' }}
+            sizes="(min-width: 1024px) 320px, (min-width: 480px) 50vw, 100vw"
+          />
         ) : (
           // Direction on bgGradient, stops on gradientFrom/To. v2's
           // `linear(...)` string is still assignable and still silently

@@ -1,0 +1,269 @@
+{
+ "message": "Serve the docs section preview images from the media library",
+ "createdAt": "2026-08-12T22:45:00.000Z",
+ "data": {
+  "pages": [
+   {
+    "id": "JaenPage /cms/media/",
+    "jaenFields": {
+     "IMA:MEDIA_NODES": {
+      "media_nodes": {
+       "value": {
+        "d822d6ed-cbf1-5182-a041-089aad4c366a": {
+         "id": "d822d6ed-cbf1-5182-a041-089aad4c366a",
+         "fileUniqueId": "AgADjxsAAsMs6VM",
+         "createdAt": "2026-08-12T22:45:00.000Z",
+         "modifiedAt": "2026-08-12T22:45:00.000Z",
+         "description": "photonq.jpg",
+         "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBEBqfNoiU3ChTpQSjwPpgAaiwMJ1WAACjxsAAsMs6VP-eP1LtFQiTy8E",
+         "preview": {
+          "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEQGp82iJTcKFOlBKPA-mABqLAwnVYAAKPGwACwyzpU_54_Uu0VCJPAQAHbQADLwQ"
+         },
+         "width": 1200,
+         "height": 1200,
+         "revisions": []
+        },
+        "aca8a3ca-1f2d-57d5-87d2-9de4f0c63cc3": {
+         "id": "aca8a3ca-1f2d-57d5-87d2-9de4f0c63cc3",
+         "fileUniqueId": "AgADkBsAAsMs6VM",
+         "createdAt": "2026-08-12T22:45:00.000Z",
+         "modifiedAt": "2026-08-12T22:45:00.000Z",
+         "description": "jaen.jpg",
+         "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBEFqfNojVP1Bt2vHdg9LuBgb9WDtiwACkBsAAsMs6VNDkRuBKrVFzi8E",
+         "preview": {
+          "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEQWp82iNU_UG3a8d2D0u4GBv1YO2LAAKQGwACwyzpU0ORG4EqtUXOAQAHbQADLwQ"
+         },
+         "width": 1200,
+         "height": 800,
+         "revisions": []
+        },
+        "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5": {
+         "id": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5",
+         "fileUniqueId": "AgADkRsAAsMs6VM",
+         "createdAt": "2026-08-12T22:45:00.000Z",
+         "modifiedAt": "2026-08-12T22:45:00.000Z",
+         "description": "docs.jpg",
+         "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBEJqfNojyAHspbiHKJrhMsSyiLp5PQACkRsAAsMs6VPV_lcbKQRXRC8E",
+         "preview": {
+          "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEQmp82iPIAeyluIcomuEyxLKIunk9AAKRGwACwyzpU9X-VxspBFdEAQAHbQADLwQ"
+         },
+         "width": 1200,
+         "height": 733,
+         "revisions": []
+        },
+        "0a1aee79-d0c1-5333-b7d5-9bff9649026c": {
+         "id": "0a1aee79-d0c1-5333-b7d5-9bff9649026c",
+         "fileUniqueId": "AgADkhsAAsMs6VM",
+         "createdAt": "2026-08-12T22:45:00.000Z",
+         "modifiedAt": "2026-08-12T22:45:00.000Z",
+         "description": "qtamp.jpg",
+         "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBENqfNokBZeir1p7lOPudNhqLCHaygACkhsAAsMs6VOh7ifeeB9q7i8E",
+         "preview": {
+          "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIEQ2p82iQFl6KvWnuU4-502GosIdrKAAKSGwACwyzpU6HuJ954H2ruAQAHbQADLwQ"
+         },
+         "width": 1200,
+         "height": 630,
+         "revisions": []
+        },
+        "b0199fd8-679a-5373-a695-e8653f2902a8": {
+         "id": "b0199fd8-679a-5373-a695-e8653f2902a8",
+         "fileUniqueId": "AgADkxsAAsMs6VM",
+         "createdAt": "2026-08-12T22:45:00.000Z",
+         "modifiedAt": "2026-08-12T22:45:00.000Z",
+         "description": "security.jpg",
+         "url": "https://osg.snek.at/storage/BQACAgQAAx0Ed6zoewACBERqfNokkTqdjT6xUnPCzu8zhpe0sgACkxsAAsMs6VMIAkHUonlv4y8E",
+         "preview": {
+          "url": "https://osg.snek.at/storage/AAMCBAADHQR3rOh7AAIERGp82iSROp2NPrFSc8LO7zOGl7SyAAKTGwACwyzpUwgCQdSieW_jAQAHbQADLwQ"
+         },
+         "width": 1200,
+         "height": 800,
+         "revisions": []
+        }
+       }
+      }
+     }
+    }
+   },
+   {
+    "id": "JaenPage b70b56f2-3f26-572f-bb6a-0b640d6dd033",
+    "jaenPageMetadata": {
+     "imageId": "d822d6ed-cbf1-5182-a041-089aad4c366a"
+    }
+   },
+   {
+    "id": "JaenPage b26a5581-733d-51d6-87d1-2ebaa855095f",
+    "jaenPageMetadata": {
+     "imageId": "d822d6ed-cbf1-5182-a041-089aad4c366a"
+    }
+   },
+   {
+    "id": "JaenPage acafb787-d289-5ed4-9d16-4790f8ffbdf3",
+    "jaenPageMetadata": {
+     "imageId": "d822d6ed-cbf1-5182-a041-089aad4c366a"
+    }
+   },
+   {
+    "id": "JaenPage dcaece63-8a0f-5000-ae56-01d2c3d76c92",
+    "jaenPageMetadata": {
+     "imageId": "d822d6ed-cbf1-5182-a041-089aad4c366a"
+    }
+   },
+   {
+    "id": "JaenPage 9fb0398f-4f70-5727-ad6c-7c82a534f122",
+    "jaenPageMetadata": {
+     "imageId": "d822d6ed-cbf1-5182-a041-089aad4c366a"
+    }
+   },
+   {
+    "id": "JaenPage 21d5cba8-111b-5a6b-965b-4e7507ce75fd",
+    "jaenPageMetadata": {
+     "imageId": "aca8a3ca-1f2d-57d5-87d2-9de4f0c63cc3"
+    }
+   },
+   {
+    "id": "JaenPage eb60a80f-22eb-530d-8806-c37d823cf30b",
+    "jaenPageMetadata": {
+     "imageId": "aca8a3ca-1f2d-57d5-87d2-9de4f0c63cc3"
+    }
+   },
+   {
+    "id": "JaenPage 63c495ab-7ba9-5fb5-9313-1a2571bc87b6",
+    "jaenPageMetadata": {
+     "imageId": "aca8a3ca-1f2d-57d5-87d2-9de4f0c63cc3"
+    }
+   },
+   {
+    "id": "JaenPage 9b3b467f-680a-56d3-8f84-18589d0bf3f1",
+    "jaenPageMetadata": {
+     "imageId": "aca8a3ca-1f2d-57d5-87d2-9de4f0c63cc3"
+    }
+   },
+   {
+    "id": "JaenPage f53f58c7-cdd6-5ad2-9f15-fff2be7673bf",
+    "jaenPageMetadata": {
+     "imageId": "aca8a3ca-1f2d-57d5-87d2-9de4f0c63cc3"
+    }
+   },
+   {
+    "id": "JaenPage 01e6e81b-6340-5933-9e8f-2d913b9d486c",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage 7f37d693-27d8-5ea4-a459-aa6f6da64901",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage 6c322f0e-705b-5582-a769-56dce28849a6",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage 83956923-48cd-58d0-98cd-34e82150b82e",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage b8e15850-dcdf-5234-9fb0-bfe3d3b3d38c",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage fd2869a0-6344-5b2c-a02f-8e53143be3d9",
+    "jaenPageMetadata": {
+     "imageId": "0a1aee79-d0c1-5333-b7d5-9bff9649026c"
+    }
+   },
+   {
+    "id": "JaenPage 67cd040c-b85d-5f80-b124-64709127ea19",
+    "jaenPageMetadata": {
+     "imageId": "0a1aee79-d0c1-5333-b7d5-9bff9649026c"
+    }
+   },
+   {
+    "id": "JaenPage e41fc7ee-dbfd-57a5-a26e-df178b4a759a",
+    "jaenPageMetadata": {
+     "imageId": "0a1aee79-d0c1-5333-b7d5-9bff9649026c"
+    }
+   },
+   {
+    "id": "JaenPage b3a4dfca-222c-517d-92c0-2f09fe119470",
+    "jaenPageMetadata": {
+     "imageId": "0a1aee79-d0c1-5333-b7d5-9bff9649026c"
+    }
+   },
+   {
+    "id": "JaenPage e1596f8a-f169-54a7-b51d-50fd5cdb6eac",
+    "jaenPageMetadata": {
+     "imageId": "0a1aee79-d0c1-5333-b7d5-9bff9649026c"
+    }
+   },
+   {
+    "id": "JaenPage f0ef4c1e-103e-55fe-8b98-7a60b69aaeb6",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage 5ce6645b-ee3e-53a6-bc53-4381bded0795",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage 10160160-8e6a-57ae-ada8-753328be6873",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage caaf7be4-539d-5266-9798-a728c246efdf",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage 13766090-5f03-57ec-afe9-8f8d68db533b",
+    "jaenPageMetadata": {
+     "imageId": "74b3f8f4-dd91-5dc1-9e08-512063ba5bd5"
+    }
+   },
+   {
+    "id": "JaenPage b030042e-f28f-599d-ae1e-a51311a7fc92",
+    "jaenPageMetadata": {
+     "imageId": "b0199fd8-679a-5373-a695-e8653f2902a8"
+    }
+   },
+   {
+    "id": "JaenPage 92d24f79-b180-5a24-8195-c289c49ccb5f",
+    "jaenPageMetadata": {
+     "imageId": "b0199fd8-679a-5373-a695-e8653f2902a8"
+    }
+   },
+   {
+    "id": "JaenPage 172a8dc6-fe6e-5dd1-9c67-7c4b0d37ac28",
+    "jaenPageMetadata": {
+     "imageId": "b0199fd8-679a-5373-a695-e8653f2902a8"
+    }
+   },
+   {
+    "id": "JaenPage 81ba4b4b-a867-575f-b48e-526a87d85bac",
+    "jaenPageMetadata": {
+     "imageId": "b0199fd8-679a-5373-a695-e8653f2902a8"
+    }
+   },
+   {
+    "id": "JaenPage 03f9d95b-c2da-58de-bceb-af0bccc1eb88",
+    "jaenPageMetadata": {
+     "imageId": "b0199fd8-679a-5373-a695-e8653f2902a8"
+    }
+   }
+  ]
+ }
+}

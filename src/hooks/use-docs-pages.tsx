@@ -1,5 +1,9 @@
 import { useMemo } from 'react';
-import { useJaenPageIndex } from 'jaen';
+import {
+  resolvePageMetadataImage,
+  useJaenPageIndex,
+  type JaenPageMetadataImage
+} from 'jaen';
 
 import { useLocalizeHref, usePageLocale } from '../contexts/locale';
 import { defaultLocale } from '../locales/messages';
@@ -18,8 +22,13 @@ export interface DocsSection {
   title: string;
   /** Description of the section in the current locale (may be empty). */
   description: string;
-  /** Preview image from `jaenPageMetadata.image`, when the CMS carries one. */
-  image?: string;
+  /**
+   * The preview image of the section, in whichever shape the CMS stored it:
+   * a media library reference that the build serves through sharp, or the
+   * plain address older pages carry. Hand it to `PageMetadataImage`, which
+   * is the only place that knows the difference.
+   */
+  image?: JaenPageMetadataImage;
 }
 
 /**
@@ -84,7 +93,11 @@ export const useDocsSections = (
           href: localizeHref(`/docs/${slug}`),
           title: metadata.title ?? slug,
           description: metadata.description ?? '',
-          image: metadata.image ?? undefined
+          // The whole metadata goes through, because the picture may be a
+          // media reference, a plain address, or both. `resolvePageMetadataImage`
+          // is asked only whether there is a picture at all, so a section
+          // without one still falls back to the lettered plate.
+          image: resolvePageMetadataImage(metadata) ? metadata : undefined
         };
       })
       // A page without a slug has no reachable path, a page without a title
