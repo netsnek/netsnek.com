@@ -1,0 +1,2 @@
+(self.webpackChunkjaen_template=self.webpackChunkjaen_template||[]).push([[23168],{23168:function(t,a,e){var n=e(421067).k5;t.exports.FaEgg=function(t){return n({tag:"svg",attr:{viewBox:"0 0 384 512"},child:[{tag:"path",attr:{d:"M192 0C86 0 0 214 0 320s86 192 192 192 192-86 192-192S298 0 192 0z"}}]})(t)}}}]);
+//# sourceMappingURL=23168-819426396e329f0b47e3.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjaen_template=self.webpackChunkjaen_template||[]).push([[97061],{547486:function(e,n,t){t.r(n),t.d(n,{Head:function(){return u.p3}});var u=t(435503),a=t(296540);n.default=()=>{const e=(0,u.As)();return(0,a.useEffect)((()=>{e.signinRedirect()}),[]),null}}}]);
+//# sourceMappingURL=component---jaen-packages-gatsby-plugin-jaen-src-pages-login-tsx-8e6d8524756b65666158.js.map

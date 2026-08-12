@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjaen_template=self.webpackChunkjaen_template||[]).push([[52106],{595309:function(e,t,n){n.r(t),n.d(t,{Head:function(){return a.p3}});var a=n(435503),u=n(14976),i=n(296540);t.default=()=>{const e=(0,a.As)();return i.useEffect((()=>{e.isAuthenticated?(0,u.navigate)("/"):e.signinRedirect()}),[e.isAuthenticated]),null}}}]);
+//# sourceMappingURL=component---jaen-packages-gatsby-plugin-jaen-src-pages-signup-tsx-08e39bab1e7657b9e5fe.js.map

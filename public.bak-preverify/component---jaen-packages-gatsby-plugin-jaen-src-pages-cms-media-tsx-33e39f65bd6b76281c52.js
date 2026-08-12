@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjaen_template=self.webpackChunkjaen_template||[]).push([[22746],{335199:function(e,t,a){a.r(t),a.d(t,{Head:function(){return p.p3}});var n=a(99164),u=a(802445),p=a(435503);t.default=()=>(0,u.Y)(n.A,{})}}]);
+//# sourceMappingURL=component---jaen-packages-gatsby-plugin-jaen-src-pages-cms-media-tsx-33e39f65bd6b76281c52.js.map

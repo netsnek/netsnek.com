@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjaen_template=self.webpackChunkjaen_template||[]).push([[39926],{478960:function(e,t,n){n.r(t),n.d(t,{Head:function(){return c.p}});var a=n(289845),u=n(77340),s=n(802445),c=n(853970);t.default=e=>{const t=(0,u.Jc)();return(0,s.Y)(a.A,{onMdast:t.setValue})}}}]);
+//# sourceMappingURL=component---src-templates-doc-page-tsx-f9066a5e32e92b7203a0.js.map

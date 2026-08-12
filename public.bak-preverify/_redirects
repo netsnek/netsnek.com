@@ -1,0 +1,4 @@
+
+## Created with gatsby-plugin-cloudflare-pages
+/cms/accounts/:userId  /cms/accounts/[userId]/  200
+/emailwerk/templates/:templateId  /emailwerk/templates/[templateId]/  200

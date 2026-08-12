@@ -1,4 +1,7 @@
-import { ArrowForwardIcon } from '../../../../components/icons/chakra';
+import {
+  ArrowForwardIcon,
+  ChevronDownIcon
+} from '../../../../components/icons/chakra';
 import {
   Accordion,
   AccordionItemTriggerProps,
@@ -169,7 +172,14 @@ export const generateMenuItem = (
                 // the arrow to land where v2 put it.
                 _open={{ transform: 'rotate(0deg)', rotate: '0deg' }}
                 transition="transform 0.2s ease-in-out"
-              />
+              >
+                {/* v2's AccordionIcon was Chakra v2's own ChevronDown at
+                    `fontSize: 1.25em`, which is the glyph vendored into
+                    icons/chakra. An ItemIndicator with no children falls back
+                    to v3's built-in chevron instead, a different path that
+                    renders a visibly different arrow at this size. */}
+                <ChevronDownIcon boxSize="1.25em" />
+              </Accordion.ItemIndicator>
             </Center>
           </Accordion.ItemTrigger>
         </Link>

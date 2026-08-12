@@ -161,7 +161,19 @@ export function ArrowPattern({
   return (
     <chakra.svg ref={ref} aria-hidden="true" {...props}>
       <rect width="100%" height="100%" fill={`url(#${id})`} strokeWidth="0" />
-      <chakra.svg x="50%" y={yOffset} strokeWidth="0" overflow="visible">
+      {/*
+        A plain <svg>, not chakra.svg, because of `x` and `y`.
+
+        v3's chakra() factory treats `x` and `y` as style props and does not
+        forward them to an SVG element, so both attributes vanished from the
+        DOM: v2 emitted `<svg x="50%" y="-96">` and v3 emitted `<svg>`. The
+        nested viewport then rendered from the parent's origin instead of the
+        horizontal centre, which slid the six static arrows 800px left (half the
+        1600px canvas) and 96px down on every page that draws the header.
+        Nothing here needed the chakra factory: `strokeWidth` and `overflow` are
+        both plain SVG presentation attributes.
+      */}
+      <svg x="50%" y={yOffset} strokeWidth="0" overflow="visible">
         {staticArrows.map(([i, j]) => (
           <Arrow key={`${i}:${j}`} i={i} j={j} size={size} />
         ))}
@@ -178,7 +190,7 @@ export function ArrowPattern({
             }}
           />
         ))}
-      </chakra.svg>
+      </svg>
       <defs>
         <pattern
           id={id}

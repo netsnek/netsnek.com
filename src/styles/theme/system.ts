@@ -25,11 +25,14 @@ import themeFonts from './fonts';
 import {
   accordionSlotRecipe,
   alertSlotRecipe,
+  breadcrumbSlotRecipe,
   buttonRecipe,
   containerRecipe,
   headingRecipe,
+  kbdRecipe,
   linkRecipe,
   menuSlotRecipe,
+  separatorRecipe,
   skeletonRecipe,
   tooltipSlotRecipe
 } from './recipes';
@@ -210,12 +213,15 @@ export const siteConfig = defineConfig({
       button: buttonRecipe,
       container: containerRecipe,
       heading: headingRecipe,
+      kbd: kbdRecipe,
       link: linkRecipe,
+      separator: separatorRecipe,
       skeleton: skeletonRecipe
     },
     slotRecipes: {
       accordion: accordionSlotRecipe,
       alert: alertSlotRecipe,
+      breadcrumb: breadcrumbSlotRecipe,
       menu: menuSlotRecipe,
       tooltip: tooltipSlotRecipe
     }

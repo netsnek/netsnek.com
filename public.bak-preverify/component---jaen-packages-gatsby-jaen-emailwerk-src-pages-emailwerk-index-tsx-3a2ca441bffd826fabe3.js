@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjaen_template=self.webpackChunkjaen_template||[]).push([[51634],{334503:function(e,t,a){a.r(t);var l=a(296540),n=a(14976);t.default=e=>{let{}=e;return(0,l.useEffect)((()=>{(0,n.navigate)("./templates")}),[]),null}}}]);
+//# sourceMappingURL=component---jaen-packages-gatsby-jaen-emailwerk-src-pages-emailwerk-index-tsx-3a2ca441bffd826fabe3.js.map

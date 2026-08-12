@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjaen_template=self.webpackChunkjaen_template||[]).push([[22629],{522629:function(e,t,a){a.r(t)}}]);
