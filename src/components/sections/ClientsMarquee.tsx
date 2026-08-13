@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import {
   Box,
   BoxProps,
@@ -153,8 +153,55 @@ const ClientsMarquee: FC<ClientsMarqueeProps> = ({ ...props }) => {
   // For TypeScript, setting explicit return types on hooks is not typically necessary due to its inference
   const boxSize = useBreakpointValue({ base: '230px', md: '260px' });
 
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * The marquee starts when it is about to be seen, not when the page loads.
+   *
+   * `react-fast-marquee` measures itself and its track with two
+   * `getBoundingClientRect()` calls as soon as it mounts, and then animates
+   * continuously. Lighthouse attributed 33 ms of forced reflow at load to that
+   * pair, for a section that sits below the fold on every viewport.
+   *
+   * Deferring only the marquee is safe because the height is already reserved
+   * by `minH` below, so nothing moves when it does appear. `rootMargin` starts
+   * it a little early, which means it is running by the time it is on screen
+   * rather than starting visibly from a standstill.
+   */
+  const [isNear, setIsNear] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+
+    if (!node) return;
+
+    // Without IntersectionObserver the marquee simply runs from the start,
+    // which is the behaviour this replaced.
+    if (typeof IntersectionObserver === 'undefined') {
+      setIsNear(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          setIsNear(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '400px 0px' }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <Box
+      ref={sectionRef}
       as="section"
       /**
        * The height is reserved in CSS, not left to the marquee.
@@ -174,6 +221,7 @@ const ClientsMarquee: FC<ClientsMarqueeProps> = ({ ...props }) => {
        */
       minH={{base: '230px', md: '260px'}}
       {...props}>
+      {isNear && (
       <Marquee gradient={false} speed={60}>
         <Box display="flex" gridGap="32px">
           {clients.map((client, index) => (
@@ -192,6 +240,9 @@ const ClientsMarquee: FC<ClientsMarqueeProps> = ({ ...props }) => {
                 href={client.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                // The tile holds only a logo, so the anchor has no text of its
+                // own and every one of them reached the DOM unnamed.
+                aria-label={client.name}
               >
                 {client.logo}
               </LinkOverlay>
@@ -199,6 +250,7 @@ const ClientsMarquee: FC<ClientsMarqueeProps> = ({ ...props }) => {
           ))}
         </Box>
       </Marquee>
+      )}
     </Box>
   );
 };

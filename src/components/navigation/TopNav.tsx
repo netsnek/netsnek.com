@@ -158,11 +158,52 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
     path === '/' ? 'dark' : 'light'
   );
 
+  /**
+   * The hero's height, measured when it can actually change.
+   *
+   * It used to be read with `getBoundingClientRect()` inside the effect below,
+   * which depends on `scrollPos` and therefore ran on every scroll frame. A
+   * rect read forces the browser to flush pending layout, so scrolling the
+   * home page paid for a synchronous layout per frame for a number that does
+   * not change while scrolling. Lighthouse attributed 33 ms of forced reflow
+   * to it.
+   *
+   * A ResizeObserver on the hero covers every way the height can move: the
+   * viewport changing, the font loading, the hero's own content reflowing.
+   */
+  const [heroHeightPx, setHeroHeightPx] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (path !== '/') {
+      setHeroHeightPx(null);
+      return;
+    }
+
+    const hero = document.querySelector<HTMLDivElement>('#hero');
+
+    if (!hero) return;
+
+    setHeroHeightPx(hero.getBoundingClientRect().height);
+
+    const observer = new ResizeObserver(entries => {
+      const height = entries[0]?.contentRect.height;
+
+      if (typeof height === 'number') {
+        setHeroHeightPx(height);
+      }
+    });
+
+    observer.observe(hero);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [path]);
+
   useEffect(() => {
     if (path === '/') {
-      const heroHeight = document.querySelector<HTMLDivElement>('#hero');
-      if (!heroHeight) return;
-      const heroHeightPx = heroHeight.getBoundingClientRect().height;
+      if (heroHeightPx === null) return;
+
       const newColorMode =
         chakraColorMode === 'dark' ||
         (scrollPos < heroHeightPx && !topNavDisclosure.open)
@@ -175,7 +216,7 @@ const TopNav: FC<ITopNavProps> = ({ path, children }) => {
     } else {
       setColorMode('light');
     }
-  }, [path, scrollPos, topNavDisclosure.open, chakraColorMode]);
+  }, [path, scrollPos, heroHeightPx, topNavDisclosure.open, chakraColorMode]);
 
   let linkProps: TTopNavLinkProps = { transition: 'opacity 0.2s ease-in-out' };
 
