@@ -65,8 +65,12 @@ const FilesystemItem: FC<IFilesystemItemProps> = ({
       fill: color
     };
   } else {
+    // `lowContrast.initial` names a step that does not exist in the tree; the
+    // group is {default, lowContrast} and each is a light/dark pair. An
+    // unresolvable path emits the literal as the CSS value and is discarded
+    // without a word, so these rows were never dimmed.
     const color = `components.filesystem.color.${
-      item.lowContrast ? 'lowContrast.initial' : 'default'
+      item.lowContrast ? 'lowContrast' : 'default'
     }`;
     props = {
       ...props,
@@ -98,7 +102,7 @@ const FilesystemItem: FC<IFilesystemItemProps> = ({
         transform: 'translateY(-50%)',
         height: '1px',
         width: 2,
-        bg: 'components.filesystem.'
+        bg: 'components.filesystem.borderColor'
       }
     };
   }
@@ -108,8 +112,8 @@ const FilesystemItem: FC<IFilesystemItemProps> = ({
       <IconComp
         boxSize="14px"
         mr={2}
-        fill="components.filesystem.icon.color"
-        color="components.filesystem.icon.color"
+        fill="components.filesystem.icon.color.default"
+        color="components.filesystem.icon.color.default"
       />
       {item.name}
     </Box>

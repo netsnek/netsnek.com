@@ -52,7 +52,12 @@ const ImageCard: FC<IImageCardProps> = ({
         borderColor="components.imageCard.borderColor"
         _hover={{
           bgColor: 'components.imageCard.hover.bgColor',
-          boxShadow: 'components.imageCard.hover.boxShadow',
+          // The value directly, not the token path. The entry lives under
+          // semanticTokens.colors while boxShadow resolves against the shadows
+          // scale, so no path in that namespace can ever arrive and the card
+          // has never had a hover shadow on any version. md/none are the values
+          // the token declares.
+          boxShadow: {base: 'md', _dark: 'none'},
           borderColor: 'components.imageCard.hover.borderColor',
           '& .sd-cmp-image-card-link-icon': {
             marginLeft: 3

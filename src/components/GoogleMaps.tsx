@@ -74,7 +74,13 @@ export const GoogleMaps = ({ src, ...props }: GoogleMapsProps) => {
               that same look here: brand has no `fg` token, so the colour it
               sets is an unresolvable var and the text keeps inheriting from
               the description, and the hover underline is v2's baseStyle. */}
-          <Link onClick={handleAccept}>
+          {/* as="button", because it is one. Without an href Chakra renders a
+              bare <a>, which Lighthouse reports as an uncrawlable link and
+              which no keyboard reaches: an anchor without href is not
+              focusable and does not fire on Enter. The element performs an
+              action, it does not navigate, so a button is the honest tag. The
+              link recipe still paints it, so nothing changes visually. */}
+          <Link as="button" type="button" onClick={handleAccept}>
             {intl.formatMessage({
               id: 'MapsEnableCookiesAction',
               defaultMessage: 'Analyse Cookies aktivieren'
