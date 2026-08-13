@@ -188,6 +188,9 @@ const Open: FC = () => {
               >
                 <Field.Image
                   name="OpenTuxImage"
+                  // The viewBox, as real attributes. See ImageField's fallback.
+                  intrinsicWidth={188}
+                  intrinsicHeight={227}
                   defaultValue="/images/carinthian-tux.svg"
                   alt={intl.formatMessage({
                     id: 'OpenTuxImageAlt',
