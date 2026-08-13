@@ -221,6 +221,83 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
             '@lezer/markdown',
             '@lezer/xml'
           ].map(name => [name, path.resolve(__dirname, 'node_modules', name)])
+        ),
+
+        // tslib was in the app chunk THIRTEEN times over.
+        //
+        // Not thirteen references, thirteen modules. Reading the build's
+        // source maps back shows `tslib/tslib.es6.mjs` listed fourteen times
+        // across the bundle, thirteen of them inside app.js alone, at 17.2 KB
+        // of source each. The reason is on disk: every @formatjs package ships
+        // its own nested copy, so there is
+        // `@formatjs/intl/node_modules/tslib`,
+        // `@formatjs/ecma402-abstract/node_modules/tslib`,
+        // `@formatjs/icu-messageformat-parser/node_modules/tslib` and ten
+        // more. Each is a different absolute path, so webpack is right to
+        // treat them as different modules, and nothing short of resolution
+        // collapses them.
+        //
+        // tslib is pure helper functions with no state and no identity, so
+        // one copy is always safe here.
+        tslib: path.resolve(__dirname, 'node_modules/tslib'),
+
+        // The formatjs stack, for two reasons at once.
+        //
+        // Payload: the parser alone appeared twice in the app chunk at 47.6 KB
+        // of source, with time-data.generated.js at 16.3 KB and the skeleton
+        // parser's number.js at 11.7 KB doing the same, because the linked
+        // jaen packages resolve @formatjs from the monorepo tree while this
+        // site resolves it from its own.
+        //
+        // Correctness: react-intl holds its configuration in React context and
+        // caches formatters per provider. Two copies mean the provider mounted
+        // by gatsby-plugin-jaen and the `useIntl()` called in a site component
+        // are not talking to each other, which shows up as messages falling
+        // back to their defaultMessage for no visible reason. That failure is
+        // the same shape as the @chakra-ui/react one this list already guards
+        // against, and it is far harder to spot because a defaultMessage looks
+        // like a correct German string.
+        ...Object.fromEntries(
+          [
+            'react-intl',
+            'intl-messageformat',
+            '@formatjs/intl',
+            '@formatjs/ecma402-abstract',
+            '@formatjs/fast-memoize',
+            '@formatjs/icu-messageformat-parser',
+            '@formatjs/icu-skeleton-parser'
+          ].map(name => [name, path.resolve(__dirname, 'node_modules', name)])
+        ),
+
+        // react-hook-form keeps its form state in context too, and it came in
+        // three copies: this tree's 7.51.3, jaen's 7.52.0, and 7.51.5 nested
+        // under @hookform/resolvers. 93.4 KB of source duplicated, and a
+        // resolver that registers into a different store than the form
+        // reading it.
+        //
+        // This one points OUT of the site tree, unlike every other entry
+        // above, and that is deliberate. This site does not declare
+        // react-hook-form at all, so its 7.51.3 is an incidental hoist with no
+        // one behind it, while gatsby-plugin-jaen declares `^7.51.5` and would
+        // be under-satisfied by it. jaen's 7.52.0 is the only copy that
+        // satisfies all three consumers: `^7.51.5`, the older `^7.46.1` of the
+        // other jaen packages, and `^7.0.0` from @hookform/resolvers.
+        //
+        // Resolving across the pair is safe here because the build already
+        // depends on it: the jaen packages come in through yarn `link:`, so
+        // ../jaen/node_modules has to exist for anything to resolve at all.
+        //
+        // Do not copy this entry to another jaen site without checking which
+        // way it points. It is the odd one out precisely because this site
+        // does not own the dependency. A site that declares react-hook-form
+        // itself resolves its own, newer copy, and pointing at jaen's would
+        // DOWNGRADE it. The rule is not "prefer jaen", it is "pick the copy
+        // that satisfies every declared range", and here that happens to be
+        // jaen's. nadine-hauswirth.com is the counter-example: it declares
+        // 7.85.0, which satisfies gatsby-plugin-jaen's range on its own.
+        'react-hook-form': path.resolve(
+          __dirname,
+          '../jaen/node_modules/react-hook-form'
         )
       }
     }

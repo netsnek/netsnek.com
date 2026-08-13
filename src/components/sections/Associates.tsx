@@ -17,6 +17,39 @@ import { useIntl } from 'react-intl';
 import { useLocalizeHref } from '../../contexts/locale';
 import { splitAccentDot } from '../../utils/accent-dots';
 
+/**
+ * What the Aussenwirtschaft-Austria picture actually occupies, derived from
+ * the containers rather than from the eye.
+ *
+ * index.tsx wraps this section in `<Container maxW="5xl">`, whose recipe pads
+ * `4` (16px) a side, so its content box is `min(100vw, 1024px) - 32px`. The
+ * grid below pads `16` (64px a side), leaving `min(100vw, 1024px) - 160px`.
+ * The GridItem holding the picture spans every column, so the LinkBox gets
+ * 70 / 50 / 25 percent of that at base / sm (480px) / md (768px), and the
+ * LinkBox itself pads `2` (8px a side). That gives a picture box of
+ *
+ *   base        0.70 * (100vw - 160) - 16  =  70vw - 128px
+ *   sm  >=480px 0.50 * (100vw - 160) - 16  =  50vw -  96px
+ *   md  >=768px 0.25 * (100vw - 160) - 16  =  25vw -  56px
+ *   >=1024px    the container stops growing:   200px
+ *
+ * 200px wide, and 130px tall once the 1922x1250 source is contained in the
+ * 4/3 box. Without this prop the field inherits the `sizes="100vw"` that
+ * jaen's page fragment declares, because it asks for
+ * `gatsbyImageData(layout: FULL_WIDTH)`, and a desktop browser then picks the
+ * widest candidate there is for a 200px box.
+ *
+ * Be clear about what this does and does not buy. FULL_WIDTH's breakpoints are
+ * 750, 1080, 1366 and 1920 capped at the source width, so the smallest
+ * candidate is 750w. This moves a 1x desktop off the 1366w AVIF (15 759 B)
+ * and onto the 750w one (9 325 B). A 2x screen wants 400 device pixels here,
+ * so even the 750w candidate stays oversized. Closing that last part needs a
+ * candidate below 750w, which only jaen's fragment or gatsby-plugin-sharp's
+ * `defaults.breakpoints` can supply.
+ */
+const AUSTRIA_IMAGE_SIZES =
+  '(min-width: 1024px) 200px, (min-width: 768px) calc(25vw - 56px), (min-width: 480px) calc(50vw - 96px), calc(70vw - 128px)';
+
 const Associates = () => {
   const intl = useIntl();
   const localizeHref = useLocalizeHref();
@@ -234,6 +267,7 @@ const Associates = () => {
                   defaultMessage: 'Austria'
                 })}
                 objectFit="contain"
+                sizes={AUSTRIA_IMAGE_SIZES}
               />
             </AspectRatio>
           </LinkOverlay>
