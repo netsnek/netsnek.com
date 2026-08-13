@@ -94,7 +94,12 @@ const BlogCard: FC<{ section: DocsSection }> = ({ section }) => {
         </Heading>
 
         {section.description && (
-          <Text mt="2" fontSize="md" color="gray.500" lineClamp={3}>
+          // gray.550, not gray.500. The excerpt is 16px regular on the white
+          // card, so WCAG 2.1 1.4.3 asks for 4.5:1 and gray.500 (#718096,
+          // relative luminance 0.2115) gives (1.0 + 0.05) / (0.2115 + 0.05) =
+          // 4.01:1. gray.550 (#5F6C81, L 0.1474) is the next step down this
+          // theme's own ramp and reaches 5.32:1. No new hex needed.
+          <Text mt="2" fontSize="md" color="gray.550" lineClamp={3}>
             {section.description}
           </Text>
         )}
@@ -102,13 +107,24 @@ const BlogCard: FC<{ section: DocsSection }> = ({ section }) => {
         {/* The cards come from the docs tree, not from a Jaen section, so
             every card carries the same field name on purpose. The owner
             edits the wording once and it applies to the whole grid. */}
+        {/* shared.text.brand, not brand.500: 14px semibold needs 4.5:1 and
+            the mark itself only manages 2.63:1 on white. See the token in
+            styles/theme/semanticTokens/shared.ts for the arithmetic.
+
+            The card above is `bg="white"` in BOTH colour modes, so in dark
+            mode this label lands on white with the token's dark half, which
+            is the mark again. That is the state it was already in, and it
+            is not the label's bug to fix: the card title and the excerpt sit
+            on that same white plate reading whiteAlpha.900 and gray.550.
+            Making the plate mode-aware fixes all three at once and turns
+            this token correct here without another edit. */}
         <Field.Text
           mt="auto"
           pt="4"
           as={Text}
           fontSize="sm"
           fontWeight="semibold"
-          color="brand.500"
+          color="shared.text.brand"
           name="BlogReadMore"
           defaultValue={intl.formatMessage({
             id: 'BlogReadMore',
@@ -149,10 +165,15 @@ const Blog: FC<BlogProps> = ({ limit = 6 }) => {
         fontWeight="bold"
         textAlign="left"
         name="SectionHeadingBlog"
+        // The accent dot is text on the white body, 36px, so WCAG 2.1 1.4.3
+        // wants 3:1 and brand.500 gives 2.63:1. The same string also lives in
+        // src/locales/messages.ts once per locale, and react-intl prefers the
+        // catalogue over this default, so the catalogue copy is the one that
+        // paints the page.
         defaultValue={intl.formatMessage({
           id: 'BlogHeading',
           defaultMessage:
-            "Geschichten aus unseren Projekten<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+            "Geschichten aus unseren Projekten<span style='color:var(--chakra-colors-shared-text-brand)'>.</span>"
         })}
       />
 

@@ -36,8 +36,12 @@ const smtSearchFeature = {
           default: 'gray.100',
           _dark: 'gray.600'
         },
+        // Text on the hovered row, so it takes the accessible brand token.
+        // The row is gray.100 rather than white in light mode, where the
+        // token reads 4.08:1 and the mark read 2.33:1. Better, but still
+        // under 4.5:1, see the note in the handover.
         color: {
-          default: 'brand.500',
+          default: 'shared.text.brand',
           _dark: 'brand.300'
         },
       },

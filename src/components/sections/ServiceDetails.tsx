@@ -29,10 +29,21 @@ const Services = () => {
         fontWeight="bold"
         textAlign="left"
         name="SectionHeadingServiceDetails1"
+        /**
+         * The accent spans paint TEXT, so they read the accessible brand
+         * token rather than the mark. `brand.500` on the white body is
+         * 2.63:1 and this heading is 36px, which WCAG 2.1 1.4.3 wants at
+         * 3:1. `shared.text.brand` is 4.60:1. Arithmetic and the dark-mode
+         * half live at styles/theme/semanticTokens/shared.ts.
+         *
+         * The same two strings also live in src/locales/messages.ts, once
+         * per locale, and react-intl prefers the catalogue over this
+         * default, so the catalogue copies decide what the page paints.
+         */
         defaultValue={intl.formatMessage({
           id: 'ServiceDetailsHeading1',
           defaultMessage:
-            "Wir unterstützen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihr Unternehmen</span><br/> im digitalen Zeitalter<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+            "Wir unterstützen<br/> <span style='color:var(--chakra-colors-shared-text-brand)'>Ihr Unternehmen</span><br/> im digitalen Zeitalter<span style='color:var(--chakra-colors-shared-text-brand)'>.</span>"
         })}
       />
 
@@ -172,10 +183,13 @@ const Services = () => {
         fontWeight="bold"
         textAlign="left"
         name="SectionHeadingServiceDetails2"
+        // Same accent token as SectionHeadingServiceDetails1 above, and the
+        // same note about src/locales/messages.ts holding the copies that
+        // actually render.
         defaultValue={intl.formatMessage({
           id: 'ServiceDetailsHeading2',
           defaultMessage:
-            "Wir lösen<br/> <span style='color:var(--chakra-colors-brand-500)'>Ihre Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-brand-500)'>.</span>"
+            "Wir lösen<br/> <span style='color:var(--chakra-colors-shared-text-brand)'>Ihre Probleme</span><br/> zur Not mit Quantencomputern<span style='color:var(--chakra-colors-shared-text-brand)'>.</span>"
         })}
       />
 
