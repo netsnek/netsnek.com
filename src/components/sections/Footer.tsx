@@ -266,6 +266,7 @@ const Footer: FC = () => {
                   href="https://facebook.com/netsnek"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf Facebook"
                 >
                   <Icon boxSize="5" asChild>
                     <FaFacebook />
@@ -284,6 +285,7 @@ const Footer: FC = () => {
                   href="https://instagram.com/netsnek"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf Instagram"
                 >
                   <Icon boxSize="5" asChild>
                     <FaInstagram />
@@ -302,6 +304,7 @@ const Footer: FC = () => {
                   href="https://twitter.com/netsnek_com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf X"
                 >
                   <Icon boxSize="5" asChild>
                     <FaTwitter />
@@ -320,6 +323,7 @@ const Footer: FC = () => {
                   href="https://github.com/netsnek"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf GitHub"
                 >
                   <Icon boxSize="5" asChild>
                     <FaGithub />

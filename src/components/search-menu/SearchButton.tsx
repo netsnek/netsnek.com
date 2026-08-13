@@ -99,6 +99,15 @@ const SearchButton: FC<ISearchButtonProps> = withRedux(
         onBlur={e => {
           e.currentTarget.removeEventListener('keypress', onKeyPress);
         }}
+        // Below lg the shortcut hint and the label span collapse to
+        // `display: none` and the magnifier is aria-hidden, which leaves the
+        // button without an accessible name. Naming the action here covers
+        // every breakpoint, and because the name still contains the visible
+        // word "Suche" it also satisfies "Label in Name".
+        aria-label={intl.formatMessage({
+          id: 'SearchButtonAriaLabel',
+          defaultMessage: 'Suche öffnen'
+        })}
         onClick={openModal}
         {...props}
       >

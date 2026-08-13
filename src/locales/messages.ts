@@ -310,7 +310,10 @@ export const messagesDe = {
   EditableSubmitAriaLabel: 'Speichern',
   EditableCancelAriaLabel: 'Abbrechen',
   EditableEditAriaLabel: 'Bearbeiten',
-  LanguageSwitcherLabel: 'Sprache'
+  LanguageSwitcherLabel: 'Sprache',
+  AltNavHomeLink: 'Netsnek, zur Startseite',
+  SearchButtonAriaLabel: 'Suche öffnen',
+  CodeSnippetEditorLabel: 'Code-Editor'
 } as const;
 
 export type MessageKey = keyof typeof messagesDe;
@@ -477,7 +480,10 @@ export const messagesEn: MessageCatalog = {
   EditableSubmitAriaLabel: "Save",
   EditableCancelAriaLabel: "Cancel",
   EditableEditAriaLabel: "Edit",
-  LanguageSwitcherLabel: "Language"
+  LanguageSwitcherLabel: "Language",
+  AltNavHomeLink: 'Netsnek, go to homepage',
+  SearchButtonAriaLabel: 'Open search',
+  CodeSnippetEditorLabel: 'Code editor'
 };
 
 export const messagesSl: MessageCatalog = {
@@ -636,7 +642,10 @@ export const messagesSl: MessageCatalog = {
   EditableSubmitAriaLabel: "Shrani",
   EditableCancelAriaLabel: "Prekliči",
   EditableEditAriaLabel: "Uredi",
-  LanguageSwitcherLabel: "Jezik"
+  LanguageSwitcherLabel: "Jezik",
+  AltNavHomeLink: 'Netsnek, na začetno stran',
+  SearchButtonAriaLabel: 'Odpri iskanje',
+  CodeSnippetEditorLabel: 'Urejevalnik kode'
 };
 
 export const messagesIt: MessageCatalog = {
@@ -795,7 +804,10 @@ export const messagesIt: MessageCatalog = {
   EditableSubmitAriaLabel: "Salva",
   EditableCancelAriaLabel: "Annulla",
   EditableEditAriaLabel: "Modifica",
-  LanguageSwitcherLabel: "Lingua"
+  LanguageSwitcherLabel: "Lingua",
+  AltNavHomeLink: 'Netsnek, vai alla home page',
+  SearchButtonAriaLabel: 'Apri la ricerca',
+  CodeSnippetEditorLabel: 'Editor di codice'
 };
 
 export const messagesJa: MessageCatalog = {
@@ -954,7 +966,10 @@ export const messagesJa: MessageCatalog = {
   EditableSubmitAriaLabel: "保存",
   EditableCancelAriaLabel: "キャンセル",
   EditableEditAriaLabel: "編集",
-  LanguageSwitcherLabel: "言語"
+  LanguageSwitcherLabel: "言語",
+  AltNavHomeLink: 'Netsnek、ホームへ',
+  SearchButtonAriaLabel: '検索を開く',
+  CodeSnippetEditorLabel: 'コードエディター'
 };
 
 const catalogs: Record<Locale, MessageCatalog> = {

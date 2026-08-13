@@ -304,6 +304,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   href="https://facebook.com/netsnek"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf Facebook"
                 >
                   <Icon as={FaFacebook} boxSize="6" />
                 </LinkOverlay>
@@ -320,6 +321,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   href="https://instagram.com/netsnek"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf Instagram"
                 >
                   <Icon as={FaInstagram} boxSize="6" />
                 </LinkOverlay>
@@ -336,6 +338,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   href="https://twitter.com/netsnek_com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf X"
                 >
                   <Icon as={FaTwitter} boxSize="6" />
                 </LinkOverlay>
@@ -352,6 +355,7 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
                   href="https://github.com/netsnek"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Netsnek auf GitHub"
                 >
                   <Icon as={FaGithub} boxSize="6" />
                 </LinkOverlay>
@@ -372,7 +376,15 @@ const AltTopNav: FC<IAltTopNavProps> = ({ path, hamburgerIconProps }) => {
             justifyContent="space-between"
           >
             <LinkBox height="100%" flex="2" mr="4" display="flex">
-              <LinkOverlay href={localizeHref('/')} color="white">
+              <LinkOverlay
+                href={localizeHref('/')}
+                color="white"
+                // Der Anchor enthaelt nur das Logo-SVG und hatte damit keinen
+                // zugaenglichen Namen.
+                aria-label={intl.formatMessage({
+                  id: 'AltNavHomeLink',
+                  defaultMessage: 'Netsnek, zur Startseite'
+                })}>
                 <Logo height="100%" color="black" />
               </LinkOverlay>
             </LinkBox>
