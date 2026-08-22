@@ -21,6 +21,14 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-jaen`,
       options: {
         pylonUrl: 'https://services.netsnek.com/jaen/graphql',
+        /**
+         * CMS media goes to the rebuilt storage gateway rather than the
+         * osg.snek.at that jaen defaults to. Only new uploads move: URLs
+         * already inside published patches are absolute and keep resolving
+         * against the host that issued them, and the new gateway serves those
+         * historical Telegram file ids byte for byte.
+         */
+        storageUrl: 'https://osg.jaen.io',
         remote: {
           repository: 'netsnek/netsnek.com'
         },
