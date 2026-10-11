@@ -21,7 +21,7 @@ import { AGTIcon } from '../../gatsby-plugin-jaen/components/agtguntrade';
 import { LibaIcon } from '../../gatsby-plugin-jaen/components/liba';
 import { FHKITIcon } from '../../gatsby-plugin-jaen/components/fhkit';
 import { MyP5Icon } from '../../gatsby-plugin-jaen/components/p5';
-import { WGIcon } from '../../gatsby-plugin-jaen/components/wgstros';
+import { LinuxDayIcon } from '../../gatsby-plugin-jaen/components/linuxday';
 import { useContactModal } from '../../services/contact';
 
 const Contact = () => {
@@ -35,7 +35,7 @@ const Contact = () => {
     { href: 'https://barbara-mauz.at', icon: LibaIcon },
     { href: 'https://fhkit.at', icon: FHKITIcon },
     { href: 'https://my.pharmaziegasse.com', icon: MyP5Icon },
-    { href: 'https://wg.snek.at', icon: WGIcon }
+    { href: 'https://www.linuxday.at', icon: LinuxDayIcon }
   ];
 
   const contactModal = useContactModal();
